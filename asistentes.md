@@ -8,3 +8,4 @@
 | lidiasm     | https://www.linkedin.com/in/lidia-s%C3%A1nchez-1b7a80135/ |
 | alvarillo89 | https://www.linkedin.com/in/alvaro89/ |
 | marquirj    | https://www.linkedin.com/in/juan-antonio-martín-quirós-568553195/ |
+| yoskitar    | https://www.linkedin.com/in/óscarjiménezfernández/ |
