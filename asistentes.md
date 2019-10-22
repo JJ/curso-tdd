@@ -2,4 +2,6 @@
 
 | Nick GitHub | Perfil LinkedIn |
 |-------------|-----------------|
-|natalia2911| https://www.linkedin.com/in/natalia-martir-70891a196/ |
+| Varrrro     | https://www.linkedin.com/in/victorvazrod/ |
+| natalia2911 | https://www.linkedin.com/in/natalia-martir-70891a196/ |
+
