@@ -6,4 +6,4 @@
 | natalia2911 | https://www.linkedin.com/in/natalia-martir-70891a196/ |
 | mati3       | https://www.linkedin.com/in/matilde-cabrera-gonz%C3%A1lez-339917173/ |
 | alvarillo89 | https://www.linkedin.com/in/alvaro89/ |
-
+| marquirj    | https://www.linkedin.com/in/juan-antonio-mart%C3%ADn-quir%C3%B3s-568553195/ |
