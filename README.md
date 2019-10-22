@@ -4,7 +4,8 @@ En este curso trataremos de aprender las técnicas necesarias para tabajar en un
 
 Cada sesión será una parte teórica y una parte práctica, que se tendrá que entregar al final de la misma. Cuando se completen todas las sesiones y objetivos generaré un badge para el repo donde se haya cumplido todo (y dependiendo del nivel en el que se haya alcanzado, se hará también una recomendación en LinkedIn o a donde se solicite).
 
-Las sesiones serán:
+Las sesiones tendrán una parte teórica, seguida hacia el final de una
+parte práctica, y serán:
 
 * Historias de usuario, requisitos funcionales, *personas* y todo lo que necesitamos para empezar.
   * Uso de issues en el desarrollo basado en test.
