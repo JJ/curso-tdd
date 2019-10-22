@@ -9,3 +9,4 @@
 | alvarillo89 | https://www.linkedin.com/in/alvaro89/ |
 | marquirj    | https://www.linkedin.com/in/juan-antonio-martín-quirós-568553195/ |
 | yoskitar    | https://www.linkedin.com/in/óscarjiménezfernández/ |
+| luisbalru   | https://www.linkedin.com/in/luis-balderas-ruiz-13614a93/ |
