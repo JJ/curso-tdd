@@ -10,3 +10,4 @@
 | marquirj    | https://www.linkedin.com/in/juan-antonio-martín-quirós-568553195/ |
 | yoskitar    | https://www.linkedin.com/in/óscarjiménezfernández/ |
 | luisbalru   | https://www.linkedin.com/in/luis-balderas-ruiz-13614a93/ |
+| jojelupipa  | https://www.linkedin.com/in/jes%C3%BAs-s%C3%A1nchez-de-lechina-tejada/ |
