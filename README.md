@@ -9,6 +9,7 @@ parte práctica, y serán:
 
 * Historias de usuario, requisitos funcionales, *personas* y todo lo que necesitamos para empezar.
   * Uso de issues en el desarrollo basado en test.
+  * [Material](temas/diseño.md).
   
 * Preparando tu aplicación para testear: desarrollo por capas, *separation of concerns*, *objetos de test*, aserciones.
 
