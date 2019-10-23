@@ -23,8 +23,9 @@ parte práctica con entregas que serán corregidas de forma automática. Durante
   
 * Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
+  * BDD y algunos frameworks.
   
-* Cobertura y como gestionarla.
+* Cobertura de tests y como gestionarla.
 
 
 ## Inscripción
