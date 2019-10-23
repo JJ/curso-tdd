@@ -29,3 +29,15 @@ parte práctica con entregas que serán corregidas de forma automática. Durante
 ## Inscripción
 
 Si quieres apuntarte, haz un PR a [este fichero](asistentes.md) con tu nick de GitHub y enlace a LinkedIn (si quieres una recomendación al acabar el curso).
+
+## Lugar
+
+Aula de usos múltiples, 5ª planta de la [ETSIIT](https://etsiit.ugr.es)
+
+## Clases
+
+Presenciales, martes 29 a jueves 31 de octubre, martes 4 y miércoles 5 de noviembre.
+
+## Título
+
+A los que superen el curso se les hará una recomendación en LinkedIn por parte del profesor.
