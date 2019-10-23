@@ -3,7 +3,10 @@
 
 ## Planteamiento
 
-El planteamiento de los tests debe partir del planteamiento de la propia aplicación o biblioteca, porque se realizan pruebas sobre las especificaciones de la aplicación, no se puede quedar en la sintaxis y una enumeración de los frameworks disponibles.
+El diseño de los tests debe partir del planteamiento de la propia
+aplicación o biblioteca, porque se realizan pruebas sobre las
+especificaciones de la aplicación, no se puede quedar en la sintaxis y
+una enumeración de los frameworks disponibles.
 
 ## Al final de esta sesión
 
