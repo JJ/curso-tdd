@@ -5,13 +5,32 @@ En este curso trataremos de aprender las técnicas necesarias para tabajar en un
 Cada sesión será una parte teórica y una parte práctica, que se tendrá que entregar al final de la misma. Cuando se completen todas las sesiones y objetivos generaré un badge para el repo donde se haya cumplido todo (y dependiendo del nivel en el que se haya alcanzado, se hará también una recomendación en LinkedIn o a donde se solicite).
 
 Las sesiones tendrán una parte teórica, seguida hacia el final de una
-parte práctica con entregas que serán corregidas de forma automática. Durante el curso se irá elaborando un proyecto en equipo de 2 o tres personas.
+parte práctica con entregas que serán corregidas de forma
+automática. Durante el curso se irá elaborando un proyecto en equipo
+de 2 o tres personas.
 
+## Posibles proyectos
+
+* [DEIIT-bot](proyectos/deiit-bot.md), bot para los apuntes de DEIIT.
+* [Conversaciones](proyectos/conversaciones.md), escucha y analiza.
+  conversaciones en canales de Telegram.
+* [Notas](proyectos/notas.md), bot para comunicar notas a estudiantes.
+* [Rastreador medios sociales](proyectos/rastreador-social-media.md), escucha y analiza
+  conversaciones en medios sociales.
+* [Porra](proyectos/porra.md), porras deportivas.
+* [Medioambiental](proyectos/medioambiental.md), API para datos
+  abiertos medioambientales.
+* [Programador de actividades](proyectos/programador-actividades.md),
+  para programar actividades accesibles a través de un API.
+
+Se puede
+usar
+[esta plantilla para los proyectos](https://github.com/JJ/curso-qa-template). 
 
 ## Planificación del curso
 
 * Historias de usuario, requisitos funcionales, *personas* y todo lo que necesitamos para empezar.
-  * Uso de issues en el desarrollo basado en test.
+  * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
   
 * Preparando tu aplicación para testear: herramientas de construcción, desarrollo por capas, *separation of concerns*, *objetos de test*, aserciones.
@@ -24,8 +43,9 @@ parte práctica con entregas que serán corregidas de forma automática. Durante
 * Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
+  * Mocks
   
-* Cobertura de tests y como gestionarla.
+* Cobertura de tests y como gestionarla. Otros tests.
 
 
 ## Inscripción
