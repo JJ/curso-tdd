@@ -29,6 +29,8 @@ en LinkedIn o donde se solicite).
   abiertos medioambientales.
 * [Programador de actividades](proyectos/programador-actividades.md),
   para programar actividades accesibles a través de un API.
+* [Tráfico](proyectos/tráfico.md), análisis de los mensajes de tráfico
+  de Granada.
 
 Se puede
 usar
