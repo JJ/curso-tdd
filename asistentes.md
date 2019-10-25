@@ -17,3 +17,4 @@
 | imiguel10       | https://www.linkedin.com/in/miguel-jiménez-cazorla-014807195/          |
 | FernandoRoldan93 | https://www.linkedin.com/in/froldanzafra/		            					   |
 | mellado         | www.linkedin.com/in/mellado-pablo                                      |
+| OscarRubioGarcia | https://www.linkedin.com/in/oscar-rubio-garcia-368971195/              |
