@@ -52,7 +52,10 @@ usar
   * BDD y algunos frameworks.
   * Mocks
   
-* Cobertura de tests y como gestionarla. Otros tests.
+* Concluyendo
+  * Cobertura de tests y como gestionarla.
+  * Tests de front-end
+  * Tests de regresión.
 
 
 ## Inscripción
