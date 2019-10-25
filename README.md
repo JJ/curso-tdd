@@ -1,4 +1,4 @@
-# Curso de desarrollo basado en test
+# Curso de programación para QA
 
 En este curso trataremos de aprender las técnicas necesarias para tabajar en un entorno de desarrollo, para aplicaciones nativas en la nube o cualquier otra cosas. Será un curso conceptual, pero también práctico donde aprenderemos a desarrollar diferentes técnicas en cualquier lenguaje de programación y diferentes microframeworks.
 
