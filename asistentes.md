@@ -12,3 +12,7 @@
 | luisbalru       | https://www.linkedin.com/in/luis-balderas-ruiz-13614a93/               |
 | jojelupipa      | https://www.linkedin.com/in/jes%C3%BAs-s%C3%A1nchez-de-lechina-tejada/ |
 | josealberto4444 |                                                                        |
+| NSInductus      | https://www.linkedin.com/in/%C3%A1ngel-murcia-d%C3%ADaz-731784195/     |
+| pabloluque14    | https://www.linkedin.com/in/pablo-luque-moreno-078224a9/               |
+| imiguel10   | https://www.linkedin.com/in/miguel-jiménez-cazorla-014807195/               |
+| FernandoRoldan93 | https://www.linkedin.com/in/froldanzafra/							   |	
