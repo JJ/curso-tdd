@@ -1,13 +1,20 @@
 # Curso de programación para QA
 
-En este curso trataremos de aprender las técnicas necesarias para tabajar en un entorno de desarrollo, para aplicaciones nativas en la nube o cualquier otra cosas. Será un curso conceptual, pero también práctico donde aprenderemos a desarrollar diferentes técnicas en cualquier lenguaje de programación y diferentes microframeworks.
+En este curso trataremos de aprender las técnicas necesarias para
+tabajar en un entorno de desarrollo, para aplicaciones nativas en la
+nube o cualquier otra cosas. Será un curso conceptual, pero también
+práctico donde aprenderemos a desarrollar diferentes técnicas en
+cualquier lenguaje de programación y diferentes microframeworks. 
 
-Cada sesión será una parte teórica y una parte práctica, que se tendrá que entregar al final de la misma. Cuando se completen todas las sesiones y objetivos generaré un badge para el repo donde se haya cumplido todo (y dependiendo del nivel en el que se haya alcanzado, se hará también una recomendación en LinkedIn o a donde se solicite).
+Cada sesión será una parte teórica y una parte práctica; durante el
+curso se irá elaborando un proyecto en equipo de 2 o tres
+personas. Cada hito del proyecto se tendrá
+que entregar (y se evaluará de forma más o menos automática) al final de
+la misma. Cuando se completen todas las sesiones y objetivos generaré
+un badge para el repo donde se haya cumplido todo (y dependiendo del
+nivel en el que se haya alcanzado, se hará también una recomendación
+en LinkedIn o donde se solicite). 
 
-Las sesiones tendrán una parte teórica, seguida hacia el final de una
-parte práctica con entregas que serán corregidas de forma
-automática. Durante el curso se irá elaborando un proyecto en equipo
-de 2 o tres personas.
 
 ## Posibles proyectos
 
