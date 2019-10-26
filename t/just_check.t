@@ -1,6 +1,4 @@
-use lib qw(home/travis/perl5); # -*- mode: cperl -*-
-
-use Test::Text;
+use Test::Text; # -*- mode: cperl -*-
 
 for my $dir (qw(. temas proyectos) ) {
   my $tesxt = Test::Text->new($dir, ".", "Spanish", @_);
