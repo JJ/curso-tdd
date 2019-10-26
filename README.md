@@ -43,7 +43,7 @@ usar
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
   
-* Preparando tu aplicación para testear: herramientas de construcción, desarrollo por capas, *separation of concerns*, *objetos de test*, aserciones.
+* Preparando tu aplicación para testear: herramientas de construcción, desarrollo por capas, *separation of concerns*, inversión de dependencias, *objetos de test*, aserciones. 
   * [Material](temas/test-unitarios.md).
 
 * Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
