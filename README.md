@@ -31,6 +31,7 @@ en LinkedIn o donde se solicite).
   para programar actividades accesibles a través de un API.
 * [Tráfico](proyectos/tráfico.md), análisis de los mensajes de tráfico
   de Granada.
+* [Datos económicos](proyectos/económicos.md), análisis de datos económicos macro o por localidad. 
 
 Se puede
 usar
