@@ -1,5 +1,7 @@
 # Curso de programación para QA
 
+[![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd)
+
 En este curso trataremos de aprender las técnicas necesarias para
 tabajar en un entorno de desarrollo, para aplicaciones nativas en la
 nube o cualquier otra cosas. Será un curso conceptual, pero también
