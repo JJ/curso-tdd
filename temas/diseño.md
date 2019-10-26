@@ -34,13 +34,17 @@ Durante el ciclo de vida del software, los programas van evolucionando
 por muchas razones. Cambian las prácticas, cambian el software sobre
 el que se han construido (bibliotecas, lenguajes), se encuentran
 errores, cambia la comprensión del problema... Un programa debe
-diseñarse de forma que no se rompa (totalmente) con este cambio. 
+diseñarse de forma que no se rompa (totalmente) con este cambio.
+
+* ¿Funcionará si Internet no está conectada?
+* ¿Qué pasa si no hay acceso a almacenamiento permanente?
+* Si uso una constante en varios sitios, ¿qué pasa si varían las circunstancias? 
 
 Por ejemplo, la [programación
 defensiva](https://en.wikipedia.org/wiki/Defensive_programming) trata
 de crear código más seguro. 
 
-
+ En realidad la programación defensiva incluye todas las demás prácticas indicadas aquí, desde los principios de diseño, hasta la metodología SOLID, hasta otras, pero es más una filosofía que consiste en prevenir todos los casos, incluso los imposibles, en el diseño de la lógica de negocio o en los tests. Cosas como
 
 ## Actividad
 
