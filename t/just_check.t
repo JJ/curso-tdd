@@ -1,3 +1,5 @@
+use lib qw(home/travis/perl5); # -*- mode: cperl -*-
+
 use Test::Text;
 
 for my $dir (qw(. temas proyectos) ) {
