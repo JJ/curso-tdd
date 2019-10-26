@@ -20,3 +20,4 @@
 | OscarRubioGarcia | https://www.linkedin.com/in/oscar-rubio-garcia-368971195/              |
 | Solano96        | https://www.linkedin.com/in/francisco-solano-dgiim/                    |
 | iblancasa       |                                                                        |
+| carlos-el       | https://www.linkedin.com/in/carlos-enr%C3%ADquez-l%C3%B3pez-90412a197/ |
