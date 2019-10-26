@@ -21,3 +21,4 @@
 | Solano96        | https://www.linkedin.com/in/francisco-solano-dgiim/                    |
 | iblancasa       |                                                                        |
 | carlos-el       | https://www.linkedin.com/in/carlos-enr%C3%ADquez-l%C3%B3pez-90412a197/ |
+| antmordhar      | https://www.linkedin.com/in/antonio-morales-de-haro-40056015b          |
