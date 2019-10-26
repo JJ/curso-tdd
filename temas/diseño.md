@@ -28,11 +28,24 @@ a cabo el desarrollo de la aplicación.
 
 ## SOLID
 
-## *Clean Code*
+## Buenas prácticas en el diseño de código.
+
+Durante el ciclo de vida del software, los programas van evolucionando
+por muchas razones. Cambian las prácticas, cambian el software sobre
+el que se han construido (bibliotecas, lenguajes), se encuentran
+errores, cambia la comprensión del problema... Un programa debe
+diseñarse de forma que no se rompa (totalmente) con este cambio. 
+
+Por ejemplo, la [programación
+defensiva](https://en.wikipedia.org/wiki/Defensive_programming) trata
+de crear código más seguro. 
+
 
 
 ## Actividad
 
+Esencialmente, en esta primera fase se llevarán a cabo las actividades
+de diseño para el resto del curso.
 
 1. Elegir un proyecto o un equipo o las dos cosas a la vez, y crear un
    repositorio [usando esta
