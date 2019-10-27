@@ -216,7 +216,41 @@ importante desde el punto de vista de la organización del trabajo es
 que cuando se trabaje, esté claro en qué contexto se hace y se haga
 contra un issue, refiriéndose a él en el commit (preferiblemente en la
 primera línea del mismo). Todos los issues, a su vez, deben estar en
-un hito. 
+un hito.
+
+La mejor forma de empezar con estos issues es crear historias de
+usuario razonables. Estas historias de usuario harán que evolucione el
+modelo que tenemos de cada entidad y de cada clase que tengamos dentro
+de una entidad.
+
+### Ejemplos
+
+En nuestro programa que tratará con los hitos, las acciones comenzarán
+siempre con una petición que llegue desde GitHub. Por lo tanto,
+podremos tener las siguientes historias de usuario.
+
+* **HU0**: (Configuración) Cada proyecto deberá tener una cadena única
+  que lo identifique.
+* **HU1**: Cuando se cree un hito en un proyecto, ese hito deberá estar incluido en
+  la estructura de datos del proyecto correspondiente.
+* **HU2**: Cuando se cree un issue, se añadirá al hito
+  correspondiente con estado "abierto". Si no está asignado a ningún hito, se emitirá un
+  mensaje de error.
+* **HU3**: Cuando se cierre un issue, se cambiará el estado del
+  mismo. 
+* **HU4**: Si se borra un issue, se eliminará de la estructura de
+  datos.
+* **HU5**: Si se solicita el porcentaje de terminación del hito, se
+  responderá con una cantidad entre 0 y 100.
+
+Estas historias de usuario se pueden incluir directamente como hitos,
+o agrupar algunas de ellas en un issue.
+
+A partir de estas historias de usuario, y de la metodología de diseño,
+habrá que empezar a escribir el código. Como código no testeado es
+código roto, mejor diseñar el API para empezar y más adelante añadir
+el código y los tests correspondientes. Pero eso ya será en la
+siguiente sesión.
 
 ## Actividad
 
@@ -233,5 +267,5 @@ de diseño para el resto del curso.
    partir de ellas una serie de issues en GitHub. Los hitos deberán
    estar relacionados con estas historias de usuario.
    
-3. Describir en el README.md el microservicio que se va a crear,
+3. Describir en el `README.md` el microservicio que se va a crear,
    explicando las tecnologías que se van a usar en el mismo.
