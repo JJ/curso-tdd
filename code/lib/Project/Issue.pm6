@@ -1,6 +1,6 @@
-unit class Project::Issue;
-
 enum IssueState <Open Closed>;
+
+unit class Project::Issue;
 
 has IssueState $!state = Open;
 has Str $!project-name;

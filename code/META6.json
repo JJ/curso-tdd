@@ -3,12 +3,12 @@
   "description": "Homebrew library for illustration purposes",
   "version": "0.1",
   "perl": "6.*",
-  "auth": "Write me!",
+  "auth": "github:JJ",
   "depends": [],
   "build-depends": [],
   "test-depends": [],
-    "provides": {
-	"Project::Issue" => "lib/Project/Issue.pm6"
+  "provides": {
+	"Project::Issue" : "lib/Project/Issue.pm6"
     },
   "resources": [],
   "license": "Artistic-2.0",
