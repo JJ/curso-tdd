@@ -43,3 +43,4 @@ tests
 Perl
 Dockerfile
 ansible
+dispatch
