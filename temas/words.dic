@@ -42,4 +42,4 @@ task
 tests
 Perl
 Dockerfile
-ansible.
+ansible

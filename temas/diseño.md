@@ -117,7 +117,7 @@ Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID) constituyen también
 
 ### Ejemplo
 
-Dividiremos las entidades en diferentes clases que tengan una responsabilidad única. La clase expuesta anteriormente se encargará sólo y exclusivamente de los issues. Tendremos otra clase para los hitos.
+Dividiremos las entidades en diferentes clases que tengan una responsabilidad única. La clase expuesta anteriormente se encargará solo y exclusivamente de los issues. Tendremos otra clase para los hitos.
 
 ## Buenas prácticas en el diseño de código.
 
