@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test-linux:
+  build:
     docker:
       - image: jjmerelo/test-perl6
     steps:
