@@ -1,6 +1,6 @@
 # Curso de programación para QA
 
-[![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd)
+[![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd) 💟 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master)
 
 En este curso trataremos de aprender las técnicas necesarias para
 tabajar en un entorno de desarrollo, para aplicaciones nativas en la
