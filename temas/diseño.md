@@ -107,7 +107,13 @@ Las dependencias las especificaremos siempre usando código, y por tanto disting
 
 * Dependencias del propio lenguaje. En este caso, un fichero de metadatos será suficiente para especificarlo. 
 
-## SOLID.
+## SOLID
+
+Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID) constituyen también una metodología de desarrollo de software que encaja bien con las metodologías anteriores. Pero desde nuestro punto de vista nos interesan dos especialmente:
+
+* [Principio de la responsabilidad única](https://en.wikipedia.org/wiki/Single_responsibility_principle): las *entidades* de las que hablamos anteriormente tienen un contexto autónomo, y por tanto las programaremos en una clase, grupo de clases y evntualmente microservicio que se encargue exclusivamente de una sola entidad. Este principio se resume en que "debería haber una sola razón para cambiar una entidad": diferentes razones, diferentes responsabilidades.
+
+* [Principio de la inversión de dependencias](https://en.wikipedia.org/wiki/Dependency_inversion_principle): *se debe depender de cosas abstractas, no concretas*. Es decir, la dependencia de una clase debe ser de un almacén de datos, no de una base de datos concreta, y el almacén de datos debe *inyectarse* en la clase cuando se vaya a crear. 
 
 ## Buenas prácticas en el diseño de código.
 
