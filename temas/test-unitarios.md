@@ -8,3 +8,6 @@ Los lenguajes de programación modernos tienen todo un marco de utilidades y bib
 
 El estudiante habrá programado los tests y los habrá lanzado desde un task runner específico para su lenguaje o genérico.
 
+## Criterio de aceptación
+
+La entidad principal del problema se habrá implementado en una clase, y cada una de las funciones tendrá un test que se ejecutarán en local.

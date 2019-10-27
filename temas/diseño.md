@@ -23,10 +23,42 @@ especificaciones sea sencilla y directa. También sabrán como plasmar
 en plataformas de desarrollo colaborativo estos requisitos para llevar
 a cabo el desarrollo de la aplicación. 
 
+## Criterio de aceptación
+
+El proyecto tendrá una serie de hitos e issues creados
+
+* Todos los issues estarán en un hito
+* Todos los commits se referirán a un issue.
+* Los issues se habrán cerrado siempre con un commit.
 
 ## Diseño dirigido por dominio
 
-## SOLID
+Una vez decidido el foco principal del proyecto, el diseño debe
+descender hasta un nivel en el que pueda ser abordable mediante la
+programación del mismo. "Divide y vencerás" nos permite trabajar con
+entidades que son autónomas entre sí, y que se pueden programar y
+testear de forma independiente. Una de las técnicas más conocidas es
+el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven_design) 
+
+Aunque, como todas las tecnologías de programación, es compleja en
+vocabulario y metodología, lo principal es que se deben de crear
+modelos del dominio del problema limitados en su contexto, de forma
+que sea sencillo dividir el proceso de implementación en equipos, cada
+uno de ellos responsables de una parte del diseño. La integración
+continua (y los tests correspondientes), permitirán que se asegure la
+calidad del producto resultante.
+
+Los dos conceptos principales, desde el punto de vista de la
+programación, son el de *entidad* y el de *objeto-valor*. Una entidad
+mantiene su identidad a lo largo del ciclo de vida; in objeto-valor es
+simplemente un valor asignado a un atributo. Los *agregados*
+integrarán y encapsularán una serie de objetos, creando un API común
+para todos ellos.
+
+
+## 12 Factor
+
+## SOLID.
 
 ## Buenas prácticas en el diseño de código.
 
@@ -51,6 +83,28 @@ Como la programación defensiva es más una filosofía, y una que deberíamos pr
 > Evidentemente, aquí también incluimos bloques de código, que deberían de ser naturalmente más pequeños, y métodos de clases.
 
 * Los tipos de datos deberían usarse para lo que son. `False` es que no es verdadero, no que se ha producido un error dentro de una función. `-1` es el resultado de restar 1 a 0, no un índice imposible si no se encuentra algo dentro de una lista o cadena. 
+
+## A programar
+
+A continuación, hay que ponerse a programar, lo que implica poner a
+punto una serie de herramientas y una actitud; lo indicado por 
+[Joel on
+software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
+sigue siendo válido después de muchos años: usar siempre control de
+fuentes, hacer el build (y eventualmente el despliegue) en un solo
+paso, priorizar arreglar los bugs. 
+
+Pero en todo caso, lo más importante es la planificación que se va a
+llevar a cabo antes de aprobar. Los sistemas de control de fuentes
+modernos incluyen un sistema de organización del trabajo usando
+*issues* e *hitos*. Los issues son órdenes de trabajo, los hitos los
+agrupan creando un punto de control de forma que no se puede ir hacia
+adelante hasta que no se terminen todos los issues de un hito. Lo más
+importante desde el punto de vista de la organización del trabajo es
+que cuando se trabaje, esté claro en qué contexto se hace y se haga
+contra un issue, refiriéndose a él en el commit (preferiblemente en la
+primera línea del mismo). Todos los issues, a su vez, deben estar en
+un hito. 
 
 ## Actividad
 
