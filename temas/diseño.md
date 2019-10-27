@@ -143,7 +143,7 @@ multi method issues( IssueState $state ) {
 
 La única responsabilidad de esta clase es encargarse de los hitos, y operaciones agregadas sobre ellos. Si hay que calcular el número de hitos abiertos, delega en el propio issue, que sabe si está abierto o no. La clase se encargará de albergar los issue y darnos los issue en un estado determinado.
 
-En este código, además, se usan todas las buenas prácticas para que sea lo más compacto posible, y es (si conoces el lenguaje) auto-descrito. Por ejemplo, se usa un sólo nombre para recuperar los issues y *multiple dispatch* para seleccionar lo que se llama, o se capturan los posibles errores de ejecución en la propia signatura del método, en vez de usar un detector.
+En este código, además, se usan todas las buenas prácticas para que sea lo más compacto posible, y es (si conoces el lenguaje) auto-descrito. Por ejemplo, se usa un solo nombre para recuperar los issues y *dispatch* múltiple para seleccionar lo que se llama, o se capturan los posibles errores de ejecución en la propia signatura del método, en vez de usar un detector.
 
 > Hay una posible ambigüedad que estamos resolviendo por las bravas: si hay un issue con un número y se vuelve a asignar, el nuevo sustituye al viejo. Siempre que quede claro y esté testeado, no tiene por qué haber problema.
 
