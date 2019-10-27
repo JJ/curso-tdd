@@ -1,0 +1,14 @@
+{
+  "name": "Project::Issue",
+  "description": "Write me!",
+  "version": "0.1",
+  "perl": "6.*",
+  "auth": "Write me!",
+  "depends": [],
+  "build-depends": [],
+  "test-depends": [],
+  "provides": {},
+  "resources": [],
+  "license": "Write me!",
+  "source-url": "Write me!"
+}
