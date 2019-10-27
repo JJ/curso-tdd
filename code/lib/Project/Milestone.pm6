@@ -17,3 +17,6 @@ multi method issues() { return %!issues }
 multi method issues( IssueState $state ) {
     return %!issues.grep: *.value.state eq $state
 }
+
+method project-name() { $!project-name }
+method milestone-id() { $!milestone-id }
