@@ -11,3 +11,5 @@ El estudiante habrá programado los tests y los habrá lanzado desde un task run
 ## Criterio de aceptación
 
 La entidad principal del problema se habrá implementado en una clase, y cada una de las funciones tendrá un test que se ejecutarán en local.
+
+## Actividad

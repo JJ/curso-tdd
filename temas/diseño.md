@@ -55,6 +55,19 @@ simplemente un valor asignado a un atributo. Los *agregados*
 integrarán y encapsularán una serie de objetos, creando un API común
 para todos ellos.
 
+El primer paso para entender cuales son las diferentes entidades y objetos-valor es crear una serie de *casos de uso* o *historias de usuario* que nos aquilaten el dominio del problema y nos permitan trabajar con él.
+
+### Ejemplo
+
+> Una aplicación nos va a permitir controlar el avance de los diferentes proyectos de este curso. Mediante un *hook* de GitHub, todos los proyectos informarán a un sitio central de sus actividades. Nos interesará sobre todo saber en qué hito está cada proyecto y en qué estado de consecución está cada uno de esos hitos. El objetivo es, por ejemplo, mantener un *leaderboard* en tiempo real que liste los proyectos por consecución, o mantener una historia del mismo.
+
+Vamos a ver qué historias de usuario saldrán de aquí:
+
+* El usuario querrá estar informado en todo momento del estado de cada uno de los proyectos.
+
+Realmente el resto son temas de presentación. Lo importante es que tenemos una entidad, el *proyecto*. Cada proyecto tiene una identidad propia, es decir que será un objeto que irá mutando de estado a lo largo del tiempo. El *agregado* integrará en un solo API acceso al estado de todos los proyectos, y el resto (hitos e *issues*) serán objetos-valor, sin ningún tipo de existencia fuera del contexto de un proyecto. Tendremos, por lo tanto, una sola clase, la clase `Proyecto`.
+
+
 
 ## 12 Factor
 
