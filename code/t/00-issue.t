@@ -2,8 +2,16 @@ use Test;
 
 use Project::Issue;
 
-my $issue = Project::Issue.new( :project-name("Foo"), :issue-id(1));
+constant $project-name = "Foo";
+constant $issue-id = 1;
 
+my $issue = Project::Issue.new(
+        :project-name( $project-name ),
+        :issue-id($issue-id)
+            );
+
+is( $issue.project-name(), $project-name, "Correct project name");
+is( $issue.issue-id(), $issue-id, "Correct issue ID");
 is( $issue.state, Open, "Initially states should be open");
 $issue.close;
 is( $issue.state, Closed, "Issue has been closed");
