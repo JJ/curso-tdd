@@ -51,6 +51,7 @@ usar
 * Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua.
+  * [Material](temas/CI.md).
   
 * Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.

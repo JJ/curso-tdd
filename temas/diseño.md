@@ -88,8 +88,7 @@ Como la programación defensiva es más una filosofía, y una que deberíamos pr
 
 A continuación, hay que ponerse a programar, lo que implica poner a
 punto una serie de herramientas y una actitud; lo indicado por 
-[Joel on
-software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
+[Joel on software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
 sigue siendo válido después de muchos años: usar siempre control de
 fuentes, hacer el build (y eventualmente el despliegue) en un solo
 paso, priorizar arreglar los bugs. 
