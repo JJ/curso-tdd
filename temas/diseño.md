@@ -85,11 +85,27 @@ method reopen() { $!state = Open }
 method state( --> IssueState ) { return $!state }
 ```
 
-Frente a todas las operaciones posibles, usamos sólo las que debemos para este objeto en particular.
+Frente a todas las operaciones posibles, usamos solo las que debemos para este objeto en particular.
 
-> Todo el código irá en el subdirectorio [`code`](../code).
+> Todo el código irá en el subdirectorio [`code`](../code)
+
+En general, tendremos muchas entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
 
 ## 12 Factor
+
+La metodología de los [12 factores](https://12factor.net/es/) se puede usar a continuación del diseño, para plantear toda la instrumentación necesaria para llevar a cabo el proyecto. Este tipo de metodología, además, está adaptada al uso de aplicaciones nativas en la nube porque se desarrolla simultáneamente la infraestructura, el código y los tests. Desde el punto de vista de la calidad, dos de esos factores, guardar la configuración en el entorno y declarar y aislar las dependencias contribuyen a que la aplicación sea más fácil de testear y desarrollar. 
+
+### Ejemplo
+
+En el caso de nuestra aplicación, por lo pronto, no tenemos más dependencia que el lenguaje de programación que vamos a usar, Perl 6. Más adelante tendremos que especificar el resto de las dependencias, pero mientras tanto, en el fichero `META6.json` se especifican todos los módulos de los que esta aplicación va a depender.
+
+Las dependencias las especificaremos siempre usando código, y por tanto distinguiremos entre varios tipos
+
+* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Perl 6 (6.*) que vamos a usar.
+
+* Dependencias externas. Lo mejor es usar una herramienta de construcción para que, con un simple `make install`, se puedan instalar todas. Usar un Dockerfile o una receta ansible también ayudará.
+
+* Dependencias del propio lenguaje. En este caso, un fichero de metadatos será suficiente para especificarlo. 
 
 ## SOLID.
 
