@@ -1,14 +1,16 @@
 {
-  "name": "Project::Issue",
-  "description": "Write me!",
+  "name": "Project",
+  "description": "Homebrew library for illustration purposes",
   "version": "0.1",
   "perl": "6.*",
   "auth": "Write me!",
   "depends": [],
   "build-depends": [],
   "test-depends": [],
-  "provides": {},
+    "provides": {
+	"Project::Issue" => "lib/Project/Issue.pm6"
+    },
   "resources": [],
-  "license": "Write me!",
-  "source-url": "Write me!"
+  "license": "Artistic-2.0",
+  "source-url": "https://github.com/JJ/curso-tdd"
 }
