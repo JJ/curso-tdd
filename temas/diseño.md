@@ -193,9 +193,9 @@ method milestones() { return %!milestones }
 
 ```
 
-Nos *defendemos* usando por ejemplo un hash (`%`) para almacenar los hitos, y también el nombre de projecto, en un lenguaje en el que se usa tipado gradual, va a ser una cadena siempre, eliminando posibles ambigüedades con cualquier otro tipo de dato.
+Nos *defendemos* usando por ejemplo un hash (`%`) para almacenar los hitos, y también el nombre de proyecto, en un lenguaje en el que se usa tipado gradual, va a ser una cadena siempre, eliminando posibles ambigüedades con cualquier otro tipo de dato.
 
-Llegados a este punto, ya tenemos la entidad con la que vamos a trabajar. Un projecto tiene hitos y estos issues, y cuando trabajemos, lo haremos de esta forma. Según nos lo pidan las historias de usuario iremos evolucionando, y en ese momento podrá ser necesario cambiar el modelo en función de lo que necesitemos.
+Llegados a este punto, ya tenemos la entidad con la que vamos a trabajar. Un proyecto tiene hitos y estos issues, y cuando trabajemos, lo haremos de esta forma. Según nos lo pidan las historias de usuario iremos evolucionando, y en ese momento podrá ser necesario cambiar el modelo en función de lo que necesitemos.
 
 ## A programar
 
