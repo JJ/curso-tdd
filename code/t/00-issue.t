@@ -5,10 +5,7 @@ use Project::Issue;
 constant $project-name = "Foo";
 constant $issue-id = 1;
 
-my $issue = Project::Issue.new(
-        :project-name( $project-name ),
-        :issue-id($issue-id)
-            );
+my $issue = Project::Issue.new( :$project-name, :$issue-id );
 
 is( $issue.project-name(), $project-name, "Correct project name");
 is( $issue.issue-id(), $issue-id, "Correct issue ID");
