@@ -79,3 +79,15 @@ Presenciales, martes 29 a jueves 31 de octubre, martes 4 y miércoles 5 de novie
 ## Título
 
 A los que superen el curso se les hará una recomendación en LinkedIn por parte del profesor.
+
+## Instrucciones de uso
+
+`make` y `pandoc` deben estar presentes para generar los PDFs. 
+
+    make
+	
+o
+
+	make doc
+	
+generará los proyectos en un solo PDF.
