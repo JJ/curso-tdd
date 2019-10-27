@@ -67,8 +67,27 @@ Vamos a ver qué historias de usuario saldrán de aquí:
 
 Realmente el resto son temas de presentación. Lo importante es que tenemos una entidad, el *proyecto*. Cada proyecto tiene una identidad propia, es decir que será un objeto que irá mutando de estado a lo largo del tiempo. El *agregado* integrará en un solo API acceso al estado de todos los proyectos, y el resto (hitos e *issues*) serán objetos-valor, sin ningún tipo de existencia fuera del contexto de un proyecto. Tendremos, por lo tanto, una sola entidad, la clase `Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases, pero no existen si no es dentro del contexto de un proyecto, por lo que los mantendremos así.
 
-¿Cumple esta entidad nuestra historia de usuario? En principio sí, pero evidentemente se puede evolutionar durante el desarrollo de la aplicación.
+¿Cumple esta entidad nuestra historia de usuario? En principio sí, pero evidentemente se puede evolucionar durante el desarrollo de la aplicación.
 
+Por ejemplo, un `Issue` puede ser así:
+
+```perl6
+enum IssueState <Open Closed>;
+
+unit class Project::Issue;
+
+has IssueState $!state = Open;
+has Str $!project-name;
+has UInt $!issue-id;
+
+method close() { $!state = Closed }
+method reopen() { $!state = Open }
+method state( --> IssueState ) { return $!state }
+```
+
+Frente a todas las operaciones posibles, usamos sólo las que debemos para este objeto en particular.
+
+> Todo el código irá en el subdirectorio [`code`](../code).
 
 ## 12 Factor
 
