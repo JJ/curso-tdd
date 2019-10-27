@@ -40,3 +40,6 @@ repo
 runner
 task
 tests
+Perl
+Dockerfile
+ansible.
