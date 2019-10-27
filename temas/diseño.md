@@ -171,7 +171,31 @@ Como la programación defensiva es más una filosofía, y una que deberíamos pr
 * Las funciones solo deberían hacer una cosa. Esto es importante desde el punto de vista de los tests unitarios: probar todas las opciones posibles de una función que hace un montón de cosas hace que los tests sean más complicados o incluso imposibles. Además, deberían tener un número limitado de argumentos, y deberían ser pequeñas, idealmente visibles en un solo pantallazo (aunque las pantallas de hoy en día pueden ser muy largas). Una regla es que deberían tener entre 5 y 15 líneas.
 > Evidentemente, aquí también incluimos bloques de código, que deberían de ser naturalmente más pequeños, y métodos de clases.
 
-* Los tipos de datos deberían usarse para lo que son. `False` es que no es verdadero, no que se ha producido un error dentro de una función. `-1` es el resultado de restar 1 a 0, no un índice imposible si no se encuentra algo dentro de una lista o cadena. 
+* Los tipos de datos deberían usarse para lo que son. `False` es que no es verdadero, no que se ha producido un error dentro de una función. `-1` es el resultado de restar 1 a 0, no un índice imposible si no se encuentra algo dentro de una lista o cadena.
+
+
+### Ejemplo
+
+Añadiendo una nueva clase de mayor nivel, `Project`, con este código:
+
+```
+has %!milestones = {};
+has Str $!project-name;
+
+submethod BUILD( :$!project-name) {}
+
+method new-milestone( $milestone where $milestone.project-name eq
+        $!project-name) {
+    %!milestones{$milestone.milestone-id} = $milestone;
+}
+
+method milestones() { return %!milestones }
+
+```
+
+Nos *defendemos* usando por ejemplo un hash (`%`) para almacenar los hitos, y también el nombre de projecto, en un lenguaje en el que se usa tipado gradual, va a ser una cadena siempre, eliminando posibles ambigüedades con cualquier otro tipo de dato.
+
+Llegados a este punto, ya tenemos la entidad con la que vamos a trabajar. Un projecto tiene hitos y estos issues, y cuando trabajemos, lo haremos de esta forma. Según nos lo pidan las historias de usuario iremos evolucionando, y en ese momento podrá ser necesario cambiar el modelo en función de lo que necesitemos.
 
 ## A programar
 
