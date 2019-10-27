@@ -8,4 +8,3 @@ jobs:
       - run:
           name: Test Raku classes
           command: cd code && zef test .
-            
