@@ -204,10 +204,10 @@ cualquiera, `python test.py`, presentando un informe de los tests que
 se han pasado, todos en este caso. 
 
 
-### Escribiendo tests en Javascript
+### Escribiendo tests en JavaScript
 
 Go valora la simplicidad y además incluye de serie todo lo necesario
-para llevar a cabo los tests. Python, el lenguaje en el que sólo hay
+para llevar a cabo los tests. Python, el lenguaje en el que solo hay
 una buena forma de hacer las cosas, permite que se hagan las cosas de
 varias formas diferentes, e incluye en su biblioteca estándar una
 biblioteca de aserciones.
