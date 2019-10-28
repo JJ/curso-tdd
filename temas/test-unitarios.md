@@ -19,8 +19,7 @@ que respete nuestro software, y como tales deben de ser previas a la
 escritura del código en sí y del test. Es esencial entender
 perfectamente qué queremos que nuestro software haga, y hay diferentes
 formas de hacerlo, pero generalmente, en metodologías ágiles, tenemos
-que hacerlo mediante [*historias de
-usuario*](https://es.wikipedia.org/wiki/Historias_de_usuario),
+que hacerlo mediante [*historias de usuario*](https://es.wikipedia.org/wiki/Historias_de_usuario),
 narrativas de qué es lo que puede hacer un posible usuario y qué es lo
 que el usuario debería esperar. Estas historias de usuario se
 convertirán en *issues* del repositorio, cuyo cierre marcará que el
@@ -56,9 +55,7 @@ en
 [esta pequeña biblioteca que lee de un fichero en JSON los hitos de la asignatura](https://github.com/JJ/HitosIV) escrita
 en ese lenguaje, Go. La biblioteca
 tiene
-[dos funciones, una que devuelve un hito a partir de su ID y otra que
-te dice cuantos
-hay](https://github.com/JJ/HitosIV/blob/master/HitosIV.go).
+[dos funciones, una que devuelve un hito a partir de su ID y otra que te dice cuantos hay](https://github.com/JJ/HitosIV/blob/master/HitosIV.go).
 [Go](https://golang.org/) es
 un lenguaje que pretende evitar lo peor de C++ para crear un lenguaje
 concurrente, de sintaxis simple y con más seguridad; además, Go provee
@@ -97,8 +94,7 @@ func TestTodosHitos (t *testing.T){
 ```
 
 
-> Te puedes descargar todo el proyecto con `git clone
-> https://github.com/JJ/HitosIV` o hacerle *fork*, es software
+> Te puedes descargar todo el proyecto con `git clone https://github.com/JJ/HitosIV` o hacerle *fork*, es software
 > libre. Se agradecen PRs e issues.
 
 La sintaxis no es excesivamente complicada. Se importan las
@@ -217,10 +213,8 @@ varias formas diferentes, e incluye en su biblioteca estándar una
 biblioteca de aserciones.
 
 . Hay
-[múltiples bibliotecas que se pueden
-usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js);
-el [panorama de 2019 se presenta en este
-artículo](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a). La
+[múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js);
+el [panorama de 2019 se presenta en este artículo](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a). La
 librería de aserciones [`assert`](https://nodejs.org/api/assert.html) 
 forma parte de la estándar de JS, pero hay otras como
 [Unexpected](http://unexpected.js.org/) o aserciones parte de marcos
