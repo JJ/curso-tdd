@@ -24,3 +24,5 @@
 | ibe16           | https://www.linkedin.com/in/irene-béjar-maldonado-24955b15b            |  
 | antmordhar      | https://www.linkedin.com/in/antonio-morales-de-haro-40056015b          |
 | toniMR          | https://www.linkedin.com/in/antonio-martos-034b83195                   |
+| mcrosales       | https://www.linkedin.com/in/mario-c%C3%A9sar-rosales-castro-ab398b119/ |
+
