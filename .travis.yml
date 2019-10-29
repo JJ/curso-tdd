@@ -8,5 +8,9 @@ before_install:
   - sudo apt-get install libhunspell-1.3-0 libhunspell-dev
   - curl https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
   - curl https://raw.githubusercontent.com/SublimeText/Dictionaries/master/Spanish.dic -o Spanish.dic
-install: cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib) && cpanm Test::Text TAP::Harness
-script: perl -MTAP::Harness -e 'use utf8; my $harness = TAP::Harness->new( { verbosity => 0} ); die "FAIL" if $harness->runtests( "t/just_check.t" )->failed;'
+install:
+  - cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
+  - cpanm --installdeps .
+  
+script:
+  - perl -MTAP::Harness -e 'use utf8; my $harness = TAP::Harness->new( { verbosity => 0} ); die "FAIL" if $harness->runtests( "t/just_check.t" )->failed;'
