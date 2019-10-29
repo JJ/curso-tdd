@@ -125,92 +125,6 @@ funciona en un lenguaje determinado.
 > [se pueden incluir ejemplos de salida que serán comprobados](https://golang.org/pkg/testing/#hdr-Examples) si
 > se precede la salida deseada con la palabra correcta.
 
-## Escribiendo tests en Python
-
-Para llevar a cabo los tests, Go busca módulos (ficheros) con un nombre
-específico y en el mismo directorio que el módulo que se quiere
-probar; sin embargo, en otros lenguajes de programación como Python
-pasar las pruebas consiste simplemente en ejecutar un programa,
-situado en cualquier directorio y con cualquier nombre, que use alguna
-librería estándar de aserciones como `unittest`. Por ejemplo,
-en [el programa siguiente](https://github.com/JJ/tdd-gdg).
-
-> Este programa tiene como objeto ilustrar la sintaxis y la forma de
-> trabajar de Python. En un programa real la funcionalidad debe ser
-> real y corresponder a las especificaciones (historias de usuario o
-> de otro tipo) que se hayan hecho.
-
-```
-import unittest
-
-def devuelveTrue():
-    return True
-
-def sumaPositivos( a, b):
-    if ( not (type(a) is int) ):
-        return -1
-    if ( not (type(b) is int) ):
-        return -1
-    if ( a >= 0 and b >= 0): 
-        return a + b
-
-def multiplo3o5o15( numero ):
-    if numero % 15 == 0:
-        return 3
-    if numero % 3 == 0:
-        return 1
-    if numero % 5 == 0:
-        return 2
-    return 0
-    
-class SoloTest(unittest.TestCase):
-    
-    def testTrue(self):
-        self.assertTrue(devuelveTrue(), "devuelveTrue devuelve True")
-
-    def testSuma(self):
-        self.assertEqual(sumaPositivos("cadena",3),-1, "Suma correcta con argumento incorrecto")
-        self.assertEqual(sumaPositivos(4,8), 12, "Suma correcta con argumento correcto")
-
-    def testMultiplos(self):
-        self.assertEqual(multiplo3o5o15(3),1,"Multiplo de 3")
-        self.assertEqual(multiplo3o5o15(5),2,u"Multiplo de 5")
-        self.assertEqual(multiplo3o5o15(15),3,u"Multiplo de 15")
-        self.assertEqual(multiplo3o5o15(7),0,u"No es multiplo")
-        
-
-if __name__ == '__main__':
-unittest.main()
-```
-
-Tenemos tres funciones, que podrían estar en una clase o no, que vamos
-a testear; en caso de pertenecer a una clase tendremos que instanciar
-un objeto, pero lo dejamos así por lo pronto porque con lo que hay se pueden testear
-funciones individuales tales como estas. Para testearlas sí tenemos
-que crear una clase, y esa clase `SoloTest` tiene que ser una subclase
-de `unittest.TestCase`, es decir, un único caso de test. En esta clase
-definimos tres métodos, cada uno de los cuales tiene una serie de
-aserciones de este tipo:
-
-```Python
-self.assertTrue(devuelveTrue(), "Tiene que fallar")
-```
-
-A diferencia de Go, en Python sí existen
-[aserciones explícitas](https://docs.python.org/3/library/unittest.html). Todas
-las aserciones tienen al final un mensaje que se imprimirá 
-funcione o no, y que debe ser más o menos descriptivo. Es decir, lo
-contrario de lo que es en este caso, pero bueno, está así en el
-original así que se queda. Antes del mensaje, la aserción realiza un
-test específico; en este caso
-una llamada a una función. `assertTrue` fallará solo si no se
-devuelve `True` (o equivalente), y `assertEqual` lo hará si los dos
-primeros argumentos no lo son. 
-
-En este caso, para ejecutar el programa se ejecuta como otro
-cualquiera, `python test.py`, presentando un informe de los tests que
-se han pasado, todos en este caso. 
-
 
 ### Escribiendo tests en JavaScript
 
@@ -220,7 +134,7 @@ una buena forma de hacer las cosas, permite que se hagan las cosas de
 varias formas diferentes, e incluye en su biblioteca estándar una
 biblioteca de aserciones.
 
-. Hay
+En node hay
 [múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js);
 el [panorama de 2019 se presenta en este artículo](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a). La
 librería de aserciones [`assert`](https://nodejs.org/api/assert.html) 
@@ -232,7 +146,7 @@ de tests más completos. Estos marcos de test incluyen [Chai](https://www.chaijs
 
 Veamos el siguiente
 [ejemplo](https://github.com/JJ/desarrollo-basado-pruebas/blob/master/src/prueba-assert.js)
-de uso de `assert`:
+de uso de la biblioteca de aserciones llamada `assert`:
 
 > Hace uso de una clase en JavaScript, [`Apuesta`, que está en otro repo](https://github.com/JJ/desarrollo-basado-pruebas/)
 
@@ -379,6 +293,13 @@ que se ejecute.
 
 ### Realizando las pruebas en Scala
 
+Hemos visto dos ejemplos: lenguaje el que la biblioteca de aserciones
+forma parte de la biblioteca estándar, y lenguaje con múltiples
+bibliotecas de aserciones para usar; también hay una diferencia entre
+los lenguajes que incluyen los *task runners* *y* los marcos de test
+dentro de la maquinaria básica, y otros que usan programas
+externos. Veremos otro ejemplo de esto último.
+
 En Scala, `sbt` realiza una función similar a `npm` en el mundo
 node. Sin embargo, el lenguaje en sí es un poco más estricto y tiene
 reglas más o menos precisas sobre dónde colocar los tests. Si las
@@ -419,6 +340,16 @@ instancia de la clase y comprobamos que efectivamente tiene los
 valores que debe tener. Las órdenes `must be_==` y `must beEqualTo`
 comprueban el valor de diferentes tipos y devuelven los valores
 correspondientes si se cumple ese comportamiento y si no se cumple.
+
+Este estilo de aserciones se suelen corresponder con
+[*Behavior-Driven Development*](https://en.wikipedia.org/wiki/Behavior-driven_development),
+al nivel más bajo, al menos. En vez de simples funciones o
+comparaciones, tratamos de que el código de las aserciones se parezca
+lo más posible a una descripción formal del comportamiento de esas
+mismas funciones.
+
+
+## Fases de test: *setup*, *tests*, *teardown*.
 
 ### Otros lenguajes
 

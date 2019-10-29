@@ -86,3 +86,8 @@ Jest
 scripts
 RSpec
 JUnit
+teardown
+setup
+behavior
+driven
+development
