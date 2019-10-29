@@ -348,9 +348,6 @@ comparaciones, tratamos de que el código de las aserciones se parezca
 lo más posible a una descripción formal del comportamiento de esas
 mismas funciones.
 
-
-## Fases de test: *setup*, *tests*, *teardown*.
-
 ### Otros lenguajes
 
 En general, en todos los lenguajes habrá dos niveles para llevar a
@@ -379,5 +376,16 @@ lenguajes son:
 
 Cada lenguaje incluye este tipo de marcos, sea como parte de su
 distribución base o como parte de alguna biblioteca popular.
+
+## Testeando los errores
+
+Los errores o excepciones son parte integral de una aplicación, y se
+deben comprobar también.
+
+## Fases de test: *setup*, *tests*, *teardown*.
+
+
+
+
 
 ## Actividad

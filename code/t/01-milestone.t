@@ -2,11 +2,16 @@ use Test;
 
 use Project::Issue;
 use Project::Milestone;
+use X::Project::NoIssue;
 
 constant $project-name = "Foo";
 my $issue-id = 1;
 
 my $milestone = Project::Milestone.new(:$project-name,:milestone-id(1));
+
+throws-like { $milestone.issues }, X::Project::NoIssue,
+        "Empty milestone throws";
+
 for (Open,Closed) -> $state {
     my $issue = Project::Issue.new( :$project-name, :$issue-id );
     $issue.close() if $state == Closed;
