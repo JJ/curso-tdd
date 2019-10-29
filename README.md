@@ -45,12 +45,16 @@ usar
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
   
-* Preparando tu aplicación para testear: herramientas de construcción, desarrollo por capas, *separation of concerns*, inversión de dependencias, *objetos de test*, aserciones. 
+* Preparando tu aplicación para testear: herramientas de construcción,
+  desarrollo por capas, *separation of concerns*, inversión de
+  dependencias, *objetos de test*, aserciones, marcos de pruebas,
+  fases del test.
   * [Material](temas/test-unitarios.md).
 
 * Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua.
+  * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
   
 * Tests funcionales/de integración
