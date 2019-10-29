@@ -379,8 +379,58 @@ distribución base o como parte de alguna biblioteca popular.
 
 ## Testeando los errores
 
-Los errores o excepciones son parte integral de una aplicación, y se
-deben comprobar también.
+Los errores o excepciones son parte integral de una aplicación como se ha visto
+anteriormente
+, y se
+deben comprobar también; no se pueden testear todos los fallos posibles, pero al
+ menos algunos previsibles y, sobre todo, los que estén previstos en el propio
+ código de nuestra clase.
+
+Casi todas las bibliotecas de aserciones incluyen alguna que permite testear que
+ la excepción que se ha lanzado, o el fallo, es el correcto.
+
+ Por ejemplo, en Go, esta función
+
+```
+func Uno(hito_id uint) (Hito,error) {
+	if hito_id > uint(len(hitos_data.Hitos)) {
+		return Hito{}, errors.New("Index too high")
+	}
+	return hitos_data.Hitos[hito_id], nil
+}
+```
+
+debería devolver un error si el id del hito es mayor del admisible, ya que van
+por orden. En Go se usa un paquete específico, `errors`, para ello, pero en
+realidad Go no tiene un sistema de excepciones, sino que confía en esta
+convención de retorno dual `( resultado_correcto, error)` para ello. Habrá que
+comprobar, por tanto, de la misma forma:
+
+```Go
+	_, e := Uno( too_big )
+	if e != nil {
+		t.Log("Devuelve error si es demasiado grande")
+	} else {
+		t.Error("No devuelve error y debería")
+	}
+```
+
+En este caso, como estamos comprobando que se devuelve el error, el primer
+resultado no nos interesa y usamos la "variable desechable" de Go, `_`.
+Adicionalmente podemos comprobar que el error devuelto es el correcto, por
+supuesto, pero lo veremos en este otro ejemplo en Raku:
+
+```perl6
+my $milestone = Project::Milestone.new(:$project-name,:milestone-id(1));
+
+throws-like { $milestone.issues }, X::Project::NoIssue,
+        "Empty milestone throws";
+```
+
+Según la historia de usuario 6 del [tema anterior](diseño.md), un hito sin
+issues está en un estado incorrecto; también diseñamos una excepción para esto.
+En este caso comprobobamos que esa historia se cumple: devolvemos la excepción
+correcta si no hemos añadido ningún issue al hito.
 
 ## Fases de test: *setup*, *tests*, *teardown*.
 
