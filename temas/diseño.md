@@ -197,6 +197,14 @@ Nos *defendemos* usando por ejemplo un hash (`%`) para almacenar los hitos, y ta
 
 Llegados a este punto, ya tenemos la entidad con la que vamos a trabajar. Un proyecto tiene hitos y estos issues, y cuando trabajemos, lo haremos de esta forma. Según nos lo pidan las historias de usuario iremos evolucionando, y en ese momento podrá ser necesario cambiar el modelo en función de lo que necesitemos.
 
+### Diseñar los errores también
+
+Los posibles errores y excepciones forman también parte del
+                                             vocabulario de una
+                                             clase. Tener errores
+                                             específicos ayuda a que se puedan manejar mejor y es una práctica *defensiva*: podemos usarla para especificar claramente qué problema hay. En el diseño de una aplicación se deben tratar de prever todos los posibles problemas que pueda haber, y crear y tirar excepciones adecuadas en cada caso.
+											 
+											 
 ## A programar
 
 A continuación, hay que ponerse a programar, lo que implica poner a
