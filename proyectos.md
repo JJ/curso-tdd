@@ -2,6 +2,6 @@
 
 | Nombre proyecto con enlace | Versión |
 |--------------------------- |---------|
-| [Proyecto](https://github.com/...) |     |
+| [DEITT-bot](https://github.com/alvarillo89/DEIIT-bot) | 0.1.0    |
 
 
