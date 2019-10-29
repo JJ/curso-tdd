@@ -17,8 +17,10 @@ un badge para el repo donde se haya cumplido todo (y dependiendo del
 nivel en el que se haya alcanzado, se hará también una recomendación
 en LinkedIn o donde se solicite). 
 
-
 ## Posibles proyectos
+
+Los proyectos en elaboración se
+enlazan [en esta página](proyectos). 
 
 * [DEIIT-bot](proyectos/deiit-bot.md), bot para los apuntes de DEIIT.
 * [Conversaciones](proyectos/conversaciones.md), escucha y analiza.
