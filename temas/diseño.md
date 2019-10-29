@@ -197,14 +197,38 @@ Nos *defendemos* usando por ejemplo un hash (`%`) para almacenar los hitos, y ta
 
 Llegados a este punto, ya tenemos la entidad con la que vamos a trabajar. Un proyecto tiene hitos y estos issues, y cuando trabajemos, lo haremos de esta forma. Según nos lo pidan las historias de usuario iremos evolucionando, y en ese momento podrá ser necesario cambiar el modelo en función de lo que necesitemos.
 
-### Diseñar los errores también
+## Diseñar los errores también
 
 Los posibles errores y excepciones forman también parte del
                                              vocabulario de una
                                              clase. Tener errores
-                                             específicos ayuda a que se puedan manejar mejor y es una práctica *defensiva*: podemos usarla para especificar claramente qué problema hay. En el diseño de una aplicación se deben tratar de prever todos los posibles problemas que pueda haber, y crear y tirar excepciones adecuadas en cada caso.
+                                             específicos ayuda a que se puedan manejar mejor y es una práctica *defensiva*: podemos usarla para especificar claramente qué problema hay. En el diseño de una aplicación se deben tratar de prever todos los posibles problemas que pueda haber, y crear y tirar excepciones adecuadas en cada caso. En general, si prevés (dentro de tus historias de usuario) que haya una situación en la que pueda haber algún estado inválido, crea una excepción para que se pueda usar en tal situación.
 											 
-											 
+### Ejemplo
+
+Raku permite la creación de [excepciones específicas](https://rakudocs.github.io/type/Exception). Generalmente sigue la convención de que se denominan con una `X` seguida del nombre de la clase a la que se apliquen. Por ejemplo, esta para nuestro proyecto se llamará `X::Proyecto::NoIssue` y la aplicaremos para el caso en que no haya ningún issue en un hito:
+
+```perl6
+unit class X::Project::NoIssue is Exception;
+
+method message() {
+    "There are no issues"
+}
+```
+
+Salvo el mensaje específico es prácticamente una declaración en la que se dice que es una excepción y poco más. Podemos modificar alguna de las clases anteriores para que la use:
+
+```perl6
+multi method issues() {
+    if %!issues {return %!issues}
+    else { X::Project::NoIssue.new.throw }
+}
+```
+
+Si no hay ningún issue, devolver un hash vacío podría ser una solución *a priori* válida. Sin embargo, eso sólo retrasa el tratamiento de una situación o ambigua o incorrecta al cliente de la clase. Las historias de usuario pueden estar centradas, por ejemplo, en las estadísticas de la clase (abiertos/cerrados), pero si no hay ningún issue, la historia de usuario ni siquiera es aplicable, por lo que es razonable indicar este hecho mediante una excepción, como estamos haciendo.
+
+¿Se podría resolver esto forzando directamente a que cuando se cree un hito tenga que hacerse con algún issue? Atendiendo a las historias de usuario, es posible que no: un evento de creación de un hito es un hecho único sin acompañamiento de issues. Así que tratar esto con una excepción es la mejor forma de defendernos ante los posibles cambios o evoluciones en el futuro de la misma.
+
 ## A programar
 
 A continuación, hay que ponerse a programar, lo que implica poner a
