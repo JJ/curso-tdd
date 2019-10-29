@@ -25,8 +25,7 @@ que el usuario debería esperar. Estas historias de usuario se
 convertirán en *issues* del repositorio, cuyo cierre marcará que el
 código está escrito, testeado, y se ajusta a la misma. 
 
-En la mayoría de los entornos de programación y especialmente en `node`,
-que es en el que nos estamos fijando, hay dos niveles en el test: el
+En la mayoría de los entornos de programación y especialmente en `node` hay dos niveles en el test: el
 primero es el marco de pruebas y el segundo la librería de pruebas que
 efectivamente se está usando. El marco de pruebas será el que ejecute
 todos los tests, examine el resultado y emita un informe, que
@@ -46,26 +45,25 @@ aserciones.
 
 ### Escribiendo tests en Go
 
-Algunos lenguajes, como [Go](https://golang.org), integran este marco de pruebas en el
+[Go](https://golang.org/) es
+un lenguaje que pretende evitar lo peor de C++ para crear un lenguaje
+concurrente, de sintaxis simple y con más seguridad; además, Go provee
+también un entorno de programación con una serie de herramientas
+(*toolbelt*) de serie. Go integra este marco de pruebas en el
 propio lenguaje, por lo que nos permite fijarnos exclusivamente en la
 biblioteca de pruebas con la que estamos trabajando.
 
 Por ejemplo, vamos a fijarnos
 en
-[esta pequeña biblioteca que lee de un fichero en JSON los hitos de la asignatura](https://github.com/JJ/HitosIV) escrita
+[esta pequeña biblioteca que lee de un fichero en JSON los hitos de la asignatura Infraestructura Virtual](https://github.com/JJ/HitosIV) escrita
 en ese lenguaje, Go. La biblioteca
 tiene
 [dos funciones, una que devuelve un hito a partir de su ID y otra que te dice cuantos hay](https://github.com/JJ/HitosIV/blob/master/HitosIV.go).
-[Go](https://golang.org/) es
-un lenguaje que pretende evitar lo peor de C++ para crear un lenguaje
-concurrente, de sintaxis simple y con más seguridad; además, Go provee
-también un entorno de programación con una serie de herramientas
-(*toolbelt*) de serie.
+
 
 Los módulos en Go incluyen funciones simples, estructuradas en un
-paquete o *package*, y para testear un paquete en Go simplemente se crea un fichero con el
-mismo nombre y el sufijo `_test`
-como
+paquete o *package*. Para testear un paquete en Go simplemente se crea un fichero con el
+mismo nombre que el paquete y el sufijo `_test` como
 [el siguiente](https://github.com/JJ/HitosIV/blob/master/HitosIV_test.go):
 
 
@@ -98,9 +96,13 @@ func TestTodosHitos (t *testing.T){
 > libre. Se agradecen PRs e issues.
 
 La sintaxis no es excesivamente complicada. Se importan las
-bibliotecas para testear (`testing`) y para averiguar de qué tipo es
+bibliotecas para [testear (`testing`)](https://golang.org/pkg/testing/) y para averiguar de qué tipo es
 algo (`reflect`) y se crean dos funciones de test, una por cada función que
-queremos probar. De este fichero se ejecutarán todas las funciones al
+queremos probar. Las funciones de deberán empezar por una letra
+mayúscula, como sucede aquí. El nombre del paquete es el mismo que el
+del paquete que queremos testear.
+
+De este fichero se ejecutarán todas las funciones al
 ejecutar desde la línea de órdenes `go test`, que devolverá algo así:
 
 ```
@@ -115,7 +117,13 @@ todos funcionan, no hay ningún problema y se imprime `PASS` como se muestra arr
 los tests) se usa para mostrar algún mensaje sobre qué está ocurriendo en el test. En este caso, uno de los tests comprueba que efectivamente
 haya hitos en el fichero JSON que se ha pasado, y el segundo comprueba que el tipo que se devuelve cuando
 se solicita un hito es el correcto. Estos tests no están completos;
-generalmente hay que escribir una función de test para todas las funciones del módulo. Se muestran solo estos para ilustrar cómo funciona en un lenguaje determinado.
+generalmente hay que escribir una función de test para todas las
+funciones del módulo. Se muestran solo estos para ilustrar cómo
+funciona en un lenguaje determinado.
+
+> Adicionalmente,
+> [se pueden incluir ejemplos de salida que serán comprobados](https://golang.org/pkg/testing/#hdr-Examples) si
+> se precede la salida deseada con la palabra correcta.
 
 ## Escribiendo tests en Python
 
