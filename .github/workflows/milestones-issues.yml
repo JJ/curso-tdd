@@ -1,0 +1,21 @@
+name: "Comprueba hitos y milestones"
+on:
+  pull_request:
+    paths:
+      - 'proyectos/[01234567].md'
+      - '!objetivos/*.md'
+
+jobs:
+  obtain-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extrae URL del repositorio del diff
+        uses: JJ/github-pr-contains-action@releases/v2
+        with:
+          github-token: ${{github.token}}
+          filesChanged: 1
+      - name: Comprueba hitos e issues
+        uses: JJ/repo-in-diff-gh-action@releases/v0
+        with:
+          github-token: ${{github.token}}
+          minMilestones: 1

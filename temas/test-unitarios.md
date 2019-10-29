@@ -429,7 +429,7 @@ throws-like { $milestone.issues }, X::Project::NoIssue,
 
 Según la historia de usuario 6 del [tema anterior](diseño.md), un hito sin
 issues está en un estado incorrecto; también diseñamos una excepción para esto.
-En este caso comprobobamos que esa historia se cumple: devolvemos la excepción
+En este caso comprobamos que esa historia se cumple: devolvemos la excepción
 correcta si no hemos añadido ningún issue al hito.
 
 ## Fases de test: *setup*, *tests*, *teardown*.
