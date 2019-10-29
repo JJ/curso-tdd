@@ -434,8 +434,63 @@ correcta si no hemos añadido ningún issue al hito.
 
 ## Fases de test: *setup*, *tests*, *teardown*.
 
+En las tres fases del proceso de prueba:
 
+* Durante el *setup* se crearán los objetos y cargarán los ficheros
+  necesarios hasta poner nuestro objeto en un estado en el que se
+  puedan llevar a cabo los tests. Esto puede incluir, por ejemplo,
+  también crear esos objetos.
+  
+* A continuación se llevan a cabo las pruebas en sí; esas pruebas
+  pueden estar agrupadas en subtests, y en el caso de que falle un
+  subtest fallará el test del que depende completo.
+  
+* En la fase de *teardown* se limpia todo lo creado temporalmente, se
+  cierran conexiones, y se deja al sistema, en general, en el mismo
+  estado en el que estba al principio.
+  
 
+Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
+para llevar a cabo las diferentes fases. En muchos de ellos se tratará
+simplemente de las primeras órdenes de un script para organizarlo, y
+los últimos para cerrar las pruebas. 
+
+Por ejemplo, en Raku estas serían las primeras líneas de
+un [test](../code/t/02-project.t): 
+
+```perl6
+use Test;
+
+use Project::Issue;
+use Project::Milestone;
+use Project;
+
+constant $project-name = "Foo";
+my $issue-id = 1;
+my $p = Project.new( :$project-name );
+```
+
+En este caso lo único que se hace es crear un objeto, que es sobre el
+que van a recaer los tests más adelante. En el caso del módulo
+similar, para hitos de una asignatura, en
+Go,
+[tendremos esto](https://github.com/JJ/HitosIV/blob/master/HitosIV_test.go#L9-L12):
+
+```go
+func TestMain(m *testing.M) {
+	ReadsFromFile("./hitos_test.json") // Alternative test file
+	os.Exit(m.Run())
+}
+```
+
+`go test` llamará a la función `TestMain` del paquete antes que a
+cualquier otra función. El argumento que recibirá no es de tipo
+`testing.T`, como en el resto de los casos, sino `testing.M`; esta
+función actuará como *setup*, en este caso leyendo de un fichero que
+cargará la estructura de datos sobre la que actuarán el resto de los
+tests. De hecho, el resto de los tests tenemos que llamarlos
+explícitamente (con `m.Run`) y también que salir explícitamente del
+main usando `os.Exit`, que devolverá el código de salida adecuado.
 
 
 ## Actividad
