@@ -225,7 +225,7 @@ multi method issues() {
 }
 ```
 
-Si no hay ningún issue, devolver un hash vacío podría ser una solución *a priori* válida. Sin embargo, eso sólo retrasa el tratamiento de una situación o ambigua o incorrecta al cliente de la clase. Las historias de usuario pueden estar centradas, por ejemplo, en las estadísticas de la clase (abiertos/cerrados), pero si no hay ningún issue, la historia de usuario ni siquiera es aplicable, por lo que es razonable indicar este hecho mediante una excepción, como estamos haciendo.
+Si no hay ningún issue, devolver un hash vacío podría ser una solución *a priori* válida. Sin embargo, eso solo retrasa el tratamiento de una situación o ambigua o incorrecta al cliente de la clase. Las historias de usuario pueden estar centradas, por ejemplo, en las estadísticas de la clase (abiertos/cerrados), pero si no hay ningún issue, la historia de usuario ni siquiera es aplicable, por lo que es razonable indicar este hecho mediante una excepción, como estamos haciendo.
 
 ¿Se podría resolver esto forzando directamente a que cuando se cree un hito tenga que hacerse con algún issue? Atendiendo a las historias de usuario, es posible que no: un evento de creación de un hito es un hecho único sin acompañamiento de issues. Así que tratar esto con una excepción es la mejor forma de defendernos ante los posibles cambios o evoluciones en el futuro de la misma.
 
@@ -283,6 +283,10 @@ habrá que empezar a escribir el código. Como código no testeado es
 código roto, mejor diseñar el API para empezar y más adelante añadir
 el código y los tests correspondientes. Pero eso ya será en la
 siguiente sesión.
+
+Adicionalmente, una historia de usuario especificará qué hay que hacer en caso de error. 
+
+* **HU6** Un hito sin issues estará en un estado incorrecto y la única operación permisible sobre el mismo es añadir issues al mismo.
 
 ## Actividad
 
