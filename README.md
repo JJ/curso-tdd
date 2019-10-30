@@ -70,10 +70,6 @@ usar
   * Tests de regresión.
 
 
-## Inscripción
-
-Si quieres apuntarte (a estas alturas en lista de espera), haz un PR a [este fichero](asistentes.md) con tu nick de GitHub y enlace a LinkedIn (si quieres una recomendación al acabar el curso).
-
 ## Lugar
 
 Aula de usos múltiples, 5ª planta de la [ETSIIT](https://etsiit.ugr.es)
