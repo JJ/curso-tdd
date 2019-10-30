@@ -575,6 +575,71 @@ Registered tasks:
 	✓ test
 ```
 
+### Ejemplo en Elixir
+
+Elixir no es un lenguaje que maneje con soltura, pero puede ser interesante como
+ ejemplo de uno que incluye una utilidad externa al compilador, `mix`, con la
+ cual se pueden expresar cosas como la versión del lenguaje con la que vamos a
+ trabajar (ver de nuevo la aplicación de 12 factores). Implementaremos sólo
+ parte de la funcionalidad para gestionar un issue:
+
+```elixir
+defmodule Issue do
+  @moduledoc """
+  A simple issue in a repository
+  """
+  defstruct [:projectname, :id, state: :Open ]
+
+  @enforce_keys [:state, :projectname, :id]
+
+  @doc """
+  Can create and close it, and that's it
+
+  """
+  def close( issue ) do
+    issue |> struct( %{state: :Closed} )
+  end
+
+end
+```
+
+Hay unos pocos más dos puntos de la cuenta, pero al final lo que hace es definir
+ un `Issue` con una función para cerrarlo; esta función lo que hace, en
+ realidad, es generar un nuevo issue con sólo ese campo cambiado, ya que las
+ estructuras de datos en Elixir son inmutables
+ . Por eso lo
+ tenemos que testear de esta forma
+
+```
+defmodule IssueTest do
+  use ExUnit.Case
+  doctest Issue
+
+  setup_all do
+    this_issue = %Issue{ projectname: 'Foo', id: '1'}
+    {:ok, issue: this_issue}
+  end
+
+  test "Initial issue state",context do
+    assert context[:issue].state == :Open
+  end
+
+  test "State after closing",context do
+    new_issue = Issue.close(context[:issue])
+    assert new_issue.state == :Closed
+  end
+end
+```
+
+`ExUnit` es el módulo de Elixir para pruebas unitarias, y usa `setup_all` para
+la fase de puesta a punto; en ella creamos un issue, y la estructura de datos
+que se devuelve en ella estará disponible como `context`, un *hash* que usamos
+para comprobar si efectivamente el issue creado está abierto y para crear una
+nueva versión del issue cerrado.
+
+Para testear, simplemente ejecutamos `mix test`; Elixir es un tipo de lenguaje
+que usa una herramienta de construcción estándar como Node. El repositorio está
+en [GitHub](https://github.com/JJ/elixir-gh-projects).
 
 ## Actividad
 
