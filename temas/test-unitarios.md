@@ -580,7 +580,7 @@ Registered tasks:
 Elixir no es un lenguaje que maneje con soltura, pero puede ser interesante como
  ejemplo de uno que incluye una utilidad externa al compilador, `mix`, con la
  cual se pueden expresar cosas como la versión del lenguaje con la que vamos a
- trabajar (ver de nuevo la aplicación de 12 factores). Implementaremos sólo
+ trabajar (ver de nuevo la aplicación de 12 factores). Implementaremos solo
  parte de la funcionalidad para gestionar un issue:
 
 ```elixir
@@ -605,7 +605,7 @@ end
 
 Hay unos pocos más dos puntos de la cuenta, pero al final lo que hace es definir
  un `Issue` con una función para cerrarlo; esta función lo que hace, en
- realidad, es generar un nuevo issue con sólo ese campo cambiado, ya que las
+ realidad, es generar un nuevo issue con solo ese campo cambiado, ya que las
  estructuras de datos en Elixir son inmutables
  . Por eso lo
  tenemos que testear de esta forma
