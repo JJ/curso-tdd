@@ -4,7 +4,7 @@
   "version": "0.1",
   "perl": "6.*",
   "auth": "github:JJ",
-  "depends": [],
+  "depends": [ "sake"],
   "build-depends": [],
   "test-depends": [],
   "provides": {
