@@ -38,7 +38,7 @@ EOC
   diag(check( "Encontrado URL del repo $url_repo" ));
   my ($user,$name) = ($url_repo=~ /github.com\/(\S+)\/(.+)/);
   my $repo_dir = "/tmp/$user-$name";
-  if (!(-e $repo_dir) or  !(-d $repo_dir) ) {
+  unless (-d $repo_dir) {
     mkdir($repo_dir);
     `git clone $url_repo $repo_dir`;
   }
