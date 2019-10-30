@@ -649,3 +649,15 @@ una o varias clases básicas que correspondan a la misma entidad (según
 el dominio del problema que se haya elegido), por supuesto incluyendo
 los tests correspondientes. Los tests se ejecutarán en local, por lo
 pronto.
+
+El repositorio tendrá que incluir un fichero de configuración para poder llevar a cabo los tests llamado `qa.json` con la siguiente estructura:
+
+```json
+{
+  "lenguaje" : "Nombre del lenguaje" 
+  "build" : "Makefile"
+  
+}
+```
+
+En vez de `Makefile`, se usará el nombre del fichero de construcción que se haya usado para ejecutar los tests, que tendrá que estar presente en el repositorio.
