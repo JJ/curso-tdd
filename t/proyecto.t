@@ -2,7 +2,6 @@
 
 use Test::More;
 use Git;
-use LWP::Simple;
 use File::Slurper qw(read_text);
 use JSON;
 use Term::ANSIColor qw(:constants);
@@ -46,10 +45,12 @@ EOC
   my $student_repo =  Git->repository ( Directory => $repo_dir );
   my @repo_files = $student_repo->command("ls-files");
   isnt( grep( /qa.json/, @repo_files), 0, "Fichero de configuración presente" );
-  my $qa = from_json(read_text( 'qa.json' ));
+  my $qa = from_json(read_text( $repo_dir.'/qa.json' ));
   my $build_file = $qa->{'build'};
-  isnt( grep( /$build_file/, @repo_files), 0, "Fichero de construcción presente");
+  isnt( grep( /$build_file/, @repo_files), 0, "Fichero de construcción $build_file presente");
 }
+
+done_testing;
 
 sub check {
   return BOLD.GREEN ."✔ ".RESET.join(" ",@_);
