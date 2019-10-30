@@ -447,7 +447,7 @@ En las tres fases del proceso de prueba:
   
 * En la fase de *teardown* se limpia todo lo creado temporalmente, se
   cierran conexiones, y se deja al sistema, en general, en el mismo
-  estado en el que estba al principio.
+  estado en el que estaba al principio.
   
 
 Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
@@ -490,7 +490,7 @@ función actuará como *setup*, en este caso leyendo de un fichero que
 cargará la estructura de datos sobre la que actuarán el resto de los
 tests. De hecho, el resto de los tests tenemos que llamarlos
 explícitamente (con `m.Run`) y también que salir explícitamente del
-main usando `os.Exit`, que devolverá el código de salida adecuado.
+`main` usando `os.Exit`, que devolverá el código de salida adecuado.
 
 
 ## Actividad
