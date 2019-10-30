@@ -10,7 +10,9 @@ El estudiante habrá programado los tests y los habrá lanzado desde un task run
 
 ## Criterio de aceptación
 
-La entidad principal del problema se habrá implementado en una clase, y cada una de las funciones tendrá un test que se ejecutarán en local.
+La entidad principal del problema se habrá implementado en una clase,
+y cada una de las funciones tendrá un test que se ejecutarán en
+local.
 
 ## Test unitarios
 
@@ -494,3 +496,10 @@ explícitamente (con `m.Run`) y también que salir explícitamente del
 
 
 ## Actividad
+
+A partir del diseño creado en la anterior actividad, y siguiendo las
+prácticas de uso de los issues (y su cierre desde un *commit*), crear
+una o varias clases básicas que correspondan a la misma entidad (según
+el dominio del problema que se haya elegido), por supuesto incluyendo
+los tests correspondientes. Los tests se ejecutarán en local, por lo
+pronto.
