@@ -549,6 +549,31 @@ En el módulo en Go que hemos visto anteriormente podemos usar este simple
  ejecutan por orden, podemos poner algún target anterior con órdenes específicas
   que no sigan este patrón.
 
+Por el contrario, [`sake`](https://github.com/perl6/p6-sake) es un módulo
+externo, pero usa Raku para expresarse.
+
+```perl6
+task "installdeps", {
+    shell "zef install --deps-only ."
+}
+
+for <test install> -> $task {
+    task $task, {
+        shell "zef $task ."
+    }
+}
+```
+
+Declaramos tres tareas, y como la mayoría de estas herramientas, si se usa
+`sake help` nos dará las tareas que se pueden usar:
+
+```
+Registered tasks:
+	✓ help
+	✓ install
+	✓ installdeps
+	✓ test
+```
 
 
 ## Actividad
