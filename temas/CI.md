@@ -70,10 +70,6 @@ pasos
    integración y añadirlo al repositorio.
 
 
-<div class='ejercicios' markdown='1'>
-*Ejercicio*: Haced los dos primeros pasos antes de pasar al tercero.
-</div>
-
 Los ficheros de configuración de las máquinas de integración continua
 corresponden, aproximadamente, a una configuración de una máquina
 virtual que hiciera solo y exclusivamente la ejecución de los
@@ -125,15 +121,14 @@ pronto, todo funciona.
 Si el informe indica que las pruebas son correctas, se puede proceder al despliegue. Pero eso
 ya será en la siguiente clase.
 
-> Configurar integración continua para nuestra aplicación usando
-> Travis o algún otro sitio.
-
 Esta configuración es esencial por varias razones: primero, porque nos
 permite ser conscientes de todo lo necesario para desplegar nuestra
 aplicación. Segundo, porque al crear tests integramos el paso de
 control de calidad en el desarrollo. Y, finalmente, porque la
 integración continua y los tests correspondientes son un paso esencial
 para el despliegue continuo, que se verá más adelante.
+
+## Acelerando usando contenedores Docker
 
 ## Actividad
 
