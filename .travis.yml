@@ -2,8 +2,8 @@ language:
   - minimal
 
 install:
-  - docker pull jjmerelo/iv-test
+  - docker pull jjmerelo/p5-devqagrx:latest
   - docker images
 
 script: 
-  - docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/iv-test
+  - docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/p5-devqagrx:latest
