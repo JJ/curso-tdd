@@ -7,4 +7,4 @@ RUN cpanm --installdeps .
 VOLUME /test
 WORKDIR /test
 
-ENTRYPOINT prove -I/usr/lib -c
+ENTRYPOINT cp /*.dic /*.aff /test && prove -I/usr/lib -c
