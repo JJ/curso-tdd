@@ -243,3 +243,10 @@ llevan a cabo los tests.
 
 ## Actividad
 
+Añadir al repositorio que se ha hecho en el hito anterior integración
+continua con Travis, al menos, y adicionalmente con cualquier otro
+sistema.
+
+El repositorio tendrá que incluir el badge de Travis y este tendrá que
+estar en verde para aceptar el PR. El fichero de configuración de
+Travis tendrá que estar también presente, como es natural.

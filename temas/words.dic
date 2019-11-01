@@ -131,6 +131,7 @@ testeo
 Ruby
 testeando
 prerrequisito
+prerrequisitos
 testeador
 Packing
 WebPack
@@ -142,3 +143,4 @@ CI
 configurarlo
 CircleCI
 Hub
+Dockerfiles
