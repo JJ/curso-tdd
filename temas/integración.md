@@ -17,10 +17,14 @@ vez.
 
 ## Al final de esta sesión
 
+El proyecto tendrá funcionalidad adicional, integrará varias clases o
+servicios e incluirá los tests correspondientes para probar que
+efectivamente funciona.
 
 ## Criterio de aceptación
 
-
+El repositorio tiene que estar corriendo los tests en Travis, y esos
+tests deben pasar.
 
 ## Actividad
 
