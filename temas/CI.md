@@ -157,7 +157,9 @@ tiene [WebPack](https://webpack.js.org/).
 
 Esto es lo que uso, por ejemplo, en la asignatura CC:
 
-    fatpack pack src/check-hitos.t > t/check-hitos.t
+```
+fatpack pack src/check-hitos.t > t/check-hitos.t
+```
 
 El fichero resultante, que incluye todas las bibliotecas necesarias,
 está ya en el repositorio y se ejecuta directamente sin necesidad de
