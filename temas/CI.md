@@ -208,6 +208,17 @@ El `ENTRYPOINT` es lo que se va a ejecutar; tras copiar una serie de
 ficheros que son necesarios en el mismo directorio donde se va a
 ejecutar, llama al marco de test de Perl, llamado `prove`. 
 
+A diferencia de los paquetes anteriores, que van en el repositorio,
+normalmente los Dockerfiles no se ejecutan directamente (salvo en
+GitHub Actions). Habrá que subirlos al Docker Hub, pero es
+gratuito. Travis (o el sistema que sea) lo descargará de ese registro
+en la fase correspondiente antes de aplicarlo a tu repositorio.
+
+> Esa descarga puede tardar también algunos segundos, porque un
+> contenedor puede tener varios cientos de megas, dependiendo de la
+> base sobre la que lo construyas. Hacer un
+> contenedor lo más ligero posible es también conveniente.
+
 Esto se incluirá en la configuración de Travis, que además se
 simplifica considerablemente:
 
