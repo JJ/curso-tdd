@@ -63,6 +63,7 @@ usar
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * Mocks
+  * [Material](temas/integración.md)
   
 * Concluyendo
   * Cobertura de tests y como gestionarla.

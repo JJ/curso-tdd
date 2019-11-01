@@ -240,6 +240,10 @@ Esta configuración simplemente descarga de Docker Hub durante la fase
 de instalación y lo ejecuta durante la fase `script` en la que se
 llevan a cabo los tests.
 
+> Como desventaja, con Docker hay que preparar contenedores diferentes
+> para probar versiones diferentes del lenguaje; si este paso es
+> imprescindible, mejor entonces usar algún "packer" para empaquetar
+> los tests.
 
 ## Actividad
 
