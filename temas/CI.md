@@ -148,7 +148,7 @@ varias opciones.
 
 Muchos lenguajes tienen programas que permiten *empaquetar* todos los
 fuentes necesarios para un programa en un solo fichero, con lo que
-sólo con la descarga de ese fichero, o su inclusión en el repositorio,
+solo con la descarga de ese fichero, o su inclusión en el repositorio,
 tendríamos todo lo necesario para testear (o para lo que se quiera la
 aplicación). Por ejemplo, Perl
 tiene [`FatPacker`](https://metacpan.org/pod/App::FatPacker), Python
@@ -164,7 +164,69 @@ está ya en el repositorio y se ejecuta directamente sin necesidad de
 usar CPAN (el sistema de instalación de módulos en Perl) para instalar
 los módulos necesarios.
 
-### 
+Esto solo funciona en caso de que todas las dependencias sean
+bibliotecas del lenguaje. Si no es así, hay que usar otro sistema.
+
+### Contenedores Docker
+
+Crear un contenedor Docker para testear nunca es una mala idea. Para
+empezar, muchos sistemas de CI (como CircleCI) directamente usan este
+tipo de herramientas y lo primero que hay que hacer para configurarlo
+es elegir el contenedor Docker sobre el que se va a basar la
+prueba. Un contenedor [Docker](https://www.docker.com/), en una sola
+imagen, tiene toda la infraestructura necesaria para ejecutar o
+testear una aplicación. Además, el mismo contenedor que se usa para
+hacer las pruebas se puede usar también (o su precursor) para
+desplegar la aplicación.
+
+Por ejemplo, usaremos el contenedor generado por este Dockerfile para
+testear los proyectos (y ortografía) en este curso:
+
+```Dockerfile
+FROM jjmerelo/p6-test-text
+LABEL version="1.0" maintainer="JJ Merelo <jjmerelo@GMail.com>" perl5version="5.22"
+
+ADD cpanfile .
+RUN apt-get update && apt-get install -y git
+RUN cpanm --installdeps .
+
+VOLUME /test
+WORKDIR /test
+
+ENTRYPOINT cp /*.dic /*.aff /test && prove -I/usr/lib -c
+```
+
+Si el fichero es compacto, es porque previamente se ha generado un
+contenedor anterior, `jjmerelo/p6-test-text`, que incluye el módulo
+que comprueba la ortografía; lo que hay que añadir solamente son lo
+necesario para testera en sí los proyectos enviados, que es el test
+adicional que se lleva a cabo. Estos proyectos necesitarán una
+instalación de `git`, y también una serie de módulos de Perl
+adicionales; las dos sentencias `RUN` llevan a cabo esa labor. 
+
+El `ENTRYPOINT` es lo que se va a ejecutar; tras copiar una serie de
+ficheros que son necesarios en el mismo directorio donde se va a
+ejecutar, llama al marco de test de Perl, llamado `prove`. 
+
+Esto se incluirá en la configuración de Travis, que además se
+simplifica considerablemente:
+
+```yaml
+language:
+  - minimal
+
+install:
+  - docker pull jjmerelo/p5-devqagrx:latest
+  - docker images
+
+script: 
+  - docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/p5-devqagrx:latest
+```
+
+Esta configuración simplemente descarga de Docker Hub durante la fase
+de instalación y lo ejecuta durante la fase `script` en la que se
+llevan a cabo los tests.
+
 
 ## Actividad
 
