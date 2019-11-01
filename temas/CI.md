@@ -128,7 +128,43 @@ control de calidad en el desarrollo. Y, finalmente, porque la
 integración continua y los tests correspondientes son un paso esencial
 para el despliegue continuo, que se verá más adelante.
 
-## Acelerando usando contenedores Docker
+## Acelerando los tests
+
+Es conveniente que los tests tarden la mínima cantidad de tiempo
+posible, para que se pueda comprobar que existe algún error sobre la
+marcha y se pueda corregir. Sin embargo, cualquier test va a necesitar
+instalar una serie de prerrequisitos antes de ejecutarlos, así que la
+descarga e instalación de paquetes y módulos, y en algunos casos
+incluso la compilación de algún prerrequisito necesario, va a tardar
+algún tiempo. Acelerar los tests hasta que tarden menos (incluso
+bastante menos) de un minuto es esencial para un trabajo fluido.
+
+Hay muchas formas de conseguir que estos tests vayan más rápidamente,
+que pasan generalmente por crear un testeador específico con todo lo
+necesario para ejecutarse, y que no haya más que instalarlo. Veamos
+varias opciones.
+
+### *Packing*
+
+Muchos lenguajes tienen programas que permiten *empaquetar* todos los
+fuentes necesarios para un programa en un solo fichero, con lo que
+sólo con la descarga de ese fichero, o su inclusión en el repositorio,
+tendríamos todo lo necesario para testear (o para lo que se quiera la
+aplicación). Por ejemplo, Perl
+tiene [`FatPacker`](https://metacpan.org/pod/App::FatPacker), Python
+tiene [`wheels`](https://pythonwheels.com/) y node
+tiene [WebPack](https://webpack.js.org/).
+
+Esto es lo que uso, por ejemplo, en la asignatura CC:
+
+    fatpack pack src/check-hitos.t > t/check-hitos.t
+
+El fichero resultante, que incluye todas las bibliotecas necesarias,
+está ya en el repositorio y se ejecuta directamente sin necesidad de
+usar CPAN (el sistema de instalación de módulos en Perl) para instalar
+los módulos necesarios.
+
+### 
 
 ## Actividad
 
