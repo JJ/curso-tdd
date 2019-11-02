@@ -245,6 +245,29 @@ llevan a cabo los tests.
 > imprescindible, mejor entonces usar algún "packer" para empaquetar
 > los tests.
 
+### Otras formas de acelerar el sistema de integración continua
+
+Travis y el resto de los sistemas de CI suelen tener una forma rica de
+configurar la construcción y los tests. Por ejemplo, se pueden asignar
+diferents valores a variables de entorno desde él, y hacer que se
+ejecuten diferentes tests dependiendo del valor de las mismas. Usando
+una característica llamada *build matrix*, se puede hacer que estos
+diferentes valores se ejecuten en paralelo, o al menos empiecen antes
+de que el anterior acabe. También se pueden hacer tests diferentes en
+diferentes sistemas de CI; cada uno lo lanzará cuando deba, y todos se
+estarán ejecutando simultáneamente.
+
+Otras formas de acelerar:
+
+* Usar una [caché](https://docs.travis-ci.com/user/caching/). Muchos
+  sistemas de CI te permiten almacenar los módulos instalados o los
+  programas que se hayan compilado, de forma que no haya que hacerlo
+  de nuevo.
+  
+* Los propios marcos de test tienen opciones para ejecutar diferentes
+  conjuntos de test en paralelo; incluso make permite hacerlo. Hay que
+  buscar la forma de activarlo para que sea efectivo.
+
 ## Actividad
 
 Añadir al repositorio que se ha hecho en el hito anterior integración
