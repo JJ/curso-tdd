@@ -371,7 +371,7 @@ lenguajes son:
   opciones de configuración. De hecho, es el que se usa en el test de
   la asignatura.
   
-* JUnit es el más cercano en Java.
+* [JUnit](https://junit.org/junit5/) es el más cercano en Java.
 
 * Raku usa prove6, pero también zef si se trata de usarlo sobre un módulo. 
 
@@ -454,7 +454,29 @@ En las fases del proceso de prueba:
   
 
 Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
-               para llevar a cabo las diferentes fases. 
+               para llevar a cabo las diferentes fases. Normalmente es
+               parte de la biblioteca de aserciones decidir si una
+               parte del código se va a ejecutar o no. Por ejemplo, en
+               los tests en Perl que se pasan en este mismo
+               repositorio, nos interesa ejecutar algunos sólo cuando
+               se trata de un `pull request`. Usamos esto:
+			   
+```
+# Carga bibliotecas...
+
+unless ( $ENV{'TRAVIS_PULL_REQUEST'} ) {
+  plan skip_all => "Check relevant only for PRs";
+}
+# Resto del programa
+```
+
+En Perl se usa la biblioteca de aserciones `Test::More`. Por omisión,
+se trabajará *sin plan* y los tests terminarán cuando se ejecute
+`done_testing`. Se le puede decir también cuantos tests de van a
+ejecutar; todo ello con la orden `plan`. Pero también se puede usar
+esta orden para indicarle, como aquí, `skip_all`, que se salte los
+tests a menos que (`unless`) Travis nos haya indicado (a través del
+valor de una variable de entorno) que se trata de un `pull request`.
 
 En la fase de planificación se deben decidir cuantos tests se van a
 ejecutar. Aunque la respuesta obvia podría ser "todos", lo cierto es
@@ -463,7 +485,10 @@ que decidir si va a haber algún plan (es decir, si sabemos de antemano
 el número de tests) o simplemente se van a ejecutar a continuación
 todos los tests que nos encontremos.
 
-               En muchos de ellos la fase de setup se tratará
+
+Tras la planificación, que es implícita en muchos marcos de tests y
+bibliotecas, se ejecutará la fase de setup. Esta fase, en muchos
+casos, se tratará
 simplemente de las primeras órdenes de un script para organizarlo, y
 los últimos para cerrar las pruebas. 
 
@@ -503,6 +528,66 @@ cargará la estructura de datos sobre la que actuarán el resto de los
 tests. De hecho, el resto de los tests tenemos que llamarlos
 explícitamente (con `m.Run`) y también que salir explícitamente del
 `main` usando `os.Exit`, que devolverá el código de salida adecuado.
+
+### Ejemplo en TypeScript
+
+[TypeScript](https://www.typescriptlang.org/) es un lenguaje con
+tipado gradual, que funciona también de forma asíncrona. Podemos
+programar el issue que hemos usado anteriormente de [esta forma](https://github.com/JJ/ts-milestones):
+
+```
+export enum State { Open,Closed };
+export class Issue {
+    private state: State = State.Open;
+    private project_name: string;
+    private id: number;
+    
+    constructor(project_name: string, id: number) {
+        this.project_name = project_name;
+	this.id = id;
+    }
+    
+    show_state() {
+	return this.state;
+    }
+    
+    close() {
+        this.state = State.Closed;
+    }
+}
+```
+
+Aparte de usar `this` para referirse a la instancia de la clase, el
+resto es similar a otros lenguajes. Lo podemos testear usando el marco
+de pruebas `jest`
+
+```
+import { Issue, State } from '../Project';
+
+var data: Issue;
+
+beforeAll(() => {
+    data = new Issue("Foo",1);
+});
+
+
+
+test("all", () => {
+    expect(  data.show_state() ).toBe( State.Open );
+    data.close();
+    expect(  data.show_state() ).toBe( State.Closed );
+});
+```
+
+`jest` usa una serie de aserciones basadas en el comportamiento, y
+[fases de setup](https://jestjs.io/docs/en/setup-teardown) generales (con `beforeAll`), con otras adicionales
+antes y después de cada uno de los tests. Esas funciones devolverán
+promesas; hasta que no se cumplan no se procederá a llevar a cabo el
+resto de los tests (en este caso) o los tests correspondientes. En
+este caso, sin embargo, es una simple inicialización de un dato, que
+se va a ejecutar siempre. Como los tests se llevan a cabo de forma
+asíncrona, sin embargo, de esta forma nos aseguramos que cuando se
+ejecute el código de los mismos esté presente. 
 
 ## Herramientas de construcción
 
@@ -651,65 +736,7 @@ Para testear, simplemente ejecutamos `mix test`; Elixir es un tipo de lenguaje
 que usa una herramienta de construcción estándar como Node. El repositorio está
 en [GitHub](https://github.com/JJ/elixir-gh-projects).
 
-### Ejemplo en TypeScript
 
-[TypeScript](https://www.typescriptlang.org/) es un lenguaje con
-tipado gradual, que funciona también de forma asíncrona. Podemos
-programar el issue que hemos usado anteriormente de [esta forma](https://github.com/JJ/ts-milestones):
-
-```
-export enum State { Open,Closed };
-export class Issue {
-    private state: State = State.Open;
-    private project_name: string;
-    private id: number;
-    
-    constructor(project_name: string, id: number) {
-        this.project_name = project_name;
-	this.id = id;
-    }
-    
-    show_state() {
-	return this.state;
-    }
-    
-    close() {
-        this.state = State.Closed;
-    }
-}
-```
-
-Aparte de usar `this` para referirse a la instancia de la clase, el
-resto es similar a otros lenguajes. Lo podemos testear usando el marco
-de pruebas `jest`
-
-```
-import { Issue, State } from '../Project';
-
-var data: Issue;
-
-beforeAll(() => {
-    data = new Issue("Foo",1);
-});
-
-
-
-test("all", () => {
-    expect(  data.show_state() ).toBe( State.Open );
-    data.close();
-    expect(  data.show_state() ).toBe( State.Closed );
-});
-```
-
-`jest` usa una serie de aserciones basadas en el comportamiento, y
-[fases de setup](https://jestjs.io/docs/en/setup-teardown) generales (con `beforeAll`), con otras adicionales
-antes y después de cada uno de los tests. Esas funciones devolverán
-promesas; hasta que no se cumplan no se procederá a llevar a cabo el
-resto de los tests (en este caso) o los tests correspondientes. En
-este caso, sin embargo, es una simple inicialización de un dato, que
-se va a ejecutar siempre. Como los tests se llevan a cabo de forma
-asíncrona, sin embargo, de esta forma nos aseguramos que cuando se
-ejecute el código de los mismos esté presente. 
 
 ## Actividad
 
