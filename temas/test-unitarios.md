@@ -238,13 +238,13 @@ describe('Crea', function(){
 });
 ```
 
-Mocha puede usar diferentes librerías de aserciones. En este caso hemos
-escogido la que ya habíamos usado, `assert`. A bajo nivel, los tests
-que funcionen en este marco tendrán que usar una librería de este
-tipo, porque mocha funciona a un nivel superior, con funciones como
-`it` y `describe` que describe, a diferentes niveles, el
-comportamiento que queremos comprobar. Se ejecuta con `mocha` y
-el resultado de ejecutarlo será:
+La mayoría de los marcos de tests, y en particular Mocha, pueden usar
+diferentes librerías de aserciones. En este caso hemos escogido la que
+ya habíamos usado, `assert`. A bajo nivel, los tests que funcionen en
+este marco tendrán que usar una librería de este tipo, porque Mocha
+funciona a un nivel superior, con funciones como `it` y `describe` que
+hacen explícito, a diferentes niveles, el comportamiento que queremos
+comprobar. Se ejecuta con `mocha` y el resultado de ejecutarlo será:
 
 
 ```
