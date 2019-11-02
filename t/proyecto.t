@@ -8,7 +8,7 @@ use Term::ANSIColor qw(:constants);
 
 use v5.14; # For say
 
-if ( $TRAVIS_PULL_REQUEST ) {
+if ( $ENV{'TRAVIS_PULL_REQUEST'} ) {
   plan tests => "no_plan";
 } else {
   plan skip_all => "Check relevant only for PRs";

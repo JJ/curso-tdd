@@ -168,7 +168,6 @@ objeto, es decir, si no ha habido ningún error en la carga o creación
 del mismo, y `equal` comprueba que efectivamente la salida que da la
 función `as_string` es la esperada.
 
-
 El programa anterior ilustra la sintaxis, y puede formar parte de un
 conjunto de tests; se puede ejecutar directamente, pero para testearlo
 los lenguajes de programación usan un segundo nivel, el marco de
@@ -204,9 +203,9 @@ describe('Apuesta con Chai', function(){
 });
 ```
 
-Los únicos cambios son el usar `assert.ok` en vez de assert, y el usar
-el objeto `assert` de la biblioteca `chai`, en vez de usar el que hay
-por omisión. 
+Los únicos cambios son el usar `assert.ok` en vez de assert (que
+pertenece a Chai), y el objeto `assert` de la biblioteca `chai`, en
+vez de usar el que hay por omisión.
 
 Cada uno de ellos tendrá sus promotores y detractores, pero
 [Mocha](https://mochajs.org/), [Jasmine](https://jasmine.github.io/) y [Jest](https://github.com/facebook/jest)
@@ -436,7 +435,9 @@ correcta si no hemos añadido ningún issue al hito.
 
 ## Fases de test: *setup*, *tests*, *teardown*.
 
-En las tres fases del proceso de prueba:
+En las fases del proceso de prueba:
+
+* Planificación: en esta fase se decide cuantos tests se van a ejecutar.
 
 * Durante el *setup* se crearán los objetos y cargarán los ficheros
   necesarios hasta poner nuestro objeto en un estado en el que se
@@ -453,7 +454,16 @@ En las tres fases del proceso de prueba:
   
 
 Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
-para llevar a cabo las diferentes fases. En muchos de ellos se tratará
+               para llevar a cabo las diferentes fases. 
+
+En la fase de planificación se deben decidir cuantos tests se van a
+ejecutar. Aunque la respuesta obvia podría ser "todos", lo cierto es
+que los tests van a variar dependiendo del entorno. Para empezar, hay
+que decidir si va a haber algún plan (es decir, si sabemos de antemano
+el número de tests) o simplemente se van a ejecutar a continuación
+todos los tests que nos encontremos.
+
+               En muchos de ellos la fase de setup se tratará
 simplemente de las primeras órdenes de un script para organizarlo, y
 los últimos para cerrar las pruebas. 
 
