@@ -651,6 +651,66 @@ Para testear, simplemente ejecutamos `mix test`; Elixir es un tipo de lenguaje
 que usa una herramienta de construcción estándar como Node. El repositorio está
 en [GitHub](https://github.com/JJ/elixir-gh-projects).
 
+### Ejemplo en TypeScript
+
+[TypeScript](https://www.typescriptlang.org/) es un lenguaje con
+tipado gradual, que funciona también de forma asíncrona. Podemos
+programar el issue que hemos usado anteriormente de [esta forma](https://github.com/JJ/ts-milestones):
+
+```
+export enum State { Open,Closed };
+export class Issue {
+    private state: State = State.Open;
+    private project_name: string;
+    private id: number;
+    
+    constructor(project_name: string, id: number) {
+        this.project_name = project_name;
+	this.id = id;
+    }
+    
+    show_state() {
+	return this.state;
+    }
+    
+    close() {
+        this.state = State.Closed;
+    }
+}
+```
+
+Aparte de usar `this` para referirse a la instancia de la clase, el
+resto es similar a otros lenguajes. Lo podemos testear usando el marco
+de pruebas `jest`
+
+```
+import { Issue, State } from '../Project';
+
+var data: Issue;
+
+beforeAll(() => {
+    data = new Issue("Foo",1);
+});
+
+
+
+test("all", () => {
+    expect(  data.show_state() ).toBe( State.Open );
+    data.close();
+    expect(  data.show_state() ).toBe( State.Closed );
+});
+```
+
+`jest` usa una serie de aserciones basadas en el comportamiento, y
+[fases de setup](https://jestjs.io/docs/en/setup-teardown) generales (con `beforeAll`), con otras adicionales
+antes y después de cada uno de los tests. Esas funciones devolverán
+promesas; hasta que no se cumplan no se procederá a llevar a cabo el
+resto de los tests (en este caso) o los tests correspondientes. En
+este caso, sin embargo, es una simple inicialización de un dato, que
+se va a ejecutar siempre. Como los tests se llevan a cabo de forma
+asíncrona, sin embargo, de esta forma nos aseguramos que cuando se
+ejecute el código de los mismos esté presente. 
+
 ## Actividad
 
 A partir del diseño creado en la anterior actividad, y siguiendo las
