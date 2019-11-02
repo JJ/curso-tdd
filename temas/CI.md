@@ -249,7 +249,7 @@ llevan a cabo los tests.
 
 Travis y el resto de los sistemas de CI suelen tener una forma rica de
 configurar la construcción y los tests. Por ejemplo, se pueden asignar
-diferents valores a variables de entorno desde él, y hacer que se
+diferentes valores a variables de entorno desde él, y hacer que se
 ejecuten diferentes tests dependiendo del valor de las mismas. Usando
 una característica llamada *build matrix*, se puede hacer que estos
 diferentes valores se ejecuten en paralelo, o al menos empiecen antes

@@ -26,6 +26,12 @@ efectivamente funciona.
 El repositorio tiene que estar corriendo los tests en Travis, y esos
 tests deben pasar.
 
+## Tests funcionales y de integración
+
+
+## Inversión de dependencias y cómo llevarla a cabo.
+
+
 ## Actividad
 
 
