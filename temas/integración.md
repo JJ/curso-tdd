@@ -31,6 +31,8 @@ tests deben pasar.
 
 ## Inversión de dependencias y cómo llevarla a cabo.
 
+## Preparación de un módulo para los tests de integración.
+
 
 ## Actividad
 
