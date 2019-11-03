@@ -1,4 +1,5 @@
 use Project::Issue;
+use Stats;
 
 unit class Project;
 
@@ -25,4 +26,9 @@ method percentage-completed() {
         }
     }
     return %percentage-completed;
+}
+
+method completion-summary() {
+    my %percentage-completed = self.percentage-completed();
+    return summary( %percentage-completed.values.list );
 }

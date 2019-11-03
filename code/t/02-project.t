@@ -21,6 +21,11 @@ for 1..2 -> $m {
     is( $p.percentage-completed(){$m}, 0.5, "Percentaje completed is correct")
 }
 
+my $summary = $p.completion-summary();
+isa-ok( $summary, List, "Returns a hash");
+isa-ok( $summary[0]<mean>, 0.5, "Returns correct average");
+
+
 throws-like {
     $p.new-milestone(
             Project::Milestone.new( :project-name("Bar"), :milestone-id(33) )
