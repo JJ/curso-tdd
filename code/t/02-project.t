@@ -18,6 +18,7 @@ for 1..2 -> $m {
     }
     $p.new-milestone( $milestone );
     is( $p.milestones.keys.elems, $m, "Correct number of milestones added");
+    is( $p.percentage-completed(){$m}, 0.5, "Percentaje completed is correct")
 }
 
 throws-like {
