@@ -1,4 +1,4 @@
-use Test;
+use Test; # -*- mode: perl6 -*-
 
 use Project::Issue;
 use Project::Milestone;
