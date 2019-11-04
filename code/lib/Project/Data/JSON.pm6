@@ -1,16 +1,21 @@
 use JSON::Fast;
 
-unit class JSON does Dator;
+use Project::Dator;
+
+unit class Project::Data::JSON does Project::Dator;
 
 has $!file-name;
 has $!data;
 
-submethod BUILD( $file-name where $file-name.IO ~~ :e) {
+method new( $file-name where $file-name.IO ~~ :e ) {
     return self.bless( :$file-name, data => from-json slurp $file-name );
 }
+
+submethod BUILD( :$!file-name, :$!data) {}
 
 submethod DESTROY() {
     spurt $!file-name, $!data;
 }
+
 method load() { $!data }
-method update( $data ) { $!data = $data }
+method update( \data ) { $!data = data }

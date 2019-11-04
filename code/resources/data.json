@@ -3,18 +3,18 @@
   "milestones": [
     [
       {
-        4: "Closed"
+        "4": "Closed"
       },
       {
-        3: "Open"
+        "3": "Open"
       }
     ],
     [
       {
-        2: "Closed"
+        "2": "Closed"
       },
       {
-        1: "Open"
+        "1": "Open"
       }
     ]
   ]
