@@ -32,3 +32,12 @@ method completion-summary() {
     my %percentage-completed = self.percentage-completed();
     return summary( %percentage-completed.values.list );
 }
+
+method data() {
+    return {
+        name => $!project-name,
+        milestones => %!milestones.values.map(
+                *.issues.values.map( { $_.issue-id => $_.state } )
+                )
+    };
+}

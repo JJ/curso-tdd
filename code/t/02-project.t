@@ -26,9 +26,10 @@ my $summary = $p.completion-summary();
 isa-ok( $summary, List, "Returns a hash");
 isa-ok( $summary[0]<mean>, 0.5, "Returns correct average");
 
-say to-json $p.milestones.values.map(
-        *.issues.values.map( { $_.issue-id => $_.state } )
-        );
+my %data = $p.data();
+isa-ok( %data, Hash, "Single data structure is a hash");
+is( %data<name>, $project-name, "Name is correct");
+is( %data<milestones>.elems, 2, "Correct number of milestones" );
 
 throws-like {
     $p.new-milestone(
