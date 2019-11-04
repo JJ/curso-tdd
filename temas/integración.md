@@ -28,6 +28,11 @@ tests deben pasar.
 
 ## Tests funcionales y de integración
 
+Los tests de
+integración
+[prueban grupos de módulos y clases](https://en.wikipedia.org/wiki/Integration_testing) como
+un grupo, de forma que se compruebe que los requisitos funcionales
+expresados en las historias de usuario, se cumplan.
 
 ## Inversión de dependencias y cómo llevarla a cabo.
 
