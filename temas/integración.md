@@ -59,7 +59,7 @@ isa-ok( $summary[0]<mean>, 0.5, "Returns correct average");
 
 Estos tests están enfocados principalmente a evitar que el API de la clase integrada derive a algo diferente. Los APIs cambian, y lo pueden hacer de forma inesperada, así que primero nos aseguramos de que lo que devuelve tiene el tipo correcto, y luego que la media está en el primer elemento de la lista y devuelve también el valor correcto.
 
-> Este interfaz es, en realidad, un poco peculiar, porque sería más adecuado devolver un hash. En un momento determinado, puede que se dé cuenta el propietario y lo cambie, con lo cual este test de integración nos guarda de que tal cosa ocurra.
+> El interfaz de esta clase es, en realidad, un poco peculiar, porque sería más adecuado devolver un hash. En un momento determinado, puede que se dé cuenta el propietario y lo cambie, con lo cual este test de integración nos guarda de que tal cosa ocurra.
 
 ## Inversión de dependencias y cómo llevarla a cabo.
 

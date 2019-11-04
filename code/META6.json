@@ -6,7 +6,8 @@
   "auth": "github:JJ",
   "depends": [
     "sake",
-    "Stats"
+    "Stats",
+    "JSON::Fast"
   ],
   "build-depends": [],
   "test-depends": [],
@@ -15,7 +16,7 @@
     "Project::Milestone" : "lib/Project/Milestone.pm6",
     "Project"            : "lib/Project.pm6"
   },
-  "resources": [],
+  "resources": [ "data.json"],
   "license": "Artistic-2.0",
   "source-url": "https://github.com/JJ/curso-tdd"
 }

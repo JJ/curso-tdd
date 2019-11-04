@@ -1,0 +1,21 @@
+{
+  "name": "Foo",
+  "milestones": [
+    [
+      {
+        4: "Closed"
+      },
+      {
+        3: "Open"
+      }
+    ],
+    [
+      {
+        2: "Closed"
+      },
+      {
+        1: "Open"
+      }
+    ]
+  ]
+}

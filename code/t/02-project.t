@@ -3,6 +3,7 @@ use Test; # -*- mode: perl6 -*-
 use Project::Issue;
 use Project::Milestone;
 use Project;
+use JSON::Fast;
 
 constant $project-name = "Foo";
 my $issue-id = 1;
@@ -25,6 +26,9 @@ my $summary = $p.completion-summary();
 isa-ok( $summary, List, "Returns a hash");
 isa-ok( $summary[0]<mean>, 0.5, "Returns correct average");
 
+say to-json $p.milestones.values.map(
+        *.issues.values.map( { $_.issue-id => $_.state } )
+        );
 
 throws-like {
     $p.new-milestone(
