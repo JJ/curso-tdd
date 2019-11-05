@@ -27,6 +27,7 @@ isa-ok( $summary, List, "Returns a hash");
 isa-ok( $summary[0]<mean>, 0.5, "Returns correct average");
 
 my %data = $p.data();
+say to-json %data;
 isa-ok( %data, Hash, "Single data structure is a hash");
 is( %data<name>, $project-name, "Name is correct");
 is( %data<milestones>.elems, 2, "Correct number of milestones" );

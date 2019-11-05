@@ -7,6 +7,9 @@ my $data-file = "resources".IO ~~ :d
         !! "../resources/data.json";
 
 my $dator = Project::Data::JSON.new($data-file);
-ok( $dator.load, "Loads data");
+my %data = $dator.load;
+ok( %data, "Loads data");
+is( %data.keys.elems, 2, "Correct number of keys");
+
 
 done-testing;
