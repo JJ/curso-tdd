@@ -38,8 +38,9 @@ method data() {
         name => $!project-name,
         milestones => %!milestones.values.map(
                 {
-                    $_.milestone-id =>
-                            $_.issues.values.map( { $_.issue-id => $_.state } )
+                    $_.milestone-id.Str =>
+                            $_.issues.values.map( { $_.issue-id.Str => $_.state
+                            } )
                 }
                 )
     };
