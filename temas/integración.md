@@ -252,3 +252,9 @@ problema.
 ## Actividad
 
 
+En esta actividad se añadirán tests de integración a la clase que se haya creado
+ en el hito anterior. Estos tests de integración pueden ser
+
+* Integración de un módulo que se vaya a usar desde el nuestro.
+* Creación de un servicio web a partir de la clase, y prueba del mismo.
+* Integración de un servicio de datos, usando inyección de dependencias.
