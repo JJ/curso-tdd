@@ -153,6 +153,67 @@ principio de inversión de dependencias, es decir, las dependencias no las tiene
  dependencias, por las que se añaden a una clase objetos que permitan usar las
  funcionalidades de esas dependencias, pero siguiendo un interfaz abstracto.
 
+Hagamos primero una pequeña desviación para hablar de cómo funcionarían esos
+Interfaces abstractos.
+
+### Roles o mixins
+
+En general, los roles o mixins se componen de un interfaz y, en ocasiones, de
+una implementación. Se usan en *composición* de objetos: un objeto compone, o
+implementa, diferentes roles, tomando todos los métodos y atributos de cada uno
+de los roles que componga.
+
+Es una técnica de programación dirigida a objetos alternativa a la herencia para
+ creación de nuevas clases. Mientras que en la herencia se heredan los atributos
+  y métodos públicos, que se extienden o reimplementan, en composición se
+  incluye en la clase así creada tanto el interfaz como la implementación,
+  permitiendo creación de objetos más complejos con la característica principal
+  de tener el mismo API que los roles que lo componen.
+
+Por ejmplo, podemos definir este rol en Raku:
+
+```Perl6
+unit role Project::Dator;
+
+method load() {...}
+method update( \data ) {...}
+```
+
+Los `{...}` indican que, quien quiera que implemente ese rol, tiene forzosamente
+ que implementar estos métodos. Este rol define solamente un interfaz, pero como
+  las runciones son abstractas, sabemos que quien quiera que implemente ese rol
+  va a tener esas dos funciones. Podemos implementarlo en una clase, por
+  ejemplo:
+
+```
+use JSON::Fast;
+
+use Project::Dator;
+
+unit class Project::Data::JSON does Project::Dator;
+
+has $!file-name;
+has $!data;
+
+method new( $file-name where $file-name.IO ~~ :e ) {
+    return self.bless( :$file-name, data => from-json slurp $file-name );
+}
+
+submethod BUILD( :$!file-name, :$!data) {}
+
+method load() { $!data }
+method update( \data ) { $!data = data }
+```
+
+Esta clase `does` el rol anterior, e implementa los dos métodos que tiene que
+implementar obligatoriamente. El principio de sustitución de Lyskov se aplica
+también aquí: donde quiera que usemos un rol, se puede usar también cualquier
+clase que implemente ese rol, por lo que podemos declarar argumentos como
+`Project::Dator` sabiendo que vamos a poder usar esas dos funciones, `load` y
+`update`.
+
+
+
 ## Preparación de un módulo para los tests de integración.
 
 
