@@ -6,4 +6,4 @@ install:
   - docker images
 
 script: 
-  - docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/p5-devqagrx:latest
+  - docker run -t  --env TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST =foo -v $TRAVIS_BUILD_DIR:/test jjmerelo/p5-devqagrx:latest
