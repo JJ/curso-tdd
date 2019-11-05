@@ -170,7 +170,7 @@ Es una técnica de programación dirigida a objetos alternativa a la herencia pa
   permitiendo creación de objetos más complejos con la característica principal
   de tener el mismo API que los roles que lo componen.
 
-Por ejmplo, podemos definir este rol en Raku:
+Por ejemplo, podemos definir este rol en Raku:
 
 ```Perl6
 unit role Project::Dator;
@@ -181,7 +181,7 @@ method update( \data ) {...}
 
 Los `{...}` indican que, quien quiera que implemente ese rol, tiene forzosamente
  que implementar estos métodos. Este rol define solamente un interfaz, pero como
-  las runciones son abstractas, sabemos que quien quiera que implemente ese rol
+  las funciones son abstractas, sabemos que quien quiera que implemente ese rol
   va a tener esas dos funciones. Podemos implementarlo en una clase, por
   ejemplo:
 
