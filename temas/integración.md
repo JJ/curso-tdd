@@ -291,7 +291,8 @@ muestra de forma extensa cómo usar mocks en Python. Algunos frameworks como Jes
 
 
 En esta actividad se añadirán tests de integración a la clase que se haya creado
- en el hito anterior. Estos tests de integración pueden ser
+ en el hito anterior. Estos tests de integración pueden ser uno o varios de los
+ siguientes:
 
 * Integración de un módulo que se vaya a usar desde el nuestro.
 * Creación de un servicio web a partir de la clase, y prueba del mismo.
