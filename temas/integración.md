@@ -237,6 +237,18 @@ de la nueva clase. Dentro de esa clase, sin embargo, tenemos a `$!dator`, que
 implementa el rol `Project::Dator` y por tanto se puede instanciar con cualquier
  tipo de objeto que siga ese rol.
 
+La inyección de dependencias puede funcionar de esta forma:
+
+```
+my $dator = Project::Data::JSON.new($data-file);
+my $stored = Project::Stored.new($dator);
+```
+
+En esta nueva clase tendremos que adaptar las funciones para usar este tipo de
+almacenamiento de datos, pero en principio va a ser posible hacerlo sin mucho
+problema.
+
+
 ## Actividad
 
 
