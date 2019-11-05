@@ -13,9 +13,5 @@ method new( $file-name where $file-name.IO ~~ :e ) {
 
 submethod BUILD( :$!file-name, :$!data) {}
 
-submethod DESTROY() {
-    spurt $!file-name, $!data;
-}
-
 method load() { $!data }
 method update( \data ) { $!data = data }

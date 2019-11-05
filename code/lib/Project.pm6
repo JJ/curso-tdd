@@ -1,7 +1,7 @@
 use Project::Issue; # Needed for Open/Closed
 use Stats;
 
-unit class Project;
+unit role Project;
 
 has %!milestones = {};
 has Str $!project-name;

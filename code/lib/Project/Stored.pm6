@@ -3,7 +3,7 @@ use Project::Milestone;
 use Project::Issue;
 use Project;
 
-unit class Project::Stored is Project;
+unit class Project::Stored does Project;
 
 has $!dator;
 
@@ -13,21 +13,21 @@ method new( $dator ) {
     for %data<milestones> -> $m {
         my $milestone = Project::Milestone.new(
                 project-name => %data<name>,
-                milestone-id => $m.key
+                milestone-id => $m.keys[0]
                 );
         for $m.values -> $i {
             $milestone.new-issue(
                     Project::Issue.new(
-                            issue-id => $i.key,
+                            issue-id => $i.keys[0],
                             project-name => %data<name>,
-                            state => $i.value
+                            state => $i.values[0]
                             )
                     )
         }
         %milestones{$m.key} = $milestone;
     }
     return self.bless(
-            dator => $dator<,
+            dator => $dator,
             project-name => %data<name>,
             milestones => %milestones
             );
