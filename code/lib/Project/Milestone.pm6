@@ -7,6 +7,11 @@ has UInt $!milestone-id;
 has %!issues;
 has Str $!project-name;
 
+method new( Pair %data ) {
+    my %issues;
+
+}
+
 submethod BUILD( :$!milestone-id, :$!project-name) {}
 
 method new-issue( Project::Issue $issue where $issue.project-name eq $!project-name) {
