@@ -5,9 +5,9 @@ use Project;
 
 unit class Project::Stored does Project;
 
-has $!dator;
+has Project::Dator $!dator;
 
-method new( $dator ) {
+method new( Project::Dator $dator ){
     my %data = $dator.load;
     my %milestones;
     for %data<milestones>.list -> %m {

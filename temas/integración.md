@@ -61,7 +61,97 @@ Estos tests están enfocados principalmente a evitar que el API de la clase inte
 
 > El interfaz de esta clase es, en realidad, un poco peculiar, porque sería más adecuado devolver un hash. En un momento determinado, puede que se dé cuenta el propietario y lo cambie, con lo cual este test de integración nos guarda de que tal cosa ocurra.
 
+
+## Tests de integración para microservicios
+
+Porque esté en la nube no significa que no tengamos que testearla como
+cualquier hija de vecina. En este caso no vamos a usar tests
+unitarios, sino
+[test funcionales](https://en.wikipedia.org/wiki/Functional_testing) (porque
+proporcionamos una entrada y comprobamos que las salidas son correctas)o
+[*de integración*](https://en.wikipedia.org/wiki/Integration_testing): un API,
+generalmente, va a integrar diferentes clases y el testear el API REST
+va a ser una prueba de cómo se *integran* esas diferentes clases entre
+sí, o como se integran con los servicios que se usan desde las clases;
+de lo que se
+trata es que tenemos que levantar la web y que vaya todo medianamente
+bien. Sin embargo, las funciones a las que se llama desde un servicio
+web son en realidad simples funciones, por lo que hay tanto marcos
+como bibliotecas de test que te permiten probarlas.
+
+> Consultad [esta pregunta en SO](https://stackoverflow.com/questions/2741832/unit-tests-vs-functional-tests)
+> para entender las diferencias entre tests unitarios y de integración
+> o funcionales.
+
+Para hacer esas pruebas generalmente se crea un objeto cuyos métodos
+son, en realidad, llamadas al API REST, o un objeto al que se le puede añadir un
+ decorador que permite hacer tales llamadas. Este objeto tendremos que
+primero crearlo desde nuestro "programa principal" o (mejor) módulo que responde
+ a las
+peticiones REST, y segundo importarlo desde el test. En el caso de
+`express`, se crea un objeto `app`, que será el que usemos aquí.
+
+Los tests podemos integrarlos, como es natural, en el mismo marco que
+el resto de la aplicación, solo que tendremos que usar librerías de
+aserciones ligeramente diferentes, en este caso `supertest`
+
+```
+	var request = require('supertest'),
+	app = require('../index.js');
+
+	describe( "PUT porra", function() {
+		it('should create', function (done) {
+		request(app)
+			.put('/porra/uno/dos/tres/4')
+			.expect('Content-Type', /json/)
+			.expect(200,done);
+		});
+	});
+```
+
+(que tendrá que estar incluido en el directorio `test/`, como el
+resto). En vez de ejecutar la aplicación (que también podríamos
+hacerlo), lo que hacemos es que añadimos al final de `index.js` la
+línea:
+
+```
+module.exports = app;
+```
+
+con lo que se exporta la `app` que se crea; los métodos de ese objeto
+recibirán las peticiones del API REST que vamos a comprobar; `require`
+ejecuta el código y recibe la variable que hemos exportado, que
+podemos usar como si se tratara de parte de esta misma
+aplicación. `app` en este test, por tanto, contendrá lo mismo que en
+la aplicación principal, `index.js`. Usamos el mismo estilo de test
+con `mocha`
+que [ya se ha visto](https://jj.github.io/desarrollo-basado-pruebas/)
+pero usamos funciones específicas:
+
+* `request` hace una llamada sobre `app` como si la hiciéramos *desde
+  fuera*; `put`, por tanto, llamará a la ruta correspondiente, que
+  crea un partido sobre el que apostar.
+* `expect` expresa qué se puede esperar de la respuesta. Por ejemplo,
+  se puede esperar que sea de tipo JSON (porque es lo que enviamos, un
+  JSON del partido añadido) y además que sea de tipo '200', respuesta
+  correcta. Y como esta es la última de la cadena, llamamos a `done`
+  que es en realidad una función que usa como parámetro el callback.
+
+Podemos hacer más pruebas, usando `get`, por ejemplo, pero se deja como ejercicio al alumno.
+
+Estas pruebas permiten que no nos encontremos con sorpresas una vez
+que despeguemos en el PaaS. Así sabemos que, al menos, todas las rutas
+que hemos creado funcionan correctamente.
+
 ## Inversión de dependencias y cómo llevarla a cabo.
+
+Para testear el acceso a datos y otras dependencias externas correctamente, y
+siguiendo los principios de diseño SOLID que se vieron anteriormente, se debe
+desacoplar las clases de su almacenamiento o serialización; para ello se usa el
+principio de inversión de dependencias, es decir, las dependencias no las tienen
+ las clases y éstas no dependen, en realidad, de ellas, y la inyección de
+ dependencias, por las que se añaden a una clase objetos que permitan usar las
+ funcionalidades de esas dependencias, pero siguiendo un interfaz abstracto.
 
 ## Preparación de un módulo para los tests de integración.
 
