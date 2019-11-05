@@ -1,6 +1,7 @@
 use Test;
 
 use Project::Data::JSON;
+use Project::Data::Mock;
 use Project::Stored;
 use Project::Issue;
 
@@ -24,4 +25,10 @@ my $milestone = Project::Milestone.new(:$project-name,:milestone-id(33));
 is($stored.milestones.keys.elems,2, "2 milestones before adding");
 $stored.new-milestone($milestone);
 is($stored.milestones.keys.elems,3, "3 milestones after adding");
+
+$dator = Project::Data::Mock.new;
+$stored = Project::Stored.new($dator);
+say $stored.data();
+is($stored.milestones.keys.elems,1, "1 milestone from mock");
+
 done-testing;
