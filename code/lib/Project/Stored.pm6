@@ -1,6 +1,7 @@
 use Project::Dator;
 use Project::Milestone;
 use Project::Issue;
+use Project;
 
 unit class Project::Stored is Project;
 
@@ -14,10 +15,10 @@ method new( $dator ) {
                 project-name => %data<name>,
                 milestone-id => $m.key
                 );
-        for @m -> $i {
+        for $m.values -> $i {
             $milestone.new-issue(
                     Project::Issue.new(
-                            issue-id => $m.key,
+                            issue-id => $i.key,
                             project-name => %data<name>,
                             state => $i.value
                             )
@@ -32,10 +33,10 @@ method new( $dator ) {
             );
 }
 
-submethod BUILD ( :$!dator, :$!project-name, :$!project-name) {}
+submethod BUILD ( :$!dator, :$!project-name, :%!milestones) {}
 
 method new-milestone( $milestone where $milestone.project-name eq
         $!project-name) {
+    callsame;
     $!dator.update( $!.data() );
-    nextsame;
 }
