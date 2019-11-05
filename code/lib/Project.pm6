@@ -8,7 +8,7 @@ has Str $!project-name;
 
 submethod BUILD( :$!project-name) {}
 
-method new-milestone( $milestone where $milestone.project-name eq
+multi method new-milestone( $milestone where $milestone.project-name eq
         $!project-name) {
     %!milestones{$milestone.milestone-id} = $milestone;
 }

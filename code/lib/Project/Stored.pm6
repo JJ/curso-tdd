@@ -36,8 +36,8 @@ method new( Project::Dator $dator ){
 
 submethod BUILD ( :$!dator, :$!project-name, :%!milestones) {}
 
-method new-milestone( $milestone where $milestone.project-name eq
+multi method new-milestone( $milestone where $milestone.project-name eq
         $!project-name) {
-    callsame;
+    %!milestones{$milestone.milestone-id} = $milestone;
     $!dator.update( $!.data() );
 }
