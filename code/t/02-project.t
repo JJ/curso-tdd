@@ -36,6 +36,6 @@ throws-like {
     $p.new-milestone(
             Project::Milestone.new( :project-name("Bar"), :milestone-id(33) )
             );
-}, X::TypeCheck::Binding::Parameter, "Can't add milestone of another project";
+}, X::Multi::NoMatch, "Can't add milestone of another project";
 
 done-testing;
