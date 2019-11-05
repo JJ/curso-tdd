@@ -248,6 +248,44 @@ En esta nueva clase tendremos que adaptar las funciones para usar este tipo de
 almacenamiento de datos, pero en principio va a ser posible hacerlo sin mucho
 problema.
 
+Si queremos imitar ese almacenamiento, simplemente tenemos que usar el mismo
+rol:
+
+```perl6
+unit class Project::Data::Mock does Project::Dator;
+
+has $!data = { "milestones" => [
+    {
+        "2" => [
+            {
+                "4" => "Closed"
+            },
+            {
+                "3" => "Open"
+            }
+        ]
+    }
+    ],
+    "name" => "Foo"
+};
+```
+
+Se puede instanciar este objeto exactamente de la misma forma para "imitar" la
+clase original que da acceso a datos:
+
+```perl6
+$dator = Project::Data::Mock.new;
+$stored = Project::Stored.new($dator);
+```
+
+
+Este concepto de *mock* o maqueta se puede extender también a cualquier tipo de
+objeto que se use para imitar instancias de objetos que no tienen por qué estar
+presentes en el momento del test.
+
+> Por ejemplo, [este artículo](https://medium.com/@yeraydiazdiaz/what-the-mock-cheatsheet-mocking-in-python-6a71db997832)
+muestra de forma extensa cómo usar mocks en Python. Algunos frameworks como Jest
+ permiten también hacer [mocks de forma sencilla](https://jestjs.io/docs/es-ES/manual-mocks).
 
 ## Actividad
 
