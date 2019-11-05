@@ -212,10 +212,30 @@ clase que implemente ese rol, por lo que podemos declarar argumentos como
 `Project::Dator` sabiendo que vamos a poder usar esas dos funciones, `load` y
 `update`.
 
+### Inyectando dependencias
 
+Este principio se basa en el uso, dentro de las clases que necesitan las
+dependencias, de objetos que representen estas dependencias. Si representamos
+estas dependencias implementan un rol, podemos intercambiarlas fácilmente sin
+que la clase que los usa lo detecte.
 
-## Preparación de un módulo para los tests de integración.
+Por ejemplo, podemos hacerlo en esta clase, `Project::Stored`:
 
+```
+unit class Project::Stored does Project;
+
+has Project::Dator $!dator;
+
+# Código de la clase aquí abajo
+```
+
+`Project` lo hemos convertido también en un rol para que sea más fácil
+componerlo en otras clases; `Project`, como tal rol, se comporta de la misma
+forma que una clase si se le usa en este contexto, pero haciéndolo así es más
+fácil usar todas las variables privadas, que pasan directamente a formar parte
+de la nueva clase. Dentro de esa clase, sin embargo, tenemos a `$!dator`, que
+implementa el rol `Project::Dator` y por tanto se puede instanciar con cualquier
+ tipo de objeto que siga ese rol.
 
 ## Actividad
 

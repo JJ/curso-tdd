@@ -45,3 +45,5 @@ method data() {
                 )
     };
 }
+
+method project-name() { $!project-name}
