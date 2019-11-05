@@ -10,21 +10,22 @@ has $!dator;
 method new( $dator ) {
     my %data = $dator.load;
     my %milestones;
-    for %data<milestones> -> $m {
+    for %data<milestones>.list -> %m {
+        my $m-id = %m.keys[0].Int;
         my $milestone = Project::Milestone.new(
                 project-name => %data<name>,
-                milestone-id => $m.keys[0]
+                milestone-id => $m-id
                 );
-        for $m.values -> $i {
+        for %m.values[0].list -> %i {
             $milestone.new-issue(
                     Project::Issue.new(
-                            issue-id => $i.keys[0],
+                            issue-id => %i.keys[0].Int,
                             project-name => %data<name>,
-                            state => $i.values[0]
+                            state => %i.values[0] eq "Open" ?? Open !! Closed
                             )
                     )
         }
-        %milestones{$m.key} = $milestone;
+        %milestones{$m-id} = $milestone;
     }
     return self.bless(
             dator => $dator,
