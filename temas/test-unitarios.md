@@ -112,16 +112,19 @@ PASS
 ok  	_/home/jmerelo/Asignaturas/infraestructura-virtual/HitosIV	0.017s
 ```
 
-En vez de aserciones como funciones específicas, Go simplifica el interfaz de test haciendo que
-se devuelva un error (con `t.Error()`) cuando el test no pasa. Si
-todos funcionan, no hay ningún problema y se imprime `PASS` como se muestra arriba. Adicionalmente, `t.Log()`
+En vez de aserciones como funciones específicas, Go simplifica el
+interfaz de test haciendo que se devuelva un error (con `t.Error()`)
+cuando el test no pasa. Si todos funcionan, no hay ningún problema y
+se imprime `PASS` como se muestra arriba. Adicionalmente, `t.Log()`
 (siendo `t` una estructura de datos que se le tiene que pasar a todos
-los tests) se usa para mostrar algún mensaje sobre qué está ocurriendo en el test. En este caso, uno de los tests comprueba que efectivamente
-haya hitos en el fichero JSON que se ha pasado, y el segundo comprueba que el tipo que se devuelve cuando
-se solicita un hito es el correcto. Estos tests no están completos;
-generalmente hay que escribir una función de test para todas las
-funciones del módulo. Se muestran solo estos para ilustrar cómo
-funciona en un lenguaje determinado.
+los tests) se usa para mostrar algún mensaje sobre qué está ocurriendo
+en el test. En este caso, uno de los tests comprueba que efectivamente
+haya hitos en el fichero JSON que se ha pasado, y el segundo comprueba
+que el tipo que se devuelve cuando se solicita un hito es el
+correcto. Estos tests no están completos; generalmente hay que
+escribir una función de test para todas lasfunciones del módulo. Se
+muestran solo estos para ilustrar cómo funciona en un lenguaje
+determinado.
 
 > Adicionalmente,
 > [se pueden incluir ejemplos de salida que serán comprobados](https://golang.org/pkg/testing/#hdr-Examples) si
@@ -618,7 +621,7 @@ Las genéricas lanzan scripts, generalmente del shell, mientras que las
 específicas usan el propio lenguaje de programación, con lo que es más fácil que
  se adapten a diferentes plataformas.
 
-Muchas herramientas usan un Domain Specific Language, un DSL que permite
+Muchas herramientas usan un *Domain Specific Language*, un DSL que permite
 expresar los diferentes *targets* y las acciones necesarias para alcanzarlos o,
 en el caso declarativo, como saber que están en ese estado. `make`, por ejemplo,
  tiene el suyo, y otras herramientas como `sbt` también; algunas como Gradle
