@@ -69,7 +69,7 @@ usar
   * Cobertura de tests y como gestionarla.
   * Tests de front-end
   * Tests de regresión.
-
+  * [Material](temas/conclusiones.md)
 
 ## Lugar
 
