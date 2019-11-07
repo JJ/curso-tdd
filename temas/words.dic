@@ -195,7 +195,7 @@ gateways
 enrutándolas
 proxy
 proxies
-HAproxy
+HAProxy
 mesh
 tutorial
 Heroku
