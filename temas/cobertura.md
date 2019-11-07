@@ -84,7 +84,7 @@ Ran all test suites.
 En este caso se indica que la cobertura de ramas es del 83%, lo que
 puede oscilar entre lo inaceptable y totalmente aceptable. Por eso
 tenemos que usar otro sistema que genere una página web en la que se
-pueda ver clarametne qué ha fallado, y ese sistema está integrado
+pueda ver claramente qué ha fallado, y ese sistema está integrado
 dentro
 de
 [`istanbul` y se llama `nyc`](https://www.npmjs.com/package/nyc). Ejecutando

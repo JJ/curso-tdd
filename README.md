@@ -50,8 +50,7 @@ enlazan [en esta página](proyectos).
   * Mocks
   * [Material](temas/integración.md)
   
-* Concluyendo
-  * Cobertura de tests y como gestionarla.
+* Tests adicionales
   * Tests de front-end
   * Tests de regresión.
   * [Material](temas/qa.md)

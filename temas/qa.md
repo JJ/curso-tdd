@@ -1,11 +1,10 @@
-# Más pruebas de calidad
-
+# Progresando en calidad
 
 ## Planteamiento
 
 La calidad en el software es un tema bastante extenso, que incluye
 tanto técnicas específicas como herramientas en cada uno de los
-niveles. Hasta ahora hemos tratado de exlicar, de forma práctica,
+niveles. Hasta ahora hemos tratado de explicar, de forma práctica,
 estas herramientas y técnicas; en la última sesión veremos a un nivel
 un poco más teórico técnicas y conceptos adicionales usuales en este
 área.
@@ -20,8 +19,7 @@ que necesite.
 
 El repositorio tiene que estar corriendo los tests en Travis, y esos
 tests deben pasar. Los tests deben incluir pruebas adicionales,
-incluyendo cobertura.
-
+incluyendo cobertura, y esta cobertura debe llegar al 90%.
  
 ## Actividad
 
