@@ -7,7 +7,7 @@
 | [QADatosEconomicos](https://github.com/luisbalru/QADatosEconomicos) | 3.1.0 |
 | [QANotas](https://github.com/carlos-el/ProyectoCursoTDD-Notas) | 0.2.1 |
 | [API-Medioambiental](https://github.com/API-Medioambiental/ProyectoCursoTDD) | 0.3.0 |
-| [Analizador-de-Conversaciones](https://github.com/ETSIIT-analyzer/Analizador-de-conversaciones) | 0.4 |
+| [Analizador-de-Conversaciones](https://github.com/ETSIIT-analyzer/Analizador-de-conversaciones) | 0.5 |
 | [Programador de actividades](https://github.com/antmordhar/Programador-de-Actividades) | 0.3.1 |
 | [Geolocalizador Social](https://github.com/mati3/CursoTDD-GeolocalizadorSocial) | 0.2.1|
 | [Plataforma de trafico](https://github.com/Seminario-PGPI/Proyecto-Trafico) | 0.1.3|
