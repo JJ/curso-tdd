@@ -1,3 +1,4 @@
+
 # Hacia los tests unitarios
 
 ## Planteamiento
@@ -121,10 +122,33 @@ los tests) se usa para mostrar algún mensaje sobre qué está ocurriendo
 en el test. En este caso, uno de los tests comprueba que efectivamente
 haya hitos en el fichero JSON que se ha pasado, y el segundo comprueba
 que el tipo que se devuelve cuando se solicita un hito es el
-correcto. Estos tests no están completos; generalmente hay que
-escribir una función de test para todas lasfunciones del módulo. Se
-muestran solo estos para ilustrar cómo funciona en un lenguaje
-determinado.
+correcto. 
+
+>Los tests que se muestran aquí no cubren necesariamente todas las funcionalidades de este módulo; en el repositorio sí están completos. Se
+>muestran solo estos para ilustrar cómo funciona en un lenguaje
+>determinado.
+
+El marco de test usado proporciona, en este caso, una serie de estructuras de datos que podemos usar para informar de los errores que se produzcan. La estructura `T`, por ejemplo, es la que se recibe como argumento en cada uno de los tests; tiene funciones como `t.Error` para indicar cuando las condiciones del test no se cumplen. Si se usa `ErrorF` se puede dar, como en otros marcos de test, cual es la salida deseada y la obtenida.
+
+```
+func TestNumHitos(t *testing.T) {
+	t.Log("Test Número Hitos")
+	var x uint = uint(CuantosHitos())
+	if x == 3 {
+		t.Log("El número de hitos es correcto")
+	} else {
+		t.Errorf("El número de hitos es incorrecto; esperábamos %d", 3)
+	}
+	var too_big uint = x + 3
+	_, e := Uno( too_big )
+	if e != nil {
+		t.Log("Devuelve error si es demasiado grande")
+	} else {
+		t.Error("No devuelve error y debería")
+	}
+
+}
+```
 
 > Adicionalmente,
 > [se pueden incluir ejemplos de salida que serán comprobados](https://golang.org/pkg/testing/#hdr-Examples) si
