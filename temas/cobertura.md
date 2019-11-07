@@ -1,18 +1,21 @@
-# Tests de cobertura y el resto.
+# Tests de cobertura
 
 
 ## Planteamiento
 
-La calidad en el software es un tema bastante extenso, que incluye tanto técnicas específicas como herramientas en cada uno de los niveles. Hasta ahora hemos tratado de exlicar, de forma práctica, estas herramientas y técnicas; en la última sesión veremos a un nivel un poco más teórico técnicas y conceptos adicionales usuales en este área. También veremos, a nivel práctico, los tests de cobertura y cómo usarlos desde diferentes lenguajes.
+Si el código no se prueba, no funciona. Los tests de cobertura nos
+ayudan a saber qué partes del código no están cubiertas por los tests
+unitarios, y nos ayudan a establecer un nivel determinado de
+cobertura, así como políticas, para asegurar la calidad del código.
 
 ## Al final de esta sesión
 
-Se habrá terminado el proyecto, incluyendo tests de integración, y se habrá creado una hoja de ruta para abarcar todos los demás aspectos que necesite.
+Se habrán incluido tests de cobertura en el proyecto y refactorizado
+el código en caso necesario.
 
 ## Criterio de aceptación
 
-El repositorio tiene que estar corriendo los tests en Travis, y esos
-tests deben pasar. Estos tests deben incluir tests de integración.
+Inclusión del badge de `codecov` con un porcentaje de cobertura aceptable.
 
 ## Tests de cobertura
 
@@ -84,14 +87,54 @@ nyc report --reporter=html
 ```
 
 Dentro de la carpeta `coverage` se generarán una serie de ficheros
-HTML donde podremos consultar qué es lo que ocurre. 
+HTML donde podremos consultar qué es lo que ocurre. Esto se puede
+añadir al sistema donde se haga integración continua, como en este
+caso
+a
+[GitHub Actions](https://github.com/JJ/ts-milestones/blob/master/.github/workflows/coverage.yml).
 
-> Y concluir que no queda nada claro, porque la única orden que parece
-> que no está cubierta es `super(m)`. 
+```yaml
+name: Pasa tests de cobertura
+on: [push]
 
+jobs:
+  build:
+    name: Cobertura
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Instalación general
+        run: npm install
+      - name: Instala tests y cobertura
+        run: sudo npm install -g jest nyc codecov
+      - name: Ejecuta tests de cobertura
+        run: nyc jest --coverage
+      - name: Crea los informes
+        run: nyc report --reporter=json > coverage/coverage.json
+      - name: Sube los tests
+        run: codecov
+```
+
+Los tres últimos pasos son los que ejecutan los [tests de cobertura](https://github.com/JJ/ts-milestones/commit/599e3f41ed6314f23603862b5da5079358df61c6/checks?check_suite_id=299177238) y
+los
+suben
+[a codecov](https://codecov.io/gh/JJ/ts-milestones/src/master/src/Project.ts). La
+cobertura es del 100%, así que no hay mucho que mejorar aquí.
+
+> Se puede configurar GitHub para que en los pull requests sólo acepte
+> uno si no empeora la cobertura, lo que es razonable. Si el código
+> añadido tiene una parte no testeada, es que no es correcto.
 
  
 ## Actividad
 
 
-Hito final del proyecto, con toda la funcionalidad deseada al principio añadida, tests unitarios y de cobertura con una cobertura aceptable, y una hoja de ruta para añadir pruebas de calidad a todos los niveles de ahora en adelante.
+Añadir los tests de cobertura al proyecto.
+
+* Darse de alta en codecov o algún sitio similar.
+* Añadir tests de cobertura al ejecutor de tareas y al sitio de
+  integración continua.
+* Añadir API key a Travis (desde la web) y subir automáticamente los
+  tests de cobertura a la misma tras cada test.
