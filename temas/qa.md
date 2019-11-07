@@ -45,6 +45,22 @@ debe esperar como respuesta. Herramientas como
 [`CasperJS`](http://casperjs.org/) te permiten automatizar este tipo
 de guiones y llevar a cabo los tests.
 
+## Tests de regresión
+
+En el transcurso de la puesta en producción de una aplicación, sucede
+que un test que previamente pasaba de repente empieza a fallar. El
+test de regresión no es una técnica específica, ni tiene marcos
+específicos, pero consiste en identificar qué cambio ocurrido en el
+pasado es el responsable de que suceda esta regresión, a nivel de
+*commit*. 
+
+Este tipo de tests necesitan una instrumentación complicada, hasta el
+punto de generar una versión de la aplicación para cada uno de los
+commits, y poder ejecutar la aplicación en cada una de esas
+versiones. Sin embargo, es la única forma de encontrar el código
+culpable y una vez la instrumentación está lista, permite resolver los
+problemas rápidamente.
+
 
 
 ## Actividad
