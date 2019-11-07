@@ -62,6 +62,79 @@ culpable y una vez la instrumentación está lista, permite resolver los
 problemas rápidamente.
 
 
+## Tests *blue/green* *alfa/beta*
+
+En un entorno de integración y despliegue continuo, en muchas
+ocasiones es necesario probar de cara al público dos versiones de un
+mismo producto, monitorizándolo y posteriormente eligiendo la versión
+que resulte más satisfactoria.
+
+Esta es la esencia de los despliegues [alfa/beta y
+blue/green](https://dev.to/david_j_eddy/whats-the-difference-ab-testing-vs-bluegreen-deployment-3p77). La
+principal diferencia es cuál es el foco principal de cada uno de
+ellos. Los despliegues alfa/beta están principalmente enfocados a
+determinar la reacción del usuario, mientras que los blue/green están
+más relacionados con las prestaciones.
+
+Finalmente, las [publicaciones
+"canario"](https://blog.getambassador.io/cloud-native-patterns-canary-release-1cb8f82d371a)
+siguen una técnica similar: sacar una versión nueva de un
+microservicio o producto, de forma que sólo una pequeña parte de
+usuarios la use.
+
+Todas estas técnicas confían en algún servicio que actúe como
+front-end y decida qué porcentaje de usuarios o de peticiones se
+entrega a cada uno de los tipos de producto. 
+
+Para esto, introduzcamos un nuevo concepto: el pórtico del API o *API
+Gateway*.
+
+### API gateways y pruebas
+
+Un [API gateway](https://www.nginx.com/learn/api-gateway/) actúa como
+el guardián de una galaxia de microservicios, recibiendo peticiones
+del front-end y enrutándolas, de forma segura, al microservicio (o microservicios) que se
+vaya a encargar de servirla.
+
+En el momento que haya varios microservicios en una aplicación, este
+API gateway es esencial para que el usuario (o front-end) no tenga que
+conocer las complejidades de cada uno de los mismos. También se puede
+encargar de gestionar permisos y puede actuar como *proxy* inverso
+para equilibrar la carga de los servicios que gestione.
+
+Este API gateway son aplicaciones que se configuran para que respondan
+a diferentes tipos de servicios, y van desde simples proxies inversos
+como HAProxy o servidores web de altas prestaciones como `nginx` hasta
+aplicaciones específicas como [`Tyk` o
+`Kong`](https://www.bbva.com/es/tyk-kong-analizamos-estos-dos-api-gateways/),
+[`Zuul` o
+`Linkerd`](https://engineering.opsgenie.com/comparing-api-gateway-performances-nginx-vs-zuul-vs-spring-cloud-gateway-vs-linkerd-b2cc59c65369)o
+[`Traefik`](https://github.com/containous/traefik). 
+
+En el caso que nos ocupa, los despliegues que impliquen diferentes
+versiones de uno o varios microservicios se gestionan a nivel del API
+gateway, por ejemplo, [usando `Traefik` para hacer *canary releases*](https://blog.containo.us/canary-releases-with-traefik-on-gke-at-holidaycheck-d3c0928f1e02). 
+
+Mientras que los *API gateways* están cara al público, para que los
+servicios se comuniquen entre sí se usan *service meshes*. 
+
+### Qué es una *service mesh*
+
+Una [*service mesh*](https://medium.com/swlh/a-quick-introduction-to-service-meshes-c4c47c6894b1) 
+permite que los microservicios desplegados se despreocupen de con qué
+otros microservicios tienen que interaccionar; esta *service mesh* se
+encargará de proporcionar descubrimiento de servicios y configuración
+automática para que todos los microservicios operen sobre una capa de
+abstracción, una *rejilla de servicios*, que le permita usar el resto
+sin preocuparse de su ubicación ni del resto de las características
+físicas. 
+
+Como la *service mesh* no está expuesta al público, es más propia para
+blue/green y canary; las herramientas que se usan son, en muchos
+casos, las mismas que hay para API gateway, tales como [Istio](https://istio.io/). Por
+ejemplo, [este tutorial describe cómo usar Istio para despliegues Blue/Green](https://thenewstack.io/tutorial-blue-green-deployments-with-kubernetes-and-istio/).
+
+
 
 ## Actividad
 
