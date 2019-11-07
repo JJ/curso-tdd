@@ -36,8 +36,61 @@ La primera ejecuta los tests y genera un fichero de salida, y la segunda orden a
 
 Siempre es mejor en Go devolver un error que enviar a log un error fatal, así que este cambio en el código asegura que se pueda cubrir mejor con los tests.
 
-> Y también demuestra que la calidad en el desarrollo no es siempre cuestión de escribir más o menos tests, sino de seguir buenas prácticas en el diseño de aplicaciones para que estos tests sean posibles y tengan la máxima cobertura.
+> Y también demuestra que la calidad en el desarrollo no es siempre
+> cuestión de escribir más o menos tests, sino de seguir buenas
+> prácticas en el diseño de aplicaciones para que estos tests sean
+> posibles y tengan la máxima cobertura. 
 
+En Go se muestran las dos partes de los tests de cobertura: el
+generador de datos, y el que crea los informes. En casi todos los
+lenguajes va a ocurrir lo mismo, sólo que no va a estar integrado con
+el lenguaje, sino que va a ser una o dos utilidades aparte del
+compilador.
+
+En `jest`, que hemos usado anteriormente con TypeScript, también está
+incluido un sistema de tests de cobertura. Por ejemplo, si lo
+aplicamos a la última versión de
+nuestro [sistema de hitos](https://github.com/JJ/ts-milestones),
+obtendremos un resultado como este:
+
+```
+ PASS  src/__tests__/all_test.ts
+  ✓ Issue (3ms)
+  ✓ Milestone (3ms)
+
+------------|----------|----------|----------|----------|-------------------|
+File        |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------|----------|----------|----------|----------|-------------------|
+All files   |      100 |    83.33 |      100 |      100 |                   |
+ Project.ts |      100 |    83.33 |      100 |      100 |                31 |
+------------|----------|----------|----------|----------|-------------------|
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.263s
+Ran all test suites.
+```
+
+En este caso se indica que la cobertura de ramas es del 83%, lo que
+puede oscilar entre lo inaceptable y totalmente aceptable. Por eso
+tenemos que usar otro sistema que genere una página web en la que se
+pueda ver clarametne qué ha fallado, y ese sistema está integrado
+dentro
+de
+[`istanbul` y se llama `nyc`](https://www.npmjs.com/package/nyc). Ejecutando
+
+```
+nyc report --reporter=html
+```
+
+Dentro de la carpeta `coverage` se generarán una serie de ficheros
+HTML donde podremos consultar qué es lo que ocurre. 
+
+> Y concluir que no queda nada claro, porque la única orden que parece
+> que no está cubierta es `super(m)`. 
+
+
+ 
 ## Actividad
 
 
