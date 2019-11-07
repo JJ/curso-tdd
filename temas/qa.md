@@ -103,10 +103,8 @@ para equilibrar la carga de los servicios que gestione.
 Este API gateway son aplicaciones que se configuran para que respondan
 a diferentes tipos de servicios, y van desde simples proxies inversos
 como HAProxy o servidores web de altas prestaciones como `nginx` hasta
-aplicaciones específicas como [`Tyk` o
-`Kong`](https://www.bbva.com/es/tyk-kong-analizamos-estos-dos-api-gateways/),
-[`Zuul` o
-`Linkerd`](https://engineering.opsgenie.com/comparing-api-gateway-performances-nginx-vs-zuul-vs-spring-cloud-gateway-vs-linkerd-b2cc59c65369)o
+aplicaciones específicas como [`Tyk` o `Kong`](https://www.bbva.com/es/tyk-kong-analizamos-estos-dos-api-gateways/),
+[`Zuul` o `Linkerd`](https://engineering.opsgenie.com/comparing-api-gateway-performances-nginx-vs-zuul-vs-spring-cloud-gateway-vs-linkerd-b2cc59c65369)o
 [`Traefik`](https://github.com/containous/traefik). 
 
 En el caso que nos ocupa, los despliegues que impliquen diferentes
