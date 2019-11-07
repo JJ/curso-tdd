@@ -1,7 +1,7 @@
 use Test::Text; # -*- mode: cperl -*-
 use Test::More;
 
-if ( $ENV{'TRAVIS_PULL_REQUEST'} eq 'true' ) {
+if ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
   plan skip_all => "Check relevant only for push";
 }
 
