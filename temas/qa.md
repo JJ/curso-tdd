@@ -62,22 +62,20 @@ culpable y una vez la instrumentación está lista, permite resolver los
 problemas rápidamente.
 
 
-## Tests *blue/green* *alfa/beta*
+## Tests *blue/green* *A/B*
 
 En un entorno de integración y despliegue continuo, en muchas
 ocasiones es necesario probar de cara al público dos versiones de un
 mismo producto, monitorizándolo y posteriormente eligiendo la versión
 que resulte más satisfactoria.
 
-Esta es la esencia de los despliegues [alfa/beta y
-blue/green](https://dev.to/david_j_eddy/whats-the-difference-ab-testing-vs-bluegreen-deployment-3p77). La
+Esta es la esencia de los despliegues [A/B y blue/green](https://dev.to/david_j_eddy/whats-the-difference-ab-testing-vs-bluegreen-deployment-3p77). La
 principal diferencia es cuál es el foco principal de cada uno de
 ellos. Los despliegues alfa/beta están principalmente enfocados a
 determinar la reacción del usuario, mientras que los blue/green están
 más relacionados con las prestaciones.
 
-Finalmente, las [publicaciones
-"canario"](https://blog.getambassador.io/cloud-native-patterns-canary-release-1cb8f82d371a)
+Finalmente, las [publicaciones "canario"](https://blog.getambassador.io/cloud-native-patterns-canary-release-1cb8f82d371a)
 siguen una técnica similar: sacar una versión nueva de un
 microservicio o producto, de forma que sólo una pequeña parte de
 usuarios la use.
@@ -134,7 +132,22 @@ blue/green y canary; las herramientas que se usan son, en muchos
 casos, las mismas que hay para API gateway, tales como [Istio](https://istio.io/). Por
 ejemplo, [este tutorial describe cómo usar Istio para despliegues Blue/Green](https://thenewstack.io/tutorial-blue-green-deployments-with-kubernetes-and-istio/).
 
+### Bibliotecas para tests A/B 
 
+Estos tests se pueden hacer también a nivel del propio servicio,
+usando bibliotecas como [`split`](https://github.com/splitrb/split),
+que dividirá automáticamente el tráfico entre diferentes versiones de
+una ruta o función. Sin embargo, aunque puede resultar útil en
+desarrollo (y en la fase de tests de integración), el tener
+varias versiones etiquetadas en el sistema de control de fuentes es
+más fácil de gestionar.
+
+Adicionalmente, bibliotecas como
+[`sixpack`](http://sixpack.seatgeek.com/) o
+[`abba`](https://github.com/maccman/abba). Este último se integra
+fácilmente con Heroku, por ejemplo.
+
+> Por alguna razón, todas estas herramientas están escritas en Ruby. 
 
 ## Actividad
 
