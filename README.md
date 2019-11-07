@@ -17,10 +17,46 @@ un badge para el repo donde se haya cumplido todo (y dependiendo del
 nivel en el que se haya alcanzado, se hará también una recomendación
 en LinkedIn o donde se solicite). 
 
-## Posibles proyectos
+## Proyectos realizados
 
 Los proyectos en elaboración se
 enlazan [en esta página](proyectos). 
+
+
+## Planificación del curso
+
+* Historias de usuario, requisitos funcionales, *personas* y todo lo que necesitamos para empezar.
+  * Uso de issues/hitos en el desarrollo basado en test.
+  * [Material](temas/diseño.md).
+  
+* Preparando tu aplicación para testear: herramientas de construcción,
+  desarrollo por capas, *separation of concerns*, inversión de
+  dependencias, *objetos de test*, aserciones, marcos de pruebas,
+  fases del test.
+  * [Material](temas/test-unitarios.md).
+
+* Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
+  * *Hooks* de git y cómo usarlos para testear todo el tiempo.
+  * Diferentes sistemas de integración continua.
+  * Acelerando con Dockerfiles.
+  * [Material](temas/CI.md).
+
+* Tests de cobertura y por qué son importantes.
+  * [Material](temas/cobertura.md).
+  
+* Tests funcionales/de integración
+  * Cómo testear microservicios y sistemas basados en tareas.
+  * BDD y algunos frameworks.
+  * Mocks
+  * [Material](temas/integración.md)
+  
+* Concluyendo
+  * Cobertura de tests y como gestionarla.
+  * Tests de front-end
+  * Tests de regresión.
+  * [Material](temas/qa.md)
+
+## Proyectos inicialmente propuestos
 
 * [DEIIT-bot](proyectos/deiit-bot.md), bot para los apuntes de DEIIT.
 * [Conversaciones](proyectos/conversaciones.md), escucha y analiza.
@@ -41,36 +77,6 @@ Se puede
 usar
 [esta plantilla para los proyectos](https://github.com/JJ/curso-qa-template). 
 
-## Planificación del curso
-
-* Historias de usuario, requisitos funcionales, *personas* y todo lo que necesitamos para empezar.
-  * Uso de issues/hitos en el desarrollo basado en test.
-  * [Material](temas/diseño.md).
-  
-* Preparando tu aplicación para testear: herramientas de construcción,
-  desarrollo por capas, *separation of concerns*, inversión de
-  dependencias, *objetos de test*, aserciones, marcos de pruebas,
-  fases del test.
-  * [Material](temas/test-unitarios.md).
-
-* Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
-  * *Hooks* de git y cómo usarlos para testear todo el tiempo.
-  * Diferentes sistemas de integración continua.
-  * Acelerando con Dockerfiles.
-  * [Material](temas/CI.md).
-  
-* Tests funcionales/de integración
-  * Cómo testear microservicios y sistemas basados en tareas.
-  * BDD y algunos frameworks.
-  * Mocks
-  * [Material](temas/integración.md)
-  
-* Concluyendo
-  * Cobertura de tests y como gestionarla.
-  * Tests de front-end
-  * Tests de regresión.
-  * [Material](temas/conclusiones.md)
-
 ## Lugar
 
 Aula de usos múltiples, 5ª planta de la [ETSIIT](https://etsiit.ugr.es)
@@ -81,7 +87,7 @@ Presenciales, martes 29 a jueves 31 de octubre, martes 5 y jueves 7 de noviembre
 
 ## Título
 
-A los que superen el curso se les hará una recomendación en LinkedIn por parte del profesor.
+A los que superen todos los hitos y actividades planteados en el curso el curso se les hará una recomendación en LinkedIn por parte del profesor.
 
 ## Instrucciones de uso
 

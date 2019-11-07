@@ -32,7 +32,14 @@ La primera ejecuta los tests y genera un fichero de salida, y la segunda orden a
 
 ![Cobertura de los tests en la clase HitosIV](img/gocover.png)
 
-																															    En este caso, las  líneas no cubiertas lanzan errores en caso de que se encuentren algún problema. No hay que cubrir el 100% de las eventualidades (por ejemplo, generar un JSON erróneo a ver si salta la segunda), pero quizás la primera sí merece la pena que se cubra, así que se añade un test adicional, pero debemos [modificar ligeramente el código](https://stackoverflow.com/a/46841524/891440) para asegurar que sigue las mejores prácticas del lenguaje:
+En este caso, las  líneas no cubiertas lanzan errores en caso de que
+se encuentren algún problema. No hay que cubrir el 100% de las
+eventualidades (por ejemplo, generar un JSON erróneo a ver si salta la
+segunda), pero quizás la primera sí merece la pena que se cubra, así
+que se añade un test adicional, pero
+debemos
+[modificar ligeramente el código](https://stackoverflow.com/a/46841524/891440) para
+asegurar que sigue las mejores prácticas del lenguaje: 
 
 
 ![Nueva cobertura de los tests en la clase HitosIV](img/gocover-2.png)
