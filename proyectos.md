@@ -8,7 +8,8 @@
 | [QANotas](https://github.com/carlos-el/ProyectoCursoTDD-Notas) | 0.3.0 |
 | [API-Medioambiental](https://github.com/API-Medioambiental/ProyectoCursoTDD) | 0.4.0 |
 | [Analizador-de-Conversaciones](https://github.com/ETSIIT-analyzer/Analizador-de-conversaciones) | 0.5 |
-| [Programador de actividades](https://github.com/antmordhar/Programador-de-Actividades) | 0.3.1 |
+| [Programador de actividades](https://github.com/antmordhar/Programador-de-Actividades) | 0.4.0 |
 | [Geolocalizador Social](https://github.com/mati3/CursoTDD-GeolocalizadorSocial) | 0.4.0|
 | [Plataforma de trafico](https://github.com/Seminario-PGPI/Proyecto-Trafico) | 0.1.4|
 | [Porra de fútbol](https://github.com/Solano96/PorraDeFutbol) | 0.2.1 |
+
