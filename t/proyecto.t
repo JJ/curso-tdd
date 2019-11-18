@@ -8,6 +8,10 @@ use Term::ANSIColor qw(:constants);
 
 use v5.14; # For say
 
+unless ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
+  plan skip_all => "Check relevant only for PRs";
+}
+
 my $repo = Git->repository ( Directory => '.' );
 my $diff = $repo->command('diff','HEAD^1','HEAD');
 my $diff_regex = qr/a\/proyectos.md/;

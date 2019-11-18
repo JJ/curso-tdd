@@ -1,8 +1,9 @@
-use Test;
+use Test; # -*- mode: perl6 -*-
 
 use Project::Issue;
 use Project::Milestone;
 use Project;
+use JSON::Fast;
 
 constant $project-name = "Foo";
 my $issue-id = 1;
@@ -18,12 +19,23 @@ for 1..2 -> $m {
     }
     $p.new-milestone( $milestone );
     is( $p.milestones.keys.elems, $m, "Correct number of milestones added");
+    is( $p.percentage-completed(){$m}, 0.5, "Percentaje completed is correct")
 }
+
+my $summary = $p.completion-summary();
+isa-ok( $summary, List, "Returns a hash");
+isa-ok( $summary[0]<mean>, 0.5, "Returns correct average");
+
+my %data = $p.data();
+say to-json %data;
+isa-ok( %data, Hash, "Single data structure is a hash");
+is( %data<name>, $project-name, "Name is correct");
+is( %data<milestones>.elems, 2, "Correct number of milestones" );
 
 throws-like {
     $p.new-milestone(
             Project::Milestone.new( :project-name("Bar"), :milestone-id(33) )
             );
-}, X::TypeCheck::Binding::Parameter, "Can't add milestone of another project";
+}, X::Multi::NoMatch, "Can't add milestone of another project";
 
 done-testing;

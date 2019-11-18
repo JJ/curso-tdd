@@ -1,4 +1,9 @@
-use Test::Text qw(no_plan); # -*- mode: cperl -*-
+use Test::Text; # -*- mode: cperl -*-
+use Test::More;
+
+if ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
+  plan skip_all => "Check relevant only for push";
+}
 
 for my $dir (qw(temas proyectos) ) {
   my $tesxt = Test::Text->new($dir, ".", "Spanish", @_);

@@ -1,3 +1,4 @@
+
 # Hacia los tests unitarios
 
 ## Planteamiento
@@ -112,16 +113,42 @@ PASS
 ok  	_/home/jmerelo/Asignaturas/infraestructura-virtual/HitosIV	0.017s
 ```
 
-En vez de aserciones como funciones específicas, Go simplifica el interfaz de test haciendo que
-se devuelva un error (con `t.Error()`) cuando el test no pasa. Si
-todos funcionan, no hay ningún problema y se imprime `PASS` como se muestra arriba. Adicionalmente, `t.Log()`
+En vez de aserciones como funciones específicas, Go simplifica el
+interfaz de test haciendo que se devuelva un error (con `t.Error()`)
+cuando el test no pasa. Si todos funcionan, no hay ningún problema y
+se imprime `PASS` como se muestra arriba. Adicionalmente, `t.Log()`
 (siendo `t` una estructura de datos que se le tiene que pasar a todos
-los tests) se usa para mostrar algún mensaje sobre qué está ocurriendo en el test. En este caso, uno de los tests comprueba que efectivamente
-haya hitos en el fichero JSON que se ha pasado, y el segundo comprueba que el tipo que se devuelve cuando
-se solicita un hito es el correcto. Estos tests no están completos;
-generalmente hay que escribir una función de test para todas las
-funciones del módulo. Se muestran solo estos para ilustrar cómo
-funciona en un lenguaje determinado.
+los tests) se usa para mostrar algún mensaje sobre qué está ocurriendo
+en el test. En este caso, uno de los tests comprueba que efectivamente
+haya hitos en el fichero JSON que se ha pasado, y el segundo comprueba
+que el tipo que se devuelve cuando se solicita un hito es el
+correcto. 
+
+>Los tests que se muestran aquí no cubren necesariamente todas las funcionalidades de este módulo; en el repositorio sí están completos. Se
+>muestran solo estos para ilustrar cómo funciona en un lenguaje
+>determinado.
+
+El marco de test usado proporciona, en este caso, una serie de estructuras de datos que podemos usar para informar de los errores que se produzcan. La estructura `T`, por ejemplo, es la que se recibe como argumento en cada uno de los tests; tiene funciones como `t.Error` para indicar cuando las condiciones del test no se cumplen. Si se usa `ErrorF` se puede dar, como en otros marcos de test, cual es la salida deseada y la obtenida.
+
+```
+func TestNumHitos(t *testing.T) {
+	t.Log("Test Número Hitos")
+	var x uint = uint(CuantosHitos())
+	if x == 3 {
+		t.Log("El número de hitos es correcto")
+	} else {
+		t.Errorf("El número de hitos es incorrecto; esperábamos %d", 3)
+	}
+	var too_big uint = x + 3
+	_, e := Uno( too_big )
+	if e != nil {
+		t.Log("Devuelve error si es demasiado grande")
+	} else {
+		t.Error("No devuelve error y debería")
+	}
+
+}
+```
 
 > Adicionalmente,
 > [se pueden incluir ejemplos de salida que serán comprobados](https://golang.org/pkg/testing/#hdr-Examples) si
@@ -168,7 +195,6 @@ objeto, es decir, si no ha habido ningún error en la carga o creación
 del mismo, y `equal` comprueba que efectivamente la salida que da la
 función `as_string` es la esperada.
 
-
 El programa anterior ilustra la sintaxis, y puede formar parte de un
 conjunto de tests; se puede ejecutar directamente, pero para testearlo
 los lenguajes de programación usan un segundo nivel, el marco de
@@ -204,9 +230,9 @@ describe('Apuesta con Chai', function(){
 });
 ```
 
-Los únicos cambios son el usar `assert.ok` en vez de assert, y el usar
-el objeto `assert` de la biblioteca `chai`, en vez de usar el que hay
-por omisión. 
+Los únicos cambios son el usar `assert.ok` en vez de assert (que
+pertenece a Chai), y el objeto `assert` de la biblioteca `chai`, en
+vez de usar el que hay por omisión.
 
 Cada uno de ellos tendrá sus promotores y detractores, pero
 [Mocha](https://mochajs.org/), [Jasmine](https://jasmine.github.io/) y [Jest](https://github.com/facebook/jest)
@@ -239,13 +265,13 @@ describe('Crea', function(){
 });
 ```
 
-Mocha puede usar diferentes librerías de aserciones. En este caso hemos
-escogido la que ya habíamos usado, `assert`. A bajo nivel, los tests
-que funcionen en este marco tendrán que usar una librería de este
-tipo, porque mocha funciona a un nivel superior, con funciones como
-`it` y `describe` que describe, a diferentes niveles, el
-comportamiento que queremos comprobar. Se ejecuta con `mocha` y
-el resultado de ejecutarlo será:
+La mayoría de los marcos de tests, y en particular Mocha, pueden usar
+diferentes librerías de aserciones. En este caso hemos escogido la que
+ya habíamos usado, `assert`. A bajo nivel, los tests que funcionen en
+este marco tendrán que usar una librería de este tipo, porque Mocha
+funciona a un nivel superior, con funciones como `it` y `describe` que
+hacen explícito, a diferentes niveles, el comportamiento que queremos
+comprobar. Se ejecuta con `mocha` y el resultado de ejecutarlo será:
 
 
 ```
@@ -372,7 +398,7 @@ lenguajes son:
   opciones de configuración. De hecho, es el que se usa en el test de
   la asignatura.
   
-* JUnit es el más cercano en Java.
+* [JUnit](https://junit.org/junit5/) es el más cercano en Java.
 
 * Raku usa prove6, pero también zef si se trata de usarlo sobre un módulo. 
 
@@ -436,7 +462,9 @@ correcta si no hemos añadido ningún issue al hito.
 
 ## Fases de test: *setup*, *tests*, *teardown*.
 
-En las tres fases del proceso de prueba:
+En las fases del proceso de prueba:
+
+* Planificación: en esta fase se decide cuantos tests se van a ejecutar.
 
 * Durante el *setup* se crearán los objetos y cargarán los ficheros
   necesarios hasta poner nuestro objeto en un estado en el que se
@@ -453,7 +481,41 @@ En las tres fases del proceso de prueba:
   
 
 Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
-para llevar a cabo las diferentes fases. En muchos de ellos se tratará
+               para llevar a cabo las diferentes fases. Normalmente es
+               parte de la biblioteca de aserciones decidir si una
+               parte del código se va a ejecutar o no. Por ejemplo, en
+               los tests en Perl que se pasan en este mismo
+               repositorio, nos interesa ejecutar algunos sólo cuando
+               se trata de un `pull request`. Usamos esto:
+			   
+```
+# Carga bibliotecas...
+
+unless ( $ENV{'TRAVIS_PULL_REQUEST'} ) {
+  plan skip_all => "Check relevant only for PRs";
+}
+# Resto del programa
+```
+
+En Perl se usa la biblioteca de aserciones `Test::More`. Por omisión,
+se trabajará *sin plan* y los tests terminarán cuando se ejecute
+`done_testing`. Se le puede decir también cuantos tests de van a
+ejecutar; todo ello con la orden `plan`. Pero también se puede usar
+esta orden para indicarle, como aquí, `skip_all`, que se salte los
+tests a menos que (`unless`) Travis nos haya indicado (a través del
+valor de una variable de entorno) que se trata de un `pull request`.
+
+En la fase de planificación se deben decidir cuantos tests se van a
+ejecutar. Aunque la respuesta obvia podría ser "todos", lo cierto es
+que los tests van a variar dependiendo del entorno. Para empezar, hay
+que decidir si va a haber algún plan (es decir, si sabemos de antemano
+el número de tests) o simplemente se van a ejecutar a continuación
+todos los tests que nos encontremos.
+
+
+Tras la planificación, que es implícita en muchos marcos de tests y
+bibliotecas, se ejecutará la fase de setup. Esta fase, en muchos
+casos, se tratará
 simplemente de las primeras órdenes de un script para organizarlo, y
 los últimos para cerrar las pruebas. 
 
@@ -494,6 +556,66 @@ tests. De hecho, el resto de los tests tenemos que llamarlos
 explícitamente (con `m.Run`) y también que salir explícitamente del
 `main` usando `os.Exit`, que devolverá el código de salida adecuado.
 
+### Ejemplo en TypeScript
+
+[TypeScript](https://www.typescriptlang.org/) es un lenguaje con
+tipado gradual, que funciona también de forma asíncrona. Podemos
+programar el issue que hemos usado anteriormente de [esta forma](https://github.com/JJ/ts-milestones):
+
+```
+export enum State { Open,Closed };
+export class Issue {
+    private state: State = State.Open;
+    private project_name: string;
+    private id: number;
+    
+    constructor(project_name: string, id: number) {
+        this.project_name = project_name;
+	this.id = id;
+    }
+    
+    show_state() {
+	return this.state;
+    }
+    
+    close() {
+        this.state = State.Closed;
+    }
+}
+```
+
+Aparte de usar `this` para referirse a la instancia de la clase, el
+resto es similar a otros lenguajes. Lo podemos testear usando el marco
+de pruebas `jest`
+
+```
+import { Issue, State } from '../Project';
+
+var data: Issue;
+
+beforeAll(() => {
+    data = new Issue("Foo",1);
+});
+
+
+
+test("all", () => {
+    expect(  data.show_state() ).toBe( State.Open );
+    data.close();
+    expect(  data.show_state() ).toBe( State.Closed );
+});
+```
+
+`jest` usa una serie de aserciones basadas en el comportamiento, y
+[fases de setup](https://jestjs.io/docs/en/setup-teardown) generales (con `beforeAll`), con otras adicionales
+antes y después de cada uno de los tests. Esas funciones devolverán
+promesas; hasta que no se cumplan no se procederá a llevar a cabo el
+resto de los tests (en este caso) o los tests correspondientes. En
+este caso, sin embargo, es una simple inicialización de un dato, que
+se va a ejecutar siempre. Como los tests se llevan a cabo de forma
+asíncrona, sin embargo, de esta forma nos aseguramos que cuando se
+ejecute el código de los mismos esté presente. 
+
 ## Herramientas de construcción
 
 Las herramientas de construcción o ejecutores de tareas permiten usar, como
@@ -523,7 +645,7 @@ Las genéricas lanzan scripts, generalmente del shell, mientras que las
 específicas usan el propio lenguaje de programación, con lo que es más fácil que
  se adapten a diferentes plataformas.
 
-Muchas herramientas usan un Domain Specific Language, un DSL que permite
+Muchas herramientas usan un *Domain Specific Language*, un DSL que permite
 expresar los diferentes *targets* y las acciones necesarias para alcanzarlos o,
 en el caso declarativo, como saber que están en ese estado. `make`, por ejemplo,
  tiene el suyo, y otras herramientas como `sbt` también; algunas como Gradle
@@ -640,6 +762,8 @@ nueva versión del issue cerrado.
 Para testear, simplemente ejecutamos `mix test`; Elixir es un tipo de lenguaje
 que usa una herramienta de construcción estándar como Node. El repositorio está
 en [GitHub](https://github.com/JJ/elixir-gh-projects).
+
+
 
 ## Actividad
 

@@ -4,15 +4,19 @@
   "version": "0.1",
   "perl": "6.*",
   "auth": "github:JJ",
-  "depends": [ "sake"],
+  "depends": [
+    "sake",
+    "Stats",
+    "JSON::Fast"
+  ],
   "build-depends": [],
   "test-depends": [],
   "provides": {
 	"Project::Issue"     : "lib/Project/Issue.pm6",
-    "Project::Milestone" : "lib/Project/Milestone.pm6"
-
+    "Project::Milestone" : "lib/Project/Milestone.pm6",
+    "Project"            : "lib/Project.pm6"
   },
-  "resources": [],
+  "resources": [ "data.json"],
   "license": "Artistic-2.0",
   "source-url": "https://github.com/JJ/curso-tdd"
 }

@@ -128,7 +128,152 @@ control de calidad en el desarrollo. Y, finalmente, porque la
 integración continua y los tests correspondientes son un paso esencial
 para el despliegue continuo, que se verá más adelante.
 
-## Acelerando usando contenedores Docker
+## Acelerando los tests
+
+Es conveniente que los tests tarden la mínima cantidad de tiempo
+posible, para que se pueda comprobar que existe algún error sobre la
+marcha y se pueda corregir. Sin embargo, cualquier test va a necesitar
+instalar una serie de prerrequisitos antes de ejecutarlos, así que la
+descarga e instalación de paquetes y módulos, y en algunos casos
+incluso la compilación de algún prerrequisito necesario, va a tardar
+algún tiempo. Acelerar los tests hasta que tarden menos (incluso
+bastante menos) de un minuto es esencial para un trabajo fluido.
+
+Hay muchas formas de conseguir que estos tests vayan más rápidamente,
+que pasan generalmente por crear un testeador específico con todo lo
+necesario para ejecutarse, y que no haya más que instalarlo. Veamos
+varias opciones.
+
+### *Packing*
+
+Muchos lenguajes tienen programas que permiten *empaquetar* todos los
+fuentes necesarios para un programa en un solo fichero, con lo que
+solo con la descarga de ese fichero, o su inclusión en el repositorio,
+tendríamos todo lo necesario para testear (o para lo que se quiera la
+aplicación). Por ejemplo, Perl
+tiene [`FatPacker`](https://metacpan.org/pod/App::FatPacker), Python
+tiene [`wheels`](https://pythonwheels.com/) y node
+tiene [WebPack](https://webpack.js.org/).
+
+Esto es lo que uso, por ejemplo, en la asignatura CC:
+
+```
+fatpack pack src/check-hitos.t > t/check-hitos.t
+```
+
+El fichero resultante, que incluye todas las bibliotecas necesarias,
+está ya en el repositorio y se ejecuta directamente sin necesidad de
+usar CPAN (el sistema de instalación de módulos en Perl) para instalar
+los módulos necesarios.
+
+Esto solo funciona en caso de que todas las dependencias sean
+bibliotecas del lenguaje. Si no es así, hay que usar otro sistema.
+
+### Contenedores Docker
+
+Crear un contenedor Docker para testear nunca es una mala idea. Para
+empezar, muchos sistemas de CI (como CircleCI) directamente usan este
+tipo de herramientas y lo primero que hay que hacer para configurarlo
+es elegir el contenedor Docker sobre el que se va a basar la
+prueba. Un contenedor [Docker](https://www.docker.com/), en una sola
+imagen, tiene toda la infraestructura necesaria para ejecutar o
+testear una aplicación. Además, el mismo contenedor que se usa para
+hacer las pruebas se puede usar también (o su precursor) para
+desplegar la aplicación.
+
+Por ejemplo, usaremos el contenedor generado por este Dockerfile para
+testear los proyectos (y ortografía) en este curso:
+
+```Dockerfile
+FROM jjmerelo/p6-test-text
+LABEL version="1.0" maintainer="JJ Merelo <jjmerelo@GMail.com>" perl5version="5.22"
+
+ADD cpanfile .
+RUN apt-get update && apt-get install -y git
+RUN cpanm --installdeps .
+
+VOLUME /test
+WORKDIR /test
+
+ENTRYPOINT cp /*.dic /*.aff /test && prove -I/usr/lib -c
+```
+
+Si el fichero es compacto, es porque previamente se ha generado un
+contenedor anterior, `jjmerelo/p6-test-text`, que incluye el módulo
+que comprueba la ortografía; lo que hay que añadir solamente son lo
+necesario para testera en sí los proyectos enviados, que es el test
+adicional que se lleva a cabo. Estos proyectos necesitarán una
+instalación de `git`, y también una serie de módulos de Perl
+adicionales; las dos sentencias `RUN` llevan a cabo esa labor. 
+
+El `ENTRYPOINT` es lo que se va a ejecutar; tras copiar una serie de
+ficheros que son necesarios en el mismo directorio donde se va a
+ejecutar, llama al marco de test de Perl, llamado `prove`. 
+
+A diferencia de los paquetes anteriores, que van en el repositorio,
+normalmente los Dockerfiles no se ejecutan directamente (salvo en
+GitHub Actions). Habrá que subirlos al Docker Hub, pero es
+gratuito. Travis (o el sistema que sea) lo descargará de ese registro
+en la fase correspondiente antes de aplicarlo a tu repositorio.
+
+> Esa descarga puede tardar también algunos segundos, porque un
+> contenedor puede tener varios cientos de megas, dependiendo de la
+> base sobre la que lo construyas. Hacer un
+> contenedor lo más ligero posible es también conveniente.
+
+Esto se incluirá en la configuración de Travis, que además se
+simplifica considerablemente:
+
+```yaml
+language:
+  - minimal
+
+install:
+  - docker pull jjmerelo/p5-devqagrx:latest
+  - docker images
+
+script: 
+  - docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/p5-devqagrx:latest
+```
+
+Esta configuración simplemente descarga de Docker Hub durante la fase
+de instalación y lo ejecuta durante la fase `script` en la que se
+llevan a cabo los tests.
+
+> Como desventaja, con Docker hay que preparar contenedores diferentes
+> para probar versiones diferentes del lenguaje; si este paso es
+> imprescindible, mejor entonces usar algún "packer" para empaquetar
+> los tests.
+
+### Otras formas de acelerar el sistema de integración continua
+
+Travis y el resto de los sistemas de CI suelen tener una forma rica de
+configurar la construcción y los tests. Por ejemplo, se pueden asignar
+diferentes valores a variables de entorno desde él, y hacer que se
+ejecuten diferentes tests dependiendo del valor de las mismas. Usando
+una característica llamada *build matrix*, se puede hacer que estos
+diferentes valores se ejecuten en paralelo, o al menos empiecen antes
+de que el anterior acabe. También se pueden hacer tests diferentes en
+diferentes sistemas de CI; cada uno lo lanzará cuando deba, y todos se
+estarán ejecutando simultáneamente.
+
+Otras formas de acelerar:
+
+* Usar una [caché](https://docs.travis-ci.com/user/caching/). Muchos
+  sistemas de CI te permiten almacenar los módulos instalados o los
+  programas que se hayan compilado, de forma que no haya que hacerlo
+  de nuevo.
+  
+* Los propios marcos de test tienen opciones para ejecutar diferentes
+  conjuntos de test en paralelo; incluso make permite hacerlo. Hay que
+  buscar la forma de activarlo para que sea efectivo.
 
 ## Actividad
 
+Añadir al repositorio que se ha hecho en el hito anterior integración
+continua con Travis, al menos, y adicionalmente con cualquier otro
+sistema.
+
+El repositorio tendrá que incluir el badge de Travis y este tendrá que
+estar en verde para aceptar el PR. El fichero de configuración de
+Travis tendrá que estar también presente, como es natural.
