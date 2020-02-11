@@ -85,7 +85,7 @@ A los que superen todos los hitos y actividades planteados en el curso el curso 
 
 ## Inscripción
 
-Añade tu nick de GitHub y perfil de LinkedIn [a esta tabla](asistentes.md) mediante un *pull request*.
+Añade tu nick de GitHub y perfil de LinkedIn [a esta tabla](asistentes.md) mediante un *pull request*. La inscripción es gratuita y abierta a quien lo desee, pero los asistentes tendrán que traer su propio portátil y conexión a Internet (si no tienen acceso al WiFi de la universidad).
 
 ## Proyectos realizados
 
