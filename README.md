@@ -17,10 +17,6 @@ un badge para el repo donde se haya cumplido todo (y dependiendo del
 nivel en el que se haya alcanzado, se hará también una recomendación
 en LinkedIn o donde se solicite).
 
-## Proyectos realizados
-
-Los proyectos en elaboración se enlazarán en [en esta página](proyectos).
-
 
 ## Planificación del curso
 
@@ -86,6 +82,15 @@ Presenciales, martes 2 a viernes 6 de marzo, jueves y viernes 12 y 13 de marzo, 
 ## Título
 
 A los que superen todos los hitos y actividades planteados en el curso el curso se les hará una recomendación en LinkedIn por parte del profesor.
+
+## Inscripción
+
+Añade tu nick de GitHub y perfil de LinkedIn [a esta tabla](asistentes.md) mediante un *pull request*.
+
+## Proyectos realizados
+
+Los proyectos en elaboración se enlazarán en [en esta página](proyectos).
+
 
 ## Instrucciones de uso
 
