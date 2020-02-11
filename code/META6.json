@@ -11,10 +11,15 @@
   ],
   "build-depends": [],
   "test-depends": [],
-  "provides": {
-	"Project::Issue"     : "lib/Project/Issue.pm6",
-    "Project::Milestone" : "lib/Project/Milestone.pm6",
-    "Project"            : "lib/Project.pm6"
+    "provides": {
+	"Project::Data::JSON"     : "lib/Project/Data/JSON.pm6",
+	"Project::Data::Mock"     : "lib/Project/Data/Mock.pm6",
+	"Project::Dator"          : "lib/Project/Dator.pm6",
+	"Project::Stored"         : "lib/Project/Stored.pm6",
+	"Project::Issue"          : "lib/Project/Issue.pm6",
+	"Project::Milestone"      : "lib/Project/Milestone.pm6",
+	"X::Project::NoIssue"     : "lib/X/Project/NoIssue.pm6",
+	"Project"                 : "lib/Project.pm6"
   },
   "resources": [ "data.json"],
   "license": "Artistic-2.0",
