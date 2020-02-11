@@ -1,4 +1,4 @@
-# Curso de programación para QA
+# Curso de programación para QA -2ª edición
 
 [![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd) 💟 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master) [![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd)
 
@@ -19,8 +19,7 @@ en LinkedIn o donde se solicite).
 
 ## Proyectos realizados
 
-Los proyectos en elaboración se
-enlazan [en esta página](proyectos).
+Los proyectos en elaboración se enlazarán en [en esta página](proyectos).
 
 
 ## Planificación del curso
