@@ -81,7 +81,7 @@ Aula de usos múltiples, 5ª planta de la [ETSIIT](https://etsiit.ugr.es)
 
 ## Clases
 
-Presenciales, martes 29 a jueves 31 de octubre, martes 5 y jueves 7 de noviembre, 13:00 a 14:30.
+Presenciales, martes 2 a viernes 6 de marzo, jueves y viernes 12 y 13 de marzo, 13:30 a 15:00.
 
 ## Título
 
