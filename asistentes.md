@@ -2,4 +2,4 @@
 
 | Nick GitHub     | Perfil LinkedIn                                                        |
 |-----------------|------------------------------------------------------------------------|
-| Tu nick         | https://www.linkedin.com/in/mi-perfil                                  |
+| AlexMenor       | https://www.linkedin.com/in/alejandro-menor-molinero-a34595176/        |
