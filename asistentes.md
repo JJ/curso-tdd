@@ -8,4 +8,5 @@
 | agr8            | https://www.linkedin.com/in/ángela-gallardo-ruiz-8063551a3             |
 | migueorg        | https://www.linkedin.com/in/miguel-%C3%A1ngel-mart%C3%ADn-rodr%C3%ADguez-2893571a3/ |
 | jotape736       | https://www.linkedin.com/in/jose-pablo-m%C3%A1rquez-meg%C3%ADas-3942241a3/          |
+| alexrodriguezlop| https://www.linkedin.com/in/alexrodriguezlop/                           |
 
