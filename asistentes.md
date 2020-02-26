@@ -11,5 +11,5 @@
 | alexrodriguezlop| https://www.linkedin.com/in/alexrodriguezlop/                           |
 | antoniogamiz    | https://www.linkedin.com/in/antonio-gamiz/    |
 | carax24         | https://www.linkedin.com/in/jorge-aguilera-parejo-288ab11a2/            |
-
+| vperaltac       | https://www.linkedin.com/in/vperaltac/                                 |
 
