@@ -105,7 +105,7 @@ Las dependencias las especificaremos siempre usando código, y por tanto disting
 
 * El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Raku (6.*) que vamos a usar.
 
-* Dependencias externas. Lo mejor es usar una herramienta de construcción para que, con un simple `make install`, se puedan instalar todas. Usar un Dockerfile o una receta ansible también ayudará.
+* Dependencias externas. Lo mejor es usar una herramienta de construcción para que, con un simple `make install`, se puedan instalar todas. Usar un Dockerfile o una receta Ansible también ayudará; también existe un sistema general de especificación de dependencias para cualquier lenguaje llamado [Nix](https://nixos.org/nix/).
 
 * Dependencias del propio lenguaje. En este caso, un fichero de metadatos será suficiente para especificarlo. 
 
