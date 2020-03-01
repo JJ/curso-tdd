@@ -42,13 +42,13 @@ en LinkedIn o donde se solicite).
 * Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
-  * Mocks
-  * [Material](temas/integración.md)
+  * Mocks.
+  * [Material](temas/integración.md).
 
 * Tests adicionales
   * Tests de front-end
   * Tests de regresión.
-  * [Material](temas/qa.md)
+  * [Material](temas/qa.md).
 
 ## Proyectos inicialmente propuestos
 
