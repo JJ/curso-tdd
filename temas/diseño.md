@@ -99,14 +99,42 @@ method state( --> IssueState ) { return $!state }
 Frente a todas las operaciones posibles, usamos solo las que debemos para este objeto en particular.
 
 > Todo el código de este curso irá en el subdirectorio
-> [`code`](../code) de este repositorio.
+> [`code`](../code) de este repositorio. En este caso en el subdirectorio `raku`. 
 
 En general, tendremos varias entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
 
-> Estamos hablando de TDD y estamos poniendo código antes de
-> especificar los tests. Si seguimos una metodología TDD estricta,
-> deberíamos especificar los tests antes del mismo. Este código, de
-> hecho, debería fallar antes de que se escriban los tests.
+Estamos hablando de TDD y estamos poniendo código antes de
+ especificar los tests. Si seguimos una metodología TDD estricta,
+ deberíamos especificar los tests antes del mismo. Este código, de
+hecho, debería fallar antes de que se escriban los tests. Así que
+vamos a aprovecharlo para introducir código de otro lenguaje, Python
+(en el subdirectorio [`ejemplos/python`](../ejemplos/python) escrito
+con este tipo de ideas en mente. El código muestra solamente las
+funciones que deseamos que esta entidad siga:
+                                         
+```
+class Project:
+
+    def newMilestone(self, milestone):
+        pass;
+
+    def milestones(self):
+        pass
+
+    def percentageCompleted(self):
+        pass
+
+    def completionSummary(self):
+        pass
+
+    def data(self):
+        pass
+
+    def projectName(self):
+        pass
+```
+
+
 
 ## 12 Factor
 
