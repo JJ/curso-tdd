@@ -133,7 +133,9 @@ class Project:
     def projectName(self):
         pass
 ```
-
+                                         
+En ese ejemplo las funciones sólo hacen `pass`. Los tests, por fuerza,
+no pasarán.
 
 
 ## 12 Factor
