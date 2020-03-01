@@ -98,29 +98,57 @@ method state( --> IssueState ) { return $!state }
 
 Frente a todas las operaciones posibles, usamos solo las que debemos para este objeto en particular.
 
-> Todo el código de este curso irá en el subdirectorio [`code`](../code)
+> Todo el código de este curso irá en el subdirectorio
+> [`code`](../code) de este repositorio.
 
-En general, tendremos muchas entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
+En general, tendremos varias entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
+
+> Estamos hablando de TDD y estamos poniendo código antes de
+> especificar los tests. Si seguimos una metodología TDD estricta,
+> deberíamos especificar los tests antes del mismo. Este código, de
+> hecho, debería fallar antes de que se escriban los tests.
 
 ## 12 Factor
 
-La metodología de los [12 factores](https://12factor.net/es/) se puede usar a continuación del diseño, para plantear toda la instrumentación necesaria para llevar a cabo el proyecto. Este tipo de metodología, además, está adaptada al uso de aplicaciones nativas en la nube porque se desarrolla simultáneamente la infraestructura, el código y los tests. Desde el punto de vista de la calidad, dos de esos factores, guardar la configuración en el entorno y declarar y aislar las dependencias contribuyen a que la aplicación sea más fácil de testear y desarrollar. 
+La metodología de los [12 factores](https://12factor.net/es/) se puede
+usar a continuación de la fase de diseño, para plantear toda la
+instrumentación necesaria para llevar a cabo el proyecto. Este tipo de
+metodología, además, está adaptada al uso de aplicaciones nativas en
+la nube porque en ella se propone desarrollar simultáneamente la
+infraestructura, el código y los tests. Desde el punto de vista de la
+calidad, dos de esos factores, guardar la configuración en el entorno
+y declarar y aislar las dependencias contribuyen a que la aplicación
+sea más fácil de testear y desarrollar. Esto lo podemos hacer antes de
+aplicar otra metodología de diseño, que veremos a continuación.
 
 ### Ejemplo
 
-En el caso de nuestra aplicación, por lo pronto, no tenemos más dependencia que el lenguaje de programación que vamos a usar, Raku. Más adelante tendremos que especificar el resto de las dependencias, pero mientras tanto, en el fichero `META6.json` se especifican todos los módulos de los que esta aplicación va a depender.
+En el caso de nuestra aplicación, por lo pronto, no tenemos más
+dependencia que el lenguaje de programación que vamos a usar,
+Raku. Más adelante tendremos que especificar el resto de las
+dependencias, pero mientras tanto, en el fichero `META6.json`, que es
+el fichero de metadatos para distribuciones en Raku, bibliotecas o
+aplicaciones, se
+especifican todos los módulos de los que esta aplicación va a
+depender. 
 
-Las dependencias las especificaremos siempre usando código, y por tanto distinguiremos entre varios tipos
+Las dependencias las especificaremos siempre usando código (y bajo
+control de versiones), y por tanto distinguiremos entre varios tipos
 
 * El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Raku (6.*) que vamos a usar.
 
 * Dependencias externas. Lo mejor es usar una herramienta de construcción para que, con un simple `make install`, se puedan instalar todas. Usar un Dockerfile o una receta Ansible también ayudará; también existe un sistema general de especificación de dependencias para cualquier lenguaje llamado [Nix](https://nixos.org/nix/).
 
-* Dependencias del propio lenguaje. En este caso, un fichero de metadatos será suficiente para especificarlo. 
+* Dependencias del propio lenguaje. En este caso, un fichero de
+  metadatos será suficiente para especificarlo. 
 
 ## SOLID
 
-Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID) constituyen también una metodología de desarrollo de software que encaja bien con las metodologías anteriores. Pero desde nuestro punto de vista nos interesan dos especialmente:
+Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID)
+constituyen también una metodología de desarrollo de software que
+encaja bien con las metodologías usadas en las fases anteriores. Pero
+desde nuestro punto de vista nos interesan dos especialmente, para el
+diseño completo de la arquitectura de la aplicación:
 
 * [Principio de la responsabilidad única](https://en.wikipedia.org/wiki/Single_responsibility_principle): las *entidades* de las que hablamos anteriormente tienen un contexto autónomo, y por tanto las programaremos en una clase, grupo de clases y eventualmente microservicio que se encargue exclusivamente de una sola entidad. Este principio se resume en que "debería haber una sola razón para cambiar una entidad": diferentes razones, diferentes responsabilidades.
 
@@ -150,14 +178,17 @@ proto method issues( | ) { * }
 multi method issues() { return %!issues }
 multi method issues( IssueState $state ) {
     return %!issues.grep: *.value.state eq $state
-}                                         
+}
 ```
 
 La única responsabilidad de esta clase es encargarse de los hitos, y operaciones agregadas sobre ellos. Si hay que calcular el número de hitos abiertos, delega en el propio issue, que sabe si está abierto o no. La clase se encargará de albergar los issue y darnos los issue en un estado determinado.
 
 En este código, además, se usan todas las buenas prácticas para que sea lo más compacto posible, y es (si conoces el lenguaje) auto-descrito. Por ejemplo, se usa un solo nombre para recuperar los issues y *dispatch* múltiple para seleccionar lo que se llama, o se capturan los posibles errores de ejecución en la propia signatura del método, en vez de usar un detector. 
 
-> Hay una posible ambigüedad que estamos resolviendo por las bravas: si hay un issue con un número y se vuelve a asignar, el nuevo sustituye al viejo. Siempre que quede claro y esté testeado, no tiene por qué haber problema.
+> Hay una posible ambigüedad que estamos resolviendo por las bravas:
+> si hay un issue con un número y se vuelve a asignar, el nuevo
+> sustituye al viejo. Siempre que quede claro y esté testeado, no
+> tiene por qué haber problema. 
 
 En este caso no estamos usando ningún sistema de almacenamiento, pero estamos desacoplando el modelo del sistema real. A un nivel superior tendremos que introducir el sistema que decida de dónde se leen esos issues e hitos.
 
