@@ -99,11 +99,11 @@ La metodología de los [12 factores](https://12factor.net/es/) se puede usar a c
 
 ### Ejemplo
 
-En el caso de nuestra aplicación, por lo pronto, no tenemos más dependencia que el lenguaje de programación que vamos a usar, Perl 6. Más adelante tendremos que especificar el resto de las dependencias, pero mientras tanto, en el fichero `META6.json` se especifican todos los módulos de los que esta aplicación va a depender.
+En el caso de nuestra aplicación, por lo pronto, no tenemos más dependencia que el lenguaje de programación que vamos a usar, Raku. Más adelante tendremos que especificar el resto de las dependencias, pero mientras tanto, en el fichero `META6.json` se especifican todos los módulos de los que esta aplicación va a depender.
 
 Las dependencias las especificaremos siempre usando código, y por tanto distinguiremos entre varios tipos
 
-* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Perl 6 (6.*) que vamos a usar.
+* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Raku (6.*) que vamos a usar.
 
 * Dependencias externas. Lo mejor es usar una herramienta de construcción para que, con un simple `make install`, se puedan instalar todas. Usar un Dockerfile o una receta ansible también ayudará.
 
