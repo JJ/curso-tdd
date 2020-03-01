@@ -19,7 +19,7 @@ una enumeración de los frameworks disponibles para hacer tests.
 
 ## Al final de esta sesión
 
-Los estudiantes sabrán como plantear una arquitetura básica de aplicación a partir de sus
+Los estudiantes sabrán como plantear una arquitectura básica de aplicación a partir de sus
 especificaciones y comenzar la implementación de forma que hacer pruebas sobre  esas
 especificaciones sea sencillo y directo. También sabrán como plasmar
 en plataformas de desarrollo colaborativo estos requisitos para llevar
