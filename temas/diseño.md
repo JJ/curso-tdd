@@ -23,7 +23,7 @@ Los estudiantes sabrán como plantear una arquitectura básica de aplicación a 
 especificaciones y comenzar la implementación de forma que hacer pruebas sobre  esas
 especificaciones sea sencillo y directo. También sabrán como plasmar
 en plataformas de desarrollo colaborativo estos requisitos para llevar
-a cabo el desarrollo de la aplicación. 
+a cabo el desarrollo de la aplicación.
 
 ## Criterio de aceptación
 
