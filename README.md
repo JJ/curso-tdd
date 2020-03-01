@@ -81,7 +81,7 @@ Presenciales, martes 2 a viernes 6 de marzo, jueves y viernes 12 y 13 de marzo, 
 
 ## Título
 
-A los que superen todos los hitos y actividades planteados en el curso el curso se les hará una recomendación en LinkedIn por parte del profesor.
+A los que superen todos los hitos y actividades planteados en el curso se les hará una recomendación en LinkedIn por parte del profesor.
 
 ## Inscripción
 

@@ -33,6 +33,8 @@ El proyecto tendrá una serie de hitos e issues creados
 * Todos los commits se referirán a un issue.
 * Los issues se habrán cerrado siempre con un commit.
 
+Con esto se probará que se están siguiendo los principios de diseño desarrollando a partir de casos de uso.
+
 ## Diseño dirigido por dominio
 
 Una vez decidido el foco principal del proyecto, el diseño debe
@@ -40,7 +42,7 @@ descender hasta un nivel en el que pueda ser abordable mediante la
 programación del mismo. "Divide y vencerás" nos permite trabajar con
 entidades que son autónomas entre sí, y que se pueden programar y
 testear de forma independiente. Una de las técnicas más conocidas es
-el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven_design) 
+el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
 
 Aunque, como todas las tecnologías de programación, es compleja en
 vocabulario y metodología, lo principal es que se deben de crear
@@ -52,12 +54,15 @@ calidad del producto resultante.
 
 Los dos conceptos principales, desde el punto de vista de la
 programación, son el de *entidad* y el de *objeto-valor*. Una entidad
-mantiene su identidad a lo largo del ciclo de vida; in objeto-valor es
+mantiene su identidad a lo largo del ciclo de vida; un objeto-valor es
 simplemente un valor asignado a un atributo. Los *agregados*
 integrarán y encapsularán una serie de objetos, creando un API común
 para todos ellos.
 
-El primer paso para entender cuales son las diferentes entidades y objetos-valor es crear una serie de *casos de uso* o *historias de usuario* que nos aquilaten el dominio del problema y nos permitan trabajar con él.
+El primer paso para entender cuales son las diferentes entidades y
+objetos-valor en nuestro problema es crear una serie de *casos de uso*
+o *historias de usuario* que nos aquilaten el dominio del problema y
+nos permitan trabajar con él. 
 
 ### Ejemplo
 
@@ -67,9 +72,13 @@ Vamos a ver qué historias de usuario saldrán de aquí:
 
 * El usuario querrá estar informado en todo momento del estado de cada uno de los proyectos.
 
-Realmente el resto son temas de presentación. Lo importante es que tenemos una entidad, el *proyecto*. Cada proyecto tiene una identidad propia, es decir que será un objeto que irá mutando de estado a lo largo del tiempo. El *agregado* integrará en un solo API acceso al estado de todos los proyectos, y el resto (hitos e *issues*) serán objetos-valor, sin ningún tipo de existencia fuera del contexto de un proyecto. Tendremos, por lo tanto, una sola entidad, la clase `Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases, pero no existen si no es dentro del contexto de un proyecto, por lo que los mantendremos así.
+Realmente el resto son temas de presentación. Lo importante es que
+tenemos una entidad, el *proyecto*. Cada proyecto tiene identidad
+propia, es decir que será un solo objeto que irá mutando de estado a lo largo del tiempo. El *agregado* integrará en un solo API acceso al estado de todos los proyectos, y el resto (hitos e *issues*) serán objetos-valor, sin ningún tipo de existencia fuera del contexto de un proyecto. Tendremos, por lo tanto, una sola entidad, la clase `Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases, pero no existen si no es dentro del contexto de un proyecto, por lo que los mantendremos así.
 
-¿Cumple esta entidad nuestra historia de usuario? En principio sí, pero evidentemente se puede evolucionar durante el desarrollo de la aplicación.
+¿Cumple esta entidad nuestra historia de usuario? En principio sí,
+pero evidentemente se puede evolucionar durante el desarrollo de la
+aplicación esta historia. Lo importante es que, inicialmente, lo cumpla.
 
 Por ejemplo, un `Issue` puede ser así:
 
