@@ -2,3 +2,4 @@
 *.pdf
 .idea
 .precomp
+__pycache__
