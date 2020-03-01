@@ -1,25 +1,27 @@
-# Diseño de una aplicación
+# Calidad en un aplicación desde el diseño.
 
 
 ## Planteamiento
 
+En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la capacidad del mismo se seguir (o exceder) las especificaciones y las expectativas de los usuarios del mismo. 
+
 En general, la calidad es un proceso, y no simplemente una
-característica que se añade en un momento determinado al producto. El
+característica que se añade en un momento determinado al producto. Por eso el
 producto, en nuestro caso el software, debe estar diseñado y pensado
 desde el principio para asegurar que funciona y que responde a todos
 los requisitos funcionales y de otro tipo que se hayan planteado.
 
 Por eso, en un curso principalmente dedicado al diseño de tests se
 debe partir del planteamiento de la propia 
-aplicación o biblioteca, porque se realizan pruebas sobre las
-especificaciones de la aplicación, no se puede quedar en la sintaxis y
-una enumeración de los frameworks disponibles.
+aplicación, componente o biblioteca, porque se realizan pruebas sobre las
+especificaciones de la aplicación, y no se puede quedar en la sintaxis y
+una enumeración de los frameworks disponibles para hacer tests.
 
 ## Al final de esta sesión
 
-Los estudiantes sabrán como plantear una aplicación a partir de sus
-especificaciones y comenzar la implementación de forma que probar estas
-especificaciones sea sencilla y directa. También sabrán como plasmar
+Los estudiantes sabrán como plantear una arquitetura básica de aplicación a partir de sus
+especificaciones y comenzar la implementación de forma que hacer pruebas sobre  esas
+especificaciones sea sencillo y directo. También sabrán como plasmar
 en plataformas de desarrollo colaborativo estos requisitos para llevar
 a cabo el desarrollo de la aplicación. 
 
@@ -71,7 +73,7 @@ Realmente el resto son temas de presentación. Lo importante es que tenemos una 
 
 Por ejemplo, un `Issue` puede ser así:
 
-```perl6
+```raku
 enum IssueState <Open Closed>;
 
 unit class Project::Issue;
@@ -87,7 +89,7 @@ method state( --> IssueState ) { return $!state }
 
 Frente a todas las operaciones posibles, usamos solo las que debemos para este objeto en particular.
 
-> Todo el código irá en el subdirectorio [`code`](../code)
+> Todo el código de este curso irá en el subdirectorio [`code`](../code)
 
 En general, tendremos muchas entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
 
