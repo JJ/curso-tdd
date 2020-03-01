@@ -1,4 +1,3 @@
-
 # Hacia los tests unitarios
 
 ## Planteamiento
@@ -7,7 +6,7 @@ Los lenguajes de programación modernos tienen todo un marco de utilidades y bib
 
 ## Al final de esta sesión
 
-El estudiante habrá programado los tests y los habrá lanzado desde un task runner específico para su lenguaje o genérico.
+El estudiante habrá programado los tests y los habrá lanzado desde un *task runner* específico para su lenguaje o genérico.
 
 ## Criterio de aceptación
 
