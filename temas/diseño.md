@@ -187,7 +187,10 @@ diseño completo de la arquitectura de la aplicación:
 
 ### Ejemplo
 
-Dividiremos las entidades en diferentes clases que tengan una responsabilidad única. La clase expuesta anteriormente se encargará solo y exclusivamente de los issues. Tendremos otra clase para los hitos, una como esta
+Dividiremos las entidades en diferentes clases que tengan una
+responsabilidad única. La clase expuesta anteriormente se encargará
+solo y exclusivamente de los issues. Tendremos otra clase para los
+hitos o *milestones*, una como esta
 
 ```perl6
 use Project::Issue;
@@ -211,16 +214,24 @@ multi method issues( IssueState $state ) {
 }
 ```
 
-La única responsabilidad de esta clase es encargarse de los hitos, y operaciones agregadas sobre ellos. Si hay que calcular el número de hitos abiertos, delega en el propio issue, que sabe si está abierto o no. La clase se encargará de albergar los issue y darnos los issue en un estado determinado.
+La única responsabilidad de esta clase es encargarse de los hitos, y
+operaciones agregadas sobre ellos. Si hay que calcular el número de
+hitos abiertos, delega en el propio issue, que sabe si está abierto o
+no. La clase se encargará de albergar los issues y darnos los issue en
+un estado determinado.
 
 En este código, además, se usan todas las buenas prácticas para que sea lo más compacto posible, y es (si conoces el lenguaje) auto-descrito. Por ejemplo, se usa un solo nombre para recuperar los issues y *dispatch* múltiple para seleccionar lo que se llama, o se capturan los posibles errores de ejecución en la propia signatura del método, en vez de usar un detector. 
 
 > Hay una posible ambigüedad que estamos resolviendo por las bravas:
 > si hay un issue con un número y se vuelve a asignar, el nuevo
 > sustituye al viejo. Siempre que quede claro y esté testeado, no
-> tiene por qué haber problema. 
+> tiene por qué haber problema.
 
-En este caso no estamos usando ningún sistema de almacenamiento, pero estamos desacoplando el modelo del sistema real. A un nivel superior tendremos que introducir el sistema que decida de dónde se leen esos issues e hitos.
+En este caso no estamos usando ningún sistema de almacenamiento, pero
+estamos desacoplando el modelo del sistema real. A un nivel superior
+tendremos que introducir el sistema que decida de dónde se leen esos
+issues e hitos. Este desacoplamiento es esencial, y ayuda desde el
+diseño a hacer más adelante la inyección de dependencias.
 
 ## Buenas prácticas en el diseño de código.
 
@@ -231,20 +242,45 @@ errores, cambia la comprensión del problema... Un programa debe
 diseñarse de forma que no se rompa (totalmente) con este cambio.
 
 Por ejemplo, la [programación defensiva](https://en.wikipedia.org/wiki/Defensive_programming) trata
-de crear código más seguro.
+de crear código más seguro pero también que sea difícil de *romper*
+cuando siga evolucionando.
 
- En realidad la programación defensiva incluye todas las demás prácticas indicadas aquí, desde los principios de diseño, hasta la metodología SOLID, hasta otras, pero es más una filosofía que consiste en prevenir todos los casos, incluso los imposibles, en el diseño de la lógica de negocio o en los tests. Cosas como
+ En realidad la programación defensiva incluye todas las demás
+ prácticas indicadas aquí, desde los principios de diseño, hasta la
+ metodología SOLID, hasta otras, pero es más una filosofía que
+ consiste en prevenir todos los casos, incluso los imposibles, en el
+ diseño de la lógica de negocio o en los tests. Cosas como 
 
 * ¿Funcionará si Internet no está conectada?
 * ¿Qué pasa si no hay acceso a almacenamiento permanente?
 * Si uso una constante en varios sitios, ¿qué pasa si varían las circunstancias?
 
-Como la programación defensiva es más una filosofía, y una que deberíamos practicar a lo largo del curso, hay técnicas específicas que se suelen usar. Por ejemplo, [*clean code*](https://medium.com/@sheyiogundijo/clean-code-in-a-nutshell-ac7aa5f80a99) o código limpio. Una serie de reglas nos invitarán a usar nombres razonables para las variables, a no repetir código "que ya modificaremos luego" o que debería ser parametrizado en una sola pieza, pero lo más importante desde el punto de vista de la calidad son las siguientes reglas sobre funciones y tipos de datos.
+Como la programación defensiva es más una filosofía, y una que
+deberíamos practicar a lo largo del curso, hay técnicas específicas
+que se suelen usar. Por
+ejemplo,
+[*clean code*](https://medium.com/@sheyiogundijo/clean-code-in-a-nutshell-ac7aa5f80a99) o
+código limpio. Una serie de reglas nos invitarán a usar nombres
+razonables para las variables, a no repetir código "que ya
+modificaremos luego" o que debería ser parametrizado en una sola
+pieza, pero lo más importante desde el punto de vista de la calidad
+son las siguientes reglas sobre funciones y tipos de datos. 
 
-* Las funciones solo deberían hacer una cosa. Esto es importante desde el punto de vista de los tests unitarios: probar todas las opciones posibles de una función que hace un montón de cosas hace que los tests sean más complicados o incluso imposibles. Además, deberían tener un número limitado de argumentos, y deberían ser pequeñas, idealmente visibles en un solo pantallazo (aunque las pantallas de hoy en día pueden ser muy largas). Una regla es que deberían tener entre 5 y 15 líneas.
-> Evidentemente, aquí también incluimos bloques de código, que deberían de ser naturalmente más pequeños, y métodos de clases.
+* Las funciones solo deberían hacer una cosa. Esto es importante desde
+el punto de vista de los tests unitarios: probar todas las opciones
+posibles de una función que hace un montón de cosas hace que los tests
+sean más complicados o incluso imposibles. Además, deberían tener un
+número limitado de argumentos, y deberían ser pequeñas, idealmente
+visibles en un solo pantallazo (aunque las pantallas de hoy en día
+pueden ser muy largas). Una regla es que deberían tener entre 5 y 15
+líneas. 
+> Evidentemente, aquí también incluimos bloques de código (tales como
+> lambdas y cuerpos de bucles) que deberían de ser naturalmente más pequeños, y métodos de clases.
 
-* Los tipos de datos deberían usarse para lo que son. `False` es que no es verdadero, no que se ha producido un error dentro de una función. `-1` es el resultado de restar 1 a 0, no un índice imposible si no se encuentra algo dentro de una lista o cadena.
+* Los tipos de datos deberían usarse para lo que son. `False` es que
+  no es verdadero, no que se ha producido un error dentro de una
+  función. `-1` es el resultado de restar 1 a 0, no un índice
+  imposible si no se encuentra algo dentro de una lista o cadena. 
 
 
 ### Ejemplo
@@ -268,7 +304,8 @@ method milestones() { return %!milestones }
 
 Nos *defendemos* usando por ejemplo un hash (`%`) para almacenar los hitos, y también el nombre de proyecto, en un lenguaje en el que se usa tipado gradual, va a ser una cadena siempre, eliminando posibles ambigüedades con cualquier otro tipo de dato.
 
-Llegados a este punto, ya tenemos la entidad con la que vamos a trabajar. Un proyecto tiene hitos y estos issues, y cuando trabajemos, lo haremos de esta forma. Según nos lo pidan las historias de usuario iremos evolucionando, y en ese momento podrá ser necesario cambiar el modelo en función de lo que necesitemos.
+Llegados a este punto, ya tenemos la entidad con la que vamos a
+trabajar. Un proyecto tiene hitos y estos tienen issues, y cuando trabajemos, lo haremos de esta forma. Según nos lo pidan las historias de usuario iremos evolucionando, y en ese momento podrá ser necesario cambiar el modelo en función de lo que necesitemos.
 
 ## A programar
 
@@ -333,10 +370,15 @@ Adicionalmente, una historia de usuario especificará qué hay que hacer en caso
 ## Diseñar los errores también
 
 Los posibles errores y excepciones forman también parte del
-                                             vocabulario de una
-                                             clase. Tener errores
-                                             específicos ayuda a que se puedan manejar mejor y es una práctica *defensiva*: podemos usarla para especificar claramente qué problema hay. En el diseño de una aplicación se deben tratar de prever todos los posibles problemas que pueda haber, y crear y tirar excepciones adecuadas en cada caso. En general, si prevés (dentro de tus historias de usuario) que haya una situación en la que pueda haber algún estado inválido, crea una excepción para que se pueda usar en tal situación.
-											 
+vocabulario de una clase. Tener errores
+específicos ayuda a que se puedan manejar mejor y es una práctica
+*defensiva*: podemos usarla para especificar claramente qué problema
+hay. En el diseño de una aplicación se deben tratar de prever todos
+los posibles problemas que pueda haber, y crear y tirar excepciones
+adecuadas en cada caso. En general, si prevés (dentro de tus historias
+de usuario) que haya una situación en la que pueda haber algún estado
+inválido, crea una excepción para que se pueda usar en tal situación. 
+
 ### Ejemplo
 
 Raku permite la creación de [excepciones específicas](https://rakudocs.github.io/type/Exception). Generalmente sigue la convención de que se denominan con una `X` seguida del nombre de la clase a la que se apliquen. Por ejemplo, esta para nuestro proyecto se llamará `X::Proyecto::NoIssue` y la aplicaremos para el caso en que no haya ningún issue en un hito:
