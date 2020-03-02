@@ -32,6 +32,8 @@ El proyecto tendrá una serie de hitos e issues creados
 * Todos los issues estarán en un hito
 * Todos los commits se referirán a un issue.
 * Los issues se habrán cerrado siempre con un commit.
+* Deberá haber documentos de una o varias historias de usuario en un
+  directorio `HU`.
 
 Con esto se probará que se están siguiendo los principios de diseño desarrollando a partir de casos de uso.
 
@@ -111,7 +113,7 @@ vamos a aprovecharlo para introducir código de otro lenguaje, Python
 (en el subdirectorio [`ejemplos/python`](../ejemplos/python) escrito
 con este tipo de ideas en mente. El código muestra solamente las
 funciones que deseamos que esta entidad siga:
-                                         
+
 ```
 class Project:
 
@@ -167,7 +169,12 @@ control de versiones), y por tanto distinguiremos entre varios tipos
 
 * El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Raku (6.*) que vamos a usar.
 
-* Dependencias externas. Lo mejor es usar una herramienta de construcción para que, con un simple `make install`, se puedan instalar todas. Usar un Dockerfile o una receta Ansible también ayudará; también existe un sistema general de especificación de dependencias para cualquier lenguaje llamado [Nix](https://nixos.org/nix/).
+* Dependencias externas. Lo mejor es usar una herramienta de
+  construcción para que, con un simple `make install`, se puedan
+  instalar todas. Usar un Dockerfile o una receta Ansible también
+  ayudará; también existe un sistema general de especificación de
+  dependencias para cualquier lenguaje
+  llamado [Nix](https://nixos.org/nix/). 
 
 * Dependencias del propio lenguaje. En este caso, un fichero de
   metadatos será suficiente para especificarlo. 
@@ -302,10 +309,16 @@ method milestones() { return %!milestones }
 
 ```
 
-Nos *defendemos* usando por ejemplo un hash (`%`) para almacenar los hitos, y también el nombre de proyecto, en un lenguaje en el que se usa tipado gradual, va a ser una cadena siempre, eliminando posibles ambigüedades con cualquier otro tipo de dato.
+Nos *defendemos* usando por ejemplo un hash (`%`) para almacenar los
+hitos, y también el nombre de proyecto, en un lenguaje en el que se
+usa tipado gradual, va a ser una cadena siempre, eliminando posibles
+ambigüedades con cualquier otro tipo de dato.
 
 Llegados a este punto, ya tenemos la entidad con la que vamos a
-trabajar. Un proyecto tiene hitos y estos tienen issues, y cuando trabajemos, lo haremos de esta forma. Según nos lo pidan las historias de usuario iremos evolucionando, y en ese momento podrá ser necesario cambiar el modelo en función de lo que necesitemos.
+trabajar. Un proyecto tiene hitos y estos tienen issues, y cuando
+trabajemos, lo haremos de esta forma. Según nos lo pidan las historias
+de usuario iremos evolucionando, y en ese momento podrá ser necesario
+cambiar el modelo en función de lo que necesitemos. 
 
 ## A programar
 
@@ -349,7 +362,7 @@ podremos tener las siguientes historias de usuario.
 * **HU3**: Cuando se cierre un issue, se cambiará el estado del
   mismo. 
 * **HU4**: Si se borra un issue, se eliminará de la estructura de
-  datos.
+  datos que los contenga.
 * **HU5**: Si se solicita el porcentaje de terminación del hito, se
   responderá con una cantidad entre 0 y 100.
 
@@ -412,9 +425,12 @@ de diseño para el resto del curso.
 
 1. Elegir un proyecto o un equipo o las dos cosas a la vez, y crear un
    repositorio 
-   [usando esta plantilla](https://github.com/JJ/curso-qa-template). 
+   [usando esta plantilla](https://github.com/JJ/curso-qa-template),
+   que contiene ya algunos tests y el diseño general, así como la
+   licencia libre.
 	  
-2. Elaborar una cantidad aceptable de historias de usuario y crear a
+2. Elaborar una cantidad aceptable de historias de usuario como
+   documentos en un subdirectorio y crear a
    partir de ellas una serie de issues en GitHub. Los hitos deberán
    estar relacionados con estas historias de usuario.
    
