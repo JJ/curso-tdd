@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: jjmerelo/test-perl6
+      - image: jjmerelo/raku-alpine
     steps:
       - checkout
       - run:
