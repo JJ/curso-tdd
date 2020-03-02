@@ -462,3 +462,23 @@ de diseño para el resto del curso.
    
 3. Describir en el `README.md` el microservicio que se va a crear,
    explicando las tecnologías que se van a usar en el mismo.
+
+## Entrega
+
+Esta entrega se llevará a cabo, como el resto de las mismas, como un
+pull request al fichero de [proyectos](../proyectos.md), tras añadir
+en el *fork* propio el nombre del proyecto y un enlace al repo, así
+como la versión.
+
+Usaremos
+[versionado semántico para las entregas](https://semver.org/), donde
+el primer número será siempre el hito (comenzando por el hito
+0). Diferentes versiones cambiarán el *minor* (el segundo) o el
+tercero, si son algunos cambios que no alteran el API ni la
+funcionalidad. Cada entrega corresponderá a un *release*, y por tanto
+el respositorio tendrá que tener un tag 
+
+> Los tags se hacen con `git tag`, y para hacer push de los mismos se
+> tendrá que hacer, adicionalmente al normal, `git push --tags`
+
+que deberá corresponder exactamente a la versión que se haya enviado.
