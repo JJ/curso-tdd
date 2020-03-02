@@ -240,6 +240,32 @@ tendremos que introducir el sistema que decida de dónde se leen esos
 issues e hitos. Este desacoplamiento es esencial, y ayuda desde el
 diseño a hacer más adelante la inyección de dependencias.
 
+El principio de la responsabilidad única indica también que sólo debe
+haber
+[una razón para que un objeto de una clase cambie](http://geekswithblogs.net/TimothyK/archive/2014/06/11/dry-and-srp.aspx). Si
+un objeto de una clase está compuesto a su vez de objetos de otras
+clases, el que cambie uno de las clases incluidas va a provocar que el
+objeto de la clase anfitrión cambie sin saberlo, provocando *acción a
+distancia*. Además, el principio de inyección de dependencias vendría
+a decir que todos los objetos que cambien necesitarán su propia
+*inyección* para cambiar. Por eso todo esto junto implica que, en
+clases compuestas, va a haber objetos de una sola que se
+responsabilicen de cambiar el estado de los objetos: el objeto sólo va
+cambiar si se ejecuta una orden que haga que cambie, no si un objeto
+de otra clase ejecuta una orden.
+
+### Ejemplo
+
+En el caso del proyecto, sólo el objeto Project será responsable de
+cambiar el estado del resto de los proyectos, respaldando el cambio
+con una sóla fuente de verdad (Single Source of Truth, SSOT), que
+estará en el almacén de datos elegido. Sólo se inyectará la
+dependencia en la clase que vaya a mutar al resto de las
+clases. También esta única fuente de verdad estará relacionada con la
+única entidad de la que hablamos en domain driven design, al
+principio, mientras que el resto de las clases serán simplemente
+objetos valor.
+
 ## Buenas prácticas en el diseño de código.
 
 Durante el ciclo de vida del software, los programas van evolucionando
