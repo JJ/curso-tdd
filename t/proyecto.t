@@ -39,7 +39,7 @@ EOC
   } else {
     ($url_repo) = ($adds[0] =~ /^\+.+(https\S+)\b/s);
   }
-  my ($version) = @adds[0] =~ /(\d+\.\d+\.\d+)/;
+  my ($version) = @adds[0] =~ /(v\d+\.\d+\.\d+)/;
   diag(check( "Encontrado URL del repo $url_repo con versión $version" ));
   my ($user,$name) = ($url_repo=~ /github.com\/(\S+)\/(.+)/);
   my $repo_dir = "/tmp/$user-$name";
@@ -48,8 +48,10 @@ EOC
     `git clone $url_repo $repo_dir`;
   }
   my $student_repo =  Git->repository ( Directory => $repo_dir );
+  my $tag = $student_repo->command("checkout", $version);
+  like( $tag, /HEAD/, "Tag existe");
   my @repo_files = $student_repo->command("ls-files");
-  if ( $version =~ /^1/ ) {
+  if ( $version =~ /^v1/ ) {
     isnt( grep( /qa.json/, @repo_files), 0, "Fichero de configuración presente" );
     my $qa = from_json(read_text( $repo_dir.'/qa.json' ));
     my $build_file = $qa->{'build'};
