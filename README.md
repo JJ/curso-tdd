@@ -1,4 +1,4 @@
-# Curso de programación para QA
+# Curso de programación para QA -2ª edición
 
 [![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd) 💟 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master) [![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd)
 
@@ -16,11 +16,6 @@ la misma. Cuando se completen todas las sesiones y objetivos generaré
 un badge para el repo donde se haya cumplido todo (y dependiendo del
 nivel en el que se haya alcanzado, se hará también una recomendación
 en LinkedIn o donde se solicite).
-
-## Proyectos realizados
-
-Los proyectos en elaboración se
-enlazan [en esta página](proyectos).
 
 
 ## Planificación del curso
@@ -47,13 +42,13 @@ enlazan [en esta página](proyectos).
 * Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
-  * Mocks
-  * [Material](temas/integración.md)
+  * Mocks.
+  * [Material](temas/integración.md).
 
 * Tests adicionales
   * Tests de front-end
   * Tests de regresión.
-  * [Material](temas/qa.md)
+  * [Material](temas/qa.md).
 
 ## Proyectos inicialmente propuestos
 
@@ -82,11 +77,20 @@ Aula de usos múltiples, 5ª planta de la [ETSIIT](https://etsiit.ugr.es)
 
 ## Clases
 
-Presenciales, martes 29 a jueves 31 de octubre, martes 5 y jueves 7 de noviembre, 13:00 a 14:30.
+Presenciales, lunes 2 a viernes 6 de marzo, jueves y viernes 12 y 13 de marzo, 13:30 a 15:00.
 
 ## Título
 
-A los que superen todos los hitos y actividades planteados en el curso el curso se les hará una recomendación en LinkedIn por parte del profesor.
+A los que superen todos los hitos y actividades planteados en el curso se les hará una recomendación en LinkedIn por parte del profesor.
+
+## Inscripción
+
+Añade tu nick de GitHub y perfil de LinkedIn [a esta tabla](asistentes.md) mediante un *pull request*. La inscripción es gratuita y abierta a quien lo desee, pero los asistentes tendrán que traer su propio portátil y conexión a Internet (si no tienen acceso al WiFi de la universidad).
+
+## Proyectos realizados
+
+Los proyectos en elaboración se enlazarán en [en esta página](proyectos).
+
 
 ## Instrucciones de uso
 

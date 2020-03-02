@@ -1,27 +1,29 @@
-# Diseño de una aplicación
+# Calidad en un aplicación desde el diseño.
 
 
 ## Planteamiento
 
+En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la capacidad del mismo se seguir (o exceder) las especificaciones y las expectativas de los usuarios del mismo. 
+
 En general, la calidad es un proceso, y no simplemente una
-característica que se añade en un momento determinado al producto. El
+característica que se añade en un momento determinado al producto. Por eso el
 producto, en nuestro caso el software, debe estar diseñado y pensado
 desde el principio para asegurar que funciona y que responde a todos
 los requisitos funcionales y de otro tipo que se hayan planteado.
 
 Por eso, en un curso principalmente dedicado al diseño de tests se
 debe partir del planteamiento de la propia 
-aplicación o biblioteca, porque se realizan pruebas sobre las
-especificaciones de la aplicación, no se puede quedar en la sintaxis y
-una enumeración de los frameworks disponibles.
+aplicación, componente o biblioteca, porque se realizan pruebas sobre las
+especificaciones de la aplicación, y no se puede quedar en la sintaxis y
+una enumeración de los frameworks disponibles para hacer tests.
 
 ## Al final de esta sesión
 
-Los estudiantes sabrán como plantear una aplicación a partir de sus
-especificaciones y comenzar la implementación de forma que probar estas
-especificaciones sea sencilla y directa. También sabrán como plasmar
+Los estudiantes sabrán como plantear una arquitectura básica de aplicación a partir de sus
+especificaciones y comenzar la implementación de forma que hacer pruebas sobre  esas
+especificaciones sea sencillo y directo. También sabrán como plasmar
 en plataformas de desarrollo colaborativo estos requisitos para llevar
-a cabo el desarrollo de la aplicación. 
+a cabo el desarrollo de la aplicación.
 
 ## Criterio de aceptación
 
@@ -31,6 +33,8 @@ El proyecto tendrá una serie de hitos e issues creados
 * Todos los commits se referirán a un issue.
 * Los issues se habrán cerrado siempre con un commit.
 
+Con esto se probará que se están siguiendo los principios de diseño desarrollando a partir de casos de uso.
+
 ## Diseño dirigido por dominio
 
 Una vez decidido el foco principal del proyecto, el diseño debe
@@ -38,7 +42,7 @@ descender hasta un nivel en el que pueda ser abordable mediante la
 programación del mismo. "Divide y vencerás" nos permite trabajar con
 entidades que son autónomas entre sí, y que se pueden programar y
 testear de forma independiente. Una de las técnicas más conocidas es
-el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven_design) 
+el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
 
 Aunque, como todas las tecnologías de programación, es compleja en
 vocabulario y metodología, lo principal es que se deben de crear
@@ -50,12 +54,15 @@ calidad del producto resultante.
 
 Los dos conceptos principales, desde el punto de vista de la
 programación, son el de *entidad* y el de *objeto-valor*. Una entidad
-mantiene su identidad a lo largo del ciclo de vida; in objeto-valor es
+mantiene su identidad a lo largo del ciclo de vida; un objeto-valor es
 simplemente un valor asignado a un atributo. Los *agregados*
 integrarán y encapsularán una serie de objetos, creando un API común
 para todos ellos.
 
-El primer paso para entender cuales son las diferentes entidades y objetos-valor es crear una serie de *casos de uso* o *historias de usuario* que nos aquilaten el dominio del problema y nos permitan trabajar con él.
+El primer paso para entender cuales son las diferentes entidades y
+objetos-valor en nuestro problema es crear una serie de *casos de uso*
+o *historias de usuario* que nos aquilaten el dominio del problema y
+nos permitan trabajar con él. 
 
 ### Ejemplo
 
@@ -65,13 +72,17 @@ Vamos a ver qué historias de usuario saldrán de aquí:
 
 * El usuario querrá estar informado en todo momento del estado de cada uno de los proyectos.
 
-Realmente el resto son temas de presentación. Lo importante es que tenemos una entidad, el *proyecto*. Cada proyecto tiene una identidad propia, es decir que será un objeto que irá mutando de estado a lo largo del tiempo. El *agregado* integrará en un solo API acceso al estado de todos los proyectos, y el resto (hitos e *issues*) serán objetos-valor, sin ningún tipo de existencia fuera del contexto de un proyecto. Tendremos, por lo tanto, una sola entidad, la clase `Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases, pero no existen si no es dentro del contexto de un proyecto, por lo que los mantendremos así.
+Realmente el resto son temas de presentación. Lo importante es que
+tenemos una entidad, el *proyecto*. Cada proyecto tiene identidad
+propia, es decir que será un solo objeto que irá mutando de estado a lo largo del tiempo. El *agregado* integrará en un solo API acceso al estado de todos los proyectos, y el resto (hitos e *issues*) serán objetos-valor, sin ningún tipo de existencia fuera del contexto de un proyecto. Tendremos, por lo tanto, una sola entidad, la clase `Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases, pero no existen si no es dentro del contexto de un proyecto, por lo que los mantendremos así.
 
-¿Cumple esta entidad nuestra historia de usuario? En principio sí, pero evidentemente se puede evolucionar durante el desarrollo de la aplicación.
+¿Cumple esta entidad nuestra historia de usuario? En principio sí,
+pero evidentemente se puede evolucionar durante el desarrollo de la
+aplicación esta historia. Lo importante es que, inicialmente, lo cumpla.
 
 Por ejemplo, un `Issue` puede ser así:
 
-```perl6
+```raku
 enum IssueState <Open Closed>;
 
 unit class Project::Issue;
@@ -87,29 +98,87 @@ method state( --> IssueState ) { return $!state }
 
 Frente a todas las operaciones posibles, usamos solo las que debemos para este objeto en particular.
 
-> Todo el código irá en el subdirectorio [`code`](../code)
+> Todo el código de este curso irá en el subdirectorio
+> [`code`](../code) de este repositorio. En este caso en el subdirectorio `raku`. 
 
-En general, tendremos muchas entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
+En general, tendremos varias entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
+
+Estamos hablando de TDD y estamos poniendo código antes de
+ especificar los tests. Si seguimos una metodología TDD estricta,
+ deberíamos especificar los tests antes del mismo. Este código, de
+hecho, debería fallar antes de que se escriban los tests. Así que
+vamos a aprovecharlo para introducir código de otro lenguaje, Python
+(en el subdirectorio [`ejemplos/python`](../ejemplos/python) escrito
+con este tipo de ideas en mente. El código muestra solamente las
+funciones que deseamos que esta entidad siga:
+                                         
+```
+class Project:
+
+    def newMilestone(self, milestone):
+        pass;
+
+    def milestones(self):
+        pass
+
+    def percentageCompleted(self):
+        pass
+
+    def completionSummary(self):
+        pass
+
+    def data(self):
+        pass
+
+    def projectName(self):
+        pass
+```
+                                         
+En ese ejemplo las funciones sólo hacen `pass`. Los tests, por fuerza,
+no pasarán.
+
 
 ## 12 Factor
 
-La metodología de los [12 factores](https://12factor.net/es/) se puede usar a continuación del diseño, para plantear toda la instrumentación necesaria para llevar a cabo el proyecto. Este tipo de metodología, además, está adaptada al uso de aplicaciones nativas en la nube porque se desarrolla simultáneamente la infraestructura, el código y los tests. Desde el punto de vista de la calidad, dos de esos factores, guardar la configuración en el entorno y declarar y aislar las dependencias contribuyen a que la aplicación sea más fácil de testear y desarrollar. 
+La metodología de los [12 factores](https://12factor.net/es/) se puede
+usar a continuación de la fase de diseño, para plantear toda la
+instrumentación necesaria para llevar a cabo el proyecto. Este tipo de
+metodología, además, está adaptada al uso de aplicaciones nativas en
+la nube porque en ella se propone desarrollar simultáneamente la
+infraestructura, el código y los tests. Desde el punto de vista de la
+calidad, dos de esos factores, guardar la configuración en el entorno
+y declarar y aislar las dependencias contribuyen a que la aplicación
+sea más fácil de testear y desarrollar. Esto lo podemos hacer antes de
+aplicar otra metodología de diseño, que veremos a continuación.
 
 ### Ejemplo
 
-En el caso de nuestra aplicación, por lo pronto, no tenemos más dependencia que el lenguaje de programación que vamos a usar, Perl 6. Más adelante tendremos que especificar el resto de las dependencias, pero mientras tanto, en el fichero `META6.json` se especifican todos los módulos de los que esta aplicación va a depender.
+En el caso de nuestra aplicación, por lo pronto, no tenemos más
+dependencia que el lenguaje de programación que vamos a usar,
+Raku. Más adelante tendremos que especificar el resto de las
+dependencias, pero mientras tanto, en el fichero `META6.json`, que es
+el fichero de metadatos para distribuciones en Raku, bibliotecas o
+aplicaciones, se
+especifican todos los módulos de los que esta aplicación va a
+depender. 
 
-Las dependencias las especificaremos siempre usando código, y por tanto distinguiremos entre varios tipos
+Las dependencias las especificaremos siempre usando código (y bajo
+control de versiones), y por tanto distinguiremos entre varios tipos
 
-* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Perl 6 (6.*) que vamos a usar.
+* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Raku (6.*) que vamos a usar.
 
-* Dependencias externas. Lo mejor es usar una herramienta de construcción para que, con un simple `make install`, se puedan instalar todas. Usar un Dockerfile o una receta ansible también ayudará.
+* Dependencias externas. Lo mejor es usar una herramienta de construcción para que, con un simple `make install`, se puedan instalar todas. Usar un Dockerfile o una receta Ansible también ayudará; también existe un sistema general de especificación de dependencias para cualquier lenguaje llamado [Nix](https://nixos.org/nix/).
 
-* Dependencias del propio lenguaje. En este caso, un fichero de metadatos será suficiente para especificarlo. 
+* Dependencias del propio lenguaje. En este caso, un fichero de
+  metadatos será suficiente para especificarlo. 
 
 ## SOLID
 
-Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID) constituyen también una metodología de desarrollo de software que encaja bien con las metodologías anteriores. Pero desde nuestro punto de vista nos interesan dos especialmente:
+Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID)
+constituyen también una metodología de desarrollo de software que
+encaja bien con las metodologías usadas en las fases anteriores. Pero
+desde nuestro punto de vista nos interesan dos especialmente, para el
+diseño completo de la arquitectura de la aplicación:
 
 * [Principio de la responsabilidad única](https://en.wikipedia.org/wiki/Single_responsibility_principle): las *entidades* de las que hablamos anteriormente tienen un contexto autónomo, y por tanto las programaremos en una clase, grupo de clases y eventualmente microservicio que se encargue exclusivamente de una sola entidad. Este principio se resume en que "debería haber una sola razón para cambiar una entidad": diferentes razones, diferentes responsabilidades.
 
@@ -139,14 +208,17 @@ proto method issues( | ) { * }
 multi method issues() { return %!issues }
 multi method issues( IssueState $state ) {
     return %!issues.grep: *.value.state eq $state
-}                                         
+}
 ```
 
 La única responsabilidad de esta clase es encargarse de los hitos, y operaciones agregadas sobre ellos. Si hay que calcular el número de hitos abiertos, delega en el propio issue, que sabe si está abierto o no. La clase se encargará de albergar los issue y darnos los issue en un estado determinado.
 
 En este código, además, se usan todas las buenas prácticas para que sea lo más compacto posible, y es (si conoces el lenguaje) auto-descrito. Por ejemplo, se usa un solo nombre para recuperar los issues y *dispatch* múltiple para seleccionar lo que se llama, o se capturan los posibles errores de ejecución en la propia signatura del método, en vez de usar un detector. 
 
-> Hay una posible ambigüedad que estamos resolviendo por las bravas: si hay un issue con un número y se vuelve a asignar, el nuevo sustituye al viejo. Siempre que quede claro y esté testeado, no tiene por qué haber problema.
+> Hay una posible ambigüedad que estamos resolviendo por las bravas:
+> si hay un issue con un número y se vuelve a asignar, el nuevo
+> sustituye al viejo. Siempre que quede claro y esté testeado, no
+> tiene por qué haber problema. 
 
 En este caso no estamos usando ningún sistema de almacenamiento, pero estamos desacoplando el modelo del sistema real. A un nivel superior tendremos que introducir el sistema que decida de dónde se leen esos issues e hitos.
 
