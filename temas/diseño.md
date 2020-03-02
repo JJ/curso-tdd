@@ -413,8 +413,6 @@ de diseño para el resto del curso.
 1. Elegir un proyecto o un equipo o las dos cosas a la vez, y crear un
    repositorio 
    [usando esta plantilla](https://github.com/JJ/curso-qa-template). 
-   1. Solicitar el acceso a la beta de [GitHub Actions](https://github.com/features/actions) para que se pueda
-      usar en el repo.
 	  
 2. Elaborar una cantidad aceptable de historias de usuario y crear a
    partir de ellas una serie de issues en GitHub. Los hitos deberán
