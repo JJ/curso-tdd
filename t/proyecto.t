@@ -35,11 +35,12 @@ EOC
   my @adds = grep(/^\+[^+]/,@lines);
   my $url_repo;
   if ( $adds[0] =~ /\(http/ ) {
-    ($url_repo) = ($adds[0] =~ /\((http\S+)\)/);
+    ($url_repo) = ($adds[0] =~ /\((https\S+)\)/);
   } else {
-    ($url_repo) = ($adds[0] =~ /^\+.+(http\S+)\b/s);
+    ($url_repo) = ($adds[0] =~ /^\+.+(https\S+)\b/s);
   }
-  diag(check( "Encontrado URL del repo $url_repo" ));
+  my ($version) = @adds[0] =~ /(\d+\.\d+\.\d+)/;
+  diag(check( "Encontrado URL del repo $url_repo con versión $version" ));
   my ($user,$name) = ($url_repo=~ /github.com\/(\S+)\/(.+)/);
   my $repo_dir = "/tmp/$user-$name";
   unless (-d $repo_dir) {
@@ -48,10 +49,12 @@ EOC
   }
   my $student_repo =  Git->repository ( Directory => $repo_dir );
   my @repo_files = $student_repo->command("ls-files");
-  isnt( grep( /qa.json/, @repo_files), 0, "Fichero de configuración presente" );
-  my $qa = from_json(read_text( $repo_dir.'/qa.json' ));
-  my $build_file = $qa->{'build'};
-  isnt( grep( /$build_file/, @repo_files), 0, "Fichero de construcción $build_file presente");
+  if ( $version =~ /^1/ ) {
+    isnt( grep( /qa.json/, @repo_files), 0, "Fichero de configuración presente" );
+    my $qa = from_json(read_text( $repo_dir.'/qa.json' ));
+    my $build_file = $qa->{'build'};
+    isnt( grep( /$build_file/, @repo_files), 0, "Fichero de construcción $build_file presente");
+  }
 }
 
 done_testing;
