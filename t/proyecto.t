@@ -5,6 +5,7 @@ use Git;
 use File::Slurper qw(read_text);
 use JSON;
 use Term::ANSIColor qw(:constants);
+use Capture::Tiny qw(capture_merged);
 
 use v5.14; # For say
 
@@ -39,6 +40,7 @@ EOC
   } else {
     ($url_repo) = ($adds[0] =~ /^\+.+(https\S+)\b/s);
   }
+  ok $url_repo, "Detectado un enlace a repo en $adds[0]";
   my ($version) = @adds[0] =~ /(v\d+\.\d+\.\d+)/;
   diag(check( "Encontrado URL del repo $url_repo con versión $version" ));
   my ($user,$name) = ($url_repo=~ /github.com\/(\S+)\/(.+)/);
@@ -48,10 +50,15 @@ EOC
     `git clone $url_repo $repo_dir`;
   }
   my $student_repo =  Git->repository ( Directory => $repo_dir );
-  my $tag = $student_repo->command("checkout", $version);
-  like( $tag, /HEAD/, "Tag existe");
+  my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $version) };
+  unlike $output, qr/returned error/, "Repositorio tag-eado correctamente";
+  
   my @repo_files = $student_repo->command("ls-files");
-  if ( $version =~ /^v1/ ) {
+
+  if ( $version =~ /^v0/ ) {
+    my @hus = grep(  m{HU/}, @repo_files  );
+    cmp_ok $#hus, ">", 1, "Hay varias historias de usuario";
+  } elsif ( $version =~ /^v1/ ) {
     isnt( grep( /qa.json/, @repo_files), 0, "Fichero de configuración presente" );
     my $qa = from_json(read_text( $repo_dir.'/qa.json' ));
     my $build_file = $qa->{'build'};
