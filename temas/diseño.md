@@ -309,7 +309,7 @@ de otra clase ejecuta una orden.
 
 En el caso del proyecto, sólo el objeto Project será responsable de
 cambiar el estado del resto de los proyectos, respaldando el cambio
-con una sóla fuente de verdad (*Single Source of Truth*, SSOT), que
+con una sola fuente de verdad (*Single Source of Truth*, SSOT), que
 estará en el almacén de datos elegido. Sólo se inyectará la
 dependencia en la clase que vaya a mutar al resto de las
 clases. También esta única fuente de verdad estará relacionada con la
@@ -561,7 +561,7 @@ el primer número será siempre el hito (comenzando por el hito
 0). Diferentes versiones cambiarán el *minor* (el segundo) o el
 tercero, si son algunos cambios que no alteran el API ni la
 funcionalidad. Cada entrega corresponderá a un *release*, y por tanto
-el respositorio tendrá que tener un tag 
+el repositorio tendrá que tener un tag 
 
 > Los tags se hacen con `git tag`, y para hacer push de los mismos se
 > tendrá que hacer, adicionalmente al normal, `git push --tags`
