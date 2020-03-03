@@ -102,7 +102,9 @@ nos permitan trabajar con él.
 > tiempo real que liste los proyectos por consecución, o mantener una
 > historia del mismo. 
 
-Vamos a ver qué historias de usuario saldrán de aquí:
+Vamos a ver qué historias de usuario saldrán de aquí; esta sería la
+"historia de usuario" principal, aunque a partir de ella tendremos que
+añadir alguna adicional (más adelante).
 
 * El usuario querrá estar informado en todo momento del estado de cada uno de los proyectos.
 
@@ -169,7 +171,9 @@ class Project:
 ```
                                          
 En ese ejemplo las funciones sólo hacen `pass`. Los tests, por fuerza,
-no pasarán.
+no pasarán; pero contiene todo el API que va a ser necesario para
+llevar a cabo el objetivo anterior (incluso posiblemente alguno más
+que se podría eliminar).
 
 
 ## 12 Factor
@@ -199,7 +203,7 @@ depender.
 Las dependencias las especificaremos siempre usando código (y bajo
 control de versiones), y por tanto distinguiremos entre varios tipos
 
-* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Raku (6.*) que vamos a usar.
+* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Raku (6.*) que vamos a usar. 
 
 * Dependencias externas. Lo mejor es usar una herramienta de
   construcción para que, con un simple `make install`, se puedan
@@ -219,10 +223,20 @@ encaja bien con las metodologías usadas en las fases anteriores. Pero
 desde nuestro punto de vista nos interesan dos especialmente, para el
 diseño completo de la arquitectura de la aplicación:
 
-* [Principio de la responsabilidad única](https://en.wikipedia.org/wiki/Single_responsibility_principle): las *entidades* de las que hablamos anteriormente tienen un contexto autónomo, y por tanto las programaremos en una clase, grupo de clases y eventualmente microservicio que se encargue exclusivamente de una sola entidad. Este principio se resume en que "debería haber una sola razón para cambiar una entidad": diferentes razones, diferentes responsabilidades.
+* [Principio de la responsabilidad
+  única](https://en.wikipedia.org/wiki/Single_responsibility_principle):
+  las *entidades* de las que hablamos anteriormente tienen un contexto
+  autónomo, y por tanto las programaremos en una clase, grupo de
+  clases y eventualmente microservicio que se encargue exclusivamente
+  de una sola entidad. Este principio se resume en que "debería haber
+  una sola razón para cambiar una entidad": diferentes razones,
+  diferentes responsabilidades. 
 
 * [Principio de la inversión de dependencias](https://en.wikipedia.org/wiki/Dependency_inversion_principle) (o
-   inversión del control): *se debe depender de cosas abstractas, no concretas*. Es decir, la dependencia de una clase debe ser de un almacén de datos, no de una base de datos concreta, y el almacén de datos debe *inyectarse* en la clase cuando se vaya a crear.
+   inversión del control): *se debe depender de cosas abstractas, no
+   concretas*. Es decir, la dependencia de una clase debe ser de un
+   almacén de datos, no de una base de datos concreta, y el almacén de
+   datos debe *inyectarse* en la clase cuando se vaya a crear. 
 
 ### Ejemplo
 
@@ -234,7 +248,7 @@ hitos o *milestones*, una como esta
 ```perl6
 use Project::Issue;
 
-unit class Project::Milestone;
+ unit class Project::Milestone;
 
 has UInt $!milestone-id;
 has %!issues = ();
@@ -259,7 +273,12 @@ hitos abiertos, delega en el propio issue, que sabe si está abierto o
 no. La clase se encargará de albergar los issues y darnos los issue en
 un estado determinado.
 
-En este código, además, se usan todas las buenas prácticas para que sea lo más compacto posible, y es (si conoces el lenguaje) auto-descrito. Por ejemplo, se usa un solo nombre para recuperar los issues y *dispatch* múltiple para seleccionar lo que se llama, o se capturan los posibles errores de ejecución en la propia signatura del método, en vez de usar un detector. 
+En este código, además, se usan todas las buenas prácticas para que
+sea lo más compacto posible, y es (si conoces el lenguaje)
+auto-descrito. Por ejemplo, se usa un solo nombre para recuperar los
+issues y *dispatch* múltiple para seleccionar lo que se llama, o se
+capturan los posibles errores de ejecución en la propia signatura del
+método, en vez de usar un detector. 
 
 > Hay una posible ambigüedad que estamos resolviendo por las bravas:
 > si hay un issue con un número y se vuelve a asignar, el nuevo
@@ -290,7 +309,7 @@ de otra clase ejecuta una orden.
 
 En el caso del proyecto, sólo el objeto Project será responsable de
 cambiar el estado del resto de los proyectos, respaldando el cambio
-con una sóla fuente de verdad (Single Source of Truth, SSOT), que
+con una sóla fuente de verdad (*Single Source of Truth*, SSOT), que
 estará en el almacén de datos elegido. Sólo se inyectará la
 dependencia en la clase que vaya a mutar al resto de las
 clases. También esta única fuente de verdad estará relacionada con la
@@ -425,17 +444,24 @@ podremos tener las siguientes historias de usuario.
   responderá con una cantidad entre 0 y 100.
 
 Estas historias de usuario se pueden incluir directamente como hitos,
-o agrupar algunas de ellas en un issue.
+o agrupar algunas de ellas en un issue. Por ejemplo, en este caso
+todas las relativas a issues se pueden incluir en el mismo hito.
 
 A partir de estas historias de usuario, y de la metodología de diseño,
 habrá que empezar a escribir el código. Como código no testeado es
 código roto, mejor diseñar el API para empezar y más adelante añadir
-el código y los tests correspondientes. Pero eso ya será en la
+el código y los tests correspondientes, como hemos visto en el caso
+del ejemplo de Python anterior. Pero eso ya será en la
 siguiente sesión.
 
-Adicionalmente, una historia de usuario especificará qué hay que hacer en caso de error. 
+Adicionalmente, una historia de usuario especificará qué hay que hacer
+en caso de error. Recordad que el diseño de un módulo debe incluir
+también diseño de las clases que se van a usar en caso de error.
 
-* **HU6** Un hito sin issues estará en un estado incorrecto y la única operación permisible sobre el mismo es añadir issues al mismo.
+* **HU6** Un hito sin issues estará en un estado incorrecto y la única
+  operación permisible sobre el mismo es añadirle issues. Si se trata
+  de hacer alguna operación sobre el mismo, se emitirá un error de
+  tipo. 
 
 
 ## Diseñar los errores también
@@ -452,7 +478,12 @@ inválido, crea una excepción para que se pueda usar en tal situación.
 
 ### Ejemplo
 
-Raku permite la creación de [excepciones específicas](https://rakudocs.github.io/type/Exception). Generalmente sigue la convención de que se denominan con una `X` seguida del nombre de la clase a la que se apliquen. Por ejemplo, esta para nuestro proyecto se llamará `X::Proyecto::NoIssue` y la aplicaremos para el caso en que no haya ningún issue en un hito:
+Raku permite la creación de [excepciones
+específicas](https://rakudocs.github.io/type/Exception). Generalmente
+sigue la convención de que se denominan con una `X` seguida del nombre
+de la clase a la que se apliquen. Por ejemplo, esta para nuestro
+proyecto se llamará `X::Proyecto::NoIssue` y la aplicaremos para el
+caso en que no haya ningún issue en un hito: 
 
 ```perl6
 unit class X::Project::NoIssue is Exception;
@@ -471,9 +502,21 @@ multi method issues() {
 }
 ```
 
-Si no hay ningún issue, devolver un hash vacío podría ser una solución *a priori* válida. Sin embargo, eso solo retrasa el tratamiento de una situación o ambigua o incorrecta al cliente de la clase. Las historias de usuario pueden estar centradas, por ejemplo, en las estadísticas de la clase (abiertos/cerrados), pero si no hay ningún issue, la historia de usuario ni siquiera es aplicable, por lo que es razonable indicar este hecho mediante una excepción, como estamos haciendo.
+Si no hay ningún issue, devolver un hash vacío podría ser una solución
+*a priori* válida. Sin embargo, eso solo retrasa el tratamiento de una
+situación o ambigua o incorrecta al cliente de la clase. Las historias
+de usuario pueden estar centradas, por ejemplo, en las estadísticas de
+la clase (abiertos/cerrados), pero si no hay ningún issue, la historia
+de usuario ni siquiera es aplicable, por lo que es razonable indicar
+este hecho mediante una excepción, como estamos haciendo. 
 
-¿Se podría resolver esto forzando directamente a que cuando se cree un hito tenga que hacerse con algún issue? Atendiendo a las historias de usuario, es posible que no: un evento de creación de un hito es un hecho único sin acompañamiento de issues. Así que tratar esto con una excepción es la mejor forma de defendernos ante los posibles cambios o evoluciones en el futuro de la misma.
+¿Se podría resolver esto forzando directamente a que cuando se cree un
+hito tenga que hacerse con algún issue? Atendiendo a las historias de
+usuario, es posible que no: un evento de creación de un hito es un
+hecho único sin acompañamiento de issues. Así que tratar esto con una
+excepción es la mejor forma de defendernos ante los posibles cambios o
+evoluciones en el futuro de la misma.
+
 
 
 ## Actividad
