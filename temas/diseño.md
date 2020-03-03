@@ -48,7 +48,7 @@ el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven
 
 Aunque, como todas las tecnologías de programación, es compleja en
 vocabulario y metodología, lo principal es que se deben de crear
-modelos del dominio del problema limitados en su contexto, de forma
+modelos de partes del dominio del problema limitados en su contexto, de forma
 que sea sencillo dividir el proceso de implementación en equipos, cada
 uno de ellos responsables de una parte del diseño. La integración
 continua (y los tests correspondientes), permitirán que se asegure la
@@ -61,6 +61,31 @@ simplemente un valor asignado a un atributo. Los *agregados*
 integrarán y encapsularán una serie de objetos, creando un API común
 para todos ellos.
 
+Eventualmente, una entidad se convertirá en un módulo cuando se vaya a
+implementar en el lenguaje de progrmación en el que decidamos
+hacerlo. Todos los lenguajes de programación modernos son modulares,
+con módulos agrupando funcionalidad relacionada, pero dependiendo del
+lenguaje, una entidad y un objeto valor será una clase, un rol, un
+módulo o paquete, o simplemente un fichero con una serie de funciones
+y convenciones para ser llamadas juntas. La mayoría de los módulos
+generan un *espacio de nombres*, que refleja también la jerarquía de
+los mismos; este espacio de nombres a veces se refleja en el nombre
+del módulo, a veces en el camino donde está almacenado.
+
+> Por ejemplo, en Raku un módulo llamado My::Project estará almacenado
+> en `lib/My/Project.pm6' y podrá tener otros módulos llamados
+> My::Project::Issue que estará almacenado en
+> `lib/My/Project/Issue.pm6`. En el caso de Python, un módulo que se
+> llame Project estará definido en `Project/core.py` (y en el
+> directorio `Project` tendrá que haber un fichero `__init__.py`. El
+> otro fichero mencionado estará en `Project/Issue.py`. 
+
+Este tipo de consideraciones tendremos que tenerlas en cuenta a la
+hora de diseñar los ficheros en los que se va a almacenar nuestra
+aplicación o proyecto; los nombres de los ficheros y la estructura de
+directorios debe seguir las buenas prácticas habituales y reflejar la
+estructura del mismo.
+
 El primer paso para entender cuales son las diferentes entidades y
 objetos-valor en nuestro problema es crear una serie de *casos de uso*
 o *historias de usuario* que nos aquilaten el dominio del problema y
@@ -68,7 +93,14 @@ nos permitan trabajar con él.
 
 ### Ejemplo
 
-> Una aplicación nos va a permitir controlar el avance de los diferentes proyectos de este curso. Mediante un *hook* de GitHub, todos los proyectos informarán a un sitio central de sus actividades. Nos interesará sobre todo saber en qué hito está cada proyecto y en qué estado de consecución está cada uno de esos hitos. El objetivo es, por ejemplo, mantener un *leaderboard* en tiempo real que liste los proyectos por consecución, o mantener una historia del mismo.
+> Una aplicación nos va a permitir controlar el avance de los
+> diferentes proyectos de este curso. Mediante un *hook* de GitHub,
+> todos los proyectos informarán a un sitio central de sus
+> actividades. Nos interesará sobre todo saber en qué hito está cada
+> proyecto y en qué estado de consecución está cada uno de esos
+> hitos. El objetivo es, por ejemplo, mantener un *leaderboard* en
+> tiempo real que liste los proyectos por consecución, o mantener una
+> historia del mismo. 
 
 Vamos a ver qué historias de usuario saldrán de aquí:
 
