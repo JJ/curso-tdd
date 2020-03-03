@@ -20,4 +20,4 @@ class Project:
 
 class NoIssueException(Exception):
     def __init__(self,*args,**kwargs):
-        Exception.__init__(self,*args,**kwargs)
+        Exception.__init__(self,"Milestone sin issues")
