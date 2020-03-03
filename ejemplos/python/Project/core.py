@@ -17,3 +17,7 @@ class Project:
 
     def projectName(self):
         pass
+
+class NoIssueException(Exception):
+    def __init__(self,*args,**kwargs):
+        Exception.__init__(self,*args,**kwargs)
