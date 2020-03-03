@@ -508,7 +508,17 @@ situación o ambigua o incorrecta al cliente de la clase. Las historias
 de usuario pueden estar centradas, por ejemplo, en las estadísticas de
 la clase (abiertos/cerrados), pero si no hay ningún issue, la historia
 de usuario ni siquiera es aplicable, por lo que es razonable indicar
-este hecho mediante una excepción, como estamos haciendo. 
+este hecho mediante una excepción, como estamos haciendo.
+
+En Python, podríamos crear una excepción de esta forma:
+
+```python
+class NoIssueException(Exception):
+    def __init__(self,*args,**kwargs):
+        Exception.__init__(self,"Milestone sin issues")
+```
+
+(irá también el fichero `Project/core.py`).
 
 ¿Se podría resolver esto forzando directamente a que cuando se cree un
 hito tenga que hacerse con algún issue? Atendiendo a las historias de
