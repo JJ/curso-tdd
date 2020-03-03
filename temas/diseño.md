@@ -223,8 +223,7 @@ encaja bien con las metodologías usadas en las fases anteriores. Pero
 desde nuestro punto de vista nos interesan dos especialmente, para el
 diseño completo de la arquitectura de la aplicación:
 
-* [Principio de la responsabilidad
-  única](https://en.wikipedia.org/wiki/Single_responsibility_principle):
+* [Principio de la responsabilidad única](https://en.wikipedia.org/wiki/Single_responsibility_principle):
   las *entidades* de las que hablamos anteriormente tienen un contexto
   autónomo, y por tanto las programaremos en una clase, grupo de
   clases y eventualmente microservicio que se encargue exclusivamente
@@ -478,8 +477,7 @@ inválido, crea una excepción para que se pueda usar en tal situación.
 
 ### Ejemplo
 
-Raku permite la creación de [excepciones
-específicas](https://rakudocs.github.io/type/Exception). Generalmente
+Raku permite la creación de [excepciones específicas](https://rakudocs.github.io/type/Exception). Generalmente
 sigue la convención de que se denominan con una `X` seguida del nombre
 de la clase a la que se apliquen. Por ejemplo, esta para nuestro
 proyecto se llamará `X::Proyecto::NoIssue` y la aplicaremos para el
