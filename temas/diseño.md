@@ -62,7 +62,7 @@ integrarán y encapsularán una serie de objetos, creando un API común
 para todos ellos.
 
 Eventualmente, una entidad se convertirá en un módulo cuando se vaya a
-implementar en el lenguaje de progrmación en el que decidamos
+implementar en el lenguaje de programación en el que decidamos
 hacerlo. Todos los lenguajes de programación modernos son modulares,
 con módulos agrupando funcionalidad relacionada, pero dependiendo del
 lenguaje, una entidad y un objeto valor será una clase, un rol, un
@@ -72,9 +72,9 @@ generan un *espacio de nombres*, que refleja también la jerarquía de
 los mismos; este espacio de nombres a veces se refleja en el nombre
 del módulo, a veces en el camino donde está almacenado.
 
-> Por ejemplo, en Raku un módulo llamado My::Project estará almacenado
-> en `lib/My/Project.pm6' y podrá tener otros módulos llamados
-> My::Project::Issue que estará almacenado en
+> Por ejemplo, en Raku un módulo llamado `My::Project` estará almacenado
+> en `lib/My/Project.pm6` y podrá tener otros módulos llamados
+> `My::Project::Issue` que estará almacenado en
 > `lib/My/Project/Issue.pm6`. En el caso de Python, un módulo que se
 > llame Project estará definido en `Project/core.py` (y en el
 > directorio `Project` tendrá que haber un fichero `__init__.py`. El
