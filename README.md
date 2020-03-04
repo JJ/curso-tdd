@@ -29,7 +29,7 @@ en LinkedIn o donde se solicite).
   * Documentación de las historias de usuario y traslado a issues.
   * [Material](temas/diseño.md#a-programar).
 
-* Preparando tu aplicación para testear: herramientas de construcción,
+* **Sesión 3**: Preparando tu aplicación para testear: herramientas de construcción,
   desarrollo por capas, *separation of concerns*, inversión de
   dependencias, *objetos de test*, aserciones, marcos de pruebas,
   fases del test.
@@ -37,7 +37,7 @@ en LinkedIn o donde se solicite).
 
 * Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
-  * Diferentes sistemas de integración continua.
+  * Diferentes sistemas de integración continua: Travis, GitHub Actions...
   * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
 
