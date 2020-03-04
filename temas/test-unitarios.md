@@ -68,12 +68,12 @@ en el caso declarativo, como saber que están en ese estado. `make`, por ejemplo
  tiene el suyo, y otras herramientas como `sbt` también; algunas como Gradle
  usan Groovy.
 
- Sean cuales sean las facilidades que ofrezca el lenguaje, las herramientas de
- construcción permiten centralizar en un solo fichero todas las tareas relativas
+Sean cuales sean las facilidades que ofrezca el lenguaje, las herramientas de
+construcción permiten centralizar en un solo fichero todas las tareas relativas
   a la aplicación, y por tanto contribuyen al código limpio y a que la
   configuración sea código y explícita. Todo lo que esté en la herramienta de
   construcción son tareas que no tienes que describir en la documentación y que
-  son, por tanto, mucho más fáciles de mantener.
+  son, por tanto, mucho más fáciles de mantener. Esas tareas se suelen denominar *targets* u objetivos. En muchos casos se pueden establecer correspondencias entre objetivos, o bien definir reglas que activen esos objetivos (por ejemplo, la modificación de un fichero que haga que la versión compilada se haya desfasado con respecto al fuente).
 
 La más antigua, `make`, sigue siendo una de las herramientas más
 populares. Por ejemplo, este `Makefile` minimalista se podría usar
@@ -124,16 +124,15 @@ Adicionalmente, estas herramientas de construcción dan también un
 vocabulario común para las diferentes tareas que se pueden realizar
 sobre una base de código. Órdenes como `deploy`, `install`, `run`, van
 a ser las mismas sin importar cómo se haga la herramienta. Si se usa
-siempre la misma, por ejemplo `npm` con Node, sabemos que `npm`
-install va a ser la que lo installe todo; pero si no, no hace falta
-más que especicar el binario de la herramienta para saber qué órdenes
+siempre la misma, por ejemplo `npm` con Node, sabemos que `npm install` va a ser la que lo instale todo; pero si no, no hace falta
+más que especificar el binario de la herramienta para saber qué órdenes
 habría que dar para realizar las tareas habituales. 
 
 
 ### Ejemplo en Python
 
 Python usa generalmente la misma orden para instalar todo. Pero si
-ponemos esa orden en el Makefile, así:
+ponemos esa orden en el `Makefile`, así:
 
 ```
 install:
@@ -151,18 +150,19 @@ perfectamente qué queremos que nuestro software haga, y hay diferentes
 formas de hacerlo, pero generalmente, en metodologías ágiles, tenemos
 que hacerlo mediante [*historias de usuario*](https://es.wikipedia.org/wiki/Historias_de_usuario),
 narrativas de qué es lo que puede hacer un posible usuario y qué es lo
-que el usuario debería esperar. Estas historias de usuario se
+que el usuario debería esperar; ya hemos hablado de ellas en el tema
+dedicado al [diseño](diseño.md). Estas historias de usuario se
 convertirán en *issues* del repositorio, cuyo cierre marcará que el
-código está escrito, testeado, y se ajusta a la misma. 
+código está escrito, testeado, y se ajusta a la misma.
 
-En la mayoría de los entornos de programación y especialmente en `node` hay dos niveles en el test: el
+En la mayoría de los entornos de programación y especialmente en `node` hay dos niveles en el test: el 
 primero es el marco de pruebas y el segundo la librería de pruebas que
 efectivamente se está usando. El marco de pruebas será el que ejecute
 todos los tests, examine el resultado y emita un informe, que
 dependerá de si los tests se han superado o no.
 
 > Para ello, todas las librerías de tests emiten sus resultados en un
-> formato de texto estándar, que se llama TAP. Por eso los marcos de
+> formato de texto estándar, que se llama [TAP](https://en.wikipedia.org/wiki/Test_Anything_Protocol). Por eso los marcos de
 > pruebas se pueden usar con cualquier librería de pruebas, incluso de
 > cualquier lenguaje.
 
