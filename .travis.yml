@@ -2,8 +2,8 @@ language:
   - minimal
 
 install:
-  - docker pull jjmerelo/p5-devqagrx:latest
+  - docker pull jjmerelo/devqagrx:latest
   - echo $TRAVIS_PULL_REQUEST
   
 script: 
-  - docker run -t  --env TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST -v $TRAVIS_BUILD_DIR:/test jjmerelo/p5-devqagrx:latest
+  - docker run -t  --env TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST -v $TRAVIS_BUILD_DIR:/test jjmerelo/devqagrx:latest
