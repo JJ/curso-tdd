@@ -57,7 +57,7 @@ EOC
 
   if ( $version =~ /^v0/ ) {
     my @hus = grep(  m{HU/}, @repo_files  );
-    cmp_ok $#hus, ">", 1, "Hay varias historias de usuario";
+    cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
   } elsif ( $version =~ /^v1/ ) {
     isnt( grep( /qa.json/, @repo_files), 0, "Fichero de configuración presente" );
     my $qa = from_json(read_text( $repo_dir.'/qa.json' ));
