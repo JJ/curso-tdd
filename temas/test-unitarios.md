@@ -156,17 +156,17 @@ convertirán en *issues* del repositorio, cuyo cierre marcará que el
 código está escrito, testeado, y se ajusta a la misma.
 
 En la mayoría de los entornos de programación y especialmente en `node` hay dos niveles en el test: el 
-primero es el marco de pruebas y el segundo la librería de pruebas que
+primero es el marco de pruebas y el segundo la biblioteca (o bibliotecas) de pruebas que
 efectivamente se está usando. El marco de pruebas será el que ejecute
 todos los tests, examine el resultado y emita un informe, que
 dependerá de si los tests se han superado o no.
 
-> Para ello, todas las librerías de tests emiten sus resultados en un
+> Para ello, todas las bibliotecas de tests emiten sus resultados en un
 > formato de texto estándar, que se llama [TAP](https://en.wikipedia.org/wiki/Test_Anything_Protocol). Por eso los marcos de
-> pruebas se pueden usar con cualquier librería de pruebas, incluso de
+> pruebas se pueden usar con cualquier biblioteca de pruebas, incluso de
 > cualquier lenguaje.
 
-Por debajo del marco de pruebas (la librería que permite estructuras
+Por debajo del marco de pruebas (la biblioteca que permite estructuras
 las pruebas), a veces existe una biblioteca de aserciones, que son las
 diferentes pruebas unitarias que se deben pasar o no. En muchos casos,
 la biblioteca de pruebas incluye ya aserciones; en otros casos,
@@ -293,7 +293,7 @@ biblioteca de aserciones.
 En node hay
 [múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js);
 el [panorama de 2019 se presenta en este artículo](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a). La
-librería de aserciones [`assert`](https://nodejs.org/api/assert.html) 
+biblioteca de aserciones [`assert`](https://nodejs.org/api/assert.html) 
 forma parte de la estándar de JS, pero hay otras como
 [Unexpected](http://unexpected.js.org/) o aserciones parte de marcos
 de tests más completos. Estos marcos de test incluyen [Chai](https://www.chaijs.com/), [Jasmine](https://jasmine.github.io/),
@@ -341,7 +341,7 @@ var assert = require("chai").assert,
 
 console.log(assert);
 describe('Apuesta con Chai', function(){
-    // Testea que se haya cargado bien la librería
+    // Testea que se haya cargado bien la biblioteca
     describe('Carga', function(){
 	it('should be loaded', function(){
 	    assert.ok(apuesta, "Cargado");
@@ -376,7 +376,7 @@ var assert = require("assert"),
 		apuesta = require(__dirname+"/../Apuesta.js");
 
 describe('Apuesta', function(){
-	// Testea que se haya cargado bien la librería
+	// Testea que se haya cargado bien la biblioteca
 	describe('Carga', function(){
 	it('should be loaded', function(){
 		assert(apuesta, "Cargado");
@@ -393,9 +393,9 @@ describe('Crea', function(){
 ```
 
 La mayoría de los marcos de tests, y en particular Mocha, pueden usar
-diferentes librerías de aserciones. En este caso hemos escogido la que
+diferentes bibliotecas de aserciones. En este caso hemos escogido la que
 ya habíamos usado, `assert`. A bajo nivel, los tests que funcionen en
-este marco tendrán que usar una librería de este tipo, porque Mocha
+este marco tendrán que usar una biblioteca de este tipo, porque Mocha
 funciona a un nivel superior, con funciones como `it` y `describe` que
 hacen explícito, a diferentes niveles, el comportamiento que queremos
 comprobar. Se ejecuta con `mocha` y el resultado de ejecutarlo será:
@@ -416,7 +416,7 @@ comprobar. Se ejecuta con `mocha` y el resultado de ejecutarlo será:
 
 >Y la verdad es que debería haber puesto los mensajes en español.
 
-Con la librería BDD de Chai, podríamos expresar los mismos tests de
+Con la biblioteca BDD de Chai, podríamos expresar los mismos tests de
 esta forma: 
 
 ```
@@ -436,7 +436,7 @@ describe('BDD con Chai', function(){
 La única diferencia es que ejecutamos la función `should` de `chai`,
 que añade a todos los objetos funciones que permite expresar, en
 lenguaje más o menos natural, qué es lo que queremos probar: que el
-objeto de la librería existe, y que se puede instanciar y que los
+objeto de la biblioteca existe, y que se puede instanciar y que los
 resultados que obtienen se pueden convertir a una cadena de la forma
 esperada. Como se ve, el marco (que incluye las funciones `describe` e
 `it`) no varía, lo que varía es como se describe el test en sí, que
