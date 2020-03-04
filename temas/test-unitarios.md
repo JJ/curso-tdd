@@ -120,6 +120,28 @@ Registered tasks:
 Una vez visto desde dónde se van a ejecutar los tests, pasamos a los
 tests en sí.
 
+Adicionalmente, estas herramientas de construcción dan también un
+vocabulario común para las diferentes tareas que se pueden realizar
+sobre una base de código. Órdenes como `deploy`, `install`, `run`, van
+a ser las mismas sin importar cómo se haga la herramienta. Si se usa
+siempre la misma, por ejemplo `npm` con Node, sabemos que `npm`
+install va a ser la que lo installe todo; pero si no, no hace falta
+más que especicar el binario de la herramienta para saber qué órdenes
+habría que dar para realizar las tareas habituales. 
+
+
+### Ejemplo en Python
+
+Python usa generalmente la misma orden para instalar todo. Pero si
+ponemos esa orden en el Makefile, así:
+
+```
+install:
+	pip install -r requirements.txt
+```
+
+
+
 ## Test unitarios
 
 Las pruebas deben de corresponder a las especificaciones que queremos
