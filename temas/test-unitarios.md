@@ -179,7 +179,7 @@ aserciones.
 un lenguaje que pretende evitar lo peor de C++ para crear un lenguaje
 concurrente, de sintaxis simple y con más seguridad; además, Go provee
 también un entorno de programación con una serie de herramientas
-(*toolbelt*) de serie. Go integra este marco de pruebas en el
+(*toolbelt*) de serie (su propio *task runner*). Go integra este marco de pruebas en el
 propio lenguaje, por lo que nos permite fijarnos exclusivamente en la
 biblioteca de pruebas con la que estamos trabajando.
 
@@ -357,7 +357,7 @@ describe('Apuesta con Chai', function(){
 });
 ```
 
-Los únicos cambios son el usar `assert.ok` en vez de assert (que
+Los únicos cambios son el usar `assert.ok` en vez de `assert` (que
 pertenece a Chai), y el objeto `assert` de la biblioteca `chai`, en
 vez de usar el que hay por omisión.
 
@@ -414,7 +414,7 @@ comprobar. Se ejecuta con `mocha` y el resultado de ejecutarlo será:
 
 (pero con más colorines)
 
->Y la verdad es que debería haber puesto los mensajes en español.
+> Y la verdad es que debería haber puesto los mensajes en español.
 
 Con la biblioteca BDD de Chai, podríamos expresar los mismos tests de
 esta forma: 
@@ -527,7 +527,7 @@ lenguajes son:
   
 * [JUnit](https://junit.org/junit5/) es el más cercano en Java.
 
-* Raku usa prove6, pero también zef si se trata de usarlo sobre un módulo. 
+* Raku usa prove6, pero también `zef` si se trata de usarlo sobre un módulo (en realidad, `zef` usa una serie de heurísticas para aprovechar el marco de pruebas que esté instalado).
 
 Cada lenguaje incluye este tipo de marcos, sea como parte de su
 distribución base o como parte de alguna biblioteca popular.
