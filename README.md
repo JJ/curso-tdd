@@ -20,7 +20,7 @@ en LinkedIn o donde se solicite).
 
 ## Planificación del curso
 
-* **Sesión 1**: Historias de usuario, requisitos funcionales, *personas* y todo lo que necesitamos para empezar.
+* **Sesión 1**: Historias de usuario, requisitos funcionales, *personas* (historias de usuario), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
   
@@ -29,8 +29,7 @@ en LinkedIn o donde se solicite).
   * Documentación de las historias de usuario y traslado a issues.
   * [Material](temas/diseño.md#a-programar).
 
-* **Sesión 3**: Preparando tu aplicación para testear: herramientas de construcción,
-  desarrollo por capas, *separation of concerns*, inversión de
+* **Sesión 3**: Preparando tu aplicación para testear: herramientas de construcción, *separation of concerns*, inversión de
   dependencias, *objetos de test*, aserciones, marcos de pruebas,
   fases del test.
   * [Material](temas/test-unitarios.md).
