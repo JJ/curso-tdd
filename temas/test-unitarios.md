@@ -20,19 +20,27 @@ La entidad principal del problema se habrá implementado en una clase,
 y cada una de las funciones tendrá un test que se ejecutarán en
 local.
 
-## Herramientas de construcción
+## Herramientas de construcción o gestores de tareas.
 
 > Antes de hablar de los tests unitarios en sí, vamos a hablar de las
 > herramientas de construcción. En general, la ejecución de los tests
 > unitarios (y del resto de las tareas) se gestionará a partir de un
 > fichero de tareas que se ejecuta desde aquí.
 
+Como parte de la metodología de 12 factores que vimos en la fase de
+[diseño](diseño.md), una de los factores incluye [separar las fases](https://12factor.net/es/build-release-run) de
+construcción, despliegue y ejecución. Pero para hacer esto todas las
+fases (y alguna otra tarea que esté relacionada con las mismas) deben
+de estar codificadas: la infraestructura es código, y ese código, en
+este caso, será parte de un fichero que será ejecutado por una
+herramienta de construcción.
+
 Las herramientas de construcción o ejecutores de tareas permiten usar, como
-subcomandos de un solo programa, todas las tareas que se tienen que llevar a
+subcomandos de un solo programa y especificados en un solo fichero, todas las tareas que se tienen que llevar a
 cabo con una aplicación, desde su compilación hasta la generación de la
 documentación.
 
-Los task runners se diferencian a lo largo de varios ejes
+Los task runners se diferencian entre si a lo largo de varios ejes
 
 * Explícitos o implícitos, es decir, si hay un programa que se llame
 explícitamente así y sea diferente al intérprete o compilador o no. Go es un
@@ -67,8 +75,9 @@ en el caso declarativo, como saber que están en ese estado. `make`, por ejemplo
   construcción son tareas que no tienes que describir en la documentación y que
   son, por tanto, mucho más fáciles de mantener.
 
-En el módulo en Go que hemos visto anteriormente podemos usar este simple
-`Makefile`:
+La más antigua, `make`, sigue siendo una de las herramientas más
+populares. Por ejemplo, este `Makefile` minimalista se podría usar
+para un programa en go:
 
 ```Makefile
 %:
@@ -79,9 +88,11 @@ En el módulo en Go que hemos visto anteriormente podemos usar este simple
  Es decir, si hacemos `make test` se ejecutará `go test`. Como los targets se
  ejecutan por orden, podemos poner algún target anterior con órdenes específicas
   que no sigan este patrón.
+  
+La herramienta `make` y sus `Makefile`s se pueden usar en cualquier lenguaje. De hecho, C y C++ lo usan, pero también Python.
 
 Por el contrario, [`sake`](https://github.com/perl6/p6-sake) es un módulo
-externo, pero usa Raku para expresarse.
+externo al lenguaje Raku, pero usa Raku para expresarse.
 
 ```perl6
 task "installdeps", {
@@ -105,6 +116,9 @@ Registered tasks:
 	✓ installdeps
 	✓ test
 ```
+
+Una vez visto desde dónde se van a ejecutar los tests, pasamos a los
+tests en sí.
 
 ## Test unitarios
 

@@ -3,7 +3,6 @@ language:
 
 install:
   - docker pull jjmerelo/p5-devqagrx:latest
-  - docker images
   - echo $TRAVIS_PULL_REQUEST
   
 script: 
