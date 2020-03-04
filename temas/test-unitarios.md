@@ -2,7 +2,13 @@
 
 ## Planteamiento
 
-Los lenguajes de programación modernos tienen todo un marco de utilidades y bibliotecas para poder ejecutar esos tests; estos marcos van desde las funciones que te permiten comprobar si el resultado obtenido es igual al deseado, hasta las herramientas de construcción o ejecutores de tareas que se usan, de forma más o menos estándar, en cada lenguaje de programación para lanzar los tests. En este tema veremos de forma integral todos esos aspectos de los tests.
+Los lenguajes de programación modernos tienen todo un marco de
+utilidades y bibliotecas para poder ejecutar esos tests; estos marcos
+van desde las funciones que te permiten comprobar si el resultado
+obtenido es igual al deseado, hasta las herramientas de construcción o
+ejecutores de tareas que se usan, de forma más o menos estándar, en
+cada lenguaje de programación para lanzar los tests. En este tema
+veremos de forma integral todos esos aspectos de los tests. 
 
 ## Al final de esta sesión
 
@@ -13,6 +19,92 @@ El estudiante habrá programado los tests y los habrá lanzado desde un *task ru
 La entidad principal del problema se habrá implementado en una clase,
 y cada una de las funciones tendrá un test que se ejecutarán en
 local.
+
+## Herramientas de construcción
+
+> Antes de hablar de los tests unitarios en sí, vamos a hablar de las
+> herramientas de construcción. En general, la ejecución de los tests
+> unitarios (y del resto de las tareas) se gestionará a partir de un
+> fichero de tareas que se ejecuta desde aquí.
+
+Las herramientas de construcción o ejecutores de tareas permiten usar, como
+subcomandos de un solo programa, todas las tareas que se tienen que llevar a
+cabo con una aplicación, desde su compilación hasta la generación de la
+documentación.
+
+Los task runners se diferencian a lo largo de varios ejes
+
+* Explícitos o implícitos, es decir, si hay un programa que se llame
+explícitamente así y sea diferente al intérprete o compilador o no. Go es un
+ejemplo de task runner implícito: como subcomandos de go se compila, se pasan
+tests o se instala un paquete.
+* Estándar o externos: hay lenguajes que vienen con su propia herramienta de
+construcción, estándar o simplemente la que más se usa, aunque puede tener
+limitaciones: `npm` en JavaScript, `cargo` en Rust, `zef` en Raku... En muchos
+casos, sin embargo, hacen falta herramientas externas, de la cuales la
+herramienta por antonomasia es `make`, pero hay otras más, como `invoke` para
+Python o [`rake`](https://github.com/ruby/rake) para Ruby
+* Imperativas o declarativas: las procedurales permiten ejecutar órdenes para
+conseguir algo, mientras que las declarativas describen el estado en el que
+quieres que el sistema esté y realizan sus propias acciones para llegar a ese
+estado:
+[`Maven` es declarativo, `ant` es imperativo](https://stackoverflow.com/questions/14955597/imperative-vs-declarative-build-systems)
+* Genéricas o [específicas](https://softwareengineering.stackexchange.com/questions/297847/why-do-build-tools-use-a-scripting-language-different-than-underlying-programmin) del lenguaje:
+Las genéricas lanzan scripts, generalmente del shell, mientras que las
+específicas usan el propio lenguaje de programación, con lo que es más fácil que
+ se adapten a diferentes plataformas.
+
+Muchas herramientas usan un *Domain Specific Language*, un DSL que permite
+expresar los diferentes *targets* y las acciones necesarias para alcanzarlos o,
+en el caso declarativo, como saber que están en ese estado. `make`, por ejemplo,
+ tiene el suyo, y otras herramientas como `sbt` también; algunas como Gradle
+ usan Groovy.
+
+ Sean cuales sean las facilidades que ofrezca el lenguaje, las herramientas de
+ construcción permiten centralizar en un solo fichero todas las tareas relativas
+  a la aplicación, y por tanto contribuyen al código limpio y a que la
+  configuración sea código y explícita. Todo lo que esté en la herramienta de
+  construcción son tareas que no tienes que describir en la documentación y que
+  son, por tanto, mucho más fáciles de mantener.
+
+En el módulo en Go que hemos visto anteriormente podemos usar este simple
+`Makefile`:
+
+```Makefile
+%:
+	go $@
+```
+
+`%` es genérico, cualquier target, y `$@` es la variable que contiene el target.
+ Es decir, si hacemos `make test` se ejecutará `go test`. Como los targets se
+ ejecutan por orden, podemos poner algún target anterior con órdenes específicas
+  que no sigan este patrón.
+
+Por el contrario, [`sake`](https://github.com/perl6/p6-sake) es un módulo
+externo, pero usa Raku para expresarse.
+
+```perl6
+task "installdeps", {
+    shell "zef install --deps-only ."
+}
+
+for <test install> -> $task {
+    task $task, {
+        shell "zef $task ."
+    }
+}
+```
+
+Declaramos tres tareas, y como la mayoría de estas herramientas, si se usa
+`sake help` nos dará las tareas que se pueden usar:
+
+```
+Registered tasks:
+	✓ help
+	✓ install
+	✓ installdeps
+	✓ test
+```
 
 ## Test unitarios
 
@@ -406,12 +498,11 @@ distribución base o como parte de alguna biblioteca popular.
 
 ## Testeando los errores
 
-Los errores o excepciones son parte integral de una aplicación como se ha visto
-anteriormente
-, y se
-deben comprobar también; no se pueden testear todos los fallos posibles, pero al
- menos algunos previsibles y, sobre todo, los que estén previstos en el propio
- código de nuestra clase.
+Los errores o excepciones son parte integral de una aplicación como se
+ha visto anteriormente , y se deben comprobar también; no se pueden
+testear todos los fallos posibles, pero al menos algunos previsibles
+y, sobre todo, los que estén previstos en el propio código de nuestra
+clase.
 
 Casi todas las bibliotecas de aserciones incluyen alguna que permite testear que
  la excepción que se ha lanzado, o el fallo, es el correcto.
@@ -615,86 +706,6 @@ se va a ejecutar siempre. Como los tests se llevan a cabo de forma
 asíncrona, sin embargo, de esta forma nos aseguramos que cuando se
 ejecute el código de los mismos esté presente. 
 
-## Herramientas de construcción
-
-Las herramientas de construcción o ejecutores de tareas permiten usar, como
-subcomandos de un solo programa, todas las tareas que se tienen que llevar a
-cabo con una aplicación, desde su compilación hasta la generación de la
-documentación.
-
-Los task runners se diferencian a lo largo de varios ejes
-
-* Explícitos o implícitos, es decir, si hay un programa que se llame
-explícitamente así y sea diferente al intérprete o compilador o no. Go es un
-ejemplo de task runner implícito: como subcomandos de go se compila, se pasan
-tests o se instala un paquete.
-* Estándar o externos: hay lenguajes que vienen con su propia herramienta de
-construcción, estándar o simplemente la que más se usa, aunque puede tener
-limitaciones: `npm` en JavaScript, `cargo` en Rust, `zef` en Raku... En muchos
-casos, sin embargo, hacen falta herramientas externas, de la cuales la
-herramienta por antonomasia es `make`, pero hay otras más, como `invoke` para
-Python o [`rake`](https://github.com/ruby/rake) para Ruby
-* Imperativas o declarativas: las procedurales permiten ejecutar órdenes para
-conseguir algo, mientras que las declarativas describen el estado en el que
-quieres que el sistema esté y realizan sus propias acciones para llegar a ese
-estado:
-[`Maven` es declarativo, `ant` es imperativo](https://stackoverflow.com/questions/14955597/imperative-vs-declarative-build-systems)
-* Genéricas o [específicas](https://softwareengineering.stackexchange.com/questions/297847/why-do-build-tools-use-a-scripting-language-different-than-underlying-programmin) del lenguaje:
-Las genéricas lanzan scripts, generalmente del shell, mientras que las
-específicas usan el propio lenguaje de programación, con lo que es más fácil que
- se adapten a diferentes plataformas.
-
-Muchas herramientas usan un *Domain Specific Language*, un DSL que permite
-expresar los diferentes *targets* y las acciones necesarias para alcanzarlos o,
-en el caso declarativo, como saber que están en ese estado. `make`, por ejemplo,
- tiene el suyo, y otras herramientas como `sbt` también; algunas como Gradle
- usan Groovy.
-
- Sean cuales sean las facilidades que ofrezca el lenguaje, las herramientas de
- construcción permiten centralizar en un solo fichero todas las tareas relativas
-  a la aplicación, y por tanto contribuyen al código limpio y a que la
-  configuración sea código y explícita. Todo lo que esté en la herramienta de
-  construcción son tareas que no tienes que describir en la documentación y que
-  son, por tanto, mucho más fáciles de mantener.
-
-En el módulo en Go que hemos visto anteriormente podemos usar este simple
-`Makefile`:
-
-```Makefile
-%:
-	go $@
-```
-
-`%` es genérico, cualquier target, y `$@` es la variable que contiene el target.
- Es decir, si hacemos `make test` se ejecutará `go test`. Como los targets se
- ejecutan por orden, podemos poner algún target anterior con órdenes específicas
-  que no sigan este patrón.
-
-Por el contrario, [`sake`](https://github.com/perl6/p6-sake) es un módulo
-externo, pero usa Raku para expresarse.
-
-```perl6
-task "installdeps", {
-    shell "zef install --deps-only ."
-}
-
-for <test install> -> $task {
-    task $task, {
-        shell "zef $task ."
-    }
-}
-```
-
-Declaramos tres tareas, y como la mayoría de estas herramientas, si se usa
-`sake help` nos dará las tareas que se pueden usar:
-
-```
-Registered tasks:
-	✓ help
-	✓ install
-	✓ installdeps
-	✓ test
-```
 
 ### Ejemplo en Elixir
 
