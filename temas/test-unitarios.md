@@ -139,6 +139,146 @@ install:
 	pip install -r requirements.txt
 ```
 
+## Historias de usuario, código inexistente y tests
+    
+Una de las lecciones más importantes es que el código que no falla es
+el que no se ha escrito. En general, esto se traduce en usar todo tipo
+de restricciones a nivel de compilación (tales como la estructura de
+tipos, o el protocolo meta-objetos) para que las cosas ocurran tal
+como deben ocurrir sin tener que preocuparte con escribir código que,
+en tiempo de ejecución, haga que se respete esa restricción. Código
+que funciona correctamente según el compilador, y es así por su
+estructura y no por el código adicional que se ha escrito, es más
+correcto que cualquier otro. Esto también es un ejemplo de
+programación defensiva. 
+                    
+### Ejemplo en Raku
+                    
+Generalmente, lenguajes que ofrecen tipos graduales o tipos estáticos
+son más estrictos, en este sentido, que otros que no lo exigen. Si
+además el protocolo de meta-objetos (es decir, el que permite diseñar
+el sistema de clases, roles y módulos) añade restricciones
+adicionales, tenemos todo lo que deseamos. Por ejemplo, la clase
+`Issue` en Raku:
+                    
+```Raku
+enum IssueState <Open Closed>;
+
+unit class Project::Issue;
+
+has IssueState $!state = Open;
+has Str $!project-name;
+has UInt $!issue-id;
+
+multi submethod BUILD( UInt :$!issue-id!,
+            Str :$!project-name!,
+            IssueState :$!state = Open) {}
+
+
+method close() { $!state = Closed }
+method reopen() { $!state = Open }
+method project-name( --> Str ) { return $!project-name }
+method issue-id( --> UInt ) { return $!issue-id }
+method state( --> IssueState ) { return $!state } 
+```
+
+Esta clase tiene que respetar todas las historias de usuario
+correspondientes. Por ejemplo, el constructor (`BUILD`) se asegura de
+que el estado del issue esté abierto; hay funciones para cambiar el
+estado. Pero lo importante es que todas las variables de instancia son
+privadas (con `$!`), con lo que el propio compilador se va a asegurar
+de que la única forma de cambiarlas sea a través de los métodos que
+cambian su valor.
+
+Adicionalmente, podríamos añadir una historia de usuario adicional,
+HU7
+> HU7: El proyecto al que esté asignado y el ID serán constantes a lo largo
+de toda la vida de un issue.
+
+¿Hay código que compruebe si se está cambiando? No. Es la propia
+definición y el uso de la sintaxis del lenguaje el que no nos tendrá
+que hacer comprobaciones sobre si ha cambiado tal cosa. En la propia
+estructura, y sin código, estará asegurado.
+
+También estamos implementando otra historia de usuario que no habíamos
+pensado:
+
+> HU8: El nombre del proyecto será una cadena y el identificador único
+> de cada issue será un entero mayor que cero.
+
+Una vez más, de esto nos aseguramos mediante la definición de las
+variables de instancia, y mediante el constructor que se asegura de
+que le pasen ese tipo y no otro.
+
+Por esta razón es por la que lenguajes como Raku resultan más
+apropiados para aplicaciones de cierta entidad que otros.
+
+### Python y sus restricciones: no todo el monte es orégano.
+
+Esta sería la definición del mismo tipo de datos en Python
+
+```python
+from enum import Enum
+
+IssueState = Enum('IssueState', 'Open Closed')
+
+class Issue:
+
+    def __init__(self, projectName: str, issueId: int ):
+        self._state = IssueState.Open
+        self._projectName = projectName
+        self._issueId = issueId
+
+    def close(self):
+        self._state = IssueState.Closed
+
+    def reopen(self):
+        self._state = IssueState.Open
+
+    @property
+    def state(self):
+        return self._state
+
+    @property
+    def projectName(self):
+        return self._projectName
+
+    @property
+    def issueId(self):
+        return self._issueId
+```
+
+(Sólo funcionará de Python 3.4 en adelante, por el uso un tanto
+peculiar de `Enum`).
+
+Pero en todo caso, aquí hacemos varias cosas para llevar a cabo las
+mismas historias de usuario.
+
+* Anotaciones de tipo para el nombre del proyecto y el issue.
+* Uso de propiedades para indicar los valores que podemos sacar del
+  objeto.
+  
+Pero hay dos problemas.
+* No existen las variables privadas o de sólo lectura en Python. Se
+  indica con un subrayado en el primer carácter que son privadas, pero
+  eso es una simple convención. Si queremos asegurarnos de que son
+  privadas o no se alteran, tendremos que usar estructuras de datos
+  específicas (y más lentas).
+* Tampoco podemos añadir anotaciones de tipos a las variables de
+  instancia. 
+
+```
+>>> from Project.Issue import Issue
+>>> issue = Issue("X",33)
+>>> issue._issueId = "Pepillo"
+```
+
+Hacemos esto y se queda tan campante. Con revisiones de código y
+algunas otras medidas se puede asegurar que se comporte correctamente,
+pero en todo caso siempre será mejor elegir algún lenguaje en el que
+el compilador o intérprete haga ese trabajo por ti.
+
+
 ## Test unitarios
 
 Las pruebas deben de corresponder a las especificaciones que queremos
@@ -539,144 +679,6 @@ lenguajes son:
 Cada lenguaje incluye este tipo de marcos, sea como parte de su
 distribución base o como parte de alguna biblioteca popular.
                     
-## Historias de usuario, código inexistente y tests
-    
-Una de las lecciones más importantes es que el código que no falla es
-el que no se ha escrito. En general, esto se traduce en usar todo tipo
-de restricciones a nivel de compilación (tales como la estructura de
-tipos, o el protocolo meta-objetos) para que las cosas ocurran tal
-como deben ocurrir sin tener que preocuparte con escribir código que,
-en tiempo de ejecución, haga que se respete esa restricción. Código
-que funciona correctamente según el compilador, y es así por su
-estructura y no por el código adicional que se ha escrito, es más
-correcto que cualquier otro. Esto también es un ejemplo de
-programación defensiva. 
-                    
-### Ejemplo en Raku
-                    
-Generalmente, lenguajes que ofrecen tipos graduales o tipos estáticos
-son más estrictos, en este sentido, que otros que no lo exigen. Si
-además el protocolo de meta-objetos (es decir, el que permite diseñar
-el sistema de clases, roles y módulos) añade restricciones
-adicionales, tenemos todo lo que deseamos. Por ejemplo, la clase
-`Issue` en Raku:
-                    
-```Raku
-enum IssueState <Open Closed>;
-
-unit class Project::Issue;
-
-has IssueState $!state = Open;
-has Str $!project-name;
-has UInt $!issue-id;
-
-multi submethod BUILD( UInt :$!issue-id!,
-            Str :$!project-name!,
-            IssueState :$!state = Open) {}
-
-
-method close() { $!state = Closed }
-method reopen() { $!state = Open }
-method project-name( --> Str ) { return $!project-name }
-method issue-id( --> UInt ) { return $!issue-id }
-method state( --> IssueState ) { return $!state } 
-```
-
-Esta clase tiene que respetar todas las historias de usuario
-correspondientes. Por ejemplo, el constructor (`BUILD`) se asegura de
-que el estado del issue esté abierto; hay funciones para cambiar el
-estado. Pero lo importante es que todas las variables de instancia son
-privadas (con `$!`), con lo que el propio compilador se va a asegurar
-de que la única forma de cambiarlas sea a través de los métodos que
-cambian su valor.
-
-Adicionalmente, podríamos añadir una historia de usuario adicional,
-HU7
-> HU7: El proyecto al que esté asignado y el ID serán constantes a lo largo
-de toda la vida de un issue.
-
-¿Hay código que compruebe si se está cambiando? No. Es la propia
-definición y el uso de la sintaxis del lenguaje el que no nos tendrá
-que hacer comprobaciones sobre si ha cambiado tal cosa. En la propia
-estructura, y sin código, estará asegurado.
-
-También estamos implementando otra historia de usuario que no habíamos
-pensado:
-
-> HU8: El nombre del proyecto será una cadena y el identificador único
-> de cada issue será un entero mayor que cero.
-
-Una vez más, de esto nos aseguramos mediante la definición de las
-variables de instancia, y mediante el constructor que se asegura de
-que le pasen ese tipo y no otro.
-
-Por esta razón es por la que lenguajes como Raku resultan más
-apropiados para aplicaciones de cierta entidad que otros.
-
-### Python y sus restricciones: no todo el monte es orégano.
-
-Esta sería la definición del mismo tipo de datos en Python
-
-```python
-from enum import Enum
-
-IssueState = Enum('IssueState', 'Open Closed')
-
-class Issue:
-
-    def __init__(self, projectName: str, issueId: int ):
-        self._state = IssueState.Open
-        self._projectName = projectName
-        self._issueId = issueId
-
-    def close(self):
-        self._state = IssueState.Closed
-
-    def reopen(self):
-        self._state = IssueState.Open
-
-    @property
-    def state(self):
-        return self._state
-
-    @property
-    def projectName(self):
-        return self._projectName
-
-    @property
-    def issueId(self):
-        return self._issueId
-```
-
-(Sólo funcionará de Python 3.4 en adelante, por el uso un tanto
-peculiar de `Enum`).
-
-Pero en todo caso, aquí hacemos varias cosas para llevar a cabo las
-mismas historias de usuario.
-
-* Anotaciones de tipo para el nombre del proyecto y el issue.
-* Uso de propiedades para indicar los valores que podemos sacar del
-  objeto.
-  
-Pero hay dos problemas.
-* No existen las variables privadas o de sólo lectura en Python. Se
-  indica con un subrayado en el primer carácter que son privadas, pero
-  eso es una simple convención. Si queremos asegurarnos de que son
-  privadas o no se alteran, tendremos que usar estructuras de datos
-  específicas (y más lentas).
-* Tampoco podemos añadir anotaciones de tipos a las variables de
-  instancia. 
-
-```
->>> from Project.Issue import Issue
->>> issue = Issue("X",33)
->>> issue._issueId = "Pepillo"
-```
-
-Hacemos esto y se queda tan campante. Con revisiones de código y
-algunas otras medidas se puede asegurar que se comporte correctamente,
-pero en todo caso siempre será mejor elegir algún lenguaje en el que
-el compilador o intérprete haga ese trabajo por ti.
 
 
 ## Testeando los errores
