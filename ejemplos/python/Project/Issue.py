@@ -9,3 +9,6 @@ class Issue:
 
     def close(self):
         self.state = IssueState.Closed
+
+    def reopen(self):
+        self.state = IssueState.Open
