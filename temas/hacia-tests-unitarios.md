@@ -135,6 +135,10 @@ install:
 
 ## Historias de usuario, código inexistente y tests
     
+	
+> En este ejemplo y en el siguiente hay realmente código en las clases, porque en su estado, ya están testeadas y demás. El código, sin embargo, no es lo importante y debéis recordar que siempre se escribe el test antes que el código. Así que no miréis al código y listo.
+
+
 Una de las lecciones más importantes es que el código que no falla es
 el que no se ha escrito. En general, esto se traduce en usar todo tipo
 de restricciones a nivel de compilación (tales como la estructura de
