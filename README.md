@@ -57,7 +57,7 @@ en LinkedIn o donde se solicite).
   * [Material](temas/integración.md).
 
 * Tests adicionales
-  * Tests de front-end
+  * Tests de front-end.
   * Tests de regresión.
   * [Material](temas/qa.md).
 

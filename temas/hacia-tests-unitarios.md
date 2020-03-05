@@ -133,9 +133,8 @@ install:
 	pip install -r requirements.txt
 ```
 
-## Historias de usuario, código inexistente y tests
-    
-	
+## Historias de usuario, las maravillas del código inexistente y tests
+
 > En este ejemplo y en el siguiente hay realmente código en las clases, porque en su estado, ya están testeadas y demás. El código, sin embargo, no es lo importante y debéis recordar que siempre se escribe el test antes que el código. Así que no miréis al código y listo.
 
 
@@ -148,10 +147,10 @@ en tiempo de ejecución, haga que se respete esa restricción. Código
 que funciona correctamente según el compilador, y es así por su
 estructura y no por el código adicional que se ha escrito, es más
 correcto que cualquier otro. Esto también es un ejemplo de
-programación defensiva. 
-                    
+programación defensiva.
+
 ### Ejemplo en Raku
-                    
+
 Generalmente, lenguajes que ofrecen tipos graduales o tipos estáticos
 son más estrictos, en este sentido, que otros que no lo exigen. Si
 además el protocolo de meta-objetos (es decir, el que permite diseñar
