@@ -139,8 +139,6 @@ install:
 	pip install -r requirements.txt
 ```
 
-
-
 ## Test unitarios
 
 Las pruebas deben de corresponder a las especificaciones que queremos
@@ -255,7 +253,13 @@ correcto.
 >muestran solo estos para ilustrar cómo funciona en un lenguaje
 >determinado.
 
-El marco de test usado proporciona, en este caso, una serie de estructuras de datos que podemos usar para informar de los errores que se produzcan. La estructura `T`, por ejemplo, es la que se recibe como argumento en cada uno de los tests; tiene funciones como `t.Error` para indicar cuando las condiciones del test no se cumplen. Si se usa `ErrorF` se puede dar, como en otros marcos de test, cual es la salida deseada y la obtenida.
+La biblioteca de aserciones usada proporciona, en este caso, una serie de
+estructuras de datos que podemos usar para informar de los errores que
+se produzcan. La estructura `T`, por ejemplo, es la que se recibe como
+argumento en cada uno de los tests; tiene funciones como `t.Error`
+para indicar cuando las condiciones del test no se cumplen. Si se usa
+`ErrorF` se puede dar, como en otros marcos de test, cual es la salida
+deseada y la obtenida. 
 
 ```
 func TestNumHitos(t *testing.T) {
@@ -506,12 +510,15 @@ mismas funciones.
 ### Otros lenguajes
 
 En general, en todos los lenguajes habrá dos niveles para llevar a
-cabo  los tests: las aserciones, que permiten ejecutar código y
-examinar el resultado del mismo, comparándolo con la salida deseada, y
+cabo  los tests: las aserciones, que permiten ejecutar código (o
+examinar el resultado del código) y
+realizar algún tipo de comparación con el resultado deseado, y un
+segundo nivel que será 
 generalmente un programa, que se encargará de buscar los ficheros de
 tests siguiendo una convención determinada (nombre del fichero,
 directorio en el que se encuentre), ejecutarlos, examinar la salida
-(que, como hemos indicado arriba, sigue un protocolo determinado) y
+(que, como hemos indicado arriba, sigue un protocolo determinado
+llamado TAP) y
 decir si se han pasado todos los tests o no, en cuyo caso se indicará
 alguna información adicional como qué scripts de tests no se ha
 pasado o el mensaje de la misma. Algunos programas usados en otros
@@ -531,6 +538,49 @@ lenguajes son:
 
 Cada lenguaje incluye este tipo de marcos, sea como parte de su
 distribución base o como parte de alguna biblioteca popular.
+                    
+## Historias de usuario, código inexistente y tests
+    
+Una de las lecciones más importantes es que el código que no falla es
+el que no se ha escrito. En general, esto se traduce en usar todo tipo
+de restricciones a nivel de compilación (tales como la estructura de
+tipos, o el protocolo meta-objetos) para que las cosas ocurran tal
+como deben ocurrir sin tener que preocuparte con escribir código que,
+en tiempo de ejecución, haga que se respete esa restricción. Código
+que funciona correctamente según el compilador, y es así por su
+estructura y no por el código adicional que se ha escrito, es más
+correcto que cualquier otro. Esto también es un ejemplo de
+programación defensiva. 
+                    
+### Ejemplo en Raku
+                    
+Generalmente, lenguajes que ofrecen tipos graduales o tipos estáticos
+son más estrictos, en este sentido, que otros que no lo exigen. Si
+además el protocolo de meta-objetos (es decir, el que permite diseñar
+el sistema de clases, roles y módulos) añade restricciones
+adicionales, tenemos todo lo que deseamos. Por ejemplo, la clase
+`Issue` en Raku:
+                    
+```Raku
+enum IssueState <Open Closed>;
+
+unit class Project::Issue;
+
+has IssueState $!state = Open;
+has Str $!project-name;
+has UInt $!issue-id;
+
+multi submethod BUILD( UInt :$!issue-id!,
+            Str :$!project-name!,
+            IssueState :$!state = Open) {}
+
+
+method close() { $!state = Closed }
+method reopen() { $!state = Open }
+method project-name( --> Str ) { return $!project-name }
+method issue-id( --> UInt ) { return $!issue-id }
+method state( --> IssueState ) { return $!state } 
+```
 
 ## Testeando los errores
 
@@ -748,7 +798,8 @@ ejecute el código de los mismos esté presente.
 Elixir no es un lenguaje que maneje con soltura, pero puede ser interesante como
  ejemplo de uno que incluye una utilidad externa al compilador, `mix`, con la
  cual se pueden expresar cosas como la versión del lenguaje con la que vamos a
- trabajar (ver de nuevo la aplicación de 12 factores). Implementaremos solo
+ trabajar (ver de nuevo la aplicación de 12 factores). También porque está a medio camino entre la orientación a objetos y la funcionalidad.
+ Implementaremos solo
  parte de la funcionalidad para gestionar un issue:
 
 ```elixir
@@ -756,18 +807,25 @@ defmodule Issue do
   @moduledoc """
   A simple issue in a repository
   """
+ 
+  @enforce_keys [:projectname, :id]
   defstruct [:projectname, :id, state: :Open ]
-
-  @enforce_keys [:state, :projectname, :id]
-
+  
   @doc """
   Can create and close it, and that's it
 
   """
-  def close( issue ) do
+  def close( issue ) do 
     issue |> struct( %{state: :Closed} )
   end
 
+  @doc """
+  Reopens issue
+
+  """
+  def reopen( issue ) do 
+    issue |> struct( %{state: :Open} )
+  end
 end
 ```
 
@@ -778,7 +836,7 @@ Hay unos pocos más dos puntos de la cuenta, pero al final lo que hace es defini
  . Por eso lo
  tenemos que testear de esta forma
 
-```
+```elixir
 defmodule IssueTest do
   use ExUnit.Case
   doctest Issue
@@ -796,6 +854,11 @@ defmodule IssueTest do
     new_issue = Issue.close(context[:issue])
     assert new_issue.state == :Closed
   end
+
+  test "State after reopening",context do
+    new_issue = Issue.reopen(context[:issue])
+    assert new_issue.state == :Open
+  end  
 end
 ```
 
