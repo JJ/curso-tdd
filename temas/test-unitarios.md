@@ -592,7 +592,7 @@ cambian su valor.
 
 Adicionalmente, podríamos añadir una historia de usuario adicional,
 HU7
-> HU7: El projecto al que esté asignado y el ID serán constantes a lo largo
+> HU7: El proyecto al que esté asignado y el ID serán constantes a lo largo
 de toda la vida de un issue.
 
 ¿Hay código que compruebe si se está cambiando? No. Es la propia
@@ -603,7 +603,7 @@ estructura, y sin código, estará asegurado.
 También estamos implementando otra historia de usuario que no habíamos
 pensado:
 
-> HU8: El nombre del projecto será una cadena y el identificador único
+> HU8: El nombre del proyecto será una cadena y el identificador único
 > de cada issue será un entero mayor que cero.
 
 Una vez más, de esto nos aseguramos mediante la definición de las
@@ -649,12 +649,12 @@ class Issue:
 ```
 
 (Sólo funcionará de Python 3.4 en adelante, por el uso un tanto
-peculiar de Enum).
+peculiar de `Enum`).
 
 Pero en todo caso, aquí hacemos varias cosas para llevar a cabo las
 mismas historias de usuario.
 
-* Anotaciones de tipo para el nombre del projecto y el issue.
+* Anotaciones de tipo para el nombre del proyecto y el issue.
 * Uso de propiedades para indicar los valores que podemos sacar del
   objeto.
   
