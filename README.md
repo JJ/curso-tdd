@@ -29,8 +29,15 @@ en LinkedIn o donde se solicite).
   * Documentación de las historias de usuario y traslado a issues.
   * [Material](temas/diseño.md#a-programar).
 
-* **Sesión 3**: Preparando tu aplicación para testear: herramientas de construcción, *separation of concerns*, inversión de
-  dependencias, *objetos de test*, aserciones, marcos de pruebas,
+* **Sesión 3**: Task runners y cómo usarlos. 
+  * Diferentes tipos de task runners y por qué son útiles para todo.
+  * [Material](temas/hacia-tests-unitarios.md).
+  
+* **Sesión 4**: Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
+  * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
+  * [Material](temas/hacia-tests-unitarios.md).
+
+* **Sesión 5**:  *objetos de test*, aserciones, marcos de pruebas,
   fases del test.
   * [Material](temas/test-unitarios.md).
 
