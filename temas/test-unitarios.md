@@ -582,6 +582,37 @@ method issue-id( --> UInt ) { return $!issue-id }
 method state( --> IssueState ) { return $!state } 
 ```
 
+Esta clase tiene que respetar todas las historias de usuario
+correspondientes. Por ejemplo, el constructor (`BUILD`) se asegura de
+que el estado del issue esté abierto; hay funciones para cambiar el
+estado. Pero lo importante es que todas las variables de instancia son
+privadas (con `$!`), con lo que el propio compilador se va a asegurar
+de que la única forma de cambiarlas sea a través de los métodos que
+cambian su valor.
+
+Adicionalmente, podríamos añadir una historia de usuario adicional,
+HU7
+> HU7: El projecto al que esté asignado y el ID serán constantes a lo largo
+de toda la vida de un issue.
+
+¿Hay código que compruebe si se está cambiando? No. Es la propia
+definición y el uso de la sintaxis del lenguaje el que no nos tendrá
+que hacer comprobaciones sobre si ha cambiado tal cosa. En la propia
+estructura, y sin código, estará asegurado.
+
+También estamos implementando otra historia de usuario que no habíamos
+pensado:
+
+> HU8: El nombre del projecto será una cadena y el identificador único
+> de cada issue será un entero mayor que cero.
+
+Una vez más, de esto nos aseguramos mediante la definición de las
+variables de instancia, y mediante el constructor que se asegura de
+que le pasen ese tipo y no otro.
+
+Por esta razón es por la que lenguajes como Raku resultan más
+apropiados para aplicaciones de cierta entidad que otros.
+
 ## Testeando los errores
 
 Los errores o excepciones son parte integral de una aplicación como se
