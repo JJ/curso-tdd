@@ -2,17 +2,13 @@
 
 ## Planteamiento
 
-Los lenguajes de programación modernos tienen todo un marco de
-utilidades y bibliotecas para poder ejecutar esos tests; estos marcos
-van desde las funciones que te permiten comprobar si el resultado
-obtenido es igual al deseado, hasta las herramientas de construcción o
-ejecutores de tareas que se usan, de forma más o menos estándar, en
-cada lenguaje de programación para lanzar los tests. En este tema
-veremos de forma integral todos esos aspectos de los tests. 
+En un proceso de calidad del software, es tan importante el planteamiento de la clase y las herramientas que se usan para gestionar las tareas de un proyecto como el código que se escriba para asegurarnos de que efectivamente se cumplen las historias de usuario. Conviene desacoplar el diseño de la clase, sin embargo, del código que se implementa en el mismo, porque es el diseño el que debe seguir las historias de usuario, mientras que el código se asegura de que tengan el resultado deseado.
+
+Por supuesto, todo en un proyecto se va a ejecutar desde un task runner, así que será lo primero que se vea en esta sesión.
 
 ## Al final de esta sesión
 
-El estudiante habrá programado los tests y los habrá lanzado desde un *task runner* específico para su lenguaje o genérico.
+El estudiante habrá elegido un task runner, y habrá programado el interfaz de una clase correspondiendo a la historia de usuario o historias que desee, terminando el primer hito.
 
 ## Criterio de aceptación
 
