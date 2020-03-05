@@ -59,10 +59,11 @@ EOC
     my @hus = grep(  m{HU/}, @repo_files  );
     cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
   } elsif ( $version =~ /^v1/ ) {
-    isnt( grep( /qa.json/, @repo_files), 0, "Fichero de configuración presente" );
+    file_present( "qa.json", \@repo_files, "de configuración" );
     my $qa = from_json(read_text( $repo_dir.'/qa.json' ));
-    my $build_file = $qa->{'build'};
-    isnt( grep( /$build_file/, @repo_files), 0, "Fichero de construcción $build_file presente");
+    file_present( $qa->{'build'}, \@repo_files, "de construcción" );
+    file_present( $qa->{'clase'}, \@repo_files, "de clase" );
+    language_checks( $qa->{'lenguaje'}, \@repo_files );
   }
 }
 
@@ -70,4 +71,19 @@ done_testing;
 
 sub check {
   return BOLD.GREEN ."✔ ".RESET.join(" ",@_);
+}
+
+sub file_present {
+  my ($file, $ls_files_ref, $name ) = @_;
+  ok( grep( /$file/, @$ls_files_ref ), "Fichero $name → $file presente" );
+  
+}
+
+sub language_checks {
+  my ($language, $ls_files_ref) = @_;
+  if ($language =~ /python/i ) {
+    file_present( "requirements.txt", $ls_files_ref, "Python" );
+  } elsif ( $language =~ /Typescript/i || $language =~ /node/i ) {
+    file_present( "package.json", $ls_files_ref, "JS" );
+  }
 }
