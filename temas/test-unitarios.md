@@ -613,6 +613,72 @@ que le pasen ese tipo y no otro.
 Por esta razón es por la que lenguajes como Raku resultan más
 apropiados para aplicaciones de cierta entidad que otros.
 
+### Python y sus restricciones: no todo el monte es orégano.
+
+Esta sería la definición del mismo tipo de datos en Python
+
+```python
+from enum import Enum
+
+IssueState = Enum('IssueState', 'Open Closed')
+
+class Issue:
+
+    def __init__(self, projectName: str, issueId: int ):
+        self._state = IssueState.Open
+        self._projectName = projectName
+        self._issueId = issueId
+
+    def close(self):
+        self._state = IssueState.Closed
+
+    def reopen(self):
+        self._state = IssueState.Open
+
+    @property
+    def state(self):
+        return self._state
+
+    @property
+    def projectName(self):
+        return self._projectName
+
+    @property
+    def issueId(self):
+        return self._issueId
+```
+
+(Sólo funcionará de Python 3.4 en adelante, por el uso un tanto
+peculiar de Enum).
+
+Pero en todo caso, aquí hacemos varias cosas para llevar a cabo las
+mismas historias de usuario.
+
+* Anotaciones de tipo para el nombre del projecto y el issue.
+* Uso de propiedades para indicar los valores que podemos sacar del
+  objeto.
+  
+Pero hay dos problemas.
+* No existen las variables privadas o de sólo lectura en Python. Se
+  indica con un subrayado en el primer carácter que son privadas, pero
+  eso es una simple convención. Si queremos asegurarnos de que son
+  privadas o no se alteran, tendremos que usar estructuras de datos
+  específicas (y más lentas).
+* Tampoco podemos añadir anotaciones de tipos a las variables de
+  instancia. 
+
+```
+>>> from Project.Issue import Issue
+>>> issue = Issue("X",33)
+>>> issue._issueId = "Pepillo"
+```
+
+Hacemos esto y se queda tan campante. Con revisiones de código y
+algunas otras medidas se puede asegurar que se comporte correctamente,
+pero en todo caso siempre será mejor elegir algún lenguaje en el que
+el compilador o intérprete haga ese trabajo por ti.
+
+
 ## Testeando los errores
 
 Los errores o excepciones son parte integral de una aplicación como se
