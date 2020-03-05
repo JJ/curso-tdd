@@ -14,3 +14,15 @@ class Issue:
 
     def reopen(self):
         self._state = IssueState.Open
+
+    @property
+    def state(self):
+        return self._state
+
+    @property
+    def projectName(self):
+        return self._projectName
+
+    @property
+    def issueId(self):
+        return self._issueId
