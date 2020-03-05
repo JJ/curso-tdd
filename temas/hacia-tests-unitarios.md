@@ -290,7 +290,7 @@ El repositorio tendrá que incluir un fichero de configuración para poder lleva
 {
     "lenguaje" : "Nombre del lenguaje",
     "build" : "Makefile",
-    "clase" : "lib/nombre/del/fichero.pm6",
+    "clase" : "lib/nombre/del/fichero.pm6"
   
 }
 ```
