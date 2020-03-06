@@ -56,6 +56,8 @@ aserciones; en todo caso, lo que siempre existe es una biblioteca de
 aserciones en todos los lenguajes de programación que permiten
 comparar el resultado esperado con el resultado obtenido de diferentes formas.
 
+Los tests unitarios deben ser, además, unitarios. Cada aserción debe testear sólo una funcionalidad o característica, de forma que si falla sepamos exactamente cuál ha sido. Además, si el lenguaje de programación se organiza en subtests o funciones que testean algo, cada función debe lanzar tests relacionados sólo con una funcionalidad, si es posible, uno solo. De esa forma, cuando falla un test sólo se tiene que arreglar lo relacionado con esa funcionalidad, y no hay que buscar el error dentro de todas las que se están testeando. El nombre de estas funciones, además, debe ser lo más explícito posible, dejando totalmente claro lo que testea, si es posible usando la misma frase que se use en la historia de usuario.
+
 ### Escribiendo tests en Go
 
 [Go](https://golang.org/) es
@@ -148,7 +150,8 @@ para indicar cuando las condiciones del test no se cumplen. Si se usa
 deseada y la obtenida a partir de una cadena formateada (de ahí el `f`).
 
 ```
-func TestNumHitos(t *testing.T) {
+// Comprueba si el número de hitos es correcto
+func TestNumHitosCorrecto(t *testing.T) {
 	t.Log("Test Número Hitos")
 	var x uint = uint(CuantosHitos())
 	if x == 3 {
@@ -156,6 +159,10 @@ func TestNumHitos(t *testing.T) {
 	} else {
 		t.Errorf("El número de hitos es incorrecto; esperábamos %d", 3)
 	}
+}
+
+func TestDemasiadosHitos(t *testing.T) {
+	var x uint = uint(CuantosHitos())
 	var too_big uint = x + 3
 	_, e := Uno( too_big )
 	if e != nil {
