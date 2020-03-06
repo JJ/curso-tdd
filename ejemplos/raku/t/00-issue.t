@@ -1,4 +1,4 @@
-use Test;
+use Test; # -*- mode: perl6 -*-
 
 use Project::Issue;
 
@@ -14,10 +14,5 @@ $issue.close;
 is( $issue.state, Closed, "Issue has been closed");
 $issue.reopen;
 is( $issue.state, Open, "Initially states should be open");
-
-$issue = Project::Issue.new( project-name => $project-name, issue-id => 3,
-            state => Closed  );
-is( $issue.state, Closed, "Issue is closed");
-
 
 done-testing;
