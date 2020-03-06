@@ -491,7 +491,10 @@ En las fases del proceso de prueba:
 * Durante el *setup* se crearán los objetos y cargarán los ficheros
   necesarios hasta poner nuestro objeto en un estado en el que se
   puedan llevar a cabo los tests. Esto puede incluir, por ejemplo,
-  también crear esos objetos.
+  también crear esos objetos. En esta fase se pueden crear lo que se
+  denominan *fixtures*: son simplemente objetos que, si no funciona su
+  creación, algo va mal, pero si funciona se usan como base para el
+  resto de los tests.
   
 * A continuación se llevan a cabo las pruebas en sí; esas pruebas
   pueden estar agrupadas en subtests, y en el caso de que falle un
@@ -503,12 +506,11 @@ En las fases del proceso de prueba:
   
 
 Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
-               para llevar a cabo las diferentes fases. Normalmente es
-               parte de la biblioteca de aserciones decidir si una
-               parte del código se va a ejecutar o no. Por ejemplo, en
-               los tests en Perl que se pasan en este mismo
-               repositorio, nos interesa ejecutar algunos sólo cuando
-               se trata de un `pull request`. Usamos esto:
+para llevar a cabo las diferentes fases. Normalmente es parte de la
+biblioteca de aserciones decidir si una parte del código se va a
+ejecutar o no. Por ejemplo, en los [tests en Perl](t/proyecto.t) que
+se pasan en este mismo repositorio, nos interesa ejecutar algunos sólo
+cuando se trata de un `pull request`. Usamos esto:
 			   
 ```
 # Carga bibliotecas...
@@ -736,4 +738,4 @@ Se editará el fichero `qa.json` añadiéndole, además, la siguiente clave (sin
 }
 ```
 
-En vez de `Makefile`, se usará el nombre del fichero de construcción que se haya usado para ejecutar los tests, que tendrá que estar presente en el repositorio.
+En vez de este nombre ficticio, se usará el nombre del fichero de construcción que se haya usado para ejecutar los tests, que tendrá que estar presente en el repositorio.
