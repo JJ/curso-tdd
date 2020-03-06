@@ -16,9 +16,10 @@ El estudiante habrá programado los tests y los habrá lanzado desde un *task ru
 
 ## Criterio de aceptación
 
-La entidad principal del problema se habrá implementado en una clase,
+La entidad principal del problema se habrá implementado en una o
+varias clases,
 y cada una de las funciones tendrá un test que se ejecutarán en
-local.
+local. Los tests deberán pasar.
 
 ## Test unitarios
 
@@ -31,12 +32,13 @@ que hacerlo mediante [*historias de usuario*](https://es.wikipedia.org/wiki/Hist
 narrativas de qué es lo que puede hacer un posible usuario y qué es lo
 que el usuario debería esperar; ya hemos hablado de ellas en el tema
 dedicado al [diseño](diseño.md). Estas historias de usuario se
-convertirán en *issues* del repositorio, cuyo cierre marcará que el
+convertirán en *issues* del repositorio, agrupados en mojones, cuyo cierre marcará que el
 código está escrito, testeado, y se ajusta a la misma.
 
-En la mayoría de los entornos de programación y especialmente en `node` hay dos niveles en el test: el 
+En la mayoría de los lenguajes de programación y especialmente en `node` hay dos niveles en el test: el 
 primero es el marco de pruebas y el segundo la biblioteca (o bibliotecas) de pruebas que
-efectivamente se está usando. El marco de pruebas será el que ejecute
+efectivamente se está usando. El marco de pruebas incluirá
+generalmente un script que será el que ejecute
 todos los tests, examine el resultado y emita un informe, que
 dependerá de si los tests se han superado o no.
 
@@ -50,7 +52,9 @@ las pruebas), a veces existe una biblioteca de aserciones, que son las
 diferentes pruebas unitarias que se deben pasar o no. En muchos casos,
 la biblioteca de pruebas incluye ya aserciones; en otros casos,
 bibliotecas de pruebas pueden trabajar con diferentes bibliotecas de
-aserciones. 
+aserciones; en todo caso, lo que siempre existe es una biblioteca de
+aserciones en todos los lenguajes de programación que permiten
+comparar el resultado esperado con el resultado obtenido de diferentes formas.
 
 ### Escribiendo tests en Go
 
@@ -112,7 +116,8 @@ mayúscula, como sucede aquí. El nombre del paquete es el mismo que el
 del paquete que queremos testear.
 
 De este fichero se ejecutarán todas las funciones al
-ejecutar desde la línea de órdenes `go test`, que devolverá algo así:
+ejecutar desde la línea de órdenes `go test` (que sería el marco de
+pruebas en este caso), que devolverá algo así:
 
 ```
 PASS
@@ -120,7 +125,7 @@ ok  	_/home/jmerelo/Asignaturas/infraestructura-virtual/HitosIV	0.017s
 ```
 
 En vez de aserciones como funciones específicas, Go simplifica el
-interfaz de test haciendo que se devuelva un error (con `t.Error()`)
+interfaz de pruebas eliminando las aserciones; por el contrario, hace que se devuelva un error (con `t.Error()`)
 cuando el test no pasa. Si todos funcionan, no hay ningún problema y
 se imprime `PASS` como se muestra arriba. Adicionalmente, `t.Log()`
 (siendo `t` una estructura de datos que se le tiene que pasar a todos
@@ -134,13 +139,13 @@ correcto.
 >muestran solo estos para ilustrar cómo funciona en un lenguaje
 >determinado.
 
-La biblioteca de aserciones usada proporciona, en este caso, una serie de
+La biblioteca de pruebas (que no de aserciones) usada proporciona, en este caso, una serie de
 estructuras de datos que podemos usar para informar de los errores que
 se produzcan. La estructura `T`, por ejemplo, es la que se recibe como
 argumento en cada uno de los tests; tiene funciones como `t.Error`
 para indicar cuando las condiciones del test no se cumplen. Si se usa
 `ErrorF` se puede dar, como en otros marcos de test, cual es la salida
-deseada y la obtenida. 
+deseada y la obtenida a partir de una cadena formateada (de ahí el `f`).
 
 ```
 func TestNumHitos(t *testing.T) {
@@ -171,17 +176,18 @@ func TestNumHitos(t *testing.T) {
 
 Go valora la simplicidad y además incluye de serie todo lo necesario
 para llevar a cabo los tests. Python, el lenguaje en el que solo hay
-una buena forma de hacer las cosas, permite que se hagan las cosas de
+una buena forma de hacer las cosas (que depende del mes en que uno
+intente hacerlas), permite que se hagan las cosas de
 varias formas diferentes, e incluye en su biblioteca estándar una
 biblioteca de aserciones.
 
-En node hay
+Pero hay
 [múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js);
 el [panorama de 2019 se presenta en este artículo](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a). La
 biblioteca de aserciones [`assert`](https://nodejs.org/api/assert.html) 
 forma parte de la estándar de JS, pero hay otras como
-[Unexpected](http://unexpected.js.org/) o aserciones parte de marcos
-de tests más completos. Estos marcos de test incluyen [Chai](https://www.chaijs.com/), [Jasmine](https://jasmine.github.io/),
+[Unexpected](http://unexpected.js.org/) o aserciones que son parte de marcos
+de tests más completos, tales como [Chai](https://www.chaijs.com/), [Jasmine](https://jasmine.github.io/),
 [Must.js](https://github.com/moll/js-must) y [jest](https://jestjs.io/).
 
 
