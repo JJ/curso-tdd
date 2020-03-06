@@ -21,7 +21,7 @@ varias clases,
 y cada una de las funciones tendrá un test que se ejecutarán en
 local. Los tests deberán pasar.
 
-## Test unitarios
+## Tests unitarios
 
 Las pruebas deben de corresponder a las especificaciones que queremos
 que respete nuestro software, y como tales deben de ser previas a la
@@ -432,13 +432,13 @@ lenguajes son:
 
 Cada lenguaje incluye este tipo de marcos, sea como parte de su
 distribución base o como parte de alguna biblioteca popular.
-                    
+
 
 
 ## Testeando los errores
 
 Los errores o excepciones son parte integral de una aplicación como se
-ha visto anteriormente , y se deben comprobar también; no se pueden
+ha visto anteriormente, y se deben comprobar también; no se pueden
 testear todos los fallos posibles, pero al menos algunos previsibles
 y, sobre todo, los que estén previstos en el propio código de nuestra
 clase.
@@ -620,7 +620,7 @@ resto es similar a otros lenguajes. Lo podemos testear usando el marco
 de pruebas `jest`
 
 ```
-import { Issue, State } from '../Project';
+import { Issue, State } from '../Project/Issue';
 
 var data: Issue;
 
@@ -727,6 +727,42 @@ Para testear, simplemente ejecutamos `mix test`; Elixir es un tipo de lenguaje
 que usa una herramienta de construcción estándar como Node. El repositorio está
 en [GitHub](https://github.com/JJ/elixir-gh-projects).
 
+### Usando fixtures en Python
+    
+Python, a base de no querer extender la sintaxis, acaba añadiendo conceptos y construcciones sintácticas para temas inesperados, como por ejemplo los objetos que se crean en la fase de setup de los tests, que se denominan *fixtures*, y tienen su sintaxis específica. Para testear la clase `Issue` que hemos generado anteriormente, se usarían fixtures de esta forma:
+    
+```Python
+import pytest
+from Project.Issue import Issue, IssueState
+
+PROJECTNAME = "testProject"
+ISSUEID = 1
+
+@pytest.fixture
+def issue():
+    issue = Issue(PROJECTNAME,ISSUEID)
+    return issue
+
+def test_has_name_when_created(issue):
+    assert issue.projectName  == PROJECTNAME
+
+def test_has_id_when_created(issue):
+    assert issue.issueId  == ISSUEID
+    
+def test_is_open_when_created(issue):
+    assert  issue.state == IssueState.Open
+
+def test_is_closed_when_you_close_it(issue):
+    issue.close()
+    assert  issue.state == IssueState.Closed
+
+def test_is_open_when_you_reopen_it(issue):
+    issue.reopen()
+    assert  issue.state == IssueState.Open
+
+```
+
+`fixture` es una orden de pytest, y es un *decorador*, por eso lleva la arroba delante. En la práctica, crea un objecto del mismo nombre que la función que se decora que es el que vamos a usar en el resto de los tests, tal como se ve aquí. En este caso usamos la librería de aserciones de `pytest` también, ya puestos.
 
 ## Actividad
 
