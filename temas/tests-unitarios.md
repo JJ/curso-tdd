@@ -16,11 +16,12 @@ El estudiante habrá programado los tests y los habrá lanzado desde un *task ru
 
 ## Criterio de aceptación
 
-La entidad principal del problema se habrá implementado en una clase,
+La entidad principal del problema se habrá implementado en una o
+varias clases,
 y cada una de las funciones tendrá un test que se ejecutarán en
-local.
+local. Los tests deberán pasar.
 
-## Test unitarios
+## Tests unitarios
 
 Las pruebas deben de corresponder a las especificaciones que queremos
 que respete nuestro software, y como tales deben de ser previas a la
@@ -31,12 +32,13 @@ que hacerlo mediante [*historias de usuario*](https://es.wikipedia.org/wiki/Hist
 narrativas de qué es lo que puede hacer un posible usuario y qué es lo
 que el usuario debería esperar; ya hemos hablado de ellas en el tema
 dedicado al [diseño](diseño.md). Estas historias de usuario se
-convertirán en *issues* del repositorio, cuyo cierre marcará que el
+convertirán en *issues* del repositorio, agrupados en mojones, cuyo cierre marcará que el
 código está escrito, testeado, y se ajusta a la misma.
 
-En la mayoría de los entornos de programación y especialmente en `node` hay dos niveles en el test: el 
+En la mayoría de los lenguajes de programación y especialmente en `node` hay dos niveles en el test: el 
 primero es el marco de pruebas y el segundo la biblioteca (o bibliotecas) de pruebas que
-efectivamente se está usando. El marco de pruebas será el que ejecute
+efectivamente se está usando. El marco de pruebas incluirá
+generalmente un script que será el que ejecute
 todos los tests, examine el resultado y emita un informe, que
 dependerá de si los tests se han superado o no.
 
@@ -50,7 +52,11 @@ las pruebas), a veces existe una biblioteca de aserciones, que son las
 diferentes pruebas unitarias que se deben pasar o no. En muchos casos,
 la biblioteca de pruebas incluye ya aserciones; en otros casos,
 bibliotecas de pruebas pueden trabajar con diferentes bibliotecas de
-aserciones. 
+aserciones; en todo caso, lo que siempre existe es una biblioteca de
+aserciones en todos los lenguajes de programación que permiten
+comparar el resultado esperado con el resultado obtenido de diferentes formas.
+
+Los tests unitarios deben ser, además, unitarios. Cada aserción debe testear sólo una funcionalidad o característica, de forma que si falla sepamos exactamente cuál ha sido. Además, si el lenguaje de programación se organiza en subtests o funciones que testean algo, cada función debe lanzar tests relacionados sólo con una funcionalidad, si es posible, uno solo. De esa forma, cuando falla un test sólo se tiene que arreglar lo relacionado con esa funcionalidad, y no hay que buscar el error dentro de todas las que se están testeando. El nombre de estas funciones, además, debe ser lo más explícito posible, dejando totalmente claro lo que testea, si es posible usando la misma frase que se use en la historia de usuario.
 
 ### Escribiendo tests en Go
 
@@ -112,7 +118,8 @@ mayúscula, como sucede aquí. El nombre del paquete es el mismo que el
 del paquete que queremos testear.
 
 De este fichero se ejecutarán todas las funciones al
-ejecutar desde la línea de órdenes `go test`, que devolverá algo así:
+ejecutar desde la línea de órdenes `go test` (que sería el marco de
+pruebas en este caso), que devolverá algo así:
 
 ```
 PASS
@@ -120,7 +127,7 @@ ok  	_/home/jmerelo/Asignaturas/infraestructura-virtual/HitosIV	0.017s
 ```
 
 En vez de aserciones como funciones específicas, Go simplifica el
-interfaz de test haciendo que se devuelva un error (con `t.Error()`)
+interfaz de pruebas eliminando las aserciones; por el contrario, hace que se devuelva un error (con `t.Error()`)
 cuando el test no pasa. Si todos funcionan, no hay ningún problema y
 se imprime `PASS` como se muestra arriba. Adicionalmente, `t.Log()`
 (siendo `t` una estructura de datos que se le tiene que pasar a todos
@@ -134,16 +141,17 @@ correcto.
 >muestran solo estos para ilustrar cómo funciona en un lenguaje
 >determinado.
 
-La biblioteca de aserciones usada proporciona, en este caso, una serie de
+La biblioteca de pruebas (que no de aserciones) usada proporciona, en este caso, una serie de
 estructuras de datos que podemos usar para informar de los errores que
 se produzcan. La estructura `T`, por ejemplo, es la que se recibe como
 argumento en cada uno de los tests; tiene funciones como `t.Error`
 para indicar cuando las condiciones del test no se cumplen. Si se usa
 `ErrorF` se puede dar, como en otros marcos de test, cual es la salida
-deseada y la obtenida. 
+deseada y la obtenida a partir de una cadena formateada (de ahí el `f`).
 
 ```
-func TestNumHitos(t *testing.T) {
+// Comprueba si el número de hitos es correcto
+func TestNumHitosCorrecto(t *testing.T) {
 	t.Log("Test Número Hitos")
 	var x uint = uint(CuantosHitos())
 	if x == 3 {
@@ -151,6 +159,10 @@ func TestNumHitos(t *testing.T) {
 	} else {
 		t.Errorf("El número de hitos es incorrecto; esperábamos %d", 3)
 	}
+}
+
+func TestDemasiadosHitos(t *testing.T) {
+	var x uint = uint(CuantosHitos())
 	var too_big uint = x + 3
 	_, e := Uno( too_big )
 	if e != nil {
@@ -171,17 +183,18 @@ func TestNumHitos(t *testing.T) {
 
 Go valora la simplicidad y además incluye de serie todo lo necesario
 para llevar a cabo los tests. Python, el lenguaje en el que solo hay
-una buena forma de hacer las cosas, permite que se hagan las cosas de
+una buena forma de hacer las cosas (que depende del mes en que uno
+intente hacerlas), permite que se hagan las cosas de
 varias formas diferentes, e incluye en su biblioteca estándar una
 biblioteca de aserciones.
 
-En node hay
+Pero hay
 [múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js);
 el [panorama de 2019 se presenta en este artículo](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a). La
 biblioteca de aserciones [`assert`](https://nodejs.org/api/assert.html) 
 forma parte de la estándar de JS, pero hay otras como
-[Unexpected](http://unexpected.js.org/) o aserciones parte de marcos
-de tests más completos. Estos marcos de test incluyen [Chai](https://www.chaijs.com/), [Jasmine](https://jasmine.github.io/),
+[Unexpected](http://unexpected.js.org/) o aserciones que son parte de marcos
+de tests más completos, tales como [Chai](https://www.chaijs.com/), [Jasmine](https://jasmine.github.io/),
 [Must.js](https://github.com/moll/js-must) y [jest](https://jestjs.io/).
 
 
@@ -419,13 +432,13 @@ lenguajes son:
 
 Cada lenguaje incluye este tipo de marcos, sea como parte de su
 distribución base o como parte de alguna biblioteca popular.
-                    
+
 
 
 ## Testeando los errores
 
 Los errores o excepciones son parte integral de una aplicación como se
-ha visto anteriormente , y se deben comprobar también; no se pueden
+ha visto anteriormente, y se deben comprobar también; no se pueden
 testear todos los fallos posibles, pero al menos algunos previsibles
 y, sobre todo, los que estén previstos en el propio código de nuestra
 clase.
@@ -485,7 +498,10 @@ En las fases del proceso de prueba:
 * Durante el *setup* se crearán los objetos y cargarán los ficheros
   necesarios hasta poner nuestro objeto en un estado en el que se
   puedan llevar a cabo los tests. Esto puede incluir, por ejemplo,
-  también crear esos objetos.
+  también crear esos objetos. En esta fase se pueden crear lo que se
+  denominan *fixtures*: son simplemente objetos que, si no funciona su
+  creación, algo va mal, pero si funciona se usan como base para el
+  resto de los tests.
   
 * A continuación se llevan a cabo las pruebas en sí; esas pruebas
   pueden estar agrupadas en subtests, y en el caso de que falle un
@@ -497,12 +513,11 @@ En las fases del proceso de prueba:
   
 
 Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
-               para llevar a cabo las diferentes fases. Normalmente es
-               parte de la biblioteca de aserciones decidir si una
-               parte del código se va a ejecutar o no. Por ejemplo, en
-               los tests en Perl que se pasan en este mismo
-               repositorio, nos interesa ejecutar algunos sólo cuando
-               se trata de un `pull request`. Usamos esto:
+para llevar a cabo las diferentes fases. Normalmente es parte de la
+biblioteca de aserciones decidir si una parte del código se va a
+ejecutar o no. Por ejemplo, en los [tests en Perl](t/proyecto.t) que
+se pasan en este mismo repositorio, nos interesa ejecutar algunos sólo
+cuando se trata de un `pull request`. Usamos esto:
 			   
 ```
 # Carga bibliotecas...
@@ -605,7 +620,7 @@ resto es similar a otros lenguajes. Lo podemos testear usando el marco
 de pruebas `jest`
 
 ```
-import { Issue, State } from '../Project';
+import { Issue, State } from '../Project/Issue';
 
 var data: Issue;
 
@@ -712,6 +727,42 @@ Para testear, simplemente ejecutamos `mix test`; Elixir es un tipo de lenguaje
 que usa una herramienta de construcción estándar como Node. El repositorio está
 en [GitHub](https://github.com/JJ/elixir-gh-projects).
 
+### Usando fixtures en Python
+    
+Python, a base de no querer extender la sintaxis, acaba añadiendo conceptos y construcciones sintácticas para temas inesperados, como por ejemplo los objetos que se crean en la fase de setup de los tests, que se denominan *fixtures*, y tienen su sintaxis específica. Para testear la clase `Issue` que hemos generado anteriormente, se usarían fixtures de esta forma:
+    
+```Python
+import pytest
+from Project.Issue import Issue, IssueState
+
+PROJECTNAME = "testProject"
+ISSUEID = 1
+
+@pytest.fixture
+def issue():
+    issue = Issue(PROJECTNAME,ISSUEID)
+    return issue
+
+def test_has_name_when_created(issue):
+    assert issue.projectName  == PROJECTNAME
+
+def test_has_id_when_created(issue):
+    assert issue.issueId  == ISSUEID
+    
+def test_is_open_when_created(issue):
+    assert  issue.state == IssueState.Open
+
+def test_is_closed_when_you_close_it(issue):
+    issue.close()
+    assert  issue.state == IssueState.Closed
+
+def test_is_open_when_you_reopen_it(issue):
+    issue.reopen()
+    assert  issue.state == IssueState.Open
+
+```
+
+`fixture` es una orden de pytest, y es un *decorador*, por eso lleva la arroba delante. En la práctica, crea un objecto del mismo nombre que la función que se decora que es el que vamos a usar en el resto de los tests, tal como se ve aquí. En este caso usamos la librería de aserciones de `pytest` también, ya puestos.
 
 ## Actividad
 
@@ -730,4 +781,4 @@ Se editará el fichero `qa.json` añadiéndole, además, la siguiente clave (sin
 }
 ```
 
-En vez de `Makefile`, se usará el nombre del fichero de construcción que se haya usado para ejecutar los tests, que tendrá que estar presente en el repositorio.
+En vez de este nombre ficticio, se usará el nombre del fichero de construcción que se haya usado para ejecutar los tests, que tendrá que estar presente en el repositorio.

@@ -39,7 +39,7 @@ en LinkedIn o donde se solicite).
 
 * **Sesión 5**:  *objetos de test*, aserciones, marcos de pruebas,
   fases del test.
-  * [Material](temas/test-unitarios.md).
+  * [Material](temas/tests-unitarios.md).
 
 * Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
