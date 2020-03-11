@@ -8,29 +8,31 @@ de un sistema de calidad, ejecutando automáticamente las pruebas que
 se le configuren cada vez que se lleva a cabo un `push` o un `pull request`. 
 A su vez, estos sistemas dan retroalimentación al alojamiento del
 repositorio de forma que, en caso positivo, se realice el siguiente
-paso en el pipeline, por ejemplo desplegar a producción.
+paso en el pipeline, por ejemplo desplegar a producción; por eso se llaman en general sistemas CI/CD, incluyendo *continous delivery*, o despliegue continuy. 
 
 ## Al final de esta sesión
 
 El estudiante entenderá los criterios para elegir un sistema de
-integración continua, y sabrá configurar uno para poder ejecutar los
+integración continua, y sabrá configurar uno (o varios) para poder ejecutar los
 tests automáticamente en el mismo.
 
 ## Criterio de aceptación
 
-El repositorio tiene que estar corriendo los tests en Travis, y esos
+El repositorio tiene que estar corriendo los tests unitarios desarrollados anteriormente en (al menos) Travis, y esos
 tests deben pasar.
 
 ## Pasando los tests automáticamente
 
 A un primer nivel, la integración continua consiste en integrar los
-cambios hechos por un miembro del equipo en el momento que estén y
+cambios hechos por un miembro del equipo en el momento que estén hechos y
 pasen los tests. Pero eso, efectivamente, significa que deben pasar
 los tests y para nosotros, consiste en crear una configuración para
 una máquina externa que ejecute esos tests y nos diga cuáles han
 pasado o cuales no. Estas máquinas más adelante se combinan con las de
 despliegue continuo, no permitiendo el mismo si algún test no ha
 pasado.
+
+> En general, no se desarrollará directamente trabajando sobre la rama máster del repositorio, pero hay diferentes metodologías y no nos vamos a meter en eso. En general, en todo caso, habrá o un pull request a la rama máster o un push a master y en ese momento se tendrán que ejecutar automáticamente los tests.
 
 En general, la integración continua se hace *en la nube*; lo que no
 quiere decir que se haga siempre en un servicio *cloud* contratado,
@@ -46,19 +48,18 @@ sí con las librerías del lenguaje de programación en el que está
 desarrollado.
 
 Un sistema bastante popular de integración continua es
-[Jenkins](https://jenkins.io/), pero está enfocado sobre todo a
-Java y no tiene una web gratuita que se pueda usar. Jenkins lo puedes usar en la nube o instalarte tu propio
-ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java
-por lo que hay otros sistemas como [Travis](https://travis-ci.org) o
+[Jenkins](https://jenkins.io/). Jenkins lo puedes usar en la nube o instalarte tu propio
+ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java (y no tiene una versión gratuita que se pueda ejecutar)
+por lo que recomendamos, al menos para empezar, otros sistemas como [Travis](https://travis-ci.org) o
 [Shippable](https://www.shippable.com/) que podemos usar también desde
 la nube y, además, están preparados para más lenguajes de
 programación.
 
-Para trabajar con estos sistemas, generalmente hay que hacerlo en dos
+Para trabajar con un sistema de CI hay que hacerlo en dos
 pasos
 
 1. Darse de alta. Muchos están conectados con GitHub por lo que puedes
-   usar directamente el usuario ahí. A través de un proceso de
+   usar directamente el usuario que tengas ahí. A través de un proceso de
    autorización, acceder al contenido e incluso informar del resultado
    de los tests.
 
