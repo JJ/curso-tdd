@@ -433,7 +433,13 @@ lenguajes son:
 Cada lenguaje incluye este tipo de marcos, sea como parte de su
 distribución base o como parte de alguna biblioteca popular.
 
+## Ejecutando tests unitarios
 
+Los tests son también programas; simplemente programas que usan una API o librería para informar de los fallos de test que se han producido. Como tales, se pueden ejecutar como se ejecuten los programas en cada lenguaje: compilando o interpretando el programa.
+
+En algunos casos se usan adicionalmente marcos de test; sin embargo, estos marcos de test, en general, sólo interpretan la salida y a veces hacen alguna cosa adicional como establecer caminos de ejecución para encontrar los módulos o ejecutar los tests que sigan la convención general; sin embargo, para ejecutar el programa y probar lo que está haciendo no son, en general, necesarios.
+
+Usar un marco de test con su propio programa, por otro lado, te permitirá ejecutar los tests de forma uniforme para todos los módulos de un lenguaje, y también hacer otras cosas como ejecutarlos en paralelo. Por eso conviene conocerlos, sobre todo porque es lo que se va a usar desde los sistemas de integración continua.
 
 ## Testeando los errores
 
