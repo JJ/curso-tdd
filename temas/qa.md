@@ -11,7 +11,7 @@ un poco más teórico técnicas y conceptos adicionales usuales en este
 
 ## Al final de esta sesión
 
-Se habrá terminado el proyecto, incluyendo tests de integración, y se
+Se habrá terminado un MVP del proyecto, incluyendo tests de integración, y se
 habrá creado una hoja de ruta para abarcar todos los demás aspectos
 que necesite. 
 
