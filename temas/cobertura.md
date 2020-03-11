@@ -19,16 +19,24 @@ Inclusión del badge de `codecov` con un porcentaje de cobertura aceptable.
 
 ## Tests de cobertura
 
-Los tests de cobertura miden qué parte de nuestro código está cubierta por los tests unitarios (que, recordemos, son de caja blanca). Estos tests de cobertura funcionan tanto a nivel de línea, como de función o de paquetes, pero generalmente van a dar un porcentaje de líneas cubiertas por los tests unitarios.
+Los tests de cobertura miden qué parte de nuestro código está cubierta por los tests unitarios (que, recordemos, son de caja blanca y por tanto se puede saber qué camino han seguido por el mismo). Estos tests de cobertura funcionan tanto a nivel de línea, como de función o de paquetes, pero generalmente van a dar un porcentaje de líneas cubiertas por los tests unitarios.
 
-Dependiendo del lenguaje, se hará con unas herramientas u otras. En Go, por ejemplo, es parte de la instrumentación del propio lenguaje.
+Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, constarán de dos partes
+
+* Instrumentación para poder saber qué líneas se están ejecutando, y que genere un informe en algún formato estándar.
+* Visualizadores de los informes, que a partir del anterior lo pasan a HTML, por ejemplo. 
+
+
+### Tests de cobertura en Go y cómo usarlos para mejorar el código.
+
+En Go, por ejemplo, es parte de la instrumentación del propio lenguaje.
 
 ```
 go test -coverprofile=coverage.out
 go tool cover -html=coverage.out
 ```
 
-La primera ejecuta los tests y genera un fichero de salida, y la segunda orden abre un navegador con una página en la que nos muestra nuestro código y la cobertura que tiene, señalando las funciones que no están cubiertas. Sobre la clase [`HitosIV`que ya hemos usado anteriormente](https://github.com/JJ/HitosIV), estos serían los resultados.
+La primera ejecuta los tests y genera un fichero de salida, y la segunda orden abre un navegador con una página en la que nos muestra nuestro código y la cobertura que tiene, señalando las funciones que no están cubiertas. Sobre la clase [`HitosIV` que ya hemos usado anteriormente](https://github.com/JJ/HitosIV), estos serían los resultados.
 
 ![Cobertura de los tests en la clase HitosIV](img/gocover.png)
 
@@ -56,6 +64,9 @@ generador de datos, y el que crea los informes. En casi todos los
 lenguajes va a ocurrir lo mismo, sólo que no va a estar integrado con
 el lenguaje, sino que va a ser una o dos utilidades aparte del
 compilador.
+
+
+### Tests de cobertura en TypeScript
 
 En `jest`, que hemos usado anteriormente con TypeScript, también está
 incluido un sistema de tests de cobertura. Por ejemplo, si lo
