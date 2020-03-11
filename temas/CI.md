@@ -57,7 +57,59 @@ evento (tal como `pre-commit`) y situados en el subdirectorio
 `.git/hooks) del repositorio local.
 
 Si queremos ejecutar los tests cada vez que se haga un commit,
-tendremos que lanzarlos desde estos *hooks*. 
+tendremos que lanzarlos desde estos *hooks*. Pero en principio, la
+idea principal es que un *hook* puede realizar cualquier tipo de
+comprobación; lo que está también relacionado con la calidad. Por
+ejemplo, este programa en Ruby que comprueba que el formato del
+mensaje de commit sea el convencional de 50 caracteres en la primera
+línea, luego una vacía, y luego el resto de las líneas de un máximo de
+80 caracteres:
+
+```ruby
+#!/usr/bin/env ruby
+# coding: utf-8
+
+lines = File.open(ARGV[0],'r').readlines
+
+first_line = lines.shift
+
+if first_line.size > 50
+  puts "La primera línea tiene más de 50 caracteres"
+  exit 255
+end
+
+if lines.size > 0 
+  second_line = lines.shift.chop
+
+  if second_line != ''
+    puts "La segunda línea debe estar vacía"
+    exit 255
+  end
+
+end
+
+if lines.size > 0
+
+  bad_lines = {}
+
+  lines.each_with_index do |line,i|
+    bad_lines[i+2] = line if line.size > 80
+  end
+
+  if bad_lines.keys.size > 0
+    puts "Todas estas líneas tienen más de 80 caracteres", bad_lines.keys.join(", ")
+    exit 255
+  end
+end
+```
+
+Lo que hace el programa es ir extrayendo líneas de su argumento;
+tratándose del hook, recibirá el fichero donde está el mensaje del
+commit como primer argumento (generalmente se guardará en
+`COMMIT_MSG`). Si alguna de las comprobaciones no funciona, saldrá del
+programa con el código de estado 255, que indica que la ejecución ha
+sido fallida. En ese caso, no se llevará a cabo el evento, en este
+caso creación (o modificación) de un mensaje de commit.
 
 ## Pasando los tests automáticamente en la nube.
 
