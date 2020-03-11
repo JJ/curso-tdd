@@ -23,7 +23,7 @@ tests deben pasar.
 
 ## Pasando los tests automáticamente
 
-A un primer nivel, la integración continua consiste en integrar los
+A un primer nivel, la integración continua consiste en incluir en la rama principal los
 cambios hechos por un miembro del equipo en el momento que estén hechos y
 pasen los tests. Pero eso, efectivamente, significa que deben pasar
 los tests y para nosotros, consiste en crear una configuración para
@@ -65,24 +65,25 @@ pasos
 
 2. Activar el repositorio en el que se vaya a aplicar la
    integración continua. Travis permite hacerlo directamente desde tu
-   configuración; en otros se dan de alta desde la web de GitHub.
+   configuración; en otros se dan de alta desde la web de GitHub; también en algunos casos todos los repositorios estarán autorizados con sólo autorizar el usuario. Por spuesto, en el caso de Github actions y Gitlab pipelines no hace falta llevar a cabo este paso.
 
-3. Crear un fichero de configuración para que se ejecute la
-   integración y añadirlo al repositorio.
+3. Crear un fichero de configuración con la configuración necesaria para ejecutar estos tests y añadirlo al repositorio.
 
 
-Los ficheros de configuración de las máquinas de integración continua
+Los ficheros de configuración de las máquinas que ejecutan los servicios de integración continua
 corresponden, aproximadamente, a una configuración de una máquina
-virtual que hiciera solo y exclusivamente la ejecución de los
-tests. Para ello se provisiona una máquina virtual (o contenedor), se
-le carga el sistema operativo y se instala lo necesario, indicado en
+virtual que se dedicara solo y exclusivamente a llevar a cabo la ejecución de los
+tests. Por ello las órdenes del mismo son equivalentes a una
+provisión de una máquina virtual (o contenedor), a la que tras el
+sistema operativo se le instala lo necesario, indicado en 
 el fichero de configuración tal como este para Travis.
 
 ~~~~~YAML
 	language: node_js
 	node_js:
-	  - "0.10"
-	  - "0.11"
+	  - "10"
+	  - "11"
+	  - "12"
 	before_install:
 	  - npm install -g mocha
 	  - cd src; npm install .
@@ -96,11 +97,13 @@ Este fichero, denominado `.travis.yml`, contiene lo siguiente:
   incluyendo por supuesto nodejs. Las máquinas virtuales no suelen
   estar configuradas para lenguajes arbitrarios, aunque por supuesto
   se puede poner un lenguaje tal como C y luego descargar lo necesario
-  para otro lenguaje.
+  para otro lenguaje. Con `language: minimal` no se cargará nada
+  adicional y se usarán sólo las utilidades que el contenedor donde se
+  ejecuta traiga instaladas (por ejemplo, make o git).
 
 - `node_js` en este caso indica las versiones que vamos a probar. Por
   el mismo precio podemos probar varias versiones, en este caso las
-  dos últimas de node.
+  últimas de node.
 
 - `before_install` se ejecuta antes de la instalación de la aplicación
   (específica de cada lenguaje; por ejemplo en el caso de node.js
@@ -113,6 +116,10 @@ Este fichero, denominado `.travis.yml`, contiene lo siguiente:
   subdirectorio y ejecutamos `mocha` tal como lo hemos hecho
   anteriormente.
 
+Esta configuración no es completa ni mínima. En general, para cada
+lenguaje habrá una serie de instrucciones estándar que se ejecutarán
+con sólo especificar el lenguaje y la versión; también hay otros
+apartados de configuración que conviene mirar en la web de Travis.
 El resultado
 [aparecerá en la web](https://travis-ci.org/JJ/desarrollo-basado-pruebas)
 y también se enviará por correo electrónico. Y te da también un
@@ -120,25 +127,26 @@ y también se enviará por correo electrónico. Y te da también un
 pronto, todo funciona.
 
 Si el informe indica que las pruebas son correctas, se puede proceder al despliegue. Pero eso
-ya será en la siguiente clase.
+ya no corresponde a este capítulo.
 
 Esta configuración es esencial por varias razones: primero, porque nos
 permite ser conscientes de todo lo necesario para desplegar nuestra
 aplicación. Segundo, porque al crear tests integramos el paso de
 control de calidad en el desarrollo. Y, finalmente, porque la
 integración continua y los tests correspondientes son un paso esencial
-para el despliegue continuo, que se verá más adelante.
+para el despliegue continuo.
 
 ## Acelerando los tests
 
 Es conveniente que los tests tarden la mínima cantidad de tiempo
 posible, para que se pueda comprobar que existe algún error sobre la
 marcha y se pueda corregir. Sin embargo, cualquier test va a necesitar
-instalar una serie de prerrequisitos antes de ejecutarlos, así que la
+instalar una serie de prerrequisitos (módulos dependientes, por ejemplo) antes de ejecutarlos, así que la
 descarga e instalación de paquetes y módulos, y en algunos casos
 incluso la compilación de algún prerrequisito necesario, va a tardar
 algún tiempo. Acelerar los tests hasta que tarden menos (incluso
-bastante menos) de un minuto es esencial para un trabajo fluido.
+bastante menos) de un minuto es esencial para un trabajo fluido, que
+permita corregir sobre la marcha errores antes de continuar trabajando.
 
 Hay muchas formas de conseguir que estos tests vayan más rápidamente,
 que pasan generalmente por crear un testeador específico con todo lo
@@ -156,7 +164,7 @@ tiene [`FatPacker`](https://metacpan.org/pod/App::FatPacker), Python
 tiene [`wheels`](https://pythonwheels.com/) y node
 tiene [WebPack](https://webpack.js.org/).
 
-Esto es lo que uso, por ejemplo, en la asignatura CC:
+Esto es lo que uso, por ejemplo, en la asignatura [CC](https://jj.github.io/CC):
 
 ```
 fatpack pack src/check-hitos.t > t/check-hitos.t
@@ -179,16 +187,22 @@ es elegir el contenedor Docker sobre el que se va a basar la
 prueba. Un contenedor [Docker](https://www.docker.com/), en una sola
 imagen, tiene toda la infraestructura necesaria para ejecutar o
 testear una aplicación. Además, el mismo contenedor que se usa para
-hacer las pruebas se puede usar también (o su precursor) para
+hacer las pruebas (o su precursor) se puede usar también  para
 desplegar la aplicación.
+
+> Explicar el concepto de contenedor Docker es muy extenso para este
+> curso. Nos quedaremos con la idea y sintaxis básica y dejamos
+> recomendado un curso o cursos sobre esta materia, imprescindible
+> para la programación moderna.
 
 Por ejemplo, usaremos el contenedor generado por este Dockerfile para
 testear los proyectos (y ortografía) en este curso:
 
 ```Dockerfile
-FROM jjmerelo/p6-test-text
+FROM jjmerelo/perl-test-text
 LABEL version="1.0" maintainer="JJ Merelo <jjmerelo@GMail.com>" perl5version="5.22"
 
+WORKDIR /home/install
 ADD cpanfile .
 RUN apt-get update && apt-get install -y git
 RUN cpanm --installdeps .
@@ -196,13 +210,13 @@ RUN cpanm --installdeps .
 VOLUME /test
 WORKDIR /test
 
-ENTRYPOINT cp /*.dic /*.aff /test && prove -I/usr/lib -c
+ENTRYPOINT cp /home/install/data/*.dic /home/install/data/*.aff /test && prove -I/usr/lib -c
 ```
 
 Si el fichero es compacto, es porque previamente se ha generado un
-contenedor anterior, `jjmerelo/p6-test-text`, que incluye el módulo
-que comprueba la ortografía; lo que hay que añadir solamente son lo
-necesario para testera en sí los proyectos enviados, que es el test
+contenedor anterior, `jjmerelo/perl-test-text`, que incluye el módulo
+que comprueba la ortografía (`Test::Text`); lo que hay que añadir solamente son lo
+necesario para testear en sí los proyectos enviados, que es el test
 adicional que se lleva a cabo. Estos proyectos necesitarán una
 instalación de `git`, y también una serie de módulos de Perl
 adicionales; las dos sentencias `RUN` llevan a cabo esa labor. 
@@ -214,7 +228,7 @@ ejecutar, llama al marco de test de Perl, llamado `prove`.
 A diferencia de los paquetes anteriores, que van en el repositorio,
 normalmente los Dockerfiles no se ejecutan directamente (salvo en
 GitHub Actions). Habrá que subirlos al Docker Hub, pero es
-gratuito. Travis (o el sistema que sea) lo descargará de ese registro
+gratuito para proyectos de software libre. Travis (o el sistema que sea) lo descargará de ese registro
 en la fase correspondiente antes de aplicarlo a tu repositorio.
 
 > Esa descarga puede tardar también algunos segundos, porque un
@@ -267,7 +281,7 @@ Otras formas de acelerar:
   
 * Los propios marcos de test tienen opciones para ejecutar diferentes
   conjuntos de test en paralelo; incluso make permite hacerlo. Hay que
-  buscar la forma de activarlo para que sea efectivo.
+  buscar la forma de activarlo para que sea efectivo, buscando sobre todo que los tests terminen lo antes posible.
 
 ## Actividad
 

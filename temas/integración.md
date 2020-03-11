@@ -33,7 +33,11 @@ integración
 un grupo, de forma que se compruebe que los requisitos funcionales
 expresados en las historias de usuario, se cumplan.
 
-En general, los tests de integración son de tipo [caja negra](https://searchsoftwarequality.techtarget.com/answer/Integration-testing-Is-it-black-box-or-white-box-testing), es decir, no pretendemos conseguir una cobertura total de todo el código de lo que estamos integrando (como en el caso de los tests unitarios). Lo que nos interesa es que se *integre* bien con nuestro propio software.
+En general, los tests de integración son de tipo [caja
+negra](https://searchsoftwarequality.techtarget.com/answer/Integration-testing-Is-it-black-box-or-white-box-testing),
+es decir, no pretendemos conseguir una cobertura total de todo el
+código de lo que estamos integrando (como en el caso de los tests
+unitarios). Lo que nos interesa es que el código añadido se *integre* bien con nuestro propio software.
 
 Los tests de integración, a nivel básico, usan las mismas técnicas que los tests unitarios: aserciones y marcos de test. Únicamente se diferencia en lo que se va a sondear. Por ejemplo, escribiremos una serie de tests para comprobar que el API de una clase de la que dependemos no ha variado, y lo haremos al nivel más alto posible.
 
