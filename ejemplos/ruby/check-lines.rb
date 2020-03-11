@@ -25,7 +25,7 @@ if lines
   bad_lines = {}
 
   lines.each_with_index do |line,i|
-    bad_lines[i+2] = line
+    bad_lines[i+2] = line if line.size > 80
   end
 
   if bad_lines.keys.size > 0
