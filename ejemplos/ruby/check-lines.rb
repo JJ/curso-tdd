@@ -10,23 +10,28 @@ if first_line.size > 50
   exit 255
 end
 
-second_line = lines.shift
+if lines 
+  second_line = lines.shift
 
-if second_line == '\n'
-  puts "La segunda línea debe estar vacía"
-  exit 255
+  if second_line == '\n'
+    puts "La segunda línea debe estar vacía"
+    exit 255
+  end
+
 end
 
+if lines 
 
-bad_lines = {}
+  bad_lines = {}
 
-lines.each_with_index do |line,i|
-  bad_lines[i+2] = line
-end
+  lines.each_with_index do |line,i|
+    bad_lines[i+2] = line
+  end
 
-if bad_lines.keys
-  puts "Todas estas líneas tienen más de 80 caracteres", bad_lines.keys.join(", ")
-  exit 255
+  if bad_lines.keys.size > 0
+    puts "Todas estas líneas tienen más de 80 caracteres", bad_lines.keys.join(", ")
+    exit 255
+  end
 end
 
 
