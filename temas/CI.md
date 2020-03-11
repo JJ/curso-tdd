@@ -14,27 +14,61 @@ paso en el pipeline, por ejemplo desplegar a producción; por eso se llaman en g
 
 El estudiante entenderá los criterios para elegir un sistema de
 integración continua, y sabrá configurar uno (o varios) para poder ejecutar los
-tests automáticamente en el mismo.
+tests automáticamente en el mismo. También habrá entendido los mecanismos que hacen que se ejecuten estos tests automáticamente.
 
 ## Criterio de aceptación
 
 El repositorio tiene que estar corriendo los tests unitarios desarrollados anteriormente en (al menos) Travis, y esos
 tests deben pasar.
 
-## Pasando los tests automáticamente
+## Concepto de integración continua
 
 A un primer nivel, la integración continua consiste en incluir en la rama principal los
 cambios hechos por un miembro del equipo en el momento que estén hechos y
-pasen los tests. Pero eso, efectivamente, significa que deben pasar
+pasen los tests.
+
+> En general, no se desarrollará directamente trabajando sobre la rama máster del repositorio, pero hay diferentes metodologías y no nos vamos a meter en eso. En general, en todo caso, habrá o un pull request a la rama máster o un push a master y en ese momento se tendrán que ejecutar automáticamente los tests.
+
+Se denomina continua porque implica una mejora atómica de la base de
+código, y prueba y despliegue para cada uno de los pequeños cambios o
+arreglos que se hagan en el mismo, oponiéndose a ciclos de integración
+en los que el código se desarrollo de forma independiente de los
+tests, que se ejecutan al final de un ciclo de desarrollo.
+
+Esto implica también la ejecución automática de tests. Hay diferentes
+maneras de hacerlo, como veremos a continuación, pero todos se basan
+en un mecanismo similar.
+
+## *Hooks* o ganchos de git.
+
+Es posible que se considere a `git` una simple herramienta de control
+de fuentes, cuando es mucho más: una verdadera herramienta de control
+de flujos de trabajo. Los flujos de trabajo en git se controlan a base
+de ganchos o *hooks*. Diferentes cambios de estado generan eventos
+estándar, que reciben una cierta entrada y tienen como salida
+un valor verdadero o falso, que indica si se puede pasar a la
+siguiente etapa. Por ejemplo, crear un commit activará un hook que lo
+procesará, añadiendo o no al mensaje de commit, y rechazando el commit
+si el valor que devuelve el programa es distinto de cero.
+
+Porque en general los *hooks* son eso, programas, scripts escritos en
+cualquier lenguaje, con un nombre estándar relacionado con el del
+evento (tal como `pre-commit`) y situados en el subdirectorio
+`.git/hooks) del repositorio local.
+
+Si queremos ejecutar los tests cada vez que se haga un commit,
+tendremos que lanzarlos desde estos *hooks*. 
+
+## Pasando los tests automáticamente en la nube.
+
+ Pero eso, efectivamente, significa que deben pasar
 los tests y para nosotros, consiste en crear una configuración para
 una máquina externa que ejecute esos tests y nos diga cuáles han
 pasado o cuales no. Estas máquinas más adelante se combinan con las de
 despliegue continuo, no permitiendo el mismo si algún test no ha
 pasado.
 
-> En general, no se desarrollará directamente trabajando sobre la rama máster del repositorio, pero hay diferentes metodologías y no nos vamos a meter en eso. En general, en todo caso, habrá o un pull request a la rama máster o un push a master y en ese momento se tendrán que ejecutar automáticamente los tests.
-
-En general, la integración continua se hace *en la nube*; lo que no
+En general, la integración continua se hace *en la nube*, por el simple hecho de qu e los equipos de desarrollo están distribuidos y también los repositorios suelen ser servicios externos a los ordenadores de la empresa.; lo que no
 quiere decir que se haga siempre en un servicio *cloud* contratado,
 sino porque se suele hacer en máquinas dedicadas específicamente para
 ello; es más general, sin embargo que una máquina
