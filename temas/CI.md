@@ -8,7 +8,7 @@ de un sistema de calidad, ejecutando automáticamente las pruebas que
 se le configuren cada vez que se lleva a cabo un `push` o un `pull request`. 
 A su vez, estos sistemas dan retroalimentación al alojamiento del
 repositorio de forma que, en caso positivo, se realice el siguiente
-paso en el pipeline, por ejemplo desplegar a producción; por eso se llaman en general sistemas CI/CD, incluyendo *continous delivery*, o despliegue continuy. 
+paso en el pipeline, por ejemplo desplegar a producción; por eso se llaman en general sistemas CI/CD, incluyendo *continuous delivery*, o despliegue continuo. 
 
 ## Al final de esta sesión
 
