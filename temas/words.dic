@@ -99,7 +99,9 @@ commit
 commits
 configurarlo
 considerable
+continuous
 cámping
+delivery
 desarrollismo
 design
 development
@@ -112,6 +114,7 @@ electrificación
 end
 enrutándolas
 fatpack
+fixtures
 fork
 frameworks
 front
@@ -141,6 +144,7 @@ leaderboard
 lighting
 log
 make
+master
 matrix
 md
 mesh
@@ -177,6 +181,7 @@ proxies
 proxy
 pull
 push
+pytest
 refactorizado
 reimplementan
 release
@@ -206,10 +211,12 @@ target
 targets
 task
 teardown
+testea
 testeada
 testeadas
 testeado
 testeador
+testean
 testeando
 testear
 testearla
@@ -222,9 +229,3 @@ toolbelt
 tutorial
 versionado
 zef
-fixtures
-testean
-testea
-pytest
-delivery
-master
