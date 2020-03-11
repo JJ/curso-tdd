@@ -10,17 +10,17 @@ if first_line.size > 50
   exit 255
 end
 
-if lines 
-  second_line = lines.shift
+if lines.size > 0 
+  second_line = lines.shift.chop
 
-  if second_line == '\n'
+  if second_line != ''
     puts "La segunda línea debe estar vacía"
     exit 255
   end
 
 end
 
-if lines 
+if lines.size > 0
 
   bad_lines = {}
 
