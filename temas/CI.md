@@ -113,9 +113,13 @@ caso creación (o modificación) de un mensaje de commit.
 
 ## Pasando los tests automáticamente en la nube.
 
- Pero eso, efectivamente, significa que deben pasar
-los tests y para nosotros, consiste en crear una configuración para
-una máquina externa que ejecute esos tests y nos diga cuáles han
+Muchos equipos de desarrollo instalan *hooks* con comprobaciones
+básicas durante los mensajes de commit e incluso antes de hacer push a
+una rama o a máster, pero en general, se usará algún *hook* en el
+servidor que los ejecutará cuando se envíe un pull al mismo.
+
+A diferencia de los *hooks* locales, que se ejecutan en el mismo
+entorno de desarrollo del desarrollador, para los remotos habrá que crear una configuración para que ejecute esos tests y nos diga cuáles han
 pasado o cuales no. Estas máquinas más adelante se combinan con las de
 despliegue continuo, no permitiendo el mismo si algún test no ha
 pasado.
