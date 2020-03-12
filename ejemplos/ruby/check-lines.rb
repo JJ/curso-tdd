@@ -10,7 +10,7 @@ if first_line.size > 50
   exit 255
 end
 
-if lines.size > 0 
+if lines.size > 0
   second_line = lines.shift.chop
 
   if second_line != ''
