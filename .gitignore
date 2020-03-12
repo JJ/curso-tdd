@@ -5,4 +5,4 @@
 __pycache__
 _site/
 Gemfile.lock
-.sass_cache/
+.sass-cache/

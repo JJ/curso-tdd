@@ -371,13 +371,13 @@ de que el anterior acabe. También se pueden hacer tests diferentes en
 diferentes sistemas de CI; cada uno lo lanzará cuando deba, y todos se
 estarán ejecutando simultáneamente.
 
-Otras formas de acelerar:
+Otras formas de acelerar las pruebas:
 
 * Usar una [caché](https://docs.travis-ci.com/user/caching/). Muchos
   sistemas de CI te permiten almacenar los módulos instalados o los
   programas que se hayan compilado, de forma que no haya que hacerlo
   de nuevo.
-  
+
 * Los propios marcos de test tienen opciones para ejecutar diferentes
   conjuntos de test en paralelo; incluso make permite hacerlo. Hay que
   buscar la forma de activarlo para que sea efectivo, buscando sobre todo que los tests terminen lo antes posible.
