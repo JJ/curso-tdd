@@ -83,8 +83,8 @@ sub file_present {
 }
 
 sub config_file {
-  my ($repo_files, $repo_dir) = @_;
-  file_present( "qa.json", @$repo_files, "de configuración" );
+  my ($ls_files_ref, $repo_dir) = @_;
+  file_present( "qa.json", $ls_files_ref, "de configuración" );
   return from_json(read_text( $repo_dir.'/qa.json' ));
 }
 
