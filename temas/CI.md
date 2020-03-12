@@ -27,9 +27,14 @@ A un primer nivel, la integración continua consiste en incluir en la rama princ
 cambios hechos por un miembro del equipo en el momento que estén hechos y
 pasen los tests.
 
-> En general, no se desarrollará directamente trabajando sobre la rama máster del repositorio, pero hay diferentes metodologías y no nos vamos a meter en eso. En general, en todo caso, habrá o un pull request a la rama máster o un push a master y en ese momento se tendrán que ejecutar automáticamente los tests.
+> En general, no se desarrollará directamente trabajando sobre la rama
+> máster del repositorio, pero hay diferentes metodologías y no nos
+> vamos a meter en eso. En general, en todo caso, habrá o un pull
+> request a la rama máster o un push a la rama master y en ese momento
+> se tendrán que ejecutar automáticamente los tests.
 
-Se denomina continua porque implica una mejora atómica de la base de
+Se denomina continua porque implica una mejora atómica (de un pequeño
+átomo, vamos) de la base de
 código, y prueba y despliegue para cada uno de los pequeños cambios o
 arreglos que se hagan en el mismo, oponiéndose a ciclos de integración
 en los que el código se desarrollo de forma independiente de los
@@ -65,7 +70,7 @@ mensaje de commit sea el convencional de 50 caracteres en la primera
 línea, luego una vacía, y luego el resto de las líneas de un máximo de
 80 caracteres:
 
-```ruby
+```
 #!/usr/bin/env ruby
 # coding: utf-8
 
