@@ -124,12 +124,15 @@ una rama o a máster, pero en general, se usará algún *hook* en el
 servidor que los ejecutará cuando se envíe un pull al mismo.
 
 A diferencia de los *hooks* locales, que se ejecutan en el mismo
-entorno de desarrollo del desarrollador, para los remotos habrá que crear una configuración para que ejecute esos tests y nos diga cuáles han
+entorno de desarrollo que el que está usando quien lo desarrolle, para los remotos habrá que crear una configuración para que ejecute esos tests y nos diga cuáles han
 pasado o cuales no. Estas máquinas más adelante se combinan con las de
 despliegue continuo, no permitiendo el mismo si algún test no ha
 pasado.
 
-En general, la integración continua se hace *en la nube*, por el simple hecho de qu e los equipos de desarrollo están distribuidos y también los repositorios suelen ser servicios externos a los ordenadores de la empresa.; lo que no
+En general, la integración continua se hace *en la nube*, por el
+simple hecho de que los equipos de desarrollo están distribuidos y
+también los repositorios suelen ser servicios externos a los
+ordenadores de la empresa; lo que no 
 quiere decir que se haga siempre en un servicio *cloud* contratado,
 sino porque se suele hacer en máquinas dedicadas específicamente para
 ello; es más general, sin embargo que una máquina
@@ -160,7 +163,7 @@ pasos
 
 2. Activar el repositorio en el que se vaya a aplicar la
    integración continua. Travis permite hacerlo directamente desde tu
-   configuración; en otros se dan de alta desde la web de GitHub; también en algunos casos todos los repositorios estarán autorizados con sólo autorizar el usuario. Por spuesto, en el caso de Github actions y Gitlab pipelines no hace falta llevar a cabo este paso.
+   configuración; en otros se dan de alta desde la web de GitHub; también en algunos casos todos los repositorios estarán autorizados con sólo autorizar el usuario. Por supuesto, en el caso de GitHub Actions y *GitLab pipelines* no hace falta llevar a cabo este paso.
 
 3. Crear un fichero de configuración con la configuración necesaria para ejecutar estos tests y añadirlo al repositorio.
 
