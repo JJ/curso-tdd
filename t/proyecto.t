@@ -59,11 +59,14 @@ EOC
     my @hus = grep(  m{HU/}, @repo_files  );
     cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
   } elsif ( $version =~ /^v1/ ) {
-    file_present( "qa.json", \@repo_files, "de configuración" );
-    my $qa = from_json(read_text( $repo_dir.'/qa.json' ));
+    my $qa = config_file( \@repo_files, $repo_dir );
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'clase'}, \@repo_files, "de clase" );
     language_checks( $qa->{'lenguaje'}, \@repo_files );
+  } elsif ( $version =~ /^v2/ ) {
+    my $qa = config_file( \@repo_files, $repo_dir );
+    file_present( $qa->{'build'}, \@repo_files, "de construcción" );
+    file_present( $qa->{'test'}, \@repo_files, "de test" );
   }
 }
 
@@ -77,6 +80,12 @@ sub file_present {
   my ($file, $ls_files_ref, $name ) = @_;
   ok( grep( /$file/, @$ls_files_ref ), "Fichero $name → $file presente" );
   
+}
+
+sub config_file {
+  my ($repo_files, $repo_dir) = @_;
+  file_present( "qa.json", @$repo_files, "de configuración" );
+  return from_json(read_text( $repo_dir.'/qa.json' ));
 }
 
 sub language_checks {
