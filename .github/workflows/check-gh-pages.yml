@@ -1,0 +1,11 @@
+name: "Comprueba hitos y milestones"
+on: [push, pull_request]
+
+jobs:
+  check_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Check build
+        uses: meitar/jekyll-builder-for-github-pages-action@v1
