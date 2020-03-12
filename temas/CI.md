@@ -168,7 +168,7 @@ provisión de una máquina virtual (o contenedor), a la que tras el
 sistema operativo se le instala lo necesario, indicado en 
 el fichero de configuración tal como este para Travis.
 
-~~~~~YAML
+```YAML
 	language: node_js
 	node_js:
 	  - "10"
@@ -178,7 +178,8 @@ el fichero de configuración tal como este para Travis.
 	  - npm install -g mocha
 	  - cd src; npm install .
 	script: cd src; mocha
-~~~~~
+```
+
 
 Este fichero, denominado `.travis.yml`, contiene lo siguiente:
 
