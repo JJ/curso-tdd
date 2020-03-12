@@ -335,7 +335,7 @@ en la fase correspondiente antes de aplicarlo a tu repositorio.
 Esto se incluirá en la configuración de Travis, que además se
 simplifica considerablemente:
 
-```yaml
+```
 language:
   - minimal
 
@@ -349,7 +349,7 @@ script:
 
 Esta configuración simplemente descarga de Docker Hub durante la fase
 de instalación y lo ejecuta durante la fase `script` en la que se
-llevan a cabo los tests.
+llevan a cabo los tests. `docker images`, de hecho, no hace falta.
 
 > Como desventaja, con Docker hay que preparar contenedores diferentes
 > para probar versiones diferentes del lenguaje; si este paso es
