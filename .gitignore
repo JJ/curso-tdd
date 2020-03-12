@@ -3,3 +3,6 @@
 .idea
 .precomp
 __pycache__
+_site/
+Gemfile.lock
+.sass_cache/
