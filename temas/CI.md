@@ -168,7 +168,7 @@ provisión de una máquina virtual (o contenedor), a la que tras el
 sistema operativo se le instala lo necesario, indicado en 
 el fichero de configuración tal como este para Travis.
 
-```YAML
+```
 	language: node_js
 	node_js:
 	  - "10"
@@ -289,7 +289,7 @@ desplegar la aplicación.
 Por ejemplo, usaremos el contenedor generado por este Dockerfile para
 testear los proyectos (y ortografía) en este curso:
 
-```Dockerfile
+```
 FROM jjmerelo/perl-test-text
 LABEL version="1.0" maintainer="JJ Merelo <jjmerelo@GMail.com>" perl5version="5.22"
 
