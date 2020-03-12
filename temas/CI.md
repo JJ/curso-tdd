@@ -54,7 +54,7 @@ si el valor que devuelve el programa es distinto de cero.
 Porque en general los *hooks* son eso, programas, scripts escritos en
 cualquier lenguaje, con un nombre estándar relacionado con el del
 evento (tal como `pre-commit`) y situados en el subdirectorio
-`.git/hooks) del repositorio local.
+`.git/hooks`) del repositorio local.
 
 Si queremos ejecutar los tests cada vez que se haga un commit,
 tendremos que lanzarlos desde estos *hooks*. Pero en principio, la
