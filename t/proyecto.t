@@ -67,7 +67,16 @@ EOC
     my $qa = config_file( \@repo_files, $repo_dir );
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'test'}, \@repo_files, "de test" );
+  } elsif ( $version =~ /^v3/ ) {
+    my $README =  read_text( "$repo_dir/README.md");
+    file_present( '.travis.yml', \@repo_files, "de CI" );
+        my $travis_domain = travis_domain( $README, $user, $name );
+    ok( $travis_domain =~ /(com|org)/ , "Está presente el badge de Travis con enlace al repo correcto");
+    if ( $travis_domain =~ /(com|org)/ ) {
+      is( travis_status($README), 'Passing', "Los tests deben pasar en Travis");
+    }
   }
+  
 }
 
 done_testing;
@@ -95,4 +104,17 @@ sub language_checks {
   } elsif ( $language =~ /Typescript/i || $language =~ /node/i ) {
     file_present( "package.json", $ls_files_ref, "JS" );
   }
+}
+
+sub travis_domain {
+  my ($README, $user, $name) = @_;
+  my ($domain) = ($README =~ /.Build Status..https:\/\/travis-ci.(\w+)\/$user\/$name\.svg.+$name\)/i);
+  return $domain;
+}
+
+sub travis_status {
+  my $README = shift;
+  my ($build_status) = ($README =~ /Build Status..([^\)]+)\)/);
+  my $status_svg = `curl -L -s $build_status`;
+  return $status_svg =~ /passing/?"Passing":"Fail";
 }
