@@ -3,9 +3,9 @@
 
 ## Planteamiento
 
-Si el código no se prueba, no funciona. Los tests de cobertura nos
+Si el código no se ha prueba, no funciona. Los tests de cobertura nos
 ayudan a saber qué partes del código no están cubiertas por los tests
-unitarios, y nos ayudan a establecer un nivel determinado de
+unitarios, y usarlos nos permitirá establecer un nivel determinado de
 cobertura, así como políticas, para asegurar la calidad del código.
 
 ## Al final de esta sesión
@@ -19,11 +19,11 @@ Inclusión del badge de `codecov` con un porcentaje de cobertura aceptable.
 
 ## Tests de cobertura
 
-Los tests de cobertura miden qué parte de nuestro código está cubierta por los tests unitarios (que, recordemos, son de caja blanca y por tanto se puede saber qué camino han seguido por el mismo). Estos tests de cobertura funcionan tanto a nivel de línea, como de función o de paquetes, pero generalmente van a dar un porcentaje de líneas cubiertas por los tests unitarios.
+Los tests de cobertura miden qué parte de nuestro código está cubierta por los tests unitarios (que, recordemos, son de caja blanca y por tanto se puede saber qué camino han seguido por el mismo). Estos tests de cobertura funcionan tanto a nivel de línea, como de función o de paquetes, pero generalmente van a dar un porcentaje de líneas cubiertas por los tests unitarios. 
 
-Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, constarán de dos partes
+Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, constarán de dos partes:
 
-* Instrumentación para poder saber qué líneas se están ejecutando, y que genere un informe en algún formato estándar.
+* Instrumentación para poder saber qué líneas se están ejecutando, y que genere un informe en algún formato estándar. Con este tipo de instrumentación, se ejecutarán los tests. La instrumentación puede ser una opción de compilación, opción de ejecución de la herramienta de tests, o alguna otra forma que permita trazar la ejecución del código y generar un informe. A partir de ahí, se generará un fichero.
 * Visualizadores de los informes, que a partir del anterior lo pasan a HTML, por ejemplo. 
 
 
@@ -36,13 +36,16 @@ go test -coverprofile=coverage.out
 go tool cover -html=coverage.out
 ```
 
-La primera ejecuta los tests y genera un fichero de salida, y la segunda orden abre un navegador con una página en la que nos muestra nuestro código y la cobertura que tiene, señalando las funciones que no están cubiertas. Sobre la clase [`HitosIV` que ya hemos usado anteriormente](https://github.com/JJ/HitosIV), estos serían los resultados.
+La primera ejecuta los tests y genera un fichero de salida con el
+nombre indicado, y la segunda orden abre un navegador con una página
+en la que nos muestra nuestro código y la cobertura que tiene,
+señalando las funciones y líneas que no están cubiertas. Sobre la clase [`HitosIV` que ya hemos usado anteriormente](https://github.com/JJ/HitosIV), estos serían los resultados.
 
 ![Cobertura de los tests en la clase HitosIV](img/gocover.png)
 
-En este caso, las  líneas no cubiertas lanzan errores en caso de que
-se encuentren algún problema. No hay que cubrir el 100% de las
-eventualidades (por ejemplo, generar un JSON erróneo a ver si salta la
+En este caso, las  líneas no cubiertas eran las que lanzaban errores en caso de que
+se encuentren algún problema. No siempre es obligatorio que cubrir el 100% de las
+de las líneas (por ejemplo, generar un JSON erróneo a ver si salta la
 segunda), pero quizás la primera sí merece la pena que se cubra, así
 que se añade un test adicional, pero
 debemos
@@ -52,7 +55,7 @@ asegurar que sigue las mejores prácticas del lenguaje:
 
 ![Nueva cobertura de los tests en la clase HitosIV](img/gocover-2.png)
 
-Siempre es mejor en Go devolver un error que enviar a log un error fatal, así que este cambio en el código asegura que se pueda cubrir mejor con los tests.
+Siempre es mejor en Go devolver un error que enviar a registro un error fatal, así que este cambio en el código asegura que se pueda cubrir mejor con los tests.
 
 > Y también demuestra que la calidad en el desarrollo no es siempre
 > cuestión de escribir más o menos tests, sino de seguir buenas
@@ -63,12 +66,12 @@ En Go se muestran las dos partes de los tests de cobertura: el
 generador de datos, y el que crea los informes. En casi todos los
 lenguajes va a ocurrir lo mismo, sólo que no va a estar integrado con
 el lenguaje, sino que va a ser una o dos utilidades aparte del
-compilador.
+compilador. Por ejemplo, en TypeScript
 
 
 ### Tests de cobertura en TypeScript
 
-En `jest`, que hemos usado anteriormente con TypeScript, también está
+`jest`, que hemos usado anteriormente con TypeScript, también está
 incluido un sistema de tests de cobertura. Por ejemplo, si lo
 aplicamos a la última versión de
 nuestro [sistema de hitos](https://github.com/JJ/ts-milestones),
