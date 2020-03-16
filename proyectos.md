@@ -6,5 +6,5 @@
 | [Incidencias Tráfico](https://github.com/RakutenTeam/IncidenciasTrafico)           | v2.0.0  |
 | [Medioambiental](https://github.com/medioambiental-tdd/medioambiental)             | v3.0.1  |
 | [Programador de actividades](https://github.com/TaskingWorld/QAProject)            |   |
-| [Rastreador Medios Sociales](https://github.com/Rastreador-medios-sociales/Scanner)| v1.0.1  |
+| [Rastreador Medios Sociales](https://github.com/Rastreador-medios-sociales/Scanner)| v2.0.0  |
 
