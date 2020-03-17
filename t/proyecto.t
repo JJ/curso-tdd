@@ -54,7 +54,8 @@ EOC
   unlike $output, qr/returned error/, "Repositorio tag-eado correctamente";
   
   my @repo_files = $student_repo->command("ls-files");
-
+  my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
+  
   if ( $version =~ /^v0/ ) {
     my @hus = grep(  m{HU/}, @repo_files  );
     cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
@@ -68,14 +69,18 @@ EOC
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'test'}, \@repo_files, "de test" );
   } elsif ( $version =~ /^v3/ ) {
-    my $README =  read_text( "$repo_dir/README.md");
+
     file_present( '.travis.yml', \@repo_files, "de CI" );
         my $travis_domain = travis_domain( $README, $user, $name );
     ok( $travis_domain =~ /(com|org)/ , "Está presente el badge de Travis con enlace al repo correcto");
     if ( $travis_domain =~ /(com|org)/ ) {
       is( travis_status($README), 'Passing', "Los tests deben pasar en Travis");
     }
+  }  elsif ( $version =~ /^v4/ ) {
+    my $codecov_perc = codecov_perc( $README );
+    cmp_ok $codecov_perc, ">", 85, "Porcentaje de cobertura OK";
   }
+  
   
 }
 
@@ -117,4 +122,12 @@ sub travis_status {
   my ($build_status) = ($README =~ /Build Status..([^\)]+)\)/);
   my $status_svg = `curl -L -s $build_status`;
   return $status_svg =~ /passing/?"Passing":"Fail";
+}
+
+sub codecov_perc {
+  my $README =  shift;
+  my ($codecov_status ) = ($README =~ /\((https:\/\/codecov\.io\/\S+badge\.svg)/ );
+  my $codecov_svg = `curl -L -s $codecov_status`;
+  my ($codecov_perc) = ($codecov_svg =~ /(\d+)%<\/text/);
+  return $codecov_perc;
 }
