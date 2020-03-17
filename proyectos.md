@@ -3,7 +3,7 @@
 | Nombre proyecto con enlace                                                         | Versión |
 |------------------------------------------------------------------------------------|---------|
 | [SCU Telegram Bot](https://github.com/Test-Driven-Robins/scu-telegram-bot)         | v3.0.0  |
-| [Incidencias Tráfico](https://github.com/RakutenTeam/IncidenciasTrafico)           | v2.0.0  |
+| [Incidencias Tráfico](https://github.com/RakutenTeam/IncidenciasTrafico)           | v3.0.0  |
 | [Medioambiental](https://github.com/medioambiental-tdd/medioambiental)             | v3.0.1  |
 | [Programador de actividades](https://github.com/TaskingWorld/QAProject)            | v3.0.0  |
 | [Rastreador Medios Sociales](https://github.com/Rastreador-medios-sociales/Scanner)| v2.0.0  |
