@@ -41,7 +41,7 @@ nombre indicado, y la segunda orden abre un navegador con una página
 en la que nos muestra nuestro código y la cobertura que tiene,
 señalando las funciones y líneas que no están cubiertas. Sobre la clase [`HitosIV` que ya hemos usado anteriormente](https://github.com/JJ/HitosIV), estos serían los resultados.
 
-![Cobertura de los tests en la clase HitosIV](img/gocover.png)
+![Cobertura de los tests en la clase HitosIV](../img/gocover.png)
 
 En este caso, las  líneas no cubiertas eran las que lanzaban errores en caso de que
 se encuentren algún problema. No siempre es obligatorio que cubrir el 100% de las
@@ -53,7 +53,7 @@ debemos
 asegurar que sigue las mejores prácticas del lenguaje: 
 
 
-![Nueva cobertura de los tests en la clase HitosIV](img/gocover-2.png)
+![Nueva cobertura de los tests en la clase HitosIV](../img/gocover-2.png)
 
 Siempre es mejor en Go devolver un error que enviar a registro un error fatal, así que este cambio en el código asegura que se pueda cubrir mejor con los tests.
 
