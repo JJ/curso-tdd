@@ -50,11 +50,11 @@ en LinkedIn o donde se solicite).
   * Emitida usando jit.si
   * [Material](temas/CI.md#acelerando-los-tests).
 
-* **Sesión 8**: Tests de cobertura y por qué son importantes.
-  * Se emitirá por jit.si el lunes 16 de marzo, a las 13:30. Se anunciará el URL en el grupo de Telegram.
+* **Sesiones 8 y 9**: Tests de cobertura y por qué son importantes.
+  * Se emitirá por jit.si el lunes y martes 16-17 de marzo, a las 13:30. Se anunciará el URL en el grupo de Telegram.
   * [Material](temas/cobertura.md).
 
-* Tests funcionales/de integración
+* **Sesión 10**: Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * Mocks.
