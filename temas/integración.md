@@ -16,8 +16,7 @@ vez.
 
 ## Al final de esta sesión
 
-El proyecto tendrá funcionalidad adicional, tal como acceso a datos, integrará varias clases o
-servicios e incluirá los tests correspondientes para probar que
+El proyecto tendrá funcionalidad adicional, integrará varias clases, incluyendo posiblemente módulos externos, y tendrá los tests correspondientes para probar que
 efectivamente funciona.
 
 ## Criterio de aceptación
@@ -30,7 +29,7 @@ tests deben pasar.
 Los tests de
 integración
 [prueban grupos de módulos y clases](https://en.wikipedia.org/wiki/Integration_testing) como
-una sla unidad, de forma que se compruebe que los requisitos funcionales
+una sola unidad, de forma que se compruebe que los requisitos funcionales
 expresados en las historias de usuario, se cumplan.
 
 En general, los tests de integración son de tipo [caja negra](https://searchsoftwarequality.techtarget.com/answer/Integration-testing-Is-it-black-box-or-white-box-testing), 
@@ -79,8 +78,7 @@ Estos tests están enfocados principalmente a evitar que el API de la
 
 ## Tests de integración para microservicios
 
-Los tests de microservicios también se denominan [test
-         funcionales](https://en.wikipedia.org/wiki/Functional_testing),
+Los tests de microservicios también se denominan [test funcionales](https://en.wikipedia.org/wiki/Functional_testing),
          porque
 proporcionamos una entrada y comprobamos que las salidas son
          correctas, pero también son de integración porque un API,
@@ -164,3 +162,6 @@ En esta actividad se añadirán tests de integración a la clase que se haya cre
 * Integración de un módulo que se vaya a usar desde el nuestro.
 * Creación de un servicio web a partir de la clase, y prueba del mismo.
 * Integración de un servicio de datos, usando inyección de dependencias.
+
+Como en los hitos anteriores, tendrá que, con los nuevos tests, seguir pasando los tests de cobertura y pasar los tests en Travis.
+
