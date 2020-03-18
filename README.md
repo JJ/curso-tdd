@@ -58,8 +58,11 @@ en LinkedIn o donde se solicite).
   * Se emitirá por jit.si el miércoles 18 de marzo. 
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
-  * Mocks.
   * [Material](temas/integración.md).
+  
+* **Sesión 11**: Inversión de dependencias
+  * Mocks.
+  * [Material](temas/inversión.md).
 
 * Tests adicionales
   * Tests de prestaciones.
