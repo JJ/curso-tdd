@@ -161,7 +161,7 @@ En esta actividad se añadirán tests de integración a la clase que se haya cre
 
 * Integración de un módulo que se vaya a usar desde el nuestro.
 * Creación de un servicio web a partir de la clase, y prueba del mismo.
-* Integración de un servicio de datos, usando inyección de dependencias.
+
 
 Como en los hitos anteriores, tendrá que, con los nuevos tests, seguir pasando los tests de cobertura y pasar los tests en Travis.
 
