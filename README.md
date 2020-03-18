@@ -55,6 +55,7 @@ en LinkedIn o donde se solicite).
   * [Material](temas/cobertura.md).
 
 * **Sesión 10**: Tests funcionales/de integración
+  * Se emitirá por jit.si el miércoles 18 de marzo. 
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * Mocks.

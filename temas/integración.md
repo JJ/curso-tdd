@@ -6,9 +6,9 @@ Mientras que los test unitarios se plantean a nivel de clase o de
 función, los tests de integración o funcionales, también llamados *end to end*, comprueban cómo se
 integran varias clases en programas de orden superior y cómo se
 integran estos con diferentes servicios: bases de datos y APIs que se
-coloquen sobre las clases, por ejemplo.
+inyecten a las clases, por ejemplo.
 
-Aunque las técnicas básicas que se usan para este tipo de pruebas son
+Aunque las técnicas básicas que se usan para este tipo de pruebas, es decir, aserciones y marcos de prueba, son
 las mismas, la implementación, en general, será diferente y sobre todo
 habrá técnicas específicas para simular partes de la aplicación que no
 estén todavía programadas o donde sea complicado o pesado testear a la
@@ -16,7 +16,7 @@ vez.
 
 ## Al final de esta sesión
 
-El proyecto tendrá funcionalidad adicional, tal como acceso a datos., integrará varias clases o
+El proyecto tendrá funcionalidad adicional, tal como acceso a datos, integrará varias clases o
 servicios e incluirá los tests correspondientes para probar que
 efectivamente funciona.
 
@@ -30,15 +30,22 @@ tests deben pasar.
 Los tests de
 integración
 [prueban grupos de módulos y clases](https://en.wikipedia.org/wiki/Integration_testing) como
-un grupo, de forma que se compruebe que los requisitos funcionales
+una sla unidad, de forma que se compruebe que los requisitos funcionales
 expresados en las historias de usuario, se cumplan.
 
-En general, los tests de integración son de tipo [caja negra](https://searchsoftwarequality.techtarget.com/answer/Integration-testing-Is-it-black-box-or-white-box-testing),
+En general, los tests de integración son de tipo [caja negra](https://searchsoftwarequality.techtarget.com/answer/Integration-testing-Is-it-black-box-or-white-box-testing), 
 es decir, no pretendemos conseguir una cobertura total de todo el
 código de lo que estamos integrando (como en el caso de los tests
 unitarios). Lo que nos interesa es que el código añadido se *integre* bien con nuestro propio software.
 
+
+> Consultad [esta pregunta en SO](https://stackoverflow.com/questions/2741832/unit-tests-vs-functional-tests)
+> para entender las diferencias entre tests unitarios y de integración
+> o funcionales.
+
 Los tests de integración, a nivel básico, usan las mismas técnicas que los tests unitarios: aserciones y marcos de test. Únicamente se diferencia en lo que se va a sondear. Por ejemplo, escribiremos una serie de tests para comprobar que el API de una clase de la que dependemos no ha variado, y lo haremos al nivel más alto posible.
+
+El objetivo de los tests de integración es tanto comprobar que nuestro código funciona correctamente con ellos, como cerciorarse de que el API de lo integrado sigue siendo el mismo. Si mantenemos nuestro código con la última versión de los módulos de los que depende, conviene comprobar esta estabilidad del API. Y, por otro lado, también es conveniente que cuando se cambia la versión de alguno de los servicios subyacentes, como el lenguaje, se compruebe que lo integrado y la relación de nuestro código con el mismo sigue funcionando de la misma forma.
 
 En el programa en Raku anterior, por ejemplo, necesitamos conocer las estadísticas de issues cerrados de cada uno de los hitos. Añadimos esta función a [`Project.pm6`](../code/lib/Project.pm6):
 
@@ -51,7 +58,7 @@ method completion-summary() {
 }
 ```
 
-La función `summary` está en el módulo `Stats`. Tendremos que escribir los tests de integración correspondientes:
+La función `summary` está en el módulo `Stats`, que es un módulo externo. Tendremos que escribir los tests de integración correspondientes:
 
 ```
 my $summary = $p.completion-summary();
@@ -59,19 +66,24 @@ isa-ok( $summary, List, "Returns a hash");
 isa-ok( $summary[0]<mean>, 0.5, "Returns correct average");
 ```
 
-Estos tests están enfocados principalmente a evitar que el API de la clase integrada derive a algo diferente. Los APIs cambian, y lo pueden hacer de forma inesperada, así que primero nos aseguramos de que lo que devuelve tiene el tipo correcto, y luego que la media está en el primer elemento de la lista y devuelve también el valor correcto.
+Estos tests están enfocados principalmente a evitar que el API de la
+         clase integrada derive a algo diferente, por ejemplo
+         devolviendo un objeto de una clase diferente. Los APIs
+         cambian, y lo pueden hacer de forma inesperada, así que
+         primero nos aseguramos de que lo que devuelve tiene el tipo
+         correcto, y luego que la media está en el primer elemento de
+         la lista y devuelve también el valor correcto. 
 
 > El interfaz de esta clase es, en realidad, un poco peculiar, porque sería más adecuado devolver un hash. En un momento determinado, puede que se dé cuenta el propietario y lo cambie, con lo cual este test de integración nos guarda de que tal cosa ocurra.
 
 
 ## Tests de integración para microservicios
 
-Porque esté en la nube no significa que no tengamos que testearla como
-cualquier hija de vecina. En este caso no vamos a usar tests
-unitarios, sino
-[test funcionales](https://en.wikipedia.org/wiki/Functional_testing) (porque
-proporcionamos una entrada y comprobamos que las salidas son correctas)o
-[*de integración*](https://en.wikipedia.org/wiki/Integration_testing): un API,
+Los tests de microservicios también se denominan [test
+         funcionales](https://en.wikipedia.org/wiki/Functional_testing),
+         porque
+proporcionamos una entrada y comprobamos que las salidas son
+         correctas, pero también son de integración porque un API,
 generalmente, va a integrar diferentes clases y el testear el API REST
 va a ser una prueba de cómo se *integran* esas diferentes clases entre
 sí, o como se integran con los servicios que se usan desde las clases;
@@ -80,10 +92,6 @@ trata es que tenemos que levantar la web y que vaya todo medianamente
 bien. Sin embargo, las funciones a las que se llama desde un servicio
 web son en realidad simples funciones, por lo que hay tanto marcos
 como bibliotecas de test que te permiten probarlas.
-
-> Consultad [esta pregunta en SO](https://stackoverflow.com/questions/2741832/unit-tests-vs-functional-tests)
-> para entender las diferencias entre tests unitarios y de integración
-> o funcionales.
 
 Para hacer esas pruebas generalmente se crea un objeto cuyos métodos
 son, en realidad, llamadas al API REST, o un objeto al que se le puede añadir un
@@ -98,17 +106,17 @@ el resto de la aplicación, solo que tendremos que usar librerías de
 aserciones ligeramente diferentes, en este caso `supertest`
 
 ```
-	var request = require('supertest'),
-	app = require('../index.js');
+var request = require('supertest'),
+app = require('../index.js');
 
-	describe( "PUT porra", function() {
-		it('should create', function (done) {
-		request(app)
-			.put('/porra/uno/dos/tres/4')
-			.expect('Content-Type', /json/)
-			.expect(200,done);
-		});
+describe( "PUT porra", function() {
+	it('should create', function (done) {
+          request(app)
+		.put('/porra/uno/dos/tres/4')
+		.expect('Content-Type', /json/)
+		.expect(200,done);
 	});
+});
 ```
 
 (que tendrá que estar incluido en el directorio `test/`, como el
@@ -120,7 +128,7 @@ línea:
 module.exports = app;
 ```
 
-con lo que se exporta la `app` que se crea; los métodos de ese objeto
+con lo que se exporta el objeto `app` que se crea; los métodos de ese objeto
 recibirán las peticiones del API REST que vamos a comprobar; `require`
 ejecuta el código y recibe la variable que hemos exportado, que
 podemos usar como si se tratara de parte de esta misma
