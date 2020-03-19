@@ -150,10 +150,4 @@ muestra de forma extensa cómo usar mocks en Python. Algunos frameworks como Jes
 ## Actividad
 
 
-En esta actividad se añadirán tests de integración a la clase que se haya creado
- en el hito anterior. Estos tests de integración pueden ser uno o varios de los
- siguientes:
-
-* Integración de un módulo que se vaya a usar desde el nuestro.
-* Creación de un servicio web a partir de la clase, y prueba del mismo.
-* Integración de un servicio de datos, usando inyección de dependencias.
+Lo esencial de este hito es añadir un servicio externo usando el principio de inyección de dependencias. Puede ser un servicio de descarga de datos, o puede ser un servicio de almacenamiento de datos; en realidad, el principio es el mismo. Tanto la clase que se encargue de los datos como la clase con el manejador de datos (dateador) insertado tendrán que testearse.
