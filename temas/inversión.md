@@ -1,29 +1,19 @@
-# Tests de integración.
+# Inversión de dependencias
 
 ## Planteamiento
 
-Mientras que los test unitarios se plantean a nivel de clase o de
-función, los tests de integración o funcionales, también llamados *end to end*, comprueban cómo se
-integran varias clases en programas de orden superior y cómo se
-integran estos con diferentes servicios: bases de datos y APIs que se
-inyecten a las clases, por ejemplo.
+La implantación de calidad integral fuerza a veces a tomar deciciones de arquitectura que permitan testear fácilmente cada una de las partes de un sistema, consiguiendo el máximo desacoplamiento.
 
-Aunque las técnicas básicas que se usan para este tipo de pruebas, es decir, aserciones y marcos de prueba, son
-las mismas, la implementación, en general, será diferente y sobre todo
-habrá técnicas específicas para simular partes de la aplicación que no
-estén todavía programadas o donde sea complicado o pesado testear a la
-vez.
+A la vez, el principio de inversión de dependencias es uno de los principios SOLID. Así que merece la pena conocerlo, así como las decisiones de diseño que están detrás de él.
 
 ## Al final de esta sesión
 
-El proyecto tendrá funcionalidad adicional, tal como acceso a datos, integrará varias clases o
-servicios e incluirá los tests correspondientes para probar que
-efectivamente funciona.
+Habrá un grupo de clases con acceso a datos o algún servicio externo, la arquitectura reflejará este principio y se habrá testeado adecuadamente.
 
 ## Criterio de aceptación
 
 El repositorio tiene que estar corriendo los tests en Travis, y esos
-tests deben pasar.
+tests deben pasar; tendrá que haber una clase abstracta que se pueda *inyectar* dentro de nuestras clases para acceder a datos.
 
 
 ### Roles o mixins
