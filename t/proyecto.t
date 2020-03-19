@@ -48,6 +48,9 @@ EOC
   unless (-d $repo_dir) {
     mkdir($repo_dir);
     `git clone $url_repo $repo_dir`;
+  } else {
+    chdir $repo_dir;
+    `git pull`
   }
   my $student_repo =  Git->repository ( Directory => $repo_dir );
   my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $version) };
@@ -69,19 +72,14 @@ EOC
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'test'}, \@repo_files, "de test" );
   } elsif ( $version =~ /^v3/ ) {
-
     file_present( '.travis.yml', \@repo_files, "de CI" );
-        my $travis_domain = travis_domain( $README, $user, $name );
-    ok( $travis_domain =~ /(com|org)/ , "Está presente el badge de Travis con enlace al repo correcto");
-    if ( $travis_domain =~ /(com|org)/ ) {
-      is( travis_status($README), 'Passing', "Los tests deben pasar en Travis");
-    }
-  }  elsif ( $version =~ /^v4/ ) {
-    my $codecov_perc = codecov_perc( $README );
-    cmp_ok $codecov_perc, ">", 85, "Porcentaje de cobertura OK";
+    travis_pass( $README, $user, $name );
+  } elsif ( $version =~ /^v4/ ) {
+    codecov_pass( $README );
+   } elsif ( $version =~ /^v4/ ) {
+    travis_pass( $README, $user, $name );
+    codecov_pass( $README );
   }
-  
-  
 }
 
 done_testing;
@@ -122,6 +120,22 @@ sub travis_status {
   my ($build_status) = ($README =~ /Build Status..([^\)]+)\)/);
   my $status_svg = `curl -L -s $build_status`;
   return $status_svg =~ /passing/?"Passing":"Fail";
+}
+
+sub travis_pass {
+  my ($README, $user, $name );
+  my $travis_domain = travis_domain( $README, $user, $name );
+  ok( $travis_domain =~ /(com|org)/ , "Está presente el badge de Travis con enlace al repo correcto");
+  if ( $travis_domain =~ /(com|org)/ ) {
+    is( travis_status($README), 'Passing', "Los tests deben pasar en Travis");
+  }
+}
+
+sub codecov_pass {
+  my $README = shift;
+  my $codecov_perc = codecov_perc( $README );
+  cmp_ok $codecov_perc, ">", 85, "Porcentaje de cobertura OK";
+  
 }
 
 sub codecov_perc {
