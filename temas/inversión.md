@@ -2,7 +2,7 @@
 
 ## Planteamiento
 
-La implantación de calidad integral fuerza a veces a tomar deciciones de arquitectura que permitan testear fácilmente cada una de las partes de un sistema, consiguiendo el máximo desacoplamiento.
+La implantación de calidad integral fuerza a veces a tomar decisiones de arquitectura que permitan testear fácilmente cada una de las partes de un sistema, consiguiendo el máximo desacoplamiento.
 
 A la vez, el principio de inversión de dependencias es uno de los principios SOLID. Así que merece la pena conocerlo, así como las decisiones de diseño que están detrás de él.
 
