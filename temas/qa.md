@@ -158,7 +158,4 @@ fácilmente con Heroku, por ejemplo.
 ## Actividad
 
 
-Hito final del proyecto, con toda la funcionalidad deseada al
-principio añadida, tests unitarios y de cobertura con una cobertura
-aceptable, y una hoja de ruta para añadir pruebas de calidad a todos
-los niveles de ahora en adelante. 
+Esta sesión no tiene ningún hito nuevo, puesto que no se añade ninguna funcionalidad. Se deja como trabajo futuro para el que lo desee.
