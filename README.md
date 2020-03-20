@@ -64,7 +64,7 @@ en LinkedIn o donde se solicite).
   * Mocks.
   * [Material](temas/inversión.md).
 
-* Tests adicionales
+* **Sesión 12**: Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
