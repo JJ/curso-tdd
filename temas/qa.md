@@ -11,7 +11,7 @@ un poco más teórico técnicas y conceptos adicionales usuales en este
 
 ## Al final de esta sesión
 
-Se habrá terminado un MVP del proyecto, incluyendo tests de integración, y se
+Desde el punto de vista del proyecto, no se añade ningún test nuevo, aunque se pueden añadir como trabajo futuro. Con esta sesió se pretende dar un poco de tiempo para terminar un MVP del proyecto, incluyendo tests de integración, y se
 habrá creado una hoja de ruta para abarcar todos los demás aspectos
 que necesite. 
 
@@ -22,6 +22,8 @@ tests deben pasar. Los tests deben incluir pruebas adicionales,
 incluyendo cobertura, y esta cobertura debe llegar al 90%.
 
 ## Tests de front-end
+
+Diferentes tests específicos no se han incluido por no corresponder exactamente a un planteamiento teórico individual o bien simplemente porque son partes de la aplicación que no da tiempo a llevar a cabo en un seminario tan corto.
 
 En el *front-end* se ejecutan programas en JavaScript, y por tanto
 estos programas se deben probar exactamente igual que cualquier
