@@ -74,7 +74,7 @@ problemas rápidamente.
 
 En un entorno de integración y despliegue continuo, en muchas
 ocasiones es necesario probar de cara al público dos versiones de un
-mismo producto, monitorizándolo y posteriormente eligiendo la versión
+mismo producto (o una versión nueva frente a las anteriores), monitorizándolo y posteriormente eligiendo la versión
 que resulte más satisfactoria.
 
 Esta es la esencia de los despliegues [A/B y blue/green](https://dev.to/david_j_eddy/whats-the-difference-ab-testing-vs-bluegreen-deployment-3p77). La
