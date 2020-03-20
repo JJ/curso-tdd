@@ -1,4 +1,4 @@
-226
+243
 API
 APIs
 Actions
@@ -19,6 +19,7 @@ Dockerfiles
 Domain
 Driven
 GitHub
+GitLab
 Go
 Gradle
 Groovy
@@ -41,6 +42,7 @@ Joel
 Junit
 Language
 Lyskov
+MVP
 Merelo
 Must
 Nix
@@ -70,6 +72,7 @@ Travis
 Truth
 TypeScript
 Unexpected
+Visualizadores
 WallaPop
 WebPack
 XVIII
@@ -101,6 +104,7 @@ configurarlo
 considerable
 continuous
 cámping
+dateador
 delivery
 desarrollismo
 design
@@ -121,6 +125,7 @@ front
 gateway
 gateways
 gilipoyas
+git
 go
 green
 géneris
@@ -128,6 +133,7 @@ hash
 headless
 heurísticas
 hook
+hooks
 hype
 implementación
 inicialización
@@ -140,10 +146,13 @@ jest
 jet
 js
 key
+lanzarlos
 leaderboard
 lighting
+localmene
 log
 make
+manejador
 master
 matrix
 md
@@ -171,6 +180,7 @@ packer
 pantallazo
 parametrizado
 pipeline
+pipelines
 prerrequisito
 prerrequisitos
 priori
@@ -201,6 +211,8 @@ service
 setup
 shell
 sintácticamente
+smoke
+staging
 subcomandos
 subdirectorio
 subtest
@@ -222,6 +234,7 @@ testear
 testearla
 testearlas
 testearlo
+testearse
 testeo
 tests
 tipado
@@ -229,13 +242,3 @@ toolbelt
 tutorial
 versionado
 zef
-git
-hooks
-Visualizadores
-MVP
-lanzarlos
-pipelines
-GitLab
-manejador
-dateador
-testearse
