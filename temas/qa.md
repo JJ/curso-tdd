@@ -11,7 +11,7 @@ un poco más teórico técnicas y conceptos adicionales usuales en este
 
 ## Al final de esta sesión
 
-Desde el punto de vista del proyecto, no se añade ningún test nuevo, aunque se pueden añadir como trabajo futuro. Con esta sesió se pretende dar un poco de tiempo para terminar un MVP del proyecto, incluyendo tests de integración, y se
+Desde el punto de vista del proyecto, no se añade ningún test nuevo, aunque se pueden añadir como trabajo futuro. Con esta sesión se pretende dar un poco de tiempo para terminar un MVP del proyecto, incluyendo tests de integración, y se
 habrá creado una hoja de ruta para abarcar todos los demás aspectos
 que necesite. 
 
@@ -20,6 +20,12 @@ que necesite.
 El repositorio tiene que estar corriendo los tests en Travis, y esos
 tests deben pasar. Los tests deben incluir pruebas adicionales,
 incluyendo cobertura, y esta cobertura debe llegar al 90%.
+
+## Test de humo (*smoke*)
+
+Los [tests de humo o de construcción](http://softwaretestingfundamentals.com/smoke-testing/) son tests que se ejecutan rápidamente y consisten en compilación o algo muy básico, sin lo cual el resto de los tests no se pueden siquiera ejecutar. Se trata de algo que se pueda ejecutar con frecuencia, por ejemplo localmente, y si todo va bien, se continúa desarrollo o se lanzan el resto de los tests.
+
+También se [pueden ejecutar directamente en staging, o producción](https://miguelgfierro.com/blog/2018/a-beginners-guide-to-python-testing/) o en staging. Lo fundamental es comprobar que la parte crítica funciona.
 
 ## Tests de front-end
 
@@ -30,7 +36,7 @@ estos programas se deben probar exactamente igual que cualquier
 otro. También se denomina pruebas *end-to-end* puesto que se extiende
 desde un extremo (el front-end) hasta el otro (*back-end*).
 
-> También se puede programar front-end en aplicaciones de escritorio, aunque hoy en día no son tan populares como las aplicaciones basadas en web; incluso hay frameworks que permiten programar en escritorio exactamente igual que se haría en la web, usando el motor del navegador como motor de presentación.
+> También se puede programar front-end en aplicaciones de escritorio, aunque hoy en día no son tan populares como las aplicaciones basadas en web; incluso hay frameworks que permiten programar en escritorio exactamente igual que se haría en la web, usando el motor del navegador como motor de presentación, tales como [`electron`](https://www.electronjs.org/)
 
 Por lo tanto, tendremos dos tipos de tests: 
 
@@ -54,7 +60,7 @@ que un test que previamente pasaba de repente empieza a fallar. El
 test de regresión no es una técnica específica, ni tiene marcos
 específicos, pero consiste en identificar qué cambio ocurrido en el
 pasado es el responsable de que suceda esta regresión, a nivel de
-*commit*. 
+*commit*.
 
 Este tipo de tests necesitan una instrumentación complicada, hasta el
 punto de generar una versión de la aplicación para cada uno de los
