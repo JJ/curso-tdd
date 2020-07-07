@@ -5,7 +5,7 @@
   "perl": "6.*",
   "auth": "github:JJ",
   "depends": [
-    "sake",
+    "ake",
     "Stats",
     "JSON::Fast"
   ],
