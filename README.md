@@ -60,15 +60,12 @@ en LinkedIn o donde se solicite).
   * [Material](temas/CI.md).
   
 * **Sesión 10**:  CI: Acelerando con Dockerfiles.
-  * Emitida usando jit.si
   * [Material](temas/CI.md#acelerando-los-tests).
 
 * **Sesiones 11**: Tests de cobertura y por qué son importantes.
-  * Se emitirá por jit.si el lunes y martes 16-17 de marzo, a las 13:30. Se anunciará el URL en el grupo de Telegram.
   * [Material](temas/cobertura.md).
 
 * **Sesión 12**: Tests funcionales/de integración
-  * Se emitirá por jit.si el miércoles 18 de marzo. 
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
