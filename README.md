@@ -10,9 +10,9 @@ cualquier lenguaje de programación y diferentes microframeworks. La idea princi
 
 Cada sesión será una parte teórica y una parte práctica; la parte teórica será una clase magistral de 20-30 minutos, seguida de una parte práctica. Durante el
 curso se irá elaborando un proyecto en equipo de dos o tres
-personas. Cada hito del proyecto se tendrá
+personas. Cada dos o tres sesiones se tendrá que alcanzar un hito del proyecto que se haya elegido, que se tendrá
 que entregar (y se evaluará de forma más o menos automática) al final de
-la misma. Cuando se completen todas las sesiones y objetivos generaré
+las mismas. Cuando se completen todas las sesiones y objetivos generaré
 un badge para el repo donde se haya cumplido todo (y dependiendo del
 nivel en el que se haya alcanzado, se hará también una recomendación
 en LinkedIn o donde se solicite).
@@ -110,11 +110,11 @@ usar
 
 ## Lugar
 
-Aula de usos múltiples, 5ª planta de la [ETSIIT](https://etsiit.ugr.es)
+Se hará de forma virtual usando Jitsi, Rocket Chat o alguna plataforma libre.
 
 ## Clases
 
-Presenciales, lunes 2 a viernes 6 de marzo, jueves y viernes 12 y 13 de marzo, 13:30 a 15:00.
+De lunes a viernes, 7 al 11 y 14 al 18 de septiembre de 12:30 a 2 de la tarde, 21 al 25 de septiembre 13:30 a 3:00.
 
 ## Título
 
