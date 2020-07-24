@@ -8,3 +8,4 @@
 | guillergood     | https://www.linkedin.com/in/guillergood/                               |
 | Kiedie          | https://www.linkedin.com/in/juan-jos%C3%A9-herrera-aranda-0907351b2/   |
 | rafasanjuan     | https://www.linkedin.com/in/rafasanjuan/                               |
+| giorg0s         | https://www.linkedin.com/in/jguerreror/                                |
