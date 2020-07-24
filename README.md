@@ -111,7 +111,7 @@ Se hará de forma virtual usando Jitsi, Rocket Chat o alguna plataforma libre.
 
 ## Clases
 
-De lunes a viernes, 7 al 11 y 14 al 18 de septiembre de 12:30 a 2 de la tarde, 21 al 25 de septiembre 13:30 a 3:00.
+De lunes a viernes, 7 al 11 y 14 al 18 de septiembre de 12:30 a 2 de la tarde, 21 al 25 de septiembre 13:45 a 3:00.
 
 ## Título
 
