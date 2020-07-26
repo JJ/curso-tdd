@@ -12,3 +12,4 @@
 | aqui41          | https://www.linkedin.com/in/paco-garc%C3%ADa-9054a378/                 |
 | t0uxe           | https://www.linkedin.com/in/pedrofloro/                                |
 | ManuelJNunez    | https://www.linkedin.com/in/mjnunezruiz/                               |
+| yabirgb         | https://www.linkedin.com/in/yabirgb/                                   |
