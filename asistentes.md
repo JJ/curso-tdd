@@ -15,3 +15,4 @@
 | ManuelJNunez    | https://www.linkedin.com/in/mjnunezruiz/                               |
 | yabirgb         | https://www.linkedin.com/in/yabirgb/                                   |
 | morevi         | https://www.linkedin.com/in/morevif/                                    |
+| IgnasiCR        | https://www.linkedin.com/in/ignasi-camacho-redo/                       |
