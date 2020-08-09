@@ -14,5 +14,6 @@
 | t0uxe           | https://www.linkedin.com/in/pedrofloro/                                |
 | ManuelJNunez    | https://www.linkedin.com/in/mjnunezruiz/                               |
 | yabirgb         | https://www.linkedin.com/in/yabirgb/                                   |
-| morevi         | https://www.linkedin.com/in/morevif/                                    |
+| morevi          | https://www.linkedin.com/in/morevif/                                   |
 | IgnasiCR        | https://www.linkedin.com/in/ignasi-camacho-redo/                       |
+| muetsii         | https://es.linkedin.com/in/manuel-urbano-santos                        |
