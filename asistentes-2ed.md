@@ -16,4 +16,4 @@
 | thejosess       | https://www.linkedin.com/in/jose-santos-971459194/                   |
 | KiiKe11         | https://www.linkedin.com/in/enrique-ruiz-limones-562b381a3/          |
 | SamuS1906       | https://www.linkedin.com/in/samuel-jim%C3%A9nez-pi%C3%B1ero-412b4b1a3/         |
-| Betelgeuse69    | https://www.linkedin.com/in/juanma-hidalgo-pancorbo-81b52622/         |
+
