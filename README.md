@@ -4,7 +4,7 @@
 
 En este curso trataremos de aprender las técnicas necesarias para
 tabajar en un entorno de desarrollo, para aplicaciones nativas en la
-nube o cualquier otra cosas. Será un curso conceptual, pero también
+nube o cualquier otra cosa. Será un curso conceptual, pero también
 práctico donde aprenderemos a desarrollar diferentes técnicas en
 cualquier lenguaje de programación y diferentes microframeworks. La idea principal es que este curso sirva de introducción a la asignatura de infraestructura virtual o cualquier otra asignatura de informática avanzada.
 
@@ -22,16 +22,16 @@ en LinkedIn o donde se solicite).
 
 * **Sesión 1**: Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo. 
   * Conceptos básicos: pull, pull request, push, clone.
-  * Cómo organizar un proyecto: canvas, milestones, issues
+  * Cómo organizar un proyecto: canvas, milestones, issues.
   
-* **Sesión 2**: Diseñando una aplicación informática
-  * Temática
-  * Organización del mismo
+* **Sesión 2**: Diseñando una aplicación informática.
+  * Temática.
+  * Organización del mismo.
   
-* **Sesión 3**: Servicios avanzados en informática
-  * Configuración distribuida
-  * Logs
-  * Almacenamiento de datos
+* **Sesión 3**: Servicios avanzados en informática.
+  * Configuración distribuida.
+  * Logs.
+  * Almacenamiento de datos.
   
 * **Sesión 4**: Historias de usuario, requisitos funcionales, *personas* (historias de usuario), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
@@ -70,7 +70,7 @@ en LinkedIn o donde se solicite).
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
   
-* **Sesión 13**: Inversión de dependencias
+* **Sesión 13**: Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
 
@@ -80,7 +80,7 @@ en LinkedIn o donde se solicite).
   * Tests de regresión.
   * [Material](temas/qa.md).
 
-* **Sesión 15**: Última sesión
+* **Sesión 15**: Última sesión.
   * Aclaración de dudas.
 
 
@@ -111,7 +111,7 @@ Se hará de forma virtual usando Jitsi, Rocket Chat o alguna plataforma libre.
 
 ## Clases
 
-De lunes a viernes, 7 al 11 y 14 al 18 de septiembre de 12:30 a 2 de la tarde, 21 al 25 de septiembre 13:45 a 3:00.
+De lunes a viernes, 7 al 11 y 14 al 18 de septiembre de 12:30 a 2 de la tarde, 21 al 25 de septiembre 13:45 a 15:00.
 
 ## Título
 
