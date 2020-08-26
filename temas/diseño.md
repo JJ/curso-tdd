@@ -3,7 +3,7 @@
 
 ## Planteamiento
 
-En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la capacidad del mismo se seguir (o exceder) las especificaciones y las expectativas de los usuarios del mismo. 
+En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la capacidad del mismo de seguir (o exceder) las especificaciones y las expectativas de los usuarios del mismo. 
 
 En general, la calidad es un proceso, y no simplemente una
 característica que se añade en un momento determinado al producto. Por eso el
@@ -61,7 +61,7 @@ simplemente un valor asignado a un atributo. Los *agregados*
 integrarán y encapsularán una serie de objetos, creando un API común
 para todos ellos.
 
-Eventualmente, una entidad se convertirá en un módulo cuando se vaya a
+Finalmente, una entidad se convertirá en un módulo cuando se vaya a
 implementar en el lenguaje de programación en el que decidamos
 hacerlo. Todos los lenguajes de programación modernos son modulares,
 con módulos agrupando funcionalidad relacionada, pero dependiendo del
@@ -226,7 +226,7 @@ diseño completo de la arquitectura de la aplicación:
 * [Principio de la responsabilidad única](https://en.wikipedia.org/wiki/Single_responsibility_principle):
   las *entidades* de las que hablamos anteriormente tienen un contexto
   autónomo, y por tanto las programaremos en una clase, grupo de
-  clases y eventualmente microservicio que se encargue exclusivamente
+  clases y finalmente microservicio que se encargue exclusivamente
   de una sola entidad. Este principio se resume en que "debería haber
   una sola razón para cambiar una entidad": diferentes razones,
   diferentes responsabilidades. 
@@ -402,7 +402,7 @@ A continuación, hay que ponerse a programar, lo que implica poner a
 punto una serie de herramientas y una actitud; lo indicado por 
 [Joel on software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
 sigue siendo válido después de muchos años: usar siempre control de
-fuentes, hacer el build (y eventualmente el despliegue) en un solo
+fuentes, hacer el build (y finalmente el despliegue) en un solo
 paso, priorizar arreglar los bugs. 
 
 Pero en todo caso, lo más importante es la planificación que se va a
