@@ -18,3 +18,4 @@
 | IgnasiCR        | https://www.linkedin.com/in/ignasi-camacho-redo/                       |
 | muetsii         | https://es.linkedin.com/in/manuel-urbano-santos                        |
 | Betelgeuse69    | https://www.linkedin.com/in/juanma-hidalgo-pancorbo-81b52622/          |
+| aure-nogueras   | https://www.linkedin.com/in/anogueraslara/                             |
