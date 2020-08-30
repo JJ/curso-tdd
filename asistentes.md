@@ -20,3 +20,4 @@
 | Betelgeuse69    | https://www.linkedin.com/in/juanma-hidalgo-pancorbo-81b52622/          |
 | aure-nogueras   | https://www.linkedin.com/in/anogueraslara/                             |
 | asterix_one     | https://www.linkedin.com/in/rubenrueda80/
+| SergioQuijanoRey| https://www.linkedin.com/in/sergioquijanorey/                          |
