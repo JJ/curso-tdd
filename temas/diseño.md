@@ -534,8 +534,6 @@ de diseño para el resto del curso. Como en el primer hito (o hito 0),
 el código se debe añadir mediante un PR que deberá aprobar algún otro
 miembro del proyecto.
 
-1. Elegir un proyecto entre los que se han plantead.
-
 2. Elaborar una cantidad aceptable de historias de usuario como
    documentos en un subdirectorio y crear a
    partir de ellas una serie de issues en GitHub. Los hitos deberán

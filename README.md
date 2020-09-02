@@ -24,9 +24,9 @@ en LinkedIn o donde se solicite).
   * Conceptos básicos: pull, pull request, push, clone.
   * Cómo organizar un proyecto: canvas, milestones, issues.
   
-* **Sesión 2**: Diseñando una aplicación informática.
-  * Temática.
-  * Organización del mismo.
+* **Sesión 2**: Resolviendo problemas usando la informática.
+  * Temática: hay vida más allá de cliente-servidor.
+  * Organización del proyecto.
   
 * **Sesión 3**: Servicios avanzados en informática.
   * Configuración distribuida.
