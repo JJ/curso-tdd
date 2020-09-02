@@ -530,19 +530,17 @@ evoluciones en el futuro de la misma.
 ## Actividad
 
 Esencialmente, en esta primera fase se llevarán a cabo las actividades
-de diseño para el resto del curso.
+de diseño para el resto del curso. Como en el primer hito (o hito 0),
+el código se debe añadir mediante un PR que deberá aprobar algún otro
+miembro del proyecto.
 
-1. Elegir un proyecto o un equipo o las dos cosas a la vez, y crear un
-   repositorio 
-   [usando esta plantilla](https://github.com/JJ/curso-qa-template),
-   que contiene ya algunos tests y el diseño general, así como la
-   licencia libre.
-	  
+1. Elegir un proyecto entre los que se han plantead.
+
 2. Elaborar una cantidad aceptable de historias de usuario como
    documentos en un subdirectorio y crear a
    partir de ellas una serie de issues en GitHub. Los hitos deberán
    estar relacionados con estas historias de usuario.
-   
+
 3. Describir en el `README.md` el microservicio que se va a crear,
    explicando las tecnologías que se van a usar en el mismo.
 
@@ -553,15 +551,7 @@ pull request al fichero de [proyectos](../proyectos.md), tras añadir
 en el *fork* propio el nombre del proyecto y un enlace al repo, así
 como la versión.
 
-Usaremos
+Seguiremos usando 
 [versionado semántico para las entregas](https://semver.org/), donde
 el primer número será siempre el hito (comenzando por el hito
-0). Diferentes versiones cambiarán el *minor* (el segundo) o el
-tercero, si son algunos cambios que no alteran el API ni la
-funcionalidad. Cada entrega corresponderá a un *release*, y por tanto
-el repositorio tendrá que tener un tag 
-
-> Los tags se hacen con `git tag`, y para hacer push de los mismos se
-> tendrá que hacer, adicionalmente al normal, `git push --tags`
-
-que deberá corresponder exactamente a la versión que se haya enviado.
+0). 
