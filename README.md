@@ -33,14 +33,16 @@ en LinkedIn o donde se solicite).
   * Logs.
   * Almacenamiento de datos.
   
-* **Sesión 4**: Historias de usuario, requisitos funcionales, *personas* (historias de usuario), desarrollo por capas y todo lo que necesitamos para empezar.
+* **Sesión 4**: Requisitos funcionales,
+  *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
   
-* **Sesión 5**: Cómo crear las historias de usuario, comenzar la
+* **Sesión 5**: Cómo implementar las historias de usuario, comenzar la
   aplicación.
   * Documentación de las historias de usuario y traslado a issues.
-  * [Material](temas/diseño.md#a-programar).
+  * Comienzo del diseño, en general, de las clases.
+  * [Material](temas/a-programar.md).
 
 * **Sesión 6**: Task runners y cómo usarlos. 
   * Diferentes tipos de task runners y por qué son útiles para todo.
