@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd) 💟 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master) [![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd)
 
 En este curso trataremos de aprender las técnicas necesarias para
-tabajar en un entorno de desarrollo, para aplicaciones nativas en la
+trabajar en un entorno de desarrollo, para aplicaciones nativas en la
 nube o cualquier otra cosa. Será un curso conceptual, pero también
 práctico donde aprenderemos a desarrollar diferentes técnicas en
 cualquier lenguaje de programación y diferentes microframeworks. La idea principal es que este curso sirva de introducción a la asignatura de infraestructura virtual o cualquier otra asignatura de informática avanzada.
