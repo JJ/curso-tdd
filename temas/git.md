@@ -92,9 +92,34 @@ hacer esto
   forma que puedas editarlos, o borrarlos, para dejar sólo los que
   sean relevantes al resultado final. 
   
-* *Merge commit*
+* *Merge commit* en este caso se crea un commit específico que dice
+  que se han mergeado, y se re-firman los commits existenten con la
+  firma de quien lo acepta. De todas las opciones, esta es la que se
+  debe de tratar de *no* usar, salvo que haya un modelo de desarrollo
+  con una sola persona encargada de trabajar con la rama principal.
 
-* *Rebase and merge*
+* *Rebase and merge* en este caso no se crea un merge commit, se
+  aplican los commits de la rama, y encima se aplican los commits
+  propios desde donde hayan divergido. Se reescribe la historia del
+  repositorio de forma que provoque los mínimos problemas.
+  
+Pero ¿qué pasa si hay conflictos? El flujo de trabajo debe funcionar
+de forma que los conflictos se minimicen, con diferentes personas
+trabajando en diferentes partes del código. En ese caso mi experiencia
+es que es mejor optar por el merge commit, porque creará marcas en el
+fichero del conflicto que indiquen las dos versiones. En muchos casos
+no hay más remedio que mirar el código y tomar la versión que
+funcione; en otros casos, si sabemos que la versión buena es una de
+ellas, hacer
+
+```
+git checkout --theirs fichero
+git checkout --ours fichero 
+``` 
+
+En el primer caso la versión buena será la del repo del que estás
+haciendo pull, en el segundo la del propio.
+
 
 
 ## Actividad
