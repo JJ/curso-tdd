@@ -24,7 +24,16 @@ habrá aprobado algún otro miembro del equipo).
 
 ## GitHub y git
 
-Comencemos con la creación del repositorio. Lo más rápido es crear
+Comencemos con la creación del repositorio. Primero, haz las
+siguientes tareas para configurar correctamente git y GitHub.
+
+* [Configura el usuario, correo electrónico y editor](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Configurando-Git-por-primera-vez)
+de alguna de las formas posibles.
+* [Crea un par clave pública/privada](https://docs.github.com/es/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+y súbela a tu perfil en GitHub.
+
+A partir de ahí, vamos a empezar a trabajar con un repositorio
+directamente. Lo más rápido es crear
 repositorios directamente en GitHub
 
 > A partir de ahora, cuando diga GitHub se entenderá el sitio web que
@@ -43,6 +52,49 @@ si lo permite, la opción *Use this template* te permitirá crear tu
 propio repositorio usando los ficheros existentes. Esta opción tiene
 la ventaja de que el repositorio no aparece como un *fork*, y además
 tienes una serie de ficheros para comenzar rápidamente.
+
+> Aconsejamos también que se instale [`hub`](https://hub.github.com/),
+> la línea de órdenes de GitHub. Con ella se puede acceder
+> directamente, desde git, a funcionalidades del propio GitHub; por
+> ejemplo, descargar repos sólo con el nombre, o acceder a issues.
+
+
+Una vez creado el repositorio, se descarga con
+
+~~~
+git clone mirepo # Si tienes hub instalado
+git clone git@github.com:minick/mirepo
+~~~
+
+El [ciclo básico de git](http://mini-git.github.io/) consiste en usar
+`add`, `push`, `pull` y `commit`. No vamos a entrar demasiado en eso,
+pero deberías saber cómo usarlos. Sí vamos a ver flujos de trabajo
+basados en pull requests.
+
+## Pulls y sus diferentes modalidades.
+
+Como `git` es un sistema de control de versiones distribuido, `pull`
+(y `push`) son los que permiten fusionar las historias de diversas
+procedencias. En general, debemos imaginarnos estas dos historias como
+dos ramas (literalmente, son ramas) de un árbol que, en un momento
+determinado, divergieron. Esas ramas tienen una serie de *nudos*, que
+son los commits. Fusionar implicar "ordenar" todos los nudos
+procedentes de las dos ramas en una sola rama, de forma que se
+incorporen las modificaciones de los dos lados. Vamos a imaginar por
+lo pronto que no hay ningún tipo de conflicto. Hay tres formas de
+hacer esto
+
+* *Squash* y fusionar. A veces la rama que uno quiere fusionar (de la
+  que va a hacerse pull) tiene un montón de commits, algunos de los
+  cuales pueden desharer trabajo hecho anteriormente, o simplemente
+  eliminar texto de depuración. Hacer *squash* convierte todos los
+  commits en uno solo, y te reúne todos los mensajes de commit de
+  forma que puedas editarlos, o borrarlos, para dejar sólo los que
+  sean relevantes al resultado final. 
+  
+* *Merge commit*
+
+* *Rebase and merge*
 
 
 ## Actividad
