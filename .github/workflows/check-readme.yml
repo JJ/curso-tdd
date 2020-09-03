@@ -17,7 +17,6 @@ jobs:
           curl https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
           curl https://raw.githubusercontent.com/SublimeText/Dictionaries/master/Spanish.dic -o Spanish.dic
           echo "use Test::Text; just_check( '.','.', 'Spanish' ); " > just_check.t;
-          update-locale LANG=en_US.UTF-8 LANGUAGE=en.UTF-8
       - uses: actions/checkout@v2
       - name: uses install-with-cpm
         uses: perl-actions/install-with-cpm@stable
