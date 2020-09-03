@@ -22,7 +22,27 @@ componentes del mismo en un README.md, todos los usuarios añadidos al
 repositorio, y tendrán que haber añadido sus nombre con un PR (que
 habrá aprobado algún otro miembro del equipo).
 
-## 
+## GitHub y git
+
+Comencemos con la creación del repositorio. Lo más rápido es crear
+repositorios directamente en GitHub
+
+> A partir de ahora, cuando diga GitHub se entenderá el sitio web que
+> uses para alojar tus repositorios, GitHub, GitLab o el que
+> corresponda; en algunos casos las características podrán no estar disponibles.
+
+Hay tres formas de crearlos: directamente (opción *New repository")
+desde el menú, haciendo un *fork* o copia de un repositorio existente
+(lo que se aconseja, principalmente, si vas a trabajar con ese
+repositorio) o bien creándolos a partir de una plantilla o
+*template*. Esto sólo se puede hacer con repositorios que han sido
+marcados para ello,
+como
+[el repositorio de este curso](https://github.com/JJ/curso-qa-template);
+si lo permite, la opción *Use this template* te permitirá crear tu
+propio repositorio usando los ficheros existentes. Esta opción tiene
+la ventaja de que el repositorio no aparece como un *fork*, y además
+tienes una serie de ficheros para comenzar rápidamente.
 
 
 ## Actividad
