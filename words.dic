@@ -1,4 +1,4 @@
-243
+263
 API
 APIs
 Actions
@@ -11,7 +11,9 @@ CI
 CPAN
 Chai
 CircleCI
+DEIIT
 DSL
+DevQAGRX
 Development
 Docker
 Dockerfile
@@ -38,14 +40,19 @@ Jasmine
 JavaScript
 Jenkins
 Jest
+Jitsi
 Joel
 Junit
 Language
+LinkedIn
+Logs
 Lyskov
 MVP
 Merelo
 Must
 Nix
+PDF
+PDFs
 PR
 PRs
 PaaS
@@ -53,11 +60,13 @@ Packing
 Perl
 Project
 Python
+QA
 README
 REST
 REST
 RSpec
 Raku
+Rocket
 Ruby
 Rust
 SOLID
@@ -66,6 +75,7 @@ Scala
 Shippable
 Source
 Specific
+Status
 TAP
 TDD
 Travis
@@ -75,6 +85,7 @@ Unexpected
 Visualizadores
 WallaPop
 WebPack
+WiFi
 XVIII
 alfa
 ansible
@@ -85,12 +96,14 @@ behavior
 benchmark
 beta
 blue
+bot
 bugs
 build
 build
 caché
 callback
 canary
+canvas
 chill
 circa
 clean
@@ -100,6 +113,7 @@ codecov
 colorines
 commit
 commits
+concerns
 configurarlo
 considerable
 continuous
@@ -112,6 +126,7 @@ development
 dispatch
 disponible
 disponibles
+doc
 domain
 driven
 electrificación
@@ -147,6 +162,7 @@ jet
 js
 key
 lanzarlos
+layout
 leaderboard
 lighting
 localmente
@@ -159,6 +175,7 @@ md
 mesh
 meshes
 metadatos
+microframeworks
 microservicio
 microservicios
 milestones
@@ -167,7 +184,9 @@ minor
 mixins
 mock
 mocks
+modularizarlo
 monitorizándolo
+nick
 node
 nodejs
 obligatoriamente
@@ -206,6 +225,7 @@ s
 script
 scripts
 secuencialmente
+separation
 serialización
 service
 setup
@@ -242,5 +262,3 @@ toolbelt
 tutorial
 versionado
 zef
-modularizarlo
-layout
