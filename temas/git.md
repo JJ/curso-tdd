@@ -149,6 +149,39 @@ Los PRs, igual que todos los push a la rama principal, pueden ir
 acompañados de una serie de tests específicos. Veremos más adelante en
 qué consisten y cómo programarlos.
 
+## *Tagging* y *releasing*
+
+En el ciclo de vida de una base de código, los *releases* son puntos
+de control que se alcanzan al final de algún hito. Estos puntos de
+control permiten saber exactamente el estado de la base de código en
+ese momento, e incluso volver a ellos si hace falta corregir algún
+error.
+
+En git se marcan los releases con un *tag*, que es simplemente una
+anotación (o etiqueta) que se añade a un commit determinado; es, por
+tanto, una forma de recordar un commit para volver a él si hace falta,
+o simplemente recuperar todos los ficheros en el estado que estaban en
+ese commit para hacer un release o un despliegue con todos ellos.
+
+Para marcar, se usa `git tag`
+
+```
+git tag -a v0.0.1 -m "First release"
+```
+
+Tras la `a` se pone la versión, generalmente con una v delante, y
+usando "versionado semántico", donde el primer número suele
+corresponder a una "major", el siguiente a una "minor", y el siguiente
+a *point releases* o versiones que mejoran algo sin hacer ninguna
+alteración al API.
+
+A partir de ese tag, en GitHub se pueden crear *releases* desde la
+línea de órdenes o desde la web; estas releases crearán en la web un
+paquete con los ficheros, pero adicionalmente se pueden añadir otros
+ficheros binarios. *Todos* los ficheros generados deben ir en
+releases, *no* en el repositorio; por ejemplo, PDFs o `.deb`.
+
+
 ## Actividad
 
 Esencialmente, en esta primera fase se llevarán a cabo las actividades
