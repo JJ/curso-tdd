@@ -1,6 +1,12 @@
 # Curso de programación para QA -3ª edición
 
-[![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd) 💟 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master) [![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd)
+[![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd)
+💟
+[![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master)
+💟
+[![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd) 
+💟
+![Comprueba README](https://github.com/JJ/curso-tdd/workflows/Comprueba%20README/badge.svg)
 
 En este curso trataremos de aprender las técnicas necesarias para
 trabajar en un entorno de desarrollo, para aplicaciones nativas en la
@@ -8,14 +14,16 @@ nube o cualquier otra cosa. Será un curso conceptual, pero también
 práctico donde aprenderemos a desarrollar diferentes técnicas en
 cualquier lenguaje de programación y diferentes microframeworks. La idea principal es que este curso sirva de introducción a la asignatura de infraestructura virtual o cualquier otra asignatura de informática avanzada.
 
-Cada sesión será una parte teórica y una parte práctica; la parte teórica será una clase magistral de 20-30 minutos, seguida de una parte práctica. Durante el
-curso se irá elaborando un proyecto en equipo de dos o tres
-personas. Cada dos o tres sesiones se tendrá que alcanzar un hito del proyecto que se haya elegido, que se tendrá
-que entregar (y se evaluará de forma más o menos automática) al final de
-las mismas. Cuando se completen todas las sesiones y objetivos generaré
-un badge para el repo donde se haya cumplido todo (y dependiendo del
-nivel en el que se haya alcanzado, se hará también una recomendación
-en LinkedIn o donde se solicite).
+Cada sesión contendrá una parte teórica y una práctica; la parte
+teórica será una clase magistral de 20-30 minutos, seguida de una
+parte práctica. Durante el curso se irá elaborando un proyecto en
+equipo de dos o tres personas. Cada dos o tres sesiones se tendrá que
+alcanzar un hito del proyecto que se haya elegido, que se tendrá que
+entregar (y se evaluará de forma más o menos automática) al final de
+las mismas. Cuando se completen todas las sesiones y objetivos
+generaré un badge para el repo donde se haya cumplido todo (y
+dependiendo del nivel en el que se haya alcanzado, se hará también una
+recomendación en LinkedIn o donde se solicite).
 
 
 ## Planificación del curso
@@ -23,6 +31,7 @@ en LinkedIn o donde se solicite).
 * **Sesión 1**: Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo. 
   * Conceptos básicos: pull, pull request, push, clone.
   * Cómo organizar un proyecto: canvas, milestones, issues.
+  * [Material](temas/git.md).
   
 * **Sesión 2**: Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
