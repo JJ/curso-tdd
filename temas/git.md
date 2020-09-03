@@ -120,7 +120,34 @@ git checkout --ours fichero
 En el primer caso la versión buena será la del repo del que estás
 haciendo pull, en el segundo la del propio.
 
+## Pull requests
 
+Los *pull requests* (o *merge requests* en GitLab) son "peticiones de
+pull", es decir, una forma de indicarle a quien tenga permisos en repo
+que se quiere incorporar un cambio a la rama principal. Lo bueno es
+que GitHub te provee un interfaz gráfico para interaccionar con el
+cambio y también la persona que lo hace. Para empezar, se pueden crear
+plantillas en el repositorio en el cual se dé una estructura al pull
+request, tal como decir qué necesidad cubre o marcar si se han
+cumplido una serie de condiciones; a posteriori se puede comprobar,
+usando sistemas de integración continua, si se han cumplido esas
+condiciones.
+
+Por eso, un pull request es una ocasión para revisar el
+código. *Siempre* hay que mirarlo, incluso aunque haya pasado los
+tests; puede haber mejoras que se pueden hacer sobre la marcha, en la
+rama desde la que se solicita el pull request. Pero lo principal de
+los mismos es que pueden limitarse para que no se pueda fusionar si no
+hay más de un número determinado de aceptaciones, por ejemplo. Eso
+anima al desarrollo colaborativo y permite comprobar la calidad del
+código como sólo los humanos saben hacerlo. Un flujo de trabajo en
+dónde sólo se acepta a la rama principal desde un pull request permite
+reducir la cantidad de errores y por tanto, desde el mismo origen,
+trabajar en la calidad del producto resultante.
+
+Los PRs, igual que todos los push a la rama principal, pueden ir
+acompañados de una serie de tests específicos. Veremos más adelante en
+qué consisten y cómo programarlos.
 
 ## Actividad
 
