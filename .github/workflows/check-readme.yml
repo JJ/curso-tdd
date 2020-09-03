@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Prerrequisites
         run: |
-          apt-get update && apt-get upgrade && apt-get install libhunspell-1.3-0 libhunspell-dev
+          apt-get update && apt-get upgrade && apt-get install -y libtext-hunspell-perl
           curl https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
           curl https://raw.githubusercontent.com/SublimeText/Dictionaries/master/Spanish.dic -o Spanish.dic
           echo "use Test::Text; just_check( '.','.', 'Spanish' ); " > just_check.t;
