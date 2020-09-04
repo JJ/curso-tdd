@@ -87,7 +87,48 @@ los repositorios del lenguaje si cumple las normas para el mismo.
 > los mismos, pero al final, habrá siempre un módulo en la capa más
 > alta de abstracción que sea la solución al problema.
 
+## APIs
 
+Por encima de los módulos puede haber un API que permita al módulo
+realizar un servicio en el marco de una aplicación compuesta por
+muchos servicios. En general, un API incluirá una o varias clases,
+aunque en el caso de una arquitectura de microservicios será, en
+general, una sola clase. Un API será una capa de abstracción
+adicional: mientras que el API de un módulo restringe el acceso al
+mismo, un API en general podrá tener restricciones adicionales en el
+contexto de una aplicación, e incluirá servicios adicionales, como
+*logging* y por supuesto almacenamiento de datos. Sin preocuparnos en
+este momento de cómo hacer estas cosas (ya tocará), un API es un
+*producto* que puede resolver un problema, y se puede implementar de
+diferentes formas.
+
+* Un API REST es posiblemente la más popular, siguiendo la sintaxis y
+  mensajes de estado del HTTP y permitiendo hacer el ciclo CRUD
+  (creación, lectura, actualización y borrado) usando verbos
+  equivalentes de HTTP. Se trata evidentemente de un API procedural,
+  con lo que habrá que llevar a cabo adaptaciones en el caso de tener
+  por debajo clases.
+  
+* Un API con websockets usa el protocolo HTTP de la misma forma, pero
+  se diferencia del anterior en que usa conexiones permanentes, con
+  reacciones por parte del cliente o del servidor cada vez que llegan
+  datos por esa conexión. En aplicaciones de una sola página suelen
+  ser bastante populares, pues permiten reaccionar rápidamente a
+  cambios en el frontend (o actualizar desde el back-end).
+  
+* Otros tipos de protocolos: SOAP, XML-RPC... Aunque no son tan
+  populares, es posible todavía encontrárselos (y también en trabajos
+  de la ETSIIT). En lo posible, evitarlos.
+  
+* Sistemas de mensajería, con interfaces orientados a tareas. En
+  sistemas de tareas el cliente invoca a una tarea, que se pone de
+  forma explícita en el interfaz. Por ejemplo, usando Celery un módulo
+  se organiza en una serie de tareas, que se invocan desde el cliente.
+  
+Al final, este tipo de APIs también son un módulo, y por tanto puedes
+publicarlo también; en general, sin embargo, serán parte de una
+aplicación. No hay ningún problema para que un API REST resuelva
+un problema sin tener que ponerle por encima un cliente web.
 
 
 ## Actividad
