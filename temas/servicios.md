@@ -4,7 +4,7 @@
 ## Planteamiento
 
 Las aplicaciones modernas hacen uso de toda una serie de servicios que
-vá más allá de la clásica base de datos relacional, para emplear todo
+va más allá de la clásica base de datos relacional, para emplear todo
 tipo de servicios, comerciales o de software libre, desde registro
 hasta servicios de mensajería. Trataremos de dar un panorama parcial
 de estos servicios, para que se conozcan sus casos de uso y cuando
