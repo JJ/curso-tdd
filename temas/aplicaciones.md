@@ -202,7 +202,7 @@ desarrollar (y desplegar) de forma aislada uno del otro.
 
 En esta fase se decidirá el proyecto entre los que se han planteado, o
 de forma totalmente original. El proyecto en sí y qué va a ser (entre
-los tipos de aplicaciones mostradas antes) se añadirá al README. 
+los tipos de aplicaciones mostradas antes) se añadirá al README.
 
 Conviene que se midan las fuerzas y no se intente nada demasiado
 ambicioso (aplicación completa con varios front-end basados en
