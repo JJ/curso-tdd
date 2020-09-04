@@ -30,12 +30,12 @@ recomendación en LinkedIn o donde se solicite).
 
 * **Sesión 1**: Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo. 
   * Conceptos básicos: pull, pull request, push, clone.
-  * Cómo organizar un proyecto: canvas, milestones, issues.
+  * *Releases" y *tagging".
   * [Material](temas/git.md).
   
 * **Sesión 2**: Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
-  * Organización del proyecto.
+  * [Material](temas/aplicaciones.md).
   
 * **Sesión 3**: Servicios avanzados en informática.
   * Configuración distribuida.
@@ -49,9 +49,10 @@ recomendación en LinkedIn o donde se solicite).
   
 * **Sesión 5**: Cómo implementar las historias de usuario, comenzar la
   aplicación.
-  * Documentación de las historias de usuario y traslado a issues.
-  * Comienzo del diseño, en general, de las clases.
-  * [Material](temas/a-programar.md).
+    * Cómo organizar un proyecto: canvas, milestones, issues.
+    * Documentación de las historias de usuario y traslado a issues.
+    * Comienzo del diseño, en general, de las clases.
+    * [Material](temas/a-programar.md).
 
 * **Sesión 6**: Task runners y cómo usarlos. 
   * Diferentes tipos de task runners y por qué son útiles para todo.
