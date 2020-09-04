@@ -87,6 +87,14 @@ los repositorios del lenguaje si cumple las normas para el mismo.
 > los mismos, pero al final, habrá siempre un módulo en la capa más
 > alta de abstracción que sea la solución al problema.
 
+Los módulos formarán parte de cualquier solución, y deben estar
+desacoplados de la misma; para testear y asegurar la calidad del
+producto, así como la generalidad, la lógica de negocio tiene que
+estar separada de cómo se vaya a usar en un programa determinado. De
+hecho, los módulos tienen que ser lo más abstractos posibles y estar
+separados de cualquier implementación, a través del mecanismo que se
+llama *inyección de dependencias* (que se verá más adelante).
+
 ## APIs
 
 Por encima de los módulos puede haber un API que permita al módulo
@@ -129,6 +137,37 @@ Al final, este tipo de APIs también son un módulo, y por tanto puedes
 publicarlo también; en general, sin embargo, serán parte de una
 aplicación. No hay ningún problema para que un API REST resuelva
 un problema sin tener que ponerle por encima un cliente web.
+
+## Clientes de API
+
+Sobre todo en sistemas de mensajería como Telegram o Slack, se pueden
+enganchar clientes del mismo que provean alguna funcionalidad
+adicional. Normalmente tienen un bucle que lee del canal o
+funcionalidad a la que esté suscrita, y contesta o lleva a cabo algún
+otro tipo de actividad. También pueden ser, en realidad, APIs que
+reaccionen a algún otro tipo de API, como *hooks* que reaccionen a
+peticiones a GitHub; en ese sentido, pueden ser una capa que esté por
+encima de un API de cualquier tipo, o directamente ese tipo de API. 
+
+
+## Arquitecturas de microservicios
+
+Una arquitectura de microservicios une diferentes microservicios
+usando mecanismos como un *service mesh* (interno) o *API gateway*
+(externo), creando a su vez un API conjunto que, en general, requiere
+más configuración que programación. Las arquitecturas de
+microservicios pueden ser en principio independientes del cliente,
+pero pueden estar ligadas también a él.
+
+Excluimos explícitamente las aplicaciones monolíticas MVC, porque
+quedan en un nicho muy explícito, pero sobre todo crean una serie de
+*vicios* (como no organizar en capas el código, o acoplar fuertemente
+cliente-servidor-datos), que impiden su evolución y su despliegue
+eficiente.
+
+## Herramientas CLI
+
+
 
 
 ## Actividad
