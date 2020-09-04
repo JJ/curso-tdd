@@ -86,14 +86,14 @@ hacer esto
 
 * *Squash* y fusionar. A veces la rama que uno quiere fusionar (de la
   que va a hacerse pull) tiene un montón de commits, algunos de los
-  cuales pueden desharer trabajo hecho anteriormente, o simplemente
+  cuales pueden deshacer trabajo hecho anteriormente, o simplemente
   eliminar texto de depuración. Hacer *squash* convierte todos los
   commits en uno solo, y te reúne todos los mensajes de commit de
   forma que puedas editarlos, o borrarlos, para dejar sólo los que
   sean relevantes al resultado final. 
   
 * *Merge commit* en este caso se crea un commit específico que dice
-  que se han mergeado, y se re-firman los commits existenten con la
+  que se han mergeado, y se re-firman los commits existentes con la
   firma de quien lo acepta. De todas las opciones, esta es la que se
   debe de tratar de *no* usar, salvo que haya un modelo de desarrollo
   con una sola persona encargada de trabajar con la rama principal.
