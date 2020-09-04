@@ -165,16 +165,52 @@ quedan en un nicho muy explícito, pero sobre todo crean una serie de
 cliente-servidor-datos), que impiden su evolución y su despliegue
 eficiente.
 
-## Herramientas CLI
+## Herramientas CLI y otros programas monolíticos.
 
+Una aplicación debe de diseñarse para poder ser testeada. Una
+herramienta que se use desde la línea de órdenes será complicada de
+testear; por eso debe seguir, siempre, los principios de separación
+entre el módulo que lleva a cabo la funcionalidad y la propia
+herramienta, un script que prácticamente lo único que hará será
+invocar la funcionalidad del módulo, que estará extensivamente
+testeado.
 
+Esto se aplica también a programas *desktop* que usen un interfaz de
+usuario; la división en diferentes capas testeables es fundamental, y
+se debe de evitar un solo programa monolítico como la peste. El diseño
+de UI, aparte, es un arte arcano que requiere mucho más que técnica, y
+asegurar la calidad requiere de testeo con usuarios, por ejemplo.
+
+## Programas front-end
+
+En general, los programas front-end se van a ejecutar en un navegador,
+y por eso tendrán que escribirse en JavaScript o algún lenguaje que se
+transpile a JavaScript como Dart o TypeScript. Lo esencial de este
+tipo de programas, como en todo diseño de la arquitectura, es
+desacoplarlos del servidor, de forma que el servidor ofrezca un API
+que se consuma desde el cliente (pero también desde otro servicio o
+incluso desde un programa de línea de órdenes).
+
+En estos programas front-end incluyo también las aplicaciones móviles,
+que no son sino una forma específica de crear aplicaciones para un
+cliente determinado. En ese sentido, desacoplar front de back permite,
+una vez más, crear diferentes clientes para un sólo servidor, y
+desarrollar (y desplegar) de forma aislada uno del otro.
 
 
 ## Actividad
 
 En esta fase se decidirá el proyecto entre los que se han planteado, o
 de forma totalmente original. El proyecto en sí y qué va a ser (entre
-los tipos de aplicaciones mostradas antes) se añadirá al README; 
+los tipos de aplicaciones mostradas antes) se añadirá al README. 
+
+Conviene que se midan las fuerzas y no se intente nada demasiado
+ambicioso (aplicación completa con varios front-end basados en
+microservicios) en el tiempo que va a durar este curso, que son 21
+días (prácticamente lo que dura un sprint en una empresa). Con crear
+un módulo, y si acaso un API, es suficiente. Sí hay que tener muy
+claro, sin embargo, el objetivo de ese API (o módulo) y qué problema
+se quiere resolver.
 
 
 ## Entrega
