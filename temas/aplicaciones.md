@@ -34,14 +34,14 @@ principal, que debería de ser la resolución de problemas, queda
 totalmente olvidado.
 
 Cuando se llega a los últimos cursos de informática, todo lo que sabe
-hacere el estudiante medio es "voy a hacer un programa del tipo (o dos
+hacer el estudiante medio es "voy a hacer un programa del tipo (o dos
 tipos) que he aprendido que use el lenguaje X y framework Y", donde
 tanto X como Y están entre la gama muy estrecha que se ha definido en
 los cursos anteriores, o ni siquiera eso, en los cursos anteriores y
 *no se odia*.
 
 En ingeniería informática, sin embargo, se debe de estar dispuesto a
-resolver cualqueir problema que se presente, usando soluciones de
+resolver cualquier problema que se presente, usando soluciones de
 software, y en algunos casos también de hardware. Estas soluciones se
 diseñarán en forma de capas de abstracción que faciliten su evolución,
 pero también, por supuesto, sus pruebas. Una vez más, la calidad es un
