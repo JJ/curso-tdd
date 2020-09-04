@@ -181,6 +181,26 @@ paquete con los ficheros, pero adicionalmente se pueden añadir otros
 ficheros binarios. *Todos* los ficheros generados deben ir en
 releases, *no* en el repositorio; por ejemplo, PDFs o `.deb`.
 
+Una vez constituido un release con un tag, equivale a una rama ligera;
+se puede acceder al commit etiquetado con
+
+```
+git checkout v0.0.1
+```
+
+En realidad, se habrá obtenido el estado del repositorio tras un
+commit determinado, por lo que se quedará en una situación llamada
+*detached HEAD*, no asociado a ningún extremo del grafo de commits. Si
+se quiere trabajar a partir de ahí (para corregir un bug, por ejemplo), habrá que crear una rama a partir
+de ese commit:
+
+```
+git checkout -b rama-desde-tag
+```
+
+Esa rama podemos usarla como cualquier otra rama, desplegarla o
+fusionarla eventualmente con `master`.
+
 
 ## Actividad
 
