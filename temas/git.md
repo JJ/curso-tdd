@@ -72,6 +72,24 @@ pero deberías saber cómo usarlos. Sí vamos a ver flujos de trabajo
 basados en pull requests y dedicar un poco de espacio al formato de
 los mensajes de commit.
 
+Los mensajes de commit son predicados (el sujeto es el cambio al que
+se ha sometido), deben ser atómicos, referirse siempre a un issue (y
+en GitHub puedes indicar qué issue simplemente con # + número del
+mismo) y usar 50 caracteres si es una sola línea, o 50 + línea en
+blanco + líneas de 80 caracteres si se trata de más líneas.
+
+Pero adicionalmente, puedes
+usar
+[una estructura convencional](https://dev.to/colewalker/conventional-commits-the-future-of-git-32gg?signin=true) para
+que sean más informativos y permitan, de un vistazo, saber qué es lo
+que hacen y a qué se refieren. También puedes
+usar [*gitmojis*](https://gitmoji.carloscuesta.me/), símbolos que se
+introducen en un commit entre dos puntos; por ejemplo, :+1: sería el
+símbolo del pulgar hacia arriba o `:see_no_evil:` el que se usa cuando
+se añade algo al fichero `.gitignore`. Pero se pueden usar muchos
+otros gitmojis, y os animo a que lo hagáis, porque permiten, de un
+vistazo, saber de qué va el commit.
+
 ## Pulls y sus diferentes modalidades.
 
 Como `git` es un sistema de control de versiones distribuido, `pull`
