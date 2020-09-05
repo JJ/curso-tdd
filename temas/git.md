@@ -69,7 +69,8 @@ git clone git@github.com:minick/mirepo
 El [ciclo básico de git](http://mini-git.github.io/) consiste en usar
 `add`, `push`, `pull` y `commit`. No vamos a entrar demasiado en eso,
 pero deberías saber cómo usarlos. Sí vamos a ver flujos de trabajo
-basados en pull requests.
+basados en pull requests y dedicar un poco de espacio al formato de
+los mensajes de commit.
 
 ## Pulls y sus diferentes modalidades.
 
@@ -201,6 +202,13 @@ git checkout -b rama-desde-tag
 Esa rama podemos usarla como cualquier otra rama, desplegarla o
 fusionarla eventualmente con `master`.
 
+
+
+## Ver también
+
+En el capítulo dedicado a [integración continua](CI.md) dedicamos una
+sección a los *hooks* o ganchos de git, scripts que se ejecutan
+automáticamente alrededor de órdenes de git tales como `commit` o `push`.
 
 ## Actividad
 
