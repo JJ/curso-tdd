@@ -7,4 +7,5 @@
 | [Medioambiental](https://github.com/medioambiental-tdd/medioambiental)             | v7.0.0  |
 | [Programador de actividades](https://github.com/TaskingWorld/QAProject)            | v6.0.1  |
 | [Rastreador Medios Sociales](https://github.com/Rastreador-medios-sociales/Scanner)| v6.0.0  |
+| [Curso QA (nombre provisional)](https://github.com/testing-kakapos/curso-QA)       | v0.0.1  |
 
