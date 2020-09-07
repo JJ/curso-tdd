@@ -6,7 +6,7 @@
 Git es una herramienta para gestionar flujos de trabajo y equipos, y
 en combinación con GitHub/GitLab es imprescindible para gestionar los
 procesos de calidad del software que vamos a ver en este
-curso. 
+curso.
 
 ## Al final de esta sesión
 
@@ -40,7 +40,7 @@ repositorios directamente en GitHub
 > uses para alojar tus repositorios, GitHub, GitLab o el que
 > corresponda; en algunos casos las características podrán no estar disponibles.
 
-Hay tres formas de crearlos: directamente (opción *New repository")
+Hay tres formas de crearlos: directamente (opción *New repository*)
 desde el menú, haciendo un *fork* o copia de un repositorio existente
 (lo que se aconseja, principalmente, si vas a trabajar con ese
 repositorio) o bien creándolos a partir de una plantilla o
@@ -109,8 +109,8 @@ hacer esto
   eliminar texto de depuración. Hacer *squash* convierte todos los
   commits en uno solo, y te reúne todos los mensajes de commit de
   forma que puedas editarlos, o borrarlos, para dejar sólo los que
-  sean relevantes al resultado final. 
-  
+  sean relevantes al resultado final.
+
 * *Merge commit* en este caso se crea un commit específico que dice
   que se han mergeado, y se re-firman los commits existentes con la
   firma de quien lo acepta. De todas las opciones, esta es la que se
@@ -121,7 +121,7 @@ hacer esto
   aplican los commits de la rama, y encima se aplican los commits
   propios desde donde hayan divergido. Se reescribe la historia del
   repositorio de forma que provoque los mínimos problemas.
-  
+
 Pero ¿qué pasa si hay conflictos? El flujo de trabajo debe funcionar
 de forma que los conflictos se minimicen, con diferentes personas
 trabajando en diferentes partes del código. En ese caso mi experiencia
@@ -133,8 +133,8 @@ ellas, hacer
 
 ```
 git checkout --theirs fichero
-git checkout --ours fichero 
-``` 
+git checkout --ours fichero
+```
 
 En el primer caso la versión buena será la del repo del que estás
 haciendo pull, en el segundo la del propio.
@@ -234,7 +234,7 @@ Esencialmente, en esta primera fase se llevarán a cabo las actividades
 de diseño para el resto del curso.
 
 1. Elegir un equipo para trabajar en el proyecto, y crear un
-   repositorio 
+   repositorio
    [usando esta plantilla](https://github.com/JJ/curso-qa-template),
    que contiene ya algunos tests y el diseño general, así como la
    licencia libre.
@@ -252,7 +252,7 @@ el primer número será siempre el hito (comenzando por el hito
 0). Diferentes versiones cambiarán el *minor* (el segundo) o el
 tercero, si son algunos cambios que no alteran el API ni la
 funcionalidad. Cada entrega corresponderá a un *release*, y por tanto
-el repositorio tendrá que tener un tag 
+el repositorio tendrá que tener un tag
 
 > Los tags se hacen con `git tag`, y para hacer push de los mismos se
 > tendrá que hacer, adicionalmente al normal, `git push --tags`
