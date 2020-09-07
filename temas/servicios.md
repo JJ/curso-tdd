@@ -20,7 +20,21 @@ otros conceptos que se podrán usar en una aplicación.
 El equipo decidirá cuales de estos servicios pueden ser útiles en su
 aplicación. 
 
-## 
+## Servicios de logs
+
+El servicio más util del que posiblemente no has oído hablar es el de
+logging o registro. No sólamente sirve para lo obvio, registrar
+eventos para poder hacer análisis de prestaciones y de uso de los
+diferentes servicios, sino que puede llegar hasta el punto de
+construir toda una arquitectura basada en logs (en vez de hacerlo
+basada en almacenamiento de datos), la llamada [arquitectura kappa](https://milinda.pathirage.org/kappa-architecture.com/).
+
+Algunos lenguajes (como Python) incluyen facilidades para este tipo de
+servicios en la librería básica; en otros casos hay simplemente que
+elegir alguna biblioteca popular. Como en muchos otros casos, hay
+bibliotecas genéricas, que se instancian con diferentes *drivers* para
+servicios específicos, y bibliotecas específicas, que sirvan
+exclusivamente para un tipo específico de sistema de logging.
 
 ## Actividad
 
