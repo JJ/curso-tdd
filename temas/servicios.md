@@ -22,8 +22,8 @@ aplicación.
 
 ## Servicios de logs
 
-El servicio más util del que posiblemente no has oído hablar es el de
-logging o registro. No sólamente sirve para lo obvio, registrar
+El servicio más útil del que posiblemente no has oído hablar es el de
+logging o registro. No solamente sirve para lo obvio, registrar
 eventos para poder hacer análisis de prestaciones y de uso de los
 diferentes servicios, sino que puede llegar hasta el punto de
 construir toda una arquitectura basada en logs (en vez de hacerlo
