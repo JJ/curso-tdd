@@ -21,3 +21,4 @@
 | SergioQuijanoRey| https://www.linkedin.com/in/sergioquijanorey/                          |
 | elenamerelo     | https://www.linkedin.com/in/elena-merelo-molina-a38168a2/              |
 | PedroMFC        | https://www.linkedin.com/in/pedro-flores-crespo/                       |
+| antoniogamiz    | https://www.linkedin.com/in/antonio-gamiz/                             |
