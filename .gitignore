@@ -6,3 +6,5 @@ __pycache__
 _site/
 Gemfile.lock
 .sass-cache/
+target/
+Cargo.lock
