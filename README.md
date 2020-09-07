@@ -4,7 +4,7 @@
 💟
 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master)
 💟
-[![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd) 
+[![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd)
 💟
 ![Comprueba README](https://github.com/JJ/curso-tdd/workflows/Comprueba%20README/badge.svg)
 
@@ -28,25 +28,25 @@ recomendación en LinkedIn o donde se solicite).
 
 ## Planificación del curso
 
-* **Sesión 1**: Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo. 
+* **Sesión 1**: Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo.
   * Conceptos básicos: pull, pull request, push, clone.
-  * *Releases" y *tagging".
+  * *Releases* y *tagging*.
   * [Material](temas/git.md).
-  
+
 * **Sesión 2**: Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
-  
+
 * **Sesión 3**: Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
-  
+
 * **Sesión 4**: Requisitos funcionales,
   *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
-  
+
 * **Sesión 5**: Cómo implementar las historias de usuario, comenzar la
   aplicación.
     * Cómo organizar un proyecto: canvas, milestones, issues.
@@ -54,10 +54,10 @@ recomendación en LinkedIn o donde se solicite).
     * Comienzo del diseño, en general, de las clases.
     * [Material](temas/a-programar.md).
 
-* **Sesión 6**: Task runners y cómo usarlos. 
+* **Sesión 6**: Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
   * [Material](temas/hacia-tests-unitarios.md).
-  
+
 * **Sesión 7**: Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
@@ -70,7 +70,7 @@ recomendación en LinkedIn o donde se solicite).
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua: Travis, GitHub Actions...
   * [Material](temas/CI.md).
-  
+
 * **Sesión 10**:  CI: Acelerando con Dockerfiles.
   * [Material](temas/CI.md#acelerando-los-tests).
 
@@ -81,7 +81,7 @@ recomendación en LinkedIn o donde se solicite).
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
-  
+
 * **Sesión 13**: Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
