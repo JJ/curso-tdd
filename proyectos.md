@@ -8,3 +8,4 @@
 | [Proyecto TDD JSP](https://github.com/tdd-JSP/TDD-curso)                           | v0.0.1  |
 | [repo-provisional (nombre provisional)](https://github.com/tdd-IgnasiYManu/repo-provisional)       | v0.0.1  |
 | [tdd-provisional](https://github.com/tdd-organization-afp/tdd-provisional)         | v0.0.1  |
+| [roomie-bot](https://github.com/dipzza/roomie-bot)                                 | v0.0.1  |
