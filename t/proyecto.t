@@ -55,28 +55,28 @@ EOC
   my $student_repo =  Git->repository ( Directory => $repo_dir );
   my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $version) };
   unlike $output, qr/returned error/, "Repositorio tag-eado correctamente";
-  
+
   my @repo_files = $student_repo->command("ls-files");
   my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
-  
-  if ( $version =~ /^v0/ ) {
+
+  if ( $version =~ /^v3/ ) {
     my @hus = grep(  m{HU/}, @repo_files  );
     cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
-  } elsif ( $version =~ /^v1/ ) {
+  } elsif ( $version =~ /^v4/ ) {
     my $qa = config_file( \@repo_files, $repo_dir );
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'clase'}, \@repo_files, "de clase" );
     language_checks( $qa->{'lenguaje'}, \@repo_files );
-  } elsif ( $version =~ /^v2/ ) {
+  } elsif ( $version =~ /^v5/ ) {
     my $qa = config_file( \@repo_files, $repo_dir );
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'test'}, \@repo_files, "de test" );
-  } elsif ( $version =~ /^v3/ ) {
+  } elsif ( $version =~ /^v6/ ) {
     file_present( '.travis.yml', \@repo_files, "de CI" );
     travis_pass( $README, $user, $name );
-  } elsif ( $version =~ /^v4/ ) {
+  } elsif ( $version =~ /^v7/ ) {
     codecov_pass( $README );
-   } elsif ( $version =~ /^v4/ ) {
+   } elsif ( $version =~ /^v8/ ) {
     travis_pass( $README, $user, $name );
     codecov_pass( $README );
   }
