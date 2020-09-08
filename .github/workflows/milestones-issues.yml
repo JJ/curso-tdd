@@ -14,7 +14,9 @@ jobs:
           github-token: ${{github.token}}
           filesChanged: 1
       - name: Comprueba hitos e issues
-        uses: JJ/repo-in-diff-gh-action@releases/v0
+        uses: JJ/repo-in-diff-gh-action@releases/v1
         with:
           github-token: ${{github.token}}
+          minVersion: "2.0.0"
+          minPRs: 1
           minMilestones: 1
