@@ -1,0 +1,32 @@
+name: "Comprueba README"
+
+on: [ push, pull_request]
+
+jobs:
+  perl:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: perl:5.28
+
+    steps:
+      - name: Prerrequisites
+        run: |
+          apt-get update && apt-get upgrade && apt-get install -y libtext-hunspell-perl
+      - uses: actions/checkout@v2
+      - name: Usa install-with-cpm
+        uses: perl-actions/install-with-cpm@stable
+        with:
+          install: |
+            Test::Text
+            TAP::Harness
+          sudo: false
+      - name: Ejecuta los tests
+        run: |
+          curl https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
+          curl https://raw.githubusercontent.com/SublimeText/Dictionaries/master/Spanish.dic -o Spanish.dic
+          echo "use Test::Text; just_check( '.','.', 'Spanish' ); " > just_check.t
+          rm proyectos.md asistentes.md # No nos interesan
+          cat just_check.t
+          perl -MTAP::Harness -e 'use utf8; my $harness = TAP::Harness->new( { verbosity => 0} ); die "FAIL" if $harness->runtests( "just_check.t" )->failed;'

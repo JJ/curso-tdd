@@ -11,9 +11,8 @@ if first_line.size > 50
 end
 
 if lines.size > 0
-  second_line = lines.shift.chop
 
-  if second_line != ''
+  if lines.shift.chop != ''
     puts "La segunda línea debe estar vacía"
     exit 255
   end
