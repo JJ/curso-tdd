@@ -2,6 +2,7 @@
 
 | Nombre proyecto con enlace                                                         | Versión |
 |------------------------------------------------------------------------------------|---------|
+| [Curso QA (nombre provisional)](https://github.com/testing-kakapos/curso-QA)       | v1.0.0  |
 | [FitHub](https://github.com/fitplusplus/fithub)                                    | v1.0.0  |
 | [Curso QA (nombre provisional)](https://github.com/testing-kakapos/curso-QA)       | v0.0.1  |
 | [TDD-AY](https://github.com/TDD-AY/TDD-Project)                                    | v1.0.1  |
