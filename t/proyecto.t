@@ -59,7 +59,10 @@ EOC
   my @repo_files = $student_repo->command("ls-files");
   my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
 
-  if ( $version =~ /^v3/ ) {
+  if ($version =~ /^v2/ ) {
+    like( $README, qr/[lL]og/, "Se menciona un logger en el README");
+    like( $README, qr/issue/, "Hay enlace a al menos un issue");
+  } elsif  ( $version =~ /^v3/ ) {
     my @hus = grep(  m{HU/}, @repo_files  );
     cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
   } elsif ( $version =~ /^v4/ ) {
