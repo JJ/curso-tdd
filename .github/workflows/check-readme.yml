@@ -1,10 +1,16 @@
 name: "Comprueba README"
 
-on: [ push, pull_request]
+on:
+  push:
+    paths:
+      - 'README.md'
+  pull_request:
+    paths:
+      - 'README.md'
+
 
 jobs:
   perl:
-
     runs-on: ubuntu-latest
 
     container:
