@@ -41,6 +41,7 @@ recomendación en LinkedIn o donde se solicite).
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
+  * [Material](temas/servicios.md).
 
 * **Sesión 4**: Requisitos funcionales,
   *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
