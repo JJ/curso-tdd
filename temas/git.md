@@ -228,16 +228,31 @@ En el capítulo dedicado a [integración continua](CI.md) dedicamos una
 sección a los *hooks* o ganchos de git, scripts que se ejecutan
 automáticamente alrededor de órdenes de git tales como `commit` o `push`.
 
+GitHub (y posiblemente GitLab) se puede conectar fácilmente a sistemas
+de mensajería tales como Telegram o Slack, de forma que todos los
+cambios (o la mayoría; algunos puede que no vayan, como etiquetar un
+issue) vayan a parar a un grupo elegido;
+[GitHubBot](https://www.integromat.com/en/integrations/github/telegram)
+hace esa labor. Para un grupo de trabajo lo mejor es crear un grupo de
+Telegram y añadir el bot al ese grupo para que comunique todos los
+cambios; adicionalmente, si todos los miembros del grupo autorizan al
+bot a acceder al API en su nombre, se podrá interaccionar con GitHub
+directamente desde el grupo de Telegram.
+
 ## Actividad
 
-Esencialmente, en esta primera fase se llevarán a cabo las actividades
-de diseño para el resto del curso.
-
-1. Elegir un equipo para trabajar en el proyecto, y crear un
+Esta actividad corresponderá al hito 0, y por tanto a versiones
+`0.x.y`, y consisten en elegir un equipo para trabajar en el proyecto, y crear un
    repositorio
    [usando esta plantilla](https://github.com/JJ/curso-qa-template),
    que contiene ya algunos tests y el diseño general, así como la
    licencia libre.
+   
+Inicialmente, el `README.md` sólo contendrá los nombres de los
+componentes del equipo, pero se trata de que en esta fase inicial se
+comience ya el hábito de añadir a la rama principal sólo con *pull
+requests*, de forma que el añadido de uno lo tendrá que aprobar otro
+(y otros) miembros del equipo.
 
 ## Entrega
 
