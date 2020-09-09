@@ -42,7 +42,13 @@ No puede haber ningún proyecto sin servicio de registro o logging. La
 > Y, como cualquier tipo de servicio de datos, hay que usar inyección
 > de dependencias para que una clase determinada o módulo lo use,
 > evitando siempre el acoplamiento fuerte entre servicios y lógica de
-> negocio. 
+> negocio.
+
+Como en casi todos los casos que vamos a ver ahora, hay tanto
+servicios comerciales para esto [como `logz.io`](https://logz.io) o
+PaperTrail, pero también loggers de software libre tales como Logstash
+(sobre el que se construye todo un *stack*, el ELK de Elastic,
+Logstash y Kibana)
 
 ## Configuración remota
 
@@ -66,8 +72,45 @@ común a toda la aplicación; estas claves pueden almacenar por ejemplo
 IPs o puertos de otros servicios, o localizaciones de otros servicios
 o cosas más complicadas.
 
+Hay relativamente pocos servicios de este tipo, pero uno de los más
+populares es [`etcd`](https://etcd.io/); hay otros, incluso
+específicos de lenguaje, que se pueden usar también.
+
+## Almacenamiento de datos
+
+
+
+
+## Además
+
+Hemos mencionado en el [capítulo anterior](aplicaciones.md) las
+aplicaciones basadas en sistemas de mensajería; evidentemente, esas
+aplicaciones necesitarán este tipo de servicio. Todas las plataformas
+cloud tienen su propio sistema, pero adicionalmente se pueden usar
+aplicaciones como RabbitMQ para gestionarlo, directamente o con
+librerías de tareas como Celery por encima.
+
+Otros servicios, como servidores web, forman parte más bien de la
+infraestructura, pero en muchos casos se integran de forma directa con
+la aplicación; es el caso de Green Unicorn con aplicaciones web de
+Python, por ejemplo. No se usan *desde la aplicación*, pero en todo
+caso forma parte de la infraestructura.
+
 ## Actividad
 
+Principalmente, en esta sesión se trata de elegir las herramientas que
+se van a usar. Mientras que las herramientas libres tienen la ventaja
+de que no tienen coste ni limitación alguna, las herramientas
+comerciales pueden ser útiles para prototipado rápido o simplemente
+familiarizarse con ellas. Así que en este hito habrá que ampliar el
+`README.md` con la descripción de las herramientas que se prevé usar
+más adelante; de estas, el servicio de logging es obligatorio, el
+servicio de configuración remota casi, y servicios adicionales a gusto
+del consumidor.
+
+Conviene que para tomar esta decisión se use ya un *issue* de GitHub;
+esto permitirá que la decisión quede documentada, y por supuesto
+cuando se añada la decisión al `README.md` se puede cerrar tal issue.
 
 ## Entrega
 
