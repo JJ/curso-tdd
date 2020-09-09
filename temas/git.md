@@ -228,6 +228,17 @@ En el capítulo dedicado a [integración continua](CI.md) dedicamos una
 sección a los *hooks* o ganchos de git, scripts que se ejecutan
 automáticamente alrededor de órdenes de git tales como `commit` o `push`.
 
+GitHub (y posiblemente GitLab) se puede conectar fácilmente a sistemas
+de mensajería tales como Telegram o Slack, de forma que todos los
+cambios (o la mayoría; algunos puede que no vayan, como etiquetar un
+issue) vayan a parar a un grupo elegido;
+[GitHubBot](https://www.integromat.com/en/integrations/github/telegram)
+hace esa labor. Para un grupo de trabajo lo mejor es crear un grupo de
+telegram y añadir el bot al ese grupo para que comunique todos los
+cambios; adicionamente, si todos los miembros del grupo autorizan al
+bot a acceder al API en su nombre, se podrá interaccionar con GitHub
+directamente desde el grupo de Telegram.
+
 ## Actividad
 
 Esencialmente, en esta primera fase se llevarán a cabo las actividades
