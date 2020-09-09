@@ -9,4 +9,4 @@
 | [MovieBot](https://github.com/tdd-IgnasiYManu/MovieBot)                            | v1.0.0  |
 | [tdd-provisional](https://github.com/tdd-organization-afp/tdd-provisional)         | v1.0.0  |
 | [roomie-bot](https://github.com/dipzza/roomie-bot)                                 | v1.0.0  |
-| [API para datos abiertos medioambientales mutdd](https://github.com/muetsii/mutdd) | v2.0.2  |
+| [API para datos abiertos medioambientales mutdd](https://github.com/muetsii/mutdd) | v2.0.3  |
