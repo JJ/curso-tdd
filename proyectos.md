@@ -8,4 +8,4 @@
 | [Proyecto TDD JSP](https://github.com/tdd-JSP/TDD-curso)                           | v0.0.1  |
 | [repo-provisional (nombre provisional)](https://github.com/tdd-IgnasiYManu/repo-provisional)       | v0.0.1  |
 | [tdd-provisional](https://github.com/tdd-organization-afp/tdd-provisional)         | v0.0.1  |
-| [API para datos abiertos medioambientales mutdd](https://github.com/muetsii/mutdd) | v2.0.0  |
+| [API para datos abiertos medioambientales mutdd](https://github.com/muetsii/mutdd) | v2.0.1  |
