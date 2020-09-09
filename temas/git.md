@@ -241,14 +241,18 @@ directamente desde el grupo de Telegram.
 
 ## Actividad
 
-Esencialmente, en esta primera fase se llevarán a cabo las actividades
-de diseño para el resto del curso.
-
-1. Elegir un equipo para trabajar en el proyecto, y crear un
+Esta actividad corresponderá al hito 0, y por tanto a versiones
+`0.x.y`, y consisten en elegir un equipo para trabajar en el proyecto, y crear un
    repositorio
    [usando esta plantilla](https://github.com/JJ/curso-qa-template),
    que contiene ya algunos tests y el diseño general, así como la
    licencia libre.
+   
+Inicialmente, el `README.md` sólo contendrá los nombres de los
+componentes del equipo, pero se trata de que en esta fase inicial se
+comience ya el hábito de añadir a la rama principal sólo con *pull
+requests*, de forma que el añadido de uno lo tendrá que aprobar otro
+(y otros) miembros del equipo.
 
 ## Entrega
 
