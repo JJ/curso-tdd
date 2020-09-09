@@ -90,7 +90,7 @@ La cuestión principal es que cada una de ellas tienen diferentes casos
 de uso. Evidentemente, si la información está estructurada limpiamente
 en filas y columnas, las bases de datos relacionales son muy
 eficientes (pero también todas las opciones libres existentes tienen
-su especifidad, que hay que conocer), pero en otros casos, realmente,
+su especificidad, que hay que conocer), pero en otros casos, realmente,
 es complicado dar con la más adecuada en cada momento.
 
 Además, las bases de datos "tradicionales" están mejorando mucho
@@ -103,7 +103,7 @@ como estándar, el SQL no tiene rival; los almacenes de datos modernos
 usan todo tipo de cosas, desde lenguajes propios a Lua o JavaScript.
 
 A las opciones libres se añaden opciones comerciales dentro de
-plataformas cloud como Firebase (con un márketing muy agresivo
+plataformas cloud como Firebase (con un marketing muy agresivo
 últimamente) o CosmoDB; el problema con estas es que claramente te
 estás atando a un servicio, aunque si el diseño abstracto es genérico,
 puede ser simplemente cuestión de cambiar la implementación.
