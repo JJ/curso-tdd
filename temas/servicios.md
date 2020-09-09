@@ -18,7 +18,7 @@ otros conceptos que se podrán usar en una aplicación.
 ## Criterio de aceptación
 
 El equipo decidirá cuales de estos servicios pueden ser útiles en su
-aplicación. 
+aplicación, e incluirá los servicios imprescindibles en la misma.
 
 ## Servicios de logs
 
@@ -138,7 +138,7 @@ del consumidor.
 
 Conviene que para tomar esta decisión se use ya un *issue* de GitHub;
 esto permitirá que la decisión quede documentada, y por supuesto
-cuando se añada la decisión al `README.md` se puede cerrar tal issue.
+cuando se añada la decisión al `README.md` se puede cerrar tal issue. Este issue se enlazará desde el README.md donde se describa el criterio de adopción de la herramienta.
 
 ## Entrega
 
