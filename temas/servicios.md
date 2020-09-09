@@ -78,7 +78,35 @@ específicos de lenguaje, que se pueden usar también.
 
 ## Almacenamiento de datos
 
+El almacenamiento de datos actual va mucho más allá de las bases de
+datos relacionales, dividiéndose de forma basta en bases de datos SQL
+y NoSQL (no sólo SQL), pero este último término simple incluye toda
+una complejidad de sistemas de almacenamiento de datos que incluyen
+depósitos clave-valor (como Redis), bases de datos documentales (como
+Cassandra o Elastic), bases de datos en tiempo real (como RethinkDB) o
+bases de datos de grafos (como Neo4J).
 
+La cuestión principal es que cada una de ellas tienen diferentes casos
+de uso. Evidentemente, si la información está estructurada limpiamente
+en filas y columnas, las bases de datos relacionales son muy
+eficientes (pero también todas las opciones libres existentes tienen
+su especifidad, que hay que conocer), pero en otros casos, realmente,
+es complicado dar con la más adecuada en cada momento.
+
+Además, las bases de datos "tradicionales" están mejorando mucho
+añadiendo, por ejemplo, primitivas para almacenamiento y recuperación
+de información geográfica o incluso búsqueda dentro de información
+estructurada en JSON. La ventaja de las bases de datos tradicionales
+es que suelen tener apoyo de grandes empresas, pero también tienen un
+desarrollo de decenas de años que hace que sean bastante maduras. Y
+como estándar, el SQL no tiene rival; los almacenes de datos modernos
+usan todo tipo de cosas, desde lenguajes propios a Lua o JavaScript.
+
+A las opciones libres se añaden opciones comerciales dentro de
+plataformas cloud como Firebase (con un márketing muy agresivo
+últimamente) o CosmoDB; el problema con estas es que claramente te
+estás atando a un servicio, aunque si el diseño abstracto es genérico,
+puede ser simplemente cuestión de cambiar la implementación.
 
 
 ## Además
