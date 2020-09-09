@@ -234,8 +234,8 @@ cambios (o la mayoría; algunos puede que no vayan, como etiquetar un
 issue) vayan a parar a un grupo elegido;
 [GitHubBot](https://www.integromat.com/en/integrations/github/telegram)
 hace esa labor. Para un grupo de trabajo lo mejor es crear un grupo de
-telegram y añadir el bot al ese grupo para que comunique todos los
-cambios; adicionamente, si todos los miembros del grupo autorizan al
+Telegram y añadir el bot al ese grupo para que comunique todos los
+cambios; adicionalmente, si todos los miembros del grupo autorizan al
 bot a acceder al API en su nombre, se podrá interaccionar con GitHub
 directamente desde el grupo de Telegram.
 
