@@ -26,6 +26,7 @@ fn main() {
     let this_issue = issue_factory(String::from("CoolProject"), 1 );
     let mut that_issue = issue_factory( String::from("CoolProject"), this_issue.issue_id + 1 );
     that_issue.state = IssueState::Open; // Avoid warning
+    log::debug!("Changed state to Open");
 }
 
 #[cfg(test)]

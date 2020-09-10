@@ -19,4 +19,4 @@ jobs:
           toolchain: stable
       - name: Testea rust
         run:
-          cargo test
+          cd ejemplos/rust/issue && cargo test
