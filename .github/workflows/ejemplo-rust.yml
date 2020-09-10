@@ -1,10 +1,10 @@
 on:
   push:
     paths:
-      - "ejemplos/rust/issue**"
+      - "ejemplos/rust/issue/**"
   pull_request:
     paths:
-      - "ejemplos/rust/issue**"
+      - "ejemplos/rust/issue/**"
 
 name: CheckRustExample
 

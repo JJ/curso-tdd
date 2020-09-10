@@ -35,5 +35,6 @@ mod tests {
     #[test]
     fn check_creation() {
         assert_eq!(issue_factory(String::from("CoolProject"), 1 ).issue_id, 1);
+        assert_eq!(issue_factory(String::from("CoolProject"), 1 ).project_name, "CoolProject");
     }
 }
