@@ -1,0 +1,22 @@
+on:
+  push:
+    paths:
+      - "ejemplos/rust/issue**"
+  pull_request:
+    paths:
+      - "ejemplos/rust/issue**"
+
+name: CheckRustExample
+
+jobs:
+  build_and_test:
+    name: Rust project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Testea rust
+        run:
+          cargo test
