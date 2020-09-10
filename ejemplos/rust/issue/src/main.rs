@@ -1,3 +1,5 @@
+use simple_logger::SimpleLogger;
+
 #[derive(Debug)]
 pub enum IssueState {
     Open,
@@ -12,13 +14,15 @@ pub struct Issue {
 }
 
 pub fn issue_factory( project_name: String,
-                  issue_id: u64) -> Issue {
+                      issue_id: u64) -> Issue {
+    log::debug!( "Creating closed issue for project {} with id {}", project_name, issue_id );
     return Issue { state: IssueState::Closed,
                    project_name: project_name,
                    issue_id: issue_id }
 }
 
 fn main() {
+    SimpleLogger::new().init().unwrap();
     let this_issue = issue_factory(String::from("CoolProject"), 1 );
     println!("{:?}", this_issue);
     let mut that_issue = issue_factory( String::from("CoolProject"), this_issue.issue_id + 1 );
