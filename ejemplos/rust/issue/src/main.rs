@@ -24,10 +24,8 @@ pub fn issue_factory( project_name: String,
 fn main() {
     SimpleLogger::new().init().unwrap();
     let this_issue = issue_factory(String::from("CoolProject"), 1 );
-    println!("{:?}", this_issue);
     let mut that_issue = issue_factory( String::from("CoolProject"), this_issue.issue_id + 1 );
     that_issue.state = IssueState::Open; // Avoid warning
-    println!("{:?}", that_issue);
 }
 
 #[cfg(test)]
