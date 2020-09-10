@@ -3,7 +3,7 @@
 | Nombre proyecto con enlace                                                         | Versión |
 |------------------------------------------------------------------------------------|---------|
 | [Curso QA (nombre provisional)](https://github.com/testing-kakapos/curso-QA)       | v2.0.0  |
-| [FitHub](https://github.com/fitplusplus/fithub)                                    | v1.0.0  |
+| [FitHub](https://github.com/fitplusplus/fithub)                                    | v2.0.0  |
 | [TDD-AY](https://github.com/TDD-AY/TDD-Project)                                    | v2.0.0  |
 | [API para datos medioambientales](https://github.com/tdd-JSP/TDD-curso)            | v2.0.0  |
 | [MovieBot](https://github.com/tdd-IgnasiYManu/MovieBot)                            | v2.0.2  |
