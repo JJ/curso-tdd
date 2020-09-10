@@ -2,7 +2,8 @@
 
 | Nombre proyecto con enlace                                                         | Versión |
 |------------------------------------------------------------------------------------|---------|
-| [Curso QA (nombre provisional)](https://github.com/testing-kakapos/curso-QA)       | v1.0.0  |
+| [Curso QA (nombre provisional)](https://github.com/testing-kakapos/curso-QA)       | v2.0.0  |
+| [Curso QA (nombre provisional)](https://github.com/testing-kakapos/curso-QA/tree/hito-1)       | v1.0.0  |
 | [FitHub](https://github.com/fitplusplus/fithub)                                    | v1.0.0  |
 | [TDD-AY](https://github.com/TDD-AY/TDD-Project)                                    | v2.0.0  |
 | [API para datos medioambientales](https://github.com/tdd-JSP/TDD-curso)            | v2.0.0  |
