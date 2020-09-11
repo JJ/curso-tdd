@@ -3,18 +3,22 @@
 
 ## Planteamiento
 
-En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la capacidad del mismo de seguir (o exceder) las especificaciones y las expectativas de los usuarios del mismo. 
+En nuestro contexto, se define [la calidad del
+software](https://en.wikipedia.org/wiki/Software_quality) como la
+capacidad del mismo de seguir para cumplir (o exceder) las
+especificaciones y las expectativas de los usuarios del mismo. 
 
 En general, la calidad es un proceso, y no simplemente una
 característica que se añade en un momento determinado al producto. Por eso el
-producto, en nuestro caso el software, debe estar diseñado y pensado
+producto, en nuestro caso el software, junto con el proceso de desarrollo, debe estar diseñado y pensado
 desde el principio para asegurar que funciona y que responde a todos
 los requisitos funcionales y de otro tipo que se hayan planteado.
 
-Por eso, en un curso principalmente dedicado al diseño de tests se
-debe partir del planteamiento de la propia 
-aplicación, componente o biblioteca, porque se realizan pruebas sobre las
-especificaciones de la aplicación, y no se puede quedar en la sintaxis y
+En un curso que inicialmente iba dedicado al diseño de tests se debe
+partir del planteamiento de la propia
+[aplicación, componente o biblioteca](aplicaciones.md), 
+porque se realizan pruebas sobre las
+especificaciones de la aplicación; no se puede quedar en la sintaxis y
 una enumeración de los frameworks disponibles para hacer tests.
 
 ## Al final de esta sesión
@@ -35,15 +39,16 @@ El proyecto tendrá una serie de hitos e issues creados
 * Deberá haber documentos de una o varias historias de usuario en un
   directorio `HU`.
 
-Con esto se probará que se están siguiendo los principios de diseño desarrollando a partir de casos de uso.
+Con esto se probará que se están siguiendo los principios de diseño
+desarrollando a partir de casos de uso. 
 
 ## Diseño dirigido por dominio
 
 Una vez decidido el foco principal del proyecto, el diseño debe
 descender hasta un nivel en el que pueda ser abordable mediante la
 programación del mismo. "Divide y vencerás" nos permite trabajar con
-entidades que son autónomas entre sí, y que se pueden programar y
-testear de forma independiente. Una de las técnicas más conocidas es
+entidades que son autónomas e independientes entre sí, y que se pueden programar y
+testear por separado. Esta autonomía, que es un requisito, hace que una de las técnicas más conocidas sea
 el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
 
 Aunque, como todas las tecnologías de programación, es compleja en
@@ -61,13 +66,13 @@ simplemente un valor asignado a un atributo. Los *agregados*
 integrarán y encapsularán una serie de objetos, creando un API común
 para todos ellos.
 
-Finalmente, una entidad se convertirá en un módulo cuando se vaya a
+Eventualmente, una entidad se convertirá en un módulo cuando se vaya a
 implementar en el lenguaje de programación en el que decidamos
 hacerlo. Todos los lenguajes de programación modernos son modulares,
 con módulos agrupando funcionalidad relacionada, pero dependiendo del
 lenguaje, una entidad y un objeto valor será una clase, un rol, un
 módulo o paquete, o simplemente un fichero con una serie de funciones
-y convenciones para ser llamadas juntas. La mayoría de los módulos
+y convenciones para ser invocadas una vez importado. La mayoría de los módulos
 generan un *espacio de nombres*, que refleja también la jerarquía de
 los mismos; este espacio de nombres a veces se refleja en el nombre
 del módulo, a veces en el camino donde está almacenado.
@@ -85,6 +90,10 @@ hora de diseñar los ficheros en los que se va a almacenar nuestra
 aplicación o proyecto; los nombres de los ficheros y la estructura de
 directorios debe seguir las buenas prácticas habituales y reflejar la
 estructura del mismo.
+
+Tanto las entidades como objetos valor pueden ser módulos
+independientes; sin embargo, el nombre de los mismos o como se diseñe debe reflejar las
+  * [ ] dependencias unos de otros.
 
 El primer paso para entender cuales son las diferentes entidades y
 objetos-valor en nuestro problema es crear una serie de *casos de uso*
@@ -110,7 +119,14 @@ añadir alguna adicional (más adelante).
 
 Realmente el resto son temas de presentación. Lo importante es que
 tenemos una entidad, el *proyecto*. Cada proyecto tiene identidad
-propia, es decir que será un solo objeto que irá mutando de estado a lo largo del tiempo. El *agregado* integrará en un solo API acceso al estado de todos los proyectos, y el resto (hitos e *issues*) serán objetos-valor, sin ningún tipo de existencia fuera del contexto de un proyecto. Tendremos, por lo tanto, una sola entidad, la clase `Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases, pero no existen si no es dentro del contexto de un proyecto, por lo que los mantendremos así.
+propia, es decir que será un solo objeto que irá mutando de estado a
+lo largo del tiempo. El *agregado* integrará en un solo API acceso al
+estado de todos los proyectos, y el resto (hitos e *issues*) serán
+objetos-valor, sin ningún tipo de existencia fuera del contexto de un
+proyecto. Tendremos, por lo tanto, una sola entidad, la clase
+`Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases,
+pero no existen si no es dentro del contexto de un proyecto, por lo
+que los mantendremos así. 
 
 ¿Cumple esta entidad nuestra historia de usuario? En principio sí,
 pero evidentemente se puede evolucionar durante el desarrollo de la
@@ -135,11 +151,13 @@ method state( --> IssueState ) { return $!state }
 Frente a todas las operaciones posibles, usamos solo las que debemos para este objeto en particular.
 
 > Todo el código de este curso irá en el subdirectorio
-> [`code`](../code) de este repositorio. En este caso en el subdirectorio `raku`. 
+> [`ejemplos`](../ejemplos) de este repositorio. En este caso en el subdirectorio `raku`. 
 
-En general, tendremos varias entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
+En general, tendremos varias entidades en cada uno de los
+proyectos. En particular, los proyectos planteados aquí se podrán
+resolver con una sola.
 
-Estamos hablando de TDD y estamos poniendo código antes de
+Estamos hablando de TDD (que era el tema inicial del curso) y estamos poniendo código antes de
  especificar los tests. Si seguimos una metodología TDD estricta,
  deberíamos especificar los tests antes del mismo. Este código, de
 hecho, debería fallar antes de que se escriban los tests. Así que
@@ -189,6 +207,10 @@ y declarar y aislar las dependencias contribuyen a que la aplicación
 sea más fácil de testear y desarrollar. Esto lo podemos hacer antes de
 aplicar otra metodología de diseño, que veremos a continuación.
 
+> El "entorno" en el que se va a guardar la configuración debe, muy
+> posiblemente, incluir en producción sistemas de configuración
+> distribuida como los vistos en [el tema de servicios](servicios.md).
+
 ### Ejemplo
 
 En el caso de nuestra aplicación, por lo pronto, no tenemos más
@@ -198,7 +220,7 @@ dependencias, pero mientras tanto, en el fichero `META6.json`, que es
 el fichero de metadatos para distribuciones en Raku, bibliotecas o
 aplicaciones, se
 especifican todos los módulos de los que esta aplicación va a
-depender. 
+depender.
 
 Las dependencias las especificaremos siempre usando código (y bajo
 control de versiones), y por tanto distinguiremos entre varios tipos
@@ -235,7 +257,9 @@ diseño completo de la arquitectura de la aplicación:
    inversión del control): *se debe depender de cosas abstractas, no
    concretas*. Es decir, la dependencia de una clase debe ser de un
    almacén de datos, no de una base de datos concreta, y el almacén de
-   datos debe *inyectarse* en la clase cuando se vaya a crear. 
+   datos debe *inyectarse* en la clase cuando se vaya a crear. Este
+   principio es esencial, también en el contexto de tests, y
+   volveremos a él a lo largo de este curso.
 
 ### Ejemplo
 
