@@ -266,12 +266,12 @@ diseño completo de la arquitectura de la aplicación:
 Dividiremos las entidades en diferentes clases que tengan una
 responsabilidad única. La clase expuesta anteriormente se encargará
 solo y exclusivamente de los issues. Tendremos otra clase para los
-hitos o *milestones*, una como esta
+hitos o *milestones*, que serían *objetos-valor*, una como esta
 
 ```perl6
 use Project::Issue;
 
- unit class Project::Milestone;
+unit class Project::Milestone;
 
 has UInt $!milestone-id;
 has %!issues = ();
@@ -301,14 +301,15 @@ sea lo más compacto posible, y es (si conoces el lenguaje)
 auto-descrito. Por ejemplo, se usa un solo nombre para recuperar los
 issues y *dispatch* múltiple para seleccionar lo que se llama, o se
 capturan los posibles errores de ejecución en la propia signatura del
-método, en vez de usar un detector. 
+método, en vez de usar un detector.
 
 > Hay una posible ambigüedad que estamos resolviendo por las bravas:
 > si hay un issue con un número y se vuelve a asignar, el nuevo
 > sustituye al viejo. Siempre que quede claro y esté testeado, no
 > tiene por qué haber problema.
 
-En este caso no estamos usando ningún sistema de almacenamiento, pero
+En este caso no estamos usando ningún sistema de almacenamiento (entre
+otras cosas porque es un objeto valor, más sobre esto más adelante), pero
 estamos desacoplando el modelo del sistema real. A un nivel superior
 tendremos que introducir el sistema que decida de dónde se leen esos
 issues e hitos. Este desacoplamiento es esencial, y ayuda desde el
@@ -340,10 +341,10 @@ clases. También esta única fuente de verdad estará relacionada con la
 principio, mientras que el resto de las clases serán simplemente
 objetos valor.
 
-## Actividad
+## Actividad: versión 3
 
 Esencialmente, en esta primera fase se llevarán a cabo las actividades
-de diseño para el resto del curso. Como en el primer hito (o hito 0),
+de diseño para el resto del curso. Como en el resto de los hitos
 el código se debe añadir mediante un PR que deberá aprobar algún otro
 miembro del proyecto.
 
@@ -352,16 +353,13 @@ miembro del proyecto.
    partir de ellas una serie de issues en GitHub. Los hitos deberán
    estar relacionados con estas historias de usuario.
 
-3. Describir en el `README.md` el producto que se va a crear
-   (microservicio, biblioteca, aplicación o lo que sea),
-   explicando las tecnologías que se van a usar en el mismo.
-
 ## Entrega
 
 Esta entrega se llevará a cabo, como el resto de las mismas, como un
-pull request al fichero de [proyectos](../proyectos.md), tras añadir
-en el *fork* propio el nombre del proyecto y un enlace al repo, así
-como la versión.
+pull request al fichero de [proyectos](../proyectos.md), tras cambiar
+en el *fork* propio (que deberá estar actualizado) la versión del
+proyecto, que como siempre tendrá que corresponder con un tag del
+repositorio.
 
 Seguiremos usando 
 [versionado semántico para las entregas](https://semver.org/), donde
