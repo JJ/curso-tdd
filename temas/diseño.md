@@ -32,9 +32,6 @@ a cabo el desarrollo de la aplicación.
 
 El proyecto tendrá una serie de hitos e issues creados
 
-* Todos los issues estarán en un hito
-* Todos los commits se referirán a un issue.
-* Los issues se habrán cerrado siempre con un commit.
 * Deberá haber documentos de una o varias historias de usuario en un
   directorio `HU`.
 

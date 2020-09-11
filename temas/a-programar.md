@@ -25,6 +25,10 @@ desarrollo de la aplicación o el uso de este código.
 La clase o funcionalidad debe estar diseñada, aunque sin código, y
 debe compilar correctamente.
 
+* Todos los issues estarán en un hito
+* Todos los commits se referirán a un issue.
+* Los issues se habrán cerrado siempre con un commit.
+
 ## Buenas prácticas en el diseño de código.
 
 Durante el ciclo de vida del software, los programas van evolucionando
