@@ -42,6 +42,13 @@ recomendación en LinkedIn o donde se solicite).
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
+  
+* **Sesión vermut**: Análisis de RadarCovid. Aprovechando que han "liberado" RadarCOVID, vamos a ver qué se puede aprender del código publicado sobre lo que se debe (y no se debe hacer) en desarrollo de software de calidad.
+  * Dejar claves privadas en el repo
+  * Tests
+  * Ficheros diversos abandonados.
+  * Reproducibilidad de la compilación.
+  * ... 
 
 * **Sesión 4**: Requisitos funcionales,
   *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
