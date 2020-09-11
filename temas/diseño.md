@@ -253,8 +253,8 @@ diseño completo de la arquitectura de la aplicación:
   una sola razón para cambiar una entidad": diferentes razones,
   diferentes responsabilidades. 
 
-* [Principio de la inversión de dependencias](https://en.wikipedia.org/wiki/Dependency_inversion_principle) (o
-   inversión del control): *se debe depender de cosas abstractas, no
+* [Principio de la inversión de dependencias](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
+ (o inversión del control): *se debe depender de cosas abstractas, no
    concretas*. Es decir, la dependencia de una clase debe ser de un
    almacén de datos, no de una base de datos concreta, y el almacén de
    datos debe *inyectarse* en la clase cuando se vaya a crear. Este
@@ -364,4 +364,4 @@ repositorio.
 Seguiremos usando 
 [versionado semántico para las entregas](https://semver.org/), donde
 el primer número será siempre el hito (comenzando por el hito
-0). 
+0).
