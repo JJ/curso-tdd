@@ -341,6 +341,73 @@ clases. También esta única fuente de verdad estará relacionada con la
 principio, mientras que el resto de las clases serán simplemente
 objetos valor.
 
+## A programar
+
+A continuación, hay que ponerse a programar, lo que implica poner a
+punto una serie de herramientas y una actitud; lo indicado por 
+[Joel on software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
+sigue siendo válido después de muchos años: usar siempre control de
+fuentes, hacer el build (y finalmente el despliegue) en un solo
+paso, priorizar arreglar los bugs. 
+
+Pero en todo caso, lo más importante es la planificación que se va a
+llevar a cabo antes de aprobar. Los sistemas de control de fuentes
+modernos incluyen un sistema de organización del trabajo usando
+*issues* e *hitos*. Los issues son órdenes de trabajo, los hitos los
+agrupan creando un punto de control de forma que no se puede ir hacia
+adelante hasta que no se terminen todos los issues de un hito. Lo más
+importante desde el punto de vista de la organización del trabajo es
+que cuando se trabaje, esté claro en qué contexto se hace y se haga
+contra un issue, refiriéndose a él en el commit (preferiblemente en la
+primera línea del mismo). Todos los issues, a su vez, deben estar en
+un hito.
+
+La mejor forma de empezar con estos issues es crear historias de
+usuario razonables. Estas historias de usuario harán que evolucione el
+modelo que tenemos de cada entidad y de cada clase que tengamos dentro
+de una entidad.
+
+### Ejemplos
+
+En nuestro programa que tratará con los hitos, las acciones comenzarán
+siempre con una petición que llegue desde GitHub. Por lo tanto,
+podremos tener las siguientes historias de usuario.
+
+* **HU0**: (Configuración) Cada proyecto deberá tener una cadena única
+  que lo identifique.
+* **HU1**: Cuando se cree un hito en un proyecto, ese hito deberá estar incluido en
+  la estructura de datos del proyecto correspondiente.
+* **HU2**: Cuando se cree un issue, se añadirá al hito
+  correspondiente con estado "abierto". Si no está asignado a ningún hito, se emitirá un
+  mensaje de error.
+* **HU3**: Cuando se cierre un issue, se cambiará el estado del
+  mismo. 
+* **HU4**: Si se borra un issue, se eliminará de la estructura de
+  datos que los contenga.
+* **HU5**: Si se solicita el porcentaje de terminación del hito, se
+  responderá con una cantidad entre 0 y 100.
+
+Estas historias de usuario se pueden incluir directamente como hitos,
+o agrupar algunas de ellas en un issue. Por ejemplo, en este caso
+todas las relativas a issues se pueden incluir en el mismo hito.
+
+A partir de estas historias de usuario, y de la metodología de diseño,
+habrá que empezar a escribir el código. Como código no testeado es
+código roto, mejor diseñar el API para empezar y más adelante añadir
+el código y los tests correspondientes, como hemos visto en el caso
+del ejemplo de Python anterior. Pero eso ya será en la
+siguiente sesión.
+
+Adicionalmente, una historia de usuario especificará qué hay que hacer
+en caso de error. Recordad que el diseño de un módulo debe incluir
+también diseño de las clases que se van a usar en caso de error.
+
+* **HU6** Un hito sin issues estará en un estado incorrecto y la única
+  operación permisible sobre el mismo es añadirle issues. Si se trata
+  de hacer alguna operación sobre el mismo, se emitirá un error de
+  tipo. 
+
+
 ## Actividad: versión 3
 
 Esencialmente, en esta primera fase se llevarán a cabo las actividades
