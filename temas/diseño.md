@@ -3,8 +3,7 @@
 
 ## Planteamiento
 
-En nuestro contexto, se define [la calidad del
-software](https://en.wikipedia.org/wiki/Software_quality) como la
+En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la
 capacidad del mismo de seguir para cumplir (o exceder) las
 especificaciones y las expectativas de los usuarios del mismo. 
 
