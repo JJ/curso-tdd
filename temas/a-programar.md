@@ -19,7 +19,7 @@ todo caso dar pistas sobre qué es lo que falla.
 Los estudiantes habrán diseñado estructuras de datos, módulos y clases
 que compilen correctamente y que eviten errores de código durante el
 desarrollo de la aplicación o el uso de este código.
-
+ 
 ## Criterio de aceptación
 
 La clase o funcionalidad debe estar diseñada, aunque sin código, y
