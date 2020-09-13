@@ -55,11 +55,10 @@ recomendación en LinkedIn o donde se solicite).
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
 
-* **Sesión 5**: Cómo implementar las historias de usuario, comenzar la
-  aplicación.
+* **Sesión 5**: Comienzo de la implementación "defensiva".
     * Cómo organizar un proyecto: canvas, milestones, issues.
     * Documentación de las historias de usuario y traslado a issues.
-    * Comienzo del diseño, en general, de las clases.
+    * Comienzo del diseño, en general, de las clases (y excepciones).
     * [Material](temas/a-programar.md).
 
 * **Sesión 6**: Task runners y cómo usarlos.
