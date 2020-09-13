@@ -17,7 +17,7 @@ todo caso dar pistas sobre qué es lo que falla.
 ## Al final de esta sesión
 
 Los estudiantes habrán diseñado estructuras de datos, módulos y clases
-que compilen correctamente y que garanticen la caidad del producto durante el
+que compilen correctamente y que garanticen la calidad del producto durante el
 desarrollo de la aplicación o el uso de este código.
 
 ## Criterio de aceptación
@@ -80,7 +80,7 @@ número limitado de argumentos, y deberían ser pequeñas, idealmente
 visibles en un solo pantallazo (aunque las pantallas de hoy en día
 pueden ser muy largas). Una regla es que deberían tener entre 5 y 15
 líneas. A nivel de función, es una traslación del principio de
-"resposabilidad única" que forma parte de SOLID.
+"responsabilidad única" que forma parte de SOLID.
 
 > Evidentemente, aquí también incluimos bloques de código (tales como
 > lambdas y cuerpos de bucles) que deberían de ser naturalmente más pequeños, y métodos de clases.
@@ -132,7 +132,7 @@ Los posibles errores y excepciones forman también parte del
 vocabulario de una clase.
 
 > Cada clase o módulo define un *lenguaje*, un nivel de abstracción
-> sobre el prroblema que nos permite razonar a otro nivel con él.
+> sobre el problema que nos permite razonar a otro nivel con él.
 
 Tener errores
 específicos ayuda a que se puedan manejar mejor y es una práctica
