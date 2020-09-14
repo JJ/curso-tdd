@@ -160,13 +160,18 @@ habría que dar para realizar las tareas habituales.
 
 ### Ejemplo en Python
 
-Python usa generalmente la misma orden para instalar todo. Pero si
+Python usa generalmente la misma orden para instalar todo, `pip` o
+alguna variante. Pero si
 ponemos esa orden en el `Makefile`, así:
 
 ```
 install:
 	pip install -r requirements.txt
 ```
+
+podremos ejecutarla com `make install`. `make` es una de las
+herramientas que no suele tneer `help` como un objetivo, habría que
+implementarlo a mano.
 
 ## Actividad
 
@@ -177,20 +182,22 @@ prácticas de uso de los issues (y su cierre desde un *commit*), crear
 el interfaz de al menos una clase básicas que corresponda a la misma entidad (según
 el dominio del problema que se haya elegido), esta funcionalidad debe corresponder a las historias de usuario que se hayan planteado, y el nombre de las funciones debe ser suficientemente explícito.
 
-El repositorio tendrá que incluir un fichero de configuración para poder llevar a cabo los tests de evaluación del proyecto llamado `qa.json` con la siguiente estructura:
+A partir de este hito, el repositorio tendrá que incluir un fichero de
+configuración para poder llevar a cabo los tests de evaluación del
+proyecto llamado `qa.json` con la siguiente estructura:
 
 ```json
 {
     "lenguaje" : "Nombre del lenguaje",
     "build" : "Makefile",
-    "clase" : "lib/nombre/del/fichero.pm6"
+    "ficheros" : ["lib/nombre/del/fichero.pm6","otro/fichero.rakumod"]
   
 }
 ```
 
 En vez de `Makefile`, se usará el nombre del fichero de construcción
 que se haya usado para ejecutar los tests, que tendrá que estar
-presente en el repositorio; el nombre del fichero de clase (procedente
+presente en el repositorio; el nombre de los ficheros de clase (procedente
 del hito anterior) que se haya creado también deberá ponerse el que corresponda.
 
 > Se aconseja no crear a mano el fichero JSON, o si se hace, que se
