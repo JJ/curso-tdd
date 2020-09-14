@@ -6,24 +6,25 @@ En un proceso de calidad del software, es tan importante el
 planteamiento de la clase y las herramientas que se usan para
 gestionar las tareas de un proyecto como el código que se escriba para
 asegurarnos de que efectivamente se cumplen las historias de
-usuario. Conviene desacoplar el diseño de la clase, sin embargo, del
-código que se implementa en el mismo, porque es el diseño el que debe
-seguir las historias de usuario, mientras que el código se asegura de
-que tengan el resultado deseado. 
+usuario.
 
 Por supuesto, todo en un proyecto se va a ejecutar desde un task
-runner, así que será lo primero que se vea en esta sesión. 
+runner, porque tanto el desarrollo como el despliegue deben estar
+automatizados (y esta automatización garantiza la replicabilidad del
+mismo).
 
 ## Al final de esta sesión
 
-El estudiante habrá elegido un task runner, que usará para compilar o
+El estudiante habrá elegido un *task runner*, que usará para compilar o
 comprobar la sintaxis del interfaz de una clase correspondiendo a la historia de usuario o historias que desee.
 
 ## Criterio de aceptación
 
 Se habrá implementado el interfaz de una clase y un fichero de un task
 runner que contenga, al menos, la comprobación de la sintaxis o
-compilación, incluyendo la instalación de dependencias que fueran necesarias.
+compilación, incluyendo la instalación de dependencias que fueran
+necesarias. Este fichero se irá ampliando con las diferentes tareas
+que se vayan haciendo durante el curso.
 
 ## Herramientas de construcción o gestores de tareas.
 
@@ -33,52 +34,74 @@ compilación, incluyendo la instalación de dependencias que fueran necesarias.
 > fichero de tareas que se ejecuta desde aquí.
 
 Como parte de la metodología de 12 factores que vimos en la fase de
-[diseño](diseño.md), una de los factores incluye [separar las fases](https://12factor.net/es/build-release-run) de
+[diseño](diseño.md), uno de los factores incluye [separar las fases](https://12factor.net/es/build-release-run) de
 construcción, despliegue y ejecución. Pero para hacer esto todas las
 fases (y alguna otra tarea que esté relacionada con las mismas) deben
 de estar codificadas: la infraestructura es código, y ese código, en
 este caso, será parte de un fichero que será ejecutado por una
 herramienta de construcción.
 
-Las herramientas de construcción o ejecutores de tareas permiten usar, como
+Las [herramientas de construcción](https://en.wikipedia.org/wiki/List_of_build_automation_software) o ejecutores de tareas permiten usar, como
 subcomandos de un solo programa y especificados en un solo fichero, todas las tareas que se tienen que llevar a
 cabo con una aplicación, desde su compilación hasta la generación de la
-documentación.
+documentación pasando por todo lo necesario para ejecutar todo tipo de
+tests y desplegarlo.
 
 Los task runners se diferencian entre si a lo largo de varios ejes
 
 * Explícitos o implícitos, es decir, si hay un programa que se llame
-explícitamente así y sea diferente al intérprete o compilador o no. Go es un
-ejemplo de task runner implícito: como subcomandos de go se compila, se pasan
-tests o se instala un paquete.
-* Estándar o externos: hay lenguajes que vienen con su propia herramienta de
+explícitamente así y sea diferente al intérprete o compilador o no;
+también se podían denominar internos o externos (aunque dejaremos este
+eje para el siguiente). Go es un
+ejemplo de lenguaje que usa task runner implícito: como subcomandos de go se compila, se pasan
+tests o se instala un paquete. Rust usa un task runner explícito: se
+llama `cargo` y desde él se pueden llevar a cabo todas las tareas
+necesarias.
+* Configuración externa o implícita. Deno, un fork de Node, evita el
+  fichero de configuración externo para usar directamente las
+  declaraciones de uso de bibliotecas externas como parte de la
+  definición. Go es capaz de hacerlo también. En la mayoría de los
+  casos hace falta un fichero que describa este tipo de cosas.
+* Estándar o opcionales: hay lenguajes que vienen con su propia herramienta de
 construcción, estándar o simplemente la que más se usa, aunque puede tener
-limitaciones: `npm` en JavaScript, `cargo` en Rust, `zef` en Raku... En muchos
+limitaciones: `npm` en JavaScript (que últimamente está siendo
+sustituida por `yarn`, por cierto), `sbt` en Scala, `zef` en Raku... En muchos
 casos, sin embargo, hacen falta herramientas externas, de la cuales la
 herramienta por antonomasia es `make`, pero hay otras más, como `invoke` para
-Python o [`rake`](https://github.com/ruby/rake) para Ruby
-* Imperativas o declarativas: las procedurales permiten ejecutar órdenes para
+Python o [`rake`](https://github.com/ruby/rake) para Ruby.
+* Imperativas o declarativas: las procedurales o imperativas permiten ejecutar órdenes para
 conseguir algo, mientras que las declarativas describen el estado en el que
 quieres que el sistema esté y realizan sus propias acciones para llegar a ese
-estado:
+estado: en el caso de Java,
 [`Maven` es declarativo, `ant` es imperativo](https://stackoverflow.com/questions/14955597/imperative-vs-declarative-build-systems)
 * Genéricas o [específicas](https://softwareengineering.stackexchange.com/questions/297847/why-do-build-tools-use-a-scripting-language-different-than-underlying-programmin) del lenguaje:
 Las genéricas lanzan scripts, generalmente del shell, mientras que las
 específicas usan el propio lenguaje de programación, con lo que es más fácil que
- se adapten a diferentes plataformas.
+ se adapten a diferentes plataformas. `make` es el caso más clásico de
+ herramienta genérica.
 
-Muchas herramientas usan un *Domain Specific Language*, un DSL que permite
+Muchas herramientas usan *Domain Specific Languages*, un DSL que permite
 expresar los diferentes *targets* y las acciones necesarias para alcanzarlos o,
 en el caso declarativo, como saber que están en ese estado. `make`, por ejemplo,
  tiene el suyo, y otras herramientas como `sbt` también; algunas como Gradle
- usan Groovy.
+ usan Groovy, un lenguaje "pequeño" pero de propósito general; una
+ herramienta llamada [`xmake`](https://github.com/xmake-io/xmake) usa
+ Lua.
 
-Sean cuales sean las facilidades que ofrezca el lenguaje, las herramientas de
+> Por lo que siempre es conveniente conocer muchos lenguajes.
+
+Sean cuales sean las facilidades que ofrezca el lenguaje (o simple descripción), las herramientas de
 construcción permiten centralizar en un solo fichero todas las tareas relativas
   a la aplicación, y por tanto contribuyen al código limpio y a que la
   configuración sea código y explícita. Todo lo que esté en la herramienta de
   construcción son tareas que no tienes que describir en la documentación y que
-  son, por tanto, mucho más fáciles de mantener. Esas tareas se suelen denominar *targets* u objetivos. En muchos casos se pueden establecer correspondencias entre objetivos, o bien definir reglas que activen esos objetivos (por ejemplo, la modificación de un fichero que haga que la versión compilada se haya desfasado con respecto al fuente).
+  son, por tanto, mucho más fáciles de mantener. Esas tareas se suelen
+  denominar *targets* u objetivos. En muchos casos se pueden
+  establecer correspondencias entre objetivos, o bien definir reglas
+  que activen esos objetivos (por ejemplo, la modificación de un
+  fichero que haga que la versión compilada se haya desfasado con
+  respecto al fuente). En la mayor parte de los casos, las tareas
+  tienen nombres estándar: `test`, `build`, `install`.
 
 La más antigua, `make`, sigue siendo una de las herramientas más
 populares. Por ejemplo, este `Makefile` minimalista se podría usar
@@ -96,7 +119,7 @@ para un programa en go:
   
 La herramienta `make` y sus `Makefile`s se pueden usar en cualquier lenguaje. De hecho, C y C++ lo usan, pero también Python.
 
-Por el contrario, [`sake`](https://github.com/perl6/p6-sake) es un módulo
+Por el contrario, [`ake`](https://github.com/Raku/ake) es un módulo
 externo al lenguaje Raku, pero usa Raku para expresarse.
 
 ```perl6
@@ -112,7 +135,8 @@ for <test install> -> $task {
 ```
 
 Declaramos tres tareas, y como la mayoría de estas herramientas, si se usa
-`sake help` nos dará las tareas que se pueden usar:
+`ake help` nos dará las tareas que se pueden usar (y aparece sin
+necesidad de registrarla):
 
 ```
 Registered tasks:
