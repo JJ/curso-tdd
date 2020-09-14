@@ -67,7 +67,7 @@ EOC
     diag( check( "Tests para hito 3") );
     my @hus = grep(  m{HU/}, @repo_files  );
     cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
-  } elsif ( $version =~ /^v4/ ) {
+  } elsif ( $version =~ /^v5/ ) {
     my $qa = config_file( \@repo_files, $repo_dir );
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'clase'}, \@repo_files, "de clase" );
@@ -76,12 +76,12 @@ EOC
     my $qa = config_file( \@repo_files, $repo_dir );
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'test'}, \@repo_files, "de test" );
-  } elsif ( $version =~ /^v6/ ) {
+  } elsif ( $version =~ /^v7/ ) {
     file_present( '.travis.yml', \@repo_files, "de CI" );
     travis_pass( $README, $user, $name );
-  } elsif ( $version =~ /^v7/ ) {
+  } elsif ( $version =~ /^v8/ ) {
     codecov_pass( $README );
-   } elsif ( $version =~ /^v8/ ) {
+   } elsif ( $version =~ /^v9/ ) {
     travis_pass( $README, $user, $name );
     codecov_pass( $README );
   }
