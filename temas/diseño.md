@@ -79,7 +79,7 @@ del módulo, a veces en el camino donde está almacenado.
 > `lib/My/Project/Issue.pm6`. En el caso de Python, un módulo que se
 > llame Project estará definido en `Project/core.py` (y en el
 > directorio `Project` tendrá que haber un fichero `__init__.py`. El
-> otro fichero mencionado estará en `Project/Issue.py`. 
+> otro fichero mencionado estará en `Project/Issue.py`). 
 
 Este tipo de consideraciones tendremos que tenerlas en cuenta a la
 hora de diseñar los ficheros en los que se va a almacenar nuestra
@@ -88,8 +88,7 @@ directorios debe seguir las buenas prácticas habituales y reflejar la
 estructura del mismo.
 
 Tanto las entidades como objetos valor pueden ser módulos
-independientes; sin embargo, el nombre de los mismos o como se diseñe debe reflejar las
-  * [ ] dependencias unos de otros.
+independientes; sin embargo, el nombre de los mismos o como se diseñe debe reflejar las dependencias unos de otros.
 
 El primer paso para entender cuales son las diferentes entidades y
 objetos-valor en nuestro problema es crear una serie de *casos de uso*
