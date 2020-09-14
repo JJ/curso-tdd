@@ -1,27 +1,40 @@
+use simple_logger::SimpleLogger;
+
 #[derive(Debug)]
-enum IssueState {
+pub enum IssueState {
     Open,
     Closed,
 }
 
 #[derive(Debug)]
-struct Issue {
+pub struct Issue {
     state: IssueState,
     project_name: String,
     issue_id: u64,
 }
 
+pub fn issue_factory( project_name: String,
+                      issue_id: u64) -> Issue {
+    log::debug!( "Creating closed issue for project {} with id {}", project_name, issue_id );
+    return Issue { state: IssueState::Closed,
+                   project_name: project_name,
+                   issue_id: issue_id }
+}
+
 fn main() {
-    let this_issue = Issue {
-        state: IssueState::Closed,
-        project_name: String::from("NewProject"),
-        issue_id: 1,
-    };
-    println!("{:?}", this_issue);
-    let that_issue = Issue {
-        state: IssueState::Open,
-        project_name: String::from("NewProject"),
-        issue_id: 3,
-    };
-    println!("{:?}", that_issue);
+    SimpleLogger::new().init().unwrap();
+    let this_issue = issue_factory(String::from("CoolProject"), 1 );
+    let mut that_issue = issue_factory( String::from("CoolProject"), this_issue.issue_id + 1 );
+    that_issue.state = IssueState::Open; // Avoid warning
+    log::debug!("Changed state to Open");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_creation() {
+        assert_eq!(issue_factory(String::from("CoolProject"), 1 ).issue_id, 1);
+        assert_eq!(issue_factory(String::from("CoolProject"), 1 ).project_name, "CoolProject");
+    }
 }

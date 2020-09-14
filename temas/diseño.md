@@ -3,18 +3,21 @@
 
 ## Planteamiento
 
-En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la capacidad del mismo de seguir (o exceder) las especificaciones y las expectativas de los usuarios del mismo. 
+En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la
+capacidad del mismo de seguir para cumplir (o exceder) las
+especificaciones y las expectativas de los usuarios del mismo. 
 
 En general, la calidad es un proceso, y no simplemente una
 característica que se añade en un momento determinado al producto. Por eso el
-producto, en nuestro caso el software, debe estar diseñado y pensado
+producto, en nuestro caso el software, junto con el proceso de desarrollo, debe estar diseñado y pensado
 desde el principio para asegurar que funciona y que responde a todos
 los requisitos funcionales y de otro tipo que se hayan planteado.
 
-Por eso, en un curso principalmente dedicado al diseño de tests se
-debe partir del planteamiento de la propia 
-aplicación, componente o biblioteca, porque se realizan pruebas sobre las
-especificaciones de la aplicación, y no se puede quedar en la sintaxis y
+En un curso que inicialmente iba dedicado al diseño de tests se debe
+partir del planteamiento de la propia
+[aplicación, componente o biblioteca](aplicaciones.md), 
+porque se realizan pruebas sobre las
+especificaciones de la aplicación; no se puede quedar en la sintaxis y
 una enumeración de los frameworks disponibles para hacer tests.
 
 ## Al final de esta sesión
@@ -29,21 +32,19 @@ a cabo el desarrollo de la aplicación.
 
 El proyecto tendrá una serie de hitos e issues creados
 
-* Todos los issues estarán en un hito
-* Todos los commits se referirán a un issue.
-* Los issues se habrán cerrado siempre con un commit.
 * Deberá haber documentos de una o varias historias de usuario en un
   directorio `HU`.
 
-Con esto se probará que se están siguiendo los principios de diseño desarrollando a partir de casos de uso.
+Con esto se probará que se están siguiendo los principios de diseño
+desarrollando a partir de casos de uso. 
 
 ## Diseño dirigido por dominio
 
 Una vez decidido el foco principal del proyecto, el diseño debe
 descender hasta un nivel en el que pueda ser abordable mediante la
 programación del mismo. "Divide y vencerás" nos permite trabajar con
-entidades que son autónomas entre sí, y que se pueden programar y
-testear de forma independiente. Una de las técnicas más conocidas es
+entidades que son autónomas e independientes entre sí, y que se pueden programar y
+testear por separado. Esta autonomía, que es un requisito, hace que una de las técnicas más conocidas sea
 el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
 
 Aunque, como todas las tecnologías de programación, es compleja en
@@ -61,13 +62,13 @@ simplemente un valor asignado a un atributo. Los *agregados*
 integrarán y encapsularán una serie de objetos, creando un API común
 para todos ellos.
 
-Finalmente, una entidad se convertirá en un módulo cuando se vaya a
+Eventualmente, una entidad se convertirá en un módulo cuando se vaya a
 implementar en el lenguaje de programación en el que decidamos
 hacerlo. Todos los lenguajes de programación modernos son modulares,
 con módulos agrupando funcionalidad relacionada, pero dependiendo del
 lenguaje, una entidad y un objeto valor será una clase, un rol, un
 módulo o paquete, o simplemente un fichero con una serie de funciones
-y convenciones para ser llamadas juntas. La mayoría de los módulos
+y convenciones para ser invocadas una vez importado. La mayoría de los módulos
 generan un *espacio de nombres*, que refleja también la jerarquía de
 los mismos; este espacio de nombres a veces se refleja en el nombre
 del módulo, a veces en el camino donde está almacenado.
@@ -85,6 +86,10 @@ hora de diseñar los ficheros en los que se va a almacenar nuestra
 aplicación o proyecto; los nombres de los ficheros y la estructura de
 directorios debe seguir las buenas prácticas habituales y reflejar la
 estructura del mismo.
+
+Tanto las entidades como objetos valor pueden ser módulos
+independientes; sin embargo, el nombre de los mismos o como se diseñe debe reflejar las
+  * [ ] dependencias unos de otros.
 
 El primer paso para entender cuales son las diferentes entidades y
 objetos-valor en nuestro problema es crear una serie de *casos de uso*
@@ -110,7 +115,14 @@ añadir alguna adicional (más adelante).
 
 Realmente el resto son temas de presentación. Lo importante es que
 tenemos una entidad, el *proyecto*. Cada proyecto tiene identidad
-propia, es decir que será un solo objeto que irá mutando de estado a lo largo del tiempo. El *agregado* integrará en un solo API acceso al estado de todos los proyectos, y el resto (hitos e *issues*) serán objetos-valor, sin ningún tipo de existencia fuera del contexto de un proyecto. Tendremos, por lo tanto, una sola entidad, la clase `Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases, pero no existen si no es dentro del contexto de un proyecto, por lo que los mantendremos así.
+propia, es decir que será un solo objeto que irá mutando de estado a
+lo largo del tiempo. El *agregado* integrará en un solo API acceso al
+estado de todos los proyectos, y el resto (hitos e *issues*) serán
+objetos-valor, sin ningún tipo de existencia fuera del contexto de un
+proyecto. Tendremos, por lo tanto, una sola entidad, la clase
+`Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases,
+pero no existen si no es dentro del contexto de un proyecto, por lo
+que los mantendremos así. 
 
 ¿Cumple esta entidad nuestra historia de usuario? En principio sí,
 pero evidentemente se puede evolucionar durante el desarrollo de la
@@ -135,11 +147,13 @@ method state( --> IssueState ) { return $!state }
 Frente a todas las operaciones posibles, usamos solo las que debemos para este objeto en particular.
 
 > Todo el código de este curso irá en el subdirectorio
-> [`code`](../code) de este repositorio. En este caso en el subdirectorio `raku`. 
+> [`ejemplos`](../ejemplos) de este repositorio. En este caso en el subdirectorio `raku`. 
 
-En general, tendremos varias entidades en cada uno de los proyectos. En particular, los proyectos planteados aquí se podrán resolver con una sola.
+En general, tendremos varias entidades en cada uno de los
+proyectos. En particular, los proyectos planteados aquí se podrán
+resolver con una sola.
 
-Estamos hablando de TDD y estamos poniendo código antes de
+Estamos hablando de TDD (que era el tema inicial del curso) y estamos poniendo código antes de
  especificar los tests. Si seguimos una metodología TDD estricta,
  deberíamos especificar los tests antes del mismo. Este código, de
 hecho, debería fallar antes de que se escriban los tests. Así que
@@ -189,6 +203,10 @@ y declarar y aislar las dependencias contribuyen a que la aplicación
 sea más fácil de testear y desarrollar. Esto lo podemos hacer antes de
 aplicar otra metodología de diseño, que veremos a continuación.
 
+> El "entorno" en el que se va a guardar la configuración debe, muy
+> posiblemente, incluir en producción sistemas de configuración
+> distribuida como los vistos en [el tema de servicios](servicios.md).
+
 ### Ejemplo
 
 En el caso de nuestra aplicación, por lo pronto, no tenemos más
@@ -198,7 +216,7 @@ dependencias, pero mientras tanto, en el fichero `META6.json`, que es
 el fichero de metadatos para distribuciones en Raku, bibliotecas o
 aplicaciones, se
 especifican todos los módulos de los que esta aplicación va a
-depender. 
+depender.
 
 Las dependencias las especificaremos siempre usando código (y bajo
 control de versiones), y por tanto distinguiremos entre varios tipos
@@ -231,23 +249,25 @@ diseño completo de la arquitectura de la aplicación:
   una sola razón para cambiar una entidad": diferentes razones,
   diferentes responsabilidades. 
 
-* [Principio de la inversión de dependencias](https://en.wikipedia.org/wiki/Dependency_inversion_principle) (o
-   inversión del control): *se debe depender de cosas abstractas, no
+* [Principio de la inversión de dependencias](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
+ (o inversión del control): *se debe depender de cosas abstractas, no
    concretas*. Es decir, la dependencia de una clase debe ser de un
    almacén de datos, no de una base de datos concreta, y el almacén de
-   datos debe *inyectarse* en la clase cuando se vaya a crear. 
+   datos debe *inyectarse* en la clase cuando se vaya a crear. Este
+   principio es esencial, también en el contexto de tests, y
+   volveremos a él a lo largo de este curso.
 
 ### Ejemplo
 
 Dividiremos las entidades en diferentes clases que tengan una
 responsabilidad única. La clase expuesta anteriormente se encargará
 solo y exclusivamente de los issues. Tendremos otra clase para los
-hitos o *milestones*, una como esta
+hitos o *milestones*, que serían *objetos-valor*, una como esta
 
 ```perl6
 use Project::Issue;
 
- unit class Project::Milestone;
+unit class Project::Milestone;
 
 has UInt $!milestone-id;
 has %!issues = ();
@@ -277,14 +297,15 @@ sea lo más compacto posible, y es (si conoces el lenguaje)
 auto-descrito. Por ejemplo, se usa un solo nombre para recuperar los
 issues y *dispatch* múltiple para seleccionar lo que se llama, o se
 capturan los posibles errores de ejecución en la propia signatura del
-método, en vez de usar un detector. 
+método, en vez de usar un detector.
 
 > Hay una posible ambigüedad que estamos resolviendo por las bravas:
 > si hay un issue con un número y se vuelve a asignar, el nuevo
 > sustituye al viejo. Siempre que quede claro y esté testeado, no
 > tiene por qué haber problema.
 
-En este caso no estamos usando ningún sistema de almacenamiento, pero
+En este caso no estamos usando ningún sistema de almacenamiento (entre
+otras cosas porque es un objeto valor, más sobre esto más adelante), pero
 estamos desacoplando el modelo del sistema real. A un nivel superior
 tendremos que introducir el sistema que decida de dónde se leen esos
 issues e hitos. Este desacoplamiento es esencial, y ayuda desde el
@@ -316,10 +337,77 @@ clases. También esta única fuente de verdad estará relacionada con la
 principio, mientras que el resto de las clases serán simplemente
 objetos valor.
 
-## Actividad
+## A programar
+
+A continuación, hay que ponerse a programar, lo que implica poner a
+punto una serie de herramientas y una actitud; lo indicado por 
+[Joel on software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
+sigue siendo válido después de muchos años: usar siempre control de
+fuentes, hacer el build (y finalmente el despliegue) en un solo
+paso, priorizar arreglar los bugs. 
+
+Pero en todo caso, lo más importante es la planificación que se va a
+llevar a cabo antes de aprobar. Los sistemas de control de fuentes
+modernos incluyen un sistema de organización del trabajo usando
+*issues* e *hitos*. Los issues son órdenes de trabajo, los hitos los
+agrupan creando un punto de control de forma que no se puede ir hacia
+adelante hasta que no se terminen todos los issues de un hito. Lo más
+importante desde el punto de vista de la organización del trabajo es
+que cuando se trabaje, esté claro en qué contexto se hace y se haga
+contra un issue, refiriéndose a él en el commit (preferiblemente en la
+primera línea del mismo). Todos los issues, a su vez, deben estar en
+un hito.
+
+La mejor forma de empezar con estos issues es crear historias de
+usuario razonables. Estas historias de usuario harán que evolucione el
+modelo que tenemos de cada entidad y de cada clase que tengamos dentro
+de una entidad.
+
+### Ejemplos
+
+En nuestro programa que tratará con los hitos, las acciones comenzarán
+siempre con una petición que llegue desde GitHub. Por lo tanto,
+podremos tener las siguientes historias de usuario.
+
+* **HU0**: (Configuración) Cada proyecto deberá tener una cadena única
+  que lo identifique.
+* **HU1**: Cuando se cree un hito en un proyecto, ese hito deberá estar incluido en
+  la estructura de datos del proyecto correspondiente.
+* **HU2**: Cuando se cree un issue, se añadirá al hito
+  correspondiente con estado "abierto". Si no está asignado a ningún hito, se emitirá un
+  mensaje de error.
+* **HU3**: Cuando se cierre un issue, se cambiará el estado del
+  mismo. 
+* **HU4**: Si se borra un issue, se eliminará de la estructura de
+  datos que los contenga.
+* **HU5**: Si se solicita el porcentaje de terminación del hito, se
+  responderá con una cantidad entre 0 y 100.
+
+Estas historias de usuario se pueden incluir directamente como hitos,
+o agrupar algunas de ellas en un issue. Por ejemplo, en este caso
+todas las relativas a issues se pueden incluir en el mismo hito.
+
+A partir de estas historias de usuario, y de la metodología de diseño,
+habrá que empezar a escribir el código. Como código no testeado es
+código roto, mejor diseñar el API para empezar y más adelante añadir
+el código y los tests correspondientes, como hemos visto en el caso
+del ejemplo de Python anterior. Pero eso ya será en la
+siguiente sesión.
+
+Adicionalmente, una historia de usuario especificará qué hay que hacer
+en caso de error. Recordad que el diseño de un módulo debe incluir
+también diseño de las clases que se van a usar en caso de error.
+
+* **HU6** Un hito sin issues estará en un estado incorrecto y la única
+  operación permisible sobre el mismo es añadirle issues. Si se trata
+  de hacer alguna operación sobre el mismo, se emitirá un error de
+  tipo. 
+
+
+## Actividad: versión 3
 
 Esencialmente, en esta primera fase se llevarán a cabo las actividades
-de diseño para el resto del curso. Como en el primer hito (o hito 0),
+de diseño para el resto del curso. Como en el resto de los hitos
 el código se debe añadir mediante un PR que deberá aprobar algún otro
 miembro del proyecto.
 
@@ -328,18 +416,15 @@ miembro del proyecto.
    partir de ellas una serie de issues en GitHub. Los hitos deberán
    estar relacionados con estas historias de usuario.
 
-3. Describir en el `README.md` el producto que se va a crear
-   (microservicio, biblioteca, aplicación o lo que sea),
-   explicando las tecnologías que se van a usar en el mismo.
-
 ## Entrega
 
 Esta entrega se llevará a cabo, como el resto de las mismas, como un
-pull request al fichero de [proyectos](../proyectos.md), tras añadir
-en el *fork* propio el nombre del proyecto y un enlace al repo, así
-como la versión.
+pull request al fichero de [proyectos](../proyectos.md), tras cambiar
+en el *fork* propio (que deberá estar actualizado) la versión del
+proyecto, que como siempre tendrá que corresponder con un tag del
+repositorio.
 
 Seguiremos usando 
 [versionado semántico para las entregas](https://semver.org/), donde
 el primer número será siempre el hito (comenzando por el hito
-0). 
+0).

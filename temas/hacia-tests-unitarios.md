@@ -157,7 +157,7 @@ además el protocolo de meta-objetos (es decir, el que permite diseñar
 el sistema de clases, roles y módulos) añade restricciones
 adicionales, tenemos todo lo que deseamos. Por ejemplo, la clase
 `Issue` en Raku:
-                    
+
 ```Raku
 enum IssueState <Open Closed>;
 
@@ -176,7 +176,7 @@ method close() { $!state = Closed }
 method reopen() { $!state = Open }
 method project-name( --> Str ) { return $!project-name }
 method issue-id( --> UInt ) { return $!issue-id }
-method state( --> IssueState ) { return $!state } 
+method state( --> IssueState ) { return $!state }
 ```
 
 Esta clase tiene que respetar todas las historias de usuario

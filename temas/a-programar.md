@@ -1,4 +1,4 @@
-# Calidad en un aplicación desde el diseño.
+# Comenzando a programar
 
 
 ## Planteamiento
@@ -17,7 +17,7 @@ todo caso dar pistas sobre qué es lo que falla.
 ## Al final de esta sesión
 
 Los estudiantes habrán diseñado estructuras de datos, módulos y clases
-que compilen correctamente y que eviten errores de código durante el
+que compilen correctamente y que garanticen la calidad del producto durante el
 desarrollo de la aplicación o el uso de este código.
 
 ## Criterio de aceptación
@@ -25,27 +25,41 @@ desarrollo de la aplicación o el uso de este código.
 La clase o funcionalidad debe estar diseñada, aunque sin código, y
 debe compilar correctamente.
 
+Ya se debe comenzar a usar una metodología de desarrollo que ligue los
+cambios en el código a las especificaciones que tengamos en issues,
+que estarán agrupados en hitos.
+
+* Todos los issues estarán en un hito
+* Todos los commits se referirán a un issue.
+* Los issues se habrán cerrado **siempre** con un commit.
+
+Adicionalmente, es conveniente que todo el código se incorpore a la
+rama principal mediante *pull requests*, donde participen al menos dos
+miembros del equipo.
+
 ## Buenas prácticas en el diseño de código.
 
 Durante el ciclo de vida del software, los programas van evolucionando
 por muchas razones. Cambian las prácticas, cambian el software sobre
 el que se han construido (bibliotecas, lenguajes), se encuentran
-errores, cambia la comprensión del problema... Un programa debe
+errores, cambia el nivel de comprensión del problema... Pase lo que
+pase, un programa debe
 diseñarse de forma que no se rompa (totalmente) con este cambio.
 
 Por ejemplo, la [programación defensiva](https://en.wikipedia.org/wiki/Defensive_programming) trata
 de crear código más seguro pero también que sea difícil de *romper*
 cuando siga evolucionando.
 
- En realidad la programación defensiva incluye todas las demás
- prácticas indicadas aquí, desde los principios de diseño, hasta la
+ Se puede incluir dentro de la programación defensiva todas las demás
+ prácticas indicadas aquí, desde los principios de diseño, pasando por la
  metodología SOLID, hasta otras, pero es más una filosofía que
- consiste en prevenir todos los casos, incluso los imposibles, en el
+ consiste en prevenir todos los casos de fallo, incluso los imposibles, en el
  diseño de la lógica de negocio o en los tests. Cosas como 
 
 * ¿Funcionará si Internet no está conectada?
 * ¿Qué pasa si no hay acceso a almacenamiento permanente?
-* Si uso una constante en varios sitios, ¿qué pasa si varían las circunstancias?
+* Si uso una constante en varios sitios, ¿qué pasa si varían las
+  circunstancias? 
 
 Como la programación defensiva es más una filosofía, y una que
 deberíamos practicar a lo largo del curso, hay técnicas específicas
@@ -65,19 +79,25 @@ sean más complicados o incluso imposibles. Además, deberían tener un
 número limitado de argumentos, y deberían ser pequeñas, idealmente
 visibles en un solo pantallazo (aunque las pantallas de hoy en día
 pueden ser muy largas). Una regla es que deberían tener entre 5 y 15
-líneas. 
+líneas. A nivel de función, es una traslación del principio de
+"responsabilidad única" que forma parte de SOLID.
+
 > Evidentemente, aquí también incluimos bloques de código (tales como
 > lambdas y cuerpos de bucles) que deberían de ser naturalmente más pequeños, y métodos de clases.
 
 * Los tipos de datos deberían usarse para lo que son. `False` es que
   no es verdadero, no que se ha producido un error dentro de una
   función. `-1` es el resultado de restar 1 a 0, no un índice
-  imposible si no se encuentra algo dentro de una lista o cadena. 
+  imposible si no se encuentra algo dentro de una lista o cadena. En
+  general, no se debe dejar la interpretación de un valor a un
+  comentario (o, peor, a documentación externa). Usando el tipo
+  correcto, incluyendo la excepción correcta, no cabe duda sobre la
+  interpretación. 
 
 
 ### Ejemplo
 
-Añadiendo una nueva clase de mayor nivel, `Project`, con este código:
+Añadiendo una nueva clase de mayor nivel al proyecto en Raku, `Project`, con este código:
 
 ```
 has %!milestones = {};
@@ -102,87 +122,26 @@ ambigüedades con cualquier otro tipo de dato.
 Llegados a este punto, ya tenemos la entidad con la que vamos a
 trabajar. Un proyecto tiene hitos y estos tienen issues, y cuando
 trabajemos, lo haremos de esta forma. Según nos lo pidan las historias
-de usuario iremos evolucionando, y en ese momento podrá ser necesario
+de usuario iremos evolucionando la base de código, y en ese momento podrá ser necesario
 cambiar el modelo en función de lo que necesitemos. 
-
-## A programar
-
-A continuación, hay que ponerse a programar, lo que implica poner a
-punto una serie de herramientas y una actitud; lo indicado por 
-[Joel on software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
-sigue siendo válido después de muchos años: usar siempre control de
-fuentes, hacer el build (y finalmente el despliegue) en un solo
-paso, priorizar arreglar los bugs. 
-
-Pero en todo caso, lo más importante es la planificación que se va a
-llevar a cabo antes de aprobar. Los sistemas de control de fuentes
-modernos incluyen un sistema de organización del trabajo usando
-*issues* e *hitos*. Los issues son órdenes de trabajo, los hitos los
-agrupan creando un punto de control de forma que no se puede ir hacia
-adelante hasta que no se terminen todos los issues de un hito. Lo más
-importante desde el punto de vista de la organización del trabajo es
-que cuando se trabaje, esté claro en qué contexto se hace y se haga
-contra un issue, refiriéndose a él en el commit (preferiblemente en la
-primera línea del mismo). Todos los issues, a su vez, deben estar en
-un hito.
-
-La mejor forma de empezar con estos issues es crear historias de
-usuario razonables. Estas historias de usuario harán que evolucione el
-modelo que tenemos de cada entidad y de cada clase que tengamos dentro
-de una entidad.
-
-### Ejemplos
-
-En nuestro programa que tratará con los hitos, las acciones comenzarán
-siempre con una petición que llegue desde GitHub. Por lo tanto,
-podremos tener las siguientes historias de usuario.
-
-* **HU0**: (Configuración) Cada proyecto deberá tener una cadena única
-  que lo identifique.
-* **HU1**: Cuando se cree un hito en un proyecto, ese hito deberá estar incluido en
-  la estructura de datos del proyecto correspondiente.
-* **HU2**: Cuando se cree un issue, se añadirá al hito
-  correspondiente con estado "abierto". Si no está asignado a ningún hito, se emitirá un
-  mensaje de error.
-* **HU3**: Cuando se cierre un issue, se cambiará el estado del
-  mismo. 
-* **HU4**: Si se borra un issue, se eliminará de la estructura de
-  datos que los contenga.
-* **HU5**: Si se solicita el porcentaje de terminación del hito, se
-  responderá con una cantidad entre 0 y 100.
-
-Estas historias de usuario se pueden incluir directamente como hitos,
-o agrupar algunas de ellas en un issue. Por ejemplo, en este caso
-todas las relativas a issues se pueden incluir en el mismo hito.
-
-A partir de estas historias de usuario, y de la metodología de diseño,
-habrá que empezar a escribir el código. Como código no testeado es
-código roto, mejor diseñar el API para empezar y más adelante añadir
-el código y los tests correspondientes, como hemos visto en el caso
-del ejemplo de Python anterior. Pero eso ya será en la
-siguiente sesión.
-
-Adicionalmente, una historia de usuario especificará qué hay que hacer
-en caso de error. Recordad que el diseño de un módulo debe incluir
-también diseño de las clases que se van a usar en caso de error.
-
-* **HU6** Un hito sin issues estará en un estado incorrecto y la única
-  operación permisible sobre el mismo es añadirle issues. Si se trata
-  de hacer alguna operación sobre el mismo, se emitirá un error de
-  tipo. 
 
 
 ## Diseñar los errores también
 
 Los posibles errores y excepciones forman también parte del
-vocabulario de una clase. Tener errores
+vocabulario de una clase.
+
+> Cada clase o módulo define un *lenguaje*, un nivel de abstracción
+> sobre el problema que nos permite razonar a otro nivel con él.
+
+Tener errores
 específicos ayuda a que se puedan manejar mejor y es una práctica
 *defensiva*: podemos usarla para especificar claramente qué problema
 hay. En el diseño de una aplicación se deben tratar de prever todos
 los posibles problemas que pueda haber, y crear y tirar excepciones
 adecuadas en cada caso. En general, si prevés (dentro de tus historias
 de usuario) que haya una situación en la que pueda haber algún estado
-inválido, crea una excepción para que se pueda usar en tal situación. 
+inválido, crea una excepción para que se pueda usar en tal situación.
 
 ### Ejemplo
 
@@ -190,9 +149,9 @@ Raku permite la creación de [excepciones específicas](https://rakudocs.github.
 sigue la convención de que se denominan con una `X` seguida del nombre
 de la clase a la que se apliquen. Por ejemplo, esta para nuestro
 proyecto se llamará `X::Proyecto::NoIssue` y la aplicaremos para el
-caso en que no haya ningún issue en un hito: 
+caso en que no haya ningún issue en un hito:
 
-```perl6
+```raku
 unit class X::Project::NoIssue is Exception;
 
 method message() {
@@ -200,9 +159,11 @@ method message() {
 }
 ```
 
-Salvo el mensaje específico es prácticamente una declaración en la que se dice que es una excepción y poco más. Podemos modificar alguna de las clases anteriores para que la use:
+Salvo el mensaje específico es prácticamente una declaración en la que
+se dice que es una excepción y poco más. Podemos modificar alguna de
+las clases anteriores para que la use:
 
-```perl6
+```raku
 multi method issues() {
     if %!issues {return %!issues}
     else { X::Project::NoIssue.new.throw }
@@ -235,7 +196,6 @@ excepción es la mejor forma de defendernos ante los posibles cambios o
 evoluciones en el futuro de la misma.
 
 
-
 ## Actividad
 
 Este es el primer hito en el que vamos a escribir algo de código,
@@ -248,15 +208,14 @@ lenguaje correspondiente, usando el *layout* de directorios que sea el
 aconsejable y se entienda mejor por parte de las herramientas del
 lenguaje.
 
-Se añadirán desde el README.md principal enlaces al fichero o ficheros
+Se añadirán desde el `README.md` principal enlaces al fichero o ficheros
 que se han creado. 
 
 ## Entrega
 
 Esta entrega se llevará a cabo, como el resto de las mismas, como un
-pull request al fichero de [proyectos](../proyectos.md), tras añadir
-en el *fork* propio el nombre del proyecto y un enlace al repo, así
-como la versión.
+pull request al fichero de [proyectos](../proyectos.md) que aumente el
+número de versión principal hasta llegar a la 4.
 
 Seguiremos usando 
 [versionado semántico para las entregas](https://semver.org/), donde

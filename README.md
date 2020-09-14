@@ -42,17 +42,23 @@ recomendación en LinkedIn o donde se solicite).
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
+  
+* **Sesión vermut**: Análisis de RadarCovid. Aprovechando que han "liberado" RadarCOVID, vamos a ver qué se puede aprender del código publicado sobre lo que se debe (y no se debe hacer) en desarrollo de software de calidad.
+  * Dejar claves privadas en el repo
+  * Tests
+  * Ficheros diversos abandonados.
+  * Reproducibilidad de la compilación.
+  * ... 
 
 * **Sesión 4**: Requisitos funcionales,
   *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
 
-* **Sesión 5**: Cómo implementar las historias de usuario, comenzar la
-  aplicación.
+* **Sesión 5**: Comienzo de la implementación "defensiva".
     * Cómo organizar un proyecto: canvas, milestones, issues.
     * Documentación de las historias de usuario y traslado a issues.
-    * Comienzo del diseño, en general, de las clases.
+    * Comienzo del diseño, en general, de las clases (y excepciones).
     * [Material](temas/a-programar.md).
 
 * **Sesión 6**: Task runners y cómo usarlos.
