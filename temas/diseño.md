@@ -79,7 +79,7 @@ del módulo, a veces en el camino donde está almacenado.
 > `lib/My/Project/Issue.pm6`. En el caso de Python, un módulo que se
 > llame Project estará definido en `Project/core.py` (y en el
 > directorio `Project` tendrá que haber un fichero `__init__.py`. El
-> otro fichero mencionado estará en `Project/Issue.py`. 
+> otro fichero mencionado estará en `Project/Issue.py`). 
 
 Este tipo de consideraciones tendremos que tenerlas en cuenta a la
 hora de diseñar los ficheros en los que se va a almacenar nuestra
