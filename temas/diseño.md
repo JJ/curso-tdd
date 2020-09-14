@@ -88,8 +88,7 @@ directorios debe seguir las buenas prácticas habituales y reflejar la
 estructura del mismo.
 
 Tanto las entidades como objetos valor pueden ser módulos
-independientes; sin embargo, el nombre de los mismos o como se diseñe debe reflejar las
-  * [ ] dependencias unos de otros.
+independientes; sin embargo, el nombre de los mismos o como se diseñe debe reflejar las dependencias unos de otros.
 
 El primer paso para entender cuales son las diferentes entidades y
 objetos-valor en nuestro problema es crear una serie de *casos de uso*
