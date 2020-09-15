@@ -226,7 +226,7 @@ las dependencias y usar versiones específicas del software.
 
 ## Actividad
 
-> Este hito corresponderá a la versión 6 `v6.x.x` del proyecto.
+> Este hito corresponderá a la versión 5 `v5.x.x` del proyecto.
 
 A partir del diseño creado en la anterior actividad, y siguiendo las
 prácticas de uso de los issues (y su cierre desde un *commit*), crear
