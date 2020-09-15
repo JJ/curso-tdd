@@ -12,7 +12,8 @@ veremos de forma integral todos esos aspectos de los tests.
 
 ## Al final de esta sesión
 
-El estudiante habrá programado los tests y los habrá lanzado desde un *task runner* específico para su lenguaje o genérico.
+El estudiante habrá programado los tests y los habrá lanzado desde un
+*task runner* específico para su lenguaje o genérico.
 
 ## Criterio de aceptación
 
@@ -35,7 +36,8 @@ dedicado al [diseño](diseño.md). Estas historias de usuario se
 convertirán en *issues* del repositorio, agrupados en mojones, cuyo cierre marcará que el
 código está escrito, testeado, y se ajusta a la misma.
 
-En la mayoría de los lenguajes de programación y especialmente en `node` hay dos niveles en el test: el 
+En la mayoría de los lenguajes de programación y especialmente en
+`node` hay dos niveles en el test: el
 primero es el marco de pruebas y el segundo la biblioteca (o bibliotecas) de pruebas que
 efectivamente se está usando. El marco de pruebas incluirá
 generalmente un script que será el que ejecute
@@ -56,7 +58,20 @@ aserciones; en todo caso, lo que siempre existe es una biblioteca de
 aserciones en todos los lenguajes de programación que permiten
 comparar el resultado esperado con el resultado obtenido de diferentes formas.
 
-Los tests unitarios deben ser, además, unitarios. Cada aserción debe testear sólo una funcionalidad o característica, de forma que si falla sepamos exactamente cuál ha sido. Además, si el lenguaje de programación se organiza en subtests o funciones que testean algo, cada función debe lanzar tests relacionados sólo con una funcionalidad, si es posible, uno solo. De esa forma, cuando falla un test sólo se tiene que arreglar lo relacionado con esa funcionalidad, y no hay que buscar el error dentro de todas las que se están testeando. El nombre de estas funciones, además, debe ser lo más explícito posible, dejando totalmente claro lo que testea, si es posible usando la misma frase que se use en la historia de usuario.
+Los tests unitarios deben ser, además, unitarios y valga la
+redundancia. Dado que cada función debe tener una responsabilidad y
+sólo una, esa única responsabilidad debe ser testeada desde el marco
+de pruebas. Cada aserción debe
+testear sólo una funcionalidad o característica, de forma que si falla
+sepamos exactamente cuál ha sido. Además, si el lenguaje de
+programación se organiza en subtests o funciones que testean algo,
+cada función debe lanzar tests relacionados sólo con una
+funcionalidad, si es posible, uno solo. De esa forma, cuando falla un
+test sólo se tiene que arreglar lo relacionado con esa funcionalidad,
+y no hay que buscar el error dentro de todas las que se están
+testeando. El nombre de estas funciones, además, debe ser lo más
+explícito posible, dejando totalmente claro lo que testea, si es
+posible usando la misma frase que se use en la historia de usuario. 
 
 ### Escribiendo tests en Go
 
@@ -421,25 +436,39 @@ lenguajes son:
 * Ruby usa [RSpec](http://rspec.info/), que además está basado en el
   comportamiento deseado, lo que permite tener descripciones mucho más
   informativas del test y el resultado del fallo.
-  
+
 * Perl usa [prove](https://perldoc.perl.org/prove.html), con múltiples
   opciones de configuración. De hecho, es el que se usa en el test de
   la asignatura.
-  
-* [JUnit](https://junit.org/junit5/) es el más cercano en Java.
 
-* Raku usa prove6, pero también `zef` si se trata de usarlo sobre un módulo (en realidad, `zef` usa una serie de heurísticas para aprovechar el marco de pruebas que esté instalado).
+* [JUnit](https://junit.org/junit5/) es el más cercano a estas
+  funcionalidades en Java.
+
+* Raku usa `prove6`, pero también `zef` si se trata de usarlo sobre un
+  módulo (en realidad, `zef` usa una serie de heurísticas para
+  aprovechar el marco de pruebas que esté instalado).
 
 Cada lenguaje incluye este tipo de marcos, sea como parte de su
 distribución base o como parte de alguna biblioteca popular.
 
 ## Ejecutando tests unitarios
 
-Los tests son también programas; simplemente programas que usan una API o librería para informar de los fallos de test que se han producido. Como tales, se pueden ejecutar como se ejecuten los programas en cada lenguaje: compilando o interpretando el programa.
+Los tests son también programas; simplemente usan una API o librería
+para informar de los fallos de test que se han producido. Como tales,
+se pueden ejecutar como se ejecuten los programas en cada lenguaje:
+compilando o interpretando el programa.
 
 En algunos casos se usan adicionalmente marcos de test; sin embargo, estos marcos de test, en general, sólo interpretan la salida y a veces hacen alguna cosa adicional como establecer caminos de ejecución para encontrar los módulos o ejecutar los tests que sigan la convención general; sin embargo, para ejecutar el programa y probar lo que está haciendo no son, en general, necesarios.
 
-Usar un marco de test con su propio programa, por otro lado, te permitirá ejecutar los tests de forma uniforme para todos los módulos de un lenguaje, y también hacer otras cosas como ejecutarlos en paralelo. Por eso conviene conocerlos, sobre todo porque es lo que se va a usar desde los sistemas de integración continua.
+Usar un marco de test con su propio programa, por otro lado, te
+permitirá ejecutar los tests de forma uniforme para todos los módulos
+de un lenguaje, y también hacer otras cosas como ejecutarlos en
+paralelo. Por eso conviene conocerlos, sobre todo porque es lo que se
+va a usar desde los sistemas de integración continua.
+
+Trabajar con un gestor de tareas estándar te permitirá, también,
+lanzar los tests siguiendo el estándar. En muchos casos, lo más
+conveniente es hacerlo de esta forma.
 
 ## Testeando los errores
 
@@ -605,16 +634,16 @@ export class Issue {
     private state: State = State.Open;
     private project_name: string;
     private id: number;
-    
+
     constructor(project_name: string, id: number) {
         this.project_name = project_name;
 	this.id = id;
     }
-    
+
     show_state() {
 	return this.state;
     }
-    
+
     close() {
         this.state = State.Closed;
     }
@@ -719,7 +748,7 @@ defmodule IssueTest do
   test "State after reopening",context do
     new_issue = Issue.reopen(context[:issue])
     assert new_issue.state == :Open
-  end  
+  end
 end
 ```
 
@@ -735,7 +764,12 @@ en [GitHub](https://github.com/JJ/elixir-gh-projects).
 
 ### Usando fixtures en Python
     
-Python, a base de no querer extender la sintaxis, acaba añadiendo conceptos y construcciones sintácticas para temas inesperados, como por ejemplo los objetos que se crean en la fase de setup de los tests, que se denominan *fixtures*, y tienen su sintaxis específica. Para testear la clase `Issue` que hemos generado anteriormente, se usarían fixtures de esta forma:
+Python, a base de no querer extender la sintaxis, acaba añadiendo
+conceptos y construcciones sintácticas para temas inesperados, como
+por ejemplo los objetos que se crean en la fase de setup de los tests,
+que se denominan *fixtures*, y tienen su sintaxis específica. Para
+testear la clase `Issue` que hemos generado anteriormente, se usarían
+fixtures de esta forma:
     
 ```Python
 import pytest
@@ -783,7 +817,7 @@ Se editará el fichero `qa.json` añadiéndole, además, la siguiente clave (sin
 
 ```json
 {
-  "test" : "fichero_de_test.ext" 
+  "test" : "fichero_de_test.ext"
 }
 ```
 
