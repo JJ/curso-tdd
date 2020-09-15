@@ -16,5 +16,5 @@ jobs:
         with:
           deno-version: v1.x
       - run: |
-deno --version
-cd ejemplos/deno && deno test
+          deno --version
+          cd ejemplos/deno && deno test
