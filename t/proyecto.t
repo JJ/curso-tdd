@@ -79,7 +79,7 @@ EOC
     $qa = config_file( \@repo_files, $repo_dir );
     ok( $qa->{"lenguaje"}, check( "Lenguaje " . $qa->{'lenguaje'} . "detectado"));
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
-    file_present( $qa->{'clase'}, \@repo_files, "de clase" );
+    file_present( $qa->{'ficheros'}, \@repo_files, "de clase" );
     language_checks( $qa->{'lenguaje'}, \@repo_files );
   }
 
@@ -104,8 +104,11 @@ sub check {
 
 sub file_present {
   my ($file, $ls_files_ref, $name ) = @_;
-  ok( grep( /$file/, @$ls_files_ref ), "Fichero $name → $file presente" );
-  
+  my @files = (ref($file) eq 'ARRAY')?@$file:($file);
+  for my $file (@files ) {
+    ok( grep( /$file/, @$ls_files_ref ), "Fichero $name → $file presente" );
+  }
+
 }
 
 sub config_file {
@@ -117,7 +120,7 @@ sub config_file {
 sub language_checks {
   my ($language, $ls_files_ref) = @_;
   if ($language =~ /python/i ) {
-    file_present( "requirements.txt", $ls_files_ref, "Python" );
+    file_present( "pyproject.toml", $ls_files_ref, "Python" );
   } elsif ( $language =~ /Typescript/i || $language =~ /node/i ) {
     file_present( "package.json", $ls_files_ref, "JS" );
   }
