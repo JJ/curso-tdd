@@ -2,7 +2,14 @@
 
 ## Planteamiento
 
-En un proceso de calidad del software, es tan importante el planteamiento de la clase y las herramientas que se usan para gestionar las tareas de un proyecto como el código que se escriba para asegurarnos de que efectivamente se cumplen las historias de usuario. Conviene desacoplar el diseño de la clase, sin embargo, del código que se implementa en el mismo, porque es el diseño el que debe seguir las historias de usuario, mientras que el código se asegura de que tengan el resultado deseado.
+En un proceso de calidad del software, es tan importante el
+planteamiento de la clase y las herramientas que se usan para
+gestionar las tareas de un proyecto como el código que se escriba para
+asegurarnos de que efectivamente se cumplen las historias de
+usuario. Conviene desacoplar el diseño de la clase, sin embargo, del
+código que se implementa en el mismo, porque es el diseño el que debe
+seguir las historias de usuario, mientras que el código se asegura de
+que tengan el resultado deseado. 
 
 Por supuesto, todo en un proyecto se va a ejecutar desde un task runner, así que será lo primero que se vea en esta sesión.
 
@@ -18,19 +25,25 @@ necesario.
 
 ## Historias de usuario, las maravillas del código inexistente y tests
 
-> En este ejemplo y en el siguiente hay realmente código en las clases, porque en su estado, ya están testeadas y demás. El código, sin embargo, no es lo importante y debéis recordar que siempre se escribe el test antes que el código. Así que no miréis al código y listo.
+> En este ejemplo y en el siguiente hay realmente código en las
+> clases, porque en su estado, ya están testeadas y demás. El código,
+> sin embargo, no es lo importante y debéis recordar que siempre se
+> escribe el test antes que el código. Así que no miréis al código y
+> listo. 
 
 
-Una de las lecciones más importantes es que el código que no falla es
+Una de las lecciones más importantes en calidad del software (e
+informática en general) es que el código que no falla es
 el que no se ha escrito. En general, esto se traduce en usar todo tipo
 de restricciones a nivel de compilación (tales como la estructura de
-tipos, o el protocolo meta-objetos) para que las cosas ocurran tal
+tipos, o el protocolo de meta-objetos) para que las cosas ocurran tal
 como deben ocurrir sin tener que preocuparte con escribir código que,
-en tiempo de ejecución, haga que se respete esa restricción. Código
+en tiempo de ejecución, se encargue de que se respete esa
+restricción. Código declarativo
 que funciona correctamente según el compilador, y es así por su
 estructura y no por el código adicional que se ha escrito, es más
 correcto que cualquier otro. Esto también es un ejemplo de
-programación defensiva.
+programación defensiva, como ya hemos visto.
 
 ### Ejemplo en Raku
 
@@ -72,13 +85,17 @@ cambian su valor.
 
 Adicionalmente, podríamos añadir una historia de usuario adicional,
 HU7
-> HU7: El proyecto al que esté asignado y el ID serán constantes a lo largo
-de toda la vida de un issue.
+> HU7: El proyecto al que esté asignado y el ID serán constantes a lo
+> largo de toda la vida de un issue.
 
 ¿Hay código que compruebe si se está cambiando? No. Es la propia
 definición y el uso de la sintaxis del lenguaje el que no nos tendrá
 que hacer comprobaciones sobre si ha cambiado tal cosa. En la propia
 estructura, y sin código, estará asegurado.
+
+> Aquí habría que añadir que las variables privadas en Raku son
+> verdaderamente privadas, no se heredan; si en una clase no varían,
+> una clase derivada de esa clase no va a lograr que varíen tampoco.
 
 También estamos implementando otra historia de usuario que no habíamos
 pensado:
@@ -90,7 +107,7 @@ Una vez más, de esto nos aseguramos mediante la definición de las
 variables de instancia, y mediante el constructor que se asegura de
 que le pasen ese tipo y no otro.
 
-Por esta razón es por la que lenguajes como Raku resultan más
+Por esta razón es por la que lenguajes con un sistema de tipos estricto como Raku resultan más
 apropiados para aplicaciones de cierta entidad que otros.
 
 ### Python y sus restricciones: no todo el monte es orégano.
@@ -128,18 +145,19 @@ class Issue:
         return self._issueId
 ```
 
-(Sólo funcionará de Python 3.4 en adelante, por el uso un tanto
-peculiar de `Enum`).
+> (Sólo funcionará de Python 3.4 en adelante, por el uso un tanto
+> peculiar de `Enum`).
 
 Pero en todo caso, aquí hacemos varias cosas para llevar a cabo las
-mismas historias de usuario.
+mismas historias de usuario de antes.
 
 * Anotaciones de tipo para el nombre del proyecto y el issue.
 * Uso de propiedades para indicar los valores que podemos sacar del
   objeto.
   
 Pero hay dos problemas.
-* No existen las variables privadas o de sólo lectura en Python. Se
+* No existen las variables privadas o de sólo lectura en
+  Python. Convencionalmente, se
   indica con un subrayado en el primer carácter que son privadas, pero
   eso es una simple convención. Si queremos asegurarnos de que son
   privadas o no se alteran, tendremos que usar estructuras de datos
@@ -156,28 +174,18 @@ Pero hay dos problemas.
 Hacemos esto y se queda tan campante. Con revisiones de código y
 algunas otras medidas se puede asegurar que se comporte correctamente,
 pero en todo caso siempre será mejor elegir algún lenguaje en el que
-el compilador o intérprete haga ese trabajo por ti.
+el compilador o intérprete haga ese trabajo por ti. O código adicional
+que se asegure de que las restricciones se cumplen en todo caso.
 
 ## Actividad
 
-> Este hito corresponderá a la versión 1 `v1.x.x` del proyecto.
+> Este hito corresponderá a la versión 6 `v6.x.x` del proyecto.
 
-A partir del diseño creado en la anterior actividad, y siguiendo las
-prácticas de uso de los issues (y su cierre desde un *commit*), crear
-el interfaz de al menos una clase básicas que corresponda a la misma entidad (según
-el dominio del problema que se haya elegido), esta funcionalidad debe corresponder a las historias de usuario que se hayan planteado, y el nombre de las funciones debe ser suficientemente explícito.
+Esencialmente, se trata de continuar con el desarrollo de las clases
+anteriores, usando todas las técnicas posibles para asegurarse de que
+el diseño de las clases captura, en tiempo de compilación, todos los
+posibles errores (o simplemente no permite que se produzcan).
 
-El repositorio tendrá que incluir un fichero de configuración para poder llevar a cabo los tests de evaluación del proyecto llamado `qa.json` con la siguiente estructura:
-
-```json
-{
-    "lenguaje" : "Nombre del lenguaje",
-    "build" : "Makefile",
-    "clase" : "lib/nombre/del/fichero.pm6"
-  
-}
-```
-
-En vez de `Makefile`, se usará el nombre del fichero de construcción que se haya usado para ejecutar los tests, que tendrá que estar presente en el repositorio; el nombre del fichero de clase que se haya creado también deberá ponerse el que corresponda.
-
-> Se aconseja no crear a mano el fichero JSON, o si se hace, que se compruebe online o donde sea. Cualquier editor de programación será capaz de crear uno sintácticamente correcto, de todas formas.
+Como la clave `ficheros` de `qa.json` admite un array, se pueden
+simplemente ir añadiendo a esa los diferentes ficheros que se hayan
+ido diseñando.
