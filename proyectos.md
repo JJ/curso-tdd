@@ -8,5 +8,5 @@
 | [API para datos medioambientales](https://github.com/tdd-JSP/TDD-curso)            | v3.0.0  |
 | [MovieBot](https://github.com/tdd-IgnasiYManu/MovieBot)                            | v4.0.0  |
 | [DatosDemograficos](https://github.com/tdd-organization-afp/DatosDemograficos)     | v4.0.0  |
-| [roomie-bot](https://github.com/dipzza/roomie-bot)                                 | v2.0.0  |
+| [roomie-bot](https://github.com/dipzza/roomie-bot)                                 | v3.0.2  |
 | [API para datos abiertos medioambientales mutdd](https://github.com/muetsii/mutdd) | v2.0.0  |
