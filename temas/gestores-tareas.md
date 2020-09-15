@@ -103,6 +103,8 @@ construcción permiten centralizar en un solo fichero todas las tareas relativas
   respecto al fuente). En la mayor parte de los casos, las tareas
   tienen nombres estándar: `test`, `build`, `install`.
 
+### Ejemplos 
+
 La más antigua, `make`, sigue siendo una de las herramientas más
 populares. Por ejemplo, este `Makefile` minimalista se podría usar
 para un programa en go:
@@ -155,7 +157,44 @@ sobre una base de código. Órdenes como `deploy`, `install`, `run`, van
 a ser las mismas sin importar cómo se haga la herramienta. Si se usa
 siempre la misma, por ejemplo `npm` con Node, sabemos que `npm install` va a ser la que lo instale todo; pero si no, no hace falta
 más que especificar el binario de la herramienta para saber qué órdenes
-habría que dar para realizar las tareas habituales. 
+habría que dar para realizar las tareas habituales.
+
+Como se ha indicado, el gestor de tareas de Rust se llama `cargo`. Por
+ejemplo, `cargo check` ejecutado sobre el [ejemplo](../ejemplos/rust)
+comprobará que las dependencias son alcanzables y la sintaxis del
+fichero, así:
+
+```
+    Updating crates.io index
+  Downloaded lazy_static v1.4.0
+  Downloaded time v0.1.44
+  Downloaded autocfg v1.0.1
+  Downloaded colored v1.9.3
+  Downloaded log v0.4.11
+  Downloaded num-traits v0.2.12
+  Downloaded libc v0.2.77
+  Downloaded simple_logger v1.9.0
+  Downloaded num-integer v0.1.43
+  Downloaded cfg-if v0.1.10
+  Downloaded chrono v0.4.15
+  Downloaded atty v0.2.14
+  Downloaded 12 crates (851.8 KB) in 2.92s
+   Compiling autocfg v1.0.1
+   Compiling libc v0.2.77
+   Compiling log v0.4.11
+    Checking lazy_static v1.4.0
+    Checking cfg-if v0.1.10
+   Compiling num-traits v0.2.12
+   Compiling num-integer v0.1.43
+    Checking atty v0.2.14
+    Checking time v0.1.44
+    Checking colored v1.9.3
+    Checking chrono v0.4.15
+    Checking simple_logger v1.9.0
+    Checking issue v0.1.0 (/home/jmerelo/Asignaturas/cloud-computing/curso-tdd/ejemplos/rust/issue)
+    Finished dev [unoptimized + debuginfo] target(s) in 15.60s
+```
+
 
 
 ### Ejemplo en Python
