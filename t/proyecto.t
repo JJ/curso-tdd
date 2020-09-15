@@ -59,29 +59,38 @@ EOC
   my @repo_files = $student_repo->command("ls-files");
   my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
 
-  if ($version =~ /^v2/ ) {
+  my ($this_version) = ( $version =~ /^v(\d+)/ );
+
+  if ($this_version >= 2 ) {
     diag( check( "Tests para hito 2") );
     like( $README, qr/[lL]og/, "Se menciona un logger en el README");
     like( $README, qr/issue/, "Hay enlace a al menos un issue");
-  } elsif  ( $version =~ /^v3/ ) {
+  }
+
+
+  if  ( $this_version >= 3 ) {
     diag( check( "Tests para hito 3") );
     my @hus = grep(  m{HU/}, @repo_files  );
     cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
-  } elsif ( $version =~ /^v5/ ) {
-    my $qa = config_file( \@repo_files, $repo_dir );
+  }
+
+  my $qa; # A partir de aquí hace falta el fichero de configuración
+  if ( $this_version >= 5 ) {
+    $qa = config_file( \@repo_files, $repo_dir );
+    ok( $qa->{"lenguaje"}, check( "Lenguaje " . $qa->{'lenguaje'} . "detectado"));
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'clase'}, \@repo_files, "de clase" );
     language_checks( $qa->{'lenguaje'}, \@repo_files );
-  } elsif ( $version =~ /^v5/ ) {
-    my $qa = config_file( \@repo_files, $repo_dir );
-    file_present( $qa->{'build'}, \@repo_files, "de construcción" );
+  }
+
+  if ( $version >= 6 ) {
     file_present( $qa->{'test'}, \@repo_files, "de test" );
   } elsif ( $version =~ /^v7/ ) {
     file_present( '.travis.yml', \@repo_files, "de CI" );
     travis_pass( $README, $user, $name );
   } elsif ( $version =~ /^v8/ ) {
     codecov_pass( $README );
-   } elsif ( $version =~ /^v9/ ) {
+  } elsif ( $version =~ /^v9/ ) {
     travis_pass( $README, $user, $name );
     codecov_pass( $README );
   }
