@@ -177,6 +177,49 @@ pero en todo caso siempre será mejor elegir algún lenguaje en el que
 el compilador o intérprete haga ese trabajo por ti. O código adicional
 que se asegure de que las restricciones se cumplen en todo caso.
 
+
+## Funciones asíncronas
+
+La programación asíncrona es todo un mundo, pero un mundo que tenemos
+que tener en cuenta a la hora de programar, sobre todo si lo hacemos
+con las últimas versiones de Python (desde 3.4, creo), TypeScript u
+otros lenguajes como Kotlin o Swift. Mientras que las funciones
+"síncronas" o regulares te devuelven un resultado, una función
+síncrona te devuelve una *promesa*. Hay que *esperar* (con `await` o
+similar) a que esa promesa se cumpla para obtener el valor.
+
+Las funciones asíncronas permiten mucha flexibilidad, porque implican
+a nivel bajo un bucle de eventos que va a introducir un evento en el
+mismo cuando la función se cumpla; pero también, incluir `await` son
+puntos de control en los que el bucle de eventos se detiene y espera a
+que la promesa que se está esperando se resuelva. Sin embargo, el
+código de las promesas (generalmente entrada salida, pero también
+puede ser cualquier cosa) se ejecuta de forma simultánea o secuencial,
+dependiendo de si el código es multihebra o con un solo bucle de
+eventos; esto es transparente, de todas formas, y más eficiente que
+lanzar cada una de las peticiones y esperar el resultado.
+
+Por ejemplo, tenemos esta mini-función en Deno (en realidad,
+TypeScript, Deno es un runtime para node/typescript)
+
+```typescript
+export const fetchMilestone = async (user: string, repo: string, id: number ): Promise<Response> => {
+    let data = await fetch( "https://api.github.com/repos/{user}/{repo}/milestones/{id}" ) 
+    return data
+}
+```
+
+La separación de responsabilidades, implicará que el código asíncrono
+tiene que ejecutarse por su cuenta, y sin mezclarse, en lo posible,
+con el síncrono; pero en todo caso es una facilidad de programación
+que hay que tener en cuenta a la hora de ponerse a diseñar una
+aplicación. Evidentemente, este código asíncrono recibirá un
+tratamiento especial a la hora de testearlo.
+
+> Deno es un runtime seguro que, además, no te permitirá acceder a la
+> red a menos que se lo permitas explícitamente. Ya veremos más sobre
+> esto más adelante.
+
 ## Actividad
 
 > Este hito corresponderá a la versión 6 `v6.x.x` del proyecto.
