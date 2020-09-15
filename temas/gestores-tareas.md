@@ -57,7 +57,7 @@ ejemplo de lenguaje que usa task runner implícito: como subcomandos de go se co
 tests o se instala un paquete. Rust usa un task runner explícito: se
 llama `cargo` y desde él se pueden llevar a cabo todas las tareas
 necesarias.
-* Configuración externa o implícita. Deno, un fork de Node, evita el
+* Configuración externa o implícita. [Deno](https://deno.land/manual), un fork de Node, evita el
   fichero de configuración externo para usar directamente las
   declaraciones de uso de bibliotecas externas como parte de la
   definición. Go es capaz de hacerlo también. En la mayoría de los
