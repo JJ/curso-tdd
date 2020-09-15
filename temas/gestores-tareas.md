@@ -208,8 +208,8 @@ install:
 	pip install -r requirements.txt
 ```
 
-podremos ejecutarla com `make install`. `make` es una de las
-herramientas que no suele tneer `help` como un objetivo, habría que
+podremos ejecutarla como `make install`. `make` es una de las
+herramientas que no suele tener `help` como un objetivo, habría que
 implementarlo a mano.
 
 ## Actividad
