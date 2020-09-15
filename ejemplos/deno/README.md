@@ -7,3 +7,4 @@ Ejecutar con
 
     deno test --allow-net
 
+En deno hay que dar permisos explícitos para acceder a la red.
