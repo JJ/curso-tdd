@@ -220,7 +220,7 @@ y permite definir dependencias, dependencias de desarrollo, versiones compatible
 Uno de los proyectos que implementan esta especificación es [poetry](https://python-poetry.org/)
 (que se ha establecido como alternativa a [pipenv](https://pipenv-es.readthedocs.io/es/latest/)). Como 
 se puede apreciar en el sitio web de `poetry` el funcionamiento es muy similar a `cargo` y 
-permite definir estructuras para librerias y proyectos, con utilidades para operar en ellos.
+permite definir estructuras para librerías y proyectos, con utilidades para operar en ellos.
 Además de esto permite la gestión de entornos virtuales de Python, con lo que se pueden aislar
 las dependencias y usar versiones específicas del software.
 
