@@ -242,7 +242,6 @@ proyecto llamado `qa.json` con la siguiente estructura:
     "lenguaje" : "Nombre del lenguaje",
     "build" : "Makefile",
     "ficheros" : ["lib/nombre/del/fichero.pm6","otro/fichero.rakumod"]
-  
 }
 ```
 
