@@ -1,6 +1,7 @@
 # Ejemplo con deno
 
-Contiene un mini-módulo para experimentar cosas asíncronas.
+Contiene un mini-módulo para experimentar cosas asíncronas;
+esencialmente usa el API de GitHub.
 
 Ejecutar con
 
