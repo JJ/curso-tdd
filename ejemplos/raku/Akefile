@@ -1,0 +1,10 @@
+
+task "installdeps", {
+    shell "zef install --deps-only ."
+}
+
+for <test install> -> $task {
+    task $task, {
+        shell "zef $task ."
+    }
+}

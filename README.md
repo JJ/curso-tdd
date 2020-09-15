@@ -63,7 +63,7 @@ recomendación en LinkedIn o donde se solicite).
 
 * **Sesión 6**: Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
-  * [Material](temas/hacia-tests-unitarios.md).
+  * [Material](temas/gestores-tareas.md).
 
 * **Sesión 7**: Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
