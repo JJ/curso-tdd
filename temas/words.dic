@@ -331,3 +331,6 @@ replicabilidad
 desplegarlo
 Deno
 languages
+PEP
+poetry
+pipenv

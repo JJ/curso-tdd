@@ -213,15 +213,15 @@ herramientas que no suele tener `help` como un objetivo, habría que
 implementarlo a mano.
 
 Desde 2016 existe un PEP, más concretamente el [PEP 518](https://www.python.org/dev/peps/pep-0518/#file-format),
-donde se establece un formato estandar para definir las dependencias de un proyecto.
+donde se establece un formato estándar para definir las dependencias de un proyecto.
 Se establece un archivo `pyproject.toml` que se inspira en el funcionamiento de `cargo`
 y permite definir dependencias, dependencias de desarrollo, versiones compatibles, ....
 
 Uno de los proyectos que implementan esta especificación es [poetry](https://python-poetry.org/)
 (que se ha establecido como alternativa a [pipenv](https://pipenv-es.readthedocs.io/es/latest/)). Como 
 se puede apreciar en el sitio web de `poetry` el funcionamiento es muy similar a `cargo` y 
-permite definir estructuras para liberias y proyectos, con utilidades para operar en ellos.
-Además de esto permite la gestión de entornos virtuales de python, con lo que se pueden aislar
+permite definir estructuras para librerias y proyectos, con utilidades para operar en ellos.
+Además de esto permite la gestión de entornos virtuales de Python, con lo que se pueden aislar
 las dependencias y usar versiones específicas del software.
 
 ## Actividad
