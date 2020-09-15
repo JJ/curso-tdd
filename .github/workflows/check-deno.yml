@@ -19,4 +19,4 @@ jobs:
           deno-version: v1.x
       - run: |
           deno --version
-          cd ejemplos/deno && deno test
+          cd ejemplos/deno && deno test --allow-net
