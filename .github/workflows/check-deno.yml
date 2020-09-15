@@ -1,0 +1,18 @@
+on:
+  push:
+    paths:
+      - "ejemplos/deno/**"
+  pull_request:
+    paths:
+      - "ejemplos/deno/**"
+
+name: CheckDenoExample
+
+steps:
+  - uses: actions/checkout@v2
+  - uses: denolib/setup-deno@v2
+    with:
+      deno-version: v1.x
+  - run: |
+      deno --version
+      cd ejemplos/deno && deno test
