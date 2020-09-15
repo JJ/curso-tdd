@@ -242,14 +242,18 @@ proyecto llamado `qa.json` con la siguiente estructura:
     "lenguaje" : "Nombre del lenguaje",
     "build" : "Makefile",
     "ficheros" : ["lib/nombre/del/fichero.pm6","otro/fichero.rakumod"]
-  
 }
 ```
 
 En vez de `Makefile`, se usará el nombre del fichero de construcción
 que se haya usado para ejecutar los tests, que tendrá que estar
 presente en el repositorio; el nombre de los ficheros de clase (procedente
-del hito anterior) que se haya creado también deberá ponerse el que corresponda.
+del hito anterior) que se haya creado también deberá ponerse el que
+corresponda.
+
+En el caso de ciertos lenguajes, se comprobará que el nombre del
+fichero de gestión de tareas es el que aconsejan las mejores
+prácticas. Por ejemplo, en el caso de Python se comprobará que existe `pyproject.toml`.
 
 > Se aconseja no crear a mano el fichero JSON, o si se hace, que se
 > compruebe online o donde sea. Cualquier editor de programación será
