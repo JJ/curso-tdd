@@ -7,6 +7,6 @@
 | [TDD-AY](https://github.com/TDD-AY/TDD-Project)                                    | v5.0.0  |
 | [API para datos medioambientales](https://github.com/tdd-JSP/TDD-curso)            | v3.0.0  |
 | [MovieBot](https://github.com/tdd-IgnasiYManu/MovieBot)                            | v4.0.0  |
-| [DatosDemograficos](https://github.com/tdd-organization-afp/DatosDemograficos)     | v4.0.0  |
+| [DatosDemograficos](https://github.com/tdd-organization-afp/DatosDemograficos)     | v5.0.1  |
 | [roomie-bot](https://github.com/dipzza/roomie-bot)                                 | v3.0.2  |
 | [API para datos abiertos medioambientales mutdd](https://github.com/muetsii/mutdd) | v4.0.0  |
