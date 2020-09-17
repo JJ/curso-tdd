@@ -77,15 +77,19 @@ EOC
   my $qa; # A partir de aquí hace falta el fichero de configuración
   if ( $this_version >= 5 ) {
     $qa = config_file( \@repo_files, $repo_dir );
+    ok( $qa, check( "Fichero de configuración correcto" ) );
     ok( $qa->{"lenguaje"}, check( "Lenguaje " . $qa->{'lenguaje'} . "detectado"));
     file_present( $qa->{'build'}, \@repo_files, "de construcción" );
     file_present( $qa->{'ficheros'}, \@repo_files, "de clase" );
     language_checks( $qa->{'lenguaje'}, \@repo_files );
   }
 
-  if ( $version >= 6 ) {
+  if ( $this_version >= 7 ) {
     file_present( $qa->{'test'}, \@repo_files, "de test" );
-  } elsif ( $version =~ /^v7/ ) {
+
+  }
+  
+  if ( $this_version >= 8 ) {
     file_present( '.travis.yml', \@repo_files, "de CI" );
     travis_pass( $README, $user, $name );
   } elsif ( $version =~ /^v8/ ) {
