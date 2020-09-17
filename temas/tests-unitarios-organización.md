@@ -27,7 +27,7 @@ local. No es necesario que todos los tests pasen, en esta fase.
 
 Aparte de las pruebas de calidad más o menos intrínseca e
 independientes del contexto (que hemos visto hasta ahora), es evidente
-que eventualmenta hará falta asegurarse de que el código cumple las
+que eventualmente hará falta asegurarse de que el código cumple las
 especificaciones funcionales que se piden. Las pruebas o tests que se
 hagan sobre él deben de corresponder a las especificaciones que queremos
 que respete nuestro software, y como tales deben de ser previas a la
