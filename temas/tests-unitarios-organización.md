@@ -27,8 +27,8 @@ local. No es necesario que todos los tests pasen, en esta fase.
 
 Aparte de las pruebas de calidad más o menos intrínseca e
 independientes del contexto (que hemos visto hasta ahora), es evidente
-que eventualmentare hará falta asegurarse de que el código cumple las
-especificaciones funcionaeles que se piden. Las pruebas o tests que se
+que eventualmenta hará falta asegurarse de que el código cumple las
+especificaciones funcionales que se piden. Las pruebas o tests que se
 hagan sobre él deben de corresponder a las especificaciones que queremos
 que respete nuestro software, y como tales deben de ser previas a la
 escritura del código en sí y del test. Es esencial entender
@@ -374,7 +374,7 @@ prácticas de uso de los issues (y su cierre desde un *commit*), crear
 una o varias clases básicas que correspondan a la misma entidad (según
 el dominio del problema que se haya elegido), por supuesto incluyendo
 los tests correspondientes. Los tests se ejecutarán en local, por lo
-pronto. Pasamos ya a la versión 7.x.x del proyecto.
+pronto. Pasamos ya a la versión `7.x.x` del proyecto.
 
 Se editará el fichero `qa.json` añadiéndole, además, la siguiente clave (sin borrar las anteriores)
 
