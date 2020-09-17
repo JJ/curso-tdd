@@ -69,37 +69,43 @@ recomendación en LinkedIn o donde se solicite).
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
 
-* **Sesión 8**:  *objetos de test*, aserciones, marcos de pruebas,
-  fases del test.
+* **Sesión 8**:  *objetos de test*
+  * Organización de los tests.
+  * Fases de tests.
+  * Aserciones
+  * [Material](temas/tests-unitarios-organización.md).
+
+* **Sesión 9**:  Ejecución de tests
+  * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
 
-* **Sesión 9**: Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
+* **Sesión 10**: Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua: Travis, GitHub Actions...
   * [Material](temas/CI.md).
 
-* **Sesión 10**:  CI: Acelerando con Dockerfiles.
+* **Sesión 11**:  CI: Acelerando con Dockerfiles.
   * [Material](temas/CI.md#acelerando-los-tests).
 
-* **Sesiones 11**: Tests de cobertura y por qué son importantes.
+* **Sesiones 12**: Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
 
-* **Sesión 12**: Tests funcionales/de integración
+* **Sesión 13**: Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-* **Sesión 13**: Inversión de dependencias.
+* **Sesión 14**: Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
 
-* **Sesión 14**: Tests adicionales
+* **Sesión 15**: Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
   * [Material](temas/qa.md).
 
-* **Sesión 15**: Última sesión.
+* **Sesión 16**: Última sesión.
   * Aclaración de dudas.
 
 

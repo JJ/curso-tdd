@@ -504,21 +504,21 @@ que usa una herramienta de construcción estándar como Node. El repositorio est
 en [GitHub](https://github.com/JJ/elixir-gh-projects).
 
 
-## Actividad
+## Actividad y entrega
 
-A partir del diseño creado en la anterior actividad, y siguiendo las
-prácticas de uso de los issues (y su cierre desde un *commit*), crear
-una o varias clases básicas que correspondan a la misma entidad (según
-el dominio del problema que se haya elegido), por supuesto incluyendo
-los tests correspondientes. Los tests se ejecutarán en local, por lo
-pronto.
 
-Se editará el fichero `qa.json` añadiéndole, además, la siguiente clave (sin borrar las anteriores)
+En esta fase se deben de ejecutar todos los tests y tener un
+resultado, que no necesariamente tiene que ser siempre positivo porque
+todavía no hemos "integrado". Lo que se pide es que el `README.md`
+incluya un apartado `# Instrucciones` y que dentro de ese apartado se
+explique cómo ejecutar los tests. Necesariamente, ya que se ha
+incluido un fichero de gestión de tareas, esta instrucción será del
+estilo `nombre_fichero_gestión_tareas test`. Para identificarlo, habrá
+que incluir una clave adicional en ese fichero
 
-```json
-{
-  "test" : "fichero_de_test.ext"
-}
-```
+    "runner": "make",
 
-En vez de este nombre ficticio, se usará el nombre del fichero de construcción que se haya usado para ejecutar los tests, que tendrá que estar presente en el repositorio.
+Por ejemplo; en este caso, lo que se buscará en el `README` será la
+cadena
+
+    `make test`
