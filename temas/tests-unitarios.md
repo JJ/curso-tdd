@@ -23,13 +23,15 @@ y cada una de las funciones tendrá un test que se ejecutarán en
 local. Los tests deberán pasar.
 
 
-
 ## Marcos de prueba y bibliotecas de aserciones
+
+Ya que hemos visto una iniciación a como se testea, vamos a ver cómo
+se llevan a cabo los tests unitarios en diferentes ejemplos.
 
 
 ### Escribiendo tests en JavaScript
 
-Go valora la simplicidad y además incluye de serie todo lo necesario
+Hay lenguajes que, como Go, valoran la simplicidad y además incluye de serie todo lo necesario
 para llevar a cabo los tests. Python, el lenguaje en el que solo hay
 una buena forma de hacer las cosas (que depende del mes en que uno
 intente hacerlas), permite que se hagan las cosas de
@@ -37,8 +39,15 @@ varias formas diferentes, e incluye en su biblioteca estándar una
 biblioteca de aserciones.
 
 Pero hay
-[múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js);
-el [panorama de 2019 se presenta en este artículo](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a). La
+[múltiples bibliotecas que se pueden usar](https://stackoverflow.com/questions/14294567/assertions-library-for-node-js) en
+Node;
+el
+[panorama actualizado se presenta en este repositorio](https://github.com/goldbergyoni/javascript-testing-best-practices/).
+
+> Cabe destacar que era inicialmente un artículo en Medium. Al final,
+> acabó siendo un repo.
+
+La
 biblioteca de aserciones [`assert`](https://nodejs.org/api/assert.html) 
 forma parte de la estándar de JS, pero hay otras como
 [Unexpected](http://unexpected.js.org/) o aserciones que son parte de marcos
@@ -78,6 +87,10 @@ parafernalia y farfolla. Una vez más, [hay varios marcos de testeo](https://sta
 nodejs (y, por supuesto, uno propio para cada uno de los lenguajes de
 programación, aunque en algunos están realmente estandarizados).
 
+En general, y como en csi todos los lenguajes, cada test tendrá tres
+partes: *Arrange*, *Act*, *Assert*. Es decir, prepara, haz lo que
+tengas que hacer, y comprueba la aserción.
+
 Como algunos marcos de prueba como Chai usan su propia biblioteca de
 aserciones, podemos hacer este pequeño cambio para usarla: 
 
@@ -85,7 +98,6 @@ aserciones, podemos hacer este pequeño cambio para usarla:
 var assert = require("chai").assert,
     apuesta = require(__dirname+"/../Apuesta.js");
 
-console.log(assert);
 describe('Apuesta con Chai', function(){
     // Testea que se haya cargado bien la biblioteca
     describe('Carga', function(){
