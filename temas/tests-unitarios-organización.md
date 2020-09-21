@@ -380,7 +380,7 @@ Se editará el fichero `qa.json` añadiéndole, además, la siguiente clave (sin
 
 ```json
 {
-  "test" : "directorio/fichero_de_test.ext"
+  "test" : [ "directorio/fichero_de_test.ext" ]
 }
 ```
 
