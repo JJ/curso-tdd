@@ -87,7 +87,7 @@ parafernalia y farfolla. Una vez más, [hay varios marcos de testeo](https://sta
 nodejs (y, por supuesto, uno propio para cada uno de los lenguajes de
 programación, aunque en algunos están realmente estandarizados).
 
-En general, y como en csi todos los lenguajes, cada test tendrá tres
+En general, y como en casi todos los lenguajes, cada test tendrá tres
 partes: *Arrange*, *Act*, *Assert*. Es decir, prepara, haz lo que
 tengas que hacer, y comprueba la aserción.
 
