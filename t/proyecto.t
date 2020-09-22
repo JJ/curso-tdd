@@ -150,7 +150,7 @@ sub travis_status {
 }
 
 sub travis_pass {
-  my ($README, $user, $name );
+  my ($README, $user, $name ) = @_;
   my $travis_domain = travis_domain( $README, $user, $name );
   ok( $travis_domain =~ /(com|org)/ , "Está presente el badge de Travis con enlace al repo correcto");
   if ( $travis_domain =~ /(com|org)/ ) {
