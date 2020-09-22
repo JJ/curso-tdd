@@ -1,4 +1,4 @@
-name: "Comprueba hitos y milestones"
+name: "Comprueba hitos e issues"
 on:
   pull_request:
     paths:
