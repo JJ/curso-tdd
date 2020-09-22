@@ -88,13 +88,19 @@ EOC
     file_present( $qa->{'test'}, \@repo_files, "de test" );
 
   }
-  
-  if ( $this_version >= 8 ) {
+
+  if ( $this_version >= 8) {
+    my $runner = $qa->{'runner'};
+    ok( $runner, check( "$runner en el fichero de configuración" ) );
+    like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
+  }
+
+  if ( $this_version >= 9 ) {
     file_present( '.travis.yml', \@repo_files, "de CI" );
     travis_pass( $README, $user, $name );
-  } elsif ( $version =~ /^v8/ ) {
+  } elsif ( $version =~ /^v10/ ) {
     codecov_pass( $README );
-  } elsif ( $version =~ /^v9/ ) {
+  } elsif ( $version =~ /^v11/ ) {
     travis_pass( $README, $user, $name );
     codecov_pass( $README );
   }
