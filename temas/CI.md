@@ -147,7 +147,7 @@ desarrollado.
 
 Un sistema bastante popular de integración continua es
 [Jenkins](https://jenkins.io/). Jenkins lo puedes usar en la nube o instalarte tu propio
-ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java (y no tiene una versión gratuita que se pueda ejecutar)
+ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java (y no hay un servicio gratuito que se pueda ejecutar)
 por lo que recomendamos, al menos para empezar, otros sistemas como [Travis](https://travis-ci.org) o
 [Shippable](https://www.shippable.com/) que podemos usar también desde
 la nube y, además, están preparados para más lenguajes de
