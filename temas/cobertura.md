@@ -3,10 +3,10 @@
 
 ## Planteamiento
 
-Si el código no se ha prueba, no funciona. Los tests de cobertura nos
+Si el código no se ha probado, no funciona. Los tests de cobertura nos
 ayudan a saber qué partes del código no están cubiertas por los tests
 unitarios, y usarlos nos permitirá establecer un nivel determinado de
-cobertura, así como políticas, para asegurar la calidad del código.
+cobertura, así como políticas sobre el mismo, para asegurar la calidad del código.
 
 ## Al final de esta sesión
 
@@ -19,12 +19,23 @@ Inclusión del badge de `codecov` con un porcentaje de cobertura aceptable.
 
 ## Tests de cobertura
 
-Los tests de cobertura miden qué parte de nuestro código está cubierta por los tests unitarios (que, recordemos, son de caja blanca y por tanto se puede saber qué camino han seguido por el mismo). Estos tests de cobertura funcionan tanto a nivel de línea, como de función o de paquetes, pero generalmente van a dar un porcentaje de líneas cubiertas por los tests unitarios. 
+Los tests de cobertura miden qué parte de nuestro código está cubierta
+por los tests unitarios (que, recordemos, son de caja blanca y por
+tanto se puede saber qué camino han seguido por el mismo). Estos tests
+de cobertura funcionan tanto a nivel de línea, como de función o de
+paquetes, pero generalmente van a dar un porcentaje de líneas
+cubiertas por los tests unitarios. 
 
 Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, constarán de dos partes:
 
-* Instrumentación para poder saber qué líneas se están ejecutando, y que genere un informe en algún formato estándar. Con este tipo de instrumentación, se ejecutarán los tests. La instrumentación puede ser una opción de compilación, opción de ejecución de la herramienta de tests, o alguna otra forma que permita trazar la ejecución del código y generar un informe. A partir de ahí, se generará un fichero.
-* Visualizadores de los informes, que a partir del anterior lo pasan a HTML, por ejemplo. 
+* Instrumentación para poder saber qué líneas se están ejecutando, y
+  que genere un informe en algún formato estándar. Con este tipo de
+  instrumentación, se ejecutarán los tests. La instrumentación puede
+  ser una opción de compilación, opción de ejecución de la herramienta
+  de tests, o alguna otra forma que permita trazar la ejecución del
+  código y generar un informe. A partir de ahí, se generará un
+  fichero.
+* Visualizadores de los informes, que a partir del anterior lo pasan a HTML, por ejemplo.
 
 
 ### Tests de cobertura en Go y cómo usarlos para mejorar el código.
@@ -71,11 +82,11 @@ compilador. Por ejemplo, en TypeScript
 
 ### Tests de cobertura en TypeScript
 
-`jest`, que hemos usado anteriormente con TypeScript, también está
+En `jest`, que hemos usado anteriormente con TypeScript, también está
 incluido un sistema de tests de cobertura. Por ejemplo, si lo
 aplicamos a la última versión de
 nuestro [sistema de hitos](https://github.com/JJ/ts-milestones),
-obtendremos un resultado como este:
+obtendremos un resultado como este ejecutando `jest --coverage`:
 
 ```
  PASS  src/__tests__/all_test.ts
@@ -100,8 +111,9 @@ puede oscilar entre lo inaceptable y totalmente aceptable. Por eso
 tenemos que usar otro sistema que genere una página web en la que se
 pueda ver claramente qué ha fallado, y ese sistema está integrado
 dentro
-de
-[`istanbul` y se llama `nyc`](https://www.npmjs.com/package/nyc). Ejecutando
+de otro marco de tests, llamado 
+[`istanbul` y se llama `nyc`](https://www.npmjs.com/package/nyc). Primero,
+habrá que ejecutar `jest` lanzándolo desde `nyc`, y a continuación
 
 ```
 nyc report --reporter=html
@@ -152,10 +164,17 @@ cobertura es del 100%, así que no hay mucho que mejorar aquí.
 ## Actividad
 
 
-Añadir los tests de cobertura al proyecto.
+En el hito número 10, añadir los tests de cobertura al proyecto.
 
 * Darse de alta en codecov o algún sitio similar.
 * Añadir tests de cobertura al ejecutor de tareas y al sitio de
   integración continua.
 * Añadir API key a Travis (desde la web) y subir automáticamente los
   tests de cobertura a la misma tras cada test.
+
+Se tendrán que añadir instrucciones en el README también sobre cómo
+ejecutar los tests de cobertura, usando el target `coverage`; se
+comprobará que la cadena `ejecutor-de-tareas coverage` está en el `README.md`.
+
+También se comprobará que el badge de `codecov` esté presente en el
+README y que el porcentaje de cobertura sea superior al 85%.

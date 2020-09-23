@@ -89,8 +89,8 @@ EOC
 
   }
 
+  my $runner = $qa->{'runner'};
   if ( $this_version >= 8) {
-    my $runner = $qa->{'runner'};
     ok( $runner, check( "$runner en el fichero de configuración" ) );
     like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
   }
@@ -98,12 +98,12 @@ EOC
   if ( $this_version >= 9 ) {
     file_present( '.travis.yml', \@repo_files, "de CI" );
     travis_pass( $README, $user, $name );
-  } elsif ( $version =~ /^v10/ ) {
-    codecov_pass( $README );
-  } elsif ( $version =~ /^v11/ ) {
-    travis_pass( $README, $user, $name );
-    codecov_pass( $README );
   }
+
+  if ( $this_version >= 10 ) {
+    like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
+    codecov_pass( $README );
+  } 
 }
 
 done_testing;
@@ -168,7 +168,10 @@ sub codecov_pass {
 sub codecov_perc {
   my $README =  shift;
   my ($codecov_status ) = ($README =~ /\((https:\/\/codecov\.io\/\S+badge\.svg)/ );
+  ok( $codecov_status, "Badge de codecov detectado" );
   my $codecov_svg = `curl -L -s $codecov_status`;
+  ok( $codecov_svg, "Badge de codecov descargado" );
   my ($codecov_perc) = ($codecov_svg =~ /(\d+)%<\/text/);
+  ok( $codecov_perc, "Porcentaje de cobertura es $codecov_perc" );
   return $codecov_perc;
 }
