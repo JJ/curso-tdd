@@ -81,13 +81,12 @@ recomendación en LinkedIn o donde se solicite).
 
 * **Sesión 10**: Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
-  * Diferentes sistemas de integración continua: Travis, GitHub Actions...
+  * Diferentes sistemas de integración continua: Travis, GitHub
+    Actions...
+  * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
 
-* **Sesión 11**:  CI: Acelerando con Dockerfiles.
-  * [Material](temas/CI.md#acelerando-los-tests).
-
-* **Sesiones 12**: Tests de cobertura y por qué son importantes.
+* **Sesiones 11**: Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
 
 * **Sesión 13**: Tests funcionales/de integración
