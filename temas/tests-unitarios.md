@@ -31,8 +31,8 @@ blanca* porque puedes *mirar* dentro del código.
 
 Y en esa "contemplación" debes tratar de ejercitar, a través de
 entradas a funciones, todas las posibles opciones que el código pueda
-tomar: decisiones, posibles excepciones, e includo diferentes órdenes
-de magnitud en el inicio y terminación de un bucle.
+tomar: decisiones, posibles excepciones, e incluso diferentes órdenes
+de magnitud en las variables de inicio y terminación de un bucle.
 
 Ya que hemos visto una iniciación a como se testea, vamos a ver cómo
 se llevan a cabo los tests unitarios en diferentes ejemplos.
