@@ -28,8 +28,14 @@ cubiertas por los tests unitarios.
 
 Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, constarán de dos partes:
 
-* Instrumentación para poder saber qué líneas se están ejecutando, y que genere un informe en algún formato estándar. Con este tipo de instrumentación, se ejecutarán los tests. La instrumentación puede ser una opción de compilación, opción de ejecución de la herramienta de tests, o alguna otra forma que permita trazar la ejecución del código y generar un informe. A partir de ahí, se generará un fichero.
-* Visualizadores de los informes, que a partir del anterior lo pasan a HTML, por ejemplo. 
+* Instrumentación para poder saber qué líneas se están ejecutando, y
+  que genere un informe en algún formato estándar. Con este tipo de
+  instrumentación, se ejecutarán los tests. La instrumentación puede
+  ser una opción de compilación, opción de ejecución de la herramienta
+  de tests, o alguna otra forma que permita trazar la ejecución del
+  código y generar un informe. A partir de ahí, se generará un
+  fichero.
+* Visualizadores de los informes, que a partir del anterior lo pasan a HTML, por ejemplo.
 
 
 ### Tests de cobertura en Go y cómo usarlos para mejorar el código.
@@ -76,11 +82,11 @@ compilador. Por ejemplo, en TypeScript
 
 ### Tests de cobertura en TypeScript
 
-`jest`, que hemos usado anteriormente con TypeScript, también está
+En `jest`, que hemos usado anteriormente con TypeScript, también está
 incluido un sistema de tests de cobertura. Por ejemplo, si lo
 aplicamos a la última versión de
 nuestro [sistema de hitos](https://github.com/JJ/ts-milestones),
-obtendremos un resultado como este:
+obtendremos un resultado como este ejecutando `jest --coverage`:
 
 ```
  PASS  src/__tests__/all_test.ts
@@ -105,8 +111,9 @@ puede oscilar entre lo inaceptable y totalmente aceptable. Por eso
 tenemos que usar otro sistema que genere una página web en la que se
 pueda ver claramente qué ha fallado, y ese sistema está integrado
 dentro
-de
-[`istanbul` y se llama `nyc`](https://www.npmjs.com/package/nyc). Ejecutando
+de otro marco de tests, llamado 
+[`istanbul` y se llama `nyc`](https://www.npmjs.com/package/nyc). Primero,
+habrá que ejecutar `jest` lanzándolo desde `nyc`, y a continuación
 
 ```
 nyc report --reporter=html
@@ -157,10 +164,14 @@ cobertura es del 100%, así que no hay mucho que mejorar aquí.
 ## Actividad
 
 
-Añadir los tests de cobertura al proyecto.
+En el hito número 10, añadir los tests de cobertura al proyecto.
 
 * Darse de alta en codecov o algún sitio similar.
 * Añadir tests de cobertura al ejecutor de tareas y al sitio de
   integración continua.
 * Añadir API key a Travis (desde la web) y subir automáticamente los
   tests de cobertura a la misma tras cada test.
+
+Se tendrán que añadir instrucciones en el README también sobre cómo
+ejecutar los tests de cobertura, usando el target `coverage`; se
+comprobará que la cadena `ejecutor-de-tareas coverage` está en el `README.md`.
