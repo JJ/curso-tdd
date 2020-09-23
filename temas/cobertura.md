@@ -3,10 +3,10 @@
 
 ## Planteamiento
 
-Si el código no se ha prueba, no funciona. Los tests de cobertura nos
+Si el código no se ha probado, no funciona. Los tests de cobertura nos
 ayudan a saber qué partes del código no están cubiertas por los tests
 unitarios, y usarlos nos permitirá establecer un nivel determinado de
-cobertura, así como políticas, para asegurar la calidad del código.
+cobertura, así como políticas sobre el mismo, para asegurar la calidad del código.
 
 ## Al final de esta sesión
 
@@ -19,7 +19,12 @@ Inclusión del badge de `codecov` con un porcentaje de cobertura aceptable.
 
 ## Tests de cobertura
 
-Los tests de cobertura miden qué parte de nuestro código está cubierta por los tests unitarios (que, recordemos, son de caja blanca y por tanto se puede saber qué camino han seguido por el mismo). Estos tests de cobertura funcionan tanto a nivel de línea, como de función o de paquetes, pero generalmente van a dar un porcentaje de líneas cubiertas por los tests unitarios. 
+Los tests de cobertura miden qué parte de nuestro código está cubierta
+por los tests unitarios (que, recordemos, son de caja blanca y por
+tanto se puede saber qué camino han seguido por el mismo). Estos tests
+de cobertura funcionan tanto a nivel de línea, como de función o de
+paquetes, pero generalmente van a dar un porcentaje de líneas
+cubiertas por los tests unitarios. 
 
 Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, constarán de dos partes:
 

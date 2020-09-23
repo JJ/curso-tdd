@@ -89,22 +89,22 @@ recomendación en LinkedIn o donde se solicite).
 * **Sesiones 11**: Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
 
-* **Sesión 13**: Tests funcionales/de integración
+* **Sesión 12**: Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-* **Sesión 14**: Inversión de dependencias.
+* **Sesión 13**: Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
 
-* **Sesión 15**: Tests adicionales
+* **Sesión 14**: Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
   * [Material](temas/qa.md).
 
-* **Sesión 16**: Última sesión.
+* **Sesión 15**: Última sesión.
   * Aclaración de dudas.
 
 

@@ -18,16 +18,24 @@ El estudiante habrá programado los tests y los habrá lanzado desde un
 ## Criterio de aceptación
 
 La entidad principal del problema se habrá implementado en una o
-varias clases,
-y cada una de las funciones tendrá un test que se ejecutarán en
-local. Los tests deberán pasar.
-
+varias clases, y cada una de las funciones tendrá un test que se
+ejecutarán en local. Los tests deberán pasar.
 
 ## Marcos de prueba y bibliotecas de aserciones
 
+El principal objetivo de los tests unitarios es probar todos los
+posibles caminos que el código vaya a seguir. Se llaman de *caja
+blanca* porque puedes *mirar* dentro del código.
+
+> Deberían llamarse caja transparente, pero a saber.
+
+Y en esa "contemplación" debes tratar de ejercitar, a través de
+entradas a funciones, todas las posibles opciones que el código pueda
+tomar: decisiones, posibles excepciones, e includo diferentes órdenes
+de magnitud en el inicio y terminación de un bucle.
+
 Ya que hemos visto una iniciación a como se testea, vamos a ver cómo
 se llevan a cabo los tests unitarios en diferentes ejemplos.
-
 
 ### Escribiendo tests en JavaScript
 
