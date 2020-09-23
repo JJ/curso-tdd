@@ -175,3 +175,6 @@ En el hito número 10, añadir los tests de cobertura al proyecto.
 Se tendrán que añadir instrucciones en el README también sobre cómo
 ejecutar los tests de cobertura, usando el target `coverage`; se
 comprobará que la cadena `ejecutor-de-tareas coverage` está en el `README.md`.
+
+También se comprobará que el badge de `codecov` esté presente en el
+README y que el porcentaje de cobertura sea superior al 85%.
