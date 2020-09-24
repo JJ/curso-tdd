@@ -202,5 +202,5 @@ Como en los hitos anteriores, tendrá que, con los nuevos tests, seguir
 pasando los tests de cobertura y pasar los tests en Travis.
 
 Adicionalmente, se testeará que en la documentación del módulo se
-incluya la cadena "task-runner run" que servirá para arrancar el microservicio.
+incluya la cadena `task-runner run` que servirá para arrancar el microservicio.
 
