@@ -2,9 +2,13 @@
 
 ## Planteamiento
 
-La implantación de calidad integral fuerza a veces a tomar decisiones de arquitectura que permitan testear fácilmente cada una de las partes de un sistema, consiguiendo el máximo desacoplamiento.
+La implantación de calidad integral fuerza a veces a tomar decisiones
+de arquitectura que permitan testear fácilmente cada una de las partes
+de un sistema, consiguiendo el máximo desacoplamiento.
 
-A la vez, el principio de inversión de dependencias es uno de los principios SOLID. Así que merece la pena conocerlo, así como las decisiones de diseño que están detrás de él.
+A la vez, el principio de inversión de dependencias es uno de los
+principios SOLID. Así que merece la pena conocerlo, así como las
+decisiones de diseño que están detrás de él.
 
 ## Al final de esta sesión
 
@@ -32,7 +36,7 @@ Es una técnica de programación dirigida a objetos alternativa a la herencia pa
 
 Por ejemplo, podemos definir este rol en Raku:
 
-```Perl6
+```Raku
 unit role Project::Dator;
 
 method load() {...}
@@ -40,8 +44,16 @@ method update( \data ) {...}
 ```
 
 Los `{...}` indican que, quien quiera que implemente ese rol, tiene forzosamente
- que implementar estos métodos. Este rol define solamente un interfaz, pero como
-  las funciones son abstractas, sabemos que quien quiera que implemente ese rol
+ que implementar estos métodos. 
+
+> En realidad, quien quiera que quiera instanciar una clase que
+> implemente ese rol, pero la idea es la misma.
+
+
+ Este rol define solamente un interfaz, pero como
+  las funciones son abstractas, sabemos que quien quiera que
+  implemente (o 
+  *mezcle*) ese rol
   va a tener esas dos funciones. Podemos implementarlo en una clase, por
   ejemplo:
 
@@ -65,17 +77,19 @@ method load() { $!data }
 method update( \data ) { $!data = data }
 ```
 
-Esta clase `does` el rol anterior, e implementa los dos métodos que tiene que
-implementar obligatoriamente. El principio de sustitución de Lyskov se aplica
+Esta clase `does` (o sea, "hace" o "implementa") el rol anterior, e implementa los dos métodos que tiene que
+implementar obligatoriamente. El principio de sustitución de Lyskov
+(la regla básica de programación dirigida a objetos) se aplica
 también aquí: donde quiera que usemos un rol, se puede usar también cualquier
 clase que implemente ese rol, por lo que podemos declarar argumentos como
 `Project::Dator` sabiendo que vamos a poder usar esas dos funciones, `load` y
-`update`.
+`update`. Lo haremos a continuación.
 
 ### Inyectando dependencias
 
 Este principio se basa en el uso, dentro de las clases que necesitan las
-dependencias, de objetos que representen estas dependencias. Si representamos
+dependencias, de objetos que representen estas dependencias, en vez de
+acoplar clases (y objetos) a las dependencias de forma rígida. Si 
 estas dependencias implementan un rol, podemos intercambiarlas fácilmente sin
 que la clase que los usa lo detecte.
 
@@ -105,10 +119,11 @@ my $stored = Project::Stored.new($dator);
 ```
 
 En esta nueva clase tendremos que adaptar las funciones para usar este tipo de
-almacenamiento de datos, pero en principio va a ser posible hacerlo sin mucho
+almacenamiento de datos (en vez de almacenarlos en memoria), pero en principio va a ser posible hacerlo sin mucho
 problema.
 
-Si queremos imitar ese almacenamiento, simplemente tenemos que usar el mismo
+Este tipo de organización del código resulta especialmente interesante
+a la hora de hacer tests. Si queremos imitar ese almacenamiento, simplemente tenemos que usar el mismo
 rol:
 
 ```perl6
@@ -139,7 +154,7 @@ $stored = Project::Stored.new($dator);
 ```
 
 
-Este concepto de *mock* o maqueta se puede extender también a cualquier tipo de
+Este concepto de *mock* (imitación o maqueta) se puede extender también a cualquier tipo de
 objeto que se use para imitar instancias de objetos que no tienen por qué estar
 presentes en el momento del test.
 
@@ -150,4 +165,13 @@ muestra de forma extensa cómo usar mocks en Python. Algunos frameworks como Jes
 ## Actividad
 
 
-Lo esencial de este hito es añadir un servicio externo usando el principio de inyección de dependencias. Puede ser un servicio de descarga de datos, o puede ser un servicio de almacenamiento de datos; en realidad, el principio es el mismo. Tanto la clase que se encargue de los datos como la clase con el manejador de datos (dateador) insertado tendrán que testearse.
+Lo esencial de este hito es añadir un servicio externo usando el
+principio de inyección de dependencias. Puede ser un servicio de
+descarga de datos, o puede ser un servicio de almacenamiento de datos;
+en realidad, el principio es el mismo. Tanto la clase que se encargue
+de los datos como la clase con el manejador de datos (dateador)
+insertado tendrán que testearse.
+
+Tendréis que añadir al fichero `qa.json` una hueva clave, `dateador`,
+cuyo valor sea el fichero donde habéis implementado la clase abstracta
+que sirva de tal, o alguna clase concreta que siga ese patrón.
