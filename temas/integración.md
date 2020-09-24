@@ -32,7 +32,8 @@ integración
 una sola unidad, de forma que se compruebe que los requisitos funcionales
 expresados en las historias de usuario, se cumplan.
 
-En general, los tests de integración son de tipo [caja negra](https://searchsoftwarequality.techtarget.com/answer/Integration-testing-Is-it-black-box-or-white-box-testing), 
+En general, los tests de integración son de tipo
+[caja negra](https://searchsoftwarequality.techtarget.com/answer/Integration-testing-Is-it-black-box-or-white-box-testing), 
 es decir, no pretendemos conseguir una cobertura total de todo el
 código de lo que estamos integrando (como en el caso de los tests
 unitarios). Lo que nos interesa es que el código añadido se *integre* bien con nuestro propio software.
@@ -42,11 +43,36 @@ unitarios). Lo que nos interesa es que el código añadido se *integre* bien con
 > para entender las diferencias entre tests unitarios y de integración
 > o funcionales.
 
-Los tests de integración, a nivel básico, usan las mismas técnicas que los tests unitarios: aserciones y marcos de test. Únicamente se diferencia en lo que se va a sondear. Por ejemplo, escribiremos una serie de tests para comprobar que el API de una clase de la que dependemos no ha variado, y lo haremos al nivel más alto posible.
+Los tests de integración, a nivel básico, usan las mismas técnicas que
+los tests unitarios: aserciones y marcos de test. Únicamente se
+diferencia en lo que se va a sondear. Por ejemplo, escribiremos una
+serie de tests para comprobar que el API de una clase de la que
+dependemos no ha variado, y lo haremos al nivel más alto posible, o
+para comprobar que con las variaciones de un lenguaje siguen
+funcionando las funciones básicas a las que accedemos.
 
-El objetivo de los tests de integración es tanto comprobar que nuestro código funciona correctamente con ellos, como cerciorarse de que el API de lo integrado sigue siendo el mismo. Si mantenemos nuestro código con la última versión de los módulos de los que depende, conviene comprobar esta estabilidad del API. Y, por otro lado, también es conveniente que cuando se cambia la versión de alguno de los servicios subyacentes, como el lenguaje, se compruebe que lo integrado y la relación de nuestro código con el mismo sigue funcionando de la misma forma.
+El objetivo de los tests de integración es tanto comprobar que nuestro
+código funciona correctamente con ellos, como cerciorarse de que el
+API de lo integrado sigue siendo el mismo. Si mantenemos nuestro
+código con la última versión de los módulos de los que depende,
+conviene comprobar esta estabilidad del API. Y, por otro lado, también
+es conveniente que cuando se cambia la versión de alguno de los
+servicios subyacentes, como el lenguaje, se compruebe que lo integrado
+y la relación de nuestro código con el mismo sigue funcionando de la
+misma forma.
 
-En el programa en Raku anterior, por ejemplo, necesitamos conocer las estadísticas de issues cerrados de cada uno de los hitos. Añadimos esta función a [`Project.pm6`](../code/lib/Project.pm6):
+> En muchos casos las aplicaciones se *cierran* a una versión
+> determinada de todo lo que integran, y suelen tener soporte para
+> especificar claramente qué versión de cada cosa se está usando. Sin
+> embargo, aunque esa estrategia a corto plazo funcione, a medio o
+> largo plazo las soluciones de errores de seguridad van de la mano de
+> nuevas versiones, y hay que trabajar con ellas; en todo caso,
+> ninguna versión de nada tiene soporte eterno, aunque evidentemente
+> algunas tiene soporte de larga duración.
+
+En el programa en Raku anterior, por ejemplo, necesitamos conocer las
+estadísticas de issues cerrados de cada uno de los hitos. Añadimos
+esta función a [`Project.pm6`](../code/lib/Project.pm6):
 
 ```
 use Stats;
@@ -73,7 +99,10 @@ Estos tests están enfocados principalmente a evitar que el API de la
          correcto, y luego que la media está en el primer elemento de
          la lista y devuelve también el valor correcto. 
 
-> El interfaz de esta clase es, en realidad, un poco peculiar, porque sería más adecuado devolver un hash. En un momento determinado, puede que se dé cuenta el propietario y lo cambie, con lo cual este test de integración nos guarda de que tal cosa ocurra.
+> El interfaz de esta clase es, en realidad, un poco peculiar, porque
+> sería más adecuado devolver un hash. En un momento determinado,
+> puede que se dé cuenta el propietario y lo cambie, con lo cual este
+> test de integración nos guarda de que tal cosa ocurra.
 
 
 ## Tests de integración para microservicios
@@ -86,7 +115,7 @@ generalmente, va a integrar diferentes clases y el testear el API REST
 va a ser una prueba de cómo se *integran* esas diferentes clases entre
 sí, o como se integran con los servicios que se usan desde las clases;
 de lo que se
-trata es que tenemos que levantar la web y que vaya todo medianamente
+trata es que tenemos que "levantar" la web y que vaya todo medianamente
 bien. Sin embargo, las funciones a las que se llama desde un servicio
 web son en realidad simples funciones, por lo que hay tanto marcos
 como bibliotecas de test que te permiten probarlas.
@@ -131,21 +160,28 @@ recibirán las peticiones del API REST que vamos a comprobar; `require`
 ejecuta el código y recibe la variable que hemos exportado, que
 podemos usar como si se tratara de parte de esta misma
 aplicación. `app` en este test, por tanto, contendrá lo mismo que en
-la aplicación principal, `index.js`. Usamos el mismo estilo de test
-con `mocha`
-que [ya se ha visto](https://jj.github.io/desarrollo-basado-pruebas/)
+la aplicación principal, `index.js`. Esto corresponde a la fase de
+*setup* que es habitual en todos los marcos de test.
+
+
+Usamos el mismo estilo de test BDD
+que [ya se ha visto](https://jj.github.io/desarrollo-basado-pruebas/) con `mocha`
 pero usamos funciones específicas:
 
 * `request` hace una llamada sobre `app` como si la hiciéramos *desde
   fuera*; `put`, por tanto, llamará a la ruta correspondiente, que
   crea un partido sobre el que apostar.
-* `expect` expresa qué se puede esperar de la respuesta. Por ejemplo,
+* `expect`, que es una aserción de la
+biblioteca
+[`supertest`](https://www.npmjs.com/package/supertest) (que
+está un poco obsoleta, por cierto, aunque no parece que haya nada mejor)
+expresa qué se puede esperar de la respuesta. Por ejemplo,
   se puede esperar que sea de tipo JSON (porque es lo que enviamos, un
   JSON del partido añadido) y además que sea de tipo '200', respuesta
   correcta. Y como esta es la última de la cadena, llamamos a `done`
   que es en realidad una función que usa como parámetro el callback.
 
-Podemos hacer más pruebas, usando `get`, por ejemplo, pero se deja como ejercicio al alumno.
+Podemos hacer más pruebas, usando la ruta `get`, por ejemplo, pero se deja como ejercicio al alumno.
 
 Estas pruebas permiten que no nos encontremos con sorpresas una vez
 que despeguemos en el PaaS. Así sabemos que, al menos, todas las rutas
@@ -155,7 +191,7 @@ que hemos creado funcionan correctamente.
 ## Actividad
 
 
-En esta actividad se añadirán tests de integración a la clase que se haya creado
+En esta actividad, correspondiente al hito número 11 se añadirán tests de integración a la clase que se haya creado
  en el hito anterior. Estos tests de integración pueden ser uno o varios de los
  siguientes:
 
@@ -163,5 +199,6 @@ En esta actividad se añadirán tests de integración a la clase que se haya cre
 * Creación de un servicio web a partir de la clase, y prueba del mismo.
 
 
-Como en los hitos anteriores, tendrá que, con los nuevos tests, seguir pasando los tests de cobertura y pasar los tests en Travis.
+Como en los hitos anteriores, tendrá que, con los nuevos tests, seguir
+pasando los tests de cobertura y pasar los tests en Travis.
 
