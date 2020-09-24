@@ -21,8 +21,7 @@ efectivamente funciona.
 
 ## Criterio de aceptación
 
-El repositorio tiene que estar corriendo los tests en Travis, y esos
-tests deben pasar.
+El repositorio tiene que estar corriendo los tests en Travis, y esos tests deben pasar.
 
 ## Tests funcionales y de integración
 
@@ -168,7 +167,7 @@ Usamos el mismo estilo de test BDD
 que [ya se ha visto](https://jj.github.io/desarrollo-basado-pruebas/) con `mocha`
 pero usamos funciones específicas:
 
-* `request` hace una llamada sobre `app` como si la hiciéramos *desde
+* `request` (de `supertest`) hace una llamada sobre `app` como si la hiciéramos *desde
   fuera*; `put`, por tanto, llamará a la ruta correspondiente, que
   crea un partido sobre el que apostar.
 * `expect`, que es una aserción de la
@@ -184,7 +183,7 @@ expresa qué se puede esperar de la respuesta. Por ejemplo,
 Podemos hacer más pruebas, usando la ruta `get`, por ejemplo, pero se deja como ejercicio al alumno.
 
 Estas pruebas permiten que no nos encontremos con sorpresas una vez
-que despeguemos en el PaaS. Así sabemos que, al menos, todas las rutas
+que despeguemos en el PaaS (o en cualquier otro sitio). Así sabemos que, al menos, todas las rutas
 que hemos creado funcionan correctamente.
 
 
