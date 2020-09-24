@@ -76,6 +76,7 @@ EOC
 
   my $qa; # A partir de aquí hace falta el fichero de configuración
   if ( $this_version >= 5 ) {
+    diag( check( "Tests para hito 5") );
     $qa = config_file( \@repo_files, $repo_dir );
     ok( $qa, check( "Fichero de configuración correcto" ) );
     ok( $qa->{"lenguaje"}, check( "Lenguaje " . $qa->{'lenguaje'} . "detectado"));
@@ -85,25 +86,34 @@ EOC
   }
 
   if ( $this_version >= 7 ) {
+    diag( check( "Tests para hito 7") );
     file_present( $qa->{'test'}, \@repo_files, "de test" );
-
   }
 
   my $runner = $qa->{'runner'};
   if ( $this_version >= 8) {
+    diag( check( "Tests para hito 8") );
     ok( $runner, check( "$runner en el fichero de configuración" ) );
     like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
   }
 
   if ( $this_version >= 9 ) {
+    diag( check( "Tests para hito 9") );
     file_present( '.travis.yml', \@repo_files, "de CI" );
     travis_pass( $README, $user, $name );
   }
 
   if ( $this_version >= 10 ) {
+    diag( check( "Tests para hito 10") );
     like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
     codecov_pass( $README );
-  } 
+  }
+
+  if ( $this_version >= 11 ) {
+    diag( check( "Tests para hito 11") );
+    like( $README, qr/$runner\s+run/, check("«$runner run» en el README"));
+    codecov_pass( $README );
+  }
 }
 
 done_testing;

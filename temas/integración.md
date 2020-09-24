@@ -190,7 +190,7 @@ que hemos creado funcionan correctamente.
 ## Actividad
 
 
-En esta actividad, correspondiente al hito número 11 se añadirán tests de integración a la clase que se haya creado
+En esta actividad, correspondiente al hito número 11, se añadirán tests de integración a la clase que se haya creado
  en el hito anterior. Estos tests de integración pueden ser uno o varios de los
  siguientes:
 
@@ -200,4 +200,7 @@ En esta actividad, correspondiente al hito número 11 se añadirán tests de int
 
 Como en los hitos anteriores, tendrá que, con los nuevos tests, seguir
 pasando los tests de cobertura y pasar los tests en Travis.
+
+Adicionalmente, se testeará que en la documentación del módulo se
+incluya la cadena "task-runner run" que servirá para arrancar el microservicio.
 
