@@ -114,6 +114,11 @@ EOC
     like( $README, qr/$runner\s+run/, check("«$runner run» en el README"));
     codecov_pass( $README );
   }
+
+  if ( $this_version >= 12 ) {
+    diag( check( "Tests para hito 12") );
+    file_present( $qa->{'dateador'}, \@repo_files, "dateador" );
+  }
 }
 
 done_testing;
