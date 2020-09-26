@@ -8,4 +8,4 @@
 | [MovieBot](https://github.com/tdd-IgnasiYManu/MovieBot)                            | v10.0.1 |
 | [DatosDemograficos](https://github.com/tdd-organization-afp/DatosDemograficos)     | v11.0.0 |
 | [roomie-bot](https://github.com/dipzza/roomie-bot)                                 | v6.0.0  |
-| [World of Diceness: chatroom de dados](https://github.com/muetsii/wod)             | v10.1.0 |
+| [World of Diceness: chatroom de dados](https://github.com/muetsii/wod)             | v12.0.1 |
