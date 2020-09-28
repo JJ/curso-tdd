@@ -93,7 +93,7 @@ EOC
   my $runner = $qa->{'runner'};
   if ( $this_version >= 8) {
     diag( check( "Tests para hito 8") );
-    ok( $runner, check( "La clave runner $runner en el fichero de configuración" ) );
+    ok( $runner, check( "La clave runner $runner en el fichero de configuración en este tag" ) );
     like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
   }
 

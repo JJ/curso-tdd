@@ -2,7 +2,7 @@
 
 | Nombre proyecto con enlace                                                         | Versión |
 |------------------------------------------------------------------------------------|---------|
-| [Curso QA](https://github.com/testing-kakapos/curso-QA)                           | v8.0.0  |
+| [Curso QA](https://github.com/testing-kakapos/curso-QA)                            | v7.0.0  |
 | [FitHub](https://github.com/fitplusplus/fithub)                                    | v4.0.0  |
 | [TDD-AY](https://github.com/TDD-AY/TDD-Project)                                    | v12.0.0 |
 | [MovieBot](https://github.com/tdd-IgnasiYManu/MovieBot)                            | v10.0.1 |
