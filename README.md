@@ -9,18 +9,21 @@
 ![Comprueba README](https://github.com/JJ/curso-tdd/workflows/Comprueba%20README/badge.svg)
 
 En este curso trataremos de aprender las técnicas necesarias para
-trabajar en un entorno de desarrollo, para aplicaciones nativas en la
+trabajar en un entorno ágil de desarrollo, para aplicaciones nativas en la
 nube o cualquier otra cosa. Será un curso conceptual, pero también
 práctico donde aprenderemos a desarrollar diferentes técnicas en
-cualquier lenguaje de programación y diferentes microframeworks. La idea principal es que este curso sirva de introducción a la asignatura de infraestructura virtual o cualquier otra asignatura de informática avanzada.
+cualquier lenguaje de programación y diferentes microframeworks. La
+idea principal es que este curso sirva de introducción a la asignatura
+de infraestructura virtual o cualquier otra asignatura de informática
+avanzada.
 
 Cada sesión contendrá una parte teórica y una práctica; la parte
-teórica será una clase magistral de 20-30 minutos, seguida de una
-parte práctica. Durante el curso se irá elaborando un proyecto en
-equipo de dos o tres personas. Cada dos o tres sesiones se tendrá que
-alcanzar un hito del proyecto que se haya elegido, que se tendrá que
-entregar (y se evaluará de forma más o menos automática) al final de
-las mismas. Cuando se completen todas las sesiones y objetivos
+teórica será una clase magistral de 20-30 minutos, y en la parte
+práctica se interaccionará con los estudiantes para que lleven a cabo
+los objetivos de aprendizaje. Durante el curso se irá elaborando un proyecto en
+equipo de dos o tres personas. Se tendrán que alcanzar hitos del
+proyecto que se haya elegido que se evaluarán automaticamente usando
+tests. Cuando se completen todas las sesiones y objetivos
 generaré un badge para el repo donde se haya cumplido todo (y
 dependiendo del nivel en el que se haya alcanzado, se hará también una
 recomendación en LinkedIn o donde se solicite).

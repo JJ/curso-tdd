@@ -19,13 +19,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libtext-hunspell-perl autopoint
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Usa install-with-cpm
-        uses: perl-actions/install-with-cpm@stable
-        with:
-          install: |
-            Test::Text
-            TAP::Harness
-          sudo: false
+      - name: Instala módulos
+        with: sudo cpan Test::Text Tap::Harness
       - name: Ejecuta los tests
         run: |
           curl https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
