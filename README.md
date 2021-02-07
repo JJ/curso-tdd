@@ -1,4 +1,4 @@
-# Curso de programación para QA -3ª edición
+# Curso de desarrollo ágil - 4ª edición
 
 [![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd)
 💟
@@ -28,85 +28,80 @@ recomendación en LinkedIn o donde se solicite).
 
 ## Planificación del curso
 
-* **Sesión 1**: Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo.
+La tercera edición ha [quedado grabada en esta lista de
+reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdKVFqzk9VzujTuyiNOKIy2x). Tendremos
+estas sesiones:
+
+1. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo.
   * Conceptos básicos: pull, pull request, push, clone.
   * *Releases* y *tagging*.
   * [Material](temas/git.md).
 
-* **Sesión 2**: Resolviendo problemas usando la informática.
+2. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
 
-* **Sesión 3**: Servicios avanzados en informática.
+3. Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
-  
-* **Sesión vermut**: Análisis de RadarCovid. Aprovechando que han "liberado" RadarCOVID, vamos a ver qué se puede aprender del código publicado sobre lo que se debe (y no se debe hacer) en desarrollo de software de calidad.
-  * Dejar claves privadas en el repo
-  * Tests
-  * Ficheros diversos abandonados.
-  * Reproducibilidad de la compilación.
-  * ... 
 
-* **Sesión 4**: Requisitos funcionales,
+4. Requisitos funcionales,
   *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
 
-* **Sesión 5**: Comienzo de la implementación "defensiva".
+5. Comienzo de la implementación "defensiva".
     * Cómo organizar un proyecto: canvas, milestones, issues.
     * Documentación de las historias de usuario y traslado a issues.
     * Comienzo del diseño, en general, de las clases (y excepciones).
     * [Material](temas/a-programar.md).
 
-* **Sesión 6**: Task runners y cómo usarlos.
+6. Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
   * [Material](temas/gestores-tareas.md).
 
-* **Sesión 7**: Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
+7. Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
 
-* **Sesión 8**:  *objetos de test*
+8.  *objetos de test*
   * Organización de los tests.
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
 
-* **Sesión 9**:  Ejecución de tests
+9.  Ejecución de tests
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
 
-* **Sesión 10**: Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
+10. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua: Travis, GitHub
     Actions...
   * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
 
-* **Sesiones 11**: Tests de cobertura y por qué son importantes.
-  * [Material](temas/cobertura.md)
-.
-* **Sesión 12**: Tests funcionales/de integración
+11. Tests de cobertura y por qué son importantes.
+  * [Material](temas/cobertura.md).
+
+12. Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-* **Sesión 13**: Inversión de dependencias.
+13. Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
 
-En esta edición se quedarán fuera estas sesiones...
-
-* **Sesión 14**: Tests adicionales
+14. Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
   * [Material](temas/qa.md).
 
-* **Sesión 15**: Última sesión.
+15. Última sesión.
   * Aclaración de dudas.
 
 
@@ -133,7 +128,8 @@ usar
 
 ## Lugar
 
-Se hará de forma virtual usando Jitsi, Rocket Chat o alguna plataforma libre.
+Se hará de forma virtual usando [Jitsi](https://meet.jit.si). Las
+clases se grabarán también (en la medida de lo posible).
 
 ## Clases
 
@@ -141,11 +137,18 @@ De lunes a viernes, 7 al 11 y 14 al 18 de septiembre de 12:30 a 2 de la tarde, 2
 
 ## Título
 
-A los que superen todos los hitos y actividades planteados en el curso se les hará una recomendación en LinkedIn por parte del profesor.
+A los que superen todos los hitos y actividades planteados en el curso
+se les hará una recomendación en LinkedIn por parte del profesor, por
+eso se solicita el perfil de LinkedIn en la inscripción. Los
+estudiantes tendrán que aceptar la conexión del profesor para poder
+hacer esta recomendación.
 
 ## Inscripción
 
-Añade tu nick de GitHub y perfil de LinkedIn [a esta tabla](asistentes.md) mediante un *pull request*. La inscripción es gratuita y abierta a quien lo desee, pero los asistentes tendrán que traer su propio portátil y conexión a Internet (si no tienen acceso al WiFi de la universidad).
+Añade tu nick de GitHub y perfil de LinkedIn [a esta
+tabla](asistentes.md) mediante un *pull request*. La inscripción es
+gratuita y abierta a quien lo desee, pero los asistentes tendrán que
+usar su propio equipo.
 
 ## Proyectos realizados
 
