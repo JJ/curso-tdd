@@ -17,12 +17,11 @@ idea principal es que este curso sirva de introducción a la asignatura
 de infraestructura virtual o cualquier otra asignatura de informática
 avanzada.
 
-Cada sesión contendrá una parte teórica y una práctica; la parte
-teórica será una clase magistral de 20-30 minutos, y en la parte
-práctica se interaccionará con los estudiantes para que lleven a cabo
-los objetivos de aprendizaje. Durante el curso se irá elaborando un proyecto en
+Cada sesión durará unos 20-30 minutos; el resto del trabajo se hace de
+forma asíncrona interaccionando a través de un grupo de
+Telegram. Durante el curso se irá elaborando un proyecto en
 equipo de dos o tres personas. Se tendrán que alcanzar hitos del
-proyecto que se haya elegido que se evaluarán automaticamente usando
+proyecto que se haya elegido que se evaluarán automáticamente usando
 tests. Cuando se completen todas las sesiones y objetivos
 generaré un badge para el repo donde se haya cumplido todo (y
 dependiendo del nivel en el que se haya alcanzado, se hará también una
@@ -143,7 +142,8 @@ clases se grabarán también (en la medida de lo posible).
 
 ## Clases
 
-De lunes a viernes, 7 al 11 y 14 al 18 de septiembre de 12:30 a 2 de la tarde, 21 al 25 de septiembre 13:45 a 15:00.
+- 📅 22 de febrero - 15 de marzo.
+- 🕜 13:30 - 14:00.
 
 ## Título
 
