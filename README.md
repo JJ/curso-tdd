@@ -40,6 +40,9 @@ estas sesiones:
   * *Releases* y *tagging*.
   * [Material](temas/git.md).
 
+2. Desarrollo ágil
+   * Historias de usuario, *user journeys* y todo eso.
+
 2. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
