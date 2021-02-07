@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Instala módulos
-        with: sudo cpan Test::Text Tap::Harness
+        run: sudo cpan Test::Text Tap::Harness
       - name: Ejecuta los tests
         run: |
           curl https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
