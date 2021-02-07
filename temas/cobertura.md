@@ -1,6 +1,5 @@
 # Tests de cobertura
 
-
 ## Planteamiento
 
 Si el código no se ha probado, no funciona. Los tests de cobertura nos
@@ -24,7 +23,7 @@ por los tests unitarios (que, recordemos, son de caja blanca y por
 tanto se puede saber qué camino han seguido por el mismo). Estos tests
 de cobertura funcionan tanto a nivel de línea, como de función o de
 paquetes, pero generalmente van a dar un porcentaje de líneas
-cubiertas por los tests unitarios. 
+cubiertas por los tests unitarios.
 
 Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, constarán de dos partes:
 
@@ -52,7 +51,7 @@ nombre indicado, y la segunda orden abre un navegador con una página
 en la que nos muestra nuestro código y la cobertura que tiene,
 señalando las funciones y líneas que no están cubiertas. Sobre la clase [`HitosIV` que ya hemos usado anteriormente](https://github.com/JJ/HitosIV), estos serían los resultados.
 
-![Cobertura de los tests en la clase HitosIV](/img/gocover.png)
+![Cobertura de los tests en la clase HitosIV](img/gocover.png)
 
 En este caso, las  líneas no cubiertas eran las que lanzaban errores en caso de que
 se encuentren algún problema. No siempre es obligatorio que cubrir el 100% de las
@@ -64,7 +63,7 @@ debemos
 asegurar que sigue las mejores prácticas del lenguaje: 
 
 
-![Nueva cobertura de los tests en la clase HitosIV](/img/gocover-2.png)
+![Nueva cobertura de los tests en la clase HitosIV](img/gocover-2.png)
 
 Siempre es mejor en Go devolver un error que enviar a registro un error fatal, así que este cambio en el código asegura que se pueda cubrir mejor con los tests.
 
