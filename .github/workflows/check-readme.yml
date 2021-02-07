@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Prerrequisites
-        run: sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y libtext-hunspell-perl autopoint
+        run: sudo apt-get update && sudo apt-get install -y libtext-hunspell-perl autopoint
       - name: Checkout
         uses: actions/checkout@v2
       - name: Usa install-with-cpm
