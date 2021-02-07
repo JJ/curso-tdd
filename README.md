@@ -105,22 +105,26 @@ estas sesiones:
   * Aclaración de dudas.
 
 
-## Proyectos inicialmente propuestos
+## Ideas para resolver
 
-* [DEIIT-bot](proyectos/deiit-bot.md), bot para los apuntes de DEIIT.
-* [Conversaciones](proyectos/conversaciones.md), escucha y analiza.
-  conversaciones en canales de Telegram.
-* [Notas](proyectos/notas.md), bot para comunicar notas a estudiantes.
-* [Rastreador medios sociales](proyectos/rastreador-social-media.md), escucha y analiza
-  conversaciones en medios sociales.
-* [Porra](proyectos/porra.md), porras deportivas.
-* [Medioambiental](proyectos/medioambiental.md), API para datos
-  abiertos medioambientales.
-* [Programador de actividades](proyectos/programador-actividades.md),
-  para programar actividades accesibles a través de un API.
-* [Tráfico](proyectos/tráfico.md), análisis de los mensajes de tráfico
+La informática consiste en resolver problemas del usuario mediante un
+ordenador. Estos son algunos de los problemas con los que se podría tratar.
+
+* [DEIIT-bot](problemas/deiit-bot.md), resuelve problemas de búsqueda
+  en apuntes.
+* [Conversaciones](problemas/conversaciones.md), trata de buscar
+  patrones en conversaciones en canales de Telegram.
+* [Notas](problemas/notas.md), comunicar las notas a estudiantes..
+* [Rastreador medios sociales](problemas/rastreador-social-media.md),
+  encontrar patrones en medios sociales.
+* [Porra](problemas/porra.md), resuelve el problema de organizar
+  porras entre amigos..
+* [Medioambiental](problemas/medioambiental.md), visualizar datos medioambientales.
+* [Programador de actividades](problemas/programador-actividades.md),
+  programación de actividades accesibles.
+* [Tráfico](problemas/tráfico.md), análisis de los mensajes de tráfico
   de Granada.
-* [Datos económicos](proyectos/económicos.md), análisis de datos económicos macro o por localidad.
+* [Datos económicos](problemas/económicos.md), análisis de datos económicos macro o por localidad.
 
 Se puede
 usar
