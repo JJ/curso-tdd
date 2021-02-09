@@ -9,3 +9,4 @@
 | axaryk          | https://www.linkedin.com/in/eleazarmoralesdiaz/                        |
 | juanmi_gh       | https://www.linkedin.com/in/juanmiguelcabrera/                         |
 | kevincamp       | https://www.linkedin.com/in/kevin-campuzano-castillo-42294966/         |
+| balath          | https://www.linkedin.com/in/sergio-flor-garc%C3%ADa-b5a2a11aa/         |
