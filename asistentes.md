@@ -8,3 +8,5 @@
 | f3rchoc         | https://www.linkedin.com/in/wilmerfernandocaiza/                       |
 | axaryk          | https://www.linkedin.com/in/eleazarmoralesdiaz/                        |
 | juanmi_gh       | https://www.linkedin.com/in/juanmiguelcabrera/                         |
+| kevincamp       | https://www.linkedin.com/in/kevin-campuzano-castillo-42294966/         |
+
