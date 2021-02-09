@@ -19,5 +19,5 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | raulsoria98     | https://www.linkedin.com/in/raúl-soria-gonzález-5166681b6              |
 | crisconru       | https://www.linkedin.com/in/cristobalcontrerasrubio/                   |
 | jnavarro        | https://www.linkedin.com/in/josep-navarro-soriano/                     |
-| Kobedinho	      | https://www.linkedin.com/in/obed-gonzalez-6443594a			   |
-
+| Kobedinho	      | https://www.linkedin.com/in/obed-gonzalez-6443594a			               |
+| jsanchezL	      | https://www.linkedin.com/in/jorge-luis-s-9246a9171		                 |
