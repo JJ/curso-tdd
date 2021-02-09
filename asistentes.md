@@ -7,3 +7,4 @@
 | leolplex        |  https://www.linkedin.com/in/daniel-romero-75a95969                    |
 | f3rchoc         | https://www.linkedin.com/in/wilmerfernandocaiza/                       |
 | axaryk          | https://www.linkedin.com/in/eleazarmoralesdiaz/                        |
+| juanmi_gh       | https://www.linkedin.com/in/juanmiguelcabrera/                         |
