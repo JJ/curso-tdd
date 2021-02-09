@@ -17,4 +17,5 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | migue0418       | https://www.linkedin.com/in/miguealguacil/                             |
 | raulsoria98     | https://www.linkedin.com/in/raúl-soria-gonzález-5166681b6              |
 | crisconru       | https://www.linkedin.com/in/cristobalcontrerasrubio/                   |
+| jnavarro        | https://www.linkedin.com/in/josep-navarro-soriano/                |
 
