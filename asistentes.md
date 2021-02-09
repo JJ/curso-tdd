@@ -10,6 +10,7 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | f3rchoc         | https://www.linkedin.com/in/wilmerfernandocaiza/                       |
 | axaryk          | https://www.linkedin.com/in/eleazarmoralesdiaz/                        |
 | juanmi_gh       | https://www.linkedin.com/in/juanmiguelcabrera/                         |
+| iloveyoudrzaius | https://www.linkedin.com/in/darío-v-b9a819113                          |
 | kevincamp       | https://www.linkedin.com/in/kevin-campuzano-castillo-42294966/         |
 | balath          | https://www.linkedin.com/in/sergio-flor-garc%C3%ADa-b5a2a11aa/         |
 | JoseMariaMoreno | https://www.linkedin.com/in/jose-maria-moreno/                         |
@@ -17,5 +18,6 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | migue0418       | https://www.linkedin.com/in/miguealguacil/                             |
 | raulsoria98     | https://www.linkedin.com/in/raúl-soria-gonzález-5166681b6              |
 | crisconru       | https://www.linkedin.com/in/cristobalcontrerasrubio/                   |
-| jnavarro        | https://www.linkedin.com/in/josep-navarro-soriano/                |
+| jnavarro        | https://www.linkedin.com/in/josep-navarro-soriano/                     |
+| Kobedinho	      | https://www.linkedin.com/in/obed-gonzalez-6443594a			   |
 
