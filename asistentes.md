@@ -20,9 +20,4 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | crisconru       | https://www.linkedin.com/in/cristobalcontrerasrubio/                   |
 | jnavarro        | https://www.linkedin.com/in/josep-navarro-soriano/                     |
 | Kobedinho	      | https://www.linkedin.com/in/obed-gonzalez-6443594a			   |
-
-
-
-
-
 | murcian0        | https://www.linkedin.com/in/adrian-murciano/                           |
