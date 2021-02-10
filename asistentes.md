@@ -30,4 +30,4 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | ccvaillant      | https://www.linkedin.com/in/cristina-vaillant-vald%C3%A9z-b4449212a/      |
 | OscarRomero1717 | https://www.linkedin.com/in/oscar-d-romero-823136149/                     |
 | gedsakal        | https://www.linkedin.com/in/gediminas-sakalauskas-vlc/                    |
-
+| migueorg        | https://www.linkedin.com/in/miguel-ángel-martín-rodríguez-2893571a3/      |
