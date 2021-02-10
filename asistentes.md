@@ -21,6 +21,7 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | raulsoria98     | https://www.linkedin.com/in/raúl-soria-gonzález-5166681b6                 |
 | crisconru       | https://www.linkedin.com/in/cristobalcontrerasrubio/                      |
 | jnavarro        | https://www.linkedin.com/in/josep-navarro-soriano/                        |
+| igponce         | https://www.linkedin.com/in/igponce
 | Kobedinho       | https://www.linkedin.com/in/obed-gonzalez-6443594a                        |
 | murcian0        | https://www.linkedin.com/in/adrian-murciano/                              |
 | jpsg            | https://www.linkedin.com/in/jpablosalvador/                               |
