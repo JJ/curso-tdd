@@ -26,3 +26,5 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | criztinazg      | https://www.linkedin.com/in/cristinazenteno/		                       |
 | ccvaillant      | https://www.linkedin.com/in/cristina-vaillant-vald%C3%A9z-b4449212a/   |
 | OscarRomero1717 | https://www.linkedin.com/in/oscar-d-romero-823136149/                  |
+| gedsakal        | https://www.linkedin.com/in/gediminas-sakalauskas-vlc/                 |
+
