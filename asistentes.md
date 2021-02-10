@@ -22,5 +22,6 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | Kobedinho	      | https://www.linkedin.com/in/obed-gonzalez-6443594a			               |
 | murcian0        | https://www.linkedin.com/in/adrian-murciano/                           |
 | jsanchezL	      | https://www.linkedin.com/in/jorge-luis-s-9246a9171		                 |
+| criztinazg      | https://www.linkedin.com/in/cristinazenteno/		                       |
 | ccvaillant      | https://www.linkedin.com/in/cristina-vaillant-vald%C3%A9z-b4449212a/   |
 | OscarRomero1717 | https://www.linkedin.com/in/oscar-d-romero-823136149/                  |
