@@ -22,6 +22,7 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | jnavarro        | https://www.linkedin.com/in/josep-navarro-soriano/                     |
 | Kobedinho	      | https://www.linkedin.com/in/obed-gonzalez-6443594a			               |
 | murcian0        | https://www.linkedin.com/in/adrian-murciano/                           |
+| jpsg            | https://www.linkedin.com/in/jpablosalvador/                            |
 | jsanchezL	      | https://www.linkedin.com/in/jorge-luis-s-9246a9171		                 |
 | criztinazg      | https://www.linkedin.com/in/cristinazenteno/		                       |
 | ccvaillant      | https://www.linkedin.com/in/cristina-vaillant-vald%C3%A9z-b4449212a/   |
