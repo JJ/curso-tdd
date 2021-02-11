@@ -31,3 +31,4 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | OscarRomero1717 | https://www.linkedin.com/in/oscar-d-romero-823136149/                     |
 | gedsakal        | https://www.linkedin.com/in/gediminas-sakalauskas-vlc/                    |
 | migueorg        | https://www.linkedin.com/in/miguel-ángel-martín-rodríguez-2893571a3/      |
+| gomezgleonardob | https://www.linkedin.com/in/leonardo-gomez-562701204/    |
