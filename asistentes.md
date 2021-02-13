@@ -32,4 +32,5 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | gedsakal        | https://www.linkedin.com/in/gediminas-sakalauskas-vlc/                    |
 | migueorg        | https://www.linkedin.com/in/miguel-ángel-martín-rodríguez-2893571a3/      |
 | gomezgleonardob | https://www.linkedin.com/in/leonardo-gomez-562701204/                     |
+| josemarial16    | https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-luque-luque-22b799206/   |
 | rpalaciosg      | https://www.linkedin.com/in/richardpalaciosgarcia/                        |
