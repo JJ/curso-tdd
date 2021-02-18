@@ -35,4 +35,5 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | gomezgleonardob | https://www.linkedin.com/in/leonardo-gomez-562701204/                     |
 | josemarial16    | https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-luque-luque-22b799206/   |
 | rpalaciosg      | https://www.linkedin.com/in/richardpalaciosgarcia/                        |
-| Aferridaniel    | https://www.linkedin.com/in/daniel-alcaraz-ferri-319b0276
+| Aferridaniel    | https://www.linkedin.com/in/daniel-alcaraz-ferri-319b0276                 |
+| miquelreyes     | https://www.linkedin.com/in/miquel-reyes/                                 |
