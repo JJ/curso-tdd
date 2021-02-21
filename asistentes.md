@@ -40,6 +40,7 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | Aferridaniel    | https://www.linkedin.com/in/daniel-alcaraz-ferri-319b0276                  |
 | miquelreyes     | https://www.linkedin.com/in/miquel-reyes/                                  |
 | juanheliosg     | https://www.linkedin.com/in/juan-helios-garc%C3%ADa-guzm%C3%A1n-4b3363207/ |
+| delightfulagony | https://www.linkedin.com/in/gonzalomorenosoto/ |
 | BlancaCC        | https://www.linkedin.com/in/blanca-cano-333790207/                         |  
 | jmrr            | https://www.linkedin.com/in/jriverarubio/                                  |  
 
