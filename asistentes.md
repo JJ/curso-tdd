@@ -13,6 +13,7 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | axaryk          | https://www.linkedin.com/in/eleazarmoralesdiaz/                            |
 | deividventas    | https://www.linkedin.com/in/davidventas/                                   |
 | juanmi_gh       | https://www.linkedin.com/in/juanmiguelcabrera/                             |
+| Angelgf22       | https://www.linkedin.com/in/ángel-gómez-ferrer-737761207/                  |
 | iloveyoudrzaius | https://www.linkedin.com/in/darío-v-b9a819113                              |
 | kevincamp       | https://www.linkedin.com/in/kevin-campuzano-castillo-42294966/             |
 | balath          | https://www.linkedin.com/in/sergio-flor-garc%C3%ADa-b5a2a11aa/             |
