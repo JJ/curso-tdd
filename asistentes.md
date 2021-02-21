@@ -40,5 +40,6 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | miquelreyes     | https://www.linkedin.com/in/miquel-reyes/                                  |
 | juanheliosg     | https://www.linkedin.com/in/juan-helios-garc%C3%ADa-guzm%C3%A1n-4b3363207/ |
 | BlancaCC        | https://www.linkedin.com/in/blanca-cano-333790207/                         |  
+| jmrr            | https://www.linkedin.com/in/jriverarubio/                                  |  
 
 
