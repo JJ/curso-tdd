@@ -43,5 +43,6 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | delightfulagony | https://www.linkedin.com/in/gonzalomorenosoto/ |
 | BlancaCC        | https://www.linkedin.com/in/blanca-cano-333790207/                         |  
 | jmrr            | https://www.linkedin.com/in/jriverarubio/                                  |  
+| cescotoc        | linkedin.com/in/carlos-escoto-1a45a9172                                    |  
 
 
