@@ -11,7 +11,7 @@ tal grupo.
 💟
 [![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd)
 💟
-![Comprueba README](https://github.com/JJ/curso-tdd/workflows/Comprueba%20README/badge.svg)
+[![Comprueba texto](https://github.com/JJ/curso-tdd/actions/workflows/check-readme.yml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/check-readme.yml)
 
 En este curso trataremos de aprender las técnicas necesarias para
 trabajar en un entorno ágil de desarrollo, para aplicaciones nativas en la
