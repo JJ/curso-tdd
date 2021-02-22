@@ -1,12 +1,17 @@
 # Curso de desarrollo ágil - 4ª edición
 
+**Nota** El enlace de Jitsi se compartirá por el grupo de Telegram del
+curso. Es *imprescindible* que me enviéis a `jjmerelo` en Telegram (o
+de cualquier otro modo) vuestro nick en Telegram para que os añada a
+tal grupo.
+
 [![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd)
 💟
 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master)
 💟
 [![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd)
 💟
-![Comprueba README](https://github.com/JJ/curso-tdd/workflows/Comprueba%20README/badge.svg)
+[![Comprueba texto](https://github.com/JJ/curso-tdd/actions/workflows/check-readme.yml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/check-readme.yml)
 
 En este curso trataremos de aprender las técnicas necesarias para
 trabajar en un entorno ágil de desarrollo, para aplicaciones nativas en la
@@ -31,82 +36,86 @@ recomendación en LinkedIn o donde se solicite).
 ## Planificación del curso
 
 La tercera edición ha [quedado grabada en esta lista de
-reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdKVFqzk9VzujTuyiNOKIy2x). Tendremos
+reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdKVFqzk9VzujTuyiNOKIy2x). El
+planteamiento general del curso está en [esta presentación](/curso-tdd/preso/).
+
+Tendremos
 estas sesiones:
 
 1. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo.
   * Conceptos básicos: pull, pull request, push, clone.
   * *Releases* y *tagging*.
   * [Material](temas/git.md).
+  * [Presentación](preso/git).
 
 2. Desarrollo ágil
    * Historias de usuario, *user journeys* y todo eso.
 
-2. Resolviendo problemas usando la informática.
+3. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
 
-3. Servicios avanzados en informática.
+4. Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
 
-4. Requisitos funcionales,
-  *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
+5. Requisitos funcionales,
+  * *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
 
-5. Comienzo de la implementación "defensiva".
+6. Comienzo de la implementación "defensiva".
     * Cómo organizar un proyecto: canvas, milestones, issues.
     * Documentación de las historias de usuario y traslado a issues.
     * Comienzo del diseño, en general, de las clases (y excepciones).
     * [Material](temas/a-programar.md).
 
-6. Task runners y cómo usarlos.
+7. Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
   * [Material](temas/gestores-tareas.md).
 
-7. Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
+8. Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
 
-8.  *objetos de test*
+9.  *objetos de test*
   * Organización de los tests.
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
 
-9.  Ejecución de tests
+10.  Ejecución de tests
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
 
-10. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
+11. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua: Travis, GitHub
     Actions...
   * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
 
-11. Tests de cobertura y por qué son importantes.
+12. Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
 
-12. Tests funcionales/de integración
+13. Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-13. Inversión de dependencias.
+14. Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
 
-14. Tests adicionales
+15. Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
   * [Material](temas/qa.md).
 
-15. Última sesión.
+16. Última sesión.
   * Aclaración de dudas.
 
 

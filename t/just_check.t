@@ -1,13 +1,13 @@
 use Test::Text; # -*- mode: cperl -*-
 use Test::More;
 
-if ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
-  plan skip_all => "Check relevant only for push";
+if ( $ENV{'CI'} ) {
+  plan skip_all => "No se ejecuta en Travis";
 }
 
-for my $dir (qw(temas proyectos) ) {
-  my $tesxt = Test::Text->new($dir, ".", "Spanish", @_);
-  $tesxt->check();
+for my $dir (qw(temas problemas) ) {
+  just_check( $dir, '.', 'Spanish', 0 );
 }
 
-done_testing;
+just_check( '.','.', 'Spanish');
+

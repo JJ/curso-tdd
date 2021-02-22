@@ -1,5 +1,4 @@
-# Flujos de trabajo con Git y GitHub
-
+# Flujos y organización del trabajo con Git y GitHub
 
 ## Planteamiento
 
@@ -10,17 +9,17 @@ curso.
 
 ## Al final de esta sesión
 
-Conocerán las órdenes esenciales de git, y como usar la herramienta de
-línea de órdenes de GitHub para realizar algunas tareas fundamentales;
-también sabrán cómo organizar flujos de desarrollo usando pull
-requests y el concepto del mismo.
+Los estudiantes conocerán las órdenes esenciales de `git`, y como usar
+la herramienta de línea de órdenes de GitHub para realizar algunas
+tareas fundamentales; también sabrán cómo organizar flujos de
+desarrollo usando pull requests y el concepto del mismo.
 
 ## Criterio de aceptación
 
-Cada equipo habrá creado una descripción del mismo, con los
-componentes del mismo en un README.md, todos los usuarios añadidos al
-repositorio, y tendrán que haber añadido sus nombre con un PR (que
-habrá aprobado algún otro miembro del equipo).
+Se habrán formado equipos, y cada equipo habrá creado una descripción
+del mismo, con sus componentes en un README.md, todos los usuarios
+añadidos al repositorio, y tendrán que haber añadido sus nombre con un
+PR (que habrá aprobado algún otro miembro del equipo).
 
 ## GitHub y git
 
@@ -37,8 +36,9 @@ directamente. Lo más rápido es crear
 repositorios directamente en GitHub
 
 > A partir de ahora, cuando diga GitHub se entenderá el sitio web que
-> uses para alojar tus repositorios, GitHub, GitLab o el que
-> corresponda; en algunos casos las características podrán no estar disponibles.
+> uses para alojar tus repositorios, GitHub, GitLab, BitBucket o el
+> que corresponda; en algunos casos las características podrán no
+> estar disponibles.
 
 Hay tres formas de crearlos: directamente (opción *New repository*)
 desde el menú, haciendo un *fork* o copia de un repositorio existente
@@ -61,7 +61,7 @@ tienes una serie de ficheros para comenzar rápidamente.
 
 Una vez creado el repositorio, se descarga con
 
-~~~
+~~~shell
 git clone mirepo # Si tienes hub instalado
 git clone git@github.com:minick/mirepo
 ~~~
@@ -131,7 +131,7 @@ no hay más remedio que mirar el código y tomar la versión que
 funcione; en otros casos, si sabemos que la versión buena es una de
 ellas, hacer
 
-```
+```shell
 git checkout --theirs fichero
 git checkout --ours fichero
 ```
@@ -142,15 +142,15 @@ haciendo pull, en el segundo la del propio.
 ## Pull requests
 
 Los *pull requests* (o *merge requests* en GitLab) son "peticiones de
-pull", es decir, una forma de indicarle a quien tenga permisos en repo
-que se quiere incorporar un cambio a la rama principal. Lo bueno es
-que GitHub te provee un interfaz gráfico para interaccionar con el
-cambio y también la persona que lo hace. Para empezar, se pueden crear
-plantillas en el repositorio en el cual se dé una estructura al pull
-request, tal como decir qué necesidad cubre o marcar si se han
-cumplido una serie de condiciones; a posteriori se puede comprobar,
-usando sistemas de integración continua, si se han cumplido esas
-condiciones.
+pull" o peticiones de incorporación a otro repositorio, es decir, una
+forma de indicarle a quien tenga permisos en repo que se quiere
+incorporar un cambio a la rama principal. Lo bueno es que GitHub te
+provee un interfaz gráfico para interaccionar con el cambio y también
+la persona que lo hace. Para empezar, se pueden crear plantillas en el
+repositorio en el cual se dé una estructura al pull request, tal como
+decir qué necesidad cubre o marcar si se han cumplido una serie de
+condiciones; a posteriori se puede comprobar, usando sistemas de
+integración continua, si se han cumplido esas condiciones.
 
 Por eso, un pull request es una ocasión para revisar el
 código. *Siempre* hay que mirarlo, incluso aunque haya pasado los
@@ -184,7 +184,7 @@ ese commit para hacer un release o un despliegue con todos ellos.
 
 Para marcar, se usa `git tag`
 
-```
+```shell
 git tag -a v0.0.1 -m "First release"
 ```
 
@@ -203,23 +203,22 @@ releases, *no* en el repositorio; por ejemplo, PDFs o `.deb`.
 Una vez constituido un release con un tag, equivale a una rama ligera;
 se puede acceder al commit etiquetado con
 
-```
+```shell
 git checkout v0.0.1
 ```
 
 En realidad, se habrá obtenido el estado del repositorio tras un
 commit determinado, por lo que se quedará en una situación llamada
 *detached HEAD*, no asociado a ningún extremo del grafo de commits. Si
-se quiere trabajar a partir de ahí (para corregir un bug, por ejemplo), habrá que crear una rama a partir
-de ese commit:
+se quiere trabajar a partir de ahí (para corregir un bug, por
+ejemplo), habrá que crear una rama a partir de ese commit:
 
-```
+```shell
 git checkout -b rama-desde-tag
 ```
 
 Esa rama podemos usarla como cualquier otra rama, desplegarla o
 fusionarla eventualmente con `master`.
-
 
 
 ## Ver también
@@ -247,7 +246,7 @@ Esta actividad corresponderá al hito 0, y por tanto a versiones
    [usando esta plantilla](https://github.com/JJ/curso-qa-template),
    que contiene ya algunos tests y el diseño general, así como la
    licencia libre.
-   
+
 Inicialmente, el `README.md` sólo contendrá los nombres de los
 componentes del equipo, pero se trata de que en esta fase inicial se
 comience ya el hábito de añadir a la rama principal sólo con *pull
