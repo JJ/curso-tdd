@@ -8,3 +8,5 @@ Gemfile.lock
 .sass-cache/
 target/
 Cargo.lock
+
+Spanish.*

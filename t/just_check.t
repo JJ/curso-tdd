@@ -6,8 +6,9 @@ if ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
 }
 
 for my $dir (qw(temas proyectos) ) {
-  my $tesxt = Test::Text->new($dir, ".", "Spanish", @_);
-  $tesxt->check();
+  just_check( $dir, '.', 'Spanish', 0 );
 }
+
+just_check( '.','.', 'Spanish');
 
 done_testing;
