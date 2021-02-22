@@ -36,13 +36,17 @@ recomendación en LinkedIn o donde se solicite).
 ## Planificación del curso
 
 La tercera edición ha [quedado grabada en esta lista de
-reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdKVFqzk9VzujTuyiNOKIy2x). Tendremos
+reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdKVFqzk9VzujTuyiNOKIy2x). El
+planteamiento general del curso está en [esta presentación](/curso-tdd/preso/).
+
+Tendremos
 estas sesiones:
 
 1. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo.
   * Conceptos básicos: pull, pull request, push, clone.
   * *Releases* y *tagging*.
   * [Material](temas/git.md).
+  * [Presentación](preso/git).
 
 2. Desarrollo ágil
    * Historias de usuario, *user journeys* y todo eso.
