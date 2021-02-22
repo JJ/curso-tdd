@@ -142,15 +142,15 @@ haciendo pull, en el segundo la del propio.
 ## Pull requests
 
 Los *pull requests* (o *merge requests* en GitLab) son "peticiones de
-pull", es decir, una forma de indicarle a quien tenga permisos en repo
-que se quiere incorporar un cambio a la rama principal. Lo bueno es
-que GitHub te provee un interfaz gráfico para interaccionar con el
-cambio y también la persona que lo hace. Para empezar, se pueden crear
-plantillas en el repositorio en el cual se dé una estructura al pull
-request, tal como decir qué necesidad cubre o marcar si se han
-cumplido una serie de condiciones; a posteriori se puede comprobar,
-usando sistemas de integración continua, si se han cumplido esas
-condiciones.
+pull" o peticiones de incorporación a otro repositorio, es decir, una
+forma de indicarle a quien tenga permisos en repo que se quiere
+incorporar un cambio a la rama principal. Lo bueno es que GitHub te
+provee un interfaz gráfico para interaccionar con el cambio y también
+la persona que lo hace. Para empezar, se pueden crear plantillas en el
+repositorio en el cual se dé una estructura al pull request, tal como
+decir qué necesidad cubre o marcar si se han cumplido una serie de
+condiciones; a posteriori se puede comprobar, usando sistemas de
+integración continua, si se han cumplido esas condiciones.
 
 Por eso, un pull request es una ocasión para revisar el
 código. *Siempre* hay que mirarlo, incluso aunque haya pasado los

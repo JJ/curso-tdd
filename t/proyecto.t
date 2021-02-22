@@ -67,7 +67,6 @@ EOC
     like( $README, qr/issue/, "Hay enlace a al menos un issue");
   }
 
-
   if  ( $this_version >= 3 ) {
     diag( check( "Tests para hito 3") );
     my @hus = grep(  m{HU/}, @repo_files  );
