@@ -58,7 +58,7 @@ estas sesiones:
   * [Material](temas/servicios.md).
 
 5. Requisitos funcionales,
-  *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
+  * *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
 

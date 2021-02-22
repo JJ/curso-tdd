@@ -1,40 +1,83 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        
+	<title>Desarrollo ágil: git</title>
 
-		<title>reveal.js</title>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
-
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
 	</head>
 	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Intro</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/"><code>jj.github.io/curso-tdd/</code></a></h3>
+                    </section>
+                    
+		    <section><h1>Un poco de historia</h1>
+                        <h1 class="fragment"> TDD → QA → Desarrollo ágil</h1>
+                    </section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+                    <section><h1>Qué queremos</h1>
+                        <h1 class="fragment">Mostrar una metodología
+                            <strong>moderna</strong> de desarrollo</h1>
+                        <aside class="notes">Y que sea eficiente y de
+                            calidad, y basado en bueas
+                            prácticas</aside>
+                    </section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
+                    <section><h1>Qué buscamos</h1>
+                        <h2 class="fragment">Ir desarrollando un
+                            <strong>proyecto</strong> de forma ágil y en equipo.</h2>
+                    </section>
+
+                    <section><h1>Cómo</h1>
+                        <h2 class="fragment">Usando lenguajes con
+                            <strong>tipado fuerte</strong></h2>
+                        <h2 class="fragment">Equipos de 2 a 4
+                            personas</h2>
+                        <aside class="notes">Si tenéis más o menos
+                        claro el lenguaje que queréis usar, lo podéis
+                        ir anunciando en el grupo de Telegram para que
+                        otros se apunten. Consejo: tratad de aprender
+                        un nuevo lenguaje. Esto no es una asignatura y
+                            se trata de que aprendáis. Otra
+                        alternativa es que propongáis un problema
+                        sobre el que queréis trabajar, y pidáis
+                        colaboración en el grupo de Telegram. Una vez
+                        que esté todo el mundo, se decide el proyecto
+                        en sí.</aside>
+                    </section>
+
+                    <section><h1>Lección primera</h1>
+                        <h1 class="fragment"><a href="git.html">Git y
+                            Github</a></h1>
+                    </section>
+
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
 	</body>
 </html>
