@@ -1,8 +1,8 @@
 use Test::Text; # -*- mode: cperl -*-
 use Test::More;
 
-if ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
-  plan skip_all => "Check relevant only for push";
+if ( $ENV{'CI'} ) {
+  plan skip_all => "No se ejecuta en Travis";
 }
 
 for my $dir (qw(temas problemas) ) {
