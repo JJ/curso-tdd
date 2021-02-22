@@ -1,12 +1,16 @@
-name: "Comprueba README"
+name: "Comprueba texto"
 
 on:
   push:
     paths:
+      - 'temas/*.md'
+      - 'problemas/*.md'
       - 'README.md'
       - 'words.dic'
   pull_request:
     paths:
+      - 'temas/*.md'
+      - 'problemas/*.md'
       - 'README.md'
       - 'words.dic'
 
@@ -26,5 +30,5 @@ jobs:
           curl https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
           curl https://raw.githubusercontent.com/SublimeText/Dictionaries/master/Spanish.dic -o Spanish.dic
           rm proyectos.md asistentes.md # No nos interesan
-          prove -I/usr/lib -c
+          perl -MTAP::Harness -e 'use utf8; my $harness = TAP::Harness->new( { verbosity => 0} ); die "FAIL" if $harness->runtests( "t/just_check.t" )->failed;'
 

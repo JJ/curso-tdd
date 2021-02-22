@@ -5,7 +5,7 @@ if ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
   plan skip_all => "Check relevant only for push";
 }
 
-for my $dir (qw(temas proyectos) ) {
+for my $dir (qw(temas problemas) ) {
   just_check( $dir, '.', 'Spanish', 0 );
 }
 
