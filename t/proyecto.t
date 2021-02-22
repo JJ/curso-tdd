@@ -20,7 +20,7 @@ my $github;
 
 SKIP: {
   my ($this_hito) = ($diff =~ $diff_regex);
-  skip "No hay envío de proyecto", 5 unless defined $this_hito;
+  skip "No hay envío de proyecto", 10 unless defined $this_hito;
   my $diag=<<EOC;
 
 "Failed test" indica que no se cumple la condición indicada
