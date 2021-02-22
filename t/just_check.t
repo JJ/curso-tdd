@@ -11,4 +11,3 @@ for my $dir (qw(temas problemas) ) {
 
 just_check( '.','.', 'Spanish');
 
-done_testing;
