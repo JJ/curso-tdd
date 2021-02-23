@@ -49,7 +49,8 @@ estas sesiones:
   * [Presentación](preso/git).
 
 2. Desarrollo ágil
-   * Historias de usuario, *user journeys* y todo eso.
+  * Historias de usuario, *user journeys* y todo eso.
+  * [Material](temas/ágil.md).
 
 3. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
