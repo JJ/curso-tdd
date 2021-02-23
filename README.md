@@ -152,7 +152,7 @@ clases se grabarán también (en la medida de lo posible).
 ## Clases
 
 - 📅 22 de febrero - 15 de marzo.
-- 🕜 13:30 - 14:00.
+  - 🕜 13:30 - 14:00 hora de Madrid (CET)
 
 ## Título
 
