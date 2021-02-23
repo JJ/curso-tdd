@@ -5,7 +5,7 @@ aleatoria. Cambiad la versión si no es esa la que tenéis en vuestro tag.
 
 | Nombre proyecto con enlace                                                         | Versión |
 |------------------------------------------------------------------------------------|---------|
-|                                                                                    | v0.1.1  |
+| [Pograma](https://github.com/Phyton-es-mi-typo/pograma)                            | v0.0.1  |
 |                                                                                    | v0.1.1  |
 |                                                                                    | v0.1.1  |
 |                                                                                    | v0.1.1  |
