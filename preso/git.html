@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        
+	<title>Desarrollo ágil: git</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Git y GitHub</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/git"><code>jj.github.io/curso-tdd/temas/git</code></a></h3>
+                    </section>
+		    <section><h1>GitHub</h1>
+                        <h1 class="fragment">Configura
+	                    email/nombre</h1>
+                        <h1 class="fragment">Clave pública/privada</h1>
+                    </section>
+
+                    <section><h1>Tipos de pull</h1>
+                        <h1 class="fragment"><em>Squash</em></h1>
+                        <h1 class="fragment"><em>Merge commit</em></h1>
+                        <h1 class="fragment">Rebase y <em>merge</em> ⋆⋆⋆⋆⋆</h1>
+                    </section>
+
+                    <section><h1>Resolviendo conflictos</h1>
+                        <pre><code>git checkout --theirs fichero
+git checkout --ours fichero
+                        </code></pre>
+                        <h2 class="fragment">Si todo falla</h2>
+                        <pre class="fragment"><code>git clone url
+git rm origin
+git remote add origin mi-fork-de-url
+git push --force</code></pre>
+                        <aside class="notes">Cuidado con hacer esto
+                            con un PR abierto; si se hace así, se
+                            cerrará</aside>
+                    </section>
+
+                    <section><h1>Pull requests</h1>
+                        <h2>Gran ocasión para revisar el código</h2>
+                    </section>
+
+                    <section><h1><em>Tagging</em> y
+                        <em>releasing</em></h1>
+
+                        <h2>Esencial en desarrollo ágil: entrega MVP
+                            frecuente</h2>
+                        <pre><code>git tag -a v0.0.1 -m "First release"</code></pre>
+                    </section>
+
+                    <section><h1>Yéndonos por las ramas</h1>
+                        <pre><code>git checkout v0.0.1
+git checkout -b rama-desde-tag</code></pre>
+                    </section>
+
+                    <section><h1>✓ TODO</h1>
+                        <h2>Crear organización para el equipo y/o repo
+                            para el proyecto (dentro de la organización)</h2>
+                        <h2>PR en <code>proyectos.md</code> con versionado semántico</h2>
+                        <pre><code>
+| Nombre proyecto con enlace                                                         | Versión |
+|------------------------------------------------------------------------------------|---------|
+|                                                                                    | v0.1.1  |
+                        </code></pre>
+                    </section>
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>
