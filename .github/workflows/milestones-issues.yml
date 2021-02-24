@@ -1,11 +1,11 @@
-name: "Comprueba hitos e issues"
+name: "Comprueba hitos"
 on:
   pull_request:
     paths:
       - 'proyectos.md'
 
 jobs:
-  obtain-repo:
+  test-milestones:
     runs-on: ubuntu-latest
     steps:
       - name: Extrae URL del repositorio del diff
@@ -20,3 +20,30 @@ jobs:
           minVersion: "4.0.0"
           minPRs: 1
           minMilestones: 1
+      - name: Comprueba variables.
+        run:
+          echo $version
+          echo $user
+          echo $repo
+      - name: Comprueba que exista el tablero
+        uses: actions/github-script@v3
+        if: env.version >= '1'
+        with:
+          github-token: ${{github.token}}
+          script: |
+            const user = process.env.user
+            const repo = process.env.repo
+            const projects = await github.request( 'GET /repos/{user}/{repo}/projects', {
+               user: user,
+               repo: repo,
+               mediaType: {
+                 previews: [
+                   'inertia'
+                ]
+              }
+            })
+            if ( projects.data.length == 0 ) {
+               core.setFailed("❌ Debe haber un proyecto (para el tablero)")
+            } else {
+               console.log( "✅ Tenemos un proyecto para el tablero ")
+            }
