@@ -21,8 +21,8 @@ elaborar las historias de usuario que se vayan a usar más adelante.
 
 ## Desarrollo ágil
 
-Hace ahora 20 años, el  <a
-href="https://agilemanifesto.org/">manifiesto ágil</a> apostaba por
+Hace ahora 20 años, el [manifiesto ágil](https://agilemanifesto.org/)
+apostaba por
 una nueva manera de entender el desarrollo de software que aportara
 valor al cliente y que fuera ágil en la evolución del mismo, a la vez
 que proporcionara un entorno de trabajo más satisfactorio para quien
@@ -39,7 +39,6 @@ cadena de departamentos aislados entre sí. Los principales lemas eran
   sirve de nada si no se acompaña de código que funcione; el código
   funcionando es la mejor forma de asegurar que efectivamente se
   entienden correctamente los requisitos del cliente.
-  
 * Menos procesos, más interacción con el cliente (y de los
   programadores entre sí). En vez de compartimentos aislados, con una
   cascada y el cliente en ambos extremos, las interacciones del
@@ -47,20 +46,19 @@ cadena de departamentos aislados entre sí. Los principales lemas eran
   programadores llevando a cabo ese programa interaccionan
   continuamente para llevar el código a un estado en el que se pueda
   mostrar al cliente.
-
 * La colaboración del cliente no debe ser mediante contratos (aunque
   tendrá que haberlos, sino mediante una interacción continua donde se
   le muestre productos funcionando y el cliente vea si eso corresponde
   a sus expectativas o no; si no lo hace, debe de organizarse el
   equipo de forma ágil para evolucionar el producto hasta que lo haga.
-  
+
 Estos lemas se organizan en una serie de principios, doce en
 total. Pero de ellos vamos a extraer unos cuantos:
 
 * La programación tiene que centrarse en resolver problemas. Lo más
   importante es eso, y debe ser el principal enfoque de la
   tarea. Resolverlos, y tener métodos ágiles para comprobar que
-  efectivametne se ha resuelto.
+  efectivamente se ha resuelto.
 * Para interaccionar con el cliente y que vea esos productos
   mínimamente viables, hay que publicar frecuentemente, pasando a
   producción cualquier cosa que esté lista y pase todos los tests. En
@@ -105,7 +103,7 @@ vez hay una sola forma de hacer las cosas, y siempre hay que tomar
 decisiones técnicas que tendrán implicaciones en la evolución del
 software. Diseñar te va ayudar a escribir menos código, y el mejor
 código es el que no hay que testear, con lo que será código de más
-claidad. Un diseño flexible, por capas, que desacople diferentes
+claridad. Un diseño flexible, por capas, que desacople diferentes
 partes del mismo, será también mucho más fácil de adaptar a diferentes
 circunstancias.
 
