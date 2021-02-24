@@ -1,11 +1,11 @@
-name: "Comprueba hitos e issues"
+name: "Comprueba hitos"
 on:
   pull_request:
     paths:
       - 'proyectos.md'
 
 jobs:
-  obtain-repo:
+  test-milestones:
     runs-on: ubuntu-latest
     steps:
       - name: Extrae URL del repositorio del diff
@@ -36,6 +36,11 @@ jobs:
             const projects = await github.request( 'GET /repos/{user}/{repo}/projects', {
                user: user,
                repo: repo,
+               mediaType: {
+                 previews: [
+                   'inertia'
+                ]
+              }
             })
             console.log( projects )
             if ( projects.data.length > 0 ) {
