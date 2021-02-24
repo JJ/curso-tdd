@@ -42,8 +42,7 @@ jobs:
                 ]
               }
             })
-            console.log( projects.data, " length ", projects.data.length )
-            if ( projects.data.length > 0 ) {
+            if ( projects.data.length == 0 ) {
                core.setFailed("❌ Debe haber un proyecto (para el tablero)")
             } else {
                console.log( "✅ Tenemos un proyecto para el tablero ")
