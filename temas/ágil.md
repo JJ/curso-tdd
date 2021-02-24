@@ -132,7 +132,41 @@ acaban siendo deprecadas y no quieres encontrarte en una situación en
 la cual tengas que reescribir todo por usar algo con posibles huecos
 de seguridad.
 
+## Capturando los deseos de los clientes
 
+Los deseos de los clientes se capturarán en unas [historias de
+usuario](diseño.md). Pero previo a las historias de usuario se tendrán
+que crear unas narrativas de los diferentes pasos que van a dar los
+diferentes tipos de usuario, una visión más global que, más adelante,
+se dividirá en fragmentos, historias de usuario, testeables y
+programables. Estas narrativas se llaman
+[épicas](https://www.qalovers.com/2018/04/historias-de-usuario.html). En
+general, como afirma en el enlace anterior:
+
+> Son historias de usuario demasiado extensas que se tienen que
+> dividir en otras más pequeñas.
+
+Y en este punto es donde es conveniente empezar a usar las mejores
+prácticas en el desarrollo ágil. Hay muchas formas de llevarlo a cabo,
+pero generalmente se agrupan en dos campos diferentes: los partidarios
+de usar [*scrum*](https://proyectosagiles.org/que-es-scrum/) o los
+usuarios de
+[*kanban*](https://kanbanize.com/es/recursos-de-kanban/primeros-pasos/que-es-kanban). Hay
+diferencias considerables, aunque los dos coinciden en el hecho de que
+se trabaje sistemáticamente con historias de usuario... y con un
+tablero. Los tableros permiten ver claramente en qué estado está el
+trabajo, y permite organizar las historias de usuario en diferentes
+columnas según el estado en el que estén. Las columnas clásicas son
+"Por hacer", "haciéndose" y "hecho", pero se pueden añadir otras
+columnas según el proyecto y el equipo: Diseño técnico, o Tormenta de
+Ideas. Estas últimas permiten interaccionar, a través de la
+herramienta que se elija (que, por simplicidad, es mejor que sea la
+que  provee el gestor de código, por ejemplo, el de GitHub).
+
+Estas columnas de "tormenta de ideas" se pueden usar, por ejemplo,
+para elaborar colaborativamente una épica. De esa épica,
+posteriormente, surgirán las diferentes historias de usuario. Pero eso
+lo veremos a continuación.
 
 ## Ver también
 
