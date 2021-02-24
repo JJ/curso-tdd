@@ -20,3 +20,20 @@ jobs:
           minVersion: "4.0.0"
           minPRs: 1
           minMilestones: 1
+      - name: Comprueba que exista el tablero
+        if: env.version >= "v1"
+        with:
+          github-token: ${{github.token}}
+        script: |
+           const user = process.env.user
+           const repo = process.env.repo
+           const projects = github.request( 'GET /repos/{user}/{repo}/projects', {
+               user: user,
+               repo: repo,
+           })
+           console.log( projects )
+           if ( projects.data.length > 0 ) {
+               core.setFailed("❌ Debe haber un proyecto (para el tablero)")
+           } else {
+               console.log( "✅ Tenemos un proyecto para el tablero ")
+	   }
