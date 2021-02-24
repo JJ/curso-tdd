@@ -17,7 +17,7 @@ aleatoria. Cambiad la versión si no es esa la que tenéis en vuestro tag.
 |                                                                                    | v0.1.1  |
 |                                                                                    | v0.1.1  |
 |  [Palabrot](https://github.com/ScalaBot-Team/PalaBrot)                             | v0.0.1  |
-|                                                                                    | v0.1.1  |
+|  [BoTTutorias](https://github.com/BoTTuros/BoTTutorias)                            | v0.0.1  |
 |                                                                                    | v0.1.1  |
 |    [Zero, the bellhop.](https://github.com/monium/zero)                            | v0.1.1  |
 |                                                                                    | v0.1.1  |
