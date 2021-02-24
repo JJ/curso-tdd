@@ -19,7 +19,6 @@ aleatoria. Cambiad la versión si no es esa la que tenéis en vuestro tag.
 |                                                                                    | v0.1.1  |
 |    [BoTTutorias](https://github.com/BoTTuros/BoTTutorias)                          | v0.0.1  |
 |    [Zero, the bellhop.](https://github.com/monium/zero)                            | v0.1.1  |
-|                                                                                    | v0.1.1  |
-|    [FloWorking](https://github.com/PalomitaTeam/FloWorking)                        | v0.1.1  | 
+|    [agil-dev-4e](https://github.com/Kobedinho/agil-dev-4e)                         | v0.1.2  |
+|    [FloWorking](https://github.com/PalomitaTeam/FloWorking)                        | v0.1.2  | 
 |    [go-notes](https://github.com/Golang-EC/go-notes)                               | v0.1.2  |
-
