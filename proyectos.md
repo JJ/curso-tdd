@@ -9,12 +9,13 @@ aleatoria. Cambiad la versión si no es esa la que tenéis en vuestro tag.
 | [CryptoGo](https://github.com/CriptoInfo/CryptoGo)                                 | v0.1.1  |
 |                                                                                    | v0.1.1  |
 |                                                                                    | v0.1.1  |
+| [Gortana](https://github.com/Pibes-GRX/Gortana)                                    | v0.0.1  |
+|                                                                                    | v0.1.1  |
+| [Undefined Java Project](https://github.com/tddgrupo4/TDD-Grupo-4)                 | v0.0.1  |
+| [bot-Telegram](https://github.com/botTDD/bot-Telegram)                             | v0.1.1  |
 |                                                                                    | v0.1.1  |
 |                                                                                    | v0.1.1  |
-|                                                                                    | v0.1.1  |
-|                                                                                    | v0.1.1  |
-|                                                                                    | v0.1.1  |
-|                                                                                    | v0.1.1  |
+|  [Palabrot](https://github.com/ScalaBot-Team/PalaBrot)                             | v0.0.1  |
 |                                                                                    | v0.1.1  |
 |                                                                                    | v0.1.1  |
 |    [Zero, the bellhop.](https://github.com/monium/zero)                            | v0.1.1  |
