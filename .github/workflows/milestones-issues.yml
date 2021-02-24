@@ -22,7 +22,7 @@ jobs:
           minMilestones: 1
       - name: Comprueba que exista el tablero
         uses: actions/github-script@v3
-        if: env.version >= "v1"
+        if: env.version >= 'v1'
         with:
           github-token: ${{github.token}}
           script: |
