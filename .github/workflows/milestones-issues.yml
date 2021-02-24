@@ -20,6 +20,11 @@ jobs:
           minVersion: "4.0.0"
           minPRs: 1
           minMilestones: 1
+      - name: Comprueba variables.
+        run:
+          echo $version
+          echo $user
+          echo $repo
       - name: Comprueba que exista el tablero
         uses: actions/github-script@v3
         if: env.version >= 'v1'
