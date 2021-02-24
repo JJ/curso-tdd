@@ -33,7 +33,7 @@ jobs:
           script: |
             const user = process.env.user
             const repo = process.env.repo
-            const projects = github.request( 'GET /repos/{user}/{repo}/projects', {
+            const projects = await github.request( 'GET /repos/{user}/{repo}/projects', {
                user: user,
                repo: repo,
             })
