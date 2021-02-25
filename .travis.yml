@@ -1,8 +1,5 @@
 language:
   - minimal
 
-install:
-  - echo $TRAVIS
-
 script:
-  - prove -c
+  - prove -c t/check_hitos.t
