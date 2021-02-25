@@ -63,12 +63,17 @@ EOC
 
   if ($this_version >= 2 ) {
     diag( check( "Tests para hito 2") );
+    like( $README, qr/[Ss]olución/, "Se menciona una solución en el README");
+  }
+
+  if ($this_version >= 3 ) {
+    diag( check( "Tests para hito 3") );
     like( $README, qr/[lL]og/, "Se menciona un logger en el README");
     like( $README, qr/issue/, "Hay enlace a al menos un issue");
   }
 
-  if  ( $this_version >= 3 ) {
-    diag( check( "Tests para hito 3") );
+  if  ( $this_version >= 4 ) {
+    diag( check( "Tests para hito 4") );
     my @hus = grep(  m{HU/}, @repo_files  );
     cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
   }
