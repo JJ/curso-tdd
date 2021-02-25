@@ -2,7 +2,7 @@ language:
   - minimal
 
 install:
-  - docker pull jjmerelo/devqagrx:latest
   - echo $TRAVIS_PULL_REQUEST
+  
 script:
-  - docker run -t  --env TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST --env TRAVIS=$TRAVIS -v $TRAVIS_BUILD_DIR:/test jjmerelo/devqagrx:latest
+  - prove -c
