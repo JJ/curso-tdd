@@ -125,7 +125,10 @@ o cosas más complicadas.
 
 Hay relativamente pocos servicios de este tipo, pero uno de los más
 populares es [`etcd`](https://etcd.io/); hay otros, incluso
-específicos de lenguaje, que se pueden usar también.
+específicos de lenguaje, que se pueden usar también; finalmente,
+servicios un poco más complejos de descubrimiento como
+[`consul`](https://www.consul.io/) incluyen también un almacén clave
+valor que se puede usar para almacenar la configuración remota.
 
 ## Almacenamiento de datos
 
@@ -133,9 +136,9 @@ El almacenamiento de datos actual va mucho más allá de las bases de
 datos relacionales, dividiéndose de forma basta en bases de datos SQL
 y NoSQL (no sólo SQL), pero este último término simple incluye toda
 una complejidad de sistemas de almacenamiento de datos que incluyen
-depósitos clave-valor (como Redis), bases de datos documentales (como
+depósitos clave-valor (como [Redis](https://redis.io)), bases de datos documentales (como
 Cassandra o Elastic), bases de datos en tiempo real (como RethinkDB) o
-bases de datos de grafos (como Neo4J).
+bases de datos de grafos (como [Neo4J](https://neo4j.com/)).
 
 La cuestión principal es que cada una de ellas tienen diferentes casos
 de uso. Evidentemente, si la información está estructurada limpiamente
@@ -164,16 +167,24 @@ puede ser simplemente cuestión de cambiar la implementación.
 
 Hemos mencionado en el [capítulo anterior](aplicaciones.md) las
 aplicaciones basadas en sistemas de mensajería; evidentemente, esas
-aplicaciones necesitarán este tipo de servicio. Todas las plataformas
-cloud tienen su propio sistema, pero adicionalmente se pueden usar
-aplicaciones como RabbitMQ para gestionarlo, directamente o con
-librerías de tareas como Celery por encima.
+necesitarán este tipo de servicio. Todas las plataformas cloud tienen
+su propio sistema, pero adicionalmente se pueden usar aplicaciones
+como [RabbitMQ](https://www.rabbitmq.com/) para gestionarlo,
+directamente o con librerías de tareas como Celery por encima.
 
 Otros servicios, como servidores web, forman parte más bien de la
 infraestructura, pero en muchos casos se integran de forma directa con
-la aplicación; es el caso de Green Unicorn con aplicaciones web de
-Python, por ejemplo. No se usan *desde la aplicación*, pero en todo
-caso forma parte de la infraestructura.
+la aplicación; es el caso de [Green
+Unicorn](https://docs.gunicorn.org/en/stable/index.html) con
+aplicaciones web de Python, por ejemplo. No se usan *desde la
+aplicación*, pero en todo caso forma parte de la infraestructura.
+
+En una infraestructura cloud también harán falta API Gateways, o
+pórticos que enlazarán y conocerán a los demás microservicios. Algunos
+sistemas como [Traefik](https://traefik.io) o
+[Kong](https://konghq.com) son bastante potentes y populares. Salvo
+que vayas a usar muchos microservicios, en general no serán necesarios
+y para las funciones más básicas `nginx` será suficiente.
 
 ## Actividad
 
@@ -186,10 +197,6 @@ familiarizarse con ellas. Así que en este hito habrá que ampliar el
 más adelante; de estas, el servicio de logging es obligatorio, el
 servicio de configuración remota casi, y servicios adicionales a gusto
 del consumidor.
-
-Conviene que para tomar esta decisión se use ya un *issue* de GitHub;
-esto permitirá que la decisión quede documentada, y por supuesto
-cuando se añada la decisión al `README.md` se puede cerrar tal issue. Este issue se enlazará desde el README.md donde se describa el criterio de adopción de la herramienta.
 
 ## Entrega
 

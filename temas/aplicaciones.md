@@ -1,6 +1,5 @@
 # Resolviendo problemas usando aplicaciones informáticas.
 
-
 ## Planteamiento
 
 La gama de posibles "productos" que se pueden generar para resolver un
@@ -11,15 +10,19 @@ hacer elegir una u otra.
 
 ## Al final de esta sesión
 
-Se conocerán diferentes posibilidades para publicar aplicaciones
+Se conocerán diferentes posibilidades para crear y publicar aplicaciones
 informáticas, y se tendrán elementos de juicio para elegir una u otra.
 
 ## Criterio de aceptación
 
-El equipo tendrá que decidirse por un problema que resolver, y decidir
-qué forma va a tomar esa solución.
+El equipo tendrá que decidir qué forma va a tomar la solución al
+problema que han planteado en la fase anterior.
 
 ## La informática trata de resolver problemas usando sistemas informáticos
+
+> En el [tema anterior](ágil.md) hemos planteado la necesidad de
+> diseñar de forma adecuada la solución. Aquí haremos un breve panorama
+> sobre las diferentes soluciones informáticas que se pueden usar.
 
 Esto, que puede parecer obvio, queda en el olvido totalmente en un
 sistema de enseñanza de la informática compartimentalizado en el que
@@ -71,10 +74,10 @@ componentes principales
 * Una estructura de datos, que no será explícita en el caso de los
   lenguajes dirigidos a objetos (sino atributos en una clase), o sí en
   en caso de lenguajes procedurales.
-  
+
 * Un API o interfaz de aplicación, que servirá para abstraer esa
   estructura de datos y poder hacer cosas específicas con ellas.
-  
+
 Modelizar esta estructura de datos de forma que se corresponda al
 dominio del problema es una de las tareas más importantes en el diseño
 de una aplicación; pero desde nuestro punto de vista lo importante es
@@ -116,23 +119,31 @@ diferentes formas.
   equivalentes de HTTP. Se trata evidentemente de un API procedural,
   con lo que habrá que llevar a cabo adaptaciones en el caso de tener
   por debajo clases.
-  
+
 * Un API con websockets usa el protocolo HTTP de la misma forma, pero
   se diferencia del anterior en que usa conexiones permanentes, con
   reacciones por parte del cliente o del servidor cada vez que llegan
   datos por esa conexión. En aplicaciones de una sola página suelen
   ser bastante populares, pues permiten reaccionar rápidamente a
   cambios en el frontend (o actualizar desde el back-end).
-  
+
+* APIs que usen [gRPC](https://grpc.io/), un protocolo moderno para
+  llamada remota a procedimientos independiente del lenguaje.
+
 * Otros tipos de protocolos: SOAP, XML-RPC... Aunque no son tan
   populares, es posible todavía encontrárselos (y también en trabajos
   de la ETSIIT). En lo posible, evitarlos.
-  
+
+* APIs [GraphQL](https://graphql.org/learn/) que, más allá de la
+  simple descripción de recursos que ofrece REST, permite crear
+  peticiones complejas usando un lenguaje específico y con respuestas
+  también complejas.
+
 * Sistemas de mensajería, con interfaces orientados a tareas. En
   sistemas de tareas el cliente invoca a una tarea, que se pone de
   forma explícita en el interfaz. Por ejemplo, usando Celery un módulo
   se organiza en una serie de tareas, que se invocan desde el cliente.
-  
+
 Al final, este tipo de APIs también son un módulo, y por tanto puedes
 publicarlo también; en general, sin embargo, serán parte de una
 aplicación. No hay ningún problema para que un API REST resuelva
@@ -147,7 +158,7 @@ funcionalidad a la que esté suscrita, y contesta o lleva a cabo algún
 otro tipo de actividad. También pueden ser, en realidad, APIs que
 reaccionen a algún otro tipo de API, como *hooks* que reaccionen a
 peticiones a GitHub; en ese sentido, pueden ser una capa que esté por
-encima de un API de cualquier tipo, o directamente ese tipo de API. 
+encima de un API de cualquier tipo, o directamente ese tipo de API.
 
 
 ## Arquitecturas de microservicios
@@ -200,9 +211,10 @@ desarrollar (y desplegar) de forma aislada uno del otro.
 
 ## Actividad
 
-En esta fase se decidirá el proyecto entre los que se han planteado, o
-de forma totalmente original. El proyecto en sí y qué va a ser (entre
-los tipos de aplicaciones mostradas antes) se añadirá al README.
+En esta fase se decidirá el proyecto en sí y qué va a ser (entre
+los tipos de aplicaciones mostradas antes) se añadirá al README. Este
+fichero deberá contener la palabra *solución* donde se describirá el
+tipo de solución informática que se ha elegido.
 
 Conviene que se midan las fuerzas y no se intente nada demasiado
 ambicioso (aplicación completa con varios front-end basados en
