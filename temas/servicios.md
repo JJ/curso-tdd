@@ -167,10 +167,10 @@ puede ser simplemente cuestión de cambiar la implementación.
 
 Hemos mencionado en el [capítulo anterior](aplicaciones.md) las
 aplicaciones basadas en sistemas de mensajería; evidentemente, esas
-necesitarán este tipo de servicio. Todas las plataformas
-cloud tienen su propio sistema, pero adicionalmente se pueden usar
-aplicaciones como [RabbitMQ](https://www.rabbitmq.com/) para gestionarlo, directamente o con
-librerías de tareas como Celery por encima.
+necesitarán este tipo de servicio. Todas las plataformas cloud tienen
+su propio sistema, pero adicionalmente se pueden usar aplicaciones
+como [RabbitMQ](https://www.rabbitmq.com/) para gestionarlo,
+directamente o con librerías de tareas como Celery por encima.
 
 Otros servicios, como servidores web, forman parte más bien de la
 infraestructura, pero en muchos casos se integran de forma directa con
@@ -178,6 +178,13 @@ la aplicación; es el caso de [Green
 Unicorn](https://docs.gunicorn.org/en/stable/index.html) con
 aplicaciones web de Python, por ejemplo. No se usan *desde la
 aplicación*, pero en todo caso forma parte de la infraestructura.
+
+En una infraestructura cloud también harán falta API Gateways, o
+pórticos que enlazarán y conocerán a los demás microservicios. Algunos
+sistemas como [Traefik](https://traefik.io) o
+[Kong](https://konghq.com) son bastante potentes y populares. Salvo
+que vayas a usar muchos microservicios, en general no serán necesarios
+y para las funciones más básicas `nginx` será suficiente.
 
 ## Actividad
 
@@ -190,10 +197,6 @@ familiarizarse con ellas. Así que en este hito habrá que ampliar el
 más adelante; de estas, el servicio de logging es obligatorio, el
 servicio de configuración remota casi, y servicios adicionales a gusto
 del consumidor.
-
-Conviene que para tomar esta decisión se use ya un *issue* de GitHub;
-esto permitirá que la decisión quede documentada, y por supuesto
-cuando se añada la decisión al `README.md` se puede cerrar tal issue. Este issue se enlazará desde el README.md donde se describa el criterio de adopción de la herramienta.
 
 ## Entrega
 

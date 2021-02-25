@@ -366,3 +366,6 @@ modularización
 waterfall
 gRPC
 GraphQL
+Traefik
+Kong
+Gateway
