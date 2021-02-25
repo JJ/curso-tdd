@@ -2,4 +2,4 @@ language:
   - minimal
 
 script:
-  - prove -c t/check_hitos.t
+  - prove -c t/proyecto.t
