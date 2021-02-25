@@ -2,7 +2,7 @@ language:
   - minimal
 
 install:
-  - echo $TRAVIS_PULL_REQUEST
-  
+  - echo $TRAVIS
+
 script:
   - prove -c
