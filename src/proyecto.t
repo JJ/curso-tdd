@@ -69,7 +69,6 @@ EOC
   if ($this_version >= 3 ) {
     diag( check( "Tests para hito 3") );
     like( $README, qr/[lL]og/, "Se menciona un logger en el README");
-    like( $README, qr/issue/, "Hay enlace a al menos un issue");
   }
 
   if  ( $this_version >= 4 ) {
