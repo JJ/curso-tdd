@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desarrollo ágil: servicios avanzados</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Servicios</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/servicios"><code>jj.github.io/curso-tdd/temas/servicios</code></a></h3>
+                    </section>
+
+                    <section><h1>✓ TODO</h1>
+                        <h2 class="fragment">□ ¿Se ha formulado
+                            correctamente el problema? </h2>
+                        <h2 class="fragment">□ ¿Se ha creado una épica? </h2>
+                        <h2 class="fragment">□ ¿Se ha propuesto una solución informática? </h2>
+                    </section>
+
+                    <section><h1>Hay servicios imprescindibles en una
+                        aplicación</h1>
+                    </section>
+
+                    <section>
+                        <section><h1>💘 logs</h1>
+                        </section>
+
+                        <section><h1>Arquitectura κ</h1>
+                        </section>
+
+                        <section><h1>Librerías básicas o externas</h1>
+                        </section>
+
+                        <section><h1>Servicios externos (logz.io) o
+                            libres (logstash)</h1>
+                        </section>
+
+                        <section><pre><code data-line-numbers="1|18">use simple_logger::SimpleLogger;
+
+#[derive(Debug)]
+pub enum IssueState {
+    Open,
+    Closed,
+}
+
+#[derive(Debug)]
+pub struct Issue {
+    state: IssueState,
+    project_name: String,
+    issue_id: u64,
+}
+
+pub fn issue_factory( project_name: String,
+                      issue_id: u64) -> Issue {
+    log::debug!( "Creating closed issue for project {} with id {}", project_name, issue_id );
+    return Issue { state: IssueState::Closed,
+                   project_name: project_name,
+                   issue_id: issue_id }
+}</code></pre>
+                            <aside class="notes">Primer código del
+                                curso. Yupiii!</aside>
+                        </section>
+
+                    <section>
+                        <h1>Usando los logs siempre</h1>
+                        <pre><code data-line-numbers="2|6">fn main() {
+    SimpleLogger::new().init().unwrap();
+    let this_issue = issue_factory(String::from("CoolProject"), 1 );
+    let mut that_issue = issue_factory( String::from("CoolProject"), this_issue.issue_id + 1 );
+    that_issue.state = IssueState::Open; // Avoid warning
+    log::debug!("Changed state to Open");
+}</code></pre>
+                    </section>                    
+                    </section>
+
+                    <section><h1>Configuración remota</h1>
+                        <h2 class="fragment">Parte de los 12
+                            pasos</h2>
+                        <h2 class="fragment">Configuración en el
+                            entorno</h2>
+                    </section>
+
+                    <section>
+                        <section><h1>Hay muchas formas de almacenar
+                            los datos</h1>
+                        </section>
+
+                        <section><h1>SGBD con SQL</h1>
+                            <h2 class="fragment">Documentales</h2>
+                            <h2 class="fragment">Clave-valor</h2>
+                            <h2 class="fragment">Tiempo real</h2>
+                            <h2 class="fragment">Grafos
+                        </section>
+
+                        <section><h1>Los sistemas de ficheros son
+                            excelentes</h1>
+                            <h2 class="fragment">Y hay sistemas de
+                                ficheros comerciales</h2>
+                        </section>
+
+                    </section>
+
+                    <section><h1>No nos olvidemos</h1>
+                        <h1 class="fragment">Servidores web: <code>nginx</code></h1>
+                        <h1 class="fragment">RabbitMQ y otros de
+                            mensajería</h1>
+                    </section>
+                    
+                    <section> <h1>✓ TODO</h1>
+                        <h1>¿Qué servicios vas a usar y por qué es un
+                            logger?</h1>
+                        <h2>Considerar el resto de los servicios para
+                            más adelante...</h2>
+                    </section>
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+                 slideNumber: true,
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>

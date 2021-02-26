@@ -10,3 +10,4 @@ target/
 Cargo.lock
 
 Spanish.*
+fatlib/

@@ -56,6 +56,7 @@ estas sesiones:
 3. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
+  * [Material](preso/aplicaciones.md).
 
 4. Servicios avanzados en informática.
   * Configuración distribuida.

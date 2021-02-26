@@ -1,6 +1,7 @@
 use Test::Text; # -*- mode: cperl -*-
 use Test::More;
 
+print %ENV;
 if ( $ENV{'TRAVIS'} ) {
   plan skip_all => "No se ejecuta en Travis";
 }
