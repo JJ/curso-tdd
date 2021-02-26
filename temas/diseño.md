@@ -140,7 +140,7 @@ objetos-valor, sin ningún tipo de existencia fuera del contexto de un
 proyecto. Tendremos, por lo tanto, una sola entidad, la clase
 `Proyecto`. Los objetos valor, `Hito` e `Issue` también serán clases,
 pero no existen si no es dentro del contexto de un proyecto, por lo
-que los mantendremos así. 
+que los mantendremos así.
 
 ¿Cumple esta entidad nuestra historia de usuario? En principio sí,
 pero evidentemente se puede evolucionar durante el desarrollo de la
