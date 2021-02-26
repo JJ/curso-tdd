@@ -3,30 +3,40 @@
 
 ## Planteamiento
 
-En nuestro contexto, se define [la calidad del software](https://en.wikipedia.org/wiki/Software_quality) como la
+En nuestro contexto, se define [la calidad del
+software](https://en.wikipedia.org/wiki/Software_quality) como la
 capacidad del mismo de seguir para cumplir (o exceder) las
-especificaciones y las expectativas de los usuarios del mismo. 
+especificaciones y las expectativas de los clientes del mismo.
 
 En general, la calidad es un proceso, y no simplemente una
-característica que se añade en un momento determinado al producto. Por eso el
-producto, en nuestro caso el software, junto con el proceso de desarrollo, debe estar diseñado y pensado
-desde el principio para asegurar que funciona y que responde a todos
-los requisitos funcionales y de otro tipo que se hayan planteado.
+característica que se añade en un momento determinado al producto. Por
+eso el producto, en nuestro caso el software, junto con el proceso de
+desarrollo, debe estar diseñado y pensado desde el principio para
+asegurar que funciona y que responde a todos los requisitos
+funcionales y de otro tipo que se hayan planteado.
 
 En un curso que inicialmente iba dedicado al diseño de tests se debe
-partir del planteamiento de la propia
-[aplicación, componente o biblioteca](aplicaciones.md), 
-porque se realizan pruebas sobre las
+partir del planteamiento de la propia [aplicación, componente o
+biblioteca](aplicaciones.md), porque se realizan pruebas sobre las
 especificaciones de la aplicación; no se puede quedar en la sintaxis y
 una enumeración de los frameworks disponibles para hacer tests.
 
+Así que en esta sesión vamos a hablar de cómo diseñar de forma ágil un
+sistema, para asegurarse de que va a responder a las necesidades del
+cliente y además va a ser suficientemente flexible para seguirlo
+haciendo si las necesidades cambian (o surgen otras nuevas).
+
 ## Al final de esta sesión
 
-Los estudiantes sabrán como plantear una arquitectura básica de aplicación a partir de sus
-especificaciones y comenzar la implementación de forma que hacer pruebas sobre  esas
-especificaciones sea sencillo y directo. También sabrán como plasmar
-en plataformas de desarrollo colaborativo estos requisitos para llevar
-a cabo el desarrollo de la aplicación.
+Previamente, los estudiantes habrán formulado una idea general o un
+modelo de "cliente" y habrán expresado en una serie de épicas (o una
+sola) cómo se articulan esas necesidades. En este hito, los
+estudiantes sabrán como plantear una arquitectura básica de aplicación
+a partir de sus especificaciones y comenzar la implementación de forma
+que hacer pruebas sobre esas especificaciones sea sencillo y
+directo. También sabrán como plasmar en plataformas de desarrollo
+colaborativo estos requisitos para llevar a cabo el desarrollo de la
+aplicación.
 
 ## Criterio de aceptación
 
@@ -36,16 +46,19 @@ El proyecto tendrá una serie de hitos e issues creados
   directorio `HU`.
 
 Con esto se probará que se están siguiendo los principios de diseño
-desarrollando a partir de casos de uso. 
+desarrollando a partir de casos de uso, y que se desglosan a partir de
+una serie de épicas.
 
 ## Diseño dirigido por dominio
 
-Una vez decidido el foco principal del proyecto, el diseño debe
-descender hasta un nivel en el que pueda ser abordable mediante la
-programación del mismo. "Divide y vencerás" nos permite trabajar con
-entidades que son autónomas e independientes entre sí, y que se pueden programar y
-testear por separado. Esta autonomía, que es un requisito, hace que una de las técnicas más conocidas sea
-el [diseño dirigido por el dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
+Una vez decidido el foco principal del proyecto y su arquitectura
+general, el diseño debe descender hasta un nivel en el que pueda ser
+abordable mediante la programación del mismo. "Divide y vencerás" nos
+permite trabajar con entidades que son autónomas e independientes
+entre sí, y que se pueden programar y testear por separado. Esta
+autonomía, que es un requisito, hace que una de las técnicas más
+conocidas sea el [diseño dirigido por el
+dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
 
 Aunque, como todas las tecnologías de programación, es compleja en
 vocabulario y metodología, lo principal es que se deben de crear
@@ -60,7 +73,9 @@ programación, son el de *entidad* y el de *objeto-valor*. Una entidad
 mantiene su identidad a lo largo del ciclo de vida; un objeto-valor es
 simplemente un valor asignado a un atributo. Los *agregados*
 integrarán y encapsularán una serie de objetos, creando un API común
-para todos ellos.
+para todos ellos. Estos agregados son imprescindibles y tienen que
+tenerse en cuenta, porque en muchos casos servirán para gestionar todo
+un conjunto de objetos, erigiéndose en *única fuente de verdad*.
 
 Eventualmente, una entidad se convertirá en un módulo cuando se vaya a
 implementar en el lenguaje de programación en el que decidamos
@@ -76,10 +91,13 @@ del módulo, a veces en el camino donde está almacenado.
 > Por ejemplo, en Raku un módulo llamado `My::Project` estará almacenado
 > en `lib/My/Project.pm6` y podrá tener otros módulos llamados
 > `My::Project::Issue` que estará almacenado en
-> `lib/My/Project/Issue.pm6`. En el caso de Python, un módulo que se
+> `lib/My/Project/Issue.pm6`. Generalmente no se gestionarán estos
+> objetos de forma independiente, sino que se usará un *agregado*; una
+> estructura de datos que abarcará un conjunto de *issues* En el caso
+> de Python, un módulo que se
 > llame Project estará definido en `Project/core.py` (y en el
 > directorio `Project` tendrá que haber un fichero `__init__.py`. El
-> otro fichero mencionado estará en `Project/Issue.py`). 
+> otro fichero mencionado estará en `Project/Issue.py`).
 
 Este tipo de consideraciones tendremos que tenerlas en cuenta a la
 hora de diseñar los ficheros en los que se va a almacenar nuestra
@@ -88,12 +106,13 @@ directorios debe seguir las buenas prácticas habituales y reflejar la
 estructura del mismo.
 
 Tanto las entidades como objetos valor pueden ser módulos
-independientes; sin embargo, el nombre de los mismos o como se diseñe debe reflejar las dependencias unos de otros.
+independientes; sin embargo, el nombre de los mismos o como se diseñe
+debe reflejar las dependencias unos de otros.
 
 El primer paso para entender cuales son las diferentes entidades y
 objetos-valor en nuestro problema es crear una serie de *casos de uso*
 o *historias de usuario* que nos aquilaten el dominio del problema y
-nos permitan trabajar con él. 
+nos permitan trabajar con él.
 
 ### Ejemplo
 
@@ -104,7 +123,7 @@ nos permitan trabajar con él.
 > proyecto y en qué estado de consecución está cada uno de esos
 > hitos. El objetivo es, por ejemplo, mantener un *leaderboard* en
 > tiempo real que liste los proyectos por consecución, o mantener una
-> historia del mismo. 
+> historia del mismo.
 
 Vamos a ver qué historias de usuario saldrán de aquí; esta sería la
 "historia de usuario" principal, aunque a partir de ella tendremos que
@@ -146,7 +165,8 @@ method state( --> IssueState ) { return $!state }
 Frente a todas las operaciones posibles, usamos solo las que debemos para este objeto en particular.
 
 > Todo el código de este curso irá en el subdirectorio
-> [`ejemplos`](../ejemplos) de este repositorio. En este caso en el subdirectorio `raku`. 
+> [`ejemplos`](../ejemplos) de este repositorio. En este caso en el
+> subdirectorio `raku`.
 
 En general, tendremos varias entidades en cada uno de los
 proyectos. En particular, los proyectos planteados aquí se podrán
