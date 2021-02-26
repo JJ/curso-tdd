@@ -56,15 +56,16 @@ estas sesiones:
 3. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
-  * [Material](preso/aplicaciones.md).
+  * [Presentación](preso/aplicaciones.md).
 
 4. Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
+  * [Presentación](preso/servicios.html).
 
-5. Requisitos funcionales,
+5. Elaborando requisitos
   * *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
   * Uso de issues/hitos en el desarrollo basado en test.
   * [Material](temas/diseño.md).
