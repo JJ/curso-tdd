@@ -17,8 +17,8 @@
 	    <div class="reveal">
 		<div class="slides">
 		    <section><h2>Desarrollo ágil</h2>
-                        <h1>Servicios</h1>
-                        <h3><a href="https://jj.github.io/curso-tdd/temas/servicios"><code>jj.github.io/curso-tdd/temas/servicios</code></a></h3>
+                        <h1>Diseño de una aplicación</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/diseño"><code>jj.github.io/curso-tdd/temas/diseño</code></a></h3>
                     </section>
 
                     <section><h1>✓ TODO</h1>
@@ -42,6 +42,57 @@
                         </ul>
                     </section>
 
+                    <section>
+                        <section><h1>Diseño dirigido por dominio</h1>
+                            <h2 class="fragment">Identificar objetos
+                                valor, entidades y agregados</h2>
+                        </section>
+
+                        <section><h1>Y reflejarlo en el diseño de la
+                            jerarquía de clases o módulos</h1>
+                        </section>
+
+                        <section><h1>Diseñar la estructura de datos
+                            correctamente</h1></section>
+
+                        <section><h3><strong>HU0</strong> cada proyecto deberá tener una cadena única
+                            que lo identifique.</h3>
+
+                        <pre><code>class Project:
+
+    def __init__(self, name ):
+        self.name = name
+
+    def name(self):
+        return self.name
+                        </code></pre>
+                        </section>
+
+                        <section><h1>Refinar</h1>
+                            <h2 class="fragment">Como programador,
+                            quiero que el nombre de un proyecto sea
+                            inmutable, con el formato CamelCase y
+                                longitud < 255</h2>
+                        </section>
+
+
+                    <section><h3>Como programador, cada issue debe
+                        tener un identificador, nombre de proyecto
+                            y un estado</h3>
+                            <pre><code data-line-numbers="1|2-8|3-5|10-11">enum IssueState &lt;Open Closed>;
+unit class Project::Issue;
+has IssueState $!state = Open;
+has Str $!project-name;
+has UInt $!issue-id;
+
+multi submethod BUILD( UInt :$!issue-id!,
+		       Str :$!project-name!) {}
+
+method close() { $!state = Closed }
+method reopen() { $!state = Open }
+                            </code></pre>
+                        </section>
+                    </section>
                     
                 </div>
 	    </div>
