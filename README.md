@@ -90,13 +90,13 @@ estas sesiones:
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
 
-9.  *objetos de test*
+9. *Objetos de test*
   * Organización de los tests.
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
 
-10.  Ejecución de tests
+10. Ejecución de tests
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
 
