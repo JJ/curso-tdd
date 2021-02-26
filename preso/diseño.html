@@ -75,11 +75,14 @@
                                 longitud < 255</h2>
                         </section>
 
+                        <section><h1>Las HUs <strong>nunca</strong>
+                            tienen detalles de implementación</h1>
+                        </section>
 
                     <section><h3>Como programador, cada issue debe
                         tener un identificador, nombre de proyecto
                             y un estado</h3>
-                            <pre><code data-line-numbers="1|2-8|3-5|10-11">enum IssueState &lt;Open Closed>;
+                        <pre><code data-line-numbers="1|2-8|3-5|10-11">enum IssueState &lt;Open Closed>;
 unit class Project::Issue;
 has IssueState $!state = Open;
 has Str $!project-name;
@@ -90,10 +93,18 @@ multi submethod BUILD( UInt :$!issue-id!,
 
 method close() { $!state = Closed }
 method reopen() { $!state = Open }
-                            </code></pre>
-                        </section>
+                        </code></pre>
                     </section>
+
                     
+                    </section>
+
+                     <section> <h1>✓ TODO</h1>
+                        <h2 class="fragment">Deshacer la épica en historias de
+                            usuario</h2>
+                        <h2 class="fragment">Y añadir issues donde se
+                            desambigüen</h2>
+                    </section>
                 </div>
 	    </div>
 
