@@ -49,6 +49,61 @@ Con esto se probará que se están siguiendo los principios de diseño
 desarrollando a partir de casos de uso, y que se desglosan a partir de
 una serie de épicas.
 
+
+### Después de la épica
+
+> Echar un vistazo a la sesión sobre [metodologías ágiles](ágil.html)
+> que precede a esta.
+
+Tras las épicas, es necesario dividir lo que se quiere en varias
+partes, de forma que se puedan abordar y por supuesto comprobar de
+forma individual. En este proceso es cuando se empiezan a elaborar las
+historias de usuario indidivuales.
+
+En nuestro programa que tratará con un proyecto y sus diferentes
+partes, hitos, issues y demás, por ejemplo para examinar el estado de
+un proyecto externo en una clase, las acciones comenzarán
+siempre con una petición que llegue desde GitHub. Por lo tanto,
+podremos tener las siguientes historias de usuario.
+
+* **HU0**: (Configuración) Como usuario, necesito que cada proyecto deberá tener una cadena única
+  que lo identifique.
+* **HU1**: Como usuario, necesito que cuando se cree un hito en un proyecto, ese hito se incluirá en
+  la estructura de datos del proyecto correspondiente.
+* **HU2**: Como usuario, necesito que cuando se cree un issue, se añadirá al hito
+  correspondiente con estado "abierto". Si no está asignado a ningún hito, se emitirá un
+  mensaje de error.
+* **HU3**: Como usuario, necesito que cuando se cierre un issue, se cambie el estado del
+  mismo.
+* **HU4**: Como usuario, necesito que si se borra un issue, dejará de
+  estar accesible.
+* **HU5**: Si se solicita el porcentaje de terminación del hito, se
+  responderá con una cantidad entre 0 y 100.
+
+Estas historias de usuario se crearán como issues, y agruparse, a su
+vez, en un hito, siempre que se identifique cuál es el producto
+mínimamente viable. Por ejemplo, en este caso
+todas las relativas a issues se pueden incluir en el mismo hito (salvo
+quizás la última). El
+MVP será una serie de clases que serán capaces de gestionar todo lo
+relacionado con los hitos de forma independiente.
+
+A partir de estas historias de usuario, y de la metodología de diseño,
+habrá que empezar a escribir el código. Como código no testeado es
+código roto, mejor diseñar el API para empezar y más adelante añadir
+el código y los tests correspondientes, como hemos visto en el caso
+del ejemplo de Python anterior. Pero eso ya será en la
+siguiente sesión.
+
+Adicionalmente, una historia de usuario especificará qué hay que hacer
+en caso de error. Recordad que el diseño de un módulo debe incluir
+también diseño de las clases que se van a usar en caso de error.
+
+* **HU6** Un hito sin issues estará en un estado incorrecto y la única
+  operación permisible sobre el mismo es añadirle issues. Si se trata
+  de hacer alguna operación sobre el mismo, se emitirá un error de
+  tipo.
+
 ## Diseño dirigido por dominio
 
 Una vez decidido el foco principal del proyecto y su arquitectura
@@ -181,35 +236,15 @@ unit class Project::Issues;
 
 has %!issues;
 
-method add( Project::Issue $issue ) {
-    %!issues{$issue.issue-id} = $issue;
-}
+method add( Project::Issue $issue ) { … }
 
-method delete( UInt $issue-id ) {
-    if $issue-id ∈ %!issues.keys {
-        %!issues{$issue-id}:delete;
-    } else {
-        X::Project::NoSuchIssue.new( :$issue-id ).throw;
-    }
-}
+method delete( UInt $issue-id ) { … }
 
 method all() { %!issues };
 
-method close( UInt $issue-id ) {
-    if $issue-id ∈ %!issues.keys {
-        %!issues{$issue-id}.close;
-    } else {
-        X::Project::NoSuchIssue.new( :$issue-id ).throw;
-    }
-}
+method close( UInt $issue-id ) { … }
 
-method get( UInt $issue-id --> Project::Issue ) {
-    if $issue-id ∈ %!issues.keys {
-        return %!issues{$issue-id};
-    } else {
-        X::Project::NoSuchIssue.new( :$issue-id ).throw
-    }
-}
+method get( UInt $issue-id --> Project::Issue ) { … }
 
 ```
 
@@ -271,7 +306,8 @@ aplicar otra metodología de diseño, que veremos a continuación.
 
 En el caso de nuestra aplicación, por lo pronto, no tenemos más
 dependencia que el lenguaje de programación que vamos a usar,
-Raku. Más adelante tendremos que especificar el resto de las
+Raku (y que tenemos que usar logs obligatoriamente). Más adelante
+tendremos que especificar el resto de las
 dependencias, pero mientras tanto, en el fichero `META6.json`, que es
 el fichero de metadatos para distribuciones en Raku, bibliotecas o
 aplicaciones, se
@@ -281,7 +317,11 @@ depender.
 Las dependencias las especificaremos siempre usando código (y bajo
 control de versiones), y por tanto distinguiremos entre varios tipos
 
-* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto se especifica en los metadatos del proyecto (en el fichero correspondiente) o de alguna otra forma, como ficheros específicos. En nuestro caso usamos `META6.json`, y declaramos la versión de Raku (6.*) que vamos a usar.
+* El lenguaje y versión del mismo con el que vayamos a trabajar. Esto
+  se especifica en los metadatos del proyecto (en el fichero
+  correspondiente) o de alguna otra forma, como ficheros
+  específicos. En nuestro caso usamos `META6.json`, y declaramos la
+  versión de Raku (6.*) que vamos a usar.
 
 * Dependencias externas. Lo mejor es usar una herramienta de
   construcción para que, con un simple `make install`, se puedan
@@ -423,58 +463,17 @@ usuario razonables. Estas historias de usuario harán que evolucione el
 modelo que tenemos de cada entidad y de cada clase que tengamos dentro
 de una entidad.
 
-### Ejemplos
 
-En nuestro programa que tratará con los hitos, las acciones comenzarán
-siempre con una petición que llegue desde GitHub. Por lo tanto,
-podremos tener las siguientes historias de usuario.
-
-* **HU0**: (Configuración) Cada proyecto deberá tener una cadena única
-  que lo identifique.
-* **HU1**: Cuando se cree un hito en un proyecto, ese hito deberá estar incluido en
-  la estructura de datos del proyecto correspondiente.
-* **HU2**: Cuando se cree un issue, se añadirá al hito
-  correspondiente con estado "abierto". Si no está asignado a ningún hito, se emitirá un
-  mensaje de error.
-* **HU3**: Cuando se cierre un issue, se cambiará el estado del
-  mismo. 
-* **HU4**: Si se borra un issue, se eliminará de la estructura de
-  datos que los contenga.
-* **HU5**: Si se solicita el porcentaje de terminación del hito, se
-  responderá con una cantidad entre 0 y 100.
-
-Estas historias de usuario se pueden incluir directamente como hitos,
-o agrupar algunas de ellas en un issue. Por ejemplo, en este caso
-todas las relativas a issues se pueden incluir en el mismo hito.
-
-A partir de estas historias de usuario, y de la metodología de diseño,
-habrá que empezar a escribir el código. Como código no testeado es
-código roto, mejor diseñar el API para empezar y más adelante añadir
-el código y los tests correspondientes, como hemos visto en el caso
-del ejemplo de Python anterior. Pero eso ya será en la
-siguiente sesión.
-
-Adicionalmente, una historia de usuario especificará qué hay que hacer
-en caso de error. Recordad que el diseño de un módulo debe incluir
-también diseño de las clases que se van a usar en caso de error.
-
-* **HU6** Un hito sin issues estará en un estado incorrecto y la única
-  operación permisible sobre el mismo es añadirle issues. Si se trata
-  de hacer alguna operación sobre el mismo, se emitirá un error de
-  tipo. 
-
-
-## Actividad: versión 3
+## Actividad: versión 4
 
 Esencialmente, en esta primera fase se llevarán a cabo las actividades
 de diseño para el resto del curso. Como en el resto de los hitos
 el código se debe añadir mediante un PR que deberá aprobar algún otro
 miembro del proyecto.
 
-2. Elaborar una cantidad aceptable de historias de usuario como
-   documentos en un subdirectorio y crear a
-   partir de ellas una serie de issues en GitHub. Los hitos deberán
-   estar relacionados con estas historias de usuario.
+Elaborar una cantidad aceptable de historias de usuario y crear a
+partir de ellas una serie de issues en GitHub (HUs dirigido a la
+persona que programe).
 
 ## Entrega
 
