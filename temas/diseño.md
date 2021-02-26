@@ -40,9 +40,7 @@ aplicación.
 
 ## Criterio de aceptación
 
-El proyecto tendrá una serie de hitos e issues creados
-
-* Deberá haber documentos de una o varias historias de usuario en un
+El proyecto deberá haber documentos de una o varias historias de usuario en un
   directorio `HU`.
 
 Con esto se probará que se están siguiendo los principios de diseño
