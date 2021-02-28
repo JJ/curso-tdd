@@ -291,7 +291,8 @@ miembro del proyecto.
 
 Elaborar una cantidad aceptable de historias de usuario y crear a
 partir de ellas una serie de issues en GitHub (HUs dirigido a la
-persona que programe).
+persona que programe). Etiquetar las HUs con "HU", creando el *label* correspondiente en el repositorio de GitHub.
+
 
 ## Entrega
 
