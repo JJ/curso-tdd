@@ -22,10 +22,8 @@ las dependencias que vayan a necesitarse.
 
 ## Criterio de aceptación
 
-El proyecto tendrá una serie de hitos e issues creados
-
-* Deberá haber documentos de una o varias historias de usuario en un
-  directorio `HU`.
+El proyecto tendrá una serie de hitos e issues creados, los issues
+estarán relacionados con una o varias historias de usuario.
 
 Con esto se probará que se están siguiendo los principios de diseño
 desarrollando a partir de casos de uso, y que se desglosan a partir de
@@ -188,8 +186,7 @@ objetos valor.
 
 A continuación, hay que ponerse a programar, lo que implica poner a
 punto una serie de herramientas y una actitud; lo indicado por [Joel
-on
-software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
+on software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
 sigue siendo válido después de muchos años: usar siempre control de
 fuentes, hacer el build (y finalmente el despliegue) en un solo paso,
 priorizar arreglar los bugs.
