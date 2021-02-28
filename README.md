@@ -71,7 +71,7 @@ estas sesiones:
    * Uso de issues/hitos en el desarrollo basado en test.
    * Diseño dirigido por el dominio
    * [Material](temas/diseño.md).
-   * [Material](temas/diseño.html).
+   * [Material](preso/diseño.html).
 
 6. Refinando el diseño
   * *personas* (usuarios ficticios), desarrollo por capas y todo lo
