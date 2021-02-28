@@ -16,6 +16,7 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | Angelgf22       | https://www.linkedin.com/in/ángel-gómez-ferrer-737761207/                  |
 | iloveyoudrzaius | https://www.linkedin.com/in/darío-v-b9a819113                              |
 | kevincamp       | https://www.linkedin.com/in/kevin-campuzano-castillo-42294966/             |
+| luisleon1894    | https://www.linkedin.com/in/luis-alejandro-leon-corcuera-08a309132         |
 | balath          | https://www.linkedin.com/in/sergio-flor-garc%C3%ADa-b5a2a11aa/             |
 | JoseMariaMoreno | https://www.linkedin.com/in/jose-maria-moreno/                             |
 | agr8            | https://linkedin.com/in/angela-gallardo-ruiz                               |

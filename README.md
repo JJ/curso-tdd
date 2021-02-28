@@ -49,27 +49,37 @@ estas sesiones:
   * [Presentación](preso/git).
 
 2. Desarrollo ágil
-   * Historias de usuario, *user journeys* y todo eso.
+  * Historias de usuario, *user journeys* y todo eso.
+  * Cómo organizar un proyecto: canvas, milestones, issues.
+  * [Material](temas/ágil.md).
+  * [Presentación](preso/ágil.html).
 
 3. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
+  * [Presentación](preso/aplicaciones.md).
 
 4. Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
+  * [Presentación](preso/servicios.html).
 
-5. Requisitos funcionales,
+5. Diseñando la aplicación
+   * Historias de usuario
+   * Uso de issues/hitos en el desarrollo basado en test.
+   * Diseño dirigido por el dominio
+   * [Material](temas/diseño.md).
+   * [Material](temas/diseño.html).
+
+6. Refinando el diseño
   * *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
-  * Uso de issues/hitos en el desarrollo basado en test.
-  * [Material](temas/diseño.md).
 
 6. Comienzo de la implementación "defensiva".
-    * Cómo organizar un proyecto: canvas, milestones, issues.
     * Documentación de las historias de usuario y traslado a issues.
-    * Comienzo del diseño, en general, de las clases (y excepciones).
+    * Comienzo del diseño, en general, de las clases.
+    * Diseño de excepciones.
     * [Material](temas/a-programar.md).
 
 7. Task runners y cómo usarlos.
@@ -80,13 +90,13 @@ estas sesiones:
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
 
-9.  *objetos de test*
+9. *Objetos de test*
   * Organización de los tests.
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
 
-10.  Ejecución de tests
+10. Ejecución de tests
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
 

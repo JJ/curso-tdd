@@ -209,7 +209,7 @@ aconsejable y se entienda mejor por parte de las herramientas del
 lenguaje.
 
 Se añadirán desde el `README.md` principal enlaces al fichero o ficheros
-que se han creado. 
+que se han creado.
 
 ## Entrega
 
@@ -217,7 +217,7 @@ Esta entrega se llevará a cabo, como el resto de las mismas, como un
 pull request al fichero de [proyectos](../proyectos.md) que aumente el
 número de versión principal hasta llegar a la 4.
 
-Seguiremos usando 
+Seguiremos usando
 [versionado semántico para las entregas](https://semver.org/), donde
 el primer número será siempre el hito (comenzando por el hito
-0). 
+0).

@@ -1,5 +1,11 @@
 class Project:
 
+    def __init__(self, name ):
+        self.name = name
+
+    def name(self):
+        return self.name
+        
     def newMilestone(self, milestone):
         pass;
 
@@ -13,9 +19,6 @@ class Project:
         pass
 
     def data(self):
-        pass
-
-    def projectName(self):
         pass
 
 class NoIssueException(Exception):

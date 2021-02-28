@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desarrollo ágil: Diseño</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Diseño de una aplicación</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/diseño"><code>jj.github.io/curso-tdd/temas/diseño</code></a></h3>
+                    </section>
+
+                    <section><h1>✓ TODO</h1>
+                        <h2 class="fragment">□ ¿Se ha formulado
+                            correctamente el problema? </h2>
+                        <h2 class="fragment">□ ¿Se ha creado una épica? </h2>
+                        <h2 class="fragment">□ ¿Se ha propuesto una
+                            solución informática? </h2>
+                        <h2 class="fragment">□ ¿Se han usado logs y
+                        otros servicios? </h2>
+                    </section>
+
+                    <section><h1>Tras la épica</h1>
+                        <ul>
+<li><strong>HU0</strong>: (Configuración) Como usuario, necesito que cada proyecto deberá tener una cadena única que lo identifique.</li>
+<li><strong>HU1</strong>: Como usuario, necesito que cuando se cree un hito en un proyecto, ese hito se incluirá en la estructura de datos del proyecto correspondiente.</li>
+<li><strong>HU2</strong>: Como usuario, necesito que cuando se cree un issue, se añadirá al hito correspondiente con estado “abierto”. Si no está asignado a ningún hito, se emitirá un mensaje de error.</li>
+<li><strong>HU3</strong>: Como usuario, necesito que cuando se cierre un issue, se cambie el estado del mismo.</li>
+<li><strong>HU4</strong>: Como usuario, necesito que si se borra un issue, dejará de estar accesible.</li>
+<li><strong>HU5</strong>: Si se solicita el porcentaje de terminación del hito, se responderá con una cantidad entre 0 y 100.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <section><h1>Diseño dirigido por dominio</h1>
+                            <h2 class="fragment">Identificar objetos
+                                valor, entidades y agregados</h2>
+                        </section>
+
+                        <section><h1>Y reflejarlo en el diseño de la
+                            jerarquía de clases o módulos</h1>
+                        </section>
+
+                        <section><h1>Diseñar la estructura de datos
+                            correctamente</h1></section>
+
+                        <section><h3><strong>HU0</strong> cada proyecto deberá tener una cadena única
+                            que lo identifique.</h3>
+
+                        <pre><code>class Project:
+
+    def __init__(self, name ):
+        self.name = name
+
+    def name(self):
+        return self.name
+                        </code></pre>
+                        </section>
+
+                        <section><h1>Refinar</h1>
+                            <h2 class="fragment">Como programador,
+                            quiero que el nombre de un proyecto sea
+                            inmutable, con el formato CamelCase y
+                                longitud < 255</h2>
+                        </section>
+
+                        <section><h1>Las HUs <strong>nunca</strong>
+                            tienen detalles de implementación</h1>
+                        </section>
+
+                    <section><h3>Como programador, cada issue debe
+                        tener un identificador, nombre de proyecto
+                            y un estado</h3>
+                        <pre><code data-line-numbers="1|2-8|3-5|10-11">enum IssueState &lt;Open Closed>;
+unit class Project::Issue;
+has IssueState $!state = Open;
+has Str $!project-name;
+has UInt $!issue-id;
+
+multi submethod BUILD( UInt :$!issue-id!,
+		       Str :$!project-name!) {}
+
+method close() { $!state = Closed }
+method reopen() { $!state = Open }
+                        </code></pre>
+                    </section>
+
+                    
+                    </section>
+
+                     <section> <h1>✓ TODO</h1>
+                        <h2 class="fragment">Deshacer la épica en historias de
+                            usuario</h2>
+                        <h2 class="fragment">Y añadir issues donde se
+                            desambigüen</h2>
+                    </section>
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+                 slideNumber: true,
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>
