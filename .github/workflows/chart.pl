@@ -7,7 +7,7 @@ use v5.14;
 open my $tally_fh, '<', 'data/proyectos.csv' or die "No se puede abrir $!";
 
 
-say <<EOC;
+my $output= <<EOC;
 # Gráfica del estado de los proyectos
 
 
@@ -17,7 +17,7 @@ EOC
 
 while ( my $line = <$tally_fh> ) {
   my ($version, $cuantos) = split(/,\s+/, $line );
-  say "| $version | ", "⬛" x $cuantos, "|";
+  $output .= "| $version | " . "⬛" x $cuantos . "|\n";
 }
-
+say $output;
 
