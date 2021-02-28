@@ -2,12 +2,12 @@
 
 Cambiad la versión si no es esa la que tenéis en vuestro tag.
 
-| Nombre proyecto con enlace                                               | Versión |
-|--------------------------------------------------------------------------|---------|
+| Nombre proyecto con enlace                                       | Versión |
+|------------------------------------------------------------------|---------|
 | [Tyempo](https://github.com/Phyton-es-mi-typo/tyempo)                    | v2.0.0  |
 | [CryptoGo](https://github.com/CriptoInfo/CryptoGo)                       | v0.3.1  |
-| [Gortana](https://github.com/Pibes-GRX/Gortana)                          | v3.0.1  |
-| [Undefined Java Project](https://github.com/tddgrupo4/TDD-Grupo-4)       | v0.0.1  |
+| [Gortana](https://github.com/Pibes-GRX/Gortana)                         | v3.0.1  |
+| [Undefined Java Project](https://github.com/tddgrupo4/TDD-Grupo-4)      | v0.0.1  |
 | [NoteGram](https://github.com/NoteGramBot/NoteGram)                      | v1.0.1  |
 |  [Palabrot](https://github.com/ScalaBot-Team/PalaBrot)                   | v2.0.2  |
 |    [BoTTutorias](https://github.com/BoTTuros/BoTTutorias)                | v0.0.1  |
