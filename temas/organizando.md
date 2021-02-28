@@ -1,4 +1,4 @@
-# Entre el diseño y la implementación
+# Organizando la implementación
 
 
 ## Planteamiento
