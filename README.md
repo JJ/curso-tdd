@@ -74,7 +74,9 @@ estas sesiones:
    * [Material](temas/diseño.html).
 
 6. Refinando el diseño
-  * *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
+  * *personas* (usuarios ficticios), desarrollo por capas y todo lo
+    que necesitamos para empezar.
+  * [Material](temas/comenzando.md).
 
 6. Comienzo de la implementación "defensiva".
     * Documentación de las historias de usuario y traslado a issues.
