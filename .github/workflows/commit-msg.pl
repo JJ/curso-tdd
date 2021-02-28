@@ -16,5 +16,5 @@ while ( my $line = <$tally_fh> ) {
   my ($version, $cuantos) = split(/,\s+/, $line );
   $output .= "v$version ⇒ " . "⬛" x $cuantos . "\n";
 }
-say $output;
+say "$output\n--;
 
