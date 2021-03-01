@@ -18,5 +18,5 @@ jobs:
         run: |
           git config --global user.email "jjmerelo@gmail.com"
           git config --global user.name "ÁgilDataBot"
-          github/workflows/commit-msg.pl | git commit -aF -
+          .github/workflows/commit-msg.pl | git commit -aF -
           git push
