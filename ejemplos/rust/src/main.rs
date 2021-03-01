@@ -1,5 +1,7 @@
 use simple_logger::SimpleLogger;
 
+mod project;
+
 #[derive(Debug)]
 pub enum IssueState {
     Open,
@@ -23,8 +25,11 @@ pub fn issue_factory( project_name: String,
 
 fn main() {
     SimpleLogger::new().init().unwrap();
-    let this_issue = issue_factory(String::from("CoolProject"), 1 );
-    let mut that_issue = issue_factory( String::from("CoolProject"), this_issue.issue_id + 1 );
+    let project_name: &str = "CoolProject";
+    let this_project = project::project_factory(project_name.to_string());
+    log::debug!( "{}{}","Created project ", this_project.project_name.to_string() );
+    let this_issue = issue_factory(project_name.to_string(), 1 );
+    let mut that_issue = issue_factory( project_name.to_string(), this_issue.issue_id + 1 );
     that_issue.state = IssueState::Open; // Avoid warning
     log::debug!("Changed state to Open");
 }
