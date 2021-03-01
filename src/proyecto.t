@@ -71,12 +71,6 @@ EOC
     like( $README, qr/[lL]og/, "Se menciona un logger en el README");
   }
 
-  if  ( $this_version >= 4 ) {
-    diag( check( "Tests para hito 4") );
-    my @hus = grep(  m{HU/}, @repo_files  );
-    cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
-  }
-
   my $qa; # A partir de aquí hace falta el fichero de configuración
   if ( $this_version >= 5 ) {
     diag( check( "Tests para hito 5") );
