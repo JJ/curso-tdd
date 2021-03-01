@@ -57,8 +57,9 @@ jobs:
             const repo = process.env.repo
             const options = await github.issues.listForRepo( { owner: user, repo: repo } )
             const issues = await github.paginate( options )
+            console.log( issues )
             if ( issues.length == 0 ) {
-               core.setFailed("❌ Debe haber un issue con una HU al menos)
+               core.setFailed("❌ Debe haber un issue con una HU al menos")
             } else {
                console.log( "✅ Parece que hay un issue ")
             }
