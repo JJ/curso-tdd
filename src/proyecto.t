@@ -6,6 +6,7 @@ use File::Slurper qw(read_text);
 use JSON;
 use Term::ANSIColor qw(:constants);
 use Capture::Tiny qw(capture_merged);
+use YAML qw(LoadFile);
 
 use v5.14; # For say
 
@@ -64,12 +65,12 @@ EOC
   my $config;
 
   if ( $this_hito >= 1 ) {
-    doing("hito 1");
-    if ( -e "$repo_dir/agil.yaml" ) {
+    diag( check ("Tests para hito 1") );
+    if ( ok( -e "$repo_dir/agil.yaml", "Está el fichero de configuración «agil.yaml»") ) {
       $config = LoadFile("$repo_dir/agil.yaml");
       ok( $config, "Fichero de configuración para corrección agil.yaml cargado correctamente" );
       ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
-    }
+    } 
   }
 
   if ($this_version >= 2 ) {
