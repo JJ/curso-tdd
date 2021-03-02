@@ -166,6 +166,71 @@ para elaborar colaborativamente una épica. De esa épica,
 posteriormente, surgirán las diferentes historias de usuario. Pero eso
 lo veremos a continuación.
 
+## Empatizando con los clientes
+
+Es esencial en la elaboración de un proyecto saber quién lo va a usar,
+pero saberlo hasta el último detalle. Diseñar el interfaz de usuario
+require saber el tipo de usuario y tener en cuenta la [accesibilidad
+universal](https://www.fundacioncaser.org/autonomia/cuidadores-y-promocion-de-la-autonomia/promover-la-autonomia-personal/que-es-la-accesibilidad-universal),
+pero la eficacia en que el destinatario final del software lleve a
+cabo las labores que se pueden hacer con el mismo es esencial.
+
+Y la cuestión es que rara vez se trata de un solo tipo de
+usuario. Aparte de las labores "clásicas", "usuario" y
+"administrador", y también el "programador/a" que será quien escriba
+el código, todos los roles necesitan ser definidos claramente en
+función de sus capacidades motoras y cognitivas, o simplemente
+preferencias culturales o lingüisticas.
+
+> ¿Alguien tiene en cuenta a la hora de diseñar una aplicación que
+> eventualmetne vaya a ser usada por personas con diferentes idiomas
+> nativos? Pues eso.
+
+En desarrollo ágil, por tanto, se usa la metodología llamada
+[personas](https://www.fundacioncaser.org/autonomia/cuidadores-y-promocion-de-la-autonomia/promover-la-autonomia-personal/que-es-la-accesibilidad-universal)
+(en inglés es igual), que consiste simplemente en dar nombre,
+apellidos, edad y una biografía e incluso currículum a los posibles
+usuarios del software. De esa forma, no va a haber "usuario avanzado",
+sino "Doris Yllana McKenzie, máster en ciencia de datos, 35 años,
+residente en Tres Cantos, Madrid.
+
+### Ejemplo
+
+Hemos venido trabajando con una aplicación que intenta monitorizar las
+diferentes etapas en las que se encuentran los proyectos de
+estudiantes de una carrera de informática.
+
+Para crear la "persona" conviene que se investigue un poco el posible
+usuario, usando estadísticas publicadas.
+
+> He intentado buscar estadísticas de la UGR sobre edad media por
+> disciplinas, y no la he encontrado. La publicación de datos, y más
+> de datos abiertos, es un gran fail.
+
+Por ejemplo, la edad mediana del profesorado de informática en la UGR está
+entre los 50 y 60 años.
+
+> Parece mentira, pero es así. Yo estoy ligeramente por debajo de la
+> mediana.
+
+En informática, la mayoría del profesorado es hombre. Salvo que
+queramos proyectar un mensaje (que también es posible), se debe tratar
+de usar estas estadísticas en el diseño de las personas.
+
+Finalmente, el profesorado tiene, en general, un doctorado y es de
+origen español (una minoría de otros países de habla hispana, como
+Cuba y Argentina). Con lo que ya tenemos definida la persona:
+
+> Iris Capuleto Troya, con nacimiento en España en 1967, licenciatura
+> en Informática y doctorado en Informática por la UGR, habla español
+> correctamente, también inglés (nivel B1), usa gafas bifocales y
+> tiene tanto portátiles como tablets como móviles de última
+> generación.
+
+Es decir, cuando decidamos a partir de ahora crear HUs, hablaremos de
+"Iris quiere" o "Iris desea". Lo haremos en el material del curso,
+dentro de la medida de lo posible.
+
 ## Ver también
 
 Este [*whitepaper* gratuito describe en general la metodología
@@ -183,6 +248,9 @@ Se procederá de esta forma: Cada equipo se tendrá que reunir para decidir qué
   podrán poner en una columna de "ideas" en un tablero, o simplemente
   abrir una ficha de "problema" y que todo el mundo trabaje sobre
   ella.
+
+Adicionalmente, decidirá (y escribirá la biografía) de las "personas"
+que vayan a usar su software.
 
 
 ## Entrega
