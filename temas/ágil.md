@@ -130,6 +130,41 @@ acaban siendo deprecadas y no quieres encontrarte en una situación en
 la cual tengas que reescribir todo por usar algo con posibles huecos
 de seguridad.
 
+## Buscando la clientela
+
+En muchos casos en informática, y en muchos a los que nos vamos a
+enfrentar durante la carrera y, sobre todo, si queremos emprender o
+crear alguna cosa totalmente nueva (o presentar un proyecto al
+concurso, que para el caso es lo mismo) el principal problema al que
+nos vamos a enfrentar es no encontrar ideas para iniciar el proyecto,
+o no saber qué problema más o menos cercano o presente podríamos
+resolver.
+
+Sobre todo en emprendimiento, pero también en Informática, se puede
+emplear, la mayoría de veces con éxito, la metodología de [*design
+thinking*](https://www.designthinking.es/inicio/).
+
+Es una metodología más o menos establecida, pero esencialmente se
+parte de una estadística, un dato o un artículo, y a partir de ahí, en
+diferentes fases, se van definiendo posibles soluciones al
+problema. En la fase de ideas, la que nos interesa es la fase que se
+denomina
+[*empatizar*](https://designthinkingespaña.com/empatizar-primera-fase-design-thinking),
+es decir, colocarse en el lugar de los futuros
+usuarios para ver qué deseos tienen y cual sería la mejor forma de
+canalizar esos deseos y lograr resolverlos con una aplicación.
+
+### Ejemplo
+
+En el caso del hipotético *dashboard* para controlar los proyectos de
+los estudiantes, el principal problema que se puede plantear es lo
+manual y tedioso que puede ser controlar uno por uno todos los
+proyectos. Empatizar permite centrar el diseño en el usuario,
+simplificar el desarrollo al no responder a necesidades que no se
+soliciten, y crear un marco en el cual se va a desarrollar esta
+aplicación. Además, también permite identificar los *actores*, o
+quienes son los que van a usar efectivamente la aplicación.
+
 ## Capturando los deseos de los clientes
 
 Los deseos de los clientes se capturarán en unas [historias de
@@ -174,6 +209,11 @@ requiere saber el tipo de usuario y tener en cuenta la [accesibilidad
 universal](https://www.fundacioncaser.org/autonomia/cuidadores-y-promocion-de-la-autonomia/promover-la-autonomia-personal/que-es-la-accesibilidad-universal),
 pero la eficacia en que el destinatario final del software lleve a
 cabo las labores que se pueden hacer con el mismo es esencial.
+
+En un marco de *design thinking*, además, se habrá identificado a los
+actores desde el principio. En esta fase se definirán un poco más, de
+forma que pueda acercarse a lo que necesitamos saber de ellos para
+desarrollar nuestro software.
 
 Y la cuestión es que rara vez se trata de un solo tipo de
 usuario. Aparte de las labores "clásicas", "usuario" y
