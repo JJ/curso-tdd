@@ -15,4 +15,4 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 |    [agil-dev-4e](https://github.com/Kobedinho/agil-dev-4e)                | v0.1.2  |
 |    [FloWorking](https://github.com/PalomitaTeam/FloWorking)              | v4.0.0  |
 |    [go-notes](https://github.com/Golang-EC/go-notes)                     | v0.1.3  |
-| [WeatherAnalytics](https://github.com/crislinfrajo/WeatherAnalytics)     | v0.0.1  |
+| [WeatherAnalytics](https://github.com/crislinfrajo/WeatherAnalytics)     | v0.0.1  | 
