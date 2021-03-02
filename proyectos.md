@@ -6,7 +6,7 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 |------------------------------------------------------------------|---------|
 | [Tyempo](https://github.com/Phyton-es-mi-typo/tyempo)                   | v3.0.0  |
 | [CryptoGo](https://github.com/CriptoInfo/CryptoGo)                      | v4.0.0  |
-| [Gortana](https://github.com/Pibes-GRX/Gortana)                        | v4.0.1  |
+| [Gortana](https://github.com/Pibes-GRX/Gortana)                        | v4.1.0  |
 | [Undefined Java Project](https://github.com/tddgrupo4/TDD-Grupo-4)     | v0.0.1  |
 | [NoteGram](https://github.com/NoteGramBot/NoteGram)                   | v3.0.0  |
 | [Palabrot](https://github.com/ScalaBot-Team/PalaBrot)                 | v4.0.1  |
