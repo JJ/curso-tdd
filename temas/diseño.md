@@ -40,8 +40,8 @@ aplicación.
 
 ## Criterio de aceptación
 
-El proyecto deberá haber documentos de una o varias historias de usuario en un
-  directorio `HU`.
+El proyecto deberá haber documentos de una o varias historias de
+usuario como issues en el repositorio creado.
 
 Con esto se probará que se están siguiendo los principios de diseño
 desarrollando a partir de casos de uso, y que se desglosan a partir de
@@ -291,7 +291,8 @@ miembro del proyecto.
 
 Elaborar una cantidad aceptable de historias de usuario y crear a
 partir de ellas una serie de issues en GitHub (HUs dirigido a la
-persona que programe).
+persona que programe). Etiquetar las HUs con "HU", creando el *label* correspondiente en el repositorio de GitHub.
+
 
 ## Entrega
 

@@ -50,7 +50,9 @@ estas sesiones:
 
 2. Desarrollo ágil
   * Historias de usuario, *user journeys* y todo eso.
-  * Cómo organizar un proyecto: canvas, milestones, issues.
+  * Cómo organizar un proyecto: canvas, épicas.
+  * *Personas* (usuarios ficticios), desarrollo por capas y todo lo
+    que necesitamos para empezar.
   * [Material](temas/ágil.md).
   * [Presentación](preso/ágil.html).
 
@@ -71,10 +73,14 @@ estas sesiones:
    * Uso de issues/hitos en el desarrollo basado en test.
    * Diseño dirigido por el dominio
    * [Material](temas/diseño.md).
-   * [Material](temas/diseño.html).
+   * [Presentación](preso/diseño.html).
+
+6. Puesta al día
+   * Añadiendo *personas* al hito 1
+   * [Presentación](preso/checkpoint.html)
 
 6. Refinando el diseño
-  * *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
+  * [Material](temas/comenzando.md).
 
 6. Comienzo de la implementación "defensiva".
     * Documentación de las historias de usuario y traslado a issues.

@@ -5,7 +5,7 @@ on:
       - 'proyectos.md'
 
 jobs:
-  test-milestones:
+  crea-tabla:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,5 +18,5 @@ jobs:
         run: |
           git config --global user.email "jjmerelo@gmail.com"
           git config --global user.name "ÁgilDataBot"
-          git commit -am "Fichero de datos generado"
-
+          .github/workflows/commit-msg.pl | git commit -aF -
+          git push
