@@ -97,7 +97,7 @@ Como `git` es un sistema de control de versiones distribuido, `pull`
 procedencias. En general, debemos imaginarnos estas dos historias como
 dos ramas (literalmente, son ramas) de un árbol que, en un momento
 determinado, divergieron. Esas ramas tienen una serie de *nudos*, que
-son los commits. Fusionar implica "ordenar" todos los nudos
+son los commits. Fusionar implicar "ordenar" todos los nudos
 procedentes de las dos ramas en una sola rama, de forma que se
 incorporen las modificaciones de los dos lados. Vamos a imaginar por
 lo pronto que no hay ningún tipo de conflicto. Hay tres formas de
