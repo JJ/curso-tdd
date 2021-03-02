@@ -170,7 +170,7 @@ lo veremos a continuación.
 
 Es esencial en la elaboración de un proyecto saber quién lo va a usar,
 pero saberlo hasta el último detalle. Diseñar el interfaz de usuario
-require saber el tipo de usuario y tener en cuenta la [accesibilidad
+requiere saber el tipo de usuario y tener en cuenta la [accesibilidad
 universal](https://www.fundacioncaser.org/autonomia/cuidadores-y-promocion-de-la-autonomia/promover-la-autonomia-personal/que-es-la-accesibilidad-universal),
 pero la eficacia en que el destinatario final del software lleve a
 cabo las labores que se pueden hacer con el mismo es esencial.
@@ -180,10 +180,10 @@ usuario. Aparte de las labores "clásicas", "usuario" y
 "administrador", y también el "programador/a" que será quien escriba
 el código, todos los roles necesitan ser definidos claramente en
 función de sus capacidades motoras y cognitivas, o simplemente
-preferencias culturales o lingüisticas.
+preferencias culturales o lingüísticas.
 
 > ¿Alguien tiene en cuenta a la hora de diseñar una aplicación que
-> eventualmetne vaya a ser usada por personas con diferentes idiomas
+> eventualmente vaya a ser usada por personas con diferentes idiomas
 > nativos? Pues eso.
 
 En desarrollo ágil, por tanto, se usa la metodología llamada
@@ -260,16 +260,21 @@ pull request al fichero de [proyectos](../proyectos.md), tras añadir
 en el *fork* propio el nombre del proyecto y un enlace al repo, así
 como la versión.
 
-Usaremos
-[versionado semántico para las entregas](https://semver.org/), donde
-el primer número será siempre el hito (comenzando por el hito
-0). Diferentes versiones cambiarán el *minor* (el segundo) o el
-tercero, si son algunos cambios que no alteran el API ni la
-funcionalidad. Cada entrega corresponderá a un *release*, y por tanto
-el repositorio tendrá que tener un tag
+En este hito empezaremos a usar un fichero, `agil.yaml`, en el
+directorio principal, que se usará para poner una serie de contenidos
+relacionados con el hito y que se puedan evaluar automáticamente. En
+este hito se añadirá una sola clave: `personas`, que será un *array*
+en YAML con el nombre de las personas que se hayan creado. Por
+ejemplo, algo así:
 
-> Los tags se hacen con `git tag` *sobre el repositorio del proyecto*, 
-> y para hacer push de los mismos se
-> tendrá que hacer, adicionalmente al normal, `git push --tags`
+```yaml
+personas:
+    - Iris Capuleto Troya
+```
 
-que deberá corresponder exactamente a la versión que se haya enviado.
+En el caso definido antes. Iremos añadiendo claves a este fichero,
+pero por lo pronto tendrá solamente esa clave. Más nombres tendrán que
+añadirse de la misma forma, con otra línea precedida por `-`.
+
+Recordatorio: el *tag* deberá corresponder exactamente a la versión
+que se haya enviado.
