@@ -6,6 +6,7 @@ use File::Slurper qw(read_text);
 use JSON;
 use Term::ANSIColor qw(:constants);
 use Capture::Tiny qw(capture_merged);
+use YAML qw(LoadFile);
 
 use v5.14; # For say
 
