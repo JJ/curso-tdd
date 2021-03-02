@@ -40,8 +40,8 @@ aplicación.
 
 ## Criterio de aceptación
 
-El proyecto deberá haber documentos de una o varias historias de usuario en un
-  directorio `HU`.
+El proyecto deberá haber documentos de una o varias historias de
+usuario como issues en el repositorio creado.
 
 Con esto se probará que se están siguiendo los principios de diseño
 desarrollando a partir de casos de uso, y que se desglosan a partir de
