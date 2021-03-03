@@ -1,10 +1,5 @@
 # Curso de desarrollo ágil - 4ª edición
 
-**Nota** El enlace de Jitsi se compartirá por el grupo de Telegram del
-curso. Es *imprescindible* que me enviéis a `jjmerelo` en Telegram (o
-de cualquier otro modo) vuestro nick en Telegram para que os añada a
-tal grupo.
-
 [![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd)
 💟
 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master)
