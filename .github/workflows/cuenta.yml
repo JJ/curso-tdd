@@ -1,4 +1,4 @@
-name: "Comprueba hitos"
+name: "Saca estadísticas"
 on:
   push:
     paths:
