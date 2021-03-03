@@ -191,11 +191,15 @@ multi method issues( IssueState $state ) {
 }
 ```
 
-La única responsabilidad de esta clase es encargarse de los hitos, y
+La única responsabilidad de esta clase es encargarse de un solo hito, y
 operaciones agregadas sobre ellos. Si hay que calcular el número de
 hitos abiertos, delega en el propio issue, que sabe si está abierto o
 no. La clase se encargará de albergar los issues y darnos los issue en
 un estado determinado.
+
+> Siguien los principios de diseño dirigido por el dominio, hemos
+> creado una clase Hito que corresponde a los Hitos del dominio del
+> proyecto en el que estamos.
 
 En este código, además, se usan todas las buenas prácticas para que
 sea lo más compacto posible, y es (si conoces el lenguaje)
