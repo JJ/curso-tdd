@@ -70,7 +70,7 @@ EOC
       $config = LoadFile("$repo_dir/agil.yaml");
       ok( $config, "Fichero de configuración para corrección agil.yaml cargado correctamente" );
       ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
-    } 
+    }
   }
 
   if ($this_version >= 2 ) {
@@ -95,7 +95,7 @@ EOC
 
   if ( $this_version >= 7 ) {
     diag( check( "Tests para hito 7") );
-    file_present( $config->{'test'}, \@repo_files, "de test" );
+    file_present( $config->{'excepciones'}, \@repo_files, "con excepciones" );
   }
 
   my $runner = $config->{'runner'};
