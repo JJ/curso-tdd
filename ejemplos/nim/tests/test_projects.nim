@@ -1,6 +1,9 @@
-import ../project/projects
+import tables
+from ../project/projects import projectList, addProject
 
-const projectId= "Foo"
+let projectId: string= "Foo"
+
 addProject( projectId )
+assert projectList[projectId].id == projectId
 
-assert projects[0].id == projectId
+

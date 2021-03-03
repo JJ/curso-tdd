@@ -1,15 +1,8 @@
-import ../project
+import tables, ../project
 
-type
-  ProjectDesc= tuple
-    id: string
-    project: Project
-
-var projects*: seq[ProjectDesc] = @[]
+var projectList* = initTable[string, Project]()
 
 proc addProject *( id: string ) =
-  var
-    thisProject: Project
+  projectList[id] = Project( id: id )
 
-  thisProject = Project( id: id )
-  projects.add( (id: id, project: thisProject ) )
+

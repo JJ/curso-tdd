@@ -246,6 +246,30 @@ clases. También esta única fuente de verdad estará relacionada con la
 principio, mientras que el resto de las clases serán simplemente
 objetos valor.
 
+Por ejemplo, usaremos en [Nim](../ejemplos/nim) este módulo con la
+única responsabilidad de creat y contener los proyectos con los que
+vamos a trabajar:
+
+```nim
+import ../project
+
+type
+  ProjectDesc= tuple
+    id: string
+    project: Project
+
+var projects*: seq[ProjectDesc] = @[]
+
+proc addProject *( id: string ) =
+  var
+    thisProject: Project
+
+  thisProject = Project( id: id )
+  projects.add( (id: id, project: thisProject ) )
+```
+
+`addProject` será el encargado de añadir nuevos proyectos.
+
 ## A programar
 
 A continuación, hay que ponerse a programar, lo que implica poner a
