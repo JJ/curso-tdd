@@ -82,11 +82,14 @@ testeando. El nombre de estas funciones, además, debe ser lo más
 explícito posible, dejando totalmente claro lo que testea, si es
 posible usando la misma frase que se use en la historia de usuario. 
 
-## Fases de test: *setup*, *tests*, *teardown*.
+## Fases de test: *setup*, *tests*, *teardown*
 
 En las fases del proceso de prueba:
 
-* Planificación: en esta fase se decide cuantos tests se van a ejecutar.
+* Planificación: en esta fase se decide cuantos tests se van a
+  ejecutar, y se informa al marco de tests de esa decisión. Puede ser
+  que no se decida de antemano, pero en ese caso habrá que informar
+  cuando se han terminado los tests.
 
 * Durante el *setup* se crearán los objetos y cargarán los ficheros
   necesarios hasta poner nuestro objeto en un estado en el que se
@@ -95,15 +98,15 @@ En las fases del proceso de prueba:
   denominan *fixtures*: son simplemente objetos que, si no funciona su
   creación, algo va mal, pero si funciona se usan como base para el
   resto de los tests.
-  
+
 * A continuación se llevan a cabo las pruebas en sí; esas pruebas
   pueden estar agrupadas en subtests, y en el caso de que falle un
   subtest fallará el test del que depende completo.
-  
+
 * En la fase de *teardown* se limpia todo lo creado temporalmente, se
   cierran conexiones, y se deja al sistema, en general, en el mismo
   estado en el que estaba al principio.
-  
+
 
 Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
 para llevar a cabo las diferentes fases. Normalmente es parte de la
@@ -111,7 +114,7 @@ biblioteca de aserciones decidir si una parte del código se va a
 ejecutar o no. Por ejemplo, en los [tests en Perl](t/proyecto.t) que
 se pasan en este mismo repositorio, nos interesa ejecutar algunos sólo
 cuando se trata de un `pull request`. Usamos esto:
-			   
+
 ```
 # Carga bibliotecas...
 
@@ -181,14 +184,17 @@ explícitamente (con `m.Run`) y también que salir explícitamente del
 `main` usando `os.Exit`, que devolverá el código de salida adecuado.
 
 ### Usando fixtures en Python
-    
+
+> El ejemplo en Python está en el directorio [`python` dentro de los
+> ejemplos](`../ejemplos/python`).
+
 Python, a base de no querer extender la sintaxis, acaba añadiendo
 conceptos y construcciones sintácticas para temas inesperados, como
 por ejemplo los objetos que se crean en la fase de setup de los tests,
 que se denominan *fixtures*, y tienen su sintaxis específica. Para
 testear la clase `Issue` que hemos generado anteriormente, se usarían
 fixtures de esta forma:
-    
+
 ```Python
 import pytest
 from Project.Issue import Issue, IssueState
@@ -206,7 +212,7 @@ def test_has_name_when_created(issue):
 
 def test_has_id_when_created(issue):
     assert issue.issueId  == ISSUEID
-    
+
 def test_is_open_when_created(issue):
     assert  issue.state == IssueState.Open
 
