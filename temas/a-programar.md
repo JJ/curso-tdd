@@ -137,6 +137,14 @@ Como se ve más arriba, todos los atributos de la clase son privados,
 siguiendo los principios anteriores; también esto es programación
 defensiva, porque aisla el interfaz de la implementación.
 
+Los métodos, como se indica, hacen sólo una cosa, y devuelven objetos
+sólo del tipo indicado, sin un formato especial indicando alguna
+excepción.
+
+> Podíamos decir, en el caso del método `milestones`, que se
+> devolviera una excepción si no nay ninguno, pero el hash vacío
+> también es un valor válido.
+
 Llegados a este punto, ya tenemos la entidad con la que vamos a
 trabajar. Un proyecto tiene hitos y estos tienen issues, y cuando
 trabajemos, lo haremos de esta forma. Según nos lo pidan las historias
@@ -237,7 +245,7 @@ excepciones:
     - lib/X/Project/NoSuchIssue.pm6
 ```
 
-Es test simplemente comprobará que ese fichero existe.
+El test simplemente comprobará que ese fichero existe.
 
 ## Entrega
 

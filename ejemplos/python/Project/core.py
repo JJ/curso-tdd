@@ -5,7 +5,7 @@ class Project:
 
     def name(self):
         return self.name
-        
+
     def newMilestone(self, milestone):
         pass;
 
