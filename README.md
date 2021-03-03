@@ -79,8 +79,10 @@ estas sesiones:
    * Añadiendo *personas* al hito 1
    * [Presentación](preso/checkpoint.html)
 
-6. Refinando el diseño
-  * [Material](temas/comenzando.md).
+6. Refinando el diseño y organizando el desarrollo
+   * Algunos principios de diseño
+   * [Material](temas/organizando.md).
+   * [Presentación](temas/organizando.html)
 
 6. Comienzo de la implementación "defensiva".
     * Documentación de las historias de usuario y traslado a issues.
