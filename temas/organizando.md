@@ -253,16 +253,26 @@ vamos a trabajar:
 ```nim
 import tables, ../project
 
-var projectList* = initTable[string, Project]()
+var projectList = initTable[string, Project]()
 
 proc addProject *( id: string ) =
   projectList[id] = Project( id: id )
+
+proc getProject * ( id: string): Project =
+  return projectList[id]
 ```
 
-`addProject` será el encargado de añadir nuevos proyectos, y se lo
-añade a un módulo que posiblemente debería estar oculto.
+`addProject` será el encargado de añadir nuevos proyectos, y
+`getProject` encapsula la recuperación de uno de los módulos. Los
+asteriscos en Nim indican que son públicos y le falta a `projectList`,
+manteniendo por tanto oculta la implementación siguiendo el principio
+H de SHOC.
 
-> Lo dejaremos para la segunda iteración.
+> De hecho, `Project` es probable que ni debiera de existir, porque es
+> un simple objeto valor. Para la segunda iteración. Para esta también
+> dejamos el hecho de que una clase deba gestionar correctamente las
+> excepciones, como en este caso tratar de obtener un projecto cuyo ID
+> no existe.
 
 Las `tables`en Nim son equivalentes a los diccionarios o Hash en otros lenguajes.
 
