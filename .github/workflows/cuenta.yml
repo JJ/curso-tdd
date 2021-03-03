@@ -1,0 +1,22 @@
+name: "Comprueba hitos"
+on:
+  push:
+    paths:
+      - 'proyectos.md'
+
+jobs:
+  crea-tabla:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Exporta proyectos a un CSV
+        run: perl .github/workflows/tally.pl > data/proyectos.csv
+      - name: Crea gráfico
+        run: perl .github/workflows/chart.pl > data/proyectos.md
+      - name: Checks in results
+        run: |
+          git config --global user.email "jjmerelo@gmail.com"
+          git config --global user.name "ÁgilDataBot"
+          .github/workflows/commit-msg.pl | git commit -aF -
+          git push

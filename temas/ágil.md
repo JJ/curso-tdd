@@ -130,6 +130,41 @@ acaban siendo deprecadas y no quieres encontrarte en una situación en
 la cual tengas que reescribir todo por usar algo con posibles huecos
 de seguridad.
 
+## Buscando la clientela
+
+En muchos casos en informática, y en muchos a los que nos vamos a
+enfrentar durante la carrera y, sobre todo, si queremos emprender o
+crear alguna cosa totalmente nueva (o presentar un proyecto al
+concurso, que para el caso es lo mismo) el principal problema al que
+nos vamos a enfrentar es no encontrar ideas para iniciar el proyecto,
+o no saber qué problema más o menos cercano o presente podríamos
+resolver.
+
+Sobre todo en emprendimiento, pero también en Informática, se puede
+emplear, la mayoría de veces con éxito, la metodología de [*design
+thinking*](https://www.designthinking.es/inicio/).
+
+Es una metodología más o menos establecida, pero esencialmente se
+parte de una estadística, un dato o un artículo, y a partir de ahí, en
+diferentes fases, se van definiendo posibles soluciones al
+problema. En la fase de ideas, la que nos interesa es la fase que se
+denomina
+[*empatizar*](https://designthinkingespaña.com/empatizar-primera-fase-design-thinking),
+es decir, colocarse en el lugar de los futuros
+usuarios para ver qué deseos tienen y cual sería la mejor forma de
+canalizar esos deseos y lograr resolverlos con una aplicación.
+
+### Ejemplo
+
+En el caso del hipotético *dashboard* para controlar los proyectos de
+los estudiantes, el principal problema que se puede plantear es lo
+manual y tedioso que puede ser controlar uno por uno todos los
+proyectos. Empatizar permite centrar el diseño en el usuario,
+simplificar el desarrollo al no responder a necesidades que no se
+soliciten, y crear un marco en el cual se va a desarrollar esta
+aplicación. Además, también permite identificar los *actores*, o
+quienes son los que van a usar efectivamente la aplicación.
+
 ## Capturando los deseos de los clientes
 
 Los deseos de los clientes se capturarán en unas [historias de
@@ -166,6 +201,76 @@ para elaborar colaborativamente una épica. De esa épica,
 posteriormente, surgirán las diferentes historias de usuario. Pero eso
 lo veremos a continuación.
 
+## Empatizando con los clientes
+
+Es esencial en la elaboración de un proyecto saber quién lo va a usar,
+pero saberlo hasta el último detalle. Diseñar el interfaz de usuario
+requiere saber el tipo de usuario y tener en cuenta la [accesibilidad
+universal](https://www.fundacioncaser.org/autonomia/cuidadores-y-promocion-de-la-autonomia/promover-la-autonomia-personal/que-es-la-accesibilidad-universal),
+pero la eficacia en que el destinatario final del software lleve a
+cabo las labores que se pueden hacer con el mismo es esencial.
+
+En un marco de *design thinking*, además, se habrá identificado a los
+actores desde el principio. En esta fase se definirán un poco más, de
+forma que pueda acercarse a lo que necesitamos saber de ellos para
+desarrollar nuestro software.
+
+Y la cuestión es que rara vez se trata de un solo tipo de
+usuario. Aparte de las labores "clásicas", "usuario" y
+"administrador", y también el "programador/a" que será quien escriba
+el código, todos los roles necesitan ser definidos claramente en
+función de sus capacidades motoras y cognitivas, o simplemente
+preferencias culturales o lingüísticas.
+
+> ¿Alguien tiene en cuenta a la hora de diseñar una aplicación que
+> eventualmente vaya a ser usada por personas con diferentes idiomas
+> nativos? Pues eso.
+
+En desarrollo ágil, por tanto, se usa la metodología llamada
+[personas](https://www.fundacioncaser.org/autonomia/cuidadores-y-promocion-de-la-autonomia/promover-la-autonomia-personal/que-es-la-accesibilidad-universal)
+(en inglés es igual), que consiste simplemente en dar nombre,
+apellidos, edad y una biografía e incluso currículum a los posibles
+usuarios del software. De esa forma, no va a haber "usuario avanzado",
+sino "Doris Yllana McKenzie, máster en ciencia de datos, 35 años,
+residente en Tres Cantos, Madrid.
+
+### Ejemplo
+
+Hemos venido trabajando con una aplicación que intenta monitorizar las
+diferentes etapas en las que se encuentran los proyectos de
+estudiantes de una carrera de informática.
+
+Para crear la "persona" conviene que se investigue un poco el posible
+usuario, usando estadísticas publicadas.
+
+> He intentado buscar estadísticas de la UGR sobre edad media por
+> disciplinas, y no la he encontrado. La publicación de datos, y más
+> de datos abiertos, es un gran fail.
+
+Por ejemplo, la edad mediana del profesorado de informática en la UGR está
+entre los 50 y 60 años.
+
+> Parece mentira, pero es así. Yo estoy ligeramente por debajo de la
+> mediana.
+
+En informática, la mayoría del profesorado es hombre. Salvo que
+queramos proyectar un mensaje (que también es posible), se debe tratar
+de usar estas estadísticas en el diseño de las personas.
+
+Finalmente, el profesorado tiene, en general, un doctorado y es de
+origen español (una minoría de otros países de habla hispana, como
+Cuba y Argentina). Con lo que ya tenemos definida la persona:
+
+> Iris Capuleto Troya, con nacimiento en España en 1967, licenciatura
+> en Informática y doctorado en Informática por la UGR, habla español
+> correctamente, también inglés (nivel B1), usa gafas bifocales y
+> tiene tanto portátiles como tablets como móviles de última
+> generación.
+
+Es decir, cuando decidamos a partir de ahora crear HUs, hablaremos de
+"Iris quiere" o "Iris desea". Lo haremos en el material del curso,
+dentro de la medida de lo posible.
+
 ## Ver también
 
 Este [*whitepaper* gratuito describe en general la metodología
@@ -184,6 +289,9 @@ Se procederá de esta forma: Cada equipo se tendrá que reunir para decidir qué
   abrir una ficha de "problema" y que todo el mundo trabaje sobre
   ella.
 
+Adicionalmente, decidirá (y escribirá la biografía) de las "personas"
+que vayan a usar su software.
+
 
 ## Entrega
 
@@ -192,16 +300,21 @@ pull request al fichero de [proyectos](../proyectos.md), tras añadir
 en el *fork* propio el nombre del proyecto y un enlace al repo, así
 como la versión.
 
-Usaremos
-[versionado semántico para las entregas](https://semver.org/), donde
-el primer número será siempre el hito (comenzando por el hito
-0). Diferentes versiones cambiarán el *minor* (el segundo) o el
-tercero, si son algunos cambios que no alteran el API ni la
-funcionalidad. Cada entrega corresponderá a un *release*, y por tanto
-el repositorio tendrá que tener un tag
+En este hito empezaremos a usar un fichero, `agil.yaml`, en el
+directorio principal, que se usará para poner una serie de contenidos
+relacionados con el hito y que se puedan evaluar automáticamente. En
+este hito se añadirá una sola clave: `personas`, que será un *array*
+en YAML con el nombre de las personas que se hayan creado. Por
+ejemplo, algo así:
 
-> Los tags se hacen con `git tag` *sobre el repositorio del proyecto*, 
-> y para hacer push de los mismos se
-> tendrá que hacer, adicionalmente al normal, `git push --tags`
+```yaml
+personas:
+    - Iris Capuleto Troya
+```
 
-que deberá corresponder exactamente a la versión que se haya enviado.
+En el caso definido antes. Iremos añadiendo claves a este fichero,
+pero por lo pronto tendrá solamente esa clave. Más nombres tendrán que
+añadirse de la misma forma, con otra línea precedida por `-`.
+
+Recordatorio: el *tag* deberá corresponder exactamente a la versión
+que se haya enviado.

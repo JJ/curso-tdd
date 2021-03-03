@@ -2,10 +2,11 @@ import pytest
 
 from Project.core import Project
 
+PROJECT_NAME = "foo"
+
 @pytest.fixture
 def project():
-    project = Project()
-    return project
+    return Project( PROJECT_NAME )
 
 def test_data(project):
-    assert  len(project.data) > 0
+    assert project.name == PROJECT_NAME

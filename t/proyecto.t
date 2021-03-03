@@ -36450,6 +36450,2507 @@ $fatpacked{"Types/Serialiser/Error.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\
   
 TYPES_SERIALISER_ERROR
 
+$fatpacked{"YAML.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML';
+  package YAML;
+  our $VERSION = '1.13';
+  
+  use YAML::Mo;
+  
+  use Exporter;
+  push @YAML::ISA, 'Exporter';
+  our @EXPORT = qw{ Dump Load };
+  our @EXPORT_OK = qw{ freeze thaw DumpFile LoadFile Bless Blessed };
+  
+  use YAML::Node; # XXX This is a temp fix for Module::Build
+  
+  # XXX This VALUE nonsense needs to go.
+  use constant VALUE => "\x07YAML\x07VALUE\x07";
+  
+  # YAML Object Properties
+  has dumper_class => default => sub {'YAML::Dumper'};
+  has loader_class => default => sub {'YAML::Loader'};
+  has dumper_object => default => sub {$_[0]->init_action_object("dumper")};
+  has loader_object => default => sub {$_[0]->init_action_object("loader")};
+  
+  sub Dump {
+      my $yaml = YAML->new;
+      $yaml->dumper_class($YAML::DumperClass)
+          if $YAML::DumperClass;
+      return $yaml->dumper_object->dump(@_);
+  }
+  
+  sub Load {
+      my $yaml = YAML->new;
+      $yaml->loader_class($YAML::LoaderClass)
+          if $YAML::LoaderClass;
+      return $yaml->loader_object->load(@_);
+  }
+  
+  {
+      no warnings 'once';
+      # freeze/thaw is the API for Storable string serialization. Some
+      # modules make use of serializing packages on if they use freeze/thaw.
+      *freeze = \ &Dump;
+      *thaw   = \ &Load;
+  }
+  
+  sub DumpFile {
+      my $OUT;
+      my $filename = shift;
+      if (ref $filename eq 'GLOB') {
+          $OUT = $filename;
+      }
+      else {
+          my $mode = '>';
+          if ($filename =~ /^\s*(>{1,2})\s*(.*)$/) {
+              ($mode, $filename) = ($1, $2);
+          }
+          open $OUT, $mode, $filename
+            or YAML::Mo::Object->die('YAML_DUMP_ERR_FILE_OUTPUT', $filename, $!);
+      }
+      binmode $OUT, ':utf8';  # if $Config{useperlio} eq 'define';
+      local $/ = "\n"; # reset special to "sane"
+      print $OUT Dump(@_);
+  }
+  
+  sub LoadFile {
+      my $IN;
+      my $filename = shift;
+      if (ref $filename eq 'GLOB') {
+          $IN = $filename;
+      }
+      else {
+          open $IN, '<', $filename
+            or YAML::Mo::Object->die('YAML_LOAD_ERR_FILE_INPUT', $filename, $!);
+      }
+      binmode $IN, ':utf8';  # if $Config{useperlio} eq 'define';
+      return Load(do { local $/; <$IN> });
+  }
+  
+  sub init_action_object {
+      my $self = shift;
+      my $object_class = (shift) . '_class';
+      my $module_name = $self->$object_class;
+      eval "require $module_name";
+      $self->die("Error in require $module_name - $@")
+          if $@ and "$@" !~ /Can't locate/;
+      my $object = $self->$object_class->new;
+      $object->set_global_options;
+      return $object;
+  }
+  
+  my $global = {};
+  sub Bless {
+      require YAML::Dumper::Base;
+      YAML::Dumper::Base::bless($global, @_)
+  }
+  sub Blessed {
+      require YAML::Dumper::Base;
+      YAML::Dumper::Base::blessed($global, @_)
+  }
+  sub global_object { $global }
+  
+  1;
+YAML
+
+$fatpacked{"YAML/Any.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_ANY';
+  use strict; use warnings;
+  package YAML::Any;
+  our $VERSION = '1.13';
+  
+  use Exporter ();
+  
+  @YAML::Any::ISA       = 'Exporter';
+  @YAML::Any::EXPORT    = qw(Dump Load);
+  @YAML::Any::EXPORT_OK = qw(DumpFile LoadFile);
+  
+  my @dump_options = qw(
+      UseCode
+      DumpCode
+      SpecVersion
+      Indent
+      UseHeader
+      UseVersion
+      SortKeys
+      AnchorPrefix
+      UseBlock
+      UseFold
+      CompressSeries
+      InlineSeries
+      UseAliases
+      Purity
+      Stringify
+  );
+  
+  my @load_options = qw(
+      UseCode
+      LoadCode
+  );
+  
+  my @implementations = qw(
+      YAML::XS
+      YAML::Syck
+      YAML::Old
+      YAML
+      YAML::Tiny
+  );
+  
+  sub import {
+      __PACKAGE__->implementation;
+      goto &Exporter::import;
+  }
+  
+  sub Dump {
+      no strict 'refs';
+      no warnings 'once';
+      my $implementation = __PACKAGE__->implementation;
+      for my $option (@dump_options) {
+          my $var = "$implementation\::$option";
+          my $value = $$var;
+          local $$var;
+          $$var = defined $value ? $value : ${"YAML::$option"};
+      }
+      return &{"$implementation\::Dump"}(@_);
+  }
+  
+  sub DumpFile {
+      no strict 'refs';
+      no warnings 'once';
+      my $implementation = __PACKAGE__->implementation;
+      for my $option (@dump_options) {
+          my $var = "$implementation\::$option";
+          my $value = $$var;
+          local $$var;
+          $$var = defined $value ? $value : ${"YAML::$option"};
+      }
+      return &{"$implementation\::DumpFile"}(@_);
+  }
+  
+  sub Load {
+      no strict 'refs';
+      no warnings 'once';
+      my $implementation = __PACKAGE__->implementation;
+      for my $option (@load_options) {
+          my $var = "$implementation\::$option";
+          my $value = $$var;
+          local $$var;
+          $$var = defined $value ? $value : ${"YAML::$option"};
+      }
+      return &{"$implementation\::Load"}(@_);
+  }
+  
+  sub LoadFile {
+      no strict 'refs';
+      no warnings 'once';
+      my $implementation = __PACKAGE__->implementation;
+      for my $option (@load_options) {
+          my $var = "$implementation\::$option";
+          my $value = $$var;
+          local $$var;
+          $$var = defined $value ? $value : ${"YAML::$option"};
+      }
+      return &{"$implementation\::LoadFile"}(@_);
+  }
+  
+  sub order {
+      return @YAML::Any::_TEST_ORDER
+          if @YAML::Any::_TEST_ORDER;
+      return @implementations;
+  }
+  
+  sub implementation {
+      my @order = __PACKAGE__->order;
+      for my $module (@order) {
+          my $path = $module;
+          $path =~ s/::/\//g;
+          $path .= '.pm';
+          return $module if exists $INC{$path};
+          eval "require $module; 1" and return $module;
+      }
+      croak("YAML::Any couldn't find any of these YAML implementations: @order");
+  }
+  
+  sub croak {
+      require Carp;
+      Carp::croak(@_);
+  }
+  
+  1;
+YAML_ANY
+
+$fatpacked{"YAML/Dumper.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_DUMPER';
+  package YAML::Dumper;
+  
+  use YAML::Mo;
+  extends 'YAML::Dumper::Base';
+  
+  use YAML::Dumper::Base;
+  use YAML::Node;
+  use YAML::Types;
+  
+  # Context constants
+  use constant KEY       => 3;
+  use constant BLESSED   => 4;
+  use constant FROMARRAY => 5;
+  use constant VALUE     => "\x07YAML\x07VALUE\x07";
+  
+  # Common YAML character sets
+  my $ESCAPE_CHAR = '[\\x00-\\x08\\x0b-\\x0d\\x0e-\\x1f]';
+  my $LIT_CHAR    = '|';
+  
+  #==============================================================================
+  # OO version of Dump. YAML->new->dump($foo);
+  sub dump {
+      my $self = shift;
+      $self->stream('');
+      $self->document(0);
+      for my $document (@_) {
+          $self->{document}++;
+          $self->transferred({});
+          $self->id_refcnt({});
+          $self->id_anchor({});
+          $self->anchor(1);
+          $self->level(0);
+          $self->offset->[0] = 0 - $self->indent_width;
+          $self->_prewalk($document);
+          $self->_emit_header($document);
+          $self->_emit_node($document);
+      }
+      return $self->stream;
+  }
+  
+  # Every YAML document in the stream must begin with a YAML header, unless
+  # there is only a single document and the user requests "no header".
+  sub _emit_header {
+      my $self = shift;
+      my ($node) = @_;
+      if (not $self->use_header and
+          $self->document == 1
+         ) {
+          $self->die('YAML_DUMP_ERR_NO_HEADER')
+            unless ref($node) =~ /^(HASH|ARRAY)$/;
+          $self->die('YAML_DUMP_ERR_NO_HEADER')
+            if ref($node) eq 'HASH' and keys(%$node) == 0;
+          $self->die('YAML_DUMP_ERR_NO_HEADER')
+            if ref($node) eq 'ARRAY' and @$node == 0;
+          # XXX Also croak if aliased, blessed, or ynode
+          $self->headless(1);
+          return;
+      }
+      $self->{stream} .= '---';
+  # XXX Consider switching to 1.1 style
+      if ($self->use_version) {
+  #         $self->{stream} .= " #YAML:1.0";
+      }
+  }
+  
+  # Walk the tree to be dumped and keep track of its reference counts.
+  # This function is where the Dumper does all its work. All type
+  # transfers happen here.
+  sub _prewalk {
+      my $self = shift;
+      my $stringify = $self->stringify;
+      my ($class, $type, $node_id) = $self->node_info(\$_[0], $stringify);
+  
+      # Handle typeglobs
+      if ($type eq 'GLOB') {
+          $self->transferred->{$node_id} =
+            YAML::Type::glob->yaml_dump($_[0]);
+          $self->_prewalk($self->transferred->{$node_id});
+          return;
+      }
+  
+      # Handle regexps
+      if (ref($_[0]) eq 'Regexp') {
+          return;
+      }
+  
+      # Handle Purity for scalars.
+      # XXX can't find a use case yet. Might be YAGNI.
+      if (not ref $_[0]) {
+          $self->{id_refcnt}{$node_id}++ if $self->purity;
+          return;
+      }
+  
+      # Make a copy of original
+      my $value = $_[0];
+      ($class, $type, $node_id) = $self->node_info($value, $stringify);
+  
+      # Must be a stringified object.
+      return if (ref($value) and not $type);
+  
+      # Look for things already transferred.
+      if ($self->transferred->{$node_id}) {
+          (undef, undef, $node_id) = (ref $self->transferred->{$node_id})
+            ? $self->node_info($self->transferred->{$node_id}, $stringify)
+            : $self->node_info(\ $self->transferred->{$node_id}, $stringify);
+          $self->{id_refcnt}{$node_id}++;
+          return;
+      }
+  
+      # Handle code refs
+      if ($type eq 'CODE') {
+          $self->transferred->{$node_id} = 'placeholder';
+          YAML::Type::code->yaml_dump(
+              $self->dump_code,
+              $_[0],
+              $self->transferred->{$node_id}
+          );
+          ($class, $type, $node_id) =
+            $self->node_info(\ $self->transferred->{$node_id}, $stringify);
+          $self->{id_refcnt}{$node_id}++;
+          return;
+      }
+  
+      # Handle blessed things
+      if (defined $class) {
+          if ($value->can('yaml_dump')) {
+              $value = $value->yaml_dump;
+          }
+          elsif ($type eq 'SCALAR') {
+              $self->transferred->{$node_id} = 'placeholder';
+              YAML::Type::blessed->yaml_dump
+                ($_[0], $self->transferred->{$node_id});
+              ($class, $type, $node_id) =
+                $self->node_info(\ $self->transferred->{$node_id}, $stringify);
+              $self->{id_refcnt}{$node_id}++;
+              return;
+          }
+          else {
+              $value = YAML::Type::blessed->yaml_dump($value);
+          }
+          $self->transferred->{$node_id} = $value;
+          (undef, $type, $node_id) = $self->node_info($value, $stringify);
+      }
+  
+      # Handle YAML Blessed things
+      require YAML;
+      if (defined YAML->global_object()->{blessed_map}{$node_id}) {
+          $value = YAML->global_object()->{blessed_map}{$node_id};
+          $self->transferred->{$node_id} = $value;
+          ($class, $type, $node_id) = $self->node_info($value, $stringify);
+          $self->_prewalk($value);
+          return;
+      }
+  
+      # Handle hard refs
+      if ($type eq 'REF' or $type eq 'SCALAR') {
+          $value = YAML::Type::ref->yaml_dump($value);
+          $self->transferred->{$node_id} = $value;
+          (undef, $type, $node_id) = $self->node_info($value, $stringify);
+      }
+  
+      # Handle ref-to-glob's
+      elsif ($type eq 'GLOB') {
+          my $ref_ynode = $self->transferred->{$node_id} =
+            YAML::Type::ref->yaml_dump($value);
+  
+          my $glob_ynode = $ref_ynode->{&VALUE} =
+            YAML::Type::glob->yaml_dump($$value);
+  
+          (undef, undef, $node_id) = $self->node_info($glob_ynode, $stringify);
+          $self->transferred->{$node_id} = $glob_ynode;
+          $self->_prewalk($glob_ynode);
+          return;
+      }
+  
+      # Increment ref count for node
+      return if ++($self->{id_refcnt}{$node_id}) > 1;
+  
+      # Keep on walking
+      if ($type eq 'HASH') {
+          $self->_prewalk($value->{$_})
+              for keys %{$value};
+          return;
+      }
+      elsif ($type eq 'ARRAY') {
+          $self->_prewalk($_)
+              for @{$value};
+          return;
+      }
+  
+      # Unknown type. Need to know about it.
+      $self->warn(<<"...");
+  YAML::Dumper can't handle dumping this type of data.
+  Please report this to the author.
+  
+  id:    $node_id
+  type:  $type
+  class: $class
+  value: $value
+  
+  ...
+  
+      return;
+  }
+  
+  # Every data element and sub data element is a node.
+  # Everything emitted goes through this function.
+  sub _emit_node {
+      my $self = shift;
+      my ($type, $node_id);
+      my $ref = ref($_[0]);
+      if ($ref) {
+          if ($ref eq 'Regexp') {
+              $self->_emit(' !!perl/regexp');
+              $self->_emit_str("$_[0]");
+              return;
+          }
+          (undef, $type, $node_id) = $self->node_info($_[0], $self->stringify);
+      }
+      else {
+          $type = $ref || 'SCALAR';
+          (undef, undef, $node_id) = $self->node_info(\$_[0], $self->stringify);
+      }
+  
+      my ($ynode, $tag) = ('') x 2;
+      my ($value, $context) = (@_, 0);
+  
+      if (defined $self->transferred->{$node_id}) {
+          $value = $self->transferred->{$node_id};
+          $ynode = ynode($value);
+          if (ref $value) {
+              $tag = defined $ynode ? $ynode->tag->short : '';
+              (undef, $type, $node_id) =
+                $self->node_info($value, $self->stringify);
+          }
+          else {
+              $ynode = ynode($self->transferred->{$node_id});
+              $tag = defined $ynode ? $ynode->tag->short : '';
+              $type = 'SCALAR';
+              (undef, undef, $node_id) =
+                $self->node_info(
+                    \ $self->transferred->{$node_id},
+                    $self->stringify
+                );
+          }
+      }
+      elsif ($ynode = ynode($value)) {
+          $tag = $ynode->tag->short;
+      }
+  
+      if ($self->use_aliases) {
+          $self->{id_refcnt}{$node_id} ||= 0;
+          if ($self->{id_refcnt}{$node_id} > 1) {
+              if (defined $self->{id_anchor}{$node_id}) {
+                  $self->{stream} .= ' *' . $self->{id_anchor}{$node_id} . "\n";
+                  return;
+              }
+              my $anchor = $self->anchor_prefix . $self->{anchor}++;
+              $self->{stream} .= ' &' . $anchor;
+              $self->{id_anchor}{$node_id} = $anchor;
+          }
+      }
+  
+      return $self->_emit_str("$value")   # Stringified object
+        if ref($value) and not $type;
+      return $self->_emit_scalar($value, $tag)
+        if $type eq 'SCALAR' and $tag;
+      return $self->_emit_str($value)
+        if $type eq 'SCALAR';
+      return $self->_emit_mapping($value, $tag, $node_id, $context)
+        if $type eq 'HASH';
+      return $self->_emit_sequence($value, $tag)
+        if $type eq 'ARRAY';
+      $self->warn('YAML_DUMP_WARN_BAD_NODE_TYPE', $type);
+      return $self->_emit_str("$value");
+  }
+  
+  # A YAML mapping is akin to a Perl hash.
+  sub _emit_mapping {
+      my $self = shift;
+      my ($value, $tag, $node_id, $context) = @_;
+      $self->{stream} .= " !$tag" if $tag;
+  
+      # Sometimes 'keys' fails. Like on a bad tie implementation.
+      my $empty_hash = not(eval {keys %$value});
+      $self->warn('YAML_EMIT_WARN_KEYS', $@) if $@;
+      return ($self->{stream} .= " {}\n") if $empty_hash;
+  
+      # If CompressSeries is on (default) and legal is this context, then
+      # use it and make the indent level be 2 for this node.
+      if ($context == FROMARRAY and
+          $self->compress_series and
+          not (defined $self->{id_anchor}{$node_id} or $tag or $empty_hash)
+         ) {
+          $self->{stream} .= ' ';
+          $self->offset->[$self->level+1] = $self->offset->[$self->level] + 2;
+      }
+      else {
+          $context = 0;
+          $self->{stream} .= "\n"
+            unless $self->headless && not($self->headless(0));
+          $self->offset->[$self->level+1] =
+            $self->offset->[$self->level] + $self->indent_width;
+      }
+  
+      $self->{level}++;
+      my @keys;
+      if ($self->sort_keys == 1) {
+          if (ynode($value)) {
+              @keys = keys %$value;
+          }
+          else {
+              @keys = sort keys %$value;
+          }
+      }
+      elsif ($self->sort_keys == 2) {
+          @keys = sort keys %$value;
+      }
+      # XXX This is hackish but sometimes handy. Not sure whether to leave it in.
+      elsif (ref($self->sort_keys) eq 'ARRAY') {
+          my $i = 1;
+          my %order = map { ($_, $i++) } @{$self->sort_keys};
+          @keys = sort {
+              (defined $order{$a} and defined $order{$b})
+                ? ($order{$a} <=> $order{$b})
+                : ($a cmp $b);
+          } keys %$value;
+      }
+      else {
+          @keys = keys %$value;
+      }
+      # Force the YAML::VALUE ('=') key to sort last.
+      if (exists $value->{&VALUE}) {
+          for (my $i = 0; $i < @keys; $i++) {
+              if ($keys[$i] eq &VALUE) {
+                  splice(@keys, $i, 1);
+                  push @keys, &VALUE;
+                  last;
+              }
+          }
+      }
+  
+      for my $key (@keys) {
+          $self->_emit_key($key, $context);
+          $context = 0;
+          $self->{stream} .= ':';
+          $self->_emit_node($value->{$key});
+      }
+      $self->{level}--;
+  }
+  
+  # A YAML series is akin to a Perl array.
+  sub _emit_sequence {
+      my $self = shift;
+      my ($value, $tag) = @_;
+      $self->{stream} .= " !$tag" if $tag;
+  
+      return ($self->{stream} .= " []\n") if @$value == 0;
+  
+      $self->{stream} .= "\n"
+        unless $self->headless && not($self->headless(0));
+  
+      # XXX Really crufty feature. Better implemented by ynodes.
+      if ($self->inline_series and
+          @$value <= $self->inline_series and
+          not (scalar grep {ref or /\n/} @$value)
+         ) {
+          $self->{stream} =~ s/\n\Z/ /;
+          $self->{stream} .= '[';
+          for (my $i = 0; $i < @$value; $i++) {
+              $self->_emit_str($value->[$i], KEY);
+              last if $i == $#{$value};
+              $self->{stream} .= ', ';
+          }
+          $self->{stream} .= "]\n";
+          return;
+      }
+  
+      $self->offset->[$self->level + 1] =
+        $self->offset->[$self->level] + $self->indent_width;
+      $self->{level}++;
+      for my $val (@$value) {
+          $self->{stream} .= ' ' x $self->offset->[$self->level];
+          $self->{stream} .= '-';
+          $self->_emit_node($val, FROMARRAY);
+      }
+      $self->{level}--;
+  }
+  
+  # Emit a mapping key
+  sub _emit_key {
+      my $self = shift;
+      my ($value, $context) = @_;
+      $self->{stream} .= ' ' x $self->offset->[$self->level]
+        unless $context == FROMARRAY;
+      $self->_emit_str($value, KEY);
+  }
+  
+  # Emit a blessed SCALAR
+  sub _emit_scalar {
+      my $self = shift;
+      my ($value, $tag) = @_;
+      $self->{stream} .= " !$tag";
+      $self->_emit_str($value, BLESSED);
+  }
+  
+  sub _emit {
+      my $self = shift;
+      $self->{stream} .= join '', @_;
+  }
+  
+  # Emit a string value. YAML has many scalar styles. This routine attempts to
+  # guess the best style for the text.
+  sub _emit_str {
+      my $self = shift;
+      my $type = $_[1] || 0;
+  
+      # Use heuristics to find the best scalar emission style.
+      $self->offset->[$self->level + 1] =
+        $self->offset->[$self->level] + $self->indent_width;
+      $self->{level}++;
+  
+      my $sf = $type == KEY ? '' : ' ';
+      my $sb = $type == KEY ? '? ' : ' ';
+      my $ef = $type == KEY ? '' : "\n";
+      my $eb = "\n";
+  
+      while (1) {
+          $self->_emit($sf),
+          $self->_emit_plain($_[0]),
+          $self->_emit($ef), last
+            if not defined $_[0];
+          $self->_emit($sf, '=', $ef), last
+            if $_[0] eq VALUE;
+          $self->_emit($sf),
+          $self->_emit_double($_[0]),
+          $self->_emit($ef), last
+            if $_[0] =~ /$ESCAPE_CHAR/;
+          if ($_[0] =~ /\n/) {
+              $self->_emit($sb),
+              $self->_emit_block($LIT_CHAR, $_[0]),
+              $self->_emit($eb), last
+                if $self->use_block;
+                Carp::cluck "[YAML] \$UseFold is no longer supported"
+                if $self->use_fold;
+              $self->_emit($sf),
+              $self->_emit_double($_[0]),
+              $self->_emit($ef), last
+                if length $_[0] <= 30;
+              $self->_emit($sf),
+              $self->_emit_double($_[0]),
+              $self->_emit($ef), last
+                if $_[0] !~ /\n\s*\S/;
+              $self->_emit($sb),
+              $self->_emit_block($LIT_CHAR, $_[0]),
+              $self->_emit($eb), last;
+          }
+          $self->_emit($sf),
+          $self->_emit_plain($_[0]),
+          $self->_emit($ef), last
+            if $self->is_valid_plain($_[0]);
+          $self->_emit($sf),
+          $self->_emit_double($_[0]),
+          $self->_emit($ef), last
+            if $_[0] =~ /'/;
+          $self->_emit($sf),
+          $self->_emit_single($_[0]),
+          $self->_emit($ef);
+          last;
+      }
+  
+      $self->{level}--;
+  
+      return;
+  }
+  
+  # Check whether or not a scalar should be emitted as an plain scalar.
+  sub is_valid_plain {
+      my $self = shift;
+      return 0 unless length $_[0];
+      # refer to YAML::Loader::parse_inline_simple()
+      return 0 if $_[0] =~ /^[\s\{\[\~\`\'\"\!\@\#\>\|\%\&\?\*\^]/;
+      return 0 if $_[0] =~ /[\{\[\]\},]/;
+      return 0 if $_[0] =~ /[:\-\?]\s/;
+      return 0 if $_[0] =~ /\s#/;
+      return 0 if $_[0] =~ /\:(\s|$)/;
+      return 0 if $_[0] =~ /[\s\|\>]$/;
+      return 0 if $_[0] eq '-';
+      return 1;
+  }
+  
+  sub _emit_block {
+      my $self = shift;
+      my ($indicator, $value) = @_;
+      $self->{stream} .= $indicator;
+      $value =~ /(\n*)\Z/;
+      my $chomp = length $1 ? (length $1 > 1) ? '+' : '' : '-';
+      $value = '~' if not defined $value;
+      $self->{stream} .= $chomp;
+      $self->{stream} .= $self->indent_width if $value =~ /^\s/;
+      $self->{stream} .= $self->indent($value);
+  }
+  
+  # Plain means that the scalar is unquoted.
+  sub _emit_plain {
+      my $self = shift;
+      $self->{stream} .= defined $_[0] ? $_[0] : '~';
+  }
+  
+  # Double quoting is for single lined escaped strings.
+  sub _emit_double {
+      my $self = shift;
+      (my $escaped = $self->escape($_[0])) =~ s/"/\\"/g;
+      $self->{stream} .= qq{"$escaped"};
+  }
+  
+  # Single quoting is for single lined unescaped strings.
+  sub _emit_single {
+      my $self = shift;
+      my $item = shift;
+      $item =~ s{'}{''}g;
+      $self->{stream} .= "'$item'";
+  }
+  
+  #==============================================================================
+  # Utility subroutines.
+  #==============================================================================
+  
+  # Indent a scalar to the current indentation level.
+  sub indent {
+      my $self = shift;
+      my ($text) = @_;
+      return $text unless length $text;
+      $text =~ s/\n\Z//;
+      my $indent = ' ' x $self->offset->[$self->level];
+      $text =~ s/^/$indent/gm;
+      $text = "\n$text";
+      return $text;
+  }
+  
+  # Escapes for unprintable characters
+  my @escapes = qw(\0   \x01 \x02 \x03 \x04 \x05 \x06 \a
+                   \x08 \t   \n   \v   \f   \r   \x0e \x0f
+                   \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17
+                   \x18 \x19 \x1a \e   \x1c \x1d \x1e \x1f
+                  );
+  
+  # Escape the unprintable characters
+  sub escape {
+      my $self = shift;
+      my ($text) = @_;
+      $text =~ s/\\/\\\\/g;
+      $text =~ s/([\x00-\x1f])/$escapes[ord($1)]/ge;
+      return $text;
+  }
+  
+  1;
+YAML_DUMPER
+
+$fatpacked{"YAML/Dumper/Base.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_DUMPER_BASE';
+  package YAML::Dumper::Base;
+  
+  use YAML::Mo;
+  
+  use YAML::Node;
+  
+  # YAML Dumping options
+  has spec_version    => default => sub {'1.0'};
+  has indent_width    => default => sub {2};
+  has use_header      => default => sub {1};
+  has use_version     => default => sub {0};
+  has sort_keys       => default => sub {1};
+  has anchor_prefix   => default => sub {''};
+  has dump_code       => default => sub {0};
+  has use_block       => default => sub {0};
+  has use_fold        => default => sub {0};
+  has compress_series => default => sub {1};
+  has inline_series   => default => sub {0};
+  has use_aliases     => default => sub {1};
+  has purity          => default => sub {0};
+  has stringify       => default => sub {0};
+  
+  # Properties
+  has stream      => default => sub {''};
+  has document    => default => sub {0};
+  has transferred => default => sub {{}};
+  has id_refcnt   => default => sub {{}};
+  has id_anchor   => default => sub {{}};
+  has anchor      => default => sub {1};
+  has level       => default => sub {0};
+  has offset      => default => sub {[]};
+  has headless    => default => sub {0};
+  has blessed_map => default => sub {{}};
+  
+  # Global Options are an idea taken from Data::Dumper. Really they are just
+  # sugar on top of real OO properties. They make the simple Dump/Load API
+  # easy to configure.
+  sub set_global_options {
+      my $self = shift;
+      $self->spec_version($YAML::SpecVersion)
+        if defined $YAML::SpecVersion;
+      $self->indent_width($YAML::Indent)
+        if defined $YAML::Indent;
+      $self->use_header($YAML::UseHeader)
+        if defined $YAML::UseHeader;
+      $self->use_version($YAML::UseVersion)
+        if defined $YAML::UseVersion;
+      $self->sort_keys($YAML::SortKeys)
+        if defined $YAML::SortKeys;
+      $self->anchor_prefix($YAML::AnchorPrefix)
+        if defined $YAML::AnchorPrefix;
+      $self->dump_code($YAML::DumpCode || $YAML::UseCode)
+        if defined $YAML::DumpCode or defined $YAML::UseCode;
+      $self->use_block($YAML::UseBlock)
+        if defined $YAML::UseBlock;
+      $self->use_fold($YAML::UseFold)
+        if defined $YAML::UseFold;
+      $self->compress_series($YAML::CompressSeries)
+        if defined $YAML::CompressSeries;
+      $self->inline_series($YAML::InlineSeries)
+        if defined $YAML::InlineSeries;
+      $self->use_aliases($YAML::UseAliases)
+        if defined $YAML::UseAliases;
+      $self->purity($YAML::Purity)
+        if defined $YAML::Purity;
+      $self->stringify($YAML::Stringify)
+        if defined $YAML::Stringify;
+  }
+  
+  sub dump {
+      my $self = shift;
+      $self->die('dump() not implemented in this class.');
+  }
+  
+  sub blessed {
+      my $self = shift;
+      my ($ref) = @_;
+      $ref = \$_[0] unless ref $ref;
+      my (undef, undef, $node_id) = YAML::Mo::Object->node_info($ref);
+      $self->{blessed_map}->{$node_id};
+  }
+  
+  sub bless {
+      my $self = shift;
+      my ($ref, $blessing) = @_;
+      my $ynode;
+      $ref = \$_[0] unless ref $ref;
+      my (undef, undef, $node_id) = YAML::Mo::Object->node_info($ref);
+      if (not defined $blessing) {
+          $ynode = YAML::Node->new($ref);
+      }
+      elsif (ref $blessing) {
+          $self->die() unless ynode($blessing);
+          $ynode = $blessing;
+      }
+      else {
+          no strict 'refs';
+          my $transfer = $blessing . "::yaml_dump";
+          $self->die() unless defined &{$transfer};
+          $ynode = &{$transfer}($ref);
+          $self->die() unless ynode($ynode);
+      }
+      $self->{blessed_map}->{$node_id} = $ynode;
+      my $object = ynode($ynode) or $self->die();
+      return $object;
+  }
+  
+  1;
+YAML_DUMPER_BASE
+
+$fatpacked{"YAML/Error.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_ERROR';
+  package YAML::Error;
+  
+  use YAML::Mo;
+  
+  has 'code';
+  has 'type' => default => sub {'Error'};
+  has 'line';
+  has 'document';
+  has 'arguments' => default => sub {[]};
+  
+  my ($error_messages, %line_adjust);
+  
+  sub format_message {
+      my $self = shift;
+      my $output = 'YAML ' . $self->type . ': ';
+      my $code = $self->code;
+      if ($error_messages->{$code}) {
+          $code = sprintf($error_messages->{$code}, @{$self->arguments});
+      }
+      $output .= $code . "\n";
+  
+      $output .= '   Code: ' . $self->code . "\n"
+          if defined $self->code;
+      $output .= '   Line: ' . $self->line . "\n"
+          if defined $self->line;
+      $output .= '   Document: ' . $self->document . "\n"
+          if defined $self->document;
+      return $output;
+  }
+  
+  sub error_messages {
+      $error_messages;
+  }
+  
+  %$error_messages = map {s/^\s+//;$_} split "\n", <<'...';
+  YAML_PARSE_ERR_BAD_CHARS
+    Invalid characters in stream. This parser only supports printable ASCII
+  YAML_PARSE_ERR_NO_FINAL_NEWLINE
+    Stream does not end with newline character
+  YAML_PARSE_ERR_BAD_MAJOR_VERSION
+    Can't parse a %s document with a 1.0 parser
+  YAML_PARSE_WARN_BAD_MINOR_VERSION
+    Parsing a %s document with a 1.0 parser
+  YAML_PARSE_WARN_MULTIPLE_DIRECTIVES
+    '%s directive used more than once'
+  YAML_PARSE_ERR_TEXT_AFTER_INDICATOR
+    No text allowed after indicator
+  YAML_PARSE_ERR_NO_ANCHOR
+    No anchor for alias '*%s'
+  YAML_PARSE_ERR_NO_SEPARATOR
+    Expected separator '---'
+  YAML_PARSE_ERR_SINGLE_LINE
+    Couldn't parse single line value
+  YAML_PARSE_ERR_BAD_ANCHOR
+    Invalid anchor
+  YAML_DUMP_ERR_INVALID_INDENT
+    Invalid Indent width specified: '%s'
+  YAML_LOAD_USAGE
+    usage: YAML::Load($yaml_stream_scalar)
+  YAML_PARSE_ERR_BAD_NODE
+    Can't parse node
+  YAML_PARSE_ERR_BAD_EXPLICIT
+    Unsupported explicit transfer: '%s'
+  YAML_DUMP_USAGE_DUMPCODE
+    Invalid value for DumpCode: '%s'
+  YAML_LOAD_ERR_FILE_INPUT
+    Couldn't open %s for input:\n%s
+  YAML_DUMP_ERR_FILE_CONCATENATE
+    Can't concatenate to YAML file %s
+  YAML_DUMP_ERR_FILE_OUTPUT
+    Couldn't open %s for output:\n%s
+  YAML_DUMP_ERR_NO_HEADER
+    With UseHeader=0, the node must be a plain hash or array
+  YAML_DUMP_WARN_BAD_NODE_TYPE
+    Can't perform serialization for node type: '%s'
+  YAML_EMIT_WARN_KEYS
+    Encountered a problem with 'keys':\n%s
+  YAML_DUMP_WARN_DEPARSE_FAILED
+    Deparse failed for CODE reference
+  YAML_DUMP_WARN_CODE_DUMMY
+    Emitting dummy subroutine for CODE reference
+  YAML_PARSE_ERR_MANY_EXPLICIT
+    More than one explicit transfer
+  YAML_PARSE_ERR_MANY_IMPLICIT
+    More than one implicit request
+  YAML_PARSE_ERR_MANY_ANCHOR
+    More than one anchor
+  YAML_PARSE_ERR_ANCHOR_ALIAS
+    Can't define both an anchor and an alias
+  YAML_PARSE_ERR_BAD_ALIAS
+    Invalid alias
+  YAML_PARSE_ERR_MANY_ALIAS
+    More than one alias
+  YAML_LOAD_ERR_NO_CONVERT
+    Can't convert implicit '%s' node to explicit '%s' node
+  YAML_LOAD_ERR_NO_DEFAULT_VALUE
+    No default value for '%s' explicit transfer
+  YAML_LOAD_ERR_NON_EMPTY_STRING
+    Only the empty string can be converted to a '%s'
+  YAML_LOAD_ERR_BAD_MAP_TO_SEQ
+    Can't transfer map as sequence. Non numeric key '%s' encountered.
+  YAML_DUMP_ERR_BAD_GLOB
+    '%s' is an invalid value for Perl glob
+  YAML_DUMP_ERR_BAD_REGEXP
+    '%s' is an invalid value for Perl Regexp
+  YAML_LOAD_ERR_BAD_MAP_ELEMENT
+    Invalid element in map
+  YAML_LOAD_WARN_DUPLICATE_KEY
+    Duplicate map key found. Ignoring.
+  YAML_LOAD_ERR_BAD_SEQ_ELEMENT
+    Invalid element in sequence
+  YAML_PARSE_ERR_INLINE_MAP
+    Can't parse inline map
+  YAML_PARSE_ERR_INLINE_SEQUENCE
+    Can't parse inline sequence
+  YAML_PARSE_ERR_BAD_DOUBLE
+    Can't parse double quoted string
+  YAML_PARSE_ERR_BAD_SINGLE
+    Can't parse single quoted string
+  YAML_PARSE_ERR_BAD_INLINE_IMPLICIT
+    Can't parse inline implicit value '%s'
+  YAML_PARSE_ERR_BAD_IMPLICIT
+    Unrecognized implicit value '%s'
+  YAML_PARSE_ERR_INDENTATION
+    Error. Invalid indentation level
+  YAML_PARSE_ERR_INCONSISTENT_INDENTATION
+    Inconsistent indentation level
+  YAML_LOAD_WARN_UNRESOLVED_ALIAS
+    Can't resolve alias *%s
+  YAML_LOAD_WARN_NO_REGEXP_IN_REGEXP
+    No 'REGEXP' element for Perl regexp
+  YAML_LOAD_WARN_BAD_REGEXP_ELEM
+    Unknown element '%s' in Perl regexp
+  YAML_LOAD_WARN_GLOB_NAME
+    No 'NAME' element for Perl glob
+  YAML_LOAD_WARN_PARSE_CODE
+    Couldn't parse Perl code scalar: %s
+  YAML_LOAD_WARN_CODE_DEPARSE
+    Won't parse Perl code unless $YAML::LoadCode is set
+  YAML_EMIT_ERR_BAD_LEVEL
+    Internal Error: Bad level detected
+  YAML_PARSE_WARN_AMBIGUOUS_TAB
+    Amibiguous tab converted to spaces
+  YAML_LOAD_WARN_BAD_GLOB_ELEM
+    Unknown element '%s' in Perl glob
+  YAML_PARSE_ERR_ZERO_INDENT
+    Can't use zero as an indentation width
+  YAML_LOAD_WARN_GLOB_IO
+    Can't load an IO filehandle. Yet!!!
+  ...
+  
+  %line_adjust = map {($_, 1)}
+    qw(YAML_PARSE_ERR_BAD_MAJOR_VERSION
+       YAML_PARSE_WARN_BAD_MINOR_VERSION
+       YAML_PARSE_ERR_TEXT_AFTER_INDICATOR
+       YAML_PARSE_ERR_NO_ANCHOR
+       YAML_PARSE_ERR_MANY_EXPLICIT
+       YAML_PARSE_ERR_MANY_IMPLICIT
+       YAML_PARSE_ERR_MANY_ANCHOR
+       YAML_PARSE_ERR_ANCHOR_ALIAS
+       YAML_PARSE_ERR_BAD_ALIAS
+       YAML_PARSE_ERR_MANY_ALIAS
+       YAML_LOAD_ERR_NO_CONVERT
+       YAML_LOAD_ERR_NO_DEFAULT_VALUE
+       YAML_LOAD_ERR_NON_EMPTY_STRING
+       YAML_LOAD_ERR_BAD_MAP_TO_SEQ
+       YAML_LOAD_ERR_BAD_STR_TO_INT
+       YAML_LOAD_ERR_BAD_STR_TO_DATE
+       YAML_LOAD_ERR_BAD_STR_TO_TIME
+       YAML_LOAD_WARN_DUPLICATE_KEY
+       YAML_PARSE_ERR_INLINE_MAP
+       YAML_PARSE_ERR_INLINE_SEQUENCE
+       YAML_PARSE_ERR_BAD_DOUBLE
+       YAML_PARSE_ERR_BAD_SINGLE
+       YAML_PARSE_ERR_BAD_INLINE_IMPLICIT
+       YAML_PARSE_ERR_BAD_IMPLICIT
+       YAML_LOAD_WARN_NO_REGEXP_IN_REGEXP
+       YAML_LOAD_WARN_BAD_REGEXP_ELEM
+       YAML_LOAD_WARN_REGEXP_CREATE
+       YAML_LOAD_WARN_GLOB_NAME
+       YAML_LOAD_WARN_PARSE_CODE
+       YAML_LOAD_WARN_CODE_DEPARSE
+       YAML_LOAD_WARN_BAD_GLOB_ELEM
+       YAML_PARSE_ERR_ZERO_INDENT
+      );
+  
+  package YAML::Warning;
+  
+  our @ISA = 'YAML::Error';
+  
+  1;
+YAML_ERROR
+
+$fatpacked{"YAML/Loader.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_LOADER';
+  package YAML::Loader;
+  
+  use YAML::Mo;
+  extends 'YAML::Loader::Base';
+  
+  use YAML::Loader::Base;
+  use YAML::Types;
+  
+  # Context constants
+  use constant LEAF       => 1;
+  use constant COLLECTION => 2;
+  use constant VALUE      => "\x07YAML\x07VALUE\x07";
+  use constant COMMENT    => "\x07YAML\x07COMMENT\x07";
+  
+  # Common YAML character sets
+  my $ESCAPE_CHAR = '[\\x00-\\x08\\x0b-\\x0d\\x0e-\\x1f]';
+  my $FOLD_CHAR   = '>';
+  my $LIT_CHAR    = '|';
+  my $LIT_CHAR_RX = "\\$LIT_CHAR";
+  
+  sub load {
+      my $self = shift;
+      $self->stream($_[0] || '');
+      return $self->_parse();
+  }
+  
+  # Top level function for parsing. Parse each document in order and
+  # handle processing for YAML headers.
+  sub _parse {
+      my $self = shift;
+      my (%directives, $preface);
+      $self->{stream} =~ s|\015\012|\012|g;
+      $self->{stream} =~ s|\015|\012|g;
+      $self->line(0);
+      $self->die('YAML_PARSE_ERR_BAD_CHARS')
+        if $self->stream =~ /$ESCAPE_CHAR/;
+      $self->die('YAML_PARSE_ERR_NO_FINAL_NEWLINE')
+        if length($self->stream) and
+           $self->{stream} !~ s/(.)\n\Z/$1/s;
+      $self->lines([split /\x0a/, $self->stream, -1]);
+      $self->line(1);
+      # Throw away any comments or blanks before the header (or start of
+      # content for headerless streams)
+      $self->_parse_throwaway_comments();
+      $self->document(0);
+      $self->documents([]);
+      # Add an "assumed" header if there is no header and the stream is
+      # not empty (after initial throwaways).
+      if (not $self->eos) {
+          if ($self->lines->[0] !~ /^---(\s|$)/) {
+              unshift @{$self->lines}, '---';
+              $self->{line}--;
+          }
+      }
+  
+      # Main Loop. Parse out all the top level nodes and return them.
+      while (not $self->eos) {
+          $self->anchor2node({});
+          $self->{document}++;
+          $self->done(0);
+          $self->level(0);
+          $self->offset->[0] = -1;
+  
+          if ($self->lines->[0] =~ /^---\s*(.*)$/) {
+              my @words = split /\s+/, $1;
+              %directives = ();
+              while (@words && $words[0] =~ /^#(\w+):(\S.*)$/) {
+                  my ($key, $value) = ($1, $2);
+                  shift(@words);
+                  if (defined $directives{$key}) {
+                      $self->warn('YAML_PARSE_WARN_MULTIPLE_DIRECTIVES',
+                        $key, $self->document);
+                      next;
+                  }
+                  $directives{$key} = $value;
+              }
+              $self->preface(join ' ', @words);
+          }
+          else {
+              $self->die('YAML_PARSE_ERR_NO_SEPARATOR');
+          }
+  
+          if (not $self->done) {
+              $self->_parse_next_line(COLLECTION);
+          }
+          if ($self->done) {
+              $self->{indent} = -1;
+              $self->content('');
+          }
+  
+          $directives{YAML} ||= '1.0';
+          $directives{TAB} ||= 'NONE';
+          ($self->{major_version}, $self->{minor_version}) =
+            split /\./, $directives{YAML}, 2;
+          $self->die('YAML_PARSE_ERR_BAD_MAJOR_VERSION', $directives{YAML})
+            if $self->major_version ne '1';
+          $self->warn('YAML_PARSE_WARN_BAD_MINOR_VERSION', $directives{YAML})
+            if $self->minor_version ne '0';
+          $self->die('Unrecognized TAB policy')
+            unless $directives{TAB} =~ /^(NONE|\d+)(:HARD)?$/;
+  
+          push @{$self->documents}, $self->_parse_node();
+      }
+      return wantarray ? @{$self->documents} : $self->documents->[-1];
+  }
+  
+  # This function is the dispatcher for parsing each node. Every node
+  # recurses back through here. (Inlines are an exception as they have
+  # their own sub-parser.)
+  sub _parse_node {
+      my $self = shift;
+      my $preface = $self->preface;
+      $self->preface('');
+      my ($node, $type, $indicator, $escape, $chomp) = ('') x 5;
+      my ($anchor, $alias, $explicit, $implicit, $class) = ('') x 5;
+      ($anchor, $alias, $explicit, $implicit, $preface) =
+        $self->_parse_qualifiers($preface);
+      if ($anchor) {
+          $self->anchor2node->{$anchor} = CORE::bless [], 'YAML-anchor2node';
+      }
+      $self->inline('');
+      while (length $preface) {
+          my $line = $self->line - 1;
+          if ($preface =~ s/^($FOLD_CHAR|$LIT_CHAR_RX)(-|\+)?\d*\s*//) {
+              $indicator = $1;
+              $chomp = $2 if defined($2);
+          }
+          else {
+              $self->die('YAML_PARSE_ERR_TEXT_AFTER_INDICATOR') if $indicator;
+              $self->inline($preface);
+              $preface = '';
+          }
+      }
+      if ($alias) {
+          $self->die('YAML_PARSE_ERR_NO_ANCHOR', $alias)
+            unless defined $self->anchor2node->{$alias};
+          if (ref($self->anchor2node->{$alias}) ne 'YAML-anchor2node') {
+              $node = $self->anchor2node->{$alias};
+          }
+          else {
+              $node = do {my $sv = "*$alias"};
+              push @{$self->anchor2node->{$alias}}, [\$node, $self->line];
+          }
+      }
+      elsif (length $self->inline) {
+          $node = $self->_parse_inline(1, $implicit, $explicit);
+          if (length $self->inline) {
+              $self->die('YAML_PARSE_ERR_SINGLE_LINE');
+          }
+      }
+      elsif ($indicator eq $LIT_CHAR) {
+          $self->{level}++;
+          $node = $self->_parse_block($chomp);
+          $node = $self->_parse_implicit($node) if $implicit;
+          $self->{level}--;
+      }
+      elsif ($indicator eq $FOLD_CHAR) {
+          $self->{level}++;
+          $node = $self->_parse_unfold($chomp);
+          $node = $self->_parse_implicit($node) if $implicit;
+          $self->{level}--;
+      }
+      else {
+          $self->{level}++;
+          $self->offset->[$self->level] ||= 0;
+          if ($self->indent == $self->offset->[$self->level]) {
+              if ($self->content =~ /^-( |$)/) {
+                  $node = $self->_parse_seq($anchor);
+              }
+              elsif ($self->content =~ /(^\?|\:( |$))/) {
+                  $node = $self->_parse_mapping($anchor);
+              }
+              elsif ($preface =~ /^\s*$/) {
+                  $node = $self->_parse_implicit('');
+              }
+              else {
+                  $self->die('YAML_PARSE_ERR_BAD_NODE');
+              }
+          }
+          else {
+              $node = undef;
+          }
+          $self->{level}--;
+      }
+      $#{$self->offset} = $self->level;
+  
+      if ($explicit) {
+          if ($class) {
+              if (not ref $node) {
+                  my $copy = $node;
+                  undef $node;
+                  $node = \$copy;
+              }
+              CORE::bless $node, $class;
+          }
+          else {
+              $node = $self->_parse_explicit($node, $explicit);
+          }
+      }
+      if ($anchor) {
+          if (ref($self->anchor2node->{$anchor}) eq 'YAML-anchor2node') {
+              # XXX Can't remember what this code actually does
+              for my $ref (@{$self->anchor2node->{$anchor}}) {
+                  ${$ref->[0]} = $node;
+                  $self->warn('YAML_LOAD_WARN_UNRESOLVED_ALIAS',
+                      $anchor, $ref->[1]);
+              }
+          }
+          $self->anchor2node->{$anchor} = $node;
+      }
+      return $node;
+  }
+  
+  # Preprocess the qualifiers that may be attached to any node.
+  sub _parse_qualifiers {
+      my $self = shift;
+      my ($preface) = @_;
+      my ($anchor, $alias, $explicit, $implicit, $token) = ('') x 5;
+      $self->inline('');
+      while ($preface =~ /^[&*!]/) {
+          my $line = $self->line - 1;
+          if ($preface =~ s/^\!(\S+)\s*//) {
+              $self->die('YAML_PARSE_ERR_MANY_EXPLICIT') if $explicit;
+              $explicit = $1;
+          }
+          elsif ($preface =~ s/^\!\s*//) {
+              $self->die('YAML_PARSE_ERR_MANY_IMPLICIT') if $implicit;
+              $implicit = 1;
+          }
+          elsif ($preface =~ s/^\&([^ ,:]+)\s*//) {
+              $token = $1;
+              $self->die('YAML_PARSE_ERR_BAD_ANCHOR')
+                unless $token =~ /^[a-zA-Z0-9]+$/;
+              $self->die('YAML_PARSE_ERR_MANY_ANCHOR') if $anchor;
+              $self->die('YAML_PARSE_ERR_ANCHOR_ALIAS') if $alias;
+              $anchor = $token;
+          }
+          elsif ($preface =~ s/^\*([^ ,:]+)\s*//) {
+              $token = $1;
+              $self->die('YAML_PARSE_ERR_BAD_ALIAS')
+                unless $token =~ /^[a-zA-Z0-9]+$/;
+              $self->die('YAML_PARSE_ERR_MANY_ALIAS') if $alias;
+              $self->die('YAML_PARSE_ERR_ANCHOR_ALIAS') if $anchor;
+              $alias = $token;
+          }
+      }
+      return ($anchor, $alias, $explicit, $implicit, $preface);
+  }
+  
+  # Morph a node to it's explicit type
+  sub _parse_explicit {
+      my $self = shift;
+      my ($node, $explicit) = @_;
+      my ($type, $class);
+      if ($explicit =~ /^\!?perl\/(hash|array|ref|scalar)(?:\:(\w(\w|\:\:)*)?)?$/) {
+          ($type, $class) = (($1 || ''), ($2 || ''));
+  
+          # FIXME # die unless uc($type) eq ref($node) ?
+  
+          if ( $type eq "ref" ) {
+              $self->die('YAML_LOAD_ERR_NO_DEFAULT_VALUE', 'XXX', $explicit)
+              unless exists $node->{VALUE()} and scalar(keys %$node) == 1;
+  
+              my $value = $node->{VALUE()};
+              $node = \$value;
+          }
+  
+          if ( $type eq "scalar" and length($class) and !ref($node) ) {
+              my $value = $node;
+              $node = \$value;
+          }
+  
+          if ( length($class) ) {
+              CORE::bless($node, $class);
+          }
+  
+          return $node;
+      }
+      if ($explicit =~ m{^!?perl/(glob|regexp|code)(?:\:(\w(\w|\:\:)*)?)?$}) {
+          ($type, $class) = (($1 || ''), ($2 || ''));
+          my $type_class = "YAML::Type::$type";
+          no strict 'refs';
+          if ($type_class->can('yaml_load')) {
+              return $type_class->yaml_load($node, $class, $self);
+          }
+          else {
+              $self->die('YAML_LOAD_ERR_NO_CONVERT', 'XXX', $explicit);
+          }
+      }
+      # This !perl/@Foo and !perl/$Foo are deprecated but still parsed
+      elsif ($YAML::TagClass->{$explicit} ||
+             $explicit =~ m{^perl/(\@|\$)?([a-zA-Z](\w|::)+)$}
+            ) {
+          $class = $YAML::TagClass->{$explicit} || $2;
+          if ($class->can('yaml_load')) {
+              require YAML::Node;
+              return $class->yaml_load(YAML::Node->new($node, $explicit));
+          }
+          else {
+              if (ref $node) {
+                  return CORE::bless $node, $class;
+              }
+              else {
+                  return CORE::bless \$node, $class;
+              }
+          }
+      }
+      elsif (ref $node) {
+          require YAML::Node;
+          return YAML::Node->new($node, $explicit);
+      }
+      else {
+          # XXX This is likely wrong. Failing test:
+          # --- !unknown 'scalar value'
+          return $node;
+      }
+  }
+  
+  # Parse a YAML mapping into a Perl hash
+  sub _parse_mapping {
+      my $self = shift;
+      my ($anchor) = @_;
+      my $mapping = {};
+      $self->anchor2node->{$anchor} = $mapping;
+      my $key;
+      while (not $self->done and $self->indent == $self->offset->[$self->level]) {
+          # If structured key:
+          if ($self->{content} =~ s/^\?\s*//) {
+              $self->preface($self->content);
+              $self->_parse_next_line(COLLECTION);
+              $key = $self->_parse_node();
+              $key = "$key";
+          }
+          # If "default" key (equals sign)
+          elsif ($self->{content} =~ s/^\=\s*//) {
+              $key = VALUE;
+          }
+          # If "comment" key (slash slash)
+          elsif ($self->{content} =~ s/^\=\s*//) {
+              $key = COMMENT;
+          }
+          # Regular scalar key:
+          else {
+              $self->inline($self->content);
+              $key = $self->_parse_inline();
+              $key = "$key";
+              $self->content($self->inline);
+              $self->inline('');
+          }
+  
+          unless ($self->{content} =~ s/^:\s*//) {
+              $self->die('YAML_LOAD_ERR_BAD_MAP_ELEMENT');
+          }
+          $self->preface($self->content);
+          my $line = $self->line;
+          $self->_parse_next_line(COLLECTION);
+          my $value = $self->_parse_node();
+          if (exists $mapping->{$key}) {
+              $self->warn('YAML_LOAD_WARN_DUPLICATE_KEY');
+          }
+          else {
+              $mapping->{$key} = $value;
+          }
+      }
+      return $mapping;
+  }
+  
+  # Parse a YAML sequence into a Perl array
+  sub _parse_seq {
+      my $self = shift;
+      my ($anchor) = @_;
+      my $seq = [];
+      $self->anchor2node->{$anchor} = $seq;
+      while (not $self->done and $self->indent == $self->offset->[$self->level]) {
+          if ($self->content =~ /^-(?: (.*))?$/) {
+              $self->preface(defined($1) ? $1 : '');
+          }
+          else {
+              $self->die('YAML_LOAD_ERR_BAD_SEQ_ELEMENT');
+          }
+          if ($self->preface =~ /^(\s*)(\w.*\:(?: |$).*)$/) {
+              $self->indent($self->offset->[$self->level] + 2 + length($1));
+              $self->content($2);
+              $self->level($self->level + 1);
+              $self->offset->[$self->level] = $self->indent;
+              $self->preface('');
+              push @$seq, $self->_parse_mapping('');
+              $self->{level}--;
+              $#{$self->offset} = $self->level;
+          }
+          else {
+              $self->_parse_next_line(COLLECTION);
+              push @$seq, $self->_parse_node();
+          }
+      }
+      return $seq;
+  }
+  
+  # Parse an inline value. Since YAML supports inline collections, this is
+  # the top level of a sub parsing.
+  sub _parse_inline {
+      my $self = shift;
+      my ($top, $top_implicit, $top_explicit) = (@_, '', '', '');
+      $self->{inline} =~ s/^\s*(.*)\s*$/$1/; # OUCH - mugwump
+      my ($node, $anchor, $alias, $explicit, $implicit) = ('') x 5;
+      ($anchor, $alias, $explicit, $implicit, $self->{inline}) =
+        $self->_parse_qualifiers($self->inline);
+      if ($anchor) {
+          $self->anchor2node->{$anchor} = CORE::bless [], 'YAML-anchor2node';
+      }
+      $implicit ||= $top_implicit;
+      $explicit ||= $top_explicit;
+      ($top_implicit, $top_explicit) = ('', '');
+      if ($alias) {
+          $self->die('YAML_PARSE_ERR_NO_ANCHOR', $alias)
+            unless defined $self->anchor2node->{$alias};
+          if (ref($self->anchor2node->{$alias}) ne 'YAML-anchor2node') {
+              $node = $self->anchor2node->{$alias};
+          }
+          else {
+              $node = do {my $sv = "*$alias"};
+              push @{$self->anchor2node->{$alias}}, [\$node, $self->line];
+          }
+      }
+      elsif ($self->inline =~ /^\{/) {
+          $node = $self->_parse_inline_mapping($anchor);
+      }
+      elsif ($self->inline =~ /^\[/) {
+          $node = $self->_parse_inline_seq($anchor);
+      }
+      elsif ($self->inline =~ /^"/) {
+          $node = $self->_parse_inline_double_quoted();
+          $node = $self->_unescape($node);
+          $node = $self->_parse_implicit($node) if $implicit;
+      }
+      elsif ($self->inline =~ /^'/) {
+          $node = $self->_parse_inline_single_quoted();
+          $node = $self->_parse_implicit($node) if $implicit;
+      }
+      else {
+          if ($top) {
+              $node = $self->inline;
+              $self->inline('');
+          }
+          else {
+              $node = $self->_parse_inline_simple();
+          }
+          $node = $self->_parse_implicit($node) unless $explicit;
+      }
+      if ($explicit) {
+          $node = $self->_parse_explicit($node, $explicit);
+      }
+      if ($anchor) {
+          if (ref($self->anchor2node->{$anchor}) eq 'YAML-anchor2node') {
+              for my $ref (@{$self->anchor2node->{$anchor}}) {
+                  ${$ref->[0]} = $node;
+                  $self->warn('YAML_LOAD_WARN_UNRESOLVED_ALIAS',
+                      $anchor, $ref->[1]);
+              }
+          }
+          $self->anchor2node->{$anchor} = $node;
+      }
+      return $node;
+  }
+  
+  # Parse the inline YAML mapping into a Perl hash
+  sub _parse_inline_mapping {
+      my $self = shift;
+      my ($anchor) = @_;
+      my $node = {};
+      $self->anchor2node->{$anchor} = $node;
+  
+      $self->die('YAML_PARSE_ERR_INLINE_MAP')
+        unless $self->{inline} =~ s/^\{\s*//;
+      while (not $self->{inline} =~ s/^\s*\}//) {
+          my $key = $self->_parse_inline();
+          $self->die('YAML_PARSE_ERR_INLINE_MAP')
+            unless $self->{inline} =~ s/^\: \s*//;
+          my $value = $self->_parse_inline();
+          if (exists $node->{$key}) {
+              $self->warn('YAML_LOAD_WARN_DUPLICATE_KEY');
+          }
+          else {
+              $node->{$key} = $value;
+          }
+          next if $self->inline =~ /^\s*\}/;
+          $self->die('YAML_PARSE_ERR_INLINE_MAP')
+            unless $self->{inline} =~ s/^\,\s*//;
+      }
+      return $node;
+  }
+  
+  # Parse the inline YAML sequence into a Perl array
+  sub _parse_inline_seq {
+      my $self = shift;
+      my ($anchor) = @_;
+      my $node = [];
+      $self->anchor2node->{$anchor} = $node;
+  
+      $self->die('YAML_PARSE_ERR_INLINE_SEQUENCE')
+        unless $self->{inline} =~ s/^\[\s*//;
+      while (not $self->{inline} =~ s/^\s*\]//) {
+          my $value = $self->_parse_inline();
+          push @$node, $value;
+          next if $self->inline =~ /^\s*\]/;
+          $self->die('YAML_PARSE_ERR_INLINE_SEQUENCE')
+            unless $self->{inline} =~ s/^\,\s*//;
+      }
+      return $node;
+  }
+  
+  # Parse the inline double quoted string.
+  sub _parse_inline_double_quoted {
+      my $self = shift;
+      my $node;
+      # https://rt.cpan.org/Public/Bug/Display.html?id=90593
+      if ($self->inline =~ /^"((?:(?:\\"|[^"]){0,32766}){0,32766})"\s*(.*)$/) {
+          $node = $1;
+          $self->inline($2);
+          $node =~ s/\\"/"/g;
+      }
+      else {
+          $self->die('YAML_PARSE_ERR_BAD_DOUBLE');
+      }
+      return $node;
+  }
+  
+  
+  # Parse the inline single quoted string.
+  sub _parse_inline_single_quoted {
+      my $self = shift;
+      my $node;
+      if ($self->inline =~ /^'((?:(?:''|[^']){0,32766}){0,32766})'\s*(.*)$/) {
+          $node = $1;
+          $self->inline($2);
+          $node =~ s/''/'/g;
+      }
+      else {
+          $self->die('YAML_PARSE_ERR_BAD_SINGLE');
+      }
+      return $node;
+  }
+  
+  # Parse the inline unquoted string and do implicit typing.
+  sub _parse_inline_simple {
+      my $self = shift;
+      my $value;
+      if ($self->inline =~ /^(|[^!@#%^&*].*?)(?=[\[\]\{\},]|, |: |- |:\s*$|$)/) {
+          $value = $1;
+          substr($self->{inline}, 0, length($1)) = '';
+      }
+      else {
+          $self->die('YAML_PARSE_ERR_BAD_INLINE_IMPLICIT', $value);
+      }
+      return $value;
+  }
+  
+  sub _parse_implicit {
+      my $self = shift;
+      my ($value) = @_;
+      $value =~ s/\s*$//;
+      return $value if $value eq '';
+      return undef if $value =~ /^~$/;
+      return $value
+        unless $value =~ /^[\@\`]/ or
+               $value =~ /^[\-\?]\s/;
+      $self->die('YAML_PARSE_ERR_BAD_IMPLICIT', $value);
+  }
+  
+  # Unfold a YAML multiline scalar into a single string.
+  sub _parse_unfold {
+      my $self = shift;
+      my ($chomp) = @_;
+      my $node = '';
+      my $space = 0;
+      while (not $self->done and $self->indent == $self->offset->[$self->level]) {
+          $node .= $self->content. "\n";
+          $self->_parse_next_line(LEAF);
+      }
+      $node =~ s/^(\S.*)\n(?=\S)/$1 /gm;
+      $node =~ s/^(\S.*)\n(\n+\S)/$1$2/gm;
+      $node =~ s/\n*\Z// unless $chomp eq '+';
+      $node .= "\n" unless $chomp;
+      return $node;
+  }
+  
+  # Parse a YAML block style scalar. This is like a Perl here-document.
+  sub _parse_block {
+      my $self = shift;
+      my ($chomp) = @_;
+      my $node = '';
+      while (not $self->done and $self->indent == $self->offset->[$self->level]) {
+          $node .= $self->content . "\n";
+          $self->_parse_next_line(LEAF);
+      }
+      return $node if '+' eq $chomp;
+      $node =~ s/\n*\Z/\n/;
+      $node =~ s/\n\Z// if $chomp eq '-';
+      return $node;
+  }
+  
+  # Handle Perl style '#' comments. Comments must be at the same indentation
+  # level as the collection line following them.
+  sub _parse_throwaway_comments {
+      my $self = shift;
+      while (@{$self->lines} and
+             $self->lines->[0] =~ m{^\s*(\#|$)}
+            ) {
+          shift @{$self->lines};
+          $self->{line}++;
+      }
+      $self->eos($self->{done} = not @{$self->lines});
+  }
+  
+  # This is the routine that controls what line is being parsed. It gets called
+  # once for each line in the YAML stream.
+  #
+  # This routine must:
+  # 1) Skip past the current line
+  # 2) Determine the indentation offset for a new level
+  # 3) Find the next _content_ line
+  #   A) Skip over any throwaways (Comments/blanks)
+  #   B) Set $self->indent, $self->content, $self->line
+  # 4) Expand tabs appropriately
+  sub _parse_next_line {
+      my $self = shift;
+      my ($type) = @_;
+      my $level = $self->level;
+      my $offset = $self->offset->[$level];
+      $self->die('YAML_EMIT_ERR_BAD_LEVEL') unless defined $offset;
+      shift @{$self->lines};
+      $self->eos($self->{done} = not @{$self->lines});
+      return if $self->eos;
+      $self->{line}++;
+  
+      # Determine the offset for a new leaf node
+      if ($self->preface =~
+          qr/(?:^|\s)(?:$FOLD_CHAR|$LIT_CHAR_RX)(?:-|\+)?(\d*)\s*$/
+         ) {
+          $self->die('YAML_PARSE_ERR_ZERO_INDENT')
+            if length($1) and $1 == 0;
+          $type = LEAF;
+          if (length($1)) {
+              $self->offset->[$level + 1] = $offset + $1;
+          }
+          else {
+              # First get rid of any comments.
+              while (@{$self->lines} && ($self->lines->[0] =~ /^\s*#/)) {
+                  $self->lines->[0] =~ /^( *)/;
+                  last unless length($1) <= $offset;
+                  shift @{$self->lines};
+                  $self->{line}++;
+              }
+              $self->eos($self->{done} = not @{$self->lines});
+              return if $self->eos;
+              if ($self->lines->[0] =~ /^( *)\S/ and length($1) > $offset) {
+                  $self->offset->[$level+1] = length($1);
+              }
+              else {
+                  $self->offset->[$level+1] = $offset + 1;
+              }
+          }
+          $offset = $self->offset->[++$level];
+      }
+      # Determine the offset for a new collection level
+      elsif ($type == COLLECTION and
+             $self->preface =~ /^(\s*(\!\S*|\&\S+))*\s*$/) {
+          $self->_parse_throwaway_comments();
+          if ($self->eos) {
+              $self->offset->[$level+1] = $offset + 1;
+              return;
+          }
+          else {
+              $self->lines->[0] =~ /^( *)\S/ or
+                  $self->die('YAML_PARSE_ERR_NONSPACE_INDENTATION');
+              if (length($1) > $offset) {
+                  $self->offset->[$level+1] = length($1);
+              }
+              else {
+                  $self->offset->[$level+1] = $offset + 1;
+              }
+          }
+          $offset = $self->offset->[++$level];
+      }
+  
+      if ($type == LEAF) {
+          while (@{$self->lines} and
+                 $self->lines->[0] =~ m{^( *)(\#)} and
+                 length($1) < $offset
+                ) {
+              shift @{$self->lines};
+              $self->{line}++;
+          }
+          $self->eos($self->{done} = not @{$self->lines});
+      }
+      else {
+          $self->_parse_throwaway_comments();
+      }
+      return if $self->eos;
+  
+      if ($self->lines->[0] =~ /^---(\s|$)/) {
+          $self->done(1);
+          return;
+      }
+      if ($type == LEAF and
+          $self->lines->[0] =~ /^ {$offset}(.*)$/
+         ) {
+          $self->indent($offset);
+          $self->content($1);
+      }
+      elsif ($self->lines->[0] =~ /^\s*$/) {
+          $self->indent($offset);
+          $self->content('');
+      }
+      else {
+          $self->lines->[0] =~ /^( *)(\S.*)$/;
+          while ($self->offset->[$level] > length($1)) {
+              $level--;
+          }
+          $self->die('YAML_PARSE_ERR_INCONSISTENT_INDENTATION')
+            if $self->offset->[$level] != length($1);
+          $self->indent(length($1));
+          $self->content($2);
+      }
+      $self->die('YAML_PARSE_ERR_INDENTATION')
+        if $self->indent - $offset > 1;
+  }
+  
+  #==============================================================================
+  # Utility subroutines.
+  #==============================================================================
+  
+  # Printable characters for escapes
+  my %unescapes = (
+     0 => "\x00",
+     a => "\x07",
+     t => "\x09",
+     n => "\x0a",
+     'v' => "\x0b", # Potential v-string error on 5.6.2 if not quoted
+     f => "\x0c",
+     r => "\x0d",
+     e => "\x1b",
+     '\\' => '\\',
+    );
+  
+  # Transform all the backslash style escape characters to their literal meaning
+  sub _unescape {
+      my $self = shift;
+      my ($node) = @_;
+      $node =~ s/\\([never\\fart0]|x([0-9a-fA-F]{2}))/
+                (length($1)>1)?pack("H2",$2):$unescapes{$1}/gex;
+      return $node;
+  }
+  
+  1;
+YAML_LOADER
+
+$fatpacked{"YAML/Loader/Base.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_LOADER_BASE';
+  package YAML::Loader::Base;
+  
+  use YAML::Mo;
+  
+  has load_code     => default => sub {0};
+  has stream        => default => sub {''};
+  has document      => default => sub {0};
+  has line          => default => sub {0};
+  has documents     => default => sub {[]};
+  has lines         => default => sub {[]};
+  has eos           => default => sub {0};
+  has done          => default => sub {0};
+  has anchor2node   => default => sub {{}};
+  has level         => default => sub {0};
+  has offset        => default => sub {[]};
+  has preface       => default => sub {''};
+  has content       => default => sub {''};
+  has indent        => default => sub {0};
+  has major_version => default => sub {0};
+  has minor_version => default => sub {0};
+  has inline        => default => sub {''};
+  
+  sub set_global_options {
+      my $self = shift;
+      $self->load_code($YAML::LoadCode || $YAML::UseCode)
+        if defined $YAML::LoadCode or defined $YAML::UseCode;
+  }
+  
+  sub load {
+      die 'load() not implemented in this class.';
+  }
+  
+  1;
+YAML_LOADER_BASE
+
+$fatpacked{"YAML/Marshall.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_MARSHALL';
+  use strict; use warnings;
+  package YAML::Marshall;
+  
+  use YAML::Node ();
+  
+  sub import {
+      my $class = shift;
+      no strict 'refs';
+      my $package = caller;
+      unless (grep { $_ eq $class} @{$package . '::ISA'}) {
+          push @{$package . '::ISA'}, $class;
+      }
+  
+      my $tag = shift;
+      if ( $tag ) {
+          no warnings 'once';
+          $YAML::TagClass->{$tag} = $package;
+          ${$package . "::YamlTag"} = $tag;
+      }
+  }
+  
+  sub yaml_dump {
+      my $self = shift;
+      no strict 'refs';
+      my $tag = ${ref($self) . "::YamlTag"} || 'perl/' . ref($self);
+      $self->yaml_node($self, $tag);
+  }
+  
+  sub yaml_load {
+      my ($class, $node) = @_;
+      if (my $ynode = $class->yaml_ynode($node)) {
+          $node = $ynode->{NODE};
+      }
+      bless $node, $class;
+  }
+  
+  sub yaml_node {
+      shift;
+      YAML::Node->new(@_);
+  }
+  
+  sub yaml_ynode {
+      shift;
+      YAML::Node::ynode(@_);
+  }
+  
+  1;
+YAML_MARSHALL
+
+$fatpacked{"YAML/Mo.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_MO';
+  package YAML::Mo; $VERSION = '0.88';
+  # use Mo qw[builder default import];
+  #   The following line of code was produced from the previous line by
+  #   Mo::Inline version 0.31
+  no warnings;my$M=__PACKAGE__.'::';*{$M.Object::new}=sub{bless{@_[1..$#_]},$_[0]};*{$M.import}=sub{import warnings;$^H|=1538;my($P,%e,%o)=caller.'::';shift;eval"no Mo::$_",&{$M.$_.::e}($P,\%e,\%o,\@_)for@_;return if$e{M};%e=(extends,sub{eval"no $_[0]()";@{$P.ISA}=$_[0]},has,sub{my$n=shift;my$m=sub{$#_?$_[0]{$n}=$_[1]:$_[0]{$n}};$m=$o{$_}->($m,$n,@_)for sort keys%o;*{$P.$n}=$m},%e,);*{$P.$_}=$e{$_}for keys%e;@{$P.ISA}=$M.Object};*{$M.'builder::e'}=sub{my($P,$e,$o)=@_;$o->{builder}=sub{my($m,$n,%a)=@_;my$b=$a{builder}or return$m;sub{$#_?$m->(@_):!exists$_[0]{$n}?$_[0]{$n}=$_[0]->$b:$m->(@_)}}};*{$M.'default::e'}=sub{my($P,$e,$o)=@_;$o->{default}=sub{my($m,$n,%a)=@_;$a{default}or return$m;sub{$#_?$m->(@_):!exists$_[0]{$n}?$_[0]{$n}=$a{default}->(@_):$m->(@_)}}};my$i=\&import;*{$M.import}=sub{(@_==2 and not $_[1])?pop@_:@_==1?push@_,grep!/import/,@f:();goto&$i};@f=qw[builder default import];use strict;use warnings;
+  
+  our $DumperModule = 'Data::Dumper';
+  
+  my ($_new_error, $_info, $_scalar_info);
+  
+  no strict 'refs';
+  *{$M.'Object::die'} = sub {
+      my $self = shift;
+      my $error = $self->$_new_error(@_);
+      $error->type('Error');
+      Carp::croak($error->format_message);
+  };
+  
+  *{$M.'Object::warn'} = sub {
+      my $self = shift;
+      return unless $^W;
+      my $error = $self->$_new_error(@_);
+      $error->type('Warning');
+      Carp::cluck($error->format_message);
+  };
+  
+  # This code needs to be refactored to be simpler and more precise, and no,
+  # Scalar::Util doesn't DWIM.
+  #
+  # Can't handle:
+  # * blessed regexp
+  *{$M.'Object::node_info'} = sub {
+      my $self = shift;
+      my $stringify = $_[1] || 0;
+      my ($class, $type, $id) =
+          ref($_[0])
+          ? $stringify
+            ? &$_info("$_[0]")
+            : do {
+                require overload;
+                my @info = &$_info(overload::StrVal($_[0]));
+                if (ref($_[0]) eq 'Regexp') {
+                    @info[0, 1] = (undef, 'REGEXP');
+                }
+                @info;
+            }
+          : &$_scalar_info($_[0]);
+      ($class, $type, $id) = &$_scalar_info("$_[0]")
+          unless $id;
+      return wantarray ? ($class, $type, $id) : $id;
+  };
+  
+  #-------------------------------------------------------------------------------
+  $_info = sub {
+      return (($_[0]) =~ qr{^(?:(.*)\=)?([^=]*)\(([^\(]*)\)$}o);
+  };
+  
+  $_scalar_info = sub {
+      my $id = 'undef';
+      if (defined $_[0]) {
+          \$_[0] =~ /\((\w+)\)$/o or CORE::die();
+          $id = "$1-S";
+      }
+      return (undef, undef, $id);
+  };
+  
+  $_new_error = sub {
+      require Carp;
+      my $self = shift;
+      require YAML::Error;
+  
+      my $code = shift || 'unknown error';
+      my $error = YAML::Error->new(code => $code);
+      $error->line($self->line) if $self->can('line');
+      $error->document($self->document) if $self->can('document');
+      $error->arguments([@_]);
+      return $error;
+  };
+  
+  1;
+YAML_MO
+
+$fatpacked{"YAML/Node.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_NODE';
+  use strict; use warnings;
+  package YAML::Node;
+  
+  use YAML::Tag;
+  require YAML::Mo;
+  
+  use Exporter;
+  our @ISA     = qw(Exporter YAML::Mo::Object);
+  our @EXPORT  = qw(ynode);
+  
+  sub ynode {
+      my $self;
+      if (ref($_[0]) eq 'HASH') {
+          $self = tied(%{$_[0]});
+      }
+      elsif (ref($_[0]) eq 'ARRAY') {
+          $self = tied(@{$_[0]});
+      }
+      elsif (ref(\$_[0]) eq 'GLOB') {
+          $self = tied(*{$_[0]});
+      }
+      else {
+          $self = tied($_[0]);
+      }
+      return (ref($self) =~ /^yaml_/) ? $self : undef;
+  }
+  
+  sub new {
+      my ($class, $node, $tag) = @_;
+      my $self;
+      $self->{NODE} = $node;
+      my (undef, $type) = YAML::Mo::Object->node_info($node);
+      $self->{KIND} = (not defined $type) ? 'scalar' :
+                      ($type eq 'ARRAY') ? 'sequence' :
+                      ($type eq 'HASH') ? 'mapping' :
+                      $class->die("Can't create YAML::Node from '$type'");
+      tag($self, ($tag || ''));
+      if ($self->{KIND} eq 'scalar') {
+          yaml_scalar->new($self, $_[1]);
+          return \ $_[1];
+      }
+      my $package = "yaml_" . $self->{KIND};
+      $package->new($self)
+  }
+  
+  sub node { $_->{NODE} }
+  sub kind { $_->{KIND} }
+  sub tag {
+      my ($self, $value) = @_;
+      if (defined $value) {
+                 $self->{TAG} = YAML::Tag->new($value);
+          return $self;
+      }
+      else {
+         return $self->{TAG};
+      }
+  }
+  sub keys {
+      my ($self, $value) = @_;
+      if (defined $value) {
+                 $self->{KEYS} = $value;
+          return $self;
+      }
+      else {
+         return $self->{KEYS};
+      }
+  }
+  
+  #==============================================================================
+  package yaml_scalar;
+  
+  @yaml_scalar::ISA = qw(YAML::Node);
+  
+  sub new {
+      my ($class, $self) = @_;
+      tie $_[2], $class, $self;
+  }
+  
+  sub TIESCALAR {
+      my ($class, $self) = @_;
+      bless $self, $class;
+      $self
+  }
+  
+  sub FETCH {
+      my ($self) = @_;
+      $self->{NODE}
+  }
+  
+  sub STORE {
+      my ($self, $value) = @_;
+      $self->{NODE} = $value
+  }
+  
+  #==============================================================================
+  package yaml_sequence;
+  
+  @yaml_sequence::ISA = qw(YAML::Node);
+  
+  sub new {
+      my ($class, $self) = @_;
+      my $new;
+      tie @$new, $class, $self;
+      $new
+  }
+  
+  sub TIEARRAY {
+      my ($class, $self) = @_;
+      bless $self, $class
+  }
+  
+  sub FETCHSIZE {
+      my ($self) = @_;
+      scalar @{$self->{NODE}};
+  }
+  
+  sub FETCH {
+      my ($self, $index) = @_;
+      $self->{NODE}[$index]
+  }
+  
+  sub STORE {
+      my ($self, $index, $value) = @_;
+      $self->{NODE}[$index] = $value
+  }
+  
+  sub undone {
+      die "Not implemented yet"; # XXX
+  }
+  
+  *STORESIZE = *POP = *PUSH = *SHIFT = *UNSHIFT = *SPLICE = *DELETE = *EXISTS =
+  *STORESIZE = *POP = *PUSH = *SHIFT = *UNSHIFT = *SPLICE = *DELETE = *EXISTS =
+  *undone; # XXX Must implement before release
+  
+  #==============================================================================
+  package yaml_mapping;
+  
+  @yaml_mapping::ISA = qw(YAML::Node);
+  
+  sub new {
+      my ($class, $self) = @_;
+      @{$self->{KEYS}} = sort keys %{$self->{NODE}};
+      my $new;
+      tie %$new, $class, $self;
+      $new
+  }
+  
+  sub TIEHASH {
+      my ($class, $self) = @_;
+      bless $self, $class
+  }
+  
+  sub FETCH {
+      my ($self, $key) = @_;
+      if (exists $self->{NODE}{$key}) {
+          return (grep {$_ eq $key} @{$self->{KEYS}})
+                 ? $self->{NODE}{$key} : undef;
+      }
+      return $self->{HASH}{$key};
+  }
+  
+  sub STORE {
+      my ($self, $key, $value) = @_;
+      if (exists $self->{NODE}{$key}) {
+          $self->{NODE}{$key} = $value;
+      }
+      elsif (exists $self->{HASH}{$key}) {
+          $self->{HASH}{$key} = $value;
+      }
+      else {
+          if (not grep {$_ eq $key} @{$self->{KEYS}}) {
+              push(@{$self->{KEYS}}, $key);
+          }
+          $self->{HASH}{$key} = $value;
+      }
+      $value
+  }
+  
+  sub DELETE {
+      my ($self, $key) = @_;
+      my $return;
+      if (exists $self->{NODE}{$key}) {
+          $return = $self->{NODE}{$key};
+      }
+      elsif (exists $self->{HASH}{$key}) {
+          $return = delete $self->{NODE}{$key};
+      }
+      for (my $i = 0; $i < @{$self->{KEYS}}; $i++) {
+          if ($self->{KEYS}[$i] eq $key) {
+              splice(@{$self->{KEYS}}, $i, 1);
+          }
+      }
+      return $return;
+  }
+  
+  sub CLEAR {
+      my ($self) = @_;
+      @{$self->{KEYS}} = ();
+      %{$self->{HASH}} = ();
+  }
+  
+  sub FIRSTKEY {
+      my ($self) = @_;
+      $self->{ITER} = 0;
+      $self->{KEYS}[0]
+  }
+  
+  sub NEXTKEY {
+      my ($self) = @_;
+      $self->{KEYS}[++$self->{ITER}]
+  }
+  
+  sub EXISTS {
+      my ($self, $key) = @_;
+      exists $self->{NODE}{$key}
+  }
+  
+  1;
+YAML_NODE
+
+$fatpacked{"YAML/Tag.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_TAG';
+  use strict; use warnings;
+  package YAML::Tag;
+  
+  use overload '""' => sub { ${$_[0]} };
+  
+  sub new {
+      my ($class, $self) = @_;
+      bless \$self, $class
+  }
+  
+  sub short {
+      ${$_[0]}
+  }
+  
+  sub canonical {
+      ${$_[0]}
+  }
+  
+  1;
+YAML_TAG
+
+$fatpacked{"YAML/Types.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'YAML_TYPES';
+  package YAML::Types;
+  
+  use YAML::Mo;
+  use YAML::Node;
+  
+  # XXX These classes and their APIs could still use some refactoring,
+  # but at least they work for now.
+  #-------------------------------------------------------------------------------
+  package YAML::Type::blessed;
+  
+  use YAML::Mo; # XXX
+  
+  sub yaml_dump {
+      my $self = shift;
+      my ($value) = @_;
+      my ($class, $type) = YAML::Mo::Object->node_info($value);
+      no strict 'refs';
+      my $kind = lc($type) . ':';
+      my $tag = ${$class . '::ClassTag'} ||
+                "!perl/$kind$class";
+      if ($type eq 'REF') {
+          YAML::Node->new(
+              {(&YAML::VALUE, ${$_[0]})}, $tag
+          );
+      }
+      elsif ($type eq 'SCALAR') {
+          $_[1] = $$value;
+          YAML::Node->new($_[1], $tag);
+      }
+      elsif ($type eq 'GLOB') {
+          # blessed glob support is minimal, and will not round-trip
+          # initial aim: to not cause an error
+          return YAML::Type::glob->yaml_dump($value, $tag);
+      } else {
+          YAML::Node->new($value, $tag);
+      }
+  }
+  
+  #-------------------------------------------------------------------------------
+  package YAML::Type::undef;
+  
+  sub yaml_dump {
+      my $self = shift;
+  }
+  
+  sub yaml_load {
+      my $self = shift;
+  }
+  
+  #-------------------------------------------------------------------------------
+  package YAML::Type::glob;
+  
+  sub yaml_dump {
+      my $self = shift;
+      # $_[0] remains as the glob
+      my $tag = pop @_ if 2==@_;
+  
+      $tag = '!perl/glob:' unless defined $tag;
+      my $ynode = YAML::Node->new({}, $tag);
+      for my $type (qw(PACKAGE NAME SCALAR ARRAY HASH CODE IO)) {
+          my $value = *{$_[0]}{$type};
+          $value = $$value if $type eq 'SCALAR';
+          if (defined $value) {
+              if ($type eq 'IO') {
+                  my @stats = qw(device inode mode links uid gid rdev size
+                                 atime mtime ctime blksize blocks);
+                  undef $value;
+                  $value->{stat} = YAML::Node->new({});
+                  if ($value->{fileno} = fileno(*{$_[0]})) {
+                      local $^W;
+                      map {$value->{stat}{shift @stats} = $_} stat(*{$_[0]});
+                      $value->{tell} = tell(*{$_[0]});
+                  }
+              }
+              $ynode->{$type} = $value;
+          }
+      }
+      return $ynode;
+  }
+  
+  sub yaml_load {
+      my $self = shift;
+      my ($node, $class, $loader) = @_;
+      my ($name, $package);
+      if (defined $node->{NAME}) {
+          $name = $node->{NAME};
+          delete $node->{NAME};
+      }
+      else {
+          $loader->warn('YAML_LOAD_WARN_GLOB_NAME');
+          return undef;
+      }
+      if (defined $node->{PACKAGE}) {
+          $package = $node->{PACKAGE};
+          delete $node->{PACKAGE};
+      }
+      else {
+          $package = 'main';
+      }
+      no strict 'refs';
+      if (exists $node->{SCALAR}) {
+          *{"${package}::$name"} = \$node->{SCALAR};
+          delete $node->{SCALAR};
+      }
+      for my $elem (qw(ARRAY HASH CODE IO)) {
+          if (exists $node->{$elem}) {
+              if ($elem eq 'IO') {
+                  $loader->warn('YAML_LOAD_WARN_GLOB_IO');
+                  delete $node->{IO};
+                  next;
+              }
+              *{"${package}::$name"} = $node->{$elem};
+              delete $node->{$elem};
+          }
+      }
+      for my $elem (sort keys %$node) {
+          $loader->warn('YAML_LOAD_WARN_BAD_GLOB_ELEM', $elem);
+      }
+      return *{"${package}::$name"};
+  }
+  
+  #-------------------------------------------------------------------------------
+  package YAML::Type::code;
+  
+  my $dummy_warned = 0;
+  my $default = '{ "DUMMY" }';
+  
+  sub yaml_dump {
+      my $self = shift;
+      my $code;
+      my ($dumpflag, $value) = @_;
+      my ($class, $type) = YAML::Mo::Object->node_info($value);
+      my $tag = "!perl/code";
+      $tag .= ":$class" if defined $class;
+      if (not $dumpflag) {
+          $code = $default;
+      }
+      else {
+          bless $value, "CODE" if $class;
+          eval { use B::Deparse };
+          return if $@;
+          my $deparse = B::Deparse->new();
+          eval {
+              local $^W = 0;
+              $code = $deparse->coderef2text($value);
+          };
+          if ($@) {
+              warn YAML::YAML_DUMP_WARN_DEPARSE_FAILED() if $^W;
+              $code = $default;
+          }
+          bless $value, $class if $class;
+          chomp $code;
+          $code .= "\n";
+      }
+      $_[2] = $code;
+      YAML::Node->new($_[2], $tag);
+  }
+  
+  sub yaml_load {
+      my $self = shift;
+      my ($node, $class, $loader) = @_;
+      if ($loader->load_code) {
+          my $code = eval "package main; sub $node";
+          if ($@) {
+              $loader->warn('YAML_LOAD_WARN_PARSE_CODE', $@);
+              return sub {};
+          }
+          else {
+              CORE::bless $code, $class if $class;
+              return $code;
+          }
+      }
+      else {
+          return CORE::bless sub {}, $class if $class;
+          return sub {};
+      }
+  }
+  
+  #-------------------------------------------------------------------------------
+  package YAML::Type::ref;
+  
+  sub yaml_dump {
+      my $self = shift;
+      YAML::Node->new({(&YAML::VALUE, ${$_[0]})}, '!perl/ref')
+  }
+  
+  sub yaml_load {
+      my $self = shift;
+      my ($node, $class, $loader) = @_;
+      $loader->die('YAML_LOAD_ERR_NO_DEFAULT_VALUE', 'ptr')
+        unless exists $node->{&YAML::VALUE};
+      return \$node->{&YAML::VALUE};
+  }
+  
+  #-------------------------------------------------------------------------------
+  package YAML::Type::regexp;
+  
+  # XXX Be sure to handle blessed regexps (if possible)
+  sub yaml_dump {
+      die "YAML::Type::regexp::yaml_dump not currently implemented";
+  }
+  
+  use constant _QR_TYPES => {
+      '' => sub { qr{$_[0]} },
+      x => sub { qr{$_[0]}x },
+      i => sub { qr{$_[0]}i },
+      s => sub { qr{$_[0]}s },
+      m => sub { qr{$_[0]}m },
+      ix => sub { qr{$_[0]}ix },
+      sx => sub { qr{$_[0]}sx },
+      mx => sub { qr{$_[0]}mx },
+      si => sub { qr{$_[0]}si },
+      mi => sub { qr{$_[0]}mi },
+      ms => sub { qr{$_[0]}sm },
+      six => sub { qr{$_[0]}six },
+      mix => sub { qr{$_[0]}mix },
+      msx => sub { qr{$_[0]}msx },
+      msi => sub { qr{$_[0]}msi },
+      msix => sub { qr{$_[0]}msix },
+  };
+  
+  sub yaml_load {
+      my $self = shift;
+      my ($node, $class) = @_;
+      return qr{$node} unless $node =~ /^\(\?([\^\-xism]*):(.*)\)\z/s;
+      my ($flags, $re) = ($1, $2);
+      $flags =~ s/-.*//;
+      $flags =~ s/^\^//;
+      my $sub = _QR_TYPES->{$flags} || sub { qr{$_[0]} };
+      my $qr = &$sub($re);
+      bless $qr, $class if length $class;
+      return $qr;
+  }
+  
+  1;
+YAML_TYPES
+
 $fatpacked{"ok.pm"} = '#line '.(1+__LINE__).' "'.__FILE__."\"\n".<<'OK';
   package ok;
   our $VERSION = '1.302136';
@@ -40352,6 +42853,7 @@ use File::Slurper qw(read_text);
 use JSON;
 use Term::ANSIColor qw(:constants);
 use Capture::Tiny qw(capture_merged);
+use YAML qw(LoadFile);
 
 use v5.14; # For say
 
@@ -40407,6 +42909,17 @@ EOC
 
   my ($this_version) = ( $version =~ /^v(\d+)/ );
 
+  my $config;
+
+  if ( $this_hito >= 1 ) {
+    diag( check ("Tests para hito 1") );
+    if ( ok( -e "$repo_dir/agil.yaml", "Está el fichero de configuración «agil.yaml»") ) {
+      $config = LoadFile("$repo_dir/agil.yaml");
+      ok( $config, "Fichero de configuración para corrección agil.yaml cargado correctamente" );
+      ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
+    } 
+  }
+
   if ($this_version >= 2 ) {
     diag( check( "Tests para hito 2") );
     like( $README, qr/[Ss]oluci.n/, "Se menciona una solución en el README");
@@ -40417,29 +42930,22 @@ EOC
     like( $README, qr/[lL]og/, "Se menciona un logger en el README");
   }
 
-  if  ( $this_version >= 4 ) {
-    diag( check( "Tests para hito 4") );
-    my @hus = grep(  m{HU/}, @repo_files  );
-    cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
-  }
-
-  my $qa; # A partir de aquí hace falta el fichero de configuración
   if ( $this_version >= 5 ) {
     diag( check( "Tests para hito 5") );
-    $qa = config_file( \@repo_files, $repo_dir );
-    ok( $qa, check( "Fichero de configuración correcto" ) );
-    ok( $qa->{"lenguaje"}, check( "Lenguaje " . $qa->{'lenguaje'} . "detectado"));
-    file_present( $qa->{'build'}, \@repo_files, "de construcción" );
-    file_present( $qa->{'ficheros'}, \@repo_files, "de clase" );
-    language_checks( $qa->{'lenguaje'}, \@repo_files );
+    $config = config_file( \@repo_files, $repo_dir );
+    ok( $config, check( "Fichero de configuración correcto" ) );
+    ok( $config->{"lenguaje"}, check( "Lenguaje " . $config->{'lenguaje'} . "detectado"));
+    file_present( $config->{'build'}, \@repo_files, "de construcción" );
+    file_present( $config->{'ficheros'}, \@repo_files, "de clase" );
+    language_checks( $config->{'lenguaje'}, \@repo_files );
   }
 
   if ( $this_version >= 7 ) {
     diag( check( "Tests para hito 7") );
-    file_present( $qa->{'test'}, \@repo_files, "de test" );
+    file_present( $config->{'test'}, \@repo_files, "de test" );
   }
 
-  my $runner = $qa->{'runner'};
+  my $runner = $config->{'runner'};
   if ( $this_version >= 8) {
     diag( check( "Tests para hito 8") );
     ok( $runner, check( "La clave runner $runner en el fichero de configuración en este tag" ) );
@@ -40466,7 +42972,7 @@ EOC
 
   if ( $this_version >= 12 ) {
     diag( check( "Tests para hito 12") );
-    file_present( $qa->{'dateador'}, \@repo_files, "dateador" );
+    file_present( $config->{'dateador'}, \@repo_files, "dateador" );
   }
 }
 
@@ -40487,8 +42993,8 @@ sub file_present {
 
 sub config_file {
   my ($ls_files_ref, $repo_dir) = @_;
-  file_present( "qa.json", $ls_files_ref, "de configuración" );
-  return from_json(read_text( $repo_dir.'/qa.json' ));
+  file_present( "agil.yaml", $ls_files_ref, "de configuración" );
+  return LoadFile("$repo_dir/agil.yaml");
 }
 
 sub language_checks {

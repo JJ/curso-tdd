@@ -29,13 +29,13 @@ Ya se debe comenzar a usar una metodología de desarrollo que ligue los
 cambios en el código a las especificaciones que tengamos en issues,
 que estarán agrupados en hitos.
 
-* Todos los issues estarán en un hito
+* Todos los issues estarán en un hito (las historias de usuario se colocarán en el hito que inicialmente encajen más)
 * Todos los commits se referirán a un issue.
 * Los issues se habrán cerrado **siempre** con un commit.
 
 Adicionalmente, es conveniente que todo el código se incorpore a la
 rama principal mediante *pull requests*, donde participen al menos dos
-miembros del equipo.
+miembros del equipo, como se dijo desde el principio.
 
 ## Buenas prácticas en el diseño de código.
 
@@ -54,12 +54,12 @@ cuando siga evolucionando.
  prácticas indicadas aquí, desde los principios de diseño, pasando por la
  metodología SOLID, hasta otras, pero es más una filosofía que
  consiste en prevenir todos los casos de fallo, incluso los imposibles, en el
- diseño de la lógica de negocio o en los tests. Cosas como 
+ diseño de la lógica de negocio o en los tests. Cosas como
 
 * ¿Funcionará si Internet no está conectada?
 * ¿Qué pasa si no hay acceso a almacenamiento permanente?
 * Si uso una constante en varios sitios, ¿qué pasa si varían las
-  circunstancias? 
+  circunstancias?
 
 Como la programación defensiva es más una filosofía, y una que
 deberíamos practicar a lo largo del curso, hay técnicas específicas
@@ -70,7 +70,7 @@ código limpio. Una serie de reglas nos invitarán a usar nombres
 razonables para las variables, a no repetir código "que ya
 modificaremos luego" o que debería ser parametrizado en una sola
 pieza, pero lo más importante desde el punto de vista de la calidad
-son las siguientes reglas sobre funciones y tipos de datos. 
+son las siguientes reglas sobre funciones y tipos de datos.
 
 * Las funciones solo deberían hacer una cosa. Esto es importante desde
 el punto de vista de los tests unitarios: probar todas las opciones
@@ -123,8 +123,7 @@ Llegados a este punto, ya tenemos la entidad con la que vamos a
 trabajar. Un proyecto tiene hitos y estos tienen issues, y cuando
 trabajemos, lo haremos de esta forma. Según nos lo pidan las historias
 de usuario iremos evolucionando la base de código, y en ese momento podrá ser necesario
-cambiar el modelo en función de lo que necesitemos. 
-
+cambiar el modelo en función de lo que necesitemos.
 
 ## Diseñar los errores también
 
@@ -195,7 +194,6 @@ hecho único sin acompañamiento de issues. Así que tratar esto con una
 excepción es la mejor forma de defendernos ante los posibles cambios o
 evoluciones en el futuro de la misma.
 
-
 ## Actividad
 
 Este es el primer hito en el que vamos a escribir algo de código,
@@ -209,7 +207,7 @@ aconsejable y se entienda mejor por parte de las herramientas del
 lenguaje.
 
 Se añadirán desde el `README.md` principal enlaces al fichero o ficheros
-que se han creado. 
+que se han creado.
 
 ## Entrega
 
@@ -217,7 +215,7 @@ Esta entrega se llevará a cabo, como el resto de las mismas, como un
 pull request al fichero de [proyectos](../proyectos.md) que aumente el
 número de versión principal hasta llegar a la 4.
 
-Seguiremos usando 
+Seguiremos usando
 [versionado semántico para las entregas](https://semver.org/), donde
 el primer número será siempre el hito (comenzando por el hito
-0). 
+0).
