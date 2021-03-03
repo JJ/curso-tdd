@@ -16,7 +16,9 @@ jobs:
         run: perl .github/workflows/chart.pl > data/proyectos.md
       - name: Checks in results
         run: |
-          git config --global user.email "jjmerelo@gmail.com"
-          git config --global user.name "ÁgilDataBot"
-          .github/workflows/commit-msg.pl | git commit -aF -
-          git push
+          if [[ $(git status -s) ]]; then
+              git config --global user.email "jjmerelo@gmail.com"
+              git config --global user.name "ÁgilDataBot"
+              .github/workflows/commit-msg.pl | git commit -aF -
+              git push
+          fi
