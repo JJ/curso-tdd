@@ -1,9 +1,9 @@
 import tables
-from ../project/projects import projectList, addProject
+import ../project/projects
 
 let projectId: string= "Foo"
 
 addProject( projectId )
-assert projectList[projectId].id == projectId
+assert getProject(projectId).id == projectId
 
 

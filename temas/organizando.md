@@ -116,7 +116,7 @@ control de versiones), y por tanto distinguiremos entre varios tipos
 * Dependencias del propio lenguaje. En este caso, un fichero de
   metadatos tal como el anterior será suficiente para especificarlo.
 
-## SOLID
+## Organización del código
 
 Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID)
 constituyen también una metodología de diseño modular de software que
