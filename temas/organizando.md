@@ -50,7 +50,42 @@ aplicar otra metodología de diseño, que veremos a continuación.
 > posiblemente, incluir en producción sistemas de configuración
 > distribuida como los vistos en [el tema de servicios](servicios.md).
 
-### Ejemplo
+### Ejemplo - Nim
+
+[Nim](https://nim-lang.org) es un lenguaje procedural, con un
+componente fuerte de metaprogramación, compilado, y que tiene cierta
+similaridad (en cómo se usa el espacio en blanco como sintaxis) con
+Python.
+
+Nim usa un fichero, `.nimble`, que *está escrito en Nim*, para
+expresar sus dependencias. Eso permite usar bibliotecas del lenguaje
+para que, por ejemplo, estas cambien según el sistema operativo.
+
+También permite decir qué versiones del lenguaje son compatibles con
+el paquete. Por ejemplo, [este sería el `.nimble` de nuestro ejemplo
+en Nim](../ejemplos/nim)
+
+```nim
+# Package
+version       = "v0.1.0"
+author        = "JJ Merelo"
+description   = "Ejemplo para ÁgilGRX."
+license       = "MIT"
+
+# Dependencies
+requires "nim >= 1.0.0"
+```
+
+Este tipo de requisitos, que pueden variar de un paquete a otro o de
+una aplicación a otra, es la razón por la que se debe usar siempre un
+gestor de versiones para gestionar versiones del lenguaje *en espacio
+de usuario*. En general, no debería ser necesario usar privilegios de
+administrador prácticamente nunca en el desarrollo de aplicaciones.
+
+> Puede haber excepciones, como dependencias de bibliotecas externas u
+> otras herramientas.
+
+### Ejemplo - Raku
 
 En el caso de nuestra aplicación, por lo pronto, no tenemos más
 dependencia que el lenguaje de programación que vamos a usar,
