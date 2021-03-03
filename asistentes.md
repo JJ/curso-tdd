@@ -2,6 +2,7 @@
 
 Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 
+<<<<<<< HEAD
 | Nick GitHub     | Perfil LinkedIn                                                            |
 | -------------   | -------------------------------------------------------------------------  |
 | pablojj1808     | https://www.linkedin.com/in/pablo-jj-60b262132/                            |
@@ -46,4 +47,5 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | jmrr            | https://www.linkedin.com/in/jriverarubio/                                  |
 | cescotoc        | https://linkedin.com/in/carlos-escoto-1a45a9172                            |
 | fcobas1990      | https://www.linkedin.com/in/francisdailin-cobas/                           |
+
 
