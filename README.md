@@ -79,62 +79,60 @@ estas sesiones:
    * Añadiendo *personas* al hito 1
    * [Presentación](preso/checkpoint.html)
 
-6. Refinando el diseño y organizando el desarrollo
+7. Refinando el diseño y organizando el desarrollo
    * Algunos principios de diseño
    * [Material](temas/organizando.md).
    * [Presentación](temas/organizando.html)
 
-6. Comienzo de la implementación "defensiva".
+8. Comienzo de la implementación "defensiva".
     * Documentación de las historias de usuario y traslado a issues.
     * Comienzo del diseño, en general, de las clases.
     * Diseño de excepciones.
     * [Material](temas/a-programar.md).
 
-7. Task runners y cómo usarlos.
+9. Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
   * [Material](temas/gestores-tareas.md).
 
-8. Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
+10. Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
 
-9. *Objetos de test*
+11. *Objetos de test*
   * Organización de los tests.
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
 
-10. Ejecución de tests
+12. Ejecución de tests
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
 
-11. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
+13. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua: Travis, GitHub
     Actions...
   * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
 
-12. Tests de cobertura y por qué son importantes.
+14. Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
 
-13. Tests funcionales/de integración
+15. Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-14. Inversión de dependencias.
+16. Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
 
-15. Tests adicionales
+17. Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
   * [Material](temas/qa.md).
 
-16. Última sesión.
-  * Aclaración de dudas.
 
 ## Hitos
 
