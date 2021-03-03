@@ -13,8 +13,9 @@ dar esos pasos, viendo también ejemplos.
 
 Previamente se habrán creado una serie de casos de uso/historias de
 usuario, y quizás se ha avanzado un poco en el diseño de los paquetes
-que lo van a implementar. Ahora se tratará de haber aclarado cuales
-con los principios de implementación, y aclarar en una serie de hitos
+o módulos
+que lo van a implementar. Ahora se tratará de aclarar cuales
+con los principios de implementación, y especificar en una serie de hitos
 cómo va a organizarse el trabajo de programación.
 
 Además, se organizará en el repositorio, según el lenguaje elegido,
@@ -22,12 +23,13 @@ las dependencias que vayan a necesitarse.
 
 ## Criterio de aceptación
 
-El proyecto tendrá una serie de hitos e issues creados, los issues
-estarán relacionados con una o varias historias de usuario.
+El proyecto tendrá una serie de hitos creados con los primeros issues
+asignados a los hitos; los issues estarán relacionados con una o
+varias historias de usuario.
 
 Con esto se probará que se están siguiendo los principios de diseño
-desarrollando a partir de casos de uso, y que se desglosan a partir de
-una serie de épicas.
+desarrollando a partir de casos de uso, desglosados en una serie de
+épicas.
 
 
 ## Preparando el entorno
@@ -38,8 +40,9 @@ instrumentación necesaria para llevar a cabo el proyecto. Este tipo de
 metodología, además, está adaptada al uso de aplicaciones nativas en
 la nube porque en ella se propone desarrollar simultáneamente la
 infraestructura, el código y los tests. Desde el punto de vista de la
-calidad, dos de esos factores, guardar la configuración en el entorno
-y declarar y aislar las dependencias contribuyen a que la aplicación
+calidad, dos de esos factores, *guardar la configuración en el
+entorno*
+y *declarar y aislar las dependencias* contribuyen a que la aplicación
 sea más fácil de testear y desarrollar. Esto lo podemos hacer antes de
 aplicar otra metodología de diseño, que veremos a continuación.
 
@@ -76,7 +79,7 @@ control de versiones), y por tanto distinguiremos entre varios tipos
   llamado [Nix](https://nixos.org/nix/).
 
 * Dependencias del propio lenguaje. En este caso, un fichero de
-  metadatos será suficiente para especificarlo.
+  metadatos tal como el anterior será suficiente para especificarlo.
 
 ## SOLID
 
