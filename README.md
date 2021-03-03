@@ -136,6 +136,20 @@ estas sesiones:
 16. Última sesión.
   * Aclaración de dudas.
 
+## Hitos
+
+Las entregas se organizan en hitos, que corresponden (en general) a
+una sesión. Este es el esquema de lo que hay que hacer en cada hito
+con enlaces
+
+| Hito | Sesion(es) | Descripción y enlace |
+|------|------------|----------------------|
+|  0   | 1          | [Crear repo con componentes](https://jj.github.io/curso-tdd/temas/git#Actividad)|
+|  1   | 2,6        | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
+|  2   | 3          | [Épicas, problema a resolver](https://jj.github.io/curso-tdd/temas/aplicaciones#Actividad)|
+|  3   | 4          | [Servicios](https://jj.github.io/curso-tdd/temas/servicios#Actividad)|
+|  4   | 5          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#Actividad)|
+|  5   | 7          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#Actividad)|
 
 ## Ideas para resolver
 
