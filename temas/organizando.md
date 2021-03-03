@@ -119,18 +119,33 @@ control de versiones), y por tanto distinguiremos entre varios tipos
 ## SOLID
 
 Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID)
-constituyen también una metodología de desarrollo de software que
-encaja bien con las metodologías usadas en las fases anteriores. Pero
+constituyen también una metodología de diseño modular de software que
+encaja bien con las metodologías usadas en las fases anteriores.
+
+> Conviene no tomarse los principios al pie de la letra, y de hecho
+> aquí nos estamos quedando sólo con los que nos convienen. Podéis mirar
+> [esta
+> presentación](https://speakerdeck.com/lemiorhan/it-is-not-solid-anymore)
+> que sistematiza los principios de SOLID, o [esta
+> otra](https://speakerdeck.com/tastapod/why-every-element-of-solid-is-wrong)
+> que viene a decir que el principio más importante es *escribe código
+> simple*.
+
+
+Unos principios similares son los
+[SHOC](https://codemanship.wordpress.com/2021/03/03/forget-solid-say-hello-to-shoc-principles-for-modular-design/).
+Pero
 desde nuestro punto de vista nos interesan dos especialmente, para el
 diseño completo de la arquitectura de la aplicación:
 
 * [Principio de la responsabilidad única](https://en.wikipedia.org/wiki/Single_responsibility_principle):
   las *entidades* de las que hablamos anteriormente tienen un contexto
-  autónomo, y por tanto las programaremos en una clase, grupo de
+  autónomo, y por tanto las programaremos en una clase (o módulo), grupo de
   clases y finalmente microservicio que se encargue exclusivamente
   de una sola entidad. Este principio se resume en que "debería haber
   una sola razón para cambiar una entidad": diferentes razones,
-  diferentes responsabilidades. 
+  diferentes responsabilidades. En los principios SHOC, este principio
+  se llama *do one job*: haz una sola cosa.
 
 * [Principio de la inversión de dependencias](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
  (o inversión del control): *se debe depender de cosas abstractas, no
@@ -139,6 +154,13 @@ diseño completo de la arquitectura de la aplicación:
    datos debe *inyectarse* en la clase cuando se vaya a crear. Este
    principio es esencial, también en el contexto de tests, y
    volveremos a él a lo largo de este curso.
+
+Adicionalmente, la metodología SHOC añade un principio: la H de
+*hide*, es decir, esconder la implementación. En eso se incluye la
+inversión de dependencias anterior, pero también incluye cosas como
+controlar claramente qué métodos y variables de instancia son
+públicos, y sobre todo tratar de usar lenguajes que permitan declarar
+variables como privadas.
 
 ### Ejemplo
 
