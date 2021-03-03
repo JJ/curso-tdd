@@ -251,24 +251,20 @@ Por ejemplo, usaremos en [Nim](../ejemplos/nim) este módulo con la
 vamos a trabajar:
 
 ```nim
-import ../project
+import tables, ../project
 
-type
-  ProjectDesc= tuple
-    id: string
-    project: Project
-
-var projects*: seq[ProjectDesc] = @[]
+var projectList* = initTable[string, Project]()
 
 proc addProject *( id: string ) =
-  var
-    thisProject: Project
-
-  thisProject = Project( id: id )
-  projects.add( (id: id, project: thisProject ) )
+  projectList[id] = Project( id: id )
 ```
 
-`addProject` será el encargado de añadir nuevos proyectos.
+`addProject` será el encargado de añadir nuevos proyectos, y se lo
+añade a un módulo que posiblemente debería estar oculto.
+
+> Lo dejaremos para la segunda iteración.
+
+Las `tables`en Nim son equivalentes a los diccionarios o Hash en otros lenguajes.
 
 ## A programar
 
