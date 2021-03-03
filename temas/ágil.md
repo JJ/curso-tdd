@@ -17,7 +17,8 @@ términos del curso.
 
 Se habrá asimilado en qué consiste el desarrollo ágil, y diferentes
 técnicas y herramientas usadas en ella, y se habrá comenzado a
-elaborar las historias de usuario que se vayan a usar más adelante.
+elaborar una épica de la cual surgirán las historias de usuario que se
+vayan a usar más adelante.
 
 ## Desarrollo ágil
 
@@ -233,6 +234,12 @@ apellidos, edad y una biografía e incluso currículum a los posibles
 usuarios del software. De esa forma, no va a haber "usuario avanzado",
 sino "Doris Yllana McKenzie, máster en ciencia de datos, 35 años,
 residente en Tres Cantos, Madrid.
+
+Los personajes o *personas* creadas servirán como protagonistas de las
+historias de usuario, que siempre tendrán la forma *como [rol] quiero
+que en un [contexto] se obtenga [resultado] o si no [otro
+resultado]*. En general, las HUs serán una expresió de alto nivel de
+los deseos de todos los posibles clientes de nuestro software.
 
 ### Ejemplo
 

@@ -56,7 +56,7 @@ una serie de épicas.
 Tras las épicas, es necesario dividir lo que se quiere en varias
 partes, de forma que se puedan abordar y por supuesto comprobar de
 forma individual. En este proceso es cuando se empiezan a elaborar las
-historias de usuario individuales.
+*historias de usuario* individuales.
 
 En nuestro programa que tratará con un proyecto y sus diferentes
 partes, hitos, issues y demás, por ejemplo para examinar el estado de
