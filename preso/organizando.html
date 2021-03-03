@@ -17,8 +17,8 @@
 	    <div class="reveal">
 		<div class="slides">
 		    <section><h2>Desarrollo ágil</h2>
-                        <h1>Diseño de una aplicación</h1>
-                        <h3><a href="https://jj.github.io/curso-tdd/temas/diseño"><code>jj.github.io/curso-tdd/temas/diseño</code></a></h3>
+                        <h1>Planificando y diseñando la aplicación</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/organizando"><code>jj.github.io/curso-tdd/temas/organizando</code></a></h3>
                     </section>
 
                     <section><h1>✓ TODO</h1>
@@ -26,6 +26,37 @@
                           otros servicios? </h2>
 			<h2 class="fragment">□ ¿Se han rehecho las HUs
                             con las <em>personas</em>? </h2>
+                    </section>
+
+                    <!-- preparando el entorno -->
+                    <section>
+                        <section><h1>12 factores</h1>
+                            <h2 class="fragment">Guardar la
+                                configuración en el entorno</h2>
+                            <h2 class="fragment">Declarar y aislar las
+                                dependencias</h2>
+                        </section>
+
+                        <section><h1>Metadatos según el formato del
+                            lenguaje</h1>
+                            <pre><code data-line-numbers="8"># Package
+version       = "v0.1.0"
+author        = "JJ Merelo"
+description   = "Ejemplo para ÁgilGRX."
+license       = "MIT"
+
+# Dependencies
+requires "nim >= 1.0.0"
+                            </code></pre>
+                        </section>
+
+                        <section><h1>Usar gestores de versiones
+                            ❢❢</h1>
+                            <aside class="notes">Y en general
+                            herramientas que estén en el espacio del
+                                usuario y no necesiten permisos de
+                                administrador.</aside>
+                        </section>
                     </section>
 
 		    <section><h1>✓ TODO <em>retro</em></h1>

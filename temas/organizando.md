@@ -295,7 +295,7 @@ Como hay que organizarse ya el trabajo de programación, en esta el
 proyecto tendrá que
 
 * Haber especificado las dependencias, especialmente externas (como un
-  sistema de log)
+  sistema de log), o la versión del lenguaje en el que estemos usando.
 * Haber organizado uno o más hitos, donde se habrán empezado a incluir
   los *issues* que conduzcan a la creación del producto mínimamente
   viable descrito en ese hito.
