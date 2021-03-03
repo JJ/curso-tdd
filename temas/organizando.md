@@ -197,7 +197,7 @@ hitos abiertos, delega en el propio issue, que sabe si está abierto o
 no. La clase se encargará de albergar los issues y darnos los issue en
 un estado determinado.
 
-> Siguien los principios de diseño dirigido por el dominio, hemos
+> Siguiendo los principios de diseño dirigido por el dominio, hemos
 > creado una clase Hito que corresponde a los Hitos del dominio del
 > proyecto en el que estamos.
 
@@ -247,7 +247,7 @@ principio, mientras que el resto de las clases serán simplemente
 objetos valor.
 
 Por ejemplo, usaremos en [Nim](../ejemplos/nim) este módulo con la
-única responsabilidad de creat y contener los proyectos con los que
+única responsabilidad de crear y contener los proyectos con los que
 vamos a trabajar:
 
 ```nim
