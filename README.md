@@ -32,7 +32,11 @@ recomendación en LinkedIn o donde se solicite).
 
 La tercera edición ha [quedado grabada en esta lista de
 reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdKVFqzk9VzujTuyiNOKIy2x). El
-planteamiento general del curso está en [esta presentación](/curso-tdd/preso/).
+planteamiento general del curso está en [esta
+presentación](/curso-tdd/preso/).
+
+La cuarta edición del curso está en [esta lista de
+reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdJJsCTshZw8Ae67lU48wkaA).
 
 Tendremos
 estas sesiones:
