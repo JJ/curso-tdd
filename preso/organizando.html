@@ -59,6 +59,38 @@ requires "nim >= 1.0.0"
                         </section>
                     </section>
 
+                    <section><!-- SOLID/SHOC -->
+                        <section><h1>El código debe ser simple</h1>
+                            <h2 class="fragment">Responsabilidad
+                                única: <strong>S</strong>OLID,
+                                SH<strong>O</strong>C</h2>
+                            <h2 class="fragment">Esconder
+                                implementación, H de "hide"</h2>
+                            <h2 class="fragment">Inversión de
+                                dependencias: SOL<strong>I</strong>D, S<strong>H</strong>OC</h2>
+                        </section>
+
+                        <section><h1>Shoc-ed Nim</h1>
+                            <pre><code data-line-numbers="1-6|3">import tables, ../project
+
+var projectList = initTable[string, Project]()
+
+proc addProject *( id: string ) =
+  projectList[id] = Project( id: id )
+
+proc getProject * ( id: string): Project =
+  return projectList[id]</code></pre>
+
+                            <aside class="notes">En este caso, el
+                        asterisco indica que son públicos, lo que no
+                        sucede en el caso de projectList. También se
+                                usa <code>var</code>, que indica que
+                                es mutable, frente a <code>let</code>,
+                                que se usa para inmutables</aside>
+                        </section>
+                    </section>
+                    
+
 		    <section><h1>✓ TODO <em>retro</em></h1>
                         <h2 class="fragment">¿Se ha fusionado la rama
                             principal del curso con `pull --rebase`?</h2>
