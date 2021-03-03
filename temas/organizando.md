@@ -271,7 +271,7 @@ H de SHOC.
 > De hecho, `Project` es probable que ni debiera de existir, porque es
 > un simple objeto valor. Para la segunda iteración. Para esta también
 > dejamos el hecho de que una clase deba gestionar correctamente las
-> excepciones, como en este caso tratar de obtener un projecto cuyo ID
+> excepciones, como en este caso tratar de obtener un proyecto cuyo ID
 > no existe.
 
 Las `tables`en Nim son equivalentes a los diccionarios o Hash en otros lenguajes.

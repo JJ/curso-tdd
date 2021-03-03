@@ -142,7 +142,7 @@ Las entregas se organizan en hitos, que corresponden (en general) a
 una sesión. Este es el esquema de lo que hay que hacer en cada hito
 con enlaces
 
-| Hito | Sesion(es) | Descripción y enlace |
+| Hito | Sesiones | Descripción y enlace |
 |------|------------|----------------------|
 |  0   | 1          | [Crear repo con componentes](https://jj.github.io/curso-tdd/temas/git#Actividad)|
 |  1   | 2,6        | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|

@@ -21,4 +21,6 @@ jobs:
               git config --global user.name "ÁgilDataBot"
               .github/workflows/commit-msg.pl | git commit -aF -
               git push
+          else
+              echo "🟏 No ha habido cambios"
           fi
