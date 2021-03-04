@@ -1,4 +1,4 @@
-# Ejemplo usando nim
+# Ejemplo usando nim [![Test Nim](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml)
 
 [`nim`](https://nim-lang.org) es un lenguaje de sintaxis simple, con
 múltiples posibilidades de compilación.
