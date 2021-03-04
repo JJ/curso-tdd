@@ -10,6 +10,8 @@
 💟
 [![Test
 Nim](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml)
+💟
+[![Test Raku](https://github.com/JJ/curso-tdd/actions/workflows/raku-test.yaml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/raku-test.yaml)
 
 En este curso trataremos de aprender las técnicas necesarias para
 trabajar en un entorno ágil de desarrollo, para aplicaciones nativas en la
