@@ -75,6 +75,36 @@ method new-milestone( $milestone where $milestone.project-name eq
 }
 
 method milestones() { return %!milestones }</code></pre>
+                            <aside class="notes">La parte más
+                            importante de la programación defensiva
+                                está en la siguiente sección</aside>
+                        </section>
+                    </section>
+
+                    <section><!-- programación de excepciones -->
+                        <section><h1>Las excepciones son parte de la
+                            aplicación</h1>
+                            <h2 class="fragment">Y de las historias de
+                                usuario</h2>
+                        </section>
+
+                        <section><h2><strong>HU6</strong>: Iris quiere
+                        poder recuperar todos los issues de un
+                        milestone. Si no hay ningún issue, se
+                            considerará el estado erróneo</h2>
+                            <aside class="notes">Iris es el profesor/a
+                                que quiere trabajar con los proyectos
+                                de una asignatura</aside>
+                        </section>
+                        
+                        <section><h1>Excepciones en Python: en el
+                            mismo fichero</h1>
+                            <pre><code>class NoIssueException(Exception):
+    def __init__(self,*args,**kwargs):
+        Exception.__init__(self,"Milestone sin issues")</code></pre>
+                            <aside class="notes">Dependiendo del
+                            lenguaje, irán a ficheros aparte o se
+                                quedarán en el mismo fichero</aside>
                         </section>
                     </section>
 
