@@ -47,3 +47,4 @@ Inserta tu nombre en una fila aleatoria (para evitar conflictos)
 | cescotoc        | https://linkedin.com/in/carlos-escoto-1a45a9172                            |
 | fcobas1990      | https://www.linkedin.com/in/francisdailin-cobas/                           |
 
+
