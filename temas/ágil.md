@@ -238,7 +238,7 @@ residente en Tres Cantos, Madrid.
 Los personajes o *personas* creadas servirán como protagonistas de las
 historias de usuario, que siempre tendrán la forma *como [rol] quiero
 que en un [contexto] se obtenga [resultado] o si no [otro
-resultado]*. En general, las HUs serán una expresió de alto nivel de
+resultado]*. En general, las HUs serán una expresión de alto nivel de
 los deseos de todos los posibles clientes de nuestro software.
 
 ### Ejemplo
