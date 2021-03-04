@@ -305,10 +305,12 @@ Como hay que organizarse ya el trabajo de programación, en esta el
 proyecto tendrá que
 
 * Haber especificado las dependencias, especialmente externas (como un
-  sistema de log), o la versión del lenguaje en el que estemos usando.
+  sistema de log), o la versión del lenguaje en el que estemos usando,
+  usando la forma habitual del lenguaje que se esté usando.
 * Haber organizado uno o más hitos, donde se habrán empezado a incluir
   los *issues* que conduzcan a la creación del producto mínimamente
-  viable descrito en ese hito.
+  viable descrito en ese hito. Al menos uno de los issues debe estar
+  cerrado para pasar el test.
 
 ## Entrega
 
