@@ -220,6 +220,18 @@ hecho único sin acompañamiento de issues. Así que tratar esto con una
 excepción es la mejor forma de defendernos ante los posibles cambios o
 evoluciones en el futuro de la misma.
 
+Algunos lenguajes de programación, como Go, evitan totalmente las
+excepciones. Pero Go pone el manejo de errores como un aprioridad en
+todas sus aplicaciones, y de hecho la forma idiomática de crear una
+función en Go es que devuelva primero un valor no-`Nil` para indicar
+que se ha producido un error. Ese valor puede ser cualquier `struct`,
+y la forma de comprobar si es de un tipo u otro es usar
+[aserciones](https://golangbot.com/error-handling/), es decir, tratar
+de convertirlo a tipos diferentes, principalmente para extraer más
+información sobre el mismo. De hecho, diferentes bibliotecas definen
+diferentes `structs` usados para informas sobre errores, con la mejor
+práctica usando `Err` como prefijo en los nombres de los mismos.
+
 ## Actividad
 
 Este es el primer hito en el que vamos a escribir algo de código,
