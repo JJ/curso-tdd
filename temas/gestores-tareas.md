@@ -127,7 +127,7 @@ La herramienta `make` y sus `Makefile`s se pueden usar en cualquier lenguaje. De
 
 Por el contrario, [`ake`](https://github.com/Raku/ake) es un módulo
 externo al lenguaje Raku, pero usa Raku para expresarse; hay un
-ejemplo en el [directorio corresondiente](../ejemplos/raku)
+ejemplo en el [directorio correspondiente](../ejemplos/raku)
 
 ```raku
 task "installdeps", {
