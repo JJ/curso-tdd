@@ -9,3 +9,6 @@ en este directorio
 ```shell
 testament pattern "tests/*.nim"
 ```
+
+El código implementa una serie de clases para capturar esencialmente
+el avance de diferentes proyectos de estudiantes alojados en GitHub.
