@@ -88,6 +88,7 @@ estas sesiones:
     * Comienzo del diseño, en general, de las clases.
     * Diseño de excepciones.
     * [Material](temas/a-programar.md).
+    * [Presentación](preso/a-programar.html).
 
 9. Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
@@ -147,6 +148,7 @@ con enlaces
 |  3   | 4          | [Servicios](https://jj.github.io/curso-tdd/temas/servicios#Actividad)|
 |  4   | 5          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#Actividad)|
 |  5   | 7          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#Actividad)|
+|  6   | 8          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#Actividad)|
 
 ## Ideas para resolver
 
