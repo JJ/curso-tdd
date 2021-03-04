@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jjmerelo/raku-test:latest
+      options: --user root
     steps:
       - name: Checkout
         uses: actions/checkout@v2
