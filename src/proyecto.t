@@ -83,16 +83,6 @@ EOC
     like( $README, qr/[lL]og/, "Se menciona un logger en el README");
   }
 
-  if ( $this_version >= 5 ) {
-    diag( check( "Tests para hito 5") );
-    $config = config_file( \@repo_files, $repo_dir );
-    ok( $config, check( "Fichero de configuración correcto" ) );
-    ok( $config->{"lenguaje"}, check( "Lenguaje " . $config->{'lenguaje'} . "detectado"));
-    file_present( $config->{'build'}, \@repo_files, "de construcción" );
-    file_present( $config->{'ficheros'}, \@repo_files, "de clase" );
-    language_checks( $config->{'lenguaje'}, \@repo_files );
-  }
-
   if ( $this_version >= 7 ) {
     diag( check( "Tests para hito 7") );
     file_present( $config->{'excepciones'}, \@repo_files, "con excepciones" );
