@@ -221,7 +221,7 @@ excepción es la mejor forma de defendernos ante los posibles cambios o
 evoluciones en el futuro de la misma.
 
 Algunos lenguajes de programación, como Go, evitan totalmente las
-excepciones. Pero Go pone el manejo de errores como un aprioridad en
+excepciones. Pero Go pone el manejo de errores como una prioridad en
 todas sus aplicaciones, y de hecho la forma idiomática de crear una
 función en Go es que devuelva primero un valor no-`Nil` para indicar
 que se ha producido un error. Ese valor puede ser cualquier `struct`,
