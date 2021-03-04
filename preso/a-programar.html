@@ -18,8 +18,8 @@
 	    <div class="reveal">
 		<div class="slides">
 		    <section><h2>Desarrollo ágil</h2>
-                        <h1>Planificando y diseñando la aplicación</h1>
-                        <h3><a href="https://jj.github.io/curso-tdd/temas/organizando"><code>jj.github.io/curso-tdd/temas/organizando</code></a></h3>
+                        <h1>Prácticas defensivas de programación</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/a-programar"><code>jj.github.io/curso-tdd/temas/a-programar</code></a></h3>
                     </section>
 
                     <section><h1>✓ TODO</h1>
@@ -27,14 +27,59 @@
                           otros servicios? </h2>
 			<h2 class="fragment">□ ¿Se han rehecho las HUs
                             con las <em>personas</em>? </h2>
+                        <h2 class="fragment">□ ¿Hemos comenzado a
+                        organizar el desarrollo en milestones? </h2>
+                    </section>
+
+                    <section><h1>✓ TODO <em>retro</em></h1>
+                        <h2 class="fragment">¿Se ha fusionado la rama
+                            principal del curso con `pull --rebase`?</h2>
+		        <h2 class="fragment">¿Se ha comprobado el
+		            formato del fichero YAML?</h2>
+		    </section>
+
+                    <section><h1>Programando para tu yo del
+                        futuro</h1>
+                        <h2 class="fragment">Abraza el cambio, no lo
+                            evites</h2>
+                        <h3 class="fragment">También "O" de SOLID</h3>
                     </section>
 
 
+                    <section><!-- programación defensiva -->
+                        <section><h1>Evitando futuras rupturas</h1>
+                            <h2 class="fragment">Previendo todos los
+                                fallos futuros</h2>
+                        </section>
+
+                        <section><h1><em>Clean code</em>: código
+                            limpio</h1>
+
+                            <h2 class="fragment">1 responsabilidad
+                                también en funciones</h2>
+                            <h2 class="fragment">Sigue semántica de
+                                los tipos de datos</h2>
+                            <h2 class="fragment">…</h2>
+
+                        </section>
+
+                        <section><h1>Limpiando Raku</h1>
+                            <pre><code data-line-numbers="1|2|6-7">has %!milestones = {};
+has Str $!project-name;
+
+submethod BUILD( :$!project-name) {}
+
+method new-milestone( $milestone where $milestone.project-name eq
+        $!project-name) {
+    %!milestones{$milestone.milestone-id} = $milestone;
+}
+
+method milestones() { return %!milestones }</code></pre>
+                        </section>
+                    </section>
+
                     <section><h1>✓ TODO hito 6</h1>
-                        <h2 class="fragment"> Organizar una hoja de
-                        ruta con milestones </h2>
-			<h2 class="fragment"> Diseño de clases ⇒
-                        implementación HUs en esas clases ⇒ … </h2>
+                       
                     </section>
 
                 </div>
