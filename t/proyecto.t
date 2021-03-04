@@ -42882,6 +42882,7 @@ EOC
   my ($diff_hito) = grep( /$diff_regex/, @files);
   my @lines = split("\n",$diff_hito);
   my @adds = grep(/^\+[^+]/,@lines);
+  cmp_ok $#adds, "==", 0, "Sólo se añade una línea";
   my $url_repo;
   if ( $adds[0] =~ /\(http/ ) {
     ($url_repo) = ($adds[0] =~ /\((https\S+)\)/);
