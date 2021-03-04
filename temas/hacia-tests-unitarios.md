@@ -213,7 +213,8 @@ export const fetchMilestone = async (user: string, repo: string, id: number ): P
 }
 ```
 
-La separación de responsabilidades, implicará que el código asíncrono
+La separación de responsabilidades (que es parte del *do one thing* de
+SHOC), implicará que el código asíncrono
 tiene que ejecutarse por su cuenta, y sin mezclarse, en lo posible,
 con el síncrono; pero en todo caso es una facilidad de programación
 que hay que tener en cuenta a la hora de ponerse a diseñar una

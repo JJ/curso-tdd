@@ -170,9 +170,9 @@ comprobar. Se ejecuta con `mocha` y el resultado de ejecutarlo será:
 ```
     Apuesta
       Carga
-        ✓ should be loaded 
+        ✓ should be loaded
       Crea
-        ✓ should create apuestas correctly 
+        ✓ should create apuestas correctly
 
 
     2 passing (6ms)
@@ -183,7 +183,7 @@ comprobar. Se ejecuta con `mocha` y el resultado de ejecutarlo será:
 > Y la verdad es que debería haber puesto los mensajes en español.
 
 Con la biblioteca BDD de Chai, podríamos expresar los mismos tests de
-esta forma: 
+esta forma:
 
 ```
 var assert = require("chai").should(),
@@ -272,19 +272,16 @@ mismas funciones.
 ### Otros lenguajes
 
 En general, en todos los lenguajes habrá dos niveles para llevar a
-cabo  los tests: las aserciones, que permiten ejecutar código (o
-examinar el resultado del código) y
-realizar algún tipo de comparación con el resultado deseado, y un
-segundo nivel que será 
-generalmente un programa, que se encargará de buscar los ficheros de
-tests siguiendo una convención determinada (nombre del fichero,
-directorio en el que se encuentre), ejecutarlos, examinar la salida
-(que, como hemos indicado arriba, sigue un protocolo determinado
-llamado TAP) y
-decir si se han pasado todos los tests o no, en cuyo caso se indicará
-alguna información adicional como qué scripts de tests no se ha
-pasado o el mensaje de la misma. Algunos programas usados en otros
-lenguajes son:
+cabo los tests: las aserciones, que permiten ejecutar código (o
+examinar el resultado del código) y realizar algún tipo de comparación
+con el resultado deseado, y un segundo nivel que será generalmente un
+programa, que se encargará de buscar los ficheros de tests siguiendo
+una convención determinada (nombre del fichero, directorio en el que
+se encuentre), ejecutarlos, examinar la salida (que, como hemos
+indicado arriba, sigue un protocolo determinado llamado TAP) y decir
+si se han pasado todos los tests o no, en cuyo caso se indicará alguna
+información adicional como qué scripts de tests no se ha pasado o el
+mensaje de la misma. Algunos programas usados en otros lenguajes son:
 
 * Ruby usa [RSpec](http://rspec.info/), que además está basado en el
   comportamiento deseado, lo que permite tener descripciones mucho más
@@ -328,7 +325,7 @@ Trabajar con un gestor de tareas estándar te permitirá, también,
 lanzar los tests siguiendo el estándar. En muchos casos, lo más
 conveniente es hacerlo de esta forma.
 
-## Testeando los errores
+## Testeando las excepciones
 
 Los errores o excepciones son parte integral de una aplicación como se
 ha visto anteriormente, y se deben comprobar también; no se pueden
@@ -370,7 +367,7 @@ resultado no nos interesa y usamos la "variable desechable" de Go, `_`.
 Adicionalmente podemos comprobar que el error devuelto es el correcto, por
 supuesto, pero lo veremos en este otro ejemplo en Raku:
 
-```perl6
+```raku
 my $milestone = Project::Milestone.new(:$project-name,:milestone-id(1));
 
 throws-like { $milestone.issues }, X::Project::NoIssue,
@@ -387,7 +384,8 @@ correcta si no hemos añadido ningún issue al hito.
 
 [TypeScript](https://www.typescriptlang.org/) es un lenguaje con
 tipado gradual, que funciona también de forma asíncrona. Podemos
-programar el issue que hemos usado anteriormente de [esta forma](https://github.com/JJ/ts-milestones):
+programar el issue que hemos usado anteriormente de [esta
+forma](https://github.com/JJ/ts-milestones):
 
 ```
 export enum State { Open,Closed };
@@ -446,11 +444,12 @@ ejecute el código de los mismos esté presente.
 
 ### Ejemplo en Elixir
 
-Elixir no es un lenguaje que maneje con soltura, pero puede ser interesante como
- ejemplo de uno que incluye una utilidad externa al compilador, `mix`, con la
- cual se pueden expresar cosas como la versión del lenguaje con la que vamos a
- trabajar (ver de nuevo la aplicación de 12 factores). También porque está a medio camino entre la orientación a objetos y la funcionalidad.
- Implementaremos solo
+Elixir no es un lenguaje que maneje con soltura, pero puede ser
+ interesante como ejemplo de uno que incluye una utilidad externa al
+ compilador, `mix`, con la cual se pueden expresar cosas como la
+ versión del lenguaje con la que vamos a trabajar (ver de nuevo la
+ aplicación de 12 factores). También porque está a medio camino entre
+ la orientación a objetos y la funcionalidad.  Implementaremos solo
  parte de la funcionalidad para gestionar un issue:
 
 ```elixir
@@ -458,15 +457,15 @@ defmodule Issue do
   @moduledoc """
   A simple issue in a repository
   """
- 
+
   @enforce_keys [:projectname, :id]
   defstruct [:projectname, :id, state: :Open ]
-  
+
   @doc """
   Can create and close it, and that's it
 
   """
-  def close( issue ) do 
+  def close( issue ) do
     issue |> struct( %{state: :Closed} )
   end
 
