@@ -94,7 +94,7 @@ estas sesiones:
   * Diferentes tipos de task runners y por qué son útiles para todo.
   * [Material](temas/gestores-tareas.md).
 
-10. Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
+10. Preparando tu aplicación para testear: *separation of concerns*, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
 
