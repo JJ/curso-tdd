@@ -126,7 +126,7 @@ Este tipo de organización del código resulta especialmente interesante
 a la hora de hacer tests. Si queremos imitar ese almacenamiento, simplemente tenemos que usar el mismo
 rol:
 
-```perl6
+```raku
 unit class Project::Data::Mock does Project::Dator;
 
 has $!data = { "milestones" => [
@@ -148,7 +148,7 @@ has $!data = { "milestones" => [
 Se puede instanciar este objeto exactamente de la misma forma para "imitar" la
 clase original que da acceso a datos:
 
-```perl6
+```raku
 $dator = Project::Data::Mock.new;
 $stored = Project::Stored.new($dator);
 ```
