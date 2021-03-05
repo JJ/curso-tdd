@@ -16,7 +16,8 @@ mismo).
 ## Al final de esta sesión
 
 El estudiante habrá elegido un *task runner*, que usará para compilar o
-comprobar la sintaxis del interfaz de una clase correspondiendo a la historia de usuario o historias que desee.
+comprobar la sintaxis del interfaz de una clase correspondiendo a la
+historia de usuario o historias que desee.
 
 ## Criterio de aceptación
 
@@ -238,12 +239,11 @@ prácticas de uso de los issues (y su cierre desde un *commit*), crear
 el interfaz de al menos una clase básicas que corresponda a la misma entidad (según
 el dominio del problema que se haya elegido), esta funcionalidad debe corresponder a las historias de usuario que se hayan planteado, y el nombre de las funciones debe ser suficientemente explícito.
 
-Habrá que añadir tres claves al fichero `agil.yaml`
+Habrá que añadir dos claves al fichero `agil.yaml`
 
 ```yaml
     lenguaje : "Nombre del lenguaje",
-    build : "Makefile",
-    ficheros : ["lib/nombre/del/fichero.pm6","otro/fichero.rakumod"]
+    taskfile : "Makefile",
 ```
 
 En vez de `Makefile`, se usará el nombre del fichero de construcción
