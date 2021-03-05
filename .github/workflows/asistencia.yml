@@ -14,11 +14,9 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: '3.5.3' # The R version to download (if necessary) and use.
-      - name: Instala ggplot2
-        run: sudo apt-get update -y && sudo apt-get install -y r-cran-ggplot2
       - name: Install dependencies
         run: |
-          install.packages(c("ggthemes"))
+          install.packages(c("ggplot2","ggthemes"))
         shell: Rscript {0}
       - name: Ejecuta el script
         run: Rscript data/plot-asistencia.R
