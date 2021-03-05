@@ -22,5 +22,5 @@ jobs:
               my $yaml = CPAN::Meta::YAML->read_string($yaml_text)
                   or die CPAN::Meta::YAML->errstr;
               close $fh;
-              print "✓ YAML «$f»";
+              print "✓ YAML «$f»\n";
           }
