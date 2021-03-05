@@ -254,7 +254,7 @@ corresponda.
 
 En el caso de ciertos lenguajes, se comprobará que el nombre del
 fichero de gestión de tareas es el que aconsejan las mejores
-prácticas. Por ejemplo, en el caso de Python se comprobará que existe `pyproject.toml`.
+prácticas. Por ejemplo, en el caso de Python se podrá comprobar que exista `pyproject.toml`.
 
 > Se recuerda que es conveniente que el fichero YAML se compruebe
 > antes de enviar el PR, o bien se genere con alguna herramienta que
