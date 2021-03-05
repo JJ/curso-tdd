@@ -42931,9 +42931,15 @@ EOC
     like( $README, qr/[lL]og/, "Se menciona un logger en el README");
   }
 
+  if ( $this_version >= 6 ) {
+    diag( check( "Tests para hito 6") );
+    file_present( $config->{'excepciones'}, \@repo_files, "con excepciones" );
+  }
+
   if ( $this_version >= 7 ) {
     diag( check( "Tests para hito 7") );
-    file_present( $config->{'excepciones'}, \@repo_files, "con excepciones" );
+    file_present( $config->{'taskfile'}, \@repo_files, "con gestor de tareas" );
+    ok( $config->{'lenguaje'}, "Se ha declarado el lenguaje de programación" );
   }
 
   my $runner = $config->{'runner'};
