@@ -15,7 +15,7 @@ EOC
 while ( my $line = <$tally_fh> ) {
   next if $line =~ /^F/;
   my ($dia, $cuantos) = split(/,\s+/, $line );
-  $output .= "$dia 📅 " . "⛹" x $cuantos . "\n";
+  $output .= "$dia 📅 " . "⫾" x $cuantos . "\n";
 }
 say "$output\n--";
 
