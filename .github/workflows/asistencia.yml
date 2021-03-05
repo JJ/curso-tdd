@@ -1,11 +1,11 @@
-name: "Saca estadísticas"
+name: "Plot asistencia"
 on:
   push:
     paths:
       - 'data/asistencia.csv'
 
 jobs:
-  crea-tabla:
+  crea-grafico:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,7 +16,7 @@ jobs:
           r-version: '3.5.3' # The R version to download (if necessary) and use.
       - name: Install dependencies
         run: |
-          install.packages(c("ggplot2", ggthemes"))
+          install.packages(c("ggplot2", "ggthemes"))
         shell: Rscript {0}
       - name: Ejecuta el script
         run: Rscript data/plot-asistencia.R
