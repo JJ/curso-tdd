@@ -1,0 +1,22 @@
+name: "Saca estadísticas"
+on:
+  push:
+    paths:
+      - 'proyectos.md'
+
+jobs:
+  crea-tabla:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checks in results
+        run: |
+          if [[ $(git status -s) ]]; then
+              git config --global user.email "jjmerelo@gmail.com"
+              git config --global user.name "ÁgilDataBot"
+              .github/workflows/commit-msg.pl | git commit -aF -
+              git push
+          else
+              echo "🟏 No ha habido cambios"
+          fi
