@@ -1,0 +1,153 @@
+# from https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #222;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+section[data-background] h1 { 
+       background-color:rgba(233,223,213,0.8);
+       padding: 50px;
+       margin: 20px;
+       border-radius: 30px
+}
+
+h1 strong {
+    font-family: 'Prosto One' !important;
+    color: rgb(225,138,7);
+}
+
+section[data-background] h2 {
+       background-color:rgba(213,223,223,0.7);
+       padding: 30px;
+       margin: 15px;
+       border-radius: 20px
+}
+
+section[data-background] ul {
+       background-color:rgba(31,30,29,0.7);
+       padding: 30px;
+       margin: 15px;
+       border-radius: 20px
+}
+
+section[data-background] h3 {
+       background-color:rgba(213,213,213,0.7);
+       padding: 20px;
+       margin: 10px;
+       border-radius: 15px
+}
+
+section[data-background] blockquote {
+       background-color:rgba(231,211,111,0.7);
+       padding: 20px;
+       margin: 10px;
+       border-radius: 15px
+}
+
+.pink { 
+       background-color:rgba(255, 192, 203,0.7);
+       padding: 5px;
+       margin: 10px;
+       border-radius: 3px
+}
+
+.bkg { 
+       background-color:rgba(0,43,54,0.7);
+       padding: 30px;
+       margin: 15px;
+       border-radius: 10px
+}
+
+.reveal li { font-size:1.75em }
+.reveal li.credits { font-size:0.75em }
+.credits {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+}
+.credits li { font-size:0.75em }
+
+
+.chart div {
+  font: 30px sans-serif;
+  background-color: orange;
+  text-align: right;
+  padding: 5px;
+  margin: 3px;
+  color: white;
+}
+
+.fija {
+    position: relative;
+    bottom: -350px;
+    left: -650px;
+    font: monospace;
+    text-align: right;
+    padding: 2px;
+    margin: 1px;
+    color:  #ff2c2d;
+    z-index: 1;           
+}
+
+.fija2 {
+    position: relative;
+    bottom: -150px;
+    left: -650px;
+    font: monospace;
+    text-align: right;
+    padding: 2px;
+    margin: 1px;
+    color:  #ff2c2d;
+    z-index: 1;           
+}
+/* Posición fija */
+
+#fija { 
+        position: fixed;
+        border: 3px solid orange;
+        top: 0;
+        left: 0;
+        width: 200px;
+        z-index: 1;           
+}
+
+.reveal.slide .slides > section, .reveal.slide .slides > section > section {
+  min-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 0 !important;
+  align-items: center !important;
+}
+
+
+.print-pdf .reveal.slide .slides > section, .print-pdf .reveal.slide .slides > section > section {
+  min-height: 770px !important;
+  position: relative !important;
+}
+
+.reveal .footer {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  font-size: 0.5em;
+}
+
+img.flat.smallflat {
+    max-width: 50%;
+}
+
+

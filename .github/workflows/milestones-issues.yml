@@ -17,7 +17,7 @@ jobs:
         uses: JJ/repo-in-diff-gh-action@releases/v1
         with:
           github-token: ${{github.token}}
-          minVersion: "4.0.0"
+          minVersion: "5.0.0"
           minPRs: 1
           minMilestones: 1
       - name: Comprueba variables.
@@ -46,4 +46,20 @@ jobs:
                core.setFailed("❌ Debe haber un proyecto (para el tablero)")
             } else {
                console.log( "✅ Tenemos un proyecto para el tablero ")
+            }
+      - name: Comprueba que haya una historia de usuario
+        uses: actions/github-script@v3
+        if: env.version >= '4'
+        with:
+          github-token: ${{github.token}}
+          script: |
+            const user = process.env.user
+            const repo = process.env.repo
+            const options = await github.issues.listForRepo( { owner: user, repo: repo } )
+            const issues = await github.paginate( options )
+            console.log( issues )
+            if ( issues.length == 0 ) {
+               core.setFailed("❌ Debe haber un issue con una HU al menos")
+            } else {
+               console.log( "✅ Parece que hay un issue ")
             }

@@ -6,6 +6,7 @@ use File::Slurper qw(read_text);
 use JSON;
 use Term::ANSIColor qw(:constants);
 use Capture::Tiny qw(capture_merged);
+use YAML qw(LoadFile);
 
 use v5.14; # For say
 
@@ -34,6 +35,7 @@ EOC
   my ($diff_hito) = grep( /$diff_regex/, @files);
   my @lines = split("\n",$diff_hito);
   my @adds = grep(/^\+[^+]/,@lines);
+  cmp_ok $#adds, "==", 0, "Sólo se añade una línea";
   my $url_repo;
   if ( $adds[0] =~ /\(http/ ) {
     ($url_repo) = ($adds[0] =~ /\((https\S+)\)/);
@@ -61,6 +63,17 @@ EOC
 
   my ($this_version) = ( $version =~ /^v(\d+)/ );
 
+  my $config;
+
+  if ( $this_hito >= 1 ) {
+    diag( check ("Tests para hito 1") );
+    if ( ok( -e "$repo_dir/agil.yaml", "Está el fichero de configuración «agil.yaml»") ) {
+      $config = LoadFile("$repo_dir/agil.yaml");
+      ok( $config, "Fichero de configuración para corrección agil.yaml cargado correctamente" );
+      ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
+    }
+  }
+
   if ($this_version >= 2 ) {
     diag( check( "Tests para hito 2") );
     like( $README, qr/[Ss]oluci.n/, "Se menciona una solución en el README");
@@ -71,29 +84,12 @@ EOC
     like( $README, qr/[lL]og/, "Se menciona un logger en el README");
   }
 
-  if  ( $this_version >= 4 ) {
-    diag( check( "Tests para hito 4") );
-    my @hus = grep(  m{HU/}, @repo_files  );
-    cmp_ok $#hus, ">=", 0, "Hay varias historias de usuario";
-  }
-
-  my $qa; # A partir de aquí hace falta el fichero de configuración
-  if ( $this_version >= 5 ) {
-    diag( check( "Tests para hito 5") );
-    $qa = config_file( \@repo_files, $repo_dir );
-    ok( $qa, check( "Fichero de configuración correcto" ) );
-    ok( $qa->{"lenguaje"}, check( "Lenguaje " . $qa->{'lenguaje'} . "detectado"));
-    file_present( $qa->{'build'}, \@repo_files, "de construcción" );
-    file_present( $qa->{'ficheros'}, \@repo_files, "de clase" );
-    language_checks( $qa->{'lenguaje'}, \@repo_files );
-  }
-
   if ( $this_version >= 7 ) {
     diag( check( "Tests para hito 7") );
-    file_present( $qa->{'test'}, \@repo_files, "de test" );
+    file_present( $config->{'excepciones'}, \@repo_files, "con excepciones" );
   }
 
-  my $runner = $qa->{'runner'};
+  my $runner = $config->{'runner'};
   if ( $this_version >= 8) {
     diag( check( "Tests para hito 8") );
     ok( $runner, check( "La clave runner $runner en el fichero de configuración en este tag" ) );
@@ -120,7 +116,7 @@ EOC
 
   if ( $this_version >= 12 ) {
     diag( check( "Tests para hito 12") );
-    file_present( $qa->{'dateador'}, \@repo_files, "dateador" );
+    file_present( $config->{'dateador'}, \@repo_files, "dateador" );
   }
 }
 
@@ -141,8 +137,8 @@ sub file_present {
 
 sub config_file {
   my ($ls_files_ref, $repo_dir) = @_;
-  file_present( "qa.json", $ls_files_ref, "de configuración" );
-  return from_json(read_text( $repo_dir.'/qa.json' ));
+  file_present( "agil.yaml", $ls_files_ref, "de configuración" );
+  return LoadFile("$repo_dir/agil.yaml");
 }
 
 sub language_checks {

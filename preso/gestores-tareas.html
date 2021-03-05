@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desarrollo ágil: Programación defensiva</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/extra.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Gestores de tareas</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/gestores-tareas"><code>jj.github.io/curso-tdd/temas/gestores-tareas</code></a></h3>
+                    </section>
+
+                    <section><h1>✓ TODO</h1>
+			<h2 class="fragment">□ ¿Se han rehecho las HUs
+                            con las <em>personas</em>? </h2>
+                        <h2 class="fragment">□ ¿Hemos comenzado a
+                            organizar el desarrollo en milestones? </h2>
+                        <h2 class="fragment">□ ¿Se han diseñado clases
+                        y excepciones? </h2>
+                    </section>
+
+                    <section><h1>Configuración en el entorno</h1>
+                        <h2 class="fragment">Unificar y programar
+                            tareas</h2>
+                    </section>
+
+                    <section><h1><em>Task runners</em>, <em>build
+                        managers</em>, compiladores y gestores de dependencias</h1>
+                        <h2 class="fragment">Un continuo</h2>
+                        <aside class="notes">Pero en el extremo
+                            superior están los task runners</aside>
+                    </section>
+
+                    <section><h1>✓ TODO <em>retro</em></h1>
+		        <h2 class="fragment">¿Se ha comprobado el
+		            formato del fichero YAML?</h2>
+		    </section>
+
+                    <section><h1>Diferencias en configuración,
+                        estandarización, forma (imperativa o
+                        declarativa), especificidad</h1>
+                        <h2 class="fragment">Siempre debe usarse
+                            uno</h2>
+                    </section>
+
+                    <section><h1>Muchos incluyen un DSL</h1>
+                        <h2 class="fragment"><code>sbt</code>,
+                            <code>make</code></h2>
+                    </section>
+
+                    <section><h1>Las tareas tienen nombres
+                        estándar</h1>
+                        <h2 class="fragment"><code>install</code>,<code>build</code>,
+                            <code>test</code>, <code>check</code>,
+                            <code>docs</code>...</h2>
+                    </section>
+
+                    <section> <!-- ejemplos -->
+                        <section><h1>Maskfile: tareas en markdown</h1>
+                            <pre><code data-line-numbers="3|5|7|8-9"># Tareas para este proyecto
+
+## podman-images
+
+> Crea imágenes de Docker a partir del Dockerfile usando Podman
+
+~~~sh
+podman build -f nodata.Dockerfile -t jjmerelo/hitos/data
+podman build -f Dockerfile -t jjmerelo/hitos/hugitos
+~~~
+                            </code></pre>
+                        </section>
+
+                        <section><h1>Clásico
+                            <code>Makefile</code></h1>
+                            <pre><code data-line-numbers="1|2">%:
+	go $@</code></pre>
+                        </section>
+
+                        <section><h1>Ake en Raku</h1>
+                            <pre><code data-line-numbers="1|5-9|6|7"> task "installdeps", {
+    shell "zef install --deps-only ."
+}
+
+for &lt;test install> -> $task {
+    task $task, {
+        shell "zef $task ."
+    }
+}</code></pre>
+                        </section>
+
+                        <section><h1>Poetry en Python: gestor de
+                            dependencias</h1>
+                            <pre><code data-line-numbers="1,8,11,14|2-6|15-16">                            [tool.poetry]
+                            name = "Hugitos"
+                            version = "0.1.0"
+                            description = "Una pequeña demo para la asignatura de IV"
+                            authors = ["JJ Merelo"]
+                            packages= [ { include = "HitosIV" }, ]
+
+                            [tool.poetry.dependencies]
+                            python = ">=3.6" # Más...
+
+                            [tool.poetry.dev-dependencies]
+                            pytest = "^6.1.2"
+
+                            [tool.poetry.scripts]
+                            set-vars = "HitosIV.etcd_vars:main"
+                            start = "hugitos:__hug_wsgi__"</code></pre>
+
+                            <aside class="notes">En realidad sólo
+                        puede ejecutar tareas que estén en un programa
+                                en python. Necesitas un gestor de tareas por encima</aside>
+                        </section>
+                    </section>
+
+                    <section><h1>Un gestor de dependencias rara vez es
+                        suficiente</h1>
+                        <h2 class="fragment">Ponga un gestor de tareas
+                            en su software</h2>
+                    </section>
+
+                    <section><h1>✓ TODO hito 7</h1>
+                        <h2 class="fragment">Elegir un gestor de
+                            tareas</h2>
+                        <h3 class="fragment">Comprobar el fichero de tareas/lenguaje</h3>
+                        <pre class="fragment"><code>    lenguaje : "Nombre del lenguaje",
+    taskfile : "Makefile"</code></pre>
+                    </section>
+
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+                 slideNumber: true,
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>

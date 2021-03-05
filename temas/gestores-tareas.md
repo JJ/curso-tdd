@@ -16,7 +16,8 @@ mismo).
 ## Al final de esta sesión
 
 El estudiante habrá elegido un *task runner*, que usará para compilar o
-comprobar la sintaxis del interfaz de una clase correspondiendo a la historia de usuario o historias que desee.
+comprobar la sintaxis del interfaz de una clase correspondiendo a la
+historia de usuario o historias que desee.
 
 ## Criterio de aceptación
 
@@ -26,7 +27,7 @@ compilación, incluyendo la instalación de dependencias que fueran
 necesarias. Este fichero se irá ampliando con las diferentes tareas
 que se vayan haciendo durante el curso.
 
-## Herramientas de construcción o gestores de tareas.
+## Herramientas de construcción o gestores de tareas
 
 > Antes de hablar de los tests unitarios en sí, vamos a hablar de las
 > herramientas de construcción. En general, la ejecución de los tests
@@ -34,18 +35,21 @@ que se vayan haciendo durante el curso.
 > fichero de tareas que se ejecuta desde aquí.
 
 Como parte de la metodología de 12 factores que vimos en la fase de
-[diseño](diseño.md), uno de los factores incluye [separar las fases](https://12factor.net/es/build-release-run) de
-construcción, despliegue y ejecución. Pero para hacer esto todas las
-fases (y alguna otra tarea que esté relacionada con las mismas) deben
-de estar codificadas: la infraestructura es código, y ese código, en
-este caso, será parte de un fichero que será ejecutado por una
-herramienta de construcción.
+[diseño](diseño.md), uno de los factores incluye [separar las
+fases](https://12factor.net/es/build-release-run) de construcción,
+despliegue y ejecución. Pero para hacer esto todas las fases (y alguna
+otra tarea que esté relacionada con las mismas) deben de estar
+codificadas: la infraestructura es código, y ese código, en este caso,
+será parte de un fichero que será ejecutado por una herramienta de
+construcción.
 
-Las [herramientas de construcción](https://en.wikipedia.org/wiki/List_of_build_automation_software) o ejecutores de tareas permiten usar, como
-subcomandos de un solo programa y especificados en un solo fichero, todas las tareas que se tienen que llevar a
-cabo con una aplicación, desde su compilación hasta la generación de la
-documentación pasando por todo lo necesario para ejecutar todo tipo de
-tests y desplegarlo.
+Las [herramientas de
+construcción](https://en.wikipedia.org/wiki/List_of_build_automation_software)
+o ejecutores de tareas permiten usar, como subcomandos de un solo
+programa y especificados en un solo fichero, todas las tareas que se
+tienen que llevar a cabo con una aplicación, desde su compilación
+hasta la generación de la documentación pasando por todo lo necesario
+para ejecutar todo tipo de tests y desplegarlo.
 
 Los task runners se diferencian entre si a lo largo de varios ejes
 
@@ -62,19 +66,20 @@ necesarias.
   declaraciones de uso de bibliotecas externas como parte de la
   definición. Go es capaz de hacerlo también. En la mayoría de los
   casos hace falta un fichero que describa este tipo de cosas.
-* Estándar o opcionales: hay lenguajes que vienen con su propia herramienta de
+* Estándar u opcionales: hay lenguajes que vienen con su propia herramienta de
 construcción, estándar o simplemente la que más se usa, aunque puede tener
 limitaciones: `npm` en JavaScript (que últimamente está siendo
 sustituida por `yarn`, por cierto), `sbt` en Scala, `zef` en Raku... En muchos
 casos, sin embargo, hacen falta herramientas externas, de la cuales la
 herramienta por antonomasia es `make`, pero hay otras más, como `invoke` para
 Python o [`rake`](https://github.com/ruby/rake) para Ruby.
-* Imperativas o declarativas: las procedurales o imperativas permiten ejecutar órdenes para
+* Imperativos o declarativos: las procedurales o imperativas permiten ejecutar órdenes para
 conseguir algo, mientras que las declarativas describen el estado en el que
 quieres que el sistema esté y realizan sus propias acciones para llegar a ese
 estado: en el caso de Java,
-[`Maven` es declarativo, `ant` es imperativo](https://stackoverflow.com/questions/14955597/imperative-vs-declarative-build-systems)
-* Genéricas o [específicas](https://softwareengineering.stackexchange.com/questions/297847/why-do-build-tools-use-a-scripting-language-different-than-underlying-programmin) del lenguaje:
+[`Maven` es declarativo, `ant` es
+imperativo](https://stackoverflow.com/questions/14955597/imperative-vs-declarative-build-systems).
+* Genéricos o [específicos](https://softwareengineering.stackexchange.com/questions/297847/why-do-build-tools-use-a-scripting-language-different-than-underlying-programmin) del lenguaje:
 Las genéricas lanzan scripts, generalmente del shell, mientras que las
 específicas usan el propio lenguaje de programación, con lo que es más fácil que
  se adapten a diferentes plataformas. `make` es el caso más clásico de
@@ -103,7 +108,7 @@ construcción permiten centralizar en un solo fichero todas las tareas relativas
   respecto al fuente). En la mayor parte de los casos, las tareas
   tienen nombres estándar: `test`, `build`, `install`.
 
-### Ejemplos 
+### Ejemplos
 
 La más antigua, `make`, sigue siendo una de las herramientas más
 populares. Por ejemplo, este `Makefile` minimalista se podría usar
@@ -118,13 +123,14 @@ para un programa en go:
  Es decir, si hacemos `make test` se ejecutará `go test`. Como los targets se
  ejecutan por orden, podemos poner algún target anterior con órdenes específicas
   que no sigan este patrón.
-  
+
 La herramienta `make` y sus `Makefile`s se pueden usar en cualquier lenguaje. De hecho, C y C++ lo usan, pero también Python.
 
 Por el contrario, [`ake`](https://github.com/Raku/ake) es un módulo
-externo al lenguaje Raku, pero usa Raku para expresarse.
+externo al lenguaje Raku, pero usa Raku para expresarse; hay un
+ejemplo en el [directorio correspondiente](../ejemplos/raku)
 
-```perl6
+```raku
 task "installdeps", {
     shell "zef install --deps-only ."
 }
@@ -218,31 +224,26 @@ Se establece un archivo `pyproject.toml` que se inspira en el funcionamiento de 
 y permite definir dependencias, dependencias de desarrollo, versiones compatibles, ....
 
 Uno de los proyectos que implementan esta especificación es [poetry](https://python-poetry.org/)
-(que se ha establecido como alternativa a [pipenv](https://pipenv-es.readthedocs.io/es/latest/)). Como 
-se puede apreciar en el sitio web de `poetry` el funcionamiento es muy similar a `cargo` y 
+(que se ha establecido como alternativa a [pipenv](https://pipenv-es.readthedocs.io/es/latest/)). Como
+se puede apreciar en el sitio web de `poetry` el funcionamiento es muy similar a `cargo` y
 permite definir estructuras para librerías y proyectos, con utilidades para operar en ellos.
 Además de esto permite la gestión de entornos virtuales de Python, con lo que se pueden aislar
 las dependencias y usar versiones específicas del software.
 
 ## Actividad
 
-> Este hito corresponderá a la versión 5 `v5.x.x` del proyecto.
+> Este hito corresponderá a la versión 7 `v7.x.x` del proyecto.
 
 A partir del diseño creado en la anterior actividad, y siguiendo las
 prácticas de uso de los issues (y su cierre desde un *commit*), crear
 el interfaz de al menos una clase básicas que corresponda a la misma entidad (según
 el dominio del problema que se haya elegido), esta funcionalidad debe corresponder a las historias de usuario que se hayan planteado, y el nombre de las funciones debe ser suficientemente explícito.
 
-A partir de este hito, el repositorio tendrá que incluir un fichero de
-configuración para poder llevar a cabo los tests de evaluación del
-proyecto llamado `qa.json` con la siguiente estructura:
+Habrá que añadir dos claves al fichero `agil.yaml`
 
-```json
-{
-    "lenguaje" : "Nombre del lenguaje",
-    "build" : "Makefile",
-    "ficheros" : ["lib/nombre/del/fichero.pm6","otro/fichero.rakumod"]
-}
+```yaml
+    lenguaje : "Nombre del lenguaje",
+    taskfile : "Makefile",
 ```
 
 En vez de `Makefile`, se usará el nombre del fichero de construcción
@@ -253,8 +254,8 @@ corresponda.
 
 En el caso de ciertos lenguajes, se comprobará que el nombre del
 fichero de gestión de tareas es el que aconsejan las mejores
-prácticas. Por ejemplo, en el caso de Python se comprobará que existe `pyproject.toml`.
+prácticas. Por ejemplo, en el caso de Python se podrá comprobar que exista `pyproject.toml`.
 
-> Se aconseja no crear a mano el fichero JSON, o si se hace, que se
-> compruebe online o donde sea. Cualquier editor de programación será
-> capaz de crear uno sintácticamente correcto, de todas formas. 
+> Se recuerda que es conveniente que el fichero YAML se compruebe
+> antes de enviar el PR, o bien se genere con alguna herramienta que
+> sirva para ello.

@@ -9,27 +9,30 @@ asegurarnos de que efectivamente se cumplen las historias de
 usuario. Conviene desacoplar el diseño de la clase, sin embargo, del
 código que se implementa en el mismo, porque es el diseño el que debe
 seguir las historias de usuario, mientras que el código se asegura de
-que tengan el resultado deseado. 
+que tengan el resultado deseado.
 
 Por supuesto, todo en un proyecto se va a ejecutar desde un task runner, así que será lo primero que se vea en esta sesión.
 
 ## Al final de esta sesión
 
-El estudiante habrá elegido un task runner, y habrá programado el interfaz de una clase correspondiendo a la historia de usuario o historias que desee, terminando el primer hito.
+El estudiante habrá elegido un task runner, y habrá programado el
+interfaz de una clase correspondiendo a la historia de usuario o
+historias que desee, terminando el primer hito.
 
 ## Criterio de aceptación
 
 Se habrá implementado el interfaz de una clase y un fichero de un task
 runner que contenga, al menos, la instalación de dependencias si fuera
-necesario. 
+necesario.
 
 ## Historias de usuario, las maravillas del código inexistente y tests
 
 > En este ejemplo y en el siguiente hay realmente código en las
 > clases, porque en su estado, ya están testeadas y demás. El código,
-> sin embargo, no es lo importante y debéis recordar que siempre se
-> escribe el test antes que el código. Así que no miréis al código y
-> listo. 
+> sin embargo, no es lo importante y debéis recordar que se aconseja
+> que siempre se
+> escriba el test antes que el código. Así que no miréis al código y
+> listo.
 
 
 Una de las lecciones más importantes en calidad del software (e
@@ -154,7 +157,7 @@ mismas historias de usuario de antes.
 * Anotaciones de tipo para el nombre del proyecto y el issue.
 * Uso de propiedades para indicar los valores que podemos sacar del
   objeto.
-  
+
 Pero hay dos problemas.
 * No existen las variables privadas o de sólo lectura en
   Python. Convencionalmente, se
@@ -163,7 +166,7 @@ Pero hay dos problemas.
   privadas o no se alteran, tendremos que usar estructuras de datos
   específicas (y más lentas).
 * Tampoco podemos añadir anotaciones de tipos a las variables de
-  instancia. 
+  instancia.
 
 ```
 >>> from Project.Issue import Issue
@@ -171,7 +174,8 @@ Pero hay dos problemas.
 >>> issue._issueId = "Pepillo"
 ```
 
-Hacemos esto y se queda tan campante. Con revisiones de código y
+Hacemos esto y se queda tan campante. Con revisiones de código
+estáticas y
 algunas otras medidas se puede asegurar que se comporte correctamente,
 pero en todo caso siempre será mejor elegir algún lenguaje en el que
 el compilador o intérprete haga ese trabajo por ti. O código adicional
@@ -199,7 +203,7 @@ dependiendo de si el código es multihebra o con un solo bucle de
 eventos; esto es transparente, de todas formas, y más eficiente que
 lanzar cada una de las peticiones y esperar el resultado.
 
-Por ejemplo, tenemos esta mini-función en Deno (en realidad,
+Por ejemplo, tenemos esta mini-función en [Deno](https://deno.land) (en realidad,
 TypeScript, Deno es un runtime para node/typescript)
 
 ```typescript
@@ -209,7 +213,8 @@ export const fetchMilestone = async (user: string, repo: string, id: number ): P
 }
 ```
 
-La separación de responsabilidades, implicará que el código asíncrono
+La separación de responsabilidades (que es parte del *do one thing* de
+SHOC), implicará que el código asíncrono
 tiene que ejecutarse por su cuenta, y sin mezclarse, en lo posible,
 con el síncrono; pero en todo caso es una facilidad de programación
 que hay que tener en cuenta a la hora de ponerse a diseñar una

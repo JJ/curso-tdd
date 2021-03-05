@@ -1,0 +1,26 @@
+name: "Comprueba YAML"
+on:
+  push:
+    paths:
+      - '**/*.y*ml'
+
+jobs:
+  comprueba-agil-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checks yaml
+        shell: perl {0}
+        env:
+          yaml_files: agil.yaml
+        run: |
+          use CPAN::Meta::YAML;
+          for my $f (split(";",$ENV{'yaml_files'})) {
+              open my $fh, "<:utf8", $f;
+              my $yaml_text = do { local $/; <$fh> };
+              my $yaml = CPAN::Meta::YAML->read_string($yaml_text)
+                  or die CPAN::Meta::YAML->errstr;
+              close $fh;
+              print "✓ YAML «$f»";
+          }

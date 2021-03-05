@@ -1,0 +1,32 @@
+name: "Plot asistencia"
+on:
+  push:
+    paths:
+      - 'data/asistencia.csv'
+
+jobs:
+  crea-grafico:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Instala R
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: '3.5.3' # The R version to download (if necessary) and use.
+      - name: Install dependencies
+        run: |
+          install.packages(c("ggplot2","ggthemes"))
+        shell: Rscript {0}
+      - name: Ejecuta el script
+        run: Rscript data/plot-asistencia.R
+      - name: Checks in results
+        run: |
+          if [[ $(git status -s) ]]; then
+              git config --global user.email "jjmerelo@gmail.com"
+              git config --global user.name "ÁgilDataBot"
+              .github/workflows/commit-msg-asistencia.pl | git commit -aF -
+              git push
+          else
+              echo "🟏 No ha habido cambios"
+          fi

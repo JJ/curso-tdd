@@ -1,4 +1,4 @@
-# Llevando a cabo los tests unitarios
+# Preparando los tests unitarios
 
 ## Planteamiento
 
@@ -80,13 +80,16 @@ test sólo se tiene que arreglar lo relacionado con esa funcionalidad,
 y no hay que buscar el error dentro de todas las que se están
 testeando. El nombre de estas funciones, además, debe ser lo más
 explícito posible, dejando totalmente claro lo que testea, si es
-posible usando la misma frase que se use en la historia de usuario. 
+posible usando la misma frase que se use en la historia de usuario.
 
-## Fases de test: *setup*, *tests*, *teardown*.
+## Fases de test: *setup*, *tests*, *teardown*
 
 En las fases del proceso de prueba:
 
-* Planificación: en esta fase se decide cuantos tests se van a ejecutar.
+* Planificación: en esta fase se decide cuantos tests se van a
+  ejecutar, y se informa al marco de tests de esa decisión. Puede ser
+  que no se decida de antemano, pero en ese caso habrá que informar
+  cuando se han terminado los tests.
 
 * Durante el *setup* se crearán los objetos y cargarán los ficheros
   necesarios hasta poner nuestro objeto en un estado en el que se
@@ -95,15 +98,15 @@ En las fases del proceso de prueba:
   denominan *fixtures*: son simplemente objetos que, si no funciona su
   creación, algo va mal, pero si funciona se usan como base para el
   resto de los tests.
-  
+
 * A continuación se llevan a cabo las pruebas en sí; esas pruebas
   pueden estar agrupadas en subtests, y en el caso de que falle un
   subtest fallará el test del que depende completo.
-  
+
 * En la fase de *teardown* se limpia todo lo creado temporalmente, se
   cierran conexiones, y se deja al sistema, en general, en el mismo
   estado en el que estaba al principio.
-  
+
 
 Diferentes lenguajes tienen diferentes técnicas, más o menos formales,
 para llevar a cabo las diferentes fases. Normalmente es parte de la
@@ -111,7 +114,7 @@ biblioteca de aserciones decidir si una parte del código se va a
 ejecutar o no. Por ejemplo, en los [tests en Perl](t/proyecto.t) que
 se pasan en este mismo repositorio, nos interesa ejecutar algunos sólo
 cuando se trata de un `pull request`. Usamos esto:
-			   
+
 ```
 # Carga bibliotecas...
 
@@ -141,12 +144,12 @@ Tras la planificación, que es implícita en muchos marcos de tests y
 bibliotecas, se ejecutará la fase de setup. Esta fase, en muchos
 casos, se tratará
 simplemente de las primeras órdenes de un script para organizarlo, y
-los últimos para cerrar las pruebas. 
+los últimos para cerrar las pruebas.
 
 Por ejemplo, en Raku estas serían las primeras líneas de
-un [test](../code/t/02-project.t): 
+un [test](../ejemplos/raku/t/02-project.t):
 
-```perl6
+```raku
 use Test;
 
 use Project::Issue;
@@ -181,14 +184,17 @@ explícitamente (con `m.Run`) y también que salir explícitamente del
 `main` usando `os.Exit`, que devolverá el código de salida adecuado.
 
 ### Usando fixtures en Python
-    
+
+> El ejemplo en Python está en el directorio [`python` dentro de los
+> ejemplos](`../ejemplos/python`).
+
 Python, a base de no querer extender la sintaxis, acaba añadiendo
 conceptos y construcciones sintácticas para temas inesperados, como
 por ejemplo los objetos que se crean en la fase de setup de los tests,
 que se denominan *fixtures*, y tienen su sintaxis específica. Para
 testear la clase `Issue` que hemos generado anteriormente, se usarían
 fixtures de esta forma:
-    
+
 ```Python
 import pytest
 from Project.Issue import Issue, IssueState
@@ -206,7 +212,7 @@ def test_has_name_when_created(issue):
 
 def test_has_id_when_created(issue):
     assert issue.issueId  == ISSUEID
-    
+
 def test_is_open_when_created(issue):
     assert  issue.state == IssueState.Open
 
@@ -236,20 +242,21 @@ le pasa es cierta.
 
 ### Escribiendo tests en Go
 
-[Go](https://golang.org/) es
-un lenguaje que pretende evitar lo peor de C++ para crear un lenguaje
-concurrente, de sintaxis simple y con más seguridad; además, Go provee
-también un entorno de programación con una serie de herramientas
-(*toolbelt*) de serie (su propio *task runner*). Go integra este marco de pruebas en el
-propio lenguaje, por lo que nos permite fijarnos exclusivamente en la
-biblioteca de pruebas con la que estamos trabajando. La diferencia
-principal con otros lenguajes es que la biblioteca de Test en vez de
-aserciones, tiene errores que tienes que especificar si alguno de los
-resultados no ha sido el esperado.
+[Go](https://golang.org/) es un lenguaje que pretende evitar lo peor
+de C++ para crear un lenguaje concurrente, de sintaxis simple y con
+más seguridad; además, Go provee también un entorno de programación
+con una serie de herramientas (*toolbelt*) de serie (su propio *task
+runner*). Go integra este marco de pruebas en el propio lenguaje, por
+lo que nos permite fijarnos exclusivamente en la biblioteca de pruebas
+con la que estamos trabajando. La diferencia principal con otros
+lenguajes es que la biblioteca de Test en vez de aserciones, tiene
+errores que tienes que especificar si alguno de los resultados no ha
+sido el esperado.
 
 Por ejemplo, vamos a fijarnos
 en
-[esta pequeña biblioteca que lee de un fichero en JSON los hitos de la asignatura Infraestructura Virtual](https://github.com/JJ/HitosIV) escrita
+[esta pequeña biblioteca que implementa información sobre los hitos de
+un proyecto en el contexto de una asignatura](https://github.com/JJ/HitosIV) escrita
 en ese lenguaje, Go. La biblioteca
 tiene
 [dos funciones, una que devuelve un hito a partir de su ID y otra que te dice cuantos hay](https://github.com/JJ/HitosIV/blob/master/HitosIV.go).
@@ -312,16 +319,16 @@ PASS
 ok  	_/home/jmerelo/Asignaturas/infraestructura-virtual/HitosIV	0.017s
 ```
 
-En vez de aserciones como funciones específicas, Go simplifica el
-API de pruebas eliminando las aserciones; por el contrario, hace que se devuelva un error (con `t.Error()`)
-cuando el test no pasa. Si todos funcionan, no hay ningún problema y
-se imprime `PASS` como se muestra arriba. Adicionalmente, `t.Log()`
-(siendo `t` una estructura de datos que se le tiene que pasar a todos
-los tests) se usa para mostrar algún mensaje sobre qué está ocurriendo
-en el test. En este caso, uno de los tests comprueba que efectivamente
-haya hitos en el fichero JSON que se ha pasado, y el segundo comprueba
-que el tipo que se devuelve cuando se solicita un hito es el
-correcto. 
+En vez de aserciones como funciones específicas, Go simplifica el API
+de pruebas eliminando las aserciones; por el contrario, hace que se
+devuelva un error (con `t.Error()`) cuando el test no pasa. Si todos
+funcionan, no hay ningún problema y se imprime `PASS` como se muestra
+arriba. Adicionalmente, `t.Log()` (siendo `t` una estructura de datos
+que se le tiene que pasar a todos los tests) se usa para mostrar algún
+mensaje sobre qué está ocurriendo en el test. En este caso, uno de los
+tests comprueba que efectivamente haya hitos en el fichero JSON que se
+ha pasado, y el segundo comprueba que el tipo que se devuelve cuando
+se solicita un hito es el correcto.
 
 >Los tests que se muestran aquí no cubren necesariamente todas las
 >funcionalidades de este módulo; en el repositorio sí están

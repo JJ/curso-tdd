@@ -1,10 +1,5 @@
 # Curso de desarrollo ágil - 4ª edición
 
-**Nota** El enlace de Jitsi se compartirá por el grupo de Telegram del
-curso. Es *imprescindible* que me enviéis a `jjmerelo` en Telegram (o
-de cualquier otro modo) vuestro nick en Telegram para que os añada a
-tal grupo.
-
 [![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd)
 💟
 [![CircleCI](https://circleci.com/gh/JJ/curso-tdd/tree/master.svg?style=svg)](https://circleci.com/gh/JJ/curso-tdd/tree/master)
@@ -12,6 +7,11 @@ tal grupo.
 [![DevQAGRX](https://img.shields.io/badge/DevQAGRX-blueviolet?style=for-the-badge&logo=Git)](https://github.com/JJ/curso-tdd)
 💟
 [![Comprueba texto](https://github.com/JJ/curso-tdd/actions/workflows/check-readme.yml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/check-readme.yml)
+💟
+[![Test
+Nim](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml)
+💟
+[![Test Raku](https://github.com/JJ/curso-tdd/actions/workflows/raku-test.yaml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/raku-test.yaml)
 
 En este curso trataremos de aprender las técnicas necesarias para
 trabajar en un entorno ágil de desarrollo, para aplicaciones nativas en la
@@ -37,7 +37,11 @@ recomendación en LinkedIn o donde se solicite).
 
 La tercera edición ha [quedado grabada en esta lista de
 reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdKVFqzk9VzujTuyiNOKIy2x). El
-planteamiento general del curso está en [esta presentación](/curso-tdd/preso/).
+planteamiento general del curso está en [esta
+presentación](/curso-tdd/preso/).
+
+La cuarta edición del curso está en [esta lista de
+reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdJJsCTshZw8Ae67lU48wkaA).
 
 Tendremos
 estas sesiones:
@@ -50,77 +54,106 @@ estas sesiones:
 
 2. Desarrollo ágil
   * Historias de usuario, *user journeys* y todo eso.
+  * Cómo organizar un proyecto: canvas, épicas.
+  * *Personas* (usuarios ficticios), desarrollo por capas y todo lo
+    que necesitamos para empezar.
   * [Material](temas/ágil.md).
   * [Presentación](preso/ágil.html).
 
 3. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
-  * [Material](preso/aplicaciones.md).
+  * [Presentación](preso/aplicaciones.md).
 
 4. Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
+  * [Presentación](preso/servicios.html).
 
-5. Requisitos funcionales,
-  * *personas* (usuarios ficticios), desarrollo por capas y todo lo que necesitamos para empezar.
-  * Uso de issues/hitos en el desarrollo basado en test.
-  * [Material](temas/diseño.md).
+5. Diseñando la aplicación
+   * Historias de usuario
+   * Uso de issues/hitos en el desarrollo basado en test.
+   * Diseño dirigido por el dominio
+   * [Material](temas/diseño.md).
+   * [Presentación](preso/diseño.html).
 
-6. Comienzo de la implementación "defensiva".
-    * Cómo organizar un proyecto: canvas, milestones, issues.
+6. Puesta al día
+   * Añadiendo *personas* al hito 1
+   * [Presentación](preso/checkpoint.html)
+
+7. Refinando el diseño y organizando el desarrollo
+   * Algunos principios de diseño
+   * [Material](temas/organizando.md).
+   * [Presentación](temas/organizando.html)
+
+8. Comienzo de la implementación "defensiva".
     * Documentación de las historias de usuario y traslado a issues.
-    * Comienzo del diseño, en general, de las clases (y excepciones).
+    * Comienzo del diseño, en general, de las clases.
+    * Diseño de excepciones.
     * [Material](temas/a-programar.md).
+    * [Presentación](preso/a-programar.html).
 
-7. Task runners y cómo usarlos.
+9. Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
   * [Material](temas/gestores-tareas.md).
 
-8. Preparando tu aplicación para testear: *separation of concerns*, inversión de dependencias, diseño.
+10. Preparando tu aplicación para testear: *separation of concerns*, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
 
-9.  *objetos de test*
+11. *Objetos de test*
   * Organización de los tests.
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
 
-10.  Ejecución de tests
+12. Ejecución de tests
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
 
-11. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
+13. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua: Travis, GitHub
     Actions...
   * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
 
-12. Tests de cobertura y por qué son importantes.
+14. Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
 
-13. Tests funcionales/de integración
+15. Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-14. Inversión de dependencias.
+16. Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
 
-15. Tests adicionales
+17. Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
   * [Material](temas/qa.md).
 
-16. Última sesión.
-  * Aclaración de dudas.
 
+## Hitos
+
+Las entregas se organizan en hitos, que corresponden (en general) a
+una sesión. Este es el esquema de lo que hay que hacer en cada hito
+con enlaces
+
+| Hito | Sesiones | Descripción y enlace |
+|------|------------|----------------------|
+|  0   | 1          | [Crear repo con componentes](https://jj.github.io/curso-tdd/temas/git#Actividad)|
+|  1   | 2,6        | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
+|  2   | 3          | [Épicas, problema a resolver](https://jj.github.io/curso-tdd/temas/aplicaciones#Actividad)|
+|  3   | 4          | [Servicios](https://jj.github.io/curso-tdd/temas/servicios#Actividad)|
+|  4   | 5          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#Actividad)|
+|  5   | 7          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#Actividad)|
+|  6   | 8          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#Actividad)|
 
 ## Ideas para resolver
 

@@ -1,0 +1,24 @@
+name: "Test Raku"
+on:
+  push:
+    paths:
+      - "ejemplos/raku/**"
+  pull_request:
+    paths:
+      - "ejemplos/raku/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: jjmerelo/raku-test:latest
+      options: --user root
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install modules
+        run: cd ejemplos/raku; zef install --deps-only .
+      - name: Test
+        run: cd ejemplos/raku; zef --debug test .
+
+
