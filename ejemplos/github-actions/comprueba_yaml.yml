@@ -5,7 +5,7 @@ on:
       - '**/*.y*ml'
 
 jobs:
-  test-yaml:
+  comprueba-agil-yaml:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,7 +13,7 @@ jobs:
       - name: Checks yaml
         shell: perl {0}
         env:
-          yaml_files: .travis.yml;.github/workflows/comprueba_yaml.yml
+          yaml_files: agil.yaml
         run: |
           use CPAN::Meta::YAML;
           for my $f (split(";",$ENV{'yaml_files'})) {
