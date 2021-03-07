@@ -2,51 +2,44 @@
 
 ## Planteamiento
 
-En un proceso de calidad del software, es tan importante el
-planteamiento de la clase y las herramientas que se usan para
-gestionar las tareas de un proyecto como el código que se escriba para
-asegurarnos de que efectivamente se cumplen las historias de
-usuario. Conviene desacoplar el diseño de la clase, sin embargo, del
-código que se implementa en el mismo, porque es el diseño el que debe
-seguir las historias de usuario, mientras que el código se asegura de
-que tengan el resultado deseado.
+Aunque el código se debe escribir *después* de los tests, las
+definiciones de tipos de datos, argumentos de métodos (especialmente
+constructores) y demás, son algo que se puede, y quizás se debe,
+escribir *antes* de los tests. En este capítulo veremos una serie de
+técnicas, especialmente basadas en el uso del sistema de tipos del
+lenguaje, para reducir la cantidad de tests y asegurarnos de la
+calidad del software (y su respeto de las especificaciones) antes de
+empezar a escribir los mismos.
 
-Por supuesto, todo en un proyecto se va a ejecutar desde un task runner, así que será lo primero que se vea en esta sesión.
 
 ## Al final de esta sesión
 
-El estudiante habrá elegido un task runner, y habrá programado el
-interfaz de una clase correspondiendo a la historia de usuario o
-historias que desee, terminando el primer hito.
 
 ## Criterio de aceptación
 
-Se habrá implementado el interfaz de una clase y un fichero de un task
-runner que contenga, al menos, la instalación de dependencias si fuera
-necesario.
+
 
 ## Historias de usuario, las maravillas del código inexistente y tests
 
 > En este ejemplo y en el siguiente hay realmente código en las
 > clases, porque en su estado, ya están testeadas y demás. El código,
 > sin embargo, no es lo importante y debéis recordar que se aconseja
-> que siempre se
-> escriba el test antes que el código. Así que no miréis al código y
-> listo.
+> que siempre se escriba el test antes que el código. Así que no
+> miréis al código y listo.
 
 
 Una de las lecciones más importantes en calidad del software (e
 informática en general) es que el código que no falla es
 el que no se ha escrito. En general, esto se traduce en usar todo tipo
 de restricciones a nivel de compilación (tales como la estructura de
-tipos, o el protocolo de meta-objetos) para que las cosas ocurran tal
+tipos, o el protocolo de meta-objetos) para forzar que las cosas ocurran tal
 como deben ocurrir sin tener que preocuparte con escribir código que,
 en tiempo de ejecución, se encargue de que se respete esa
 restricción. Código declarativo
 que funciona correctamente según el compilador, y es así por su
 estructura y no por el código adicional que se ha escrito, es más
 correcto que cualquier otro. Esto también es un ejemplo de
-programación defensiva, como ya hemos visto.
+programación defensiva, como ya [hemos visto](a-programar.md).
 
 ### Ejemplo en Raku
 
