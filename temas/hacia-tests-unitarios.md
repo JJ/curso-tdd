@@ -11,13 +11,23 @@ lenguaje, para reducir la cantidad de tests y asegurarnos de la
 calidad del software (y su respeto de las especificaciones) antes de
 empezar a escribir los mismos.
 
+Por otro lado, muchos lenguajes trabajan con funciones
+asíncronas. Merece la pena conocer al menos el funcionamiento básico
+de las mismas para poder trabajar adecuadamente con los tests.
 
 ## Al final de esta sesión
 
+Se conocerán una serie de técnicas para reducir la cantidad de código
+que necesita ser testeado.
 
 ## Criterio de aceptación
 
-
+El estudiante deberá haber empleado correctamente el sistema de tipos
+de su lenguaje para tratar de evitar los posibles errores en la
+configuración de los objetos de las diferentes clases que se vayan a
+usar. Las clases definidas habrán estado guiadas por las historias de
+usuario, habiendo escrito sólo lo que se ha solicitado y precisamente
+lo que se ha solicitado.
 
 ## Historias de usuario, las maravillas del código inexistente y tests
 
@@ -26,7 +36,6 @@ empezar a escribir los mismos.
 > sin embargo, no es lo importante y debéis recordar que se aconseja
 > que siempre se escriba el test antes que el código. Así que no
 > miréis al código y listo.
-
 
 Una de las lecciones más importantes en calidad del software (e
 informática en general) es que el código que no falla es
@@ -173,7 +182,6 @@ algunas otras medidas se puede asegurar que se comporte correctamente,
 pero en todo caso siempre será mejor elegir algún lenguaje en el que
 el compilador o intérprete haga ese trabajo por ti. O código adicional
 que se asegure de que las restricciones se cumplen en todo caso.
-
 
 ## Funciones asíncronas
 
