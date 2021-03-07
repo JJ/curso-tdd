@@ -205,6 +205,32 @@ repetir en diferentes partes de nuestra aplicación.
 > el código debe crear para satisfacer una serie de necesidades, y por
 > supuesto para ser leído por colegas o por uno mismo.
 
+### Ejemplos
+
+En el [ejemplo en Raku](ejemplos/raku) tampoco hay tanto código como
+para que se encuentren repeticiones *en el mismo módulo*. Sin embargo,
+nos encontramos con esto:
+
+```raku
+method new-issue( Project::Issue $issue where $issue.project-name eq
+$!project-name) {…}
+multi method new-milestone( $milestone where $milestone.project-name eq
+        $!project-name) {…}
+```
+
+Es código repetido al fin y al cabo. ¿A qué se debe? A que, en
+principio, se permite que se creen *milestones* *fuera* de un
+proyecto, e *issues* *fuera* de un milestone. Es posible que, aunque
+esto no esté cubierto por una HU, en un refinamiento posterior debamos
+crear una HU que venga a decir que el proyecto es la única fuente de
+verdad, y los issues y milestones sólo tienen sentido dentro del
+mismo. Llevaremos a cabo un ejemplo (en otro lenguaje) que haga esto.
+
+> Por otro lado, también te muestra que se puede escribir código
+> perfectamente válido y que siga las HUs, pero en un entorno de
+> programación ágil, se debe estar abierto a modificaciones continuas
+> con el objetivo de resolver el problema de la mejor forma posible.
+
 ## Funciones asíncronas
 
 La programación asíncrona es todo un mundo, pero un mundo que tenemos
