@@ -183,6 +183,20 @@ pero en todo caso siempre será mejor elegir algún lenguaje en el que
 el compilador o intérprete haga ese trabajo por ti. O código adicional
 que se asegure de que las restricciones se cumplen en todo caso.
 
+## DRY, números mágicos y otras reglas de programación básicas
+
+"No te repitas a ti mismo" es posiblemente una de las afirmaciones más
+famosas del manifiesto por un [código
+limpio](https://medium.com/@sheyiogundijo/clean-code-in-a-nutshell-ac7aa5f80a99). Código
+repetido indica malas prácticas como mal diseño de tipos, o
+simplemente mal diseño de la lógica de negocio. Lo cierto es que el
+código repetido no es una característica que uno quiera introducir,
+sino que simplemente aparece en las revisiones de código. Una
+refactorización debe de mirar todo el código en más profundidad, y
+pasar por la creación de funciones o la creación de tipos completos
+que permitan, por ejemplo, hacer comprobaciones que si no habría que
+repetir en diferentes partes de nuestra aplicación.
+
 ## Funciones asíncronas
 
 La programación asíncrona es todo un mundo, pero un mundo que tenemos
