@@ -207,7 +207,7 @@ repetir en diferentes partes de nuestra aplicación.
 
 Los "números mágicos" se refieren a literales usados como argumentos a
 funciones, o constantes en general sin ningún tipo de nombre. Según
-las directrices del código limpio, se deben asignar indentificadores
+las directrices del código limpio, se deben asignar identificadores
 con sentido a todos los datos que se usen en el programa. Un literal
 impide darle sentido al mismo. Si hay un valor "1" en un programa y
 hay que cambiarlo, ¿se cambian todos los unos? ¿Sólo los del módulo o
@@ -448,7 +448,7 @@ repetir en diferentes partes de nuestra aplicación.
 
 Los "números mágicos" se refieren a literales usados como argumentos a
 funciones, o constantes en general sin ningún tipo de nombre. Según
-las directrices del código limpio, se deben asignar indentificadores
+las directrices del código limpio, se deben asignar identificadores
 con sentido a todos los datos que se usen en el programa. Un literal
 impide darle sentido al mismo. Si hay un valor "1" en un programa y
 hay que cambiarlo, ¿se cambian todos los unos? ¿Sólo los del módulo o
