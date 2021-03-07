@@ -197,6 +197,14 @@ pasar por la creación de funciones o la creación de tipos completos
 que permitan, por ejemplo, hacer comprobaciones que si no habría que
 repetir en diferentes partes de nuestra aplicación.
 
+> En las revisiones de código de estudiantes, este es uno de los
+> errores que se encuentra con más frecuencia. Se debe también a la
+> práctica de código "write-only", código que se escribe para una
+> práctica o, mucho peor, un examen y que realmente no sirve para nada
+> más que para ser corregido. Incluso en un contexto de aprendizaje,
+> el código debe crear para satisfacer una serie de necesidades, y por
+> supuesto para ser leído por colegas o por uno mismo.
+
 ## Funciones asíncronas
 
 La programación asíncrona es todo un mundo, pero un mundo que tenemos
