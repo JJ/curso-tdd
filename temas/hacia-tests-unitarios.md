@@ -266,6 +266,30 @@ mismo. Llevaremos a cabo un ejemplo (en otro lenguaje) que haga esto.
 > programación ágil, se debe estar abierto a modificaciones continuas
 > con el objetivo de resolver el problema de la mejor forma posible.
 
+## Pelusilla en el código
+
+En general, todo lo que se ha mencionado arriba, más una serie de
+reglas expecíficas de cada uno de los lenguajes, se suelen llamar
+"pelusilla" o *lint*, aunque también recibe el nombre de *olor* de
+código (*code smell*). Se trata simplemente de construcciones o formas
+de hacer las cosas que son o bien no idiomáticas, o antipatrones, o
+indican errores más profundos en el diseño o planteamiento.
+
+Para evitar esto se usan lo que se llaman genéricamente *linters*,
+herramientas de análisis estático de código que te señalan diferentes
+errores, y que son generalmente configurables (para evitar señar
+errores que no se consideren en el marco de la empresa) e incluso, en
+algunos casos, extensibles. Herramientas como `pylint` (para Python),
+`RuboCop` para Ruby, u otras muchas para cada lenguaje (incluso Nim
+tiene varias) permiten comprobar el código cada vez que se incorpora
+para examinar los errores que pueda haber.
+
+Generalmente, este tipo de herramientas deben estar ahí desde el
+principio; si no lo están, hacerlo sobre una base de código por
+pequeña que sea hará que se tenga que emplear mucho tiempo en
+refactorizarla, y en muchos casos no sólo se tratará de cambios de
+formato, sino rediseños más profundos.
+
 ## Funciones asíncronas
 
 La programación asíncrona es todo un mundo, pero un mundo que tenemos
