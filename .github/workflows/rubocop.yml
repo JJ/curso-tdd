@@ -1,4 +1,3 @@
-name: reviewdog
 name: "Rubocop Ruby"
 
 on:
