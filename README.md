@@ -103,6 +103,7 @@ estas sesiones:
 10. Preparando tu aplicación para testear: *separation of concerns*, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
+  * [Presentación](preso/hacia-tests-unitarios.html).
 
 11. *Objetos de test*
   * Organización de los tests.
@@ -156,8 +157,9 @@ con enlaces
 |  5   | 7          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#Actividad)|
 |  6   | 8          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#Actividad)|
 |  7   | 9          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#Actividad)|
+|  8   | 10         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#Actividad)|
 
-## Ideas para resolver
+## Posibles ideas para proyectos, problemas para resolver
 
 La informática consiste en resolver problemas del usuario mediante un
 ordenador. Estos son algunos de los problemas con los que se podría tratar.
