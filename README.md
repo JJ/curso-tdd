@@ -89,11 +89,11 @@ estas sesiones:
    * [Presentación](temas/organizando.html)
 
 8. Comienzo de la implementación "defensiva".
-    * Documentación de las historias de usuario y traslado a issues.
-    * Comienzo del diseño, en general, de las clases.
-    * Diseño de excepciones.
-    * [Material](temas/a-programar.md).
-    * [Presentación](preso/a-programar.html).
+   * Documentación de las historias de usuario y traslado a issues.
+   * Comienzo del diseño, en general, de las clases.
+   * Diseño de excepciones.
+   * [Material](temas/a-programar.md).
+   * [Presentación](preso/a-programar.html).
 
 9. Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
@@ -112,11 +112,11 @@ estas sesiones:
   * [Material](temas/tests-unitarios-organización.md).
 
 12. Ejecución de tests
+  * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
 
 13. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
-  * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Diferentes sistemas de integración continua: Travis, GitHub
     Actions...
   * Acelerando con Dockerfiles.

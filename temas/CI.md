@@ -4,22 +4,27 @@
 ## Planteamiento
 
 Los sistemas de integración continua forman parte del flujo de trabajo
-de un sistema de control de calidad del software, ejecutando automáticamente las pruebas que
-se le configuren cada vez que se lleva a cabo un `push` o un `pull request`. 
-A su vez, estos sistemas dan retroalimentación al alojamiento del
-repositorio de forma que, en caso positivo, se realice el siguiente
-paso en el pipeline, por ejemplo desplegar a producción; por eso se llaman en general sistemas CI/CD, incluyendo *continuous delivery*, o despliegue continuo. 
+de un sistema de control de calidad del software, ejecutando
+automáticamente las pruebas que se le configuren cada vez que se lleva
+a cabo un `push` o un `pull request`.  A su vez, estos sistemas dan
+retroalimentación al alojamiento del repositorio de forma que, en caso
+positivo, se realice el siguiente paso en el pipeline, por ejemplo
+desplegar a producción; por eso se llaman en general sistemas CI/CD,
+incluyendo *continuous delivery*, o despliegue continuo.
 
 ## Al final de esta sesión
 
 El estudiante entenderá los criterios para elegir un sistema de
-integración continua, y sabrá configurar uno (o varios) para poder ejecutar los
-tests automáticamente en el mismo. También habrá entendido los mecanismos que hacen que se ejecuten estos tests automáticamente.
+integración continua, y sabrá configurar uno (o varios) para poder
+ejecutar los tests automáticamente en el mismo. También habrá
+entendido los mecanismos que hacen que se ejecuten estos tests
+automáticamente.
 
 ## Criterio de aceptación
 
-El repositorio tiene que estar corriendo los tests unitarios desarrollados anteriormente en (al menos) Travis, y esos
-tests deben pasar.
+El repositorio tiene que estar corriendo los tests unitarios
+desarrollados anteriormente en (al menos) Travis, y esos tests deben
+pasar.
 
 ## Concepto de integración continua
 
@@ -43,78 +48,6 @@ tests, que se ejecutan al final de un ciclo de desarrollo.
 Esto implica también la ejecución automática de tests. Hay diferentes
 maneras de hacerlo, como veremos a continuación, pero todos se basan
 en un mecanismo similar.
-
-## *Hooks* o ganchos de git.
-
-Es posible que se considere a `git` una simple herramienta de control
-de fuentes, cuando es mucho más: una verdadera herramienta de control
-de flujos de trabajo. Los flujos de trabajo en git se controlan a base
-de ganchos o *hooks*. Diferentes cambios de estado generan eventos
-estándar, que reciben una cierta entrada y tienen como salida
-un valor verdadero o falso, que indica si se puede pasar a la
-siguiente etapa. Por ejemplo, crear un commit activará un hook que lo
-procesará, añadiendo o no al mensaje de commit, y rechazando el commit
-si el valor que devuelve el programa es distinto de cero.
-
-Porque en general los *hooks* son eso, programas, scripts escritos en
-cualquier lenguaje, con un nombre estándar relacionado con el del
-evento (tal como `pre-commit`) y situados en el subdirectorio
-`.git/hooks` del repositorio local.
-
-Si queremos ejecutar los tests cada vez que se haga un commit,
-tendremos que lanzarlos desde estos *hooks*. Pero en principio, la
-idea principal es que un *hook* puede realizar cualquier tipo de
-comprobación; lo que está también relacionado con la calidad. Por
-ejemplo, este programa en Ruby que comprueba que el formato del
-mensaje de commit sea el convencional de 50 caracteres en la primera
-línea, luego una vacía, y luego el resto de las líneas de un máximo de
-80 caracteres:
-
-```
-#!/usr/bin/env ruby
-# coding: utf-8
-
-lines = File.open(ARGV[0],'r').readlines
-
-first_line = lines.shift
-
-if first_line.size > 50
-  puts "La primera línea tiene más de 50 caracteres"
-  exit 255
-end
-
-if lines.size > 0 
-  second_line = lines.shift.chop
-
-  if second_line != ''
-    puts "La segunda línea debe estar vacía"
-    exit 255
-  end
-
-end
-
-if lines.size > 0
-
-  bad_lines = {}
-
-  lines.each_with_index do |line,i|
-    bad_lines[i+2] = line if line.size > 80
-  end
-
-  if bad_lines.keys.size > 0
-    puts "Todas estas líneas tienen más de 80 caracteres", bad_lines.keys.join(", ")
-    exit 255
-  end
-end
-```
-
-Lo que hace el programa es ir extrayendo líneas de su argumento;
-tratándose del hook, recibirá el fichero donde está el mensaje del
-commit como primer argumento (generalmente se guardará en
-`COMMIT_MSG`). Si alguna de las comprobaciones no funciona, saldrá del
-programa con el código de estado 255, que indica que la ejecución ha
-sido fallida. En ese caso, no se llevará a cabo el evento, en este
-caso creación (o modificación) de un mensaje de commit.
 
 ## Pasando los tests automáticamente en la nube.
 
