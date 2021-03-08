@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desarrollo ágil: Olores de código</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/extra.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Código y sus olores</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios"><code>jj.github.io/curso-tdd/temas/hacia-tests-unitarios</code></a></h3>
+                    </section>
+
+                    <section><h1>✓ TODO</h1>
+                        <h2 class="fragment">□ ¿Hemos comenzado a
+                            organizar el desarrollo en milestones? </h2>
+                        <h2 class="fragment">□ ¿Se han diseñado las
+                            excepciones?</h2>
+                        <h2 class="fragment">□ ¿Se han elegido un
+                            <em>task runner</em> y se ha empezado a configurar?</h2>
+                    </section>
+
+                    <section><h1>✓ TODO <em>retro</em></h1>
+                        <h2 class="fragment">¿Se han cerrado los
+                        issues desde un commit (o PR)?</h2>
+		    </section>
+
+                    <section><h1>✓ TODO hito 8</h1>
+                       <h2 class="fragment">Elegir un linter y empezar
+                       a usarlo</h2>
+                       <h2 class="fragment"><code>agil.yaml</code> ⇒</h2>
+                       <pre class="fragment"><code>linter: RuboCop
+                       </code></pre>
+                    </section>
+
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+                 slideNumber: true,
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>
