@@ -1,23 +1,19 @@
 name: reviewdog
+name: "Rubocop Ruby"
+
 on:
   push:
     paths:
       - "**/*.rb"
 
 jobs:
-  rubocop:
-    name: runner / rubocop
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v1
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0.0
-      - name: rubocop
-        uses: reviewdog/action-rubocop@v1
-        with:
-          rubocop_version: gemfile
-          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review # Default is github-pr-check
+
+    - uses: actions/checkout@v2
+
+    - name: Rubocop checks
+        uses: luizfonseca/github-actions-rubocop@1.5.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

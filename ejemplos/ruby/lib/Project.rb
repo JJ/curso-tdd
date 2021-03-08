@@ -1,11 +1,12 @@
 enum issueStatus: [:open, :closed]
 
 module Project
-  attr_reader :issues, :name;
+  attr_reader :issues, :name: :milestones;
 
   def initialize( name )
     @name = name
     @issues = []
+    @milestones = []
   end
 
 end
