@@ -269,7 +269,7 @@ mismo. Llevaremos a cabo un ejemplo (en otro lenguaje) que haga esto.
 ## Pelusilla en el código
 
 En general, todo lo que se ha mencionado arriba, más una serie de
-reglas expecíficas de cada uno de los lenguajes, se suelen llamar
+reglas específicas de cada uno de los lenguajes, se suelen llamar
 "pelusilla" o *lint*, aunque también recibe el nombre de *olor* de
 código (*code smell*). Se trata simplemente de construcciones o formas
 de hacer las cosas que son o bien no idiomáticas, o antipatrones, o
@@ -277,8 +277,8 @@ indican errores más profundos en el diseño o planteamiento.
 
 Para evitar esto se usan lo que se llaman genéricamente *linters*,
 herramientas de análisis estático de código que te señalan diferentes
-errores, y que son generalmente configurables (para evitar señar
-errores que no se consideren en el marco de la empresa) e incluso, en
+errores, y que son generalmente configurables (para evitar señalar
+errores que no se consideren tales en el marco de la empresa) e incluso, en
 algunos casos, extensibles. Herramientas como `pylint` (para Python),
 `RuboCop` para Ruby, u otras muchas para cada lenguaje (incluso Nim
 tiene varias) permiten comprobar el código cada vez que se incorpora
@@ -290,7 +290,7 @@ pequeña que sea hará que se tenga que emplear mucho tiempo en
 refactorizarla, y en muchos casos no sólo se tratará de cambios de
 formato, sino rediseños más profundos.
 
-Por ejemplo, aplicando `pylint` a nuestos ejemplos de Python, nos
+Por ejemplo, aplicando `pylint` a nuestros ejemplos de Python, nos
 resulta en esto:
 
 ```text
@@ -409,5 +409,3 @@ proyecto, tendrá que añadirse como tarea para el sistema de gestor de
 tareas, usando, por ejemplo, el target "check" (por ejemplo, que haya
 que ejecutar `make check` para ejecutar el linter con las opciones
 correspondientes).
-
-
