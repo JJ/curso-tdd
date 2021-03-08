@@ -42942,8 +42942,13 @@ EOC
     ok( $config->{'lenguaje'}, "Se ha declarado el lenguaje de programación" );
   }
 
+  if ( $this_version >= 8 ) {
+    diag( check( "Tests para hito 8") );
+    file_present( $config->{'linter'}, \@repo_files, "con linter" );
+  }
+
   my $runner = $config->{'runner'};
-  if ( $this_version >= 8) {
+  if ( $this_version >= 9) {
     diag( check( "Tests para hito 8") );
     ok( $runner, check( "La clave runner $runner en el fichero de configuración en este tag" ) );
     like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
