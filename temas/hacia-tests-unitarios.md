@@ -290,6 +290,66 @@ pequeña que sea hará que se tenga que emplear mucho tiempo en
 refactorizarla, y en muchos casos no sólo se tratará de cambios de
 formato, sino rediseños más profundos.
 
+Por ejemplo, aplicando `pylint` a nuestos ejemplos de Python, nos
+resulta en esto:
+
+```text
+************* Module Project.core
+Project/core.py:10:0: W0301: Unnecessary semicolon (unnecessary-semicolon)
+Project/core.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+Project/core.py:1:0: C0115: Missing class docstring (missing-class-docstring)
+Project/core.py:6:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/core.py:6:4: E0202: An attribute defined in Project.core line 4 hides this method (method-hidden)
+Project/core.py:9:4: C0103: Method name "newMilestone" doesn't conform to snake_case naming style (invalid-name)
+Project/core.py:9:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/core.py:12:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/core.py:15:4: C0103: Method name "percentageCompleted" doesn't conform to snake_case naming style (invalid-name)
+Project/core.py:15:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/core.py:18:4: C0103: Method name "completionSummary" doesn't conform to snake_case naming style (invalid-name)
+Project/core.py:18:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/core.py:21:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module Project
+Project/__init__.py:1:0: C0103: Module name "Project" doesn't conform to snake_case naming style (invalid-name)
+************* Module Project.Issue
+Project/Issue.py:1:0: C0103: Module name "Issue" doesn't conform to snake_case naming style (invalid-name)
+Project/Issue.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+Project/Issue.py:9:8: C0103: Attribute name "_projectName" doesn't conform to snake_case naming style (invalid-name)
+Project/Issue.py:10:8: C0103: Attribute name "_issueId" doesn't conform to snake_case naming style (invalid-name)
+Project/Issue.py:5:0: C0115: Missing class docstring (missing-class-docstring)
+Project/Issue.py:12:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/Issue.py:15:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/Issue.py:19:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/Issue.py:23:4: C0103: Attribute name "projectName" doesn't conform to snake_case naming style (invalid-name)
+Project/Issue.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/Issue.py:27:4: C0103: Attribute name "issueId" doesn't conform to snake_case naming style (invalid-name)
+Project/Issue.py:27:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module Project.Milestone
+Project/Milestone.py:2:0: C0303: Trailing whitespace (trailing-whitespace)
+Project/Milestone.py:18:0: C0304: Final newline missing (missing-final-newline)
+Project/Milestone.py:1:0: C0103: Module name "Milestone" doesn't conform to snake_case naming style (invalid-name)
+Project/Milestone.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+Project/Milestone.py:4:8: C0103: Attribute name "_projectName" doesn't conform to snake_case naming style (invalid-name)
+Project/Milestone.py:5:8: C0103: Attribute name "_milestoneId" doesn't conform to snake_case naming style (invalid-name)
+Project/Milestone.py:1:0: C0115: Missing class docstring (missing-class-docstring)
+Project/Milestone.py:9:4: C0103: Attribute name "projectName" doesn't conform to snake_case naming style (invalid-name)
+Project/Milestone.py:9:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/Milestone.py:13:4: C0103: Attribute name "milestoneId" doesn't conform to snake_case naming style (invalid-name)
+Project/Milestone.py:13:4: C0116: Missing function or method docstring (missing-function-docstring)
+Project/Milestone.py:16:0: C0115: Missing class docstring (missing-class-docstring)
+Project/Milestone.py:17:0: W0613: Unused argument 'args' (unused-argument)
+Project/Milestone.py:17:0: W0613: Unused argument 'kwargs' (unused-argument)
+
+-----------------------------------
+Your code has been rated at 0.00/10
+```
+
+Un 0, bueno, es un necesita mejorar. Pero como se ve hay todo tipo de
+warnings, desde que no se usa *snake_case* (bueno, vale) hasta
+argumentos sin usar. Habrá que emplear un rato en mejorarlo. Por lo
+anterior, también, se aconseja que cuando se añada cualquier tipo de
+sistema de integración continua se incorpore de forma inmediata un linter.
+
+
 ## Funciones asíncronas
 
 La programación asíncrona es todo un mundo, pero un mundo que tenemos
