@@ -1,3 +1,5 @@
+enum issueStatus: [:open, :closed]
+
 module Project
   attr_reader :issues, :name;
 

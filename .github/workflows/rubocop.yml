@@ -1,5 +1,7 @@
 name: reviewdog
-on: [pull_request]
+on:
+  push:
+    path: **/*.rb
 jobs:
   rubocop:
     name: runner / rubocop
