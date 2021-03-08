@@ -376,7 +376,7 @@ TypeScript, Deno es un runtime para node/typescript)
 
 ```typescript
 export const fetchMilestone = async (user: string, repo: string, id: number ): Promise<Response> => {
-    let data = await fetch( "https://api.github.com/repos/{user}/{repo}/milestones/{id}" ) 
+    let data = await fetch( "https://api.github.com/repos/{user}/{repo}/milestones/{id}" )
     return data
 }
 ```
@@ -395,96 +395,19 @@ tratamiento especial a la hora de testearlo.
 
 ## Actividad
 
-> Este hito corresponderá a la versión 6 `v6.x.x` del proyecto.
+> Este hito corresponderá a la versión 8 `v8.x.x` del proyecto.
 
 Esencialmente, se trata de continuar con el desarrollo de las clases
 anteriores, usando todas las técnicas posibles para asegurarse de que
 el diseño de las clases captura, en tiempo de compilación, todos los
 posibles errores (o simplemente no permite que se produzcan).
 
-Como la clave `ficheros` de `qa.json` admite un array, se pueden
-simplemente ir añadiendo a esa los diferentes ficheros que se hayan
-ido diseñando.
+Se tendrá que añadir una clave más, `linter`, a `agil.yaml`, con el
+nombre del *linter* que se ha usado para comprobar el código. La
+ejecución de este linter, como cualquier otra tarea asociada al
+proyecto, tendrá que añadirse como tarea para el sistema de gestor de
+tareas, usando, por ejemplo, el target "check" (por ejemplo, que haya
+que ejecutar `make check` para ejecutar el linter con las opciones
+correspondientes).
 
 
-### Ejemplos
-
-En el [ejemplo en Raku](ejemplos/raku) tampoco hay tanto código como
-para que se encuentren repeticiones *en el mismo módulo*. Sin embargo,
-nos encontramos con esto:
-
-```raku
-method new-issue( Project::Issue $issue where $issue.project-name eq
-$!project-name) {…}
-multi method new-milestone( $milestone where $milestone.project-name eq
-        $!project-name) {…}
-```
-
-Es código repetido al fin y al cabo. ¿A qué se debe? A que, en
-principio, se permite que se creen *milestones* *fuera* de un
-proyecto, e *issues* *fuera* de un milestone. Es posible que, aunque
-esto no esté cubierto por una HU, en un refinamiento posterior debamos
-crear una HU que venga a decir que el proyecto es la única fuente de
-verdad, y los issues y milestones sólo tienen sentido dentro del
-mismo. Llevaremos a cabo un ejemplo (en otro lenguaje) que haga esto.
-
-> Por otro lado, también te muestra que se puede escribir código
-> perfectamente válido y que siga las HUs, pero en un entorno de
-> programación ágil, se debe estar abierto a modificaciones continuas
-> con el objetivo de resolver el problema de la mejor forma posible.
-
-## Funciones asíncronas
-
-La programación asíncrona es todo un mundo, pero un mundo que tenemos
-que tener en cuenta a la hora de programar, sobre todo si lo hacemos
-con las últimas versiones de Python (desde 3.4, creo), TypeScript u
-otros lenguajes como Kotlin o Swift. Mientras que las funciones
-"síncronas" o regulares te devuelven un resultado, una función
-síncrona te devuelve una *promesa*. Hay que *esperar* (con `await` o
-similar) a que esa promesa se cumpla para obtener el valor.
-
-Las funciones asíncronas permiten mucha flexibilidad, porque implican
-a nivel bajo un bucle de eventos que va a introducir un evento en el
-mismo cuando la función se cumpla; pero también, incluir `await` son
-puntos de control en los que el bucle de eventos se detiene y espera a
-que la promesa que se está esperando se resuelva. Sin embargo, el
-código de las promesas (generalmente entrada salida, pero también
-puede ser cualquier cosa) se ejecuta de forma simultánea o secuencial,
-dependiendo de si el código es multihebra o con un solo bucle de
-eventos; esto es transparente, de todas formas, y más eficiente que
-lanzar cada una de las peticiones y esperar el resultado.
-
-Por ejemplo, tenemos esta mini-función en [Deno](https://deno.land) (en realidad,
-TypeScript, Deno es un runtime para node/typescript)
-
-```typescript
-export const fetchMilestone = async (user: string, repo: string, id: number ): Promise<Response> => {
-    let data = await fetch( "https://api.github.com/repos/{user}/{repo}/milestones/{id}" ) 
-    return data
-}
-```
-
-La separación de responsabilidades (que es parte del *do one thing* de
-SHOC), implicará que el código asíncrono
-tiene que ejecutarse por su cuenta, y sin mezclarse, en lo posible,
-con el síncrono; pero en todo caso es una facilidad de programación
-que hay que tener en cuenta a la hora de ponerse a diseñar una
-aplicación. Evidentemente, este código asíncrono recibirá un
-tratamiento especial a la hora de testearlo.
-
-> Deno es un runtime seguro que, además, no te permitirá acceder a la
-> red a menos que se lo permitas explícitamente. Ya veremos más sobre
-> esto más adelante.
-
-## Actividad
-
-> Este hito corresponderá a la versión 6 `v6.x.x` del proyecto.
-
-Esencialmente, se trata de continuar con el desarrollo de las clases
-anteriores, usando todas las técnicas posibles para asegurarse de que
-el diseño de las clases captura, en tiempo de compilación, todos los
-posibles errores (o simplemente no permite que se produzcan).
-
-Como la clave `ficheros` de `qa.json` admite un array, se pueden
-simplemente ir añadiendo a esa los diferentes ficheros que se hayan
-ido diseñando.
