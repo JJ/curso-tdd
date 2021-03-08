@@ -203,7 +203,10 @@ repetir en diferentes partes de nuestra aplicación.
 > práctica o, mucho peor, un examen y que realmente no sirve para nada
 > más que para ser corregido. Incluso en un contexto de aprendizaje,
 > el código debe crear para satisfacer una serie de necesidades, y por
-> supuesto para ser leído por colegas o por uno mismo.
+> supuesto para ser leído por colegas o por uno mismo. En muchas
+> ocasiones esto también es consecuencia del *cargo cult*, copiar y
+> pegar código que se sabe que funciona, pero sin entender realmente
+> por qué lo hace.
 
 Los "números mágicos" se refieren a literales usados como argumentos a
 funciones, o constantes en general sin ningún tipo de nombre. Según
