@@ -1,7 +1,9 @@
 name: reviewdog
 on:
   push:
-    path: **/*.rb
+    paths:
+      - "**/*.rb"
+
 jobs:
   rubocop:
     name: runner / rubocop
