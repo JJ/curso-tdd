@@ -31,7 +31,10 @@
                             <em>task runner</em> y se ha empezado a configurar?</h2>
                     </section>
 
-                    <section>
+                    <section><h1>✓ TODO <em>retro</em></h1>
+                        <h2 class="fragment">¿Se han cerrado los
+                            issues desde un commit (o PR)?</h2>
+		    </section>
 
                     <section><h1>El mejor código es el que no se
                         escribe</h1>
@@ -67,13 +70,95 @@ class Issue:
                     <section><!-- Buenas prácticas -->
                         <section><h1>DRY: No te repitas</h1>
                             <h2 class="fragment">Limpia tu código</h2>
+                        </section>
 
+                        <section><h1>Reflexionar sobre las
+                            repeticiones</h1>
+                            <pre><code>method new-issue( Project::Issue $issue where $issue.project-name eq
+$!project-name) {…}
+multi method new-milestone( $milestone where $milestone.project-name eq
+        $!project-name) {…}
+                            </code></pre>
+                            <aside class="notes">En este caso, se
+                            puede estar indicando que tanto los issues
+                                como los milestones no deberían estar
+                            <em>fuera</em> del proyecto sino dentro,
+                            porque al final no tiene mucho sentido
+                            definir un milestone fuera del contexto de
+                            un proyecto (ni un issue)</aside>
+                        </section>
+
+                        <section><h1>Evitar los números mágicos</h1>
+                            <h2 class="fragment">Código limpio y sin
+                                encantamientos</h2>
+                        </section>
+
+                        <section data-transition="fade"><h1>Identificar los valores</h1>
+                            <pre><code data-line-numbers="7,9">import ../project
+
+
+var
+  thisProject: Project
+
+thisProject = Project( id: "Foo" )
+
+assert thisProject.id == "Foo"</code></pre>
+
+                            <aside class="notes">Nim usa "const" para
+                            sus constantes, y en este caso la usamos
+                            para identificar tanto el valor como el
+                                resultado de un test</aside>
+                        </section>
+
+                        <section data-transition="fade"><h1>Valores identificados</h1>
+                            <pre><code data-line-numbers="3,7,9">import ../project
+
+const projectId= "Foo"
+var
+  thisProject: Project
+
+thisProject = Project( id: projectId )
+
+assert thisProject.id == projectId</code></pre>
+
+                            <aside class="notes">Nim usa "const" para
+                                sus constantes, y en este caso la usamos
+                                para identificar tanto el valor como el
+                                resultado de un test</aside>
+                        </section>
+
+                        <section data-background="https://live.staticflickr.com/382/18606570955_cb78e7c8c0_3k_d.jpg"><h1>Algo huele mal en tu código</h1>
+                            <h2 class="fragment"><em>Code smells</em>,
+                                código idiomático, antipatrones y
+                                otros pecados</h2>
+                        </section>
+
+                        <section><h1>Usa <em>linters</em></h1>
+                            <h2 class="fragment">Examinan
+                            estáticamente el código, dan consejos para
+                                respetar convenciones</h2>
+                        </section>
+                        <section><h1>Mi código apesta</h1>
+                            <pre><code data-line-numbers="1|2-4|6">Project/core.py:10:0: W0301: Unnecessary semicolon (unnecessary-semicolon)
+Project/core.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+Project/core.py:1:0: C0115: Missing class docstring (missing-class-docstring)
+Project/core.py:6:4: C0116: Missing function or method docstring (missing-function-docstring)
+                            …
+Project/core.py:9:4: C0103: Method name "newMilestone" doesn't conform to snake_case naming style (invalid-name)
+-----------------------------------
+Your code has been rated at 0.00/10
+                            </code></pre>
+
+                            <aside class="notes">En ciertos lenguajes
+                        son más estrictos que en otros sobre cómo se
+                        debe escribir, pero escribir siguiendo las
+                        buenas prácticas también es una práctica
+                        defensiva que ayuda a que otras personas
+                        inviertan menos tiempo en entenderlo, o en
+                        refactorizarlo si es que se fusiona con otra
+                                base de código que sí las siga</aside>
+                        </section>
                     </section>
-
-                    <section><h1>✓ TODO <em>retro</em></h1>
-                        <h2 class="fragment">¿Se han cerrado los
-                        issues desde un commit (o PR)?</h2>
-		    </section>
 
                     <section><h1>✓ TODO hito 8</h1>
                        <h2 class="fragment">Elegir un linter y empezar
