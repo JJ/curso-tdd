@@ -89,18 +89,23 @@ El programa anterior ilustra la sintaxis, y puede formar parte de un
 conjunto de tests; se puede ejecutar directamente, pero para testearlo
 los lenguajes de programación usan un segundo nivel, el marco de
 ejecución de los tests. Estos marcos incluyen programas de línea de
-órdenes que, a su vez, ejecutan los programas de test y escriben 
-un informe sobre cuáles han fallado y cuáles no con más o menos
-parafernalia y farfolla. Una vez más, [hay varios marcos de testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js) para
-nodejs (y, por supuesto, uno propio para cada uno de los lenguajes de
-programación, aunque en algunos están realmente estandarizados).
+órdenes que, a su vez, ejecutan los programas de test y escriben un
+informe sobre cuáles han fallado y cuáles no con más o menos
+parafernalia y farfolla. Una vez más, [hay varios marcos de
+testeo](https://stackoverflow.com/questions/4308786/what-is-the-best-testing-framework-to-use-with-node-js)
+para nodejs (y, por supuesto, uno propio para cada uno de los
+lenguajes de programación, aunque en algunos están realmente
+estandarizados).
 
 En general, y como en casi todos los lenguajes, cada test tendrá tres
 partes: *Arrange*, *Act*, *Assert*. Es decir, prepara, haz lo que
-tengas que hacer, y comprueba la aserción.
+tengas que hacer, y comprueba la aserción. Además de los
+[preparativos](tests-unitarios-organización.md) que afectan al test en
+general (setup, tests, teardown), estas tres partes afectarán a cada
+test o subtest en particular.
 
 Como algunos marcos de prueba como Chai usan su propia biblioteca de
-aserciones, podemos hacer este pequeño cambio para usarla: 
+aserciones, podemos hacer este pequeño cambio para usarla:
 
 ```
 var assert = require("chai").assert,
