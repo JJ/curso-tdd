@@ -8,12 +8,6 @@ ISSUEID = 1
 def issue():
     issue = Issue(PROJECTNAME,ISSUEID)
     return issue
-
-def test_has_name_when_created(issue):
-    assert issue.projectName  == PROJECTNAME
-
-def test_has_id_when_created(issue):
-    assert issue.issueId  == ISSUEID
     
 def test_is_open_when_created(issue):
     assert  issue.state == IssueState.Open
