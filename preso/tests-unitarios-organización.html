@@ -61,6 +61,54 @@
                             <h2 class="fragment">Precondiciones</h2>
                         </section>
 
+                        <section><h1>Ejecutar en caso de...</h1>
+                            <pre><code data-line-numbers="1,5|3-5">use Test::More;
+
+unless ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
+  plan skip_all => "Check relevant only for PRs";
+}                            </code></pre>
+                        </section>
+
+                        <section><h1><em>Setup</em>: crear objetos que
+                            se testearán</h1>
+                            <h2 class="fragment">Que <em>no son parte
+                                del test</em></h2>
+                        </section>
+
+                        <section>                            <h2><em>Fixtures</em> en
+                            Python</h2>
+                            <pre><code data-line-numbers="1|7-11|13">import pytest
+from Project.Issue import Issue, IssueState
+
+PROJECTNAME = "testProject"
+ISSUEID = 1
+
+@pytest.fixture
+def issue():
+    issue = Issue(PROJECTNAME,ISSUEID)
+    return issue
+
+def test_is_open_when_created(issue):
+    assert  issue.state == IssueState.Open                            </code></pre>
+                            <aside class="notes">Esto corresponde a
+    una historia de usuario que dice que cuando se cree un issue debe
+                                estar abierto</aside>
+                        </section>
+
+                        <section><h1>O leer datos</h1>
+                            <pre><code data-line-numbers="1|3">func TestMain(m *testing.M) {
+	ReadsFromFile("./hitos_test.json") // Alternative test file
+	os.Exit(m.Run())
+}</code></pre>
+                            <aside class="fragment">Esta función
+                            ejecuta directamente el test con m.Run,
+                            saliendo con el estado que haya
+                            producido. También se ve aquí cómo Go usa
+                            los códigos de estado para indicar
+                                excepciones o no</aside>
+                        </section>
+
+                    </section>
 
                     <section><h1>✓ TODO hito 9</h1>
                         <h2 class="fragment">Elegir una biblioteca de
