@@ -42947,14 +42947,20 @@ EOC
     file_present( $config->{'linter'}, \@repo_files, "con linter" );
   }
 
+  if ( $this_version >= 9 ) {
+    diag( check( "Tests para hito 9") );
+    ok( $config->{'aserciones'}, "Se ha declarado la biblioteca de aserciones" );
+    file_present( $config->{'test'}, \@repo_files, "con tests" );
+  }
+
   my $runner = $config->{'runner'};
-  if ( $this_version >= 9) {
+  if ( $this_version >= 10) {
     diag( check( "Tests para hito 8") );
     ok( $runner, check( "La clave runner $runner en el fichero de configuración en este tag" ) );
     like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
   }
 
-  if ( $this_version >= 9 ) {
+  if ( $this_version >= 10 ) {
     diag( check( "Tests para hito 9") );
     file_present( '.travis.yml', \@repo_files, "de CI" );
     travis_pass( $README, $user, $name );
