@@ -117,7 +117,7 @@ describe('Apuesta con Chai', function(){
 	it('should be loaded', function(){
 	    assert.ok(apuesta, "Cargado");
 	});
-	
+
     });
     describe('Crea', function(){
 	it('should create apuestas correctly', function(){
@@ -198,7 +198,7 @@ describe('BDD con Chai', function(){
     it('Debería cargar la biblioteca y poder instanciarse', function() {
 	apuesta.should.exist;
 	var nueva_apuesta = new apuesta.Apuesta('Polopos','Alhama','2-3');
-	
+
 	nueva_apuesta.as_string().should.equal( "Polopos: Alhama - 2-3","Creado");
     })
 });
@@ -216,6 +216,139 @@ depende de la biblioteca de aserciones.
 Además, te indica el tiempo que ha tardado lo que te puede servir para
 hacer un *benchmark* de tu código en los diferentes entornos en los
 que se ejecute.
+
+### Escribiendo tests en Go
+
+[Go](https://golang.org/) es un lenguaje que pretende evitar lo peor
+de C++ para crear un lenguaje concurrente, de sintaxis simple y con
+más seguridad; además, Go provee también un entorno de programación
+con una serie de herramientas (*toolbelt*) de serie (su propio *task
+runner*). Go integra este marco de pruebas en el propio lenguaje, por
+lo que nos permite fijarnos exclusivamente en la biblioteca de pruebas
+con la que estamos trabajando. La diferencia principal con otros
+lenguajes es que la biblioteca de Test en vez de aserciones, tiene
+errores que tienes que especificar si alguno de los resultados no ha
+sido el esperado.
+
+Por ejemplo, vamos a fijarnos
+en
+[esta pequeña biblioteca que implementa información sobre los hitos de
+un proyecto en el contexto de una asignatura](https://github.com/JJ/HitosIV) escrita
+en ese lenguaje, Go. La biblioteca
+tiene
+[dos funciones, una que devuelve un hito a partir de su ID y otra que te dice cuantos hay](https://github.com/JJ/HitosIV/blob/master/HitosIV.go).
+
+
+Los módulos en Go incluyen funciones simples, estructuradas en un
+paquete o *package*. Para testear un paquete en Go simplemente se crea un fichero con el
+mismo nombre que el paquete y el sufijo `_test` como
+[el siguiente](https://github.com/JJ/HitosIV/blob/master/HitosIV_test.go):
+
+
+```Go
+package HitosIV
+
+import (
+	"testing"
+	"reflect"
+)
+
+func TestHitos (t *testing.T){
+	t.Log("Test Id");
+	if CuantosHitos() <= 0 {
+		t.Error("No milestones")
+	}
+}
+
+func TestTodosHitos (t *testing.T){
+	t.Log("Test Todos");
+	these_milestones := Hitos()
+	if reflect.TypeOf(these_milestones).String() == "Data" {
+		t.Error("No milestones here")
+	}
+}
+```
+
+
+> Te puedes descargar todo el proyecto con `git clone
+> https://github.com/JJ/HitosIV` o hacerle *fork*, es software
+> libre. Se agradecen PRs e issues.
+
+La sintaxis no es excesivamente complicada. Se importan las
+bibliotecas para [testear (`testing`)](https://golang.org/pkg/testing/) y para averiguar de qué tipo es
+algo (`reflect`) y se crean dos funciones de test, una por cada función que
+queremos probar. Las funciones de deberán empezar por una letra
+mayúscula, como sucede aquí. El nombre del paquete es el mismo que el
+del paquete que queremos testear.
+
+La fase de *setup* de este test está implícita en la importación del
+paquete que testea, que en realidad se importa automáticamente sólo
+por el nombre del fichero; este es, en realidad, parte del mismo
+ámbito que el paquete que está probando (como se ve arriba, porque se
+declara el mismo paquete).
+
+De este fichero se ejecutarán todas las funciones al
+ejecutar desde la línea de órdenes `go test` (que sería el marco de
+pruebas en este caso), que devolverá algo así:
+
+```
+PASS
+ok  	_/home/jmerelo/Asignaturas/infraestructura-virtual/HitosIV	0.017s
+```
+
+En vez de aserciones como funciones específicas, Go simplifica el API
+de pruebas eliminando las aserciones; por el contrario, hace que se
+devuelva un error (con `t.Error()`) cuando el test no pasa. Si todos
+funcionan, no hay ningún problema y se imprime `PASS` como se muestra
+arriba. Adicionalmente, `t.Log()` (siendo `t` una estructura de datos
+que se le tiene que pasar a todos los tests) se usa para mostrar algún
+mensaje sobre qué está ocurriendo en el test. En este caso, uno de los
+tests comprueba que efectivamente haya hitos en el fichero JSON que se
+ha pasado, y el segundo comprueba que el tipo que se devuelve cuando
+se solicita un hito es el correcto.
+
+>Los tests que se muestran aquí no cubren necesariamente todas las
+>funcionalidades de este módulo; en el repositorio sí están
+>completos. Se muestran solo estos para ilustrar cómo funciona en un
+>lenguaje determinado.
+
+La biblioteca de pruebas (que no de aserciones) usada proporciona, en este caso, una serie de
+estructuras de datos que podemos usar para informar de los errores que
+se produzcan. La estructura `T`, por ejemplo, es la que se recibe como
+argumento en cada uno de los tests; tiene funciones como `t.Error`
+para indicar cuando las condiciones del test no se cumplen. Si se usa
+`ErrorF` se puede dar, como en otros marcos de test, cual es la salida
+deseada y la obtenida a partir de una cadena formateada (de ahí el `f`).
+
+```
+// Comprueba si el número de hitos es correcto
+func TestNumHitosCorrecto(t *testing.T) {
+	t.Log("Test Número Hitos")
+	var x uint = uint(CuantosHitos())
+	if x == 3 {
+		t.Log("El número de hitos es correcto")
+	} else {
+		t.Errorf("El número de hitos es incorrecto; esperábamos %d", 3)
+	}
+}
+
+func TestDemasiadosHitos(t *testing.T) {
+	var x uint = uint(CuantosHitos())
+	var too_big uint = x + 3
+	_, e := Uno( too_big )
+	if e != nil {
+		t.Log("Devuelve error si es demasiado grande")
+	} else {
+		t.Error("No devuelve error y debería")
+	}
+
+}
+```
+
+> Adicionalmente,
+> [se pueden incluir ejemplos de salida que serán comprobados](https://golang.org/pkg/testing/#hdr-Examples) si
+> se precede la salida deseada con la palabra correcta.
+
 
 ### Realizando las pruebas en Scala
 
