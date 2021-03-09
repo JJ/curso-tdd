@@ -285,6 +285,12 @@ ficheros o bases de datos en las que se trabaja. Es buena costumbre
 usar, por ejemplo, nombres aleatorios, o simplemente ejecutar los
 tests en paralelo y ver si hay algo que pete.
 
+> Una visión alternativa es que tanto setup como teardown [son
+> perniciosos](https://stackoverflow.com/q/1087317/891440), y por eso
+> hay muchos frameworks que no los tienen, y otros que lo han
+> eliminado. Es posible que alternativas de grano más fino, que ejecutan
+> cosas antes y después de cada test o subtest, sean mejores opciones.
+
 ## Actividad
 
 A partir del diseño creado en la anterior actividad, y siguiendo las
@@ -292,14 +298,18 @@ prácticas de uso de los issues (y su cierre desde un *commit*), crear
 una o varias clases básicas que correspondan a la misma entidad (según
 el dominio del problema que se haya elegido), por supuesto incluyendo
 los tests correspondientes. Los tests se ejecutarán en local, por lo
-pronto. Pasamos ya a la versión `7.x.x` del proyecto.
+pronto. Pasamos ya a la versión `9.x.x` del proyecto.
 
-Se editará el fichero `qa.json` añadiéndole, además, la siguiente clave (sin borrar las anteriores)
+Se editará el fichero `agil.yaml` añadiéndole, además, la siguiente
+clave (sin borrar las anteriores):
 
-```json
-{
-  "test" : [ "directorio/fichero_de_test.ext" ]
-}
+```yaml
+test:
+    - tests/fichero-test.jl
+aserciones: "@test"
 ```
 
-En vez de este nombre ficticio, se usará el nombre del fichero de construcción que se haya usado para ejecutar los tests, que tendrá que estar presente en el repositorio.
+En vez de este nombre ficticio, se usará el nombre del fichero de
+construcción que se haya usado para ejecutar los tests, que tendrá que
+estar presente en el repositorio.
+
