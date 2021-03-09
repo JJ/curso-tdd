@@ -271,7 +271,19 @@ innecesarios, por ejemplo los dos primeros. Los dos últimos sí testean
 comportamientos, y además siguen el principio de que se testea cuando
 se cambia el estado. O sea, bien.
 
+## Teardown: dejándolo todo como estaba
 
+Uno de los principios
+[FIRST](https://medium.com/@tasdikrahman/f-i-r-s-t-principles-of-testing-1a497acda8d6)
+es la I de *isolated* o aislado; los tests deben de ser capaces de
+comportarse perfectamente por sí solos, sin depender del entorno y de
+cosas como el orden en el que se hayan ejecutado los tests. Cuando se
+termina, se deben encontrar en el mismo estado en el que se empezó. Y
+también debería ser posible ejecutar los tests en paralelo, de forma
+que se deben de tratar de evitar condiciones de carrera sobre los
+ficheros o bases de datos en las que se trabaja. Es buena costumbre
+usar, por ejemplo, nombres aleatorios, o simplemente ejecutar los
+tests en paralelo y ver si hay algo que pete.
 
 ## Actividad
 
