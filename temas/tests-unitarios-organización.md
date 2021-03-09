@@ -85,6 +85,10 @@ testeando. El nombre de estas funciones, además, debe ser lo más
 explícito posible, dejando totalmente claro lo que testea, si es
 posible usando la misma frase que se use en la historia de usuario.
 
+El código debería ser fácil de testear. Si es complicado, es el
+momento de refactorizarlo; código complicado de testear también es
+complicado de usar.
+
 ## Fases de test: *setup*, *tests*, *teardown*
 
 En las fases del proceso de prueba:
@@ -262,6 +266,11 @@ prácticas](https://salmonmode.github.io/2019/03/29/building-good-tests.html).
 - Se debe testear el resultado final, no el setup. Se trata siempre de
   testear comportamientos, no implementaciones.
 
+
+Si seguimos estos principios, algunos de los tests arriba son
+innecesarios, por ejemplo los dos primeros. Los dos últimos sí testean
+comportamientos, y además siguen el principio de que se testea cuando
+se cambia el estado. O sea, bien.
 
 ### Escribiendo tests en Go
 
