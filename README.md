@@ -110,6 +110,7 @@ estas sesiones:
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
+  * [Presentación](preso/tests-unitarios-organización.html).
 
 12. Ejecución de tests
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
@@ -158,6 +159,7 @@ con enlaces
 |  6   | 8          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#Actividad)|
 |  7   | 9          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#Actividad)|
 |  8   | 10         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#Actividad)|
+|  9   | 11         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#Actividad)|
 
 ## Posibles ideas para proyectos, problemas para resolver
 
