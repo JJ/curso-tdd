@@ -103,7 +103,10 @@ En las fases del proceso de prueba:
   también crear esos objetos. En esta fase se pueden crear lo que se
   denominan *fixtures*: son simplemente objetos que, si no funciona su
   creación, algo va mal, pero si funciona se usan como base para el
-  resto de los tests.
+  resto de los tests. Como se indica en la fase de *teardown* más
+  abajo, algunos consideran un *olor de código* usar este tipo de
+  estructuras de datos. Así que hay que tomar decisiones en cada caso
+  y para cada lenguaje.
 
 * A continuación se llevan a cabo las pruebas en sí; esas pruebas
   pueden estar agrupadas en subtests, y en el caso de que falle un
@@ -290,6 +293,11 @@ tests en paralelo y ver si hay algo que pete.
 > hay muchos frameworks que no los tienen, y otros que lo han
 > eliminado. Es posible que alternativas de grano más fino, que ejecutan
 > cosas antes y después de cada test o subtest, sean mejores opciones.
+
+La mayor parte de las veces que se usa este tipo de código es, como se
+afirma [aquí](https://stackoverflow.com/a/1087483/891440), porque se
+trata de tests de integración; así que lo veremos con más dedicación
+más adelante.
 
 ## Actividad
 

@@ -18,7 +18,7 @@
 	    <div class="reveal">
 		<div class="slides">
 		    <section><h2>Desarrollo ágil</h2>
-                        <h1>Código y sus olores</h1>
+                        <h1>Organizando los tests unitarios</h1>
                         <h3><a href="https://jj.github.io/curso-tdd/temas/tests-unitarios-organización"><code>jj.github.io/curso-tdd/temas/tests-unitarios-organización</code></a></h3>
                     </section>
 
@@ -100,14 +100,20 @@ def test_is_open_when_created(issue):
 	ReadsFromFile("./hitos_test.json") // Alternative test file
 	os.Exit(m.Run())
 }</code></pre>
-                            <aside class="fragment">Esta función
+                            <aside class="notes">Esta función
                             ejecuta directamente el test con m.Run,
                             saliendo con el estado que haya
                             producido. También se ve aquí cómo Go usa
                             los códigos de estado para indicar
                                 excepciones o no</aside>
+
                         </section>
 
+                        <section><h1>Dejarlo todo limpito:
+                            <em>teardown</em></h1>
+                            <h2 class="fragment">Más común en tests de
+                                integración</h2>
+                        </section>
                     </section>
 
                     <section><h1>✓ TODO hito 9</h1>
@@ -115,12 +121,9 @@ def test_is_open_when_created(issue):
                             aserciones y preparar para los tests</h2>
                         <h3 class="fragment"> En
                             <code>agil.yaml</code></h3>
-                        <pre class="fragment">
-
-                            <code data-line-numbers="1,2|3">test:
+                        <pre class="fragment"><code data-line-numbers="1,2|3">test:
     - tests/fichero-test.jl
-aserciones: "@test"
-                       </code></pre>
+aserciones: "@test"  </code></pre>
                     </section>
 
                 </div>
