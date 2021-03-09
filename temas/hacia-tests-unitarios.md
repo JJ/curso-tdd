@@ -39,7 +39,13 @@ lo que se ha solicitado.
 
 Una de las lecciones más importantes en calidad del software (e
 informática en general) es que el código que no falla es
-el que no se ha escrito. En general, esto se traduce en usar todo tipo
+el que no se ha escrito.
+
+> Hasta el punto que se puede medir
+> [el progreso en un programa en las líneas de código
+> eliminadas](https://www.folklore.org/StoryView.py?story=Negative_2000_Lines_Of_Code.txt).
+
+En general, esto se traduce en usar todo tipo
 de restricciones a nivel de compilación (tales como la estructura de
 tipos, o el protocolo de meta-objetos) para forzar que las cosas ocurran tal
 como deben ocurrir sin tener que preocuparte con escribir código que,
