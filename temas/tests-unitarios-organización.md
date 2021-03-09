@@ -42,19 +42,22 @@ convertirán en *issues* del repositorio, agrupados en mojones o hitos, cuyo cie
 código está escrito, testeado, y se ajusta a la misma.
 
 En la mayoría de los lenguajes de programación y especialmente en
-lenguajes como `node` hay dos niveles en el test: el
-primero es el marco de pruebas y el segundo la biblioteca (o bibliotecas) de pruebas que
-efectivamente se está usando. El marco de pruebas incluirá
-generalmente un script que será el que ejecute
-todos los tests, examine el resultado y emita un informe, que
-dependerá de si los tests se han superado o no. Un tercer nivel,
-implícito, es el gestor de tareas desde el que se lanzará el marco de
-pruebas que ejecutará los tests.
+lenguajes como `node` hay dos niveles en el test: el primero es el
+marco de pruebas y el segundo la biblioteca (o bibliotecas) de pruebas
+que efectivamente se está usando. El marco de pruebas incluirá
+generalmente un script que será el que ejecute todos los tests,
+examine el resultado y emita un informe, que dependerá de si los tests
+se han superado o no. Un tercer nivel, implícito, es el gestor de
+tareas desde el que se lanzará el marco de pruebas que ejecutará los
+tests. Pero lo imprescindible, en todos los casos, es que se testeen
+las historias de usuario y que los tests sean *siempre* independientes
+de la implementación.
 
-> Para ello, todas las bibliotecas de tests emiten sus resultados en un
-> formato de texto estándar, que se llama [TAP](https://en.wikipedia.org/wiki/Test_Anything_Protocol). Por eso los marcos de
-> pruebas se pueden usar con cualquier biblioteca de pruebas, incluso de
-> cualquier lenguaje.
+> Para ello, todas las bibliotecas de tests emiten sus resultados en
+> un formato de texto estándar, que se llama
+> [TAP](https://en.wikipedia.org/wiki/Test_Anything_Protocol). Por eso
+> los marcos de pruebas se pueden usar con cualquier biblioteca de
+> pruebas, incluso de cualquier lenguaje.
 
 Por debajo del marco de pruebas (la biblioteca que permite estructuras
 las pruebas), a veces existe una biblioteca externa de aserciones, que son las
@@ -183,6 +186,17 @@ tests. De hecho, el resto de los tests tenemos que llamarlos
 explícitamente (con `m.Run`) y también que salir explícitamente del
 `main` usando `os.Exit`, que devolverá el código de salida adecuado.
 
+
+Lo más importante antes de ponerse a escribir los tests es que *hay
+que comprobar comportamientos, no implementación*. Cualquier test que
+dependa de la implementación es un impedimento para la
+refactorización, y por tanto no es un buen tests. Los comportamientos,
+por supuesto, serán los que estén en las historias de usuario, y esto
+se debe reflejar también en la "narrativa" del repo: todo el código de
+test que se cree debe referenciar a las HUs e issues para los cuales
+ha sido creado.
+
+
 ### Usando fixtures en Python
 
 > El ejemplo en Python está en el directorio [`python` dentro de los
@@ -235,9 +249,18 @@ usamos es una simple aserción que comprobará que la expresión que se
 le pasa es cierta.
 
 > Hago notar que, una vez más, Python usa convenciones donde otros
-> lenguajes usan sintaxis. Algo EN MAYÚSCULAS es una constante. Que
-> podemos variar de valor cuando queramos, pero eso, que es constante,
-> no la toquéis.
+> lenguajes usan sintaxis, y eso, desde mi punto de vista, no es
+> bueno. Algo EN MAYÚSCULAS es una constante. Que podemos variar de
+> valor cuando queramos, pero eso, que es constante, no la toquéis.
+
+Para fixtures, en Python y en cualquier otro lenguaje, hay que seguir
+una [serie de buenas
+prácticas](https://salmonmode.github.io/2019/03/29/building-good-tests.html).
+
+- Cada *fixture* debe hacer sólo una cosa.
+
+- Se debe testear el resultado final, no el setup. Se trata siempre de
+  testear comportamientos, no implementaciones.
 
 
 ### Escribiendo tests en Go
