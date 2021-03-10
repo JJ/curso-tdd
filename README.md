@@ -116,6 +116,7 @@ estas sesiones:
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
+  * [Presentación](preso/tests-unitarios.html).
 
 13. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * Diferentes sistemas de integración continua: Travis, GitHub
@@ -160,6 +161,7 @@ con enlaces
 |  7   | 9          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#Actividad)|
 |  8   | 10         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#Actividad)|
 |  9   | 11         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#Actividad)|
+|  10  | 12         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#Actividad)|
 
 ## Posibles ideas para proyectos, problemas para resolver
 
