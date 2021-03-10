@@ -37,6 +37,16 @@ de magnitud en las variables de inicio y terminación de un bucle.
 Ya que hemos visto una iniciación a como se testea, vamos a ver cómo
 se llevan a cabo los tests unitarios en diferentes ejemplos.
 
+Hay muchas metodologías para seguir en la creación de tests, pero una
+de las que se pueden usar es la
+[FIRST](https://medium.com/@tasdikrahman/f-i-r-s-t-principles-of-testing-1a497acda8d6). Los
+tests deben ser rápidos (aunque esto no va a depender sólo del número
+de tests), aislados, repetibles, auto-falidados y completos, es decir,
+seguir todos los caminos críticos de tu código (aunque no
+necesariamente absolutametne todos los caminos). En particular, se
+deben testear los casos *edge* o casos que que se producen en los
+extremos de los valores de los argumentos que usemos en las funciones.
+
 ### Escribiendo tests en JavaScript
 
 Hay lenguajes que, como Go, valoran la simplicidad y además incluye de serie todo lo necesario

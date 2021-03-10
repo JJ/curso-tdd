@@ -87,20 +87,17 @@ test("all", () => {
                     </section>
 
                     <section><h1>Go es su propio marco de test</h1>
-                        <pre><code data-line-numbers="11,19">package HitosIV
-
+                        <pre><code data-line-numbers="9,16">package HitosIV
 import (
 	"testing"
 	"reflect"
 )
-
 func TestHitos (t *testing.T){
 	t.Log("Test Id");
 	if CuantosHitos() <= 0 {
 		t.Error("No milestones")
 	}
 }
-
 func TestTodosHitos (t *testing.T){
 	t.Log("Test Todos");
 	these_milestones := Hitos()
@@ -113,6 +110,33 @@ func TestTodosHitos (t *testing.T){
 	                    ilustración, de todas formas.</aside>
                     </section>
 
+                    <section><h1><em>Hooks</em> para tests locales</h1>
+
+                        <pre><code data-line-numbers="4|6|9">my $is_head = `git rev-parse --verify HEAD`;
+
+my $last_commit = $is_head?"HEAD":"4b825dc642cb6eb9a060e54bf8d69288fbee4904";
+my @changes = `git diff-index --name-only $last_commit`;
+
+my %policies = ( no_underscore => qr/_/ );
+
+for my $f (@changes) {
+    for my $p ( keys %policies ) {
+	if ($f =~ /$policies{$p}/) {
+	    die "[FORMATO]: $p ";
+	}
+    }
+}</code></pre>
+
+                        <aside class="notes">Para que los ficheros
+                    sigan una serie de políticas de nombres, en Perl
+                            en este caso. Por supuesto, se trataría de
+                    crear esos hooks para poder pasar tests, linters o
+                    cualquier otra cosa que hiciera falta,
+                    localmente. Muchos van a ir más en la categoría de
+                    código limpio o respetar estándares, pero se puede
+                    ejecutar cualquier cosa. Y, por supuesto, forma la
+                    base de los sistemas de CI/CD que se verán a continuación.</aside>
+                    </section>
 
                     <section><h1>✓ TODO hito 10</h1>
                         <h2 class="fragment">Elegir marco de test +
