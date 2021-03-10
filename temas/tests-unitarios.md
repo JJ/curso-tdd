@@ -45,7 +45,20 @@ de tests), aislados, repetibles, auto-falidados y completos, es decir,
 seguir todos los caminos críticos de tu código (aunque no
 necesariamente absolutametne todos los caminos). En particular, se
 deben testear los casos *edge* o casos que que se producen en los
-extremos de los valores de los argumentos que usemos en las funciones.
+extremos de los valores de los argumentos que usemos en las
+funciones. Esta completitud, aparte de ir sobre el código, tendrá que
+ir también sobre las historias de usuario, que es lo que en realidad
+debe ser cubierto.
+
+Al principio, la T era de *timely*, es decir, *a tiempo*. TDD dice que
+hay que escribir los tests *antes* del código, para seguir el
+principio
+[red-green-refactor](https://softwarecrafters.io/javascript/tdd-test-driven-development),
+es decir, hay que escribir los tests,
+luego escribir el código guarro que haga falta para que pasen los
+tests (*green*), luego refactorizar. Sin embargo, lo importante, al
+final, es que haya test. Ese tipo de estrategias pueden funcionar bien
+en ciertos entornos. Lo que funcione mejor para cada uno es siempre lo mejor.
 
 ### Escribiendo tests en JavaScript
 
@@ -66,7 +79,7 @@ el
 > acabó siendo un repo.
 
 La
-biblioteca de aserciones [`assert`](https://nodejs.org/api/assert.html) 
+biblioteca de aserciones [`assert`](https://nodejs.org/api/assert.html)
 forma parte de la estándar de JS, pero hay otras como
 [Unexpected](http://unexpected.js.org/) o aserciones que son parte de marcos
 de tests más completos, tales como [Chai](https://www.chaijs.com/), [Jasmine](https://jasmine.github.io/),
