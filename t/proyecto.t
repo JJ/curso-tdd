@@ -42944,7 +42944,7 @@ EOC
 
   if ( $this_version >= 8 ) {
     diag( check( "Tests para hito 8") );
-    file_present( $config->{'linter'}, \@repo_files, "con linter" );
+    ok( $config->{'linter'}, "Linter declarado" );
   }
 
   if ( $this_version >= 9 ) {
