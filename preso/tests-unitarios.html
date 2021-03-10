@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desarrollo ágil: Organización de los tests unitarios</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/extra.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Tests unitarios</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/tests-unitarios-organización"><code>jj.github.io/curso-tdd/temas/tests-unitarios</code></a></h3>
+                    </section>
+
+                    <section><h2>✓ TODO</h2>
+                        <h2 class="fragment">□ ¿Los milestones
+                        internos son productos mínimamente viables? </h2>
+                        <h2 class="fragment">□ ¿Se han integrado
+                        tareas en el gestor?</h2>
+                    </section>
+
+                    <section><h1>Recordatorio: Se comprueban
+                        <strong>comportamientos</strong></h1>
+                        <h2 class="fragment">Reflejados en las
+                            historias de usuario</h2>
+                    </section>
+
+                    <section><h1>Los tests se ejecutan desde
+                        <em>frameworks</em> de test</h1>
+                        <aside class="notes">En muchos casos son
+                        indistinguibles de la biblioteca de
+                        aserciones, pero en muchos lenguajes, como
+                            JavaScript, están aparte.</aside>
+                    </section>
+
+                    <section><h1>Tests en Elixir (con
+                        <code>mix</code>)</h1>
+                        <pre><code data-line-numbers="1,2|5-8|10-12">defmodule IssueTest do
+  use ExUnit.Case
+  doctest Issue
+
+  setup_all do
+    this_issue = %Issue{ projectname: 'Foo', id: '1'}
+    {:ok, issue: this_issue}
+  end
+
+  test "Initial issue state",context do
+    assert context[:issue].state == :Open
+  end
+
+end</code></pre>
+                    </section>
+
+                    <section><h1><em>Arrange</em>, <em>act</em>,
+                        <em>assert</em></h1>
+                    </section>
+                    
+                    <section><h1>TypeScript con <code>jest</code></h1>
+                        <pre><code data-line-numbers="1|2,4-6|7-11">import { Issue, State } from '../Project/Issue';
+var data: Issue;
+
+beforeAll(() => {
+    data = new Issue("Foo",1);
+});
+
+test("all", () => {
+    expect(  data.show_state() ).toBe( State.Open );
+    data.close();
+    expect(  data.show_state() ).toBe( State.Closed );
+}); </code></pre>
+                        <aside class="notes">Arrange sería el
+    beforeAll; es similar al setup del que hemos hablado antes, lo que
+    ocurre es que jest permite que se hagan precondiciones antes de
+    cualquier test, y también antes y después de cada una de las
+                            instrucciones de test que se
+                            ejecuten</aside>
+                    </section>
+
+                    <section><h1>Go es su propio marco de test</h1>
+                        <pre><code data-line-numbers="11,19">package HitosIV
+
+import (
+	"testing"
+	"reflect"
+)
+
+func TestHitos (t *testing.T){
+	t.Log("Test Id");
+	if CuantosHitos() <= 0 {
+		t.Error("No milestones")
+	}
+}
+
+func TestTodosHitos (t *testing.T){
+	t.Log("Test Todos");
+	these_milestones := Hitos()
+	if reflect.TypeOf(these_milestones).String() == "Data" {
+		t.Error("No milestones here")
+	}
+}</code></pre>
+                        <aside class="notes">En realidad el segundo se
+	puede eliminar, porque estamos testeando el setup. Sirva como
+	                    ilustración, de todas formas.</aside>
+                    </section>
+
+
+                    <section><h1>✓ TODO hito 10</h1>
+                        <h2 class="fragment">Elegir marco de test +
+                            añadir <code>test</code> a tareas</h2>
+                        <h3 class="fragment"> En
+                            <code>agil.yaml</code></h3>
+                        <pre class="fragment"><code data-line-numbers="1|2|3">testing:
+    runner: make
+    framework: prove  </code></pre>
+                    </section>
+
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+                 slideNumber: true,
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>

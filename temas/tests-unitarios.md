@@ -8,7 +8,7 @@ van desde las funciones que te permiten comprobar si el resultado
 obtenido es igual al deseado, hasta las herramientas de construcción o
 ejecutores de tareas que se usan, de forma más o menos estándar, en
 cada lenguaje de programación para lanzar los tests. En este tema
-veremos de forma integral todos esos aspectos de los tests. 
+veremos de forma integral todos esos aspectos de los tests.
 
 ## Al final de esta sesión
 
@@ -377,7 +377,7 @@ package info.CC_MII
 import org.specs2.mutable.Specification
 
 class ApuestaSpec extends Specification {
-  
+
   "Apuesta" should {
 
     "almacenar correctamente las variables" in {
@@ -387,7 +387,6 @@ class ApuestaSpec extends Specification {
       esta_apuesta.quien must beEqualTo("Dude")
     }
 
- 
   }
 }
 ```
@@ -451,7 +450,7 @@ estos marcos de test, en general, sólo interpretan la salida y a veces
 hacen alguna cosa adicional como establecer caminos de ejecución para
 encontrar los módulos o ejecutar los tests que sigan la convención
 general; sin embargo, para ejecutar el programa y probar lo que está
-haciendo no son, en general, necesarios. 
+haciendo no son, en general, necesarios.
 
 Usar un marco de test con su propio programa, por otro lado, te
 permitirá ejecutar los tests de forma uniforme para todos los módulos
@@ -534,11 +533,11 @@ export class Issue {
 
     constructor(project_name: string, id: number) {
         this.project_name = project_name;
-	this.id = id;
+	    this.id = id;
     }
 
     show_state() {
-	return this.state;
+	    return this.state;
     }
 
     close() {
@@ -611,7 +610,7 @@ defmodule Issue do
   Reopens issue
 
   """
-  def reopen( issue ) do 
+  def reopen( issue ) do
     issue |> struct( %{state: :Open} )
   end
 end
@@ -737,18 +736,32 @@ caso creación (o modificación) de un mensaje de commit.
 ## Actividad y entrega
 
 
-En esta fase se deben de ejecutar todos los tests y tener un
+En este, que será el hito 10, se deben de ejecutar todos los tests y tener un
 resultado, que no necesariamente tiene que ser siempre positivo porque
 todavía no hemos "integrado". Lo que se pide es que el `README.md`
 incluya un apartado `# Instrucciones` y que dentro de ese apartado se
 explique cómo ejecutar los tests. Necesariamente, ya que se ha
 incluido un fichero de gestión de tareas, esta instrucción será del
 estilo `nombre_fichero_gestión_tareas test`. Para identificarlo, habrá
-que incluir una clave adicional en ese fichero
+que incluir una clave adicional, `testing`, con dos claves: `runner` y `framework`:
 
-    "runner": "make",
+    testing:
+        runner: grunt,
+        framework: chai
+
+> Hay que distinguir el *runner*, que es lo que declaramos en este
+> caso, del *fichero* que usa el runner, que es el que hemos declarado
+> anteriormente.
 
 Por ejemplo; en este caso, lo que se buscará en el `README` será la
 cadena
 
     `make test`
+
+Lo que se persigue con este objetivo es que se empiece a convertir el
+`README.md` del proyecto en documentación del mismo, que ayude a quien
+lo encuentre a entender de qué va el proyecto, como instalárselo y
+demás. También, por supuesto, a que se empiecen a incorporar todas las
+tareas al gestor de tareas para simplificar su uso.
+
+
