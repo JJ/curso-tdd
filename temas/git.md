@@ -272,3 +272,6 @@ el repositorio tendrá que tener un tag
 > tendrá que hacer, adicionalmente al normal, `git push --tags`
 
 que deberá corresponder exactamente a la versión que se haya enviado.
+
+Para evitar errores más adelante, conviene que los issues que se creen
+no se cierren o, cuando se haga, se cierren con un *commit*.

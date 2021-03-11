@@ -3,10 +3,15 @@
 
 ## Planteamiento
 
-Los sistemas de integración continua forman parte del flujo de trabajo
-de un sistema de control de calidad del software, ejecutando
+Los sistemas de integración continua forman parte de los flujos de trabajo
+en equipos ágiles, ejecutando
 automáticamente las pruebas que se le configuren cada vez que se lleva
-a cabo un `push` o un `pull request`.  A su vez, estos sistemas dan
+a cabo un `push` o un `pull request`.
+
+> O, para el caso, cualquier tipo de evento en el servidor del equipo
+> o localmente.
+
+A su vez, estos sistemas dan
 retroalimentación al alojamiento del repositorio de forma que, en caso
 positivo, se realice el siguiente paso en el pipeline, por ejemplo
 desplegar a producción; por eso se llaman en general sistemas CI/CD,
@@ -23,14 +28,15 @@ automáticamente.
 ## Criterio de aceptación
 
 El repositorio tiene que estar corriendo los tests unitarios
-desarrollados anteriormente en (al menos) Travis, y esos tests deben
-pasar.
+desarrollados anteriormente en algún sistema de integración continua a
+elegir por el estudiante.
 
 ## Concepto de integración continua
 
-A un primer nivel, la integración continua consiste en incluir en la rama principal los
-cambios hechos por un miembro del equipo en el momento que estén hechos y
-pasen los tests.
+A un primer nivel, la [integración
+continua](https://www.martinfowler.com/articles/continuousIntegration.html)
+consiste en incluir en la rama principal los cambios hechos por un
+miembro del equipo en el momento que estén hechos y pasen los tests.
 
 > En general, no se desarrollará directamente trabajando sobre la rama
 > máster del repositorio, pero hay diferentes metodologías y no nos
@@ -51,32 +57,33 @@ en un mecanismo similar.
 
 ## Pasando los tests automáticamente en la nube.
 
-Muchos equipos de desarrollo instalan *hooks* con comprobaciones
+Muchos equipos de desarrollo instalan
+[*hooks*](tests-unitarios#hooks-o-ganchos-de-git) con comprobaciones
 básicas durante los mensajes de commit e incluso antes de hacer push a
-una rama o a máster, pero en general, se usará algún *hook* en el
-servidor que los ejecutará cuando se envíe un pull al mismo.
+una rama o a máster; en general, sin embargo, se usará algún *hook* en
+el servidor que los ejecutará cuando se envíe un pull al mismo.
 
 A diferencia de los *hooks* locales, que se ejecutan en el mismo
-entorno de desarrollo que el que está usando quien lo desarrolle, para los remotos habrá que crear una configuración para que ejecute esos tests y nos diga cuáles han
-pasado o cuales no. Estas máquinas más adelante se combinan con las de
-despliegue continuo, no permitiendo el mismo si algún test no ha
-pasado.
+entorno de desarrollo que el que está usando quien lo desarrolle, para
+los remotos habrá que crear una configuración para que ejecute esos
+tests y nos diga cuáles han pasado o cuales no. Estas máquinas más
+adelante se combinan con las de despliegue continuo, no permitiendo el
+mismo si algún test no ha pasado.
 
 En general, la integración continua se hace *en la nube*, por el
 simple hecho de que los equipos de desarrollo están distribuidos y
 también los repositorios suelen ser servicios externos a los
-ordenadores de la empresa; lo que no 
-quiere decir que se haga siempre en un servicio *cloud* contratado,
-sino porque se suele hacer en máquinas dedicadas específicamente para
-ello; es más general, sin embargo que una máquina
-virtual se descarga los ficheros, ejecuta los tests
-y crea un informe, enviando también un correo al autor indicándole el
-resultado. Por tanto, para que haga esto tenemos que indicar en la
-configuración todo lo necesario para ejecutar los tests y,
-posiblemente, nuestro programa: aplicaciones, librerías que necesita
-nuestro programa, aparte de la configuración que tendrá el programa en
-sí con las librerías del lenguaje de programación en el que está
-desarrollado.
+ordenadores de la empresa; lo que no quiere decir que se haga siempre
+en un servicio *cloud* contratado, sino porque se suele hacer en
+máquinas dedicadas específicamente para ello; es más general, sin
+embargo que una máquina virtual se descarga los ficheros, ejecuta los
+tests y crea un informe, enviando también un correo al autor
+indicándole el resultado. Por tanto, para que haga esto tenemos que
+indicar en la configuración todo lo necesario para ejecutar los tests
+y, posiblemente, nuestro programa: aplicaciones, librerías que
+necesita nuestro programa, aparte de la configuración que tendrá el
+programa en sí con las librerías del lenguaje de programación en el
+que está desarrollado.
 
 Un sistema bastante popular de integración continua es
 [Jenkins](https://jenkins.io/). Jenkins lo puedes usar en la nube o instalarte tu propio
