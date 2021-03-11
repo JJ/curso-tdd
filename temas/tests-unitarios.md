@@ -800,5 +800,3 @@ Lo que se persigue con este objetivo es que se empiece a convertir el
 lo encuentre a entender de qué va el proyecto, como instalárselo y
 demás. También, por supuesto, a que se empiecen a incorporar todas las
 tareas al gestor de tareas para simplificar su uso.
-
-

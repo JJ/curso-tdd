@@ -125,17 +125,18 @@ estas sesiones:
   * [Material](temas/CI.md).
   * [Presentación](preso/CI.html).
 
-14. Tests de cobertura y por qué son importantes.
+14. Inversión de dependencias.
+  * Mocks.
+  * [Material](temas/inversión.md).
+
+15. Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
 
-15. Tests funcionales/de integración
+16. Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-16. Inversión de dependencias.
-  * Mocks.
-  * [Material](temas/inversión.md).
 
 17. Tests adicionales
   * Tests de prestaciones.

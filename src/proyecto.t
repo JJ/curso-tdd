@@ -92,49 +92,30 @@ EOC
   if ( $this_version >= 7 ) {
     diag( check( "Tests para hito 7") );
     file_present( $config->{'taskfile'}, \@repo_files, "con gestor de tareas" );
-    ok( $config->{'lenguaje'}, "Se ha declarado el lenguaje de programación" );
+    ok( $config->{'lenguaje'}, check("Se ha declarado el lenguaje de programación") );
   }
 
   if ( $this_version >= 8 ) {
     diag( check( "Tests para hito 8") );
-    ok( $config->{'linter'}, "Linter declarado" );
+    ok( $config->{'linter'}, check("Linter declarado") );
   }
 
   if ( $this_version >= 9 ) {
     diag( check( "Tests para hito 9") );
-    ok( $config->{'aserciones'}, "Se ha declarado la biblioteca de aserciones" );
+    ok( $config->{'aserciones'}, check( "Se ha declarado la biblioteca de aserciones" ) );
     file_present( $config->{'test'}, \@repo_files, "con tests" );
   }
 
-  my $runner = $config->{'runner'};
+  my $testing = $config->{'testing'};
   if ( $this_version >= 10) {
-    diag( check( "Tests para hito 8") );
-    ok( $runner, check( "La clave runner $runner en el fichero de configuración en este tag" ) );
-    like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
-  }
-
-  if ( $this_version >= 10 ) {
-    diag( check( "Tests para hito 9") );
-    file_present( '.travis.yml', \@repo_files, "de CI" );
-    travis_pass( $README, $user, $name );
-  }
-
-  if ( $this_version >= 10 ) {
     diag( check( "Tests para hito 10") );
-    like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
-    codecov_pass( $README );
+    ok( $testing, check( "La clave testing en el fichero de configuración en este tag" ) );
+    my $runner = $testing->{'runner'};
+    ok( $runner, check( "La clave testing en el fichero de configuración en este tag" ) );
+    like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
+    ok( $testing->{'framework'}, check( "«testing->{'framework'}» declarado como framework" ));
   }
 
-  if ( $this_version >= 11 ) {
-    diag( check( "Tests para hito 11") );
-    like( $README, qr/$runner\s+run/, check("«$runner run» en el README"));
-    codecov_pass( $README );
-  }
-
-  if ( $this_version >= 12 ) {
-    diag( check( "Tests para hito 12") );
-    file_present( $config->{'dateador'}, \@repo_files, "dateador" );
-  }
 }
 
 done_testing;

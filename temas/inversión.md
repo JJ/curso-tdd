@@ -12,7 +12,9 @@ decisiones de diseño que están detrás de él.
 
 ## Al final de esta sesión
 
-Habrá un grupo de clases con acceso a datos o algún servicio externo, la arquitectura reflejará este principio y se habrá testeado adecuadamente.
+Habrá un grupo de clases con acceso a datos o algún servicio externo,
+la arquitectura reflejará este principio y se habrá testeado
+adecuadamente.
 
 ## Criterio de aceptación
 
@@ -77,13 +79,14 @@ method load() { $!data }
 method update( \data ) { $!data = data }
 ```
 
-Esta clase `does` (o sea, "hace" o "implementa") el rol anterior, e implementa los dos métodos que tiene que
-implementar obligatoriamente. El principio de sustitución de Lyskov
-(la regla básica de programación dirigida a objetos) se aplica
-también aquí: donde quiera que usemos un rol, se puede usar también cualquier
-clase que implemente ese rol, por lo que podemos declarar argumentos como
-`Project::Dator` sabiendo que vamos a poder usar esas dos funciones, `load` y
-`update`. Lo haremos a continuación.
+Esta clase `does` (o sea, "hace" o "implementa") el rol anterior, e
+implementa los dos métodos que tiene que implementar
+obligatoriamente. El principio de sustitución de Lyskov (la regla
+básica de programación dirigida a objetos) se aplica también aquí:
+donde quiera que usemos un rol, se puede usar también cualquier clase
+que implemente ese rol, por lo que podemos declarar argumentos como
+`Project::Dator` sabiendo que vamos a poder usar esas dos funciones,
+`load` y `update`. Lo haremos a continuación.
 
 ### Inyectando dependencias
 
