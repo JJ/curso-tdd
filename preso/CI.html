@@ -29,14 +29,123 @@
                         tests en el gestor?</h2>
                     </section>
 
+                    <section><h1>En busca del botón rojo de
+                        despliegue</h1>
+                        <aside class="notes">Se trata de llevar a
+                        automatizar todas las labores desde el push a
+                            main hasta el despliegue</aside>
+                    </section>
+
+                    <section><h1>Ganchos en la red</h1>
+                        <h2 class="fragment">Usando <em>hooks</em>
+                            conectados a los repositorios.</h2>
+                    </section>
+
+                    <!-- Configurando -->
+                    <section>
+                        <section><h1>Configuración generalmente en
+                            YAML</h1>
+                            <h2 class="fragment">Infraestructura como
+                                código</h2>
+                        </section>
+
+                        <section><h1>Travis</h1>
+                            <pre><code data-line-numbers="1-6|7,8|9,10|11">	language: node_js
+	node_js:
+	  - "10"
+	  - "11"
+	  - "12"
+	before_install:
+	  - npm install -g mocha
+        install:
+	  - cd src; npm install .
+	script: cd src; mocha</code></pre>
+
+                        </section>
+
+                        <section><h1>Github actions FTW</h1>
+                            <pre><code data-line-numbers="1|2-9|10-12|13|14|15-17|18">name: "Test Nim"
+on:
+  push:
+    paths:
+      - "ejemplos/nim/**"
+  pull_request:
+    paths:
+      - "ejemplos/nim/**"
+jobs:
+  test-nim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: '1.4.0' # default is 'stable'
+      - run: cd ejemplos/nim && nimble test -Y</code></pre>
+                        </section>
+
+                    </section>
+
+                    <section> <!-- Acelerando los tests -->
+                        <section><h1>F en F.I.R.S.T.</h1>
+                            <h2 class="fragment">No perder el estado
+                                de flow</h2>
+                        </section>
+
+                        <section><h2>Infraestructura como código</h2>
+                            <h1 class="fragment"> ⇒ Mucho tiempo
+                                perdido con dependencias</h1>
+                        </section>
+
+                        <section><h1>Solución ①: fatpack</h1>
+                            <pre><code>language: minimal
+script:
+  - prove -c t/proyecto.t
+                            </code></pre>
+                            <aside class="notes">Siendo en Perl, que
+                                está incluido en el runner, más rápido
+                                todavía</aside>
+                        </section>
+
+                        <section><h1>Solución ②: Docker</h1>
+                            <pre><code data-line-numbers="1|5-7|12">FROM jjmerelo/perl-test-text
+LABEL version="1.0" maintainer="JJ Merelo &lt;jjmerelo@GMail.com>" perl5version="5.22"
+
+WORKDIR /home/install
+ADD cpanfile .
+RUN apt-get update && apt-get install -y git
+RUN cpanm --installdeps .
+
+VOLUME /test
+WORKDIR /test
+
+ENTRYPOINT cp /home/install/data/*.dic /home/install/data/*.aff /test && prove -I/usr/lib -c  </code></pre>
+                        </section>
+
+                        <section><h1>Y en Travis...</h1>
+                            <pre><code data-line-numbers="1,2|4-6|8,9">language:
+  - minimal
+
+install:
+  - docker pull jjmerelo/p5-devqagrx:latest
+  - docker images
+
+script:
+  - docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/p5-devqagrx:latest</code></pre>
+                        </section>
+
+                        <section data-background="https://live.staticflickr.com/1970/31498119578_f07e6e7301_k_d.jpg"><h1>O también</h1>
+                            <h2 class="fragment">Usar cachés</h2>
+                            <h2 class="fragment">Paralelizar
+                                tests</h2>
+                            <h2 class="fragment">Trocear y repartir</h2>
+                        </section>
+                    </section>
+
                     <section><h1>✓ TODO hito 11</h1>
-                        <h2 class="fragment">Elegir marco de test +
-                            añadir <code>test</code> a tareas</h2>
-                        <h3 class="fragment"> En
-                            <code>agil.yaml</code></h3>
-                        <pre class="fragment"><code data-line-numbers="1|2|3">testing:
-    runner: make
-    framework: prove  </code></pre>
+                        <h2 class="fragment">Instalar sistema de CI y
+                        pasar los tests</h2>
+                        <h3 class="fragment">Se usará el <em>checks
+                        API</em> para comprobarlo.  </code></pre>
                     </section>
 
                 </div>

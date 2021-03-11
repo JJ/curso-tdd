@@ -175,7 +175,7 @@ lenguaje habrá una serie de instrucciones estándar que se ejecutarán
 con sólo especificar el lenguaje y la versión; también hay otros
 apartados de configuración que conviene mirar en la web de Travis.
 El resultado
-[aparecerá en la web](https://travis-ci.org/JJ/desarrollo-basado-pruebas)
+[aparecerá en la web](https://travis-ci.com/github/JJ/desarrollo-basado-pruebas)
 y también se enviará por correo electrónico. Y te da también un
 *badge* que puedes poner en tu fichero para indicar que, por lo
 pronto, todo funciona.
