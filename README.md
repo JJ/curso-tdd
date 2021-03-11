@@ -123,6 +123,7 @@ estas sesiones:
     Actions...
   * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
+  * [Presentación](preso/CI.html).
 
 14. Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
