@@ -50,15 +50,29 @@ funciones. Esta completitud, aparte de ir sobre el código, tendrá que
 ir también sobre las historias de usuario, que es lo que en realidad
 debe ser cubierto.
 
+> Estos principios se mencionan en "Clean Code", aunque al parecer
+> vienen de antes, de algo llamado "Object Mentor". Clean Code es de
+> 2008, de todas formas.
+
 Al principio, la T era de *timely*, es decir, *a tiempo*. TDD dice que
 hay que escribir los tests *antes* del código, para seguir el
 principio
 [red-green-refactor](https://softwarecrafters.io/javascript/tdd-test-driven-development),
-es decir, hay que escribir los tests,
-luego escribir el código guarro que haga falta para que pasen los
-tests (*green*), luego refactorizar. Sin embargo, lo importante, al
-final, es que haya test. Ese tipo de estrategias pueden funcionar bien
-en ciertos entornos. Lo que funcione mejor para cada uno es siempre lo mejor.
+es decir, hay que escribir los tests, luego escribir el código guarro
+que haga falta para que pasen los tests (*green*), luego
+refactorizar. Sin embargo, lo importante, al final, es que haya test
+(aunque se pueden considerar todo tipo de razones por las que escribir
+los tests primero [es
+mejor](http://agileinaflash.blogspot.com/2009/02/why-pout-aka-tad-sucks.html). Ese
+tipo de estrategias pueden funcionar bien en ciertos entornos. Lo que
+funcione bien para cada uno es siempre lo mejor.
+
+> Hay todo [tipo de
+> principios](https://stackoverflow.com/a/43129899/891440), o
+> propiedades de buenos tests: tener control total del sistema bajo
+> test (SUT), que sean relevantes, que sean auto-explicativos, y que
+> sean independientes (por ejemplo, que no dependan de la
+> implementación).
 
 ### Escribiendo tests en JavaScript
 
