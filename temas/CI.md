@@ -86,14 +86,16 @@ programa en sí con las librerías del lenguaje de programación en el
 que está desarrollado.
 
 Un sistema bastante popular de integración continua es
-[Jenkins](https://jenkins.io/). Jenkins lo puedes usar en la nube o instalarte tu propio
-ordenador para hacerlo. Sin embargo, está enfocado sobre todo a Java (y no hay un servicio gratuito que se pueda ejecutar)
-por lo que recomendamos, al menos para empezar, otros sistemas como [Travis](https://travis-ci.org) o
+[Jenkins](https://jenkins.io/). Jenkins lo puedes usar en la nube o
+instalarte tu propio ordenador para hacerlo. Sin embargo, está
+enfocado sobre todo a Java (y no hay un servicio gratuito que se pueda
+ejecutar) por lo que recomendamos, al menos para empezar, otros
+sistemas como [Travis](https://travis-ci.org) o
 [Shippable](https://www.shippable.com/) que podemos usar también desde
 la nube y, además, están preparados para más lenguajes de
 programación.
 
-Para trabajar con un sistema de CI hay que hacerlo en dos
+Para trabajar con un sistema de CI hay que hacerlo en varios
 pasos
 
 1. Darse de alta. Muchos están conectados con GitHub por lo que puedes
@@ -101,21 +103,32 @@ pasos
    autorización, acceder al contenido e incluso informar del resultado
    de los tests.
 
-2. Activar el repositorio en el que se vaya a aplicar la
-   integración continua. Travis permite hacerlo directamente desde tu
-   configuración; en otros se dan de alta desde la web de GitHub; también en algunos casos todos los repositorios estarán autorizados con sólo autorizar el usuario. Por supuesto, en el caso de GitHub Actions y *GitLab pipelines* no hace falta llevar a cabo este paso.
+2. Activar el repositorio en el que se vaya a aplicar la integración
+   continua. Travis permite hacerlo directamente desde tu
+   configuración; en otros se dan de alta desde la web de GitHub;
+   también en algunos casos todos los repositorios estarán autorizados
+   con sólo autorizar el usuario. Por supuesto, en el caso de GitHub
+   Actions y *GitLab pipelines* no hace falta llevar a cabo este paso.
 
-3. Crear un fichero de configuración con la configuración necesaria para ejecutar estos tests y añadirlo al repositorio.
+3. Crear un fichero de configuración con la configuración necesaria
+   para ejecutar estos tests y añadirlo al repositorio. En sistemas de
+   CI integrados en un repositorio, como GitHub actions, este paso es
+   el único necesario.
 
 
-Los ficheros de configuración de las máquinas que ejecutan los servicios de integración continua
-corresponden, aproximadamente, a una configuración de una máquina
-virtual que se dedicara solo y exclusivamente a llevar a cabo la ejecución de los
-tests. Por ello las órdenes del mismo son equivalentes a una
-provisión de una máquina virtual (o contenedor), a la que tras el
-sistema operativo se le instala lo necesario, indicado en 
-el fichero de configuración tal como este para Travis.
+Los ficheros de configuración de las máquinas que ejecutan los
+servicios de integración continua corresponden, aproximadamente, a una
+configuración de una máquina virtual que se dedicara solo y
+exclusivamente a llevar a cabo la ejecución de los tests. Por ello las
+órdenes del mismo son equivalentes a una provisión de una máquina
+virtual (o contenedor), a la que tras el sistema operativo se le
+instala lo necesario, indicado en el fichero de configuración tal como
+este para Travis.
 
+> Que no es que aconsejemos travis exclusivamente, sobre todo ahora
+>	que tiene los créditos muy limitados. Pero fue uno de los primeros
+>	que se creó, y si se usa con prudencia, es bastante útil
+    
 ```
 	language: node_js
 	node_js:
@@ -138,7 +151,9 @@ Este fichero, denominado `.travis.yml`, contiene lo siguiente:
   se puede poner un lenguaje tal como C y luego descargar lo necesario
   para otro lenguaje. Con `language: minimal` no se cargará nada
   adicional y se usarán sólo las utilidades que el contenedor donde se
-  ejecuta traiga instaladas (por ejemplo, make o git).
+  ejecuta traiga instaladas (por ejemplo, make o git). Si se pone
+  `minimal` como lenguaje, hay algunos instalados que se pueden usar,
+  aunque sin versiones, por ejemplo Perl o Python.
 
 - `node_js` en este caso indica las versiones que vamos a probar. Por
   el mismo precio podemos probar varias versiones, en este caso las
@@ -180,12 +195,13 @@ para el despliegue continuo.
 Es conveniente que los tests tarden la mínima cantidad de tiempo
 posible, para que se pueda comprobar que existe algún error sobre la
 marcha y se pueda corregir. Sin embargo, cualquier test va a necesitar
-instalar una serie de prerrequisitos (módulos dependientes, por ejemplo) antes de ejecutarlos, así que la
-descarga e instalación de paquetes y módulos, y en algunos casos
-incluso la compilación de algún prerrequisito necesario, va a tardar
-algún tiempo. Acelerar los tests hasta que tarden menos (incluso
-bastante menos) de un minuto es esencial para un trabajo fluido, que
-permita corregir sobre la marcha errores antes de continuar trabajando.
+instalar una serie de prerrequisitos (módulos dependientes, por
+ejemplo) antes de ejecutarlos, así que la descarga e instalación de
+paquetes y módulos, y en algunos casos incluso la compilación de algún
+prerrequisito necesario, va a tardar algún tiempo. Acelerar los tests
+hasta que tarden menos (incluso bastante menos) de un minuto es
+esencial para un trabajo fluido, que permita corregir sobre la marcha
+errores antes de continuar trabajando.
 
 Hay muchas formas de conseguir que estos tests vayan más rápidamente,
 que pasan generalmente por crear un testeador específico con todo lo
