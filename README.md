@@ -163,6 +163,9 @@ con enlaces
 |  9   | 11         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#Actividad)|
 |  10  | 12         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#Actividad)|
 
+Esta información te la da el bot `kke`, añadido al grupo de Telegram
+del curso, o con una conversación directa con él.
+
 ## Posibles ideas para proyectos, problemas para resolver
 
 La informática consiste en resolver problemas del usuario mediante un
