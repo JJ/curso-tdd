@@ -63,3 +63,24 @@ jobs:
             } else {
                console.log( "✅ Parece que hay un issue ")
             }
+      - name: Comprueba que haya un sistema de integración continua
+        uses: actions/github-script@v3
+        if: env.version >= '11'
+        with:
+          github-token: ${{github.token}}
+          script: |
+            const user = process.env.user
+            const repo = process.env.repo
+            const checks_before_pag =
+                    await github.checks.listForRef.endpoint.merge(
+                        { owner: user,
+                          repo: repo,
+                          ref: 'HEAD',
+                          status: 'completed'
+                        })
+            const checks = await github.paginate( checks_before_pag)
+            console.log( "✅ Hay " + checks.length + " sistemas de CI configurados")
+
+            if ( checks.length < 1 ) {
+                    core.setFailed("❌ No hay suficientes sistemas de CI configurados")
+            }
