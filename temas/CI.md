@@ -190,6 +190,65 @@ control de calidad en el desarrollo. Y, finalmente, porque la
 integración continua y los tests correspondientes son un paso esencial
 para el despliegue continuo.
 
+Desde 2018 que salieron de beta, por sus límites generosos, por su
+buena integración con GitHub y en general porque simplemente son
+prácticas (aunque tienen sus problemas) se están imponiendo hoy en día
+las [GitHub Actions (GHA)](https://github.com/features/actions). En general,
+GHA son un sistema de flujos de trabajo activados por eventos en el
+repositorio, una parte relativamente pequeña de los cuales son los
+push y pull requests. Siguen un esquema habitual en este tipo de
+herramientas (similar a los *pipelines* en GitLab, por ejemplo). Una
+*action* se activa por una serie de eventos, que se tienen que
+definir, filtrando también por el contenido del repositorio que ha
+cambiado (ficheros, ramas o tags, por ejemplo). Una acción contiene
+varios *jobs*, cada uno de los cuales usa un runner diferente y en
+principio es independiente del resto (aunque es fácil pasar
+información de un *job* a otro dentro de la misma *action*). Cada
+*job* puede tener información común (como variables de entorno), y se
+divide en diferentes *steps*. Los *steps* se ejecutan dentro de la
+misma MV o contenedor, aunque en diferentes shells, por los que habrá
+que re-declarar las variables de entorno si las queremos. Cada uno de
+estos pasos se puede o programar directamente sobre el runner (usando
+aluno de los shells incluidos en el runner, como Perl o bash) o usar
+una *action* externa (sí, el nombre es confuso, porque *actions* en el
+*marketplace* son pasos aquí). Veamos un ejemplo:
+
+```yaml
+name: "Test Nim"
+on:
+  push:
+    paths:
+      - "ejemplos/nim/**"
+  pull_request:
+    paths:
+      - "ejemplos/nim/**"
+
+jobs:
+  test-nim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: '1.4.0' # default is 'stable'
+      - run: cd ejemplos/nim && nimble test -Y
+
+```
+
+Esta GHA pasa los tests a los [ejemplos en Nim](../ejemplos/nim) de
+este repositorio. Por eso filtra sólo los ficheros de esos directorios
+(con `**` se indica que es cualquier fichero a cualquier
+profundidad). Está declarada sólo cuando se hace push o pull request
+(es decir, no cuando se crea un issue, por ejemplo), usa como *runner*
+la última versión de Ubuntu (por lo pronto la 18.04, pronto la
+20.04). Usa una action externa para instalar nim (que esencialmente
+usa `choosenim` para instalar una versión en espacio de usuario) y
+finalmente, con `run` pasa los tests. Cada paso tiene esas claves
+estándar, aparte de `name`, que aquí no hemos usado. Hay más ejemplos
+en [el directorio de workflows](../.github/workflows), que ejercen
+tanto como tests, como creando otros workflows para diferentes labores
+administrativas.
+
 ## Acelerando los tests
 
 Es conveniente que los tests tarden la mínima cantidad de tiempo
