@@ -10,7 +10,7 @@ describe Project do
 
   describe "Sin issues" do
     it "has no issues when initialized" do
-      expect( @project.name ).to be( PROJECT_NAME )
+      expect( @project.issues.length ).to be 0
     end
   end
 end
