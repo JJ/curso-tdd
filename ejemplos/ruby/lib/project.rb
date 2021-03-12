@@ -9,10 +9,11 @@ end
 
 class Project
   include Named
-  attr_reader :issues, :milestones
+  attr_reader :issues, :milestones, :logger
 
-  def initialize( name )
+  def initialize( name, logger )
     @name = name
+    @logger = logger
     @issues = []
     @milestones = []
   end

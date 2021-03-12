@@ -2,10 +2,13 @@ require "project"
 
 PROJECT_NAME = 'Foo'
 
+class NoLogger
+end
+
 describe Project do
 
   before do
-    @project = Project.new(PROJECT_NAME )
+    @project = Project.new(PROJECT_NAME,NoLogger.new() )
   end
 
   describe "Nombre asignado" do

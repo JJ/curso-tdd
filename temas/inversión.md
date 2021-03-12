@@ -150,11 +150,11 @@ cosa de cada inicializador.
 
 ### Inyectando dependencias
 
-Este principio se basa en el uso, dentro de las clases que necesitan las
-dependencias, de objetos que representen estas dependencias, en vez de
-acoplar clases (y objetos) a las dependencias de forma rígida. Si 
-estas dependencias implementan un rol, podemos intercambiarlas fácilmente sin
-que la clase que los usa lo detecte.
+Este principio se basa en el uso, dentro de las clases que necesitan
+las dependencias, de objetos que las representen, en
+vez de acoplar clases (y objetos) a las dependencias de forma
+rígida. Si estas dependencias implementan un rol, podemos
+intercambiarlas fácilmente sin que la clase que los usa lo detecte.
 
 Por ejemplo, podemos hacerlo en esta clase, `Project::Stored`:
 
@@ -181,13 +181,51 @@ my $dator = Project::Data::JSON.new($data-file);
 my $stored = Project::Stored.new($dator);
 ```
 
-En esta nueva clase tendremos que adaptar las funciones para usar este tipo de
-almacenamiento de datos (en vez de almacenarlos en memoria), pero en principio va a ser posible hacerlo sin mucho
-problema.
+En esta nueva clase tendremos que adaptar las funciones para usar este
+tipo de almacenamiento de datos (en vez de almacenarlos en memoria),
+pero en principio va a ser posible hacerlo sin mucho problema.
 
-Este tipo de organización del código resulta especialmente interesante
-a la hora de hacer tests. Si queremos imitar ese almacenamiento, simplemente tenemos que usar el mismo
-rol:
+## Dobles de test
+
+El concepto de [dobles de
+test](https://docs.microsoft.com/en-us/archive/msdn-magazine/2007/september/unit-testing-exploring-the-continuum-of-test-doubles)
+es un patrón que incluye todos los posibles objetos *falsos* que se
+usen para sustituir a verdaderos objetos que sean costosos de
+instanciar o, generalmente, tengan alguna dependencia externa.
+
+El tipo de doble más simple es lo que se llama un
+[*stub*](https://blog.pragmatists.com/test-doubles-fakes-mocks-and-stubs-1a7491dfa3da). Es
+simplemente un objeto que se utiliza como *placeholder* en una llamada
+a función o instanciación de un objeto, sin que en realidad haga nada.
+
+>*Stub*: lo que queda en un ticket o cheque troquelado, o una colilla.
+
+Por ejemplo, esta clase `NoLogger` es simplemente un stub:
+
+```Ruby
+require "project"
+
+PROJECT_NAME = 'Foo'
+
+class NoLogger
+end
+
+describe Project do
+
+  before do
+    @project = Project.new(PROJECT_NAME,NoLogger.new() )
+  end
+# continúa
+end
+```
+
+Como Ruby tiene *duck typing*, se puede pasar cualquier cosa en
+realidad. Evidentemente luego no se podrá usar, aunque un stub puede
+incluir también un interfaz que tampoco haga nada.
+
+Por ejemplo, todas las aplicaciones van a usar algún tipo de
+almacenamiento. Si queremos testar una aplicación incluyendo este
+almacenamiento, simplemente tenemos que usar el mismo rol:
 
 ```raku
 unit class Project::Data::Mock does Project::Dator;
