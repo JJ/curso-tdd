@@ -90,7 +90,35 @@ se añade algo al fichero `.gitignore`. Pero se pueden usar muchos
 otros gitmojis, y os animo a que lo hagáis, porque permiten, de un
 vistazo, saber de qué va el commit.
 
-## Pulls y sus diferentes modalidades.
+## El fichero `.gitignore` y su importancia
+
+Ya que mencionamos el fichero `.gitignore`, más allá de ser algo que
+evita la molestia de que aparezcan en el status cosas que en realidad
+no nos interesan, es verdaderamente parte integral de la seguridad de
+una aplicación. Para empezar, hay que tener en cuenta que afecta a el
+directorio en el que se encuentra y todos los que hay por debajo; por
+eso es habitual tener un .gitignore en el directorio raíz. Pero
+también se pueden crear en subdirectorios específicos si esos
+subdirectorios usan un lenguaje diferente o simplemente hay ficheros
+en ellos que no nos interesa que estén.
+
+De forma general, en .gitignore estarán todos los ficheros generados,
+pero también conviene añadir cosas como:
+
+* Los ficheros del IDE que estemos usando, por ejemplo, `.idea` o
+  `.vscode`. Estos ficheros contienen *setups* específicos de nuestro
+  ordenador, aparte de configuraciones que no interesa que tenga todo
+  el equipo.
+
+* Fichero `.env` donde se ponen valores de variables de entorno,
+  incluyendo claves de API y demás que se vayan a usar en el
+  despliegue. La buena práctica en este sentido es usar siempre el
+  mismo nombre de fichero, y que ese nombre de fichero esté en el
+  `.gitignore` de la plantilla del repositorio de la empresa o
+  *squad*.
+
+
+## Pulls y sus diferentes modalidades
 
 Como `git` es un sistema de control de versiones distribuido, `pull`
 (y `push`) son los que permiten fusionar las historias de diversas
