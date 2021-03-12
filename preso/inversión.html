@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desarrollo ágil: Inversión de dependencias</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/extra.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Inversión de dependencias</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/inversión"><code>jj.github.io/curso-tdd/temas/inversión</code></a></h3>
+                    </section>
+
+                    <section><h2>✓ TODO</h2>
+                        <h2 class="fragment">□ ¿Los milestones
+                        internos son productos mínimamente viables? </h2>
+                        <h2 class="fragment">□ ¿Se han integrado
+                            tests en el gestor?</h2>
+                        <h2 class="fragment">□ ¿Se ha configurado un
+                            sistema de CI?</h2>
+                    </section>
+
+                    <section><h2>📕 Retro</h2>
+                        <h2 class="fragment">□ ¿Hay espacios en blanco
+                            en la última línea de un YAML?</h2>
+                        <img src="../img/whitespace.png" alt="usa el editor">
+                    </section>
+
+                    <section><h1> Roles ⇒ inversión de dependencias ⇒
+                        mocks</h1></section>
+
+                    <section><!-- roles -->
+
+                        <section><h1>Composición frente a
+                            herencia</h1>
+                            <h1 class="fragment">Roles son "clases
+                                incompletas"</h1>
+                        </section>
+
+                        <section><h1>Roles = módulos en Ruby</h1>
+                            <pre><code data-line-numbers="1-3|6,10">module Named
+  attr_reader :name
+end
+
+class Project
+  include Named
+  attr_reader :issues, :milestones, :logger
+
+  def initialize( name, logger )
+    @name = name
+    @logger = logger
+    @issues = []
+    @milestones = []
+  end
+# ... más
+end</code></pre>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section><h1>Inyectando dependencias: usando
+                            roles</h1>
+                            <h2 class="fragment">Desacoplando
+                                diferentes funciones</h2>
+                        </section>
+
+                        <section><h1>Las dependencias son
+                            atributos</h1>
+                            <pre><code>unit class Project::Stored does Project;
+
+has Project::Dator $!dator;
+
+# Código de la clase aquí abajo</code>
+                            </pre></section>
+
+                        <section><h1>Inyectando la dependencia</h1>
+                            <pre><code>my $dator = Project::Data::JSON.new($data-file);
+my $stored = Project::Stored.new($dator);</code></pre>
+                        </section>
+                    </section>
+
+                    <section><!-- test doubles -->
+                        <section><h1>Dobles de test: sustituyen a
+                            objetos originales</h1>
+                        </section>
+
+                        <section><h1><em>Dummies</em>
+                            <pre><code data-line-numbers="4,5|9">equire "project"
+
+PROJECT_NAME = 'Foo'
+
+class NoLogger
+end
+
+describe Project do
+
+  before do
+    @project = Project.new(PROJECT_NAME,NoLogger.new() )
+  end
+# continúa
+end</code></pre>
+                            <section><h1><em>Stubs</em>: también con
+                                interface</h1>
+                            </section>
+
+                            <section><h1><em>Fakes</em>: clases
+                                falsas</h1>
+
+                                <pre><code>unit class Project::Data::Fake does Project::Dator;
+
+has $!data = { "milestones" => [
+    {
+        "2" => [
+            {
+                "4" => "Closed"
+            },
+            {
+                "3" => "Open"
+            }
+        ]
+    }
+    ],
+    "name" => "Foo"
+};</code></pre>
+                            </section>
+
+                            <section><h1>A la hora de testear</h1>
+                                <pre><code>$dator = Project::Data::Fake.new;
+$stored = Project::Stored.new($dator);</code></pre>
+                            </section>
+
+                            <section><h1>Mocks: cualquier
+                                <em>imitador</em> de
+                                funcionalidad</h1>
+                                <h2 class="fragment">Los frameworks
+                                    pueden ayudar, pero no son
+                                    exclusivos.</h2>
+                            </section>
+                        </section>
+
+                    <section><h1>✓ TODO hito 12</h1>
+                        <h2 class="fragment">Comenzar a integrar los
+                            servicios por inyección de dependencias</h2>
+                        <h3 class="fragment">E integrar los tests correspondientes</h3>
+                        <h3 class="fragment">Se usará el <em>checks
+                        API</em> para comprobarlo.  </code></pre>
+                    </section>
+
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+                 slideNumber: true,
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>

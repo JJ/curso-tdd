@@ -225,6 +225,9 @@ realidad. Evidentemente luego no se podrá usar; aunque se puede elevar
 su rango a *stub*, que al menos tienen una implementación mínima de un
 interfaz para que puedan ser llamadas.
 
+> Obsérvese también en esta biblioteca, [RSpec](https://rspec.info/),
+el uso de `before` para setup de la clase que vamos a testear.
+
 Hay otros tipos de dobles de test.
 Por ejemplo, todas las aplicaciones van a usar algún tipo de
 almacenamiento. Si queremos testear el comportamiento de una
@@ -261,10 +264,12 @@ Este tipo de dobles se llaman *fake*s, o simplemente falsos. No tienen
 ninguna lógica de negocio, sino que simplemente tienen lo necesario
 para responder de forma razonable a las entradas que se produzcan.
 
-
-Este concepto de *mock* (imitación o maqueta) se puede extender también a cualquier tipo de
-objeto que se use para imitar instancias de objetos que no tienen por qué estar
-presentes en el momento del test.
+En general, la mayoría de los *dobles de test* entran dentro del
+concepto de *mock* (imitación o maqueta), que se puede extender
+también a cualquier tipo de objeto que se use para imitar instancias
+de objetos que no tienen por qué estar presentes en el momento del
+test. Los mocks pueden incluir también una implementación completa,
+sólo que una que no esté lista para producción.
 
 > Por ejemplo, [este artículo](https://medium.com/@yeraydiazdiaz/what-the-mock-cheatsheet-mocking-in-python-6a71db997832)
 muestra de forma extensa cómo usar mocks en Python. Algunos frameworks como Jest
