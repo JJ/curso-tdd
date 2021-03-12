@@ -128,6 +128,7 @@ estas sesiones:
 14. Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
+  * [Presentación](preso/inversión.html).
 
 15. Tests de cobertura y por qué son importantes.
   * [Material](temas/cobertura.md).
@@ -164,6 +165,8 @@ con enlaces
 |  8   | 10         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#Actividad)|
 |  9   | 11         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#Actividad)|
 |  10  | 12         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#Actividad)|
+|  11  | 13         | [Integración continua](https://jj.github.io/curso-tdd/temas/CI#Actividad)|
+|  12  | 14         | [Inyección de dependencias](https://jj.github.io/curso-tdd/temas/inversión#Actividad)|
 
 Esta información te la da el bot `kke`, añadido al grupo de Telegram
 del curso, o con una conversación directa con él.
