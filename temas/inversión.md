@@ -194,7 +194,8 @@ usen para sustituir a verdaderos objetos que sean costosos de
 instanciar o, generalmente, tengan alguna dependencia externa.
 
 El tipo de doble más simple es lo que se llama un
-[*stub*](https://blog.pragmatists.com/test-doubles-fakes-mocks-and-stubs-1a7491dfa3da). Es
+[*dummy*](https://blog.pragmatists.com/test-doubles-fakes-mocks-and-stubs-1a7491dfa3da)
+o "pelele". Es
 simplemente un objeto que se utiliza como *placeholder* en una llamada
 a función o instanciación de un objeto, sin que en realidad haga nada.
 
@@ -220,15 +221,17 @@ end
 ```
 
 Como Ruby tiene *duck typing*, se puede pasar cualquier cosa en
-realidad. Evidentemente luego no se podrá usar, aunque un stub puede
-incluir también un interfaz que tampoco haga nada.
+realidad. Evidentemente luego no se podrá usar; aunque se puede elevar
+su rango a *stub*, que al menos tienen una implementación mínima de un
+interfaz para que puedan ser llamadas.
 
+Hay otros tipos de dobles de test.
 Por ejemplo, todas las aplicaciones van a usar algún tipo de
-almacenamiento. Si queremos testar una aplicación incluyendo este
-almacenamiento, simplemente tenemos que usar el mismo rol:
+almacenamiento. Si queremos testear el comportamiento de una
+aplicación, simplemente tenemos que usar el mismo rol:
 
 ```raku
-unit class Project::Data::Mock does Project::Dator;
+unit class Project::Data::Fake does Project::Dator;
 
 has $!data = { "milestones" => [
     {
@@ -250,9 +253,13 @@ Se puede instanciar este objeto exactamente de la misma forma para "imitar" la
 clase original que da acceso a datos:
 
 ```raku
-$dator = Project::Data::Mock.new;
+$dator = Project::Data::Fake.new;
 $stored = Project::Stored.new($dator);
 ```
+
+Este tipo de dobles se llaman *fake*s, o simplemente falsos. No tienen
+ninguna lógica de negocio, sino que simplemente tienen lo necesario
+para responder de forma razonable a las entradas que se produzcan.
 
 
 Este concepto de *mock* (imitación o maqueta) se puede extender también a cualquier tipo de
