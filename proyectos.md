@@ -8,7 +8,7 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 | [CryptoGo](https://github.com/CriptoInfo/CryptoGo)                      | v7.0.0  |
 | [Gortana](https://github.com/Pibes-GRX/Gortana)                         | v8.0.0  |
 | [El tiempo](https://github.com/tddgrupo4/TDD-Grupo-4)                   | v3.0.0  |
-| [NoteGram](https://github.com/NoteGramBot/NoteGram)                     | v4.0.5  |
+| [NoteGram](https://github.com/NoteGramBot/NoteGram)                     | v5.0.0  |
 | [Palabrot](https://github.com/ScalaBot-Team/PalaBrot)                   | v8.0.1  |
 | [BoTTutorias](https://github.com/BoTTuros/BoTTutorias)                  | v7.0.1  |
 |    [Zero, the bellhop.](https://github.com/monium/zero)                 | v5.0.0  |
