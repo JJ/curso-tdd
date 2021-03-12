@@ -97,6 +97,53 @@ que implemente ese rol, por lo que podemos declarar argumentos como
 `Project::Dator` sabiendo que vamos a poder usar esas dos funciones,
 `load` y `update`. Lo haremos a continuación.
 
+En Ruby se definen como `modules` los mixins o roles; un módulo en
+Ruby puede incluir tanto atributos como implementación, pero no se
+puede instanciar como en el caso de Raku. Por ejemplo, aquí:
+
+```
+module IssueStatus
+  OPEN = 1
+  CLOSED = 2
+end
+
+module Named
+  attr_reader :name
+end
+
+class Project
+  include Named
+  attr_reader :issues, :milestones
+
+  def initialize( name )
+    @name = name
+    @issues = []
+    @milestones = []
+  end
+
+  class Issue
+    include Named
+    attr_reader :status
+  end
+
+  def initialize( name )
+    @name = name
+    @issues = []
+    @milestones = []
+  end
+
+end
+```
+
+Definimos el módulo `Named`. Ya que cada una de las clases tiene un ID
+o nombre, simplemente usamos en todos el mismo para que tenga un
+acceso uniforme; de esa forma también podríamos, por ejemplo, buscar
+por nombres de cosas, sin tener en cuenta si son uno u otro. Con
+`include Named` lo incluimos en la clase `Project` e `Issue`, que son
+las dos que hemos definido. Como ese módulo sólo define un interfaz
+(un lector de atributo), inicializar las variables de instancia es
+cosa de cada inicializador.
+
 ### Inyectando dependencias
 
 Este principio se basa en el uso, dentro de las clases que necesitan las

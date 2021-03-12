@@ -20,12 +20,10 @@ class Project
   class Issue
     include Named
     attr_reader :status
-  end
 
-  def initialize( name )
-    @name = name
-    @issues = []
-    @milestones = []
+    def initialize( name )
+      @name = name
+    end
   end
 
 end
