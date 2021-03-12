@@ -19,10 +19,17 @@ adecuadamente.
 ## Criterio de aceptación
 
 El repositorio tiene que estar corriendo los tests en Travis, y esos
-tests deben pasar; tendrá que haber una clase abstracta que se pueda *inyectar* dentro de nuestras clases para acceder a datos.
-
+tests deben pasar; tendrá que haber una clase abstracta que se pueda
+*inyectar* dentro de nuestras clases para acceder a datos.
 
 ### Roles o mixins
+
+> Vamos primero a entender los principios generales que se suelen
+> usar, independientemente de frameworks externos, para implementar la
+> inyección de dependencias, y a continuación veremos diferentes
+> técnicas usadas para tal inyección de dependencias. Finalmente,
+> veremos cómo se usan *dobles de test*, a través de esas inyecciones
+> de dependencias, para llevar a cabo difentes técnicas de testing.
 
 En general, los roles o mixins se componen de un interfaz y, en ocasiones, de
 una implementación. Se usan en *composición* de objetos: un objeto compone, o
@@ -45,8 +52,10 @@ method load() {...}
 method update( \data ) {...}
 ```
 
-Los `{...}` indican que, quien quiera que implemente ese rol, tiene forzosamente
- que implementar estos métodos. 
+Los `{...}` son *stubs* que indican que, quien quiera que implemente ese rol, tiene forzosamente
+ que implementar estos métodos. El *slash* o barra invertida delante
+ del argumento `data` indica que se podrá usar cualquier tipo de
+ contenedor, sin fijar ni tipo ni roles.
 
 > En realidad, quien quiera que quiera instanciar una clase que
 > implemente ese rol, pero la idea es la misma.
@@ -54,7 +63,7 @@ Los `{...}` indican que, quien quiera que implemente ese rol, tiene forzosamente
 
  Este rol define solamente un interfaz, pero como
   las funciones son abstractas, sabemos que quien quiera que
-  implemente (o 
+  implemente (o
   *mezcle*) ese rol
   va a tener esas dos funciones. Podemos implementarlo en una clase, por
   ejemplo:
