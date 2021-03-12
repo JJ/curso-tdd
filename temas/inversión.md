@@ -99,7 +99,8 @@ que implemente ese rol, por lo que podemos declarar argumentos como
 
 En Ruby se definen como `modules` los mixins o roles; un módulo en
 Ruby puede incluir tanto atributos como implementación, pero no se
-puede instanciar como en el caso de Raku. Por ejemplo, aquí:
+puede instanciar como en el caso de Raku. Por ejemplo,
+[aquí](../ejemplos/ruby):
 
 ```
 module IssueStatus
@@ -124,15 +125,14 @@ class Project
   class Issue
     include Named
     attr_reader :status
-  end
 
-  def initialize( name )
-    @name = name
-    @issues = []
-    @milestones = []
+    def initialize( name )
+      @name = name
+    end
   end
 
 end
+
 ```
 
 Definimos el módulo `Named`. Ya que cada una de las clases tiene un ID
@@ -143,6 +143,10 @@ por nombres de cosas, sin tener en cuenta si son uno u otro. Con
 las dos que hemos definido. Como ese módulo sólo define un interfaz
 (un lector de atributo), inicializar las variables de instancia es
 cosa de cada inicializador.
+
+> Obsérvese que el ámbito de la clase `Issue` es el de la otra
+> clase. En este caso hemos decidido incluirlo todo en la misma
+> clase.
 
 ### Inyectando dependencias
 
