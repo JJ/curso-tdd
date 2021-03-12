@@ -29,7 +29,7 @@ tests deben pasar; tendrá que haber una clase abstracta que se pueda
 > inyección de dependencias, y a continuación veremos diferentes
 > técnicas usadas para tal inyección de dependencias. Finalmente,
 > veremos cómo se usan *dobles de test*, a través de esas inyecciones
-> de dependencias, para llevar a cabo difentes técnicas de testing.
+> de dependencias, para llevar a cabo diferentes técnicas de testing.
 
 En general, los roles o mixins se componen de un interfaz y, en ocasiones, de
 una implementación. Se usan en *composición* de objetos: un objeto compone, o
