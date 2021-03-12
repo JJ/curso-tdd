@@ -1,7 +1,7 @@
-use Test;
+use Test; # -*- mode: raku -*-
 
 use Project::Data::JSON;
-use Project::Data::Mock;
+use Project::Data::Fake;
 use Project::Stored;
 use Project::Issue;
 
@@ -26,7 +26,7 @@ is($stored.milestones.keys.elems,2, "2 milestones before adding");
 $stored.new-milestone($milestone);
 is($stored.milestones.keys.elems,3, "3 milestones after adding");
 
-$dator = Project::Data::Mock.new;
+$dator = Project::Data::Fake.new;
 $stored = Project::Stored.new($dator);
 say $stored.data();
 is($stored.milestones.keys.elems,1, "1 milestone from mock");

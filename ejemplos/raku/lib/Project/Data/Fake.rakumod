@@ -1,6 +1,6 @@
 use Project::Dator;
 
-unit class Project::Data::Mock does Project::Dator;
+unit class Project::Data::Fake does Project::Dator;
 
 has $!data = { "milestones" => [
     {
