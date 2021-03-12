@@ -42914,9 +42914,10 @@ EOC
 
   if ( $this_hito >= 1 ) {
     diag( check ("Tests para hito 1") );
-    if ( ok( -e "$repo_dir/agil.yaml", "Está el fichero de configuración «agil.yaml»") ) {
-      $config = LoadFile("$repo_dir/agil.yaml");
-      ok( $config, "Fichero de configuración para corrección agil.yaml cargado correctamente" );
+    my $agil_name = -e "$repo_dir/agil.yaml" ? "agil.yaml" : "agil.yml";
+    if ( ok( -e "$repo_dir/$agil_name", check("Está el fichero de configuración «$agil_name»")) ) {
+      $config = LoadFile("$repo_dir/$agil_name");
+      ok( $config, check("Fichero de configuración para corrección $agil_name cargado correctamente") );
       ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
     }
   }
