@@ -14,5 +14,5 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 |    [Zero, the bellhop.](https://github.com/monium/zero)                 | v5.0.0  |
 |    [agil-dev-4e](https://github.com/Kobedinho/agil-dev-4e)              | v3.0.2  |
 |    [FloWorking](https://github.com/PalomitaTeam/FloWorking)             | v9.0.0  |
-|    [go-notes](https://github.com/Golang-EC/go-notes)                    | v5.1.3  |
+|    [go-notes](https://github.com/Golang-EC/go-notes)                    | v5.1.4  |
 | [WeatherAnalytics](https://github.com/crislinfrajo/WeatherAnalytics)    | v1.0.1  |
