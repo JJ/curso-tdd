@@ -4,7 +4,7 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 
 | Nombre proyecto con enlace                                              | Versión |
 |-------------------------------------------------------------------------|---------|
-| [Tyempo](https://github.com/Phyton-es-mi-typo/tyempo)                   | v6.0.3  |
+| [Tyempo](https://github.com/Phyton-es-mi-typo/tyempo)                   | v7.0.0  |
 | [CryptoGo](https://github.com/CriptoInfo/CryptoGo)                      | v7.0.0  |
 | [Gortana](https://github.com/Pibes-GRX/Gortana)                         | v8.0.0  |
 | [El tiempo](https://github.com/tddgrupo4/TDD-Grupo-4)                   | v3.0.0  |
