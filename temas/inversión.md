@@ -275,8 +275,12 @@ sólo que una que no esté lista para producción.
 muestra de forma extensa cómo usar mocks en Python. Algunos frameworks como Jest
  permiten también hacer [mocks de forma sencilla](https://jestjs.io/docs/es-ES/manual-mocks).
 
-## Actividad
+## A dónde ir desde aquí
 
+Una vez que las dependencias están bien integradas en la arquitectura,
+se pueden por supuesto hacer los tests de [integración](integración).
+
+## Actividad
 
 Lo esencial de este hito es añadir un servicio externo usando el
 principio de inyección de dependencias. Puede ser un servicio de
