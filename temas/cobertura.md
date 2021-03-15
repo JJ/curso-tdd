@@ -200,7 +200,7 @@ Los tres últimos pasos son los que ejecutan los [tests de
 cobertura](https://github.com/JJ/ts-milestones/commit/599e3f41ed6314f23603862b5da5079358df61c6/checks?check_suite_id=299177238)
 y los suben [a
 codecov](https://codecov.io/gh/JJ/ts-milestones/src/master/src/Project.ts). La
-cobertura es del 100%, así que no hay mucho que mejorar aquí.
+cobertura (en ese momento) era del 100%, así que no hay mucho que mejorar aquí.
 
 > Se puede configurar GitHub para que en los pull requests sólo acepte
 > uno si no empeora la cobertura, lo que es razonable. Si el código
