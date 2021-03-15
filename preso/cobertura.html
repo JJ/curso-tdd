@@ -31,8 +31,63 @@
                             lógica de negocio con tests de dependencias?</h2>
                     </section>
 
-                    
+                    <section><h1>Si no se ha comprobado, está roto</h1></section>
+                    <section><h1>Cobertura: número de <em>caminos de
+                        código</em> que los tests ejercitan</h1>
+                        <aside class="notes">Si se usa TDD es difícil
+                    que aparezca, pero puede aparecer código no
+                            cubierto en refactorizaciones o en código
+                            legacy. También puede haber <em>corner
+                    cases</em> que no estén cubiertos por ningún test
+                            (aunque haya código para ellos</aside>
+                    </section>
 
+                    <section><!-- Mejores prácticas -->
+
+                        <section><h1>Buscar el nivel ideal de
+                            cobertura</h1>
+                        </section>
+
+                        <section><h1>Usar los tests de cobertura para
+                            identificar código <em>muerto</em></h1>
+                        </section>
+
+                        <section><h1>En proyectos libres, usarlo para
+                            código añadido</h1></section>
+
+                        <section><h1>En combinación con el
+                            <em>profiler</em>, identificar cuellos de botella</h1></section>
+                    </section>
+
+                    <section><!-- como se hace -->
+                        <section><h1>Elegir un marco/servicio de
+                            cobertura.</h1></section>
+
+                        <section><h1>Generación de informes a partir
+                            del código</h1>
+                            <pre><code>go test
+                            -coverprofile=coverage.out</code></pre>
+                        </section>
+
+                        <section><h1>Visualización de esos
+                            informes</h1>
+                            <img src="../img/gocover.png"
+                            alt="cobertura chugga">
+                            <aside class="notes">Antes de pasar por la
+                                refactorización</aside>
+                        </section>
+
+                        <section><h1>Refactorización</h1>
+                             <img src="../img/gocover-2.png"
+                            alt="cobertura menos chunga">
+
+                        </section>
+                    </section>
+
+                    <section data-background="../img/cobertura.png"><h1>Integrar los tests de cobertura en
+                        integración continua</h1>
+                    </section>
+                    
                     <section><h1>✓ TODO hito 13</h1>
                         <h2 class="fragment">Configurar tests de
                             cobertura e integrarlos en CI</h2>

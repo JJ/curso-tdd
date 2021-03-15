@@ -20,6 +20,14 @@ Inclusión del badge de `codecov` con un porcentaje de cobertura aceptable.
 
 ## Tests de cobertura
 
+Cuando se testea, se comprueba habitualmente el [*camino
+feliz*](https://en.wikipedia.org/wiki/Happy_path), sin ningunos
+errores o excepciones, todo según lo acordado. El código que
+representa ese *happy path* normalmente está bien comprobado. Pero hay
+[casos en el filo, o en la
+esquina](https://medium.com/swlh/taking-the-edge-off-of-edge-cases-7b3008d83a57),
+cuyo código en ocasiones no está testeado de forma tan extensiva.
+
 Los tests de cobertura miden qué parte de nuestro código ha sido
 ejercitada por los tests unitarios (que, recordemos, son de caja
 blanca y por tanto se puede saber qué camino han seguido por el
@@ -89,7 +97,9 @@ resultados.
 ![Cobertura de los tests en la clase HitosIV](img/gocover.png)
 
 En este caso, las líneas no cubiertas eran las que lanzaban errores en
-caso de que se encuentren algún problema. No siempre es obligatorio
+caso de que se encuentren algún problema; efectivamente, como se ha
+comentado en la introducción, el código fuera del *camino feliz* que
+no se estaba mirando. No siempre es obligatorio
 que cubrir el 100% de las de las líneas (por ejemplo, generar un JSON
 erróneo a ver si salta la segunda), pero quizás la primera sí merece
 la pena que se cubra, así que se añade un test adicional, pero debemos
@@ -196,7 +206,7 @@ cobertura es del 100%, así que no hay mucho que mejorar aquí.
 > uno si no empeora la cobertura, lo que es razonable. Si el código
 > añadido tiene una parte no testeada, es que no es correcto.
 
- 
+
 ## Actividad
 
 
