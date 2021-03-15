@@ -88,26 +88,28 @@ resultados.
 
 ![Cobertura de los tests en la clase HitosIV](img/gocover.png)
 
-En este caso, las  líneas no cubiertas eran las que lanzaban errores en caso de que
-se encuentren algún problema. No siempre es obligatorio que cubrir el 100% de las
-de las líneas (por ejemplo, generar un JSON erróneo a ver si salta la
-segunda), pero quizás la primera sí merece la pena que se cubra, así
-que se añade un test adicional, pero
-debemos
-[modificar ligeramente el código](https://stackoverflow.com/a/46841524/891440) para
-asegurar que sigue las mejores prácticas del lenguaje:
+En este caso, las líneas no cubiertas eran las que lanzaban errores en
+caso de que se encuentren algún problema. No siempre es obligatorio
+que cubrir el 100% de las de las líneas (por ejemplo, generar un JSON
+erróneo a ver si salta la segunda), pero quizás la primera sí merece
+la pena que se cubra, así que se añade un test adicional, pero debemos
+[modificar ligeramente el
+código](https://stackoverflow.com/a/46841524/891440) para asegurar que
+sigue las mejores prácticas del lenguaje:
 
 
 ![Nueva cobertura de los tests en la clase HitosIV](img/gocover-2.png)
 
-Siempre es mejor en Go devolver un error que enviar a registro un error fatal, así que este cambio en el código asegura que se pueda cubrir mejor con los tests.
+Siempre es mejor en Go devolver un error que enviar a registro un
+error fatal (sin hacer nada más) o lanzar un *panic*, así que este
+cambio en el código asegura que se pueda cubrir mejor con los tests.
 
 > Y también demuestra que la calidad en el desarrollo no es siempre
 > cuestión de escribir más o menos tests, sino de seguir buenas
 > prácticas en el diseño de aplicaciones para que estos tests sean
 > posibles y tengan la máxima cobertura.
 
-En Go se muestran las dos partes de los tests de cobertura: el
+En Go se ejemplifican las dos partes de los tests de cobertura: el
 generador de datos, y el que crea los informes. En casi todos los
 lenguajes va a ocurrir lo mismo, sólo que no va a estar integrado con
 el lenguaje, sino que va a ser una o dos utilidades aparte del
@@ -184,10 +186,10 @@ jobs:
         run: codecov
 ```
 
-Los tres últimos pasos son los que ejecutan los [tests de cobertura](https://github.com/JJ/ts-milestones/commit/599e3f41ed6314f23603862b5da5079358df61c6/checks?check_suite_id=299177238) y
-los
-suben
-[a codecov](https://codecov.io/gh/JJ/ts-milestones/src/master/src/Project.ts). La
+Los tres últimos pasos son los que ejecutan los [tests de
+cobertura](https://github.com/JJ/ts-milestones/commit/599e3f41ed6314f23603862b5da5079358df61c6/checks?check_suite_id=299177238)
+y los suben [a
+codecov](https://codecov.io/gh/JJ/ts-milestones/src/master/src/Project.ts). La
 cobertura es del 100%, así que no hay mucho que mejorar aquí.
 
 > Se puede configurar GitHub para que en los pull requests sólo acepte
@@ -198,17 +200,19 @@ cobertura es del 100%, así que no hay mucho que mejorar aquí.
 ## Actividad
 
 
-En el hito número 10, añadir los tests de cobertura al proyecto.
+En el hito número 13, añadir los tests de cobertura al proyecto.
 
-* Darse de alta en codecov o algún sitio similar.
-* Añadir tests de cobertura al ejecutor de tareas y al sitio de
-  integración continua.
-* Añadir API key a Travis (desde la web) y subir automáticamente los
+* Darse de alta en [codecov](https://about.codecov.io/) o algún sitio similar.
+* Añadir tests de cobertura al ejecutor de tareas y a la configuración
+  del servicio de integración continua.
+* Añadir API key al servicio de integración continua (desde la web) y subir automáticamente los
   tests de cobertura a la misma tras cada test.
 
 Se tendrán que añadir instrucciones en el README también sobre cómo
 ejecutar los tests de cobertura, usando el target `coverage`; se
-comprobará que la cadena `ejecutor-de-tareas coverage` está en el `README.md`.
+comprobará que la cadena `ejecutor-de-tareas coverage` esté en el
+`README.md`.
 
 También se comprobará que el badge de `codecov` esté presente en el
-README y que el porcentaje de cobertura sea superior al 85%.
+`README.md`. El porcentaje de cobertura deberá ser una cantidad
+aceptable, acordada por los miembros del equipo.
