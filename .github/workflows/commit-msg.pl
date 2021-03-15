@@ -20,5 +20,5 @@ for my $line ( sort { $a->[0] <=> $b->[0] } @data ) {
   my ($version, $cuantos) = @$line;
   $output .= sprintf("%3s","v$version") . " ⇒ " . "⬛" x $cuantos . "\n";
 }
-say "$output\n--";
+say "`$output`\n--";
 
