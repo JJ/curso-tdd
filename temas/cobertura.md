@@ -4,8 +4,10 @@
 
 Si el código no se ha probado, no funciona. Los tests de cobertura nos
 ayudan a saber qué partes del código no están cubiertas por los tests
-unitarios, y usarlos nos permitirá establecer un nivel determinado de
-cobertura, así como políticas sobre el mismo, para asegurar la calidad del código.
+unitarios. Usarlos nos permitirá asegurarnos de que todo el código
+funciona (y que hace lo que debe), estableciendo un nivel determinado
+de cobertura, así como políticas sobre el mismo, para asegurar la
+calidad del código.
 
 ## Al final de esta sesión
 
@@ -18,14 +20,15 @@ Inclusión del badge de `codecov` con un porcentaje de cobertura aceptable.
 
 ## Tests de cobertura
 
-Los tests de cobertura miden qué parte de nuestro código está cubierta
-por los tests unitarios (que, recordemos, son de caja blanca y por
-tanto se puede saber qué camino han seguido por el mismo). Estos tests
-de cobertura funcionan tanto a nivel de línea, como de función o de
-paquetes, pero generalmente van a dar un porcentaje de líneas
-cubiertas por los tests unitarios.
+Los tests de cobertura miden qué parte de nuestro código ha sido
+ejercitada por los tests unitarios (que, recordemos, son de caja
+blanca y por tanto se puede saber qué camino han seguido por el
+mismo). Estos tests de cobertura funcionan tanto a nivel de línea,
+como de función o de paquetes, pero generalmente van a dar un
+porcentaje de líneas cubiertas por los tests unitarios.
 
-Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, constarán de dos partes:
+Dependiendo del lenguaje, se hará con unas herramientas u otras. En
+general, constarán de dos partes:
 
 * Instrumentación para poder saber qué líneas se están ejecutando, y
   que genere un informe en algún formato estándar. Con este tipo de
@@ -34,8 +37,37 @@ Dependiendo del lenguaje, se hará con unas herramientas u otras. En general, co
   de tests, o alguna otra forma que permita trazar la ejecución del
   código y generar un informe. A partir de ahí, se generará un
   fichero.
-* Visualizadores de los informes, que a partir del anterior lo pasan a HTML, por ejemplo.
+* Visualizadores de los informes, que a partir del anterior lo pasan a
+  HTML, por ejemplo.
 
+Como en cualquier caso en programación ágio, conviene seguir una serie
+de buenas prácticas, como [las indicadas en esta entrada del blog de
+testing de
+Google](https://testing.googleblog.com/2020/08/code-coverage-best-practices.html):
+
+- No hay que intentar alcanzar el 100% de cobertura, pero sí conviene
+  establecer niveles aceptables y niveles recomendables. Por ejemplo,
+  en Google consideran 60% aceptable, y un 90% excelente. En general,
+  lo importante es las prácticas que emergen de intentar cubrir todos
+  los casos posibles mediante el test, más que el hecho de tenerlo
+  todo cubierto en sí. Además, identificar qué partes del código no se
+  están testeando pueden contribuir a ver qué partes del código es
+  *legacy* y ya no se usa.
+- La buena práctica en general es usar el flujo TDD: escribir tests
+  antes que el código. De esa forma, se garantiza que sólo se escribe
+  el código para que pase los tests y la cobertura siempre va a ser
+  100%. Sin embargo, las bases de código evolucionan y por eso puede
+  haber casos no cubiertos por test. Hacer tests de cobertura te sirve
+  para identificar esas zonas de código.
+- También puede significar un beneficio en proyectos open source:
+  cuando se añade nuevo código mediante un PR, se puede estimar cómo
+  ha variado la cobertura. En general, todo código nuevo añadido
+  debería estar testeado, por lo que el nivel de cobertura no debería
+  variar.
+- La cobertura de código se puede usar en combinación con un
+  *profiler* para tener un conocimiento dinámico más exhaustivo del
+  código, los caminos de código que se siguen, e identificar posibles
+  cuellos de botella.
 
 ### Tests de cobertura en Go y cómo usarlos para mejorar el código.
 
@@ -49,7 +81,10 @@ go tool cover -html=coverage.out
 La primera ejecuta los tests y genera un fichero de salida con el
 nombre indicado, y la segunda orden abre un navegador con una página
 en la que nos muestra nuestro código y la cobertura que tiene,
-señalando las funciones y líneas que no están cubiertas. Sobre la clase [`HitosIV` que ya hemos usado anteriormente](https://github.com/JJ/HitosIV), estos serían los resultados.
+señalando las funciones y líneas que no están cubiertas. Sobre la
+clase [`HitosIV` que ya hemos usado
+anteriormente](https://github.com/JJ/HitosIV), estos serían los
+resultados.
 
 ![Cobertura de los tests en la clase HitosIV](img/gocover.png)
 
@@ -60,7 +95,7 @@ segunda), pero quizás la primera sí merece la pena que se cubra, así
 que se añade un test adicional, pero
 debemos
 [modificar ligeramente el código](https://stackoverflow.com/a/46841524/891440) para
-asegurar que sigue las mejores prácticas del lenguaje: 
+asegurar que sigue las mejores prácticas del lenguaje:
 
 
 ![Nueva cobertura de los tests en la clase HitosIV](img/gocover-2.png)
@@ -70,7 +105,7 @@ Siempre es mejor en Go devolver un error que enviar a registro un error fatal, a
 > Y también demuestra que la calidad en el desarrollo no es siempre
 > cuestión de escribir más o menos tests, sino de seguir buenas
 > prácticas en el diseño de aplicaciones para que estos tests sean
-> posibles y tengan la máxima cobertura. 
+> posibles y tengan la máxima cobertura.
 
 En Go se muestran las dos partes de los tests de cobertura: el
 generador de datos, y el que crea los informes. En casi todos los

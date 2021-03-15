@@ -289,7 +289,7 @@ le invoca con alguna combinación equivocada; esencialmente, los
 *mocks* se usan para comprobar interacciones entre diferentes
 objetos. Por ejemplo, si un mock de un sistema de logging usa siempre
 un URI para instanciarse, puede fallar si se usa cualquier otro tipo
-de cadena u objeto. 
+de cadena u objeto.
 
 ## A dónde ir desde aquí
 
