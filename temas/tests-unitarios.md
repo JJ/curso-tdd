@@ -769,6 +769,13 @@ programa con el código de estado 255, que indica que la ejecución ha
 sido fallida. En ese caso, no se llevará a cabo el evento, en este
 caso creación (o modificación) de un mensaje de commit.
 
+Muchos lenguajes de programación tienen *frameworks* de *hooks* que
+permite llevar a cabo tareas habituales simplemente usando ficheros de
+configuración. Por ejemplo,
+[`husky`](https://github.com/typicode/husky/issues). Otros
+frameworks, como
+[`pre-commit`](https://github.com/pre-commit/pre-commit), son
+independientes del lenguaje y se pueden usar con cualquiera.
 
 ## Actividad y entrega
 

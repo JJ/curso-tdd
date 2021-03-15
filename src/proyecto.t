@@ -108,13 +108,19 @@ EOC
   }
 
   my $testing = $config->{'testing'};
+  my $runner;
   if ( $this_version >= 10) {
     diag( check( "Tests para hito 10") );
     ok( $testing, check( "La clave testing en el fichero de configuración en este tag" ) );
-    my $runner = $testing->{'runner'};
+    $runner = $testing->{'runner'};
     ok( $runner, check( "La clave testing en el fichero de configuración en este tag" ) );
     like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
     ok( $testing->{'framework'}, check( "«testing->{'framework'}» declarado como framework" ));
+  }
+
+  if ( $this_version >= 13) {
+    diag( check( "Tests para hito 13") );
+    like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
   }
 
 }

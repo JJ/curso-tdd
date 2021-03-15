@@ -15,3 +15,11 @@ fatpack pack src/proyecto.t > t/proyecto.t
 ~~~sh
 raku ejemplos/raku/scripts/asistencia.raku > data/asistencia.csv
 ~~~
+
+## doc
+
+> Genera un solo fichero con todos los temas (via Makefile)
+
+~~~sh
+make doc
+~~~

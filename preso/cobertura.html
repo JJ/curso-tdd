@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desarrollo ágil: Tests de cobertura</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/extra.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Tests de cobertura</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/cobertura"><code>jj.github.io/curso-tdd/temas/cobertura</code></a></h3>
+                    </section>
+
+                    <section><h2>✓ TODO</h2>
+                        <h2 class="fragment">□ ¿Se ha creado una hoja
+                        de ruta en los milestones? </h2>
+                        <h2 class="fragment">□ ¿Se ha configurado un
+                            sistema de CI?</h2>
+                        <h2 class="fragment">□ ¿Se ha reorganizado la
+                            lógica de negocio con tests de dependencias?</h2>
+                    </section>
+
+                    <section><h1>Si no se ha comprobado, está roto</h1></section>
+                    <section><h1>Cobertura: número de <em>caminos de
+                        código</em> que los tests ejercitan</h1>
+                        <aside class="notes">Si se usa TDD es difícil
+                    que aparezca, pero puede aparecer código no
+                            cubierto en refactorizaciones o en código
+                            legacy. También puede haber <em>corner
+                    cases</em> que no estén cubiertos por ningún test
+                            (aunque haya código para ellos</aside>
+                    </section>
+
+                    <section><!-- Mejores prácticas -->
+
+                        <section><h1>Buscar el nivel ideal de
+                            cobertura</h1>
+                        </section>
+
+                        <section><h1>Usar los tests de cobertura para
+                            identificar código <em>muerto</em></h1>
+                        </section>
+
+                        <section><h1>En proyectos libres, usarlo para
+                            código añadido</h1></section>
+
+                        <section><h1>En combinación con el
+                            <em>profiler</em>, identificar cuellos de botella</h1></section>
+                    </section>
+
+                    <section><!-- como se hace -->
+                        <section><h1>Elegir un marco/servicio de
+                            cobertura.</h1></section>
+
+                        <section><h1>Generación de informes a partir
+                            del código</h1>
+                            <pre><code>go test
+                            -coverprofile=coverage.out</code></pre>
+                        </section>
+
+                        <section><h1>Visualización de esos
+                            informes</h1>
+                            <img src="../img/gocover.png"
+                            alt="cobertura chugga">
+                            <aside class="notes">Antes de pasar por la
+                                refactorización</aside>
+                        </section>
+
+                        <section><h1>Refactorización</h1>
+                             <img src="../img/gocover-2.png"
+                            alt="cobertura menos chunga">
+
+                        </section>
+                    </section>
+
+                    <section data-background="../img/cobertura.png"><h1>Integrar los tests de cobertura en
+                        integración continua</h1>
+                    </section>
+
+                    <section><h1>✓ TODO hito 13</h1>
+                        <h2 class="fragment">Configurar tests de
+                            cobertura e integrarlos en CI</h2>
+                        <h3 class="fragment"><code>[gestor de
+                        tareas] coverage</code> en el <code>README.md</code></h3>
+                        <h3 class="fragment">Badge de codecov con
+                             cobertura aceptable.</h3>
+                    </section>
+
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+                 slideNumber: true,
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>

@@ -131,13 +131,14 @@ estas sesiones:
   * [Presentación](preso/inversión.html).
 
 15. Tests de cobertura y por qué son importantes.
+  * Último en la cuarta edición
   * [Material](temas/cobertura.md).
+  * [Presentación](preso/cobertura.html).
 
 16. Tests funcionales/de integración
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
-
 
 17. Tests adicionales
   * Tests de prestaciones.
@@ -167,6 +168,7 @@ con enlaces
 |  10  | 12         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#Actividad)|
 |  11  | 13         | [Integración continua](https://jj.github.io/curso-tdd/temas/CI#Actividad)|
 |  12  | 14         | [Inyección de dependencias](https://jj.github.io/curso-tdd/temas/inversión#Actividad)|
+|  13  | 15         | [Tests de cobertura](https://jj.github.io/curso-tdd/temas/cobertura#Actividad)|
 
 Esta información te la da el bot `kke`, añadido al grupo de Telegram
 del curso, o con una conversación directa con él.
@@ -237,3 +239,6 @@ o
 	make doc
 
 generará los proyectos en un solo PDF.
+
+Si tienes instalado [`mask`](https://github.com/jakedeichert/mask),
+puedes usarlo también.
