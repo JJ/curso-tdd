@@ -48,7 +48,7 @@ general, constarán de dos partes:
 * Visualizadores de los informes, que a partir del anterior lo pasan a
   HTML, por ejemplo.
 
-Como en cualquier caso en programación ágio, conviene seguir una serie
+Como en cualquier caso en programación ágil, conviene seguir una serie
 de buenas prácticas, como [las indicadas en esta entrada del blog de
 testing de
 Google](https://testing.googleblog.com/2020/08/code-coverage-best-practices.html):
