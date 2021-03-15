@@ -193,6 +193,11 @@ es un patrón que incluye todos los posibles objetos *falsos* que se
 usen para sustituir a verdaderos objetos que sean costosos de
 instanciar o, generalmente, tengan alguna dependencia externa.
 
+> Hay muchos documentos donde aclara los conceptos de "dobles de
+> test"; se puede consultar, por ejemplo, [este en el blog de testing
+> de
+> Google](https://testing.googleblog.com/2013/07/testing-on-toilet-know-your-test-doubles.html).
+
 El tipo de doble más simple es lo que se llama un
 [*dummy*](https://blog.pragmatists.com/test-doubles-fakes-mocks-and-stubs-1a7491dfa3da)
 o "pelele". Es
@@ -273,7 +278,18 @@ sólo que una que no esté lista para producción.
 
 > Por ejemplo, [este artículo](https://medium.com/@yeraydiazdiaz/what-the-mock-cheatsheet-mocking-in-python-6a71db997832)
 muestra de forma extensa cómo usar mocks en Python. Algunos frameworks como Jest
- permiten también hacer [mocks de forma sencilla](https://jestjs.io/docs/es-ES/manual-mocks).
+ permiten también hacer [mocks de forma
+ sencilla](https://jestjs.io/docs/es-ES/manual-mocks).
+
+Los que hemos visto con anterioridad en realidad no pueden fallar: se
+les llama de una forma determinada, devuelven algo. Sin embargo, en el
+punto más alto del espectro están los *mocks*: un mock sí puede
+provocar que el test falle, o puede devolver algún tipo de error si se
+le invoca con alguna combinación equivocada; esencialmente, los
+*mocks* se usan para comprobar interacciones entre diferentes
+objetos. Por ejemplo, si un mock de un sistema de logging usa siempre
+un URI para instanciarse, puede fallar si se usa cualquier otro tipo
+de cadena u objeto. 
 
 ## A dónde ir desde aquí
 
