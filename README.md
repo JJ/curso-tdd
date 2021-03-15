@@ -237,3 +237,6 @@ o
 	make doc
 
 generará los proyectos en un solo PDF.
+
+Si tienes instalado [`mask`](https://github.com/jakedeichert/mask),
+puedes usarlo también.
