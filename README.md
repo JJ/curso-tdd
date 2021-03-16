@@ -20,7 +20,7 @@ Nim](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml/badge.svg)]
 - [Hitos](#Hitos)
 - [Posibles ideas para proyectos](#Posibles-ideas-)
 - [Lugar](#Lugar)
-- [Título](#"Título" o acreditación de haber realizado el curso.)
+- [Título](#"Título"-o-acreditación-de-haber-realizado-el-curso.)
 - [Inscripción](#Inscripción)
 - [Proyectos realizados](#Proyectos-realizados)
 - [Instrucciones de uso](#Instrucciones-de-uso)
