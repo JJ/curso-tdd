@@ -1,4 +1,4 @@
-# Calidad en un aplicación desde el diseño.
+# Calidad en un aplicación desde el diseño
 
 
 ## Planteamiento
@@ -112,6 +112,9 @@ entre sí, y que se pueden programar y testear por separado. Esta
 autonomía, que es un requisito, hace que una de las técnicas más
 conocidas sea el [diseño dirigido por el
 dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
+
+> Con [un ejemplo en este
+> artículo](https://dev.to/microtica/the-concept-of-domain-driven-design-explained-1ccn).
 
 Aunque, como todas las tecnologías de programación, es compleja en
 vocabulario y metodología, lo principal es que se deben de crear

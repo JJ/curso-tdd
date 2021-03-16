@@ -296,6 +296,16 @@ de cadena u objeto.
 Una vez que las dependencias están bien integradas en la arquitectura,
 se pueden por supuesto hacer los tests de [integración](integración).
 
+La idea de dobles de test parte de un libro de Meszaros sobre patrones
+de test; Martin Fowler [explica en este artículo el concepto de forma
+extensiva](https://martinfowler.com/articles/mocksArentStubs.html#TheDifferenceBetweenMocksAndStubs).
+
+El desacoplamiento entre diferentes partes de un programa es la
+proposición central de la [arquitectura
+hexagonal](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)),
+que esencialmente trata de evitar dependencias no deseadas entre
+diferentes partes de una aplicación.
+
 ## Actividad
 
 Lo esencial de este hito es añadir un servicio externo usando el
