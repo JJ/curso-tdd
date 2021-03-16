@@ -17,7 +17,8 @@ Nim](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml/badge.svg)]
 ## Índice
 - [Introducción](#Introducción)
 - [Planificación del curso](#Planificación-del-curso)
-- [Posibles ideas para proyectos](#Posibles-ideas-para-proyectos,-problemas-para-resolver)
+- [Hitos](#Hitos)
+- [Posibles ideas para proyectos](#Posibles-ideas-)
 - [Lugar](#Lugar)
 - [Título](#"Título"-o-acreditación-de-haber-realizado-el-curso.)
 - [Inscripción](#Inscripción)
