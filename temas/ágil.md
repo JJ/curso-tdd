@@ -281,7 +281,9 @@ dentro de la medida de lo posible.
 ## Ver también
 
 Este [*whitepaper* gratuito describe en general la metodología
-Scrum](https://shop.theliberators.com/products/scrum-a-framework-to-reduce-risk-and-deliver-value-sooner-whitepaper).
+Scrum](https://shop.theliberators.com/products/scrum-a-framework-to-reduce-risk-and-deliver-value-sooner-whitepaper). En
+[este otro artículo da consejos para crear una serie de personas
+creíbles](https://www.romanpichler.com/blog/10-tips-agile-personas/).
 
 ## Actividad
 
