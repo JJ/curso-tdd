@@ -305,6 +305,6 @@ en realidad, el principio es el mismo. Tanto la clase que se encargue
 de los datos como la clase con el manejador de datos (dateador)
 insertado tendrán que testearse.
 
-En este hito (hito 12) no hará falta añadir nada especial. La clase
-que incluya inyección de dependencias tendrá que ser testeada, como el
-resto, y se tendrán que pasar los tests correspondientes.
+Tendréis que añadir al fichero `agil.yaml` una hueva clave, `dateador`,
+cuyo valor sea el fichero donde habéis implementado la clase abstracta
+que sirva de tal, o alguna clase concreta que siga ese patrón.
