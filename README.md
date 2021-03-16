@@ -13,6 +13,20 @@ Nim](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml/badge.svg)]
 💟
 [![Test Raku](https://github.com/JJ/curso-tdd/actions/workflows/raku-test.yaml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/raku-test.yaml)
 
+
+## Índice
+- [Introducción](#Introducción)
+- [Planificación del curso](#Planificación-del-curso)
+- [Posibles ideas para proyectos](#Posibles-ideas-para-proyectos,-problemas-para-resolver)
+- [Lugar](#Lugar)
+- [Título](#"Título" o acreditación de haber realizado el curso.)
+- [Inscripción](#Inscripción)
+- [Proyectos realizados](#Proyectos-realizados)
+- [Instrucciones de uso](#Instrucciones-de-uso)
+
+
+## Introducción
+
 En este curso trataremos de aprender las técnicas necesarias para
 trabajar en un entorno ágil de desarrollo, para aplicaciones nativas en la
 nube o cualquier otra cosa. Será un curso conceptual, pero también
