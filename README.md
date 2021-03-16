@@ -13,6 +13,21 @@ Nim](https://github.com/JJ/curso-tdd/actions/workflows/nim-test.yaml/badge.svg)]
 💟
 [![Test Raku](https://github.com/JJ/curso-tdd/actions/workflows/raku-test.yaml/badge.svg)](https://github.com/JJ/curso-tdd/actions/workflows/raku-test.yaml)
 
+
+## Índice
+- [Introducción](#Introducción)
+- [Planificación del curso](#Planificación-del-curso)
+- [Hitos](#Hitos)
+- [Posibles ideas para proyectos](#ideas)
+- [Lugar](#Lugar)
+- [Título](#titulo)
+- [Inscripción](#Inscripción)
+- [Proyectos realizados](#Proyectos-realizados)
+- [Instrucciones de uso](#Instrucciones-de-uso)
+
+
+## Introducción
+
 En este curso trataremos de aprender las técnicas necesarias para
 trabajar en un entorno ágil de desarrollo, para aplicaciones nativas en la
 nube o cualquier otra cosa. Será un curso conceptual, pero también
@@ -173,7 +188,7 @@ con enlaces
 Esta información te la da el bot `kke`, añadido al grupo de Telegram
 del curso, o con una conversación directa con él.
 
-## Posibles ideas para proyectos, problemas para resolver
+## Posibles ideas para proyectos, problemas para resolver <a name="ideas"></a>
 
 La informática consiste en resolver problemas del usuario mediante un
 ordenador. Estos son algunos de los problemas con los que se podría tratar.
@@ -203,7 +218,7 @@ usar
 Se hará de forma virtual usando [Jitsi](https://meet.jit.si). Las
 clases se grabarán también (en la medida de lo posible).
 
-## "Título" o acreditación de haber realizado el curso.
+## "Título" o acreditación de haber realizado el curso. <a name="titulo"></a>
 
 A los que superen todos los hitos y actividades planteados en el curso
 se les hará una recomendación en LinkedIn por parte del profesor, por
