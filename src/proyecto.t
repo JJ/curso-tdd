@@ -118,6 +118,11 @@ EOC
     ok( $testing->{'framework'}, check( "«testing->{'framework'}» declarado como framework" ));
   }
 
+  if ( $this_version >= 12 ) {
+    diag( check( "Tests para hito 12") );
+    file_present( $config->{'dateador'}, \@repo_files, "con fichero declarando dependencia a inyectar" );
+  }
+
   if ( $this_version >= 13) {
     diag( check( "Tests para hito 13") );
     like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
