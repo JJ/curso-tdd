@@ -188,7 +188,7 @@ con enlaces
 Esta información te la da el bot `kke`, añadido al grupo de Telegram
 del curso, o con una conversación directa con él.
 
-## Posibles ideas para proyectos, problemas para resolver <a name="ideas"></a>
+## <a name="ideas">Posibles ideas para proyectos, problemas para resolver </a>
 
 La informática consiste en resolver problemas del usuario mediante un
 ordenador. Estos son algunos de los problemas con los que se podría tratar.
