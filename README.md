@@ -40,7 +40,7 @@ reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdKVFqzk9VzujTuyi
 planteamiento general del curso está en [esta
 presentación](/curso-tdd/preso/).
 
-La cuarta edición del curso está en [esta lista de
+La cuarta edición del curso, ya completa, está en [esta lista de
 reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdJJsCTshZw8Ae67lU48wkaA).
 
 Tendremos
@@ -53,10 +53,10 @@ estas sesiones:
   * [Presentación](preso/git).
 
 2. Desarrollo ágil
-  * Historias de usuario, *user journeys* y todo eso.
   * Cómo organizar un proyecto: canvas, épicas.
   * *Personas* (usuarios ficticios), desarrollo por capas y todo lo
     que necesitamos para empezar.
+  * Historias de usuario, *user journeys* y todo eso.
   * [Material](temas/ágil.md).
   * [Presentación](preso/ágil.html).
 
@@ -203,12 +203,7 @@ usar
 Se hará de forma virtual usando [Jitsi](https://meet.jit.si). Las
 clases se grabarán también (en la medida de lo posible).
 
-## Clases
-
-- 📅 22 de febrero - 15 de marzo.
-  - 🕜 13:30 - 14:00 hora de Madrid (CET)
-
-## Título
+## "Título" o acreditación de haber realizado el curso.
 
 A los que superen todos los hitos y actividades planteados en el curso
 se les hará una recomendación en LinkedIn por parte del profesor, por
