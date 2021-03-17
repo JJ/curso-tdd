@@ -25,6 +25,7 @@ jobs:
           echo $version
           echo $user
           echo $repo
+          echo $diff
       - name: Comprueba que exista el tablero
         uses: actions/github-script@v3
         if: env.version >= '1'
@@ -84,3 +85,10 @@ jobs:
             if ( checks.length < 1 ) {
                     core.setFailed("❌ No hay suficientes sistemas de CI configurados")
             }
+      - name: Descarga el repo del estudiante
+        uses: actions/checkout@v2
+        with:
+          repository: ${{env.user}}/${{env.version}}
+          fetch-depth: 0
+      - name: Ejecuta tests en el repo
+        run: prove -c t/proyecto.t

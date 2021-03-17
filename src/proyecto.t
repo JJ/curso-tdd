@@ -10,19 +10,10 @@ use YAML qw(LoadFile);
 
 use v5.14; # For say
 
-unless ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
-  plan skip_all => "Check relevant only for PRs";
-}
-
 my $repo = Git->repository ( Directory => '.' );
-my $diff = $repo->command('diff','HEAD^1','HEAD');
-my $diff_regex = qr/a\/proyectos.md/;
-my $github;
+my $diff = $ENV{'diff'};
 
-SKIP: {
-  my ($this_hito) = ($diff =~ $diff_regex);
-  skip "No hay envío de proyecto", 10 unless defined $this_hito;
-  my $diag=<<EOC;
+my $diag=<<EOC;
 
 "Failed test" indica que no se cumple la condición indicada
 Hay que corregir el envío y volver a hacer el pull request,
@@ -30,107 +21,110 @@ aumentando en uno el número de la versión del hito en el
 fichero correspondiente.
 
 EOC
-  diag $diag;
-  my @files = split(/diff --git/,$diff);
-  my ($diff_hito) = grep( /$diff_regex/, @files);
-  my @lines = split("\n",$diff_hito);
-  my @adds = grep(/^\+[^+]/,@lines);
-  cmp_ok $#adds, "==", 0, "Sólo se añade una línea";
-  my $url_repo;
-  if ( $adds[0] =~ /\(http/ ) {
-    ($url_repo) = ($adds[0] =~ /\((https\S+)\)/);
-  } else {
-    ($url_repo) = ($adds[0] =~ /^\+.+(https\S+)\b/s);
+
+diag $diag;
+my @files = split(/diff --git/,$diff);
+my ($diff_hito) = grep( /$diff_regex/, @files);
+my @lines = split("\n",$diff_hito);
+my @adds = grep(/^\+[^+]/,@lines);
+cmp_ok $#adds, "==", 0, "Sólo se añade una línea";
+my $url_repo;
+if ( $adds[0] =~ /\(http/ ) {
+  ($url_repo) = ($adds[0] =~ /\((https\S+)\)/);
+} else {
+  ($url_repo) = ($adds[0] =~ /^\+.+(https\S+)\b/s);
+}
+ok $url_repo, "Detectado un enlace a repo en $adds[0]";
+my ($version) = @adds[0] =~ /(v\d+\.\d+\.\d+)/;
+diag(check( "Encontrado URL del repo $url_repo con versión $version" ));
+my ($user,$name) = ($url_repo=~ /github.com\/(\S+)\/(.+)/);
+my $repo_dir = "/tmp/$user-$name";
+unless (-d $repo_dir) {
+  mkdir($repo_dir);
+  `git clone $url_repo $repo_dir`;
+} else {
+  chdir $repo_dir;
+  `git pull`
+}
+my $student_repo =  Git->repository ( Directory => $repo_dir );
+my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $version) };
+unlike $output, qr/returned error/, "Repositorio tag-eado correctamente";
+
+my @repo_files = $student_repo->command("ls-files");
+my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
+
+my ($this_version) = ( $version =~ /^v(\d+)/ );
+
+my $config;
+
+if ( $this_hito >= 1 ) {
+  diag( check ("Tests para hito 1") );
+  my $agil_name = -e "$repo_dir/agil.yaml" ? "agil.yaml" : "agil.yml";
+  if ( ok( -e "$repo_dir/$agil_name", check("Está el fichero de configuración «$agil_name»")) ) {
+    $config = LoadFile("$repo_dir/$agil_name");
+    ok( $config, check("Fichero de configuración para corrección $agil_name cargado correctamente") );
+    ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
   }
-  ok $url_repo, "Detectado un enlace a repo en $adds[0]";
-  my ($version) = @adds[0] =~ /(v\d+\.\d+\.\d+)/;
-  diag(check( "Encontrado URL del repo $url_repo con versión $version" ));
-  my ($user,$name) = ($url_repo=~ /github.com\/(\S+)\/(.+)/);
-  my $repo_dir = "/tmp/$user-$name";
-  unless (-d $repo_dir) {
-    mkdir($repo_dir);
-    `git clone $url_repo $repo_dir`;
-  } else {
-    chdir $repo_dir;
-    `git pull`
-  }
-  my $student_repo =  Git->repository ( Directory => $repo_dir );
-  my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $version) };
-  unlike $output, qr/returned error/, "Repositorio tag-eado correctamente";
-
-  my @repo_files = $student_repo->command("ls-files");
-  my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
-
-  my ($this_version) = ( $version =~ /^v(\d+)/ );
-
-  my $config;
-
-  if ( $this_hito >= 1 ) {
-    diag( check ("Tests para hito 1") );
-    my $agil_name = -e "$repo_dir/agil.yaml" ? "agil.yaml" : "agil.yml";
-    if ( ok( -e "$repo_dir/$agil_name", check("Está el fichero de configuración «$agil_name»")) ) {
-      $config = LoadFile("$repo_dir/$agil_name");
-      ok( $config, check("Fichero de configuración para corrección $agil_name cargado correctamente") );
-      ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
-    }
-  }
-
-  if ($this_version >= 2 ) {
-    diag( check( "Tests para hito 2") );
-    like( $README, qr/[Ss]oluci.n/, "Se menciona una solución en el README");
-  }
-
-  if ($this_version >= 3 ) {
-    diag( check( "Tests para hito 3") );
-    like( $README, qr/[lL]og/, "Se menciona un logger en el README");
-  }
-
-  if ( $this_version >= 6 ) {
-    diag( check( "Tests para hito 6") );
-    file_present( $config->{'excepciones'}, \@repo_files, "con excepciones" );
-  }
-
-  if ( $this_version >= 7 ) {
-    diag( check( "Tests para hito 7") );
-    file_present( $config->{'taskfile'}, \@repo_files, "con gestor de tareas" );
-    ok( $config->{'lenguaje'}, check("Se ha declarado el lenguaje de programación") );
-  }
-
-  if ( $this_version >= 8 ) {
-    diag( check( "Tests para hito 8") );
-    ok( $config->{'linter'}, check("Linter declarado") );
-  }
-
-  if ( $this_version >= 9 ) {
-    diag( check( "Tests para hito 9") );
-    ok( $config->{'aserciones'}, check( "Se ha declarado la biblioteca de aserciones" ) );
-    file_present( $config->{'test'}, \@repo_files, "con tests" );
-  }
-
-  my $testing = $config->{'testing'};
-  my $runner;
-  if ( $this_version >= 10) {
-    diag( check( "Tests para hito 10") );
-    ok( $testing, check( "La clave testing en el fichero de configuración en este tag" ) );
-    $runner = $testing->{'runner'};
-    ok( $runner, check( "La clave testing en el fichero de configuración en este tag" ) );
-    like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
-    ok( $testing->{'framework'}, check( "«testing->{'framework'}» declarado como framework" ));
-  }
-
-  if ( $this_version >= 12 ) {
-    diag( check( "Tests para hito 12") );
-    file_present( $config->{'dateador'}, \@repo_files, "con fichero declarando dependencia a inyectar" );
-  }
-
-  if ( $this_version >= 13) {
-    diag( check( "Tests para hito 13") );
-    like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
-  }
-
 }
 
+if ($this_version >= 2 ) {
+  diag( check( "Tests para hito 2") );
+  like( $README, qr/[Ss]oluci.n/, "Se menciona una solución en el README");
+}
+
+if ($this_version >= 3 ) {
+  diag( check( "Tests para hito 3") );
+  like( $README, qr/[lL]og/, "Se menciona un logger en el README");
+}
+
+if ( $this_version >= 6 ) {
+  diag( check( "Tests para hito 6") );
+  file_present( $config->{'excepciones'}, \@repo_files, "con excepciones" );
+}
+
+if ( $this_version >= 7 ) {
+  diag( check( "Tests para hito 7") );
+  file_present( $config->{'taskfile'}, \@repo_files, "con gestor de tareas" );
+  ok( $config->{'lenguaje'}, check("Se ha declarado el lenguaje de programación") );
+}
+
+if ( $this_version >= 8 ) {
+  diag( check( "Tests para hito 8") );
+  ok( $config->{'linter'}, check("Linter declarado") );
+}
+
+if ( $this_version >= 9 ) {
+  diag( check( "Tests para hito 9") );
+  ok( $config->{'aserciones'}, check( "Se ha declarado la biblioteca de aserciones" ) );
+  file_present( $config->{'test'}, \@repo_files, "con tests" );
+}
+
+my $testing = $config->{'testing'};
+my $runner;
+if ( $this_version >= 10) {
+  diag( check( "Tests para hito 10") );
+  ok( $testing, check( "La clave testing en el fichero de configuración en este tag" ) );
+  $runner = $testing->{'runner'};
+  ok( $runner, check( "La clave testing en el fichero de configuración en este tag" ) );
+  like( $README, qr/$runner\s+test/, check("«$runner test» en el README"));
+  ok( $testing->{'framework'}, check( "«testing->{'framework'}» declarado como framework" ));
+}
+
+if ( $this_version >= 12 ) {
+  diag( check( "Tests para hito 12") );
+  file_present( $config->{'dateador'}, \@repo_files, "con fichero declarando dependencia a inyectar" );
+}
+
+if ( $this_version >= 13) {
+  diag( check( "Tests para hito 13") );
+  like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
+}
+
+
+
 done_testing;
+
+# --------------------------------------- subs --------------------------------------
 
 sub check {
   return BOLD.GREEN ."✔ ".RESET.join(" ",@_);
