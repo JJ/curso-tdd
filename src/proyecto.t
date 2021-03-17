@@ -24,6 +24,8 @@ EOC
 
 diag $diag;
 my @files = split(/diff --git/,$diff);
+my $diff_regex = qr/a\/proyectos.md/;
+my ($this_hito) = ($diff =~ $diff_regex);
 my ($diff_hito) = grep( /$diff_regex/, @files);
 my @lines = split("\n",$diff_hito);
 my @adds = grep(/^\+[^+]/,@lines);
