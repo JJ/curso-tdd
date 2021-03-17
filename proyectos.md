@@ -6,7 +6,7 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 |-------------------------------------------------------------------------|---------|
 | [Tyempo](https://github.com/Phyton-es-mi-typo/tyempo)                   | v11.0.1  |
 | [CryptoGo](https://github.com/CriptoInfo/CryptoGo)                      | v7.0.0  |
-| [Gortana](https://github.com/Pibes-GRX/Gortana)                         | v9.0.0  |
+| [Gortana](https://github.com/Pibes-GRX/Gortana)                         | v10.0.0  |
 | [El tiempo](https://github.com/tddgrupo4/TDD-Grupo-4)                   | v3.0.0  |
 | [NoteGram](https://github.com/NoteGramBot/NoteGram)                     | v5.0.0  |
 | [Palabrot](https://github.com/ScalaBot-Team/PalaBrot)                   | v11.0.2  |
