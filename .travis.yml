@@ -1,5 +1,0 @@
-language:
-  - minimal
-
-script:
-  - prove -c t/proyecto.t
