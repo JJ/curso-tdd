@@ -91,4 +91,6 @@ jobs:
           repository: ${{env.user}}/${{env.repo}}
           fetch-depth: 0
       - name: Ejecuta tests en el repo
-        run: prove -c t/proyecto.t
+        run: |
+          wget https://raw.githubusercontent.com/JJ/curso-tdd/master/t/proyecto.t
+          prove -c proyecto.t
