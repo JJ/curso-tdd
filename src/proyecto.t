@@ -3,7 +3,6 @@
 use Test::More;
 use Git;
 use File::Slurper qw(read_text);
-use JSON;
 use Term::ANSIColor qw(:constants);
 use Capture::Tiny qw(capture_merged);
 use YAML qw(LoadFile);
@@ -109,8 +108,6 @@ if ( $this_version >= 13) {
   diag( check( "Tests para hito 13") );
   like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
 }
-
-
 
 done_testing;
 
