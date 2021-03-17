@@ -42857,7 +42857,6 @@ use YAML qw(LoadFile);
 
 use v5.14; # For say
 
-my $repo = Git->repository ( Directory => '.' );
 my $diff = $ENV{'diff'};
 
 my $diag=<<EOC;
@@ -42870,11 +42869,7 @@ fichero correspondiente.
 EOC
 
 diag $diag;
-my @files = split(/diff --git/,$diff);
-my $diff_regex = qr/a\/proyectos.md/;
-my ($this_hito) = ($diff =~ $diff_regex);
-my ($diff_hito) = grep( /$diff_regex/, @files);
-my @lines = split("\n",$diff_hito);
+my @lines = split("\n",$diff);
 my @adds = grep(/^\+[^+]/,@lines);
 cmp_ok $#adds, "==", 0, "Sólo se añade una línea";
 my $url_repo;
@@ -42886,27 +42881,20 @@ if ( $adds[0] =~ /\(http/ ) {
 ok $url_repo, "Detectado un enlace a repo en $adds[0]";
 my ($version) = @adds[0] =~ /(v\d+\.\d+\.\d+)/;
 diag(check( "Encontrado URL del repo $url_repo con versión $version" ));
-my ($user,$name) = ($url_repo=~ /github.com\/(\S+)\/(.+)/);
-my $repo_dir = "/tmp/$user-$name";
-unless (-d $repo_dir) {
-  mkdir($repo_dir);
-  `git clone $url_repo $repo_dir`;
-} else {
-  chdir $repo_dir;
-  `git pull`
-}
-my $student_repo =  Git->repository ( Directory => $repo_dir );
+
+my $student_repo =  Git->repository ( Directory => "." );
 my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $version) };
 unlike $output, qr/returned error/, "Repositorio tag-eado correctamente";
 
 my @repo_files = $student_repo->command("ls-files");
+my $repo_dir = ".";
 my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
 
 my ($this_version) = ( $version =~ /^v(\d+)/ );
 
 my $config;
 
-if ( $this_hito >= 1 ) {
+if ( $this_version >= 1 ) {
   diag( check ("Tests para hito 1") );
   my $agil_name = -e "$repo_dir/agil.yaml" ? "agil.yaml" : "agil.yml";
   if ( ok( -e "$repo_dir/$agil_name", check("Está el fichero de configuración «$agil_name»")) ) {
@@ -43029,7 +43017,7 @@ sub codecov_pass {
   my $README = shift;
   my $codecov_perc = codecov_perc( $README );
   cmp_ok $codecov_perc, ">", 85, "Porcentaje de cobertura OK";
-  
+
 }
 
 sub codecov_perc {
