@@ -88,7 +88,7 @@ jobs:
       - name: Descarga el repo del estudiante
         uses: actions/checkout@v2
         with:
-          repository: ${{env.user}}/${{env.version}}
+          repository: ${{env.user}}/${{env.repo}}
           fetch-depth: 0
       - name: Ejecuta tests en el repo
         run: prove -c t/proyecto.t
