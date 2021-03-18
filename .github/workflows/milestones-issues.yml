@@ -13,6 +13,7 @@ jobs:
         with:
           github-token: ${{github.token}}
           filesChanged: 1
+          linesChanged: 1
       - name: Comprueba hitos e issues
         uses: JJ/repo-in-diff-gh-action@releases/v1
         with:

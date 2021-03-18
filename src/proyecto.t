@@ -9,30 +9,8 @@ use YAML qw(LoadFile);
 
 use v5.14; # For say
 
-my $diff = $ENV{'diff'};
-
-my $diag=<<EOC;
-
-"Failed test" indica que no se cumple la condición indicada
-Hay que corregir el envío y volver a hacer el pull request,
-aumentando en uno el número de la versión del hito en el
-fichero correspondiente.
-
-EOC
-
-diag $diag;
-my @lines = split("\n",$diff);
-my @adds = grep(/^\+[^+]/,@lines);
-cmp_ok $#adds, "==", 0, "Sólo se añade una línea";
-my $url_repo;
-if ( $adds[0] =~ /\(http/ ) {
-  ($url_repo) = ($adds[0] =~ /\((https\S+)\)/);
-} else {
-  ($url_repo) = ($adds[0] =~ /^\+.+(https\S+)\b/s);
-}
-ok $url_repo, "Detectado un enlace a repo en $adds[0]";
-my ($version) = @adds[0] =~ /(v\d+\.\d+\.\d+)/;
-diag(check( "Encontrado URL del repo $url_repo con versión $version" ));
+my ($version) = $ENV{'version'} =~ /(v\d+\.\d+\.\d+)/;
+diag(check( "Encontrada versión $version" ));
 
 my $student_repo =  Git->repository ( Directory => "." );
 my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $version) };
