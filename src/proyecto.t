@@ -12,7 +12,7 @@ use v5.14; # For say
 diag(check( "Trabajando con versión $ENV{'version'}" ));
 
 my $student_repo =  Git->repository ( Directory => "." );
-my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $ENV{'version'}) };
+my ($output, @result ) =  capture_merged { $student_repo->command("checkout", "v$ENV{'version'}") };
 unlike $output, qr/returned error/, "Repositorio tag-eado correctamente";
 
 my @repo_files = $student_repo->command("ls-files");
