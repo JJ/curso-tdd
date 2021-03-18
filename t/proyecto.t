@@ -35524,8 +35524,7 @@ use YAML qw(LoadFile);
 
 use v5.14; # For say
 
-my ($version) = $ENV{'version'} =~ /(\d+\.\d+\.\d+)/;
-diag(check( "Encontrada versión $version" ));
+diag(check( "Encontrada versión $ENV{'version'}" ));
 
 my $student_repo =  Git->repository ( Directory => "." );
 my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $version) };
@@ -35535,7 +35534,7 @@ my @repo_files = $student_repo->command("ls-files");
 my $repo_dir = ".";
 my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
 
-my ($this_version) = ( $version =~ /^(\d+)/ );
+my ($this_version) = ( $ENV{'version'} =~ /^(\d+)/ );
 
 my $config;
 
