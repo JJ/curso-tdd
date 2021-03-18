@@ -9,7 +9,7 @@ use YAML qw(LoadFile);
 
 use v5.14; # For say
 
-diag(check( "Encontrada versión $ENV{'version'}" ));
+diag(check( "Trabajando con versión $ENV{'version'}" ));
 
 my $student_repo =  Git->repository ( Directory => "." );
 my ($output, @result ) =  capture_merged { $student_repo->command("checkout", $ENV{'version'}) };
