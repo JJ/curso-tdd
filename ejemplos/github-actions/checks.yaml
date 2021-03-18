@@ -1,0 +1,28 @@
+name: "Comprueba hitos"
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  test-milestones:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract tag name
+        id: tag
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            return context.payload.ref.replace(/refs\/tags\/v/, '');
+      - name: Descarga el repo del estudiante
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Ejecuta tests en el repo
+        env:
+          version: ${{ steps.tag.outputs.result }}
+        run: |
+          wget https://raw.githubusercontent.com/JJ/curso-tdd/master/t/proyecto.t
+          prove -c proyecto.t
