@@ -9,7 +9,7 @@ use YAML qw(LoadFile);
 
 use v5.14; # For say
 
-my ($version) = $ENV{'version'} =~ /(v\d+\.\d+\.\d+)/;
+my ($version) = $ENV{'version'} =~ /(\d+\.\d+\.\d+)/;
 diag(check( "Encontrada versión $version" ));
 
 my $student_repo =  Git->repository ( Directory => "." );
@@ -20,7 +20,7 @@ my @repo_files = $student_repo->command("ls-files");
 my $repo_dir = ".";
 my $README =  read_text( "$repo_dir/README.md"); # Lo necesito en versiones 3 y 4
 
-my ($this_version) = ( $version =~ /^v(\d+)/ );
+my ($this_version) = ( $version =~ /^(\d+)/ );
 
 my $config;
 
