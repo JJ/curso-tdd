@@ -9,7 +9,7 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 | [Gortana](https://github.com/Pibes-GRX/Gortana)                         | v10.0.0 |
 | [El tiempo](https://github.com/tddgrupo4/TDD-Grupo-4)                   | v3.0.0  |
 | [NoteGram](https://github.com/NoteGramBot/NoteGram)                     | v6.0.2  |
-| [Palabrot](https://github.com/ScalaBot-Team/PalaBrot)                   | v11.0.2 |
+| [Palabrot](https://github.com/ScalaBot-Team/PalaBrot)                   | v13.0.1 |
 | [BoTTutorias](https://github.com/BoTTuros/BoTTutorias)                  | v7.0.1  |
 |    [Zero, the bellhop.](https://github.com/monium/zero)                 | v5.0.0  |
 |    [agil-dev-4e](https://github.com/Kobedinho/agil-dev-4e)              | v3.0.2  |
