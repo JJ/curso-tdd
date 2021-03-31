@@ -5,7 +5,7 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 | Nombre proyecto con enlace                                              | Versión |
 |-------------------------------------------------------------------------|---------|
 | [Tyempo](https://github.com/Phyton-es-mi-typo/tyempo)                   | v13.0.2 |
-| [CryptoGo](https://github.com/CriptoInfo/CryptoGo)                      | v8.0.0  |
+| [CryptoGo](https://github.com/CriptoInfo/CryptoGo)                      | v9.0.1  |
 | [Gortana](https://github.com/Pibes-GRX/Gortana)                         | v10.0.0 |
 | [El tiempo](https://github.com/tddgrupo4/TDD-Grupo-4)                   | v3.0.0  |
 | [NoteGram](https://github.com/NoteGramBot/NoteGram)                     | v9.1.5  |
