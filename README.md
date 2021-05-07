@@ -232,7 +232,8 @@ inscripción es gratuita.
 
 ## Proyectos realizados
 
-Los proyectos en elaboración se enlazarán en [en esta página](proyectos).
+Los proyectos en elaboración se enlazarán en [en esta
+página](proyectos). Los de las ediciones anteriores están en [este directorio](otras-ediciones/).
 
 ## Instrucciones de uso
 
