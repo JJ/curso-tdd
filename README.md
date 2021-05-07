@@ -1,4 +1,4 @@
-# Curso de desarrollo ágil - 4ª edición
+# Curso de desarrollo ágil - 5ª edición
 
 [![Build Status](https://travis-ci.com/JJ/curso-tdd.svg?branch=master)](https://travis-ci.com/JJ/curso-tdd)
 💟
@@ -58,8 +58,7 @@ presentación](/curso-tdd/preso/).
 La cuarta edición del curso, ya completa, está en [esta lista de
 reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdJJsCTshZw8Ae67lU48wkaA).
 
-Tendremos
-estas sesiones:
+Tendremos estas sesiones:
 
 1. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo.
   * Conceptos básicos: pull, pull request, push, clone.
@@ -215,28 +214,25 @@ usar
 
 ## Lugar
 
-Se hará de forma virtual usando [Jitsi](https://meet.jit.si). Las
-clases se grabarán también (en la medida de lo posible).
+Se hará en la plataforma de [Spain AI](https://spain-ai.com). El
+enlace se proporcionará en el grupo de Telegram en el que están los
+inscritos.
+
 
 ## "Título" o acreditación de haber realizado el curso. <a name="titulo"></a>
 
-A los que superen todos los hitos y actividades planteados en el curso
-se les hará una recomendación en LinkedIn por parte del profesor, por
-eso se solicita el perfil de LinkedIn en la inscripción. Los
-estudiantes tendrán que aceptar la conexión del profesor para poder
-hacer esta recomendación.
+[Spain AI](https://spain-ai.com) proporcionará un título en PDF al
+final del curso.
 
 ## Inscripción
 
-Añade tu nick de GitHub y perfil de LinkedIn [a esta
-tabla](asistentes.md) mediante un *pull request*. La inscripción es
-gratuita y abierta a quien lo desee, pero los asistentes tendrán que
-usar su propio equipo.
+Inscríbete en
+[EventBrite](https://www.eventbrite.es/e/entradas-ai-tech-learning-curso-de-desarrollo-agil-4a-edicion-151778007105). La
+inscripción es gratuita.
 
 ## Proyectos realizados
 
 Los proyectos en elaboración se enlazarán en [en esta página](proyectos).
-
 
 ## Instrucciones de uso
 
