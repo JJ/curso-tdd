@@ -29,6 +29,6 @@ jobs:
         run: |
           curl -s https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
           curl -s https://raw.githubusercontent.com/SublimeText/Dictionaries/master/Spanish.dic -o Spanish.dic
-          rm proyectos.md asistentes.md # No nos interesan
+          rm proyectos.md # No nos interesan
           perl -MTAP::Harness -e 'use utf8; my $harness = TAP::Harness->new( { verbosity => 0} ); die "FAIL" if $harness->runtests( "t/just_check.t" )->failed;'
 
