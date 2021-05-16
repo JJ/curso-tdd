@@ -77,7 +77,7 @@ modificaremos luego" (DRY, *don't repeat yourself*) o que debería ser parametri
 pieza, pero lo más importante desde el punto de vista de la calidad
 son las siguientes reglas sobre funciones y tipos de datos.
 
-* Las funciones/métodos solo deberían hacer una cosa. Esto es importante desde
+* Las funciones/métodos solo deberían *hacer una cosa*. Esto es importante desde
 el punto de vista de los tests unitarios: probar todas las opciones
 posibles de una función que hace un montón de cosas hace que los tests
 sean más complicados o incluso imposibles. Además, deberían tener un
@@ -98,7 +98,14 @@ de SHOC.
   general, no se debe dejar la interpretación de un valor a un
   comentario (o, peor, a documentación externa). Usando el tipo
   correcto, incluyendo la excepción correcta, no cabe duda sobre la
-  interpretación. 
+  interpretación.
+
+* Los identificadores deben ser descriptivos y seguir reglas lógicas:
+  listas y *arrays* en plural, las funciones deben ser verbos, las
+  variables primitivas sustantivos. En lenguajes que no usan ningún
+  tipo de marca especial para el tipo de variable (o sea, la mayoría),
+  sólo leer un identificador te ayuda a saber qué es lo que hace ese
+  identificador.
 
 
 ### Ejemplo
