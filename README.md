@@ -60,14 +60,20 @@ reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdJJsCTshZw8Ae67l
 
 Tendremos estas sesiones:
 
-1. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control
+1. Introducción
+   * Qué vamos a hacer en el resto del curso, cómo nos vamos a
+     organizar
+   * Grupos de Telegram, bots en los grupos.
+   * [Presentación](preso/git).
+
+2. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control
    de fuentes y de sitios web para desarrollo colaborativo.
   * Conceptos básicos: pull, pull request, push, clone.
   * *Releases* y *tagging*.
   * [Material](temas/git.md).
   * [Presentación](preso/git).
 
-2. Desarrollo ágil
+3. Desarrollo ágil
   * Cómo organizar un proyecto: canvas, épicas.
   * *Personas* (usuarios ficticios), desarrollo por capas y todo lo
     que necesitamos para empezar.
@@ -75,87 +81,87 @@ Tendremos estas sesiones:
   * [Material](temas/ágil.md).
   * [Presentación](preso/ágil.html).
 
-3. Resolviendo problemas usando la informática.
+4. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
   * [Presentación](preso/aplicaciones.md).
 
-4. Servicios avanzados en informática.
+5. Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
   * [Presentación](preso/servicios.html).
 
-5. Diseñando la aplicación
+6. Diseñando la aplicación
    * Historias de usuario
    * Uso de issues/hitos en el desarrollo basado en test.
    * Diseño dirigido por el dominio
    * [Material](temas/diseño.md).
    * [Presentación](preso/diseño.html).
 
-6. Puesta al día
+7. Puesta al día
    * Añadiendo *personas* al hito 1
    * [Presentación](preso/checkpoint.html)
 
-7. Refinando el diseño y organizando el desarrollo
+8. Refinando el diseño y organizando el desarrollo
    * Algunos principios de diseño
    * [Material](temas/organizando.md).
    * [Presentación](temas/organizando.html)
 
-8. Comienzo de la implementación "defensiva".
+9. Comienzo de la implementación "defensiva".
    * Documentación de las historias de usuario y traslado a issues.
    * Comienzo del diseño, en general, de las clases.
    * Diseño de excepciones.
    * [Material](temas/a-programar.md).
    * [Presentación](preso/a-programar.html).
 
-9. Task runners y cómo usarlos.
+10. Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
   * [Material](temas/gestores-tareas.md).
   * [Presentación](preso/gestores-tareas.md).
 
-10. Preparando tu aplicación para testear: *separation of concerns*, diseño.
+11. Preparando tu aplicación para testear: *separation of concerns*, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
   * [Presentación](preso/hacia-tests-unitarios.html).
 
-11. *Objetos de test*
+12. *Objetos de test*
   * Organización de los tests.
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
   * [Presentación](preso/tests-unitarios-organización.html).
 
-12. Ejecución de tests
+13. Ejecución de tests
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
   * [Presentación](preso/tests-unitarios.html).
 
-13. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
+14. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * Diferentes sistemas de integración continua: Travis, GitHub
     Actions...
   * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
   * [Presentación](preso/CI.html).
 
-14. Inversión de dependencias.
+15. Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
   * [Presentación](preso/inversión.html).
 
-15. Tests de cobertura y por qué son importantes.
+16. Tests de cobertura y por qué son importantes.
   * Último en la cuarta edición
   * [Material](temas/cobertura.md).
   * [Presentación](preso/cobertura.html).
 
-16. Tests funcionales/de integración
+17. Tests funcionales/de integración/end to end
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-17. Tests adicionales
+18. Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
