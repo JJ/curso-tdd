@@ -60,7 +60,8 @@ reproducción](https://www.youtube.com/playlist?list=PLsYEfmwhBQdJJsCTshZw8Ae67l
 
 Tendremos estas sesiones:
 
-1. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control de fuentes y de sitios web para desarrollo colaborativo.
+1. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control
+   de fuentes y de sitios web para desarrollo colaborativo.
   * Conceptos básicos: pull, pull request, push, clone.
   * *Releases* y *tagging*.
   * [Material](temas/git.md).
