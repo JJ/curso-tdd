@@ -119,7 +119,7 @@ pero también conviene añadir cosas como:
 
 ## Trabajando con ramas
 
-En general, cualquier poryecto va a trabajar usando ramas como
+En general, cualquier proyecto va a trabajar usando ramas como
 principal "lugar" de trabajo.
 
 ## Pulls y sus diferentes modalidades
