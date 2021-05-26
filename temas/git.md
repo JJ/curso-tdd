@@ -117,6 +117,10 @@ pero también conviene añadir cosas como:
   `.gitignore` de la plantilla del repositorio de la empresa o
   *squad*.
 
+## Trabajando con ramas
+
+En general, cualquier poryecto va a trabajar usando ramas como
+principal "lugar" de trabajo.
 
 ## Pulls y sus diferentes modalidades
 
