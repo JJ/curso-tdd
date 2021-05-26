@@ -117,10 +117,6 @@ pero también conviene añadir cosas como:
   `.gitignore` de la plantilla del repositorio de la empresa o
   *squad*.
 
-## Trabajando con ramas
-
-En general, cualquier proyecto va a trabajar usando ramas como
-principal "lugar" de trabajo.
 
 ## Pulls y sus diferentes modalidades
 
@@ -199,6 +195,53 @@ trabajar en la calidad del producto resultante.
 Los PRs, igual que todos los push a la rama principal, pueden ir
 acompañados de una serie de tests específicos. Veremos más adelante en
 qué consisten y cómo programarlos.
+
+## Trabajando con ramas
+
+En general, cualquier proyecto va a trabajar usando ramas como
+principal "lugar" de trabajo. En general, se desarrollará en una rama
+(siguiendo una historia de usuario, como se verá más adelante) y esa
+rama se incorporará a la principal tras la revisión por el resto del
+equipo.
+
+Es conveniente que los nombres de las ramas sigan una serie de
+reglas, entre otras cosas porque el título del pull request que se
+haga se creará a partir de ese nombre. Y en muchos casos esos nombres
+vendrán dados automáticamente por el sistema en el que se esté
+trabajando, tal como Jira, por ejemplo. En todo caso, suelen seguir la
+convención `xxx/yyy/zzz`. En algún lado, y generalmente al final, debe
+haber algo que refleje qué es lo que hace la rama. Algunas
+convenciones que se pueden usar razonablemente son
+
+* `usuario/titulo-del-issue`, por ejemplo `JJ/añade-hook`. Así queda
+  claro que es algo que uno está haciendo, y de qué va el tema.
+* Jira (del que oiremos hablar mucho) usa cosas un poco más
+  complicadas, del tipo `tipo/proyecto/issue/tarea`, por ejemplo
+  `fix/HOOK/333/web-service` que estaría trabajando sobre el ticket
+  HOOK-333 que sería un *fix* o arreglo (puede ser una `story` o un
+  `epic`, u otro tipo a medida que se haya creado).
+
+Un nombre de rama razonable indicará a todo el mundo del equipo qué es
+lo que se está haciendo; y esto es importante porque siempre se
+programa para el futuro y para el equipo, no para uno mismo.
+
+Recordad que para crear la rama, hacer push por primera vez a ella y
+en las veces sucesivas, habrá que hacer:
+
+```shell
+git checkout -b JJ/añade-hook
+git push -u origin JJ/añade-hook # crea la rama remota y la asocia a esta
+git push origin JJ/añade-hook
+```
+
+Como truco, se puede usar
+
+```shell
+git push origin $(git describe --contains --all HEAD)
+```
+
+que pusheará a la rama en la que se encuentre uno en ese momento (con
+`-u` si se trata de crear la rama remota)
 
 ## *Tagging* y *releasing*
 
