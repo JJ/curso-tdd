@@ -28,7 +28,7 @@ siguientes tareas para configurar correctamente git y GitHub.
 
 * [Configura el usuario, correo electrónico y editor](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Configurando-Git-por-primera-vez)
 de alguna de las formas posibles.
-* [Crea un par clave pública/privada](https://docs.github.com/es/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+* [Crea un par clave pública/privada](https://docs.github.com/es/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 y súbela a tu perfil en GitHub.
 
 A partir de ahí, vamos a empezar a trabajar con un repositorio
@@ -83,7 +83,7 @@ usar
 [una estructura convencional](https://dev.to/colewalker/conventional-commits-the-future-of-git-32gg?signin=true) para
 que sean más informativos y permitan, de un vistazo, saber qué es lo
 que hacen y a qué se refieren. También puedes
-usar [*gitmojis*](https://gitmoji.carloscuesta.me/), símbolos que se
+usar [*gitmojis*](https://gitmoji.dev/), símbolos que se
 introducen en un commit entre dos puntos; por ejemplo, :+1: sería el
 símbolo del pulgar hacia arriba o `:see_no_evil:` el que se usa cuando
 se añade algo al fichero `.gitignore`. Pero se pueden usar muchos
