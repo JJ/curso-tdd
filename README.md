@@ -64,7 +64,7 @@ Tendremos estas sesiones:
    * Qué vamos a hacer en el resto del curso, cómo nos vamos a
      organizar
    * Grupos de Telegram, bots en los grupos.
-   * [Presentación](preso/git).
+   * [Presentación](preso/index).
 
 2. Git y GitHub/GitLab. Uso básico y avanzado de sistemas de control
    de fuentes y de sitios web para desarrollo colaborativo.
