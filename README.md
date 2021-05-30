@@ -73,7 +73,13 @@ Tendremos estas sesiones:
   * [Material](temas/git.md).
   * [Presentación](preso/git).
 
-3. Desarrollo ágil
+3. Diseño de una aplicación
+   * *Domain driven design*.
+   * *Personas* o personajes.
+   * [Material](temas/ágil.md#empatizando-con-los-clientes).
+   * [Presentación](preso/ddd.html)
+
+4. Desarrollo ágil
   * Cómo organizar un proyecto: canvas, épicas.
   * *Personas* (usuarios ficticios), desarrollo por capas y todo lo
     que necesitamos para empezar.
@@ -81,28 +87,24 @@ Tendremos estas sesiones:
   * [Material](temas/ágil.md).
   * [Presentación](preso/ágil.html).
 
-4. Resolviendo problemas usando la informática.
+5. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
   * [Presentación](preso/aplicaciones.md).
 
-5. Servicios avanzados en informática.
+6. Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
   * [Presentación](preso/servicios.html).
 
-6. Diseñando la aplicación
+7. Diseñando la aplicación
    * Historias de usuario
    * Uso de issues/hitos en el desarrollo basado en test.
    * Diseño dirigido por el dominio
    * [Material](temas/diseño.md).
    * [Presentación](preso/diseño.html).
-
-7. Puesta al día
-   * Añadiendo *personas* al hito 1
-   * [Presentación](preso/checkpoint.html)
 
 8. Refinando el diseño y organizando el desarrollo
    * Algunos principios de diseño
@@ -174,13 +176,13 @@ Las entregas se organizan en hitos, que corresponden (en general) a
 una sesión. Este es el esquema de lo que hay que hacer en cada hito
 con enlaces
 
-| Hito | Sesiones | Descripción y enlace |
+| Hito | Sesion(es) | Descripción y enlace |
 |------|------------|----------------------|
-|  0   | 1          | [Crear repo con componentes](https://jj.github.io/curso-tdd/temas/git#Actividad)|
-|  1   | 2,6        | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
-|  2   | 3          | [Épicas, problema a resolver](https://jj.github.io/curso-tdd/temas/aplicaciones#Actividad)|
-|  3   | 4          | [Servicios](https://jj.github.io/curso-tdd/temas/servicios#Actividad)|
-|  4   | 5          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#Actividad)|
+|  0   | 2          | [Crear repo con componentes](https://jj.github.io/curso-tdd/temas/git#Actividad)|
+|  1   | 3          | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
+|  2   | 4          | [Épicas, problema a resolver](https://jj.github.io/curso-tdd/temas/aplicaciones#Actividad)|
+|  3   | 5          | [Servicios](https://jj.github.io/curso-tdd/temas/servicios#Actividad)|
+|  4   | 6          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#Actividad)|
 |  5   | 7          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#Actividad)|
 |  6   | 8          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#Actividad)|
 |  7   | 9          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#Actividad)|
