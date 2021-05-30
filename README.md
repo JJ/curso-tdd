@@ -180,7 +180,7 @@ con enlaces
 |------|------------|----------------------|
 |  0   | 2          | [Crear repo con componentes](https://jj.github.io/curso-tdd/temas/git#Actividad)|
 |  1   | 3          | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
-|  2   | 4          | [Épicas, problema a resolver](https://jj.github.io/curso-tdd/temas/aplicaciones#Actividad)|
+|  2   | 4          | [Gama de aplicaciones](https://jj.github.io/curso-tdd/temas/aplicaciones#Actividad)|
 |  3   | 5          | [Servicios](https://jj.github.io/curso-tdd/temas/servicios#Actividad)|
 |  4   | 6          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#Actividad)|
 |  5   | 7          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#Actividad)|
