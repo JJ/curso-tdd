@@ -84,19 +84,19 @@ Tendremos estas sesiones:
   * [Material](temas/aplicaciones.md).
   * [Presentación](preso/aplicaciones.md).
 
-5. Desarrollo ágil
-  * Cómo organizar un proyecto: canvas, épicas.
-  * Desarrollo por capas y todo lo  que necesitamos para empezar.
-  * Historias de usuario, *user journeys* y todo eso.
-  * [Material](temas/ágil.md).
-  * [Presentación](preso/ágil.html).
-
-6. Servicios avanzados en informática.
+5. Servicios avanzados en informática.
   * Configuración distribuida.
   * Logs.
   * Almacenamiento de datos.
   * [Material](temas/servicios.md).
   * [Presentación](preso/servicios.html).
+
+6. Desarrollo ágil
+  * Cómo organizar un proyecto: canvas, épicas.
+  * Desarrollo por capas y todo lo  que necesitamos para empezar.
+  * Historias de usuario, *user journeys* y todo eso.
+  * [Material](temas/ágil.md).
+  * [Presentación](preso/ágil.html).
 
 7. Diseñando la aplicación
    * Historias de usuario
@@ -181,16 +181,17 @@ con enlaces
 |  1   | 3          | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
 |  2   | 4          | [Gama de aplicaciones](https://jj.github.io/curso-tdd/temas/aplicaciones#Actividad)|
 |  3   | 5          | [Servicios](https://jj.github.io/curso-tdd/temas/servicios#Actividad)|
-|  4   | 6          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#Actividad)|
-|  5   | 7          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#Actividad)|
-|  6   | 8          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#Actividad)|
-|  7   | 9          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#Actividad)|
-|  8   | 10         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#Actividad)|
-|  9   | 11         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#Actividad)|
-|  10  | 12         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#Actividad)|
-|  11  | 13         | [Integración continua](https://jj.github.io/curso-tdd/temas/CI#Actividad)|
-|  12  | 14         | [Inyección de dependencias](https://jj.github.io/curso-tdd/temas/inversión#Actividad)|
-|  13  | 15         | [Tests de cobertura](https://jj.github.io/curso-tdd/temas/cobertura#Actividad)|
+|  4   | 6          | [Desarrollo ágil](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
+|  5   | 7          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#Actividad)|
+|  6   | 8          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#Actividad)|
+|  7   | 8          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#Actividad)|
+|  8   | 10          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#Actividad)|
+|  9   | 11         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#Actividad)|
+|  10  | 12         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#Actividad)|
+|  11  | 13         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#Actividad)|
+|  12  | 14         | [Integración continua](https://jj.github.io/curso-tdd/temas/CI#Actividad)|
+|  13  | 15         | [Inyección de dependencias](https://jj.github.io/curso-tdd/temas/inversión#Actividad)|
+|  14  | 16         | [Tests de cobertura](https://jj.github.io/curso-tdd/temas/cobertura#Actividad)|
 
 Esta información te la da el bot `kke`, añadido al grupo de Telegram
 del curso, o con una conversación directa con él.
