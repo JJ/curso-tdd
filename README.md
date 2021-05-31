@@ -79,18 +79,17 @@ Tendremos estas sesiones:
    * [Material](temas/ágil.md#empatizando-con-los-clientes).
    * [Presentación](preso/ddd.html)
 
-4. Desarrollo ágil
-  * Cómo organizar un proyecto: canvas, épicas.
-  * *Personas* (usuarios ficticios), desarrollo por capas y todo lo
-    que necesitamos para empezar.
-  * Historias de usuario, *user journeys* y todo eso.
-  * [Material](temas/ágil.md).
-  * [Presentación](preso/ágil.html).
-
-5. Resolviendo problemas usando la informática.
+4. Resolviendo problemas usando la informática.
   * Temática: hay vida más allá de cliente-servidor.
   * [Material](temas/aplicaciones.md).
   * [Presentación](preso/aplicaciones.md).
+
+5. Desarrollo ágil
+  * Cómo organizar un proyecto: canvas, épicas.
+  * Desarrollo por capas y todo lo  que necesitamos para empezar.
+  * Historias de usuario, *user journeys* y todo eso.
+  * [Material](temas/ágil.md).
+  * [Presentación](preso/ágil.html).
 
 6. Servicios avanzados en informática.
   * Configuración distribuida.

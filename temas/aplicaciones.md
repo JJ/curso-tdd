@@ -18,11 +18,12 @@ informáticas, y se tendrán elementos de juicio para elegir una u otra.
 El equipo tendrá que decidir qué forma va a tomar la solución al
 problema que han planteado en la fase anterior.
 
-## La informática trata de resolver problemas usando sistemas informáticos
+## La ingeniería del software revuelve problemas usando sistemas informáticos
 
 > En el [tema anterior](ágil.md) hemos planteado la necesidad de
-> diseñar de forma adecuada la solución. Aquí haremos un breve panorama
-> sobre las diferentes soluciones informáticas que se pueden usar.
+> diseñar de forma adecuada una solución a un problema real. Aquí
+> haremos un breve panorama de las diferentes soluciones informáticas
+> que se pueden usar.
 
 Esto, que puede parecer obvio, queda en el olvido totalmente en un
 sistema de enseñanza de la informática compartimentalizado en el que
@@ -38,7 +39,7 @@ totalmente olvidado.
 
 Cuando se llega a los últimos cursos de informática, todo lo que sabe
 hacer el estudiante medio es "voy a hacer un programa del tipo (o dos
-tipos) que he aprendido que use el lenguaje X y framework Y", donde
+tipos) que he aprendido que use el lenguaje X y *framework* Y", donde
 tanto X como Y están entre la gama muy estrecha que se ha definido en
 los cursos anteriores, o ni siquiera eso, en los cursos anteriores y
 *no se odia*.
@@ -49,8 +50,9 @@ software, y en algunos casos también de hardware. Estas soluciones se
 diseñarán en forma de capas de abstracción que faciliten su evolución,
 pero también, por supuesto, sus pruebas. Una vez más, la calidad es un
 proceso y no algo que se añade al producto; el asegurar la calidad de
-un producto debe partir desde las herramientas usadas (como `git`, que
-se vio en el primer tema) hasta la metodología de diseño o la
+un producto debe partir desde las herramientas elegidas (como `git`, que
+se vio en el primer tema, pero también las herramientas informáticas
+que se vayan a usar) hasta la metodología de diseño o la
 arquitectura general que se va a usar.
 
 En este capítulo vamos a tratar de hacer una pequeña panorámica de la
@@ -58,12 +60,13 @@ arquitectura de una aplicación informática, con "aplicación" siendo un
 término vago que abarca todo producto informático que pueda ser
 publicado. Empezamos por lo más bajo, el módulo.
 
-## Módulos
+## Módulos/Bibliotecas/Paquetes
 
-Todos los lenguajes de programación son modulares, es decir, permiten
-dividir una aplicación en diferentes partes, cada una de las cuales
-provee una funcionalidad específica y consiste, en sí, una capa de
-abstracción (un lenguaje) sobre la funcionalidad que incluye.
+Todos los lenguajes de programación permiten la creación de
+aplicaciones modulares, es decir, dividir una aplicación en diferentes
+partes, cada una de las cuales provee una funcionalidad específica y
+consiste, en sí, una capa de abstracción (un lenguaje) sobre la
+funcionalidad que incluye.
 
 Diferentes paradigmas de programación llamarán a estos módulos de
 forma diferente. En programación dirigida a objetos habrá interfaces,
