@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/extra.css">
 	<link rel="stylesheet" href="dist/agil.css" id="theme">
 
 	<!-- Theme used for syntax highlighted code -->
@@ -17,7 +18,7 @@
 	    <div class="reveal">
 		<div class="slides">
 		    <section><h2>Desarrollo ágil</h2>
-                        <h1>Resolviendo problemas mediante software</h1>
+                        <h1>Diseño dirigido por dominio/personas</h1>
                         <h3><a href="https://jj.github.io/curso-tdd/temas/ágil"><code>jj.github.io/curso-tdd/temas/ágil</code></a></h3>
 
                         <aside class="notes">Vamos a ponernos al día
@@ -27,6 +28,23 @@
                     </section>
 
 		    <section>
+
+                        <section><h1><em>Refinement</em></h1>
+                            <h2>Configuración específica de repo para
+                            algunas empresas</h2>
+
+                            <pre><code>git config user.name "Juan Julián (JJ) Merelo"
+git config user.email "juan.guervos@polypoly.net"</code></pre>
+
+                            <h3 class="fragment">⦨ a GitHub</h3>
+                            <aside class="notes">Vamos a usar este
+                        término, que normalmente indica un análisis de
+                        lo hecho para mejorar, para añadir cosas que
+                        hayan surgido entre una clase y la anterior y
+                        que se hayan olvidado por alguna razón (o no
+                                se hayan entendido lo suficiente</aside>
+                        </section>
+                        
                         <section><h1>✓ TODO</h1>
                             <h2>Crear organización para el equipo y/o repo
                                 para el proyecto (dentro de la
@@ -36,7 +54,7 @@
                         <section><h1>✓ TODO: Retro</h1>
                             <h2 class="fragment">La versión del PR debe
                                 coincidir con un tag del repo</h2>
-                            <h2 class="fragment">Código siempre se
+                            <h2 class="fragment">Código <em>siempre</em> se
                               incorpora mediante PR</h2>
 			    <h2 class="fragment">Se ha contactado ya con todos los miembros del equipo y se ha organizado el trabajo</h2>
                         </section>
@@ -44,6 +62,10 @@
 
 		     <section><h1>Ingeniería del software: resolver
                          problemas mediante código</h1>
+
+                         <aside class="notes">Se reconoce a Margaret
+		     Hamilton como la persona que convirtió el
+		             software en ingeniería. Antes era... hacer cosas</aside>
 		     </section>
 
                     <section><!-- Design thinking -->
@@ -52,7 +74,7 @@
                                 para el diseño</h1>
                         </section>
 
-                        <section><h1>Metodología basada en las
+                        <section><h1>Metodología enfocada a las
                             personas, afronta necesidades reales</h1>
                         </section>
 
@@ -65,6 +87,12 @@
                             <h2 class="fragment">Problema: los
                                 agricultores necesitan vender a precios más
                                 justos</h2>
+
+                            <aside class="notes">Se trata de ver
+                        siempre qué es lo que el usuario/cliente va a
+                        necesitar, y verlo desde la perspectiva del
+                        mismo, no desde el punto de vista de "quiero
+                                usar no sé qué framework"</aside>
                         </section>
                     </section>
 
@@ -108,7 +136,11 @@
                         <pre><code>personas:
     - Juan Rueda
                         </code></pre>
-			<aside class='notes'>YAML es un formato de serialización, con tipado, a diferencia de JSON, que se usa de forma extensiva en cloud. Tiene  comprobadores relativamente rápidos.</aside>
+			<aside class='notes'>YAML es un formato de
+                        serialización, con tipado, a diferencia de
+                        JSON, que se usa de forma extensiva en
+                        cloud. Tiene  comprobadores relativamente
+                        rápidos.</aside>
                     </section>
                 </div>
 	    </div>
