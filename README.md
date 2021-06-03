@@ -74,9 +74,9 @@ Tendremos estas sesiones:
   * [Presentación](preso/git).
 
 3. Diseño de una aplicación
-   * *Domain driven design*.
+   * *Design thinking*.
    * *Personas* o personajes.
-   * [Material](temas/ágil.md#empatizando-con-los-clientes).
+   * [Material](temas/ddd.md).
    * [Presentación](preso/ddd.html)
 
 4. Resolviendo problemas usando la informática.
