@@ -239,6 +239,12 @@ información sobre el mismo. De hecho, diferentes bibliotecas definen
 diferentes `structs` usados para informas sobre errores, con la mejor
 práctica usando `Err` como prefijo en los nombres de los mismos.
 
+## Ver también
+
+Los [principios SOLID
+ilustrados](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
+con graciosos robots.
+
 ## Actividad
 
 Este es el primer hito en el que vamos a escribir algo de código,
