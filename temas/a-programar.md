@@ -241,8 +241,8 @@ práctica usando `Err` como prefijo en los nombres de los mismos.
 
 ## Ver también
 
-Los [principios SOLID
-ilustrados](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
+Los
+[principios SOLID ilustrados](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
 con graciosos robots.
 
 ## Actividad

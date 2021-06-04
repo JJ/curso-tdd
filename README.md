@@ -110,59 +110,61 @@ Tendremos estas sesiones:
    * [Material](temas/organizando.md).
    * [Presentación](temas/organizando.html)
 
-9. Comienzo de la implementación "defensiva".
+9. El arte de la buena revisión de código.
+
+10. Comienzo de la implementación "defensiva".
    * Documentación de las historias de usuario y traslado a issues.
    * Comienzo del diseño, en general, de las clases.
    * Diseño de excepciones.
    * [Material](temas/a-programar.md).
    * [Presentación](preso/a-programar.html).
 
-10. Task runners y cómo usarlos.
+11. Task runners y cómo usarlos.
   * Diferentes tipos de task runners y por qué son útiles para todo.
   * [Material](temas/gestores-tareas.md).
   * [Presentación](preso/gestores-tareas.md).
 
-11. Preparando tu aplicación para testear: *separation of concerns*, diseño.
+13. Preparando tu aplicación para testear: *separation of concerns*, diseño.
   * Cómo asegurarnos desde el diseño de que se cumplen las historias de usuario.
   * [Material](temas/hacia-tests-unitarios.md).
   * [Presentación](preso/hacia-tests-unitarios.html).
 
-12. *Objetos de test*
+13. *Objetos de test*
   * Organización de los tests.
   * Fases de tests.
   * Aserciones
   * [Material](temas/tests-unitarios-organización.md).
   * [Presentación](preso/tests-unitarios-organización.html).
 
-13. Ejecución de tests
+14. Ejecución de tests
   * *Hooks* de git y cómo usarlos para testear todo el tiempo.
   * Marcos de pruebas
   * [Material](temas/tests-unitarios.md).
   * [Presentación](preso/tests-unitarios.html).
 
-14. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
+15. Qué es la integración continua y cómo usarla para ejecutar los tests automáticamente.
   * Diferentes sistemas de integración continua: Travis, GitHub
     Actions...
   * Acelerando con Dockerfiles.
   * [Material](temas/CI.md).
   * [Presentación](preso/CI.html).
 
-15. Inversión de dependencias.
+16. Inversión de dependencias.
   * Mocks.
   * [Material](temas/inversión.md).
   * [Presentación](preso/inversión.html).
 
-16. Tests de cobertura y por qué son importantes.
+17. Tests de cobertura y por qué son importantes.
   * Último en la cuarta edición
   * [Material](temas/cobertura.md).
   * [Presentación](preso/cobertura.html).
 
-17. Tests funcionales/de integración/end to end
+18. Tests funcionales/de integración/end to end
   * Cómo testear microservicios y sistemas basados en tareas.
   * BDD y algunos frameworks.
   * [Material](temas/integración.md).
 
-18. Tests adicionales
+19. Tests adicionales
   * Tests de prestaciones.
   * Tests de front-end.
   * Tests de regresión.
@@ -178,7 +180,7 @@ con enlaces
 | Hito | Sesión(es) | Descripción y enlace |
 |------|------------|----------------------|
 |  0   | 2          | [Crear repo con componentes](https://jj.github.io/curso-tdd/temas/git#Actividad)|
-|  1   | 3          | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
+|  1   | 3          | [Idea de problema a resolver](https://jj.github.io/curso-tdd/temas/ddd#Actividad)|
 |  2   | 4          | [Gama de aplicaciones](https://jj.github.io/curso-tdd/temas/aplicaciones#Actividad)|
 |  3   | 5          | [Servicios](https://jj.github.io/curso-tdd/temas/servicios#Actividad)|
 |  4   | 6          | [Desarrollo ágil](https://jj.github.io/curso-tdd/temas/ágil#Actividad)|
