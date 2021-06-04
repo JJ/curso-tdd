@@ -1,9 +1,10 @@
-455
+482
 API
 APIs
 Act
 Actions
 Arrange
+Atlassian
 B
 BDD
 Behavior
@@ -19,6 +20,7 @@ Celery
 Chai
 CircleCI
 Close
+Confluence
 CosmoDB
 DRY
 DSL
@@ -35,6 +37,7 @@ ETSIIT
 Elastic
 FIRST
 Firebase
+Fowler
 GHA
 Gateway
 GitHub
@@ -77,9 +80,11 @@ Lyskov
 MV
 MVC
 MVP
+Martin
 McKenzie
 Medium
 Merelo
+Meszaros
 Must
 Nim
 Nix
@@ -131,6 +136,7 @@ Truth
 TypeScript
 UGR
 UI
+URI
 Ubuntu
 Unexpected
 Unicorn
@@ -150,7 +156,9 @@ alfa
 and
 ansible
 antipatrones
+architecture
 array
+arrays
 assert
 autenticación
 back
@@ -191,6 +199,7 @@ cámping
 dashboar
 dashboard
 dateador
+decision
 delivery
 desacoplarlos
 desarrollismo
@@ -213,10 +222,12 @@ edge
 electrificación
 end
 enrutándolas
+externalización
 factory
 fail
 fake
 fatpack
+fix
 fixture
 fixtures
 fork
@@ -236,6 +247,7 @@ green
 grunt
 guión
 géneris
+happy
 hardware
 hash
 headless
@@ -243,6 +255,7 @@ heurísticas
 hide
 hook
 hooks
+house
 hype
 implementaciones
 implementación
@@ -253,6 +266,7 @@ instalárselo
 instanciación
 instancian
 instanciar
+instanciarse
 interdependiente
 isolated
 issue
@@ -272,6 +286,7 @@ lanzarlos
 lanzándolo
 layout
 leaderboard
+legacy
 lighting
 lint
 linter
@@ -309,6 +324,7 @@ modelizar
 modularización
 modularizarlo
 monitorizándolo
+multi
 multihebra
 new
 nim
@@ -322,9 +338,11 @@ on
 one
 online
 only
+open
 pack
 package
 packer
+panic
 pantallazo
 parametrizado
 path
@@ -341,6 +359,7 @@ prerrequisitos
 priori
 procedural
 procedurales
+profiler
 programables
 prototipado
 prove
@@ -349,7 +368,10 @@ proxies
 proxy
 pull
 push
+pusheará
 pytest
+recomendables
+records
 rediseños
 refactor
 refactorización
@@ -389,6 +411,7 @@ sintácticamente
 slash
 smell
 smoke
+source
 sprint
 squad
 squash
@@ -397,6 +420,7 @@ staging
 status
 steps
 stub
+stubs
 stubs
 subcomandos
 subdirectorio
@@ -450,24 +474,9 @@ warnings
 waterfall
 websockets
 whitepaper
+wiki
 workflows
 write
 x
 yourself
 zef
-stubs
-instanciarse
-URI
-panic
-profiler
-source
-open
-legacy
-recomendables
-happy
-Meszaros
-Martin
-Fowler
-arrays
-fix
-pusheará
