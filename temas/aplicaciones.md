@@ -20,7 +20,7 @@ problema que han planteado en la fase anterior.
 
 ## La ingeniería del software revuelve problemas usando sistemas informáticos
 
-> En el [tema anterior](ágil.md) hemos planteado la necesidad de
+> En el [tema anterior](ddd.md) hemos planteado la necesidad de
 > diseñar de forma adecuada una solución a un problema real. Aquí
 > haremos un breve panorama de las diferentes soluciones informáticas
 > que se pueden usar.
@@ -54,6 +54,11 @@ un producto debe partir desde las herramientas elegidas (como `git`, que
 se vio en el primer tema, pero también las herramientas informáticas
 que se vayan a usar) hasta la metodología de diseño o la
 arquitectura general que se va a usar.
+
+Como el desarrollo de una aplicación también se basa en crear una
+serie de productos mínimamente viables (MVP) de complejidad
+creciente, en realidad esto son tanto aplicaciones finales como
+posibles etapas de una aplicación.
 
 En este capítulo vamos a tratar de hacer una pequeña panorámica de la
 arquitectura de una aplicación informática, con "aplicación" siendo un
@@ -210,6 +215,22 @@ que no son sino una forma específica de crear aplicaciones para un
 cliente determinado. En ese sentido, desacoplar front de back permite,
 una vez más, crear diferentes clientes para un sólo servidor, y
 desarrollar (y desplegar) de forma aislada uno del otro.
+
+## Aplicaciones de escritorio
+
+Todavía se desarrollan aplicaciones de escritorio, con bibliotecas
+específicas multi-SO para poder crear aplicaciones que se ejecuten en
+diferentes sistemas operativos. Suelen ser más aplicaciones *in-house*
+que aplicaciones que estén a la venta, aunque evidentemente hay
+muchísimas aplicaciones para todo tipo de sistemas operativos, todas
+las que usamos de forma habitual, que se siguen desarrollando. Este es
+un área donde el software libre está ganando al software privativo,
+aunque las aplicaciones privativas se convierten en *front-end*s de
+escritorio para aplicaciones que son en realidad cliente-servidor. En
+cualquier caso, una aplicación de escritorio también se puede
+desarrollar para ejecutarse en una consola, y suelen ser buenas
+alternativas a aplicaciones CLI para usuarios que no quieren recordar
+múltiples opciones.
 
 
 ## Actividad
