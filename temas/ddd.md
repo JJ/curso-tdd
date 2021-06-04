@@ -52,41 +52,6 @@ soliciten, y crear un marco en el cual se va a desarrollar esta
 aplicación. Además, también permite identificar los *actores*, o
 quienes son los que van a usar efectivamente la aplicación.
 
-## Capturando los deseos de los clientes
-
-Los deseos de los clientes se capturarán en unas [historias de
-usuario](diseño.md). Pero previo a las historias de usuario se tendrán
-que crear unas narrativas de los diferentes pasos que van a dar los
-diferentes tipos de usuario, una visión más global que, más adelante,
-se dividirá en fragmentos, historias de usuario, testeables y
-programables. Estas narrativas se llaman
-[épicas](https://www.qalovers.com/2018/04/historias-de-usuario.html). En
-general, como afirma en el enlace anterior:
-
-> Son historias de usuario demasiado extensas que se tienen que
-> dividir en otras más pequeñas.
-
-Y en este punto es donde es conveniente empezar a usar las mejores
-prácticas en el desarrollo ágil. Hay muchas formas de llevarlo a cabo,
-pero generalmente se agrupan en dos campos diferentes: los partidarios
-de usar [*scrum*](https://proyectosagiles.org/que-es-scrum/) o los
-usuarios de
-[*kanban*](https://kanbanize.com/es/recursos-de-kanban/primeros-pasos/que-es-kanban). Hay
-diferencias considerables, aunque los dos coinciden en el hecho de que
-se trabaje sistemáticamente con historias de usuario... y con un
-tablero. Los tableros permiten ver claramente en qué estado está el
-trabajo, y permite organizar las historias de usuario en diferentes
-columnas según el estado en el que estén. Las columnas clásicas son
-"Por hacer", "haciéndose" y "hecho", pero se pueden añadir otras
-columnas según el proyecto y el equipo: Diseño técnico, o Tormenta de
-Ideas. Estas últimas permiten interaccionar, a través de la
-herramienta que se elija (que, por simplicidad, es mejor que sea la
-que  provee el gestor de código, por ejemplo, el de GitHub).
-
-Estas columnas de "tormenta de ideas" se pueden usar, por ejemplo,
-para elaborar colaborativamente una épica. De esa épica,
-posteriormente, surgirán las diferentes historias de usuario. Pero eso
-lo veremos a continuación.
 
 ## Empatizando con los clientes
 
@@ -164,6 +129,39 @@ Es decir, cuando decidamos a partir de ahora crear HUs, hablaremos de
 "Iris quiere" o "Iris desea". Lo haremos en el material del curso,
 dentro de la medida de lo posible.
 
+## Soporte para documentación
+
+La documentación de un proyecto es la mejor garantía de que todo el
+mundo entiende qué se está haciendo y por qué. Se tienen que
+documentar tanto las decisiones tomadas como el proceso que ha llevado
+a esa toma de decisiones. Lo que se persigue con esta externalización
+de las decisiones es que la decisión de si un código es correcto o no
+no dependa de una persona: depende de las decisiones tomadas por el
+equipo, y documentadas correctamente.
+
+Los mejores sistemas de documentación tienen plantillas para las
+decisiones tomadas de forma más habitual por un equipo, desde las
+"Personas" hasta las decisiones de arquitectura (que se incluyen en
+las llamadas ADR, *architecture decision records*). Sistemas como
+Confluence de Atlassian, que se usa en la mayoría de las empresas, son
+de este tipo. A falta de este tipo de plantillas, el wiki de GitHub o
+GitLab vale exactamente lo mismo, siempre que en la cabecera dejéis
+bien claro de qué se trata.
+
+Adicionalmente, ya desde la etapa de documentación conviene que se
+organice un poco y se estructure el proceso. Aunque más adelante se
+verá con un poco más de profundidad, los sistemas mencionados
+anteriormente tienen alguna forma de documentar lo que todavía está en
+la fase de "idea". En Confluence hay páginas que son tal cual, en
+GitHub se puede abrir un "Proyecto" tipo "kanban" y usar la columna de
+"ideas" para organizar lo que se está haciendo. Desde esta columna se
+pueden enlazar las entradas del wiki correspondientes, si se desea.
+
+En este tipo de herramientas, lo mejor es la consistencia y que estén
+bien conectadas unas con otras. Mi consejo es que si se usa GitHub, se
+use para todo; si se usa Jira/Confluence, bueno, conviene al menos que
+se vinculen.
+
 ## Ver también
 
 [Un artículo da consejos para crear una serie de personas
@@ -180,7 +178,8 @@ Se procederá de esta forma: Cada equipo se tendrá que reunir para decidir qué
   establece el dominio del problema. La idea o idea iniciales se
   podrán poner en una columna de "ideas" en un tablero de GitHub, o simplemente
   abrir una ficha de "problema" y que todo el mundo trabaje sobre
-  ella.
+  ella. Por lo tanto, este hito 1 incluirá, entre otras cosas, la
+  creación de un tablero de proyecto en GitHub.
 
 Adicionalmente, decidirá (y escribirá la biografía) de las "personas"
 que vayan a usar su software.
