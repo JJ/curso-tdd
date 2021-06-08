@@ -14,7 +14,4 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 | | |
 | | |
 | [txh](https://github.com/typescript-caterpillar/txh)            | v0.0.1 |
-| | |
-| | |
-| | |
 | [GolangBot](https://github.com/GolangParty/GolangRepo)            | v0.0.1 |
