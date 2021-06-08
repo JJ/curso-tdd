@@ -168,6 +168,17 @@ reaccionen a algún otro tipo de API, como *hooks* que reaccionen a
 peticiones a GitHub; en ese sentido, pueden ser una capa que esté por
 encima de un API de cualquier tipo, o directamente ese tipo de API.
 
+## Sistemas de mensajería
+
+Hay situaciones en las que vamos a necesitar operar de forma concurrente
+nuestros servicios. Para no sobrecargar la ejecución de los mismos, así
+como ganar en performance, podemos delegar en otros microservicios la
+realización de algunas tareas. Para sincronizar toda esta ejecución
+será necesario utilizar un middleware como (RabbitMQ)[https://www.rabbitmq.com/]
+que hará las veces de cartero (ó  broker de mensajería) repartiendo los
+mensajes a quien le correspondiera. De esta forma podremos trabajar de
+forma asíncrona, manteniendo informados sobre nuevos cambios a los
+diferentes servicios suscritos al broker.
 
 ## Arquitecturas de microservicios
 
