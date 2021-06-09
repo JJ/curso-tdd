@@ -9,3 +9,4 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 | [NoteFinder](https://github.com/Python-V-AgilGRX/NoteFinder)            | v0.0.1 |
 | [txh](https://github.com/typescript-caterpillar/txh)                    | v0.0.1 |
 | [GolangBot](https://github.com/GolangParty/GolangRepo)                  | v0.0.1 |
+| [RuteaMe](https://github.com/skladores/RuteaMe)                         | v0.0.1 |
