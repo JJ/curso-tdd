@@ -4,7 +4,7 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 
 | Nombre proyecto con enlace                                              | Versión |
 |-------------------------------------------------------------------------|---------|
-| [TabulAsk](https://github.com/Curso-DA-Python-I/TabulAsk) | v0.0.1 |
+| [TabulAsk](https://github.com/Curso-DA-Python-I/TabulAsk) | v1.0.0 |
 | | |
 | [MessagesAnalyzer](https://github.com/BotAnalyzer/MessagesAnalyzer) | v0.0.1 |
 | | |
