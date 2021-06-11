@@ -274,7 +274,7 @@ H de SHOC.
 > excepciones, como en este caso tratar de obtener un proyecto cuyo ID
 > no existe.
 
-Las `tables`en Nim son equivalentes a los diccionarios o Hash en otros lenguajes.
+Las `tables` en Nim son equivalentes a los diccionarios o Hash en otros lenguajes.
 
 ## A programar
 
@@ -282,7 +282,7 @@ A continuación, hay que ponerse a programar, lo que implica poner a
 punto una serie de herramientas y una actitud; lo indicado por [Joel
 on software](https://dev.to/checkgit/the-joel-test-20-years-later-1kjk)
 sigue siendo válido después de muchos años: usar siempre control de
-fuentes, hacer el build (y finalmente el despliegue) en un solo paso,
+fuentes, hacer el *build* (y finalmente el despliegue) en un solo paso,
 priorizar arreglar los bugs.
 
 Pero en todo caso, lo más importante es la planificación que se va a
