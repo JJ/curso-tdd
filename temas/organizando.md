@@ -220,9 +220,9 @@ tendremos que introducir el sistema que decida de dónde se leen esos
 issues e hitos. Este desacoplamiento es esencial, y ayuda desde el
 diseño a hacer más adelante la inyección de dependencias.
 
-El principio de la responsabilidad única indica también que sólo debe
+El principio de la responsabilidad única (o SRP) indica también que sólo debe
 haber [una razón para que un objeto de una clase
-cambie](http://geekswithblogs.net/TimothyK/archive/2014/06/11/dry-and-srp.aspx). Si
+cambie](https://timothyk.github.io/blog/2014/DryAndSrp/). Si
 un objeto de una clase está compuesto a su vez de objetos de otras
 clases, el que cambie uno de las clases incluidas va a provocar que el
 objeto de la clase anfitrión cambie sin saberlo, provocando *acción a
@@ -246,7 +246,7 @@ clases. También esta única fuente de verdad estará relacionada con la
 principio, mientras que el resto de las clases serán simplemente
 objetos valor.
 
-Por ejemplo, usaremos en [Nim](../ejemplos/nim) este módulo con la
+Por ejemplo, usaremos en [Nim](../ejemplos/nim/) este módulo con la
 única responsabilidad de crear y contener los proyectos con los que
 vamos a trabajar:
 
