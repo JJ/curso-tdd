@@ -118,7 +118,27 @@ control de versiones), y por tanto distinguiremos entre varios tipos
 
 ## Organización del código
 
-Los principios [SOLID](https://es.wikipedia.org/wiki/SOLID)
+Antes de organizar el código, hay que organizar sus directorios. En
+general, todos los lenguajes de programación tienen un serie de
+prácticas habituales que dice cómo se tienen que llamar los
+directorios que albergan cada cosa (código, tests, configuración,
+otros *assets* que se vayan a usar como datos) y hay que respetarlos
+de forma bastante estricta. Lo mejor en estos casos es usar plantillas
+que estén publicadas en GitHub (que no hay más que instanciar para
+generar nuestro código; por ejemplo, [esta para
+Python](https://github.com/scottclowe/python-template-repo)), o bien
+usar generadores de módulos o aplicaciones, programas que te piden una
+serie de datos y te generan el *boilerplate* de todos los ficheros y
+directorios sobre el que no tienes más que rellenar. Por ejemplo, Raku
+tiene [`mi6`](https://github.com/skaji/mi6); TypeScript tiene
+[`typescript-starter`](https://github.com/bitjson/typescript-starter). En
+todo caso, casi siempre se considera mala práctica poner en el
+directorio principal cosas que no sean configuración, crear
+estructuras de directorios excesivas, o usar nombres que no sigan la
+convención habitual del lenguaje.
+
+Una vez que ya sabemos dónde va a ir todo, los principios
+[SOLID](https://es.wikipedia.org/wiki/SOLID)
 constituyen también una metodología de diseño modular de software que
 encaja bien con las metodologías usadas en las fases anteriores.
 
