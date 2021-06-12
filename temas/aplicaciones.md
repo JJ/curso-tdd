@@ -174,7 +174,7 @@ Hay situaciones en las que vamos a necesitar operar de forma concurrente
 nuestros servicios. Para no sobrecargar la ejecución de los mismos, así
 como ganar en performance, podemos delegar en otros microservicios la
 realización de algunas tareas. Para sincronizar toda esta ejecución
-será necesario utilizar un middleware como (RabbitMQ)[https://www.rabbitmq.com/]
+será necesario utilizar un middleware como [RabbitMQ](https://www.rabbitmq.com/)
 que hará las veces de cartero (ó  broker de mensajería) repartiendo los
 mensajes a quien le correspondiera. De este modo podremos trabajar
 asíncronamente manteniendo informados sobre nuevos cambios a los servicios

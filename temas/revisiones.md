@@ -11,10 +11,10 @@
 
 
 
-## Aspectos emocionales de la programadción.
+## Aspectos emocionales de la programación
 
 
-## Actividad: versión xxx
+## Actividad: release 6
 
 
 ## Entrega
