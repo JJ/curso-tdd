@@ -174,7 +174,11 @@ Scrum](https://shop.theliberators.com/products/scrum-a-framework-to-reduce-risk-
 
 ## Actividad
 
-<-- Reescribir la actividad, que ahora ha pasado al hito 1 -->
+En esta actividad, que corresponde al hito 4, se tienen que crear
+dentro del repositorio del proyecto un tablero que se vaya usando para
+desarrollar el resto de las actividades y organizarlas. Aquí se
+empezarán a elaborar las historias de usuario, por ejemplo, a partir
+del wiki creado anteriormente.
 
 ## Entrega
 

@@ -169,7 +169,7 @@ creíbles](https://www.romanpichler.com/blog/10-tips-agile-personas/).
 
 ## Actividad
 
-Correspondiente al hito 1, esencialmente consiste en el planteamiento
+Correspondiente al **hito 1**, esencialmente consiste en el planteamiento
 inicial del proyecto, desde la idea (que tendrá que hacerse
 explícitamente) a las primeras historias de usuario.
 
