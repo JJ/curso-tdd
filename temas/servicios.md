@@ -194,9 +194,10 @@ de que no tienen coste ni limitación alguna, las herramientas
 comerciales pueden ser útiles para prototipado rápido o simplemente
 familiarizarse con ellas. Así que en este hito habrá que ampliar el
 `README.md` con la descripción de las herramientas que se prevé usar
-más adelante; de estas, el servicio de logging es obligatorio, el
-servicio de configuración remota casi, y servicios adicionales a gusto
-del consumidor.
+más adelante; de estas, el servicio de *logging* es obligatorio, el
+servicio de configuración remota casi (sobre todo si lo que vas a
+hacer es un conjunto de microservicios, o uno solo), y servicios
+adicionales a gusto del consumidor.
 
 ## Entrega
 
