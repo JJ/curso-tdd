@@ -265,5 +265,7 @@ módulo) y qué problema se quiere resolver.
 Esta entrega se llevará a cabo, como el resto de las mismas, como un
 pull request al fichero de [proyectos](../proyectos.md), tras añadir
 en el *fork* propio el nombre del proyecto y un enlace al repo, así
-como la versión. Recordad que se usa versionado semántico.
+como la versión. Recordad que se usa versionado semántico y que se
+aconseja que siempre los PRs se hagan desde una rama, para evitar
+conflictos con la rama principal.
 
