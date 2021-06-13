@@ -27,7 +27,7 @@ jobs:
           echo $user
           echo $repo
           echo $diff
-      - name: Comprueba que exista el tablero
+      - name: Comprueba que exista el tablero y el wiki
         uses: actions/github-script@v3
         if: env.version >= '1'
         with:
@@ -54,6 +54,7 @@ jobs:
               user: user,
               repo: repo
             })
+            console.log( repoInfo )
             if (repoInfo.has_wiki) {
                console.log( "✅ El repo tiene un wiki ")
             } else {
