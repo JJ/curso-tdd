@@ -174,8 +174,9 @@ Scrum](https://shop.theliberators.com/products/scrum-a-framework-to-reduce-risk-
 
 ## Actividad
 
-En esta actividad, que corresponde al hito 4, se tienen que crear
-dentro del repositorio del proyecto un tablero que se vaya usando para
+En esta actividad, que corresponde al hito 4 (es decir, que habrá que
+etiquetar con la *versión 4*, se tiene que seguir trabajando dentro
+del tablero para
 desarrollar el resto de las actividades y organizarlas. Aquí se
 empezarán a elaborar las historias de usuario, por ejemplo, a partir
 del wiki creado anteriormente.

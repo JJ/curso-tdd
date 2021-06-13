@@ -49,6 +49,16 @@ jobs:
             } else {
                console.log( "✅ Tenemos un proyecto para el tablero ")
             }
+
+            const repoInfo = await github.request( 'GET /repos/{user}/{repo}', {
+              user: user,
+              repo: repo
+            })
+            if (repoInfo.has_wiki) {
+               console.log( "✅ El repo tiene un wiki ")
+            } else {
+               core.setFailed("❌ Debe haber al menos un wiki")
+            }
       - name: Comprueba que haya una historia de usuario
         uses: actions/github-script@v3
         if: env.version >= '4'

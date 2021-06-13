@@ -179,7 +179,7 @@ Se procederá de esta forma: Cada equipo se tendrá que reunir para decidir qué
   podrán poner en una columna de "ideas" en un tablero de GitHub, o simplemente
   abrir una ficha de "problema" y que todo el mundo trabaje sobre
   ella. Por lo tanto, este hito 1 incluirá, entre otras cosas, la
-  creación de un tablero de proyecto en GitHub.
+  **creación de un tablero** de proyecto en GitHub.
 
 Adicionalmente, decidirá (y escribirá la biografía) de las "personas"
 que vayan a usar su software.
