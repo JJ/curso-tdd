@@ -54,8 +54,7 @@ jobs:
               user: user,
               repo: repo
             })
-            console.log( repoInfo )
-            if (repoInfo.has_wiki) {
+            if (repoInfo.data.has_wiki) {
                console.log( "✅ El repo tiene un wiki ")
             } else {
                core.setFailed("❌ Debe haber al menos un wiki")
