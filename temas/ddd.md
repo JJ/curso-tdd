@@ -205,7 +205,10 @@ personas:
 
 En el caso definido antes. Iremos añadiendo claves a este fichero,
 pero por lo pronto tendrá solamente esa clave. Más nombres tendrán que
-añadirse de la misma forma, con otra línea precedida por `-`.
+añadirse de la misma forma, con otra línea precedida por `-`, que es
+la forma como se hace en [YAML](https://yaml.org).
 
 Recordatorio: el *tag* deberá corresponder exactamente a la versión
-que se haya enviado.
+que se haya enviado. Se aconseja, en estos primeros hitos, comprobar
+mediante alguna herramienta online la sintaxis del fichero YAML, para
+que no dé lugar a errores.
