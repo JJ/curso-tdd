@@ -305,7 +305,7 @@ en el *fork* propio (que deberá estar actualizado) la versión del
 proyecto, que como siempre tendrá que corresponder con un tag del
 repositorio.
 
-Seguiremos usando 
+Seguiremos usando
 [versionado semántico para las entregas](https://semver.org/), donde
 el primer número será siempre el hito (comenzando por el hito
 0).

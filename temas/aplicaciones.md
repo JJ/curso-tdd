@@ -246,18 +246,18 @@ múltiples opciones.
 
 ## Actividad
 
-En esta fase se decidirá el proyecto en sí y qué va a ser (entre
-los tipos de aplicaciones mostradas antes) se añadirá al README. Este
-fichero deberá contener la palabra *solución* donde se describirá el
-tipo de solución informática que se ha elegido.
+En esta fase se decidirá el proyecto en sí y qué va a ser (entre los
+tipos de aplicaciones mostradas antes) se añadirá al README. Este
+fichero deberá contener la palabra *solución*, ya que tendrá que
+describir el tipo de solución informática que se ha elegido.
 
 Conviene que se midan las fuerzas y no se intente nada demasiado
-ambicioso (aplicación completa con varios front-end basados en
-microservicios) en el tiempo que va a durar este curso, que son 21
-días (prácticamente lo que dura un sprint en una empresa). Con crear
-un módulo, y si acaso un API, es suficiente. Sí hay que tener muy
-claro, sin embargo, el objetivo de ese API (o módulo) y qué problema
-se quiere resolver.
+ambicioso (aplicación completa basada en microservicios con varios
+front-end) en el tiempo que va a durar este curso, que es un mes
+aproximadamente días (prácticamente lo que dura un sprint en una
+empresa). Con crear un módulo, y si acaso un API, es suficiente. Sí
+hay que tener muy claro, sin embargo, el objetivo de ese API (o
+módulo) y qué problema se quiere resolver.
 
 
 ## Entrega
