@@ -11,3 +11,4 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 | [GolangBot](https://github.com/GolangParty/GolangRepo)                  | v0.0.1 |
 | [RuteaMe](https://github.com/skladores/RuteaMe)                         | v0.0.1 |
 | [ElTiempoYA](https://github.com/Kotlin-Boom-gang/TDD-Kotlin-Team)       | v0.0.1  |
+| [Ortograpy](https://github.com/Python-Group-VII/Orthograpy)             | v2.0.1  |
