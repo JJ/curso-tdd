@@ -179,17 +179,18 @@ Se procederá de esta forma: Cada equipo se tendrá que reunir para decidir qué
   podrán poner en una columna de "ideas" en un tablero de GitHub, o simplemente
   abrir una ficha de "problema" y que todo el mundo trabaje sobre
   ella. Por lo tanto, este hito 1 incluirá, entre otras cosas, la
-  **creación de un tablero** de proyecto en GitHub.
+  **creación de un tablero** de proyecto en GitHub, además de activar
+  el **wiki**, si no está activado por defecto.
 
 Adicionalmente, decidirá (y escribirá la biografía) de las "personas"
 que vayan a usar su software.
 
 ## Entrega
 
-Esta entrega se llevará a cabo, como el resto de las mismas, como un
-pull request al fichero de [proyectos](../proyectos.md), tras añadir
-en el *fork* propio el nombre del proyecto y un enlace al repo, así
-como la versión.
+Esta entrega, que corresponde al hito 1, se llevará a cabo, como el
+resto de las mismas, como un *pull request* al fichero de
+[proyectos](../proyectos.md), tras añadir en el *fork* propio el
+nombre del proyecto y un enlace al repo, así como la versión.
 
 En este hito empezaremos a usar un fichero, `agil.yaml`, en el
 directorio principal, que se usará para poner una serie de contenidos
@@ -203,10 +204,11 @@ personas:
     - Iris Capuleto Troya
 ```
 
-En el caso definido antes. Iremos añadiendo claves a este fichero,
+en el caso definido antes. Iremos añadiendo claves a este fichero,
 pero por lo pronto tendrá solamente esa clave. Más nombres tendrán que
 añadirse de la misma forma, con otra línea precedida por `-`, que es
 la forma como se hace en [YAML](https://yaml.org).
+
 
 Recordatorio: el *tag* deberá corresponder exactamente a la versión
 que se haya enviado. Se aconseja, en estos primeros hitos, comprobar
