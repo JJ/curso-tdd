@@ -287,11 +287,10 @@ que se podría eliminar).
 
 ## Actividad
 
-Esta actividad corresponderá a la versión 4. Esencialmente, en esta
-primera fase se llevarán a cabo las actividades de diseño para el
-resto del curso. Como en el resto de los hitos el código se debe
-añadir mediante un PR que deberá aprobar algún otro miembro del
-proyecto.
+Esta actividad corresponderá a la versión 4. Esencialmente, se
+llevarán a cabo las actividades de diseño para el resto del
+curso. Como en el resto de los hitos el código se debe añadir mediante
+un PR que deberá aprobar algún otro miembro del proyecto.
 
 Elaborar una cantidad aceptable de historias de usuario y crear a
 partir de ellas una serie de issues en GitHub (HUs dirigido a la
