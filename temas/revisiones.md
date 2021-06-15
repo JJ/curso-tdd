@@ -71,14 +71,34 @@ poder evaluar el trabajo.
 
 En cuanto a cuanta gente debe revisar el código, cuanta más mejor, como es
 natural, aunque poner muchas personas puede acabar por paralizar la
-incorporación de código. Una persona mínimo, pero dos personas son ideales, 
+incorporación de código. Una persona mínimo, pero dos personas son ideales,
+porque siempre se le puede escapar algo a alguien.
 
+En algunos casos, se puede aportar a la rama desde la que se haga a la PR
+corrigiendo algún error que se vea a simple vista; sin embargo, es mejor conocer
+la etiqueta del lugar, porque mucha gente considera muy mala forma el modificar
+una rama en la que está trabajando una persona; sin embargo, es normal que
+varias personas trabajen en una rama, en cuyo caso aportar, siempre que sea para
+cosas simples, o corregir algún error, o algo, no tiene mayor importancia.
+
+
+## Leer también
+
+
+Por ejemplo, estas [5 mejores
+prácticas](https://tsh.io/blog/code-review-best-practices/) o [esta
+otra](https://hamidmosalla.com/2020/11/11/code-review-best-practices-a-short-guide/).
 
 
 ## Actividad
 
-Esta sesión correspondería al hito número 6.
+Esta sesión correspondería al hito número 6. En general, son prácticas que son
+difíciles de evaluar automáticamente, así que no vamos a sugerir ningún test
+adicional. Se podrá hacer un "control aleatorio" para ver si se llevan a cabo en
+los proyectos que se entregan, sin embargo.
 
 
 ## Entrega
+
+De la forma habitual, con la versión 6, modificando `proyectos.md`.
 
