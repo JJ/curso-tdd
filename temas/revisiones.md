@@ -105,6 +105,44 @@ en equipo con otra gente, y las fricciones suelen acabar con el producto; por
 eso se trata de hacer las cosas de la forma más diplomática posible y de forma
 que todo el mundo se sienta bien, incluso apasionado por hacerlo.
 
+Por eso es esencial entender quién y por qué se hace una revisión de código. No
+se está examinando a nadie, ni se hace de una forma jerárquica, ni se trata de
+probar lo mucho que sabe uno. Se trata de que 4 o 6 ojos ven más que dos, y que
+hay que sacar el trabajo colectivamente. Por eso, algunas cosas a tener en
+cuenta
+
+* No hay que hacer valer la opinión de uno sobre otro, y mucho menos si la
+  decisión sobre qué hacer ya está tomada. Si no está claro qué es lo que hay
+  que hacer, la solución planteada es tan buena como la que uno haría. Las
+  opiniones se guardan para la retro.
+  
+* Usar palabras como *nit* (de *nitpicking*, difícil de traducir), o *LGTM*
+  (looks good to me), para indicar primero que es un error sin importancia que
+  puede corregirse o no, y segundo para indicar que está bien.
+
+* En general, no rechazar nunca un PR, y menos si no rompe el código. Aprobarlo,
+  y dejar las correcciones al arbitrio de quien lo hace, si son simplemente
+  cuestiones de estilo o de interpretación.
+
+* Por supuesto, responder de forma inmediata a un PR. En software libre es
+  imprescindible: la única recompensa que se tiene es que te lo consideren y
+  admitan. En empresas, también indica que se está preocupado por el código y
+  el equipo.
+
+* No cortarse a la hora de felicitar por el trabajo bien hecho. Si se usa alguna
+  característica novedosa del lenguaje, o simplemente se ha hecho el trabajo de
+  forma diligente, comprensible y eficiente, un corazón, una medalla o cualquier
+  otro emoji indicando buen trabajo es lo que hay que usar.
+
+* Del otro lado también es conveniente no ponerse a la defensiva y agradecer a
+  los revisores su trabajo; si pillan un error o te ayudan a desbloquear la
+  solución a un problema, es lo adecuado. Los comentarios en GitHub se pueden
+  también valorar, y se puede usar con ellos todo tipo de emojis.
+
+Un PR siempre es una ocasión para aprender de la visión de otra persona o de sus
+conocimientos técnicos. Aprovéchala.
+
+
 ## Leer también
 
 
