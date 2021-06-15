@@ -45,6 +45,35 @@ como:
   por el equipo, desde las ADR hasta el issue/ticket específico con el que se
   esté trabajando.
 
+Generalmente, una revisión de código se va a hacer de forma asíncrona, como
+  comentarios en un repositorio. GitHub (y GitLab) permiten añadir comentarios
+  en la línea que se ha añadido, o en general en cualquier línea alredor del
+  mismo. Con el contexto correcto, es más fácil entender qué es lo que se desea,
+  aunque también se puede añadir como comentario general una priorización de los
+  diferentes cambios sugeridos, por ejemplo.
+
+En general, y sobre todo en entornos empresariales, todo PR estará listo para
+pasar. Si ha pasado todos los tests y se presentan defectos importantes, el
+problema no es del PR, es del sistema de calidad: no hay tests de calidad de
+código suficientes, no están claros los estándares que se siguen o simplemente
+no está claro qué es lo que hay que hacer. En entornos open source es bastante
+común esto, sin embargo; a veces no hay hoja de ruta, se solicita incorporar una
+nueva característica, o simplemente es una colaboración espontánea. En estos
+casos se aconseja que se cree una [plantilla de pull
+request](https://docs.github.com/es/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository),
+un fichero Markdown en el repositorio que tiene pre-rellenos una serie de
+requisitos.
+
+Esta plantilla nunca viene mal, incluso en entornos empresariales. Por ejemplo,
+que quede claro con qué épica/issue se está trabajando (incluso aunque sea
+externo a GitHub), y permite a quien revisa estar en el marco correcto para
+poder evaluar el trabajo.
+
+En cuanto a cuanta gente debe revisar el código, cuanta más mejor, como es
+natural, aunque poner muchas personas puede acabar por paralizar la
+incorporación de código. Una persona mínimo, pero dos personas son ideales, 
+
+
 
 ## Actividad
 
