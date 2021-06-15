@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desarrollo ágil: Diseño</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/extra.css">
+	<link rel="stylesheet" href="dist/agil.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+	    <div class="reveal">
+		<div class="slides">
+		    <section><h2>Desarrollo ágil</h2>
+                        <h1>Revisiones de código</h1>
+                        <h3><a href="https://jj.github.io/curso-tdd/temas/revisiones"><code>jj.github.io/curso-tdd/temas/revisiones</code></a></h3>
+                    </section>
+
+                    <section><h1>✓ TODO</h1>
+			<h2 class="fragment">□ ¿Se ha organizado ya el trabajo
+			en épicas, hitos y algún issue? </h2>
+                    </section>
+
+                    <section><h1>El código se incorpora siempre pasando por una
+                        revisión</h1></section>
+
+                    <section>
+                        <section><h1>Siempre complementarias a
+                            tests/linters</h1>
+                        </section>
+
+                        <section><h1>¿Qué se revisa?</h1>
+                            <h2 class="fragment">Estilo de la organización</h2>
+                            <h2 class="fragment">Repeticiones de código,
+                                dependencias desaconsejadas</h2>
+                            <h2 class="fragment">Código ajustado a decisiones
+                                tomadas</h2>
+                        </section>
+
+                        <section><h1>Un PR debe pasar <em>casi</em> siempre</h1>
+                            <h2 class="fragment">Si los PRs requieren mucho
+                                trabajo manual, malo</h2>
+                            <h2 class="fragment">Plantilla de PR ayuda</h2>
+                        </section>
+
+                        <section><h1>¿1 o 2 personas mínimo revisando
+                            código?</h1></section>
+
+                        <section><h1>¿Modificaciones por parte del revisor o
+                            no?</h1>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section><h1>¿Cuando se debe inicial el PR?</h1>
+                            <h2 class="fragment">Lo antes posible</h2>
+                            <h2 class="fragment">Usar modo "borrador"</h2>
+                        </section>
+
+                        <section><h1>No hagas un PR de 100 commits y 40 ficheros
+                            con 5000 líneas más</h1></section>
+                    </section>
+
+                    <section><h1>Pon un poco de amor</h1>
+                        <h2 class="fragment">Felicita el buen trabajo</h2>
+                        <h2 class="fragment">Usa <em>nit</em>, <EM>LGTM</EM>,
+                            <em>IMO</em></h2>
+                        <h2 class="fragment">No censures, solicita
+                            aclaraciones</h2>
+                        <h2 class="fragment">Responder rápidamente</h2>
+                        <aside class="notes">Si no lo haces, el tener que
+                        mergear cambios a la rama principal que puedan provocar
+                            conflictos alargará el trabajo más de lo necesario</aside>
+                    </section>
+
+                    <section><h1>✓ TODO hito 7</h1>
+                        <h2 class="fragment"> Llevar a cabo buenas prácticas en
+                        las revisiones </h2>
+                    </section>
+
+                </div>
+	    </div>
+
+	    <script src="dist/reveal.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+	    <script>
+	     // More info about initialization & config:
+	     // - https://revealjs.com/initialization/
+	     // - https://revealjs.com/config/
+	     Reveal.initialize({
+		 hash: true,
+                 width: "95%",
+                 slideNumber: true,
+		 // Learn about plugins: https://revealjs.com/plugins/
+		 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	     });
+	    </script>
+	</body>
+</html>

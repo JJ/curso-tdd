@@ -64,6 +64,12 @@ request](https://docs.github.com/es/communities/using-templates-to-encourage-use
 un fichero Markdown en el repositorio que tiene pre-rellenos una serie de
 requisitos.
 
+También es conveniente limitarte a la revisión del código que está en el
+PR. Muchas veces se observa algún error anterior en los alrededores, o incluso
+algún error en código no modificado. Lo más adecuado es hacer un *hotfix*
+(incluso dentro de la misma rama) o crear un issue para que lo haga alguien más
+adelante. Si no, se genera posible distracción.
+
 Esta plantilla nunca viene mal, incluso en entornos empresariales. Por ejemplo,
 que quede claro con qué épica/issue se está trabajando (incluso aunque sea
 externo a GitHub), y permite a quien revisa estar en el marco correcto para
@@ -115,7 +121,7 @@ cuenta
   decisión sobre qué hacer ya está tomada. Si no está claro qué es lo que hay
   que hacer, la solución planteada es tan buena como la que uno haría. Las
   opiniones se guardan para la retro.
-  
+
 * Usar palabras como *nit* (de *nitpicking*, difícil de traducir), o *LGTM*
   (looks good to me), para indicar primero que es un error sin importancia que
   puede corregirse o no, y segundo para indicar que está bien.
@@ -138,6 +144,9 @@ cuenta
   los revisores su trabajo; si pillan un error o te ayudan a desbloquear la
   solución a un problema, es lo adecuado. Los comentarios en GitHub se pueden
   también valorar, y se puede usar con ellos todo tipo de emojis.
+
+* No censures, solicita aclaraciones. Quizás no se ha entendido correctamente o
+  no se tiene el panorama completo.
 
 Un PR siempre es una ocasión para aprender de la visión de otra persona o de sus
 conocimientos técnicos. Aprovéchala.
