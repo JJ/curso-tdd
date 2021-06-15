@@ -111,6 +111,9 @@ Tendremos estas sesiones:
    * [Presentación](temas/organizando.html)
 
 9. El arte de la buena revisión de código.
+   * Aspectos técnicos y emocionales de las revisiones de código
+   * [Material](temas/revisiones.md).
+   * [Presentación](temas/revisiones.html)
 
 10. Comienzo de la implementación "defensiva".
    * Documentación de las historias de usuario y traslado a issues.
