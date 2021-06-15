@@ -189,14 +189,15 @@ con enlaces
 |  4   | 6          | [Desarrollo ágil](https://jj.github.io/curso-tdd/temas/ágil#actividad)|
 |  5   | 7          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#actividad)|
 |  6   | 8          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#actividad)|
-|  7   | 8          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#actividad)|
-|  8   | 10          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#actividad)|
-|  9   | 11         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#actividad)|
-|  10  | 12         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#actividad)|
-|  11  | 13         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#actividad)|
-|  12  | 14         | [Integración continua](https://jj.github.io/curso-tdd/temas/CI#actividad)|
-|  13  | 15         | [Inyección de dependencias](https://jj.github.io/curso-tdd/temas/inversión#actividad)|
-|  14  | 16         | [Tests de cobertura](https://jj.github.io/curso-tdd/temas/cobertura#actividad)|
+|  8   | 9          | [Revisiones](https://jj.github.io/curso-tdd/temas/revisiones#actividad)|
+|  9   | 10          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#actividad)|
+|  10  | 11          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#actividad)|
+|  11  | 12         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#actividad)|
+|  12  | 13         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#actividad)|
+|  13  | 14         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#actividad)|
+|  14  | 15         | [Integración continua](https://jj.github.io/curso-tdd/temas/CI#actividad)|
+|  15  | 16         | [Inyección de dependencias](https://jj.github.io/curso-tdd/temas/inversión#actividad)|
+|  16  | 17         | [Tests de cobertura](https://jj.github.io/curso-tdd/temas/cobertura#actividad)|
 
 Esta información te la da el bot `kke`, añadido al grupo de Telegram
 del curso, o con una conversación directa con él.
