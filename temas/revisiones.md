@@ -10,7 +10,7 @@ lado, que se mantenga el buen espíritu de equipo. Como en todo empeño en este
 
 ## Al final de esta sesión
 
-El estudiante entenderá cuales osn las prácticas habituales en revisión de
+El estudiante entenderá cuales son las prácticas habituales en revisión de
 código, algo del vocabulario y, sobre todo, cómo leer el código del resto del
 equipo.
 
@@ -47,7 +47,7 @@ como:
 
 Generalmente, una revisión de código se va a hacer de forma asíncrona, como
   comentarios en un repositorio. GitHub (y GitLab) permiten añadir comentarios
-  en la línea que se ha añadido, o en general en cualquier línea alredor del
+  en la línea que se ha añadido, o en general en cualquier línea alrededor del
   mismo. Con el contexto correcto, es más fácil entender qué es lo que se desea,
   aunque también se puede añadir como comentario general una priorización de los
   diferentes cambios sugeridos, por ejemplo.
@@ -81,6 +81,29 @@ una rama en la que está trabajando una persona; sin embargo, es normal que
 varias personas trabajen en una rama, en cuyo caso aportar, siempre que sea para
 cosas simples, o corregir algún error, o algo, no tiene mayor importancia.
 
+Desde el punto de vista de la persona que hace el PR, en general es mejor
+hacerlo lo antes posible, en cuanto que haya código por revisar. Un PR puede al
+final involucrar decenas o cientos de ficheros, y la revisión del mismo puede
+ser penosa para quien la haga. Cuanto más se facilite, mejor. GitHub permite
+poner los PR en borrador, para que quede claro que todavía no se ha terminado,
+pero que ya se puede empezar a echar un vistazo. El ver cómo se ha cambiado algo
+de forma atómica permite entender mejor qué se está haciendo, y por supuesto el
+sentido que tiene dentro del contexto. En general no es una buena práctica
+comenzar a desarrollar una rama con decenas o cientos de cambios y sólo hacer el
+PR cuando se acabe. Por su propia naturaleza, los PRs no van a estar nunca
+perfectos, casi siempre habrá algo que mejorar, por eso pretender hacer un PR
+*perfecto* esperando hasta que haya un montón de cambios no es una buena idea.
+
+> Mucho menos, por supuesto, en software libre donde el riesgo de que no te
+> acepten el PR es bastante alto (en general, hay excepciones).
+
+## Aspectos emocionales de los PRs
+
+El desarrollo ágil es uno de los primeros sistemas que trata de tener en cuenta
+el bienestar de la gente que lo usa; quien programa siempre es gente, y se hace
+en equipo con otra gente, y las fricciones suelen acabar con el producto; por
+eso se trata de hacer las cosas de la forma más diplomática posible y de forma
+que todo el mundo se sienta bien, incluso apasionado por hacerlo.
 
 ## Leer también
 
