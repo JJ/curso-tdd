@@ -157,10 +157,12 @@ GitHub se puede abrir un "Proyecto" tipo "kanban" y usar la columna de
 "ideas" para organizar lo que se está haciendo. Desde esta columna se
 pueden enlazar las entradas del wiki correspondientes, si se desea.
 
-En este tipo de herramientas, lo mejor es la consistencia y que estén
-bien conectadas unas con otras. Mi consejo es que si se usa GitHub, se
-use para todo; si se usa Jira/Confluence, bueno, conviene al menos que
-se vinculen.
+En este tipo de herramientas, lo mejor es la consistencia y que estén bien
+conectadas unas con otras. Mi consejo es que si se usa GitHub, se use para todo;
+si se usa [Jira](https://www.atlassian.com/es/software/jira), un sistema de
+órdenes de trabajo (*issues* o *tickets*) o
+[Confluence](https://www.atlassian.com/es/software/confluence), bueno, conviene
+al menos que se vinculen.
 
 ## Ver también
 
@@ -173,14 +175,14 @@ Correspondiente al **hito 1**, esencialmente consiste en el planteamiento
 inicial del proyecto, desde la idea (que tendrá que hacerse
 explícitamente) a las primeras historias de usuario.
 
-Se procederá de esta forma: Cada equipo se tendrá que reunir para decidir qué idea tienen o qué
-  problema quieren resolver, y para quién quieren resolverlo. Esto
-  establece el dominio del problema. La idea o idea iniciales se
-  podrán poner en una columna de "ideas" en un tablero de GitHub, o simplemente
-  abrir una ficha de "problema" y que todo el mundo trabaje sobre
-  ella. Por lo tanto, este hito 1 incluirá, entre otras cosas, la
-  **creación de un tablero** de proyecto en GitHub, además de activar
-  el **wiki**, si no está activado por defecto.
+Se procederá de esta forma: Cada equipo se tendrá que reunir para decidir qué
+idea tienen o qué problema quieren resolver, y para quién quieren
+resolverlo. Esto establece el dominio del problema. La idea o idea iniciales se
+podrán poner en una columna de "ideas" en un tablero de GitHub, o simplemente
+abrir una ficha de "problema" y que todo el mundo trabaje sobre ella. Por lo
+tanto, este hito 1 incluirá, entre otras cosas, la **creación de un tablero** de
+proyecto en GitHub, además de activar el **wiki**, si no está activado por
+defecto.
 
 Adicionalmente, decidirá (y escribirá la biografía) de las "personas"
 que vayan a usar su software.
