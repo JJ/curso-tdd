@@ -190,8 +190,8 @@ con enlaces
 |  5   | 7          | [Historias de usuario](https://jj.github.io/curso-tdd/temas/diseño#actividad)|
 |  6   | 8          | [Hitos](https://jj.github.io/curso-tdd/temas/organizando#actividad)|
 |  7   | 9          | [Revisiones](https://jj.github.io/curso-tdd/temas/revisiones#actividad)|
-|  8   | 10          | [Excepciones](https://jj.github.io/curso-tdd/temas/a-programar#actividad)|
-|  9   | 11          | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#actividad)|
+|  8   | 10         | [Programando](https://jj.github.io/curso-tdd/temas/a-programar#actividad)|
+|  9   | 11         | [Gestor de tareas](https://jj.github.io/curso-tdd/temas/gestores-tareas#actividad)|
 |  10  | 12         | [Linter](https://jj.github.io/curso-tdd/temas/hacia-tests-unitarios#actividad)|
 |  11  | 13         | [Tests y aserciones](https://jj.github.io/curso-tdd/temas/tests-unitarios-organización#actividad)|
 |  12  | 14         | [Marcos de test](https://jj.github.io/curso-tdd/temas/tests-unitarios#actividad)|

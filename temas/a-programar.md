@@ -51,9 +51,10 @@ diseñarse de forma que no se rompa (totalmente) con este cambio.
 > de implementar, pero la primera viene a decir que se debe escribir
 > código de forma que se prevea su cambio en el futuro.
 
-Por ejemplo, la [programación defensiva](https://en.wikipedia.org/wiki/Defensive_programming) trata
-de crear código más seguro pero también que sea difícil de *romper*
-cuando siga evolucionando.
+Por ejemplo, la [programación
+defensiva](https://en.wikipedia.org/wiki/Defensive_programming) trata de crear
+código más seguro pero también que sea difícil de *romper* cuando siga
+evolucionando.
 
  Se pueden incluir dentro de la programación defensiva todas las demás
  prácticas indicadas aquí, desde los principios de diseño, pasando por la
