@@ -28,25 +28,26 @@
                         <h2 class="fragment">□ ¿Hemos comenzado a
                             organizar el desarrollo en milestones? </h2>
                         <h2 class="fragment">□ ¿Se han diseñado clases
-                        y excepciones? </h2>
+                            <em>y</em> excepciones? </h2>
                     </section>
 
                     <section><h1>Configuración en el entorno</h1>
                         <h2 class="fragment">Unificar y programar
                             tareas</h2>
+
+                        <aside class="notes">Parte de los 12 factores y demás.</aside>
                     </section>
 
                     <section><h1><em>Task runners</em>, <em>build
                         managers</em>, compiladores y gestores de dependencias</h1>
                         <h2 class="fragment">Un continuo</h2>
+                        <h3 class="fragment">Compilan</h3>
+                        <h3 class="fragment">Instalan dependencias</h3>
+                        <h3 class="fragment">Ejecutan tests</h3>
+                        <h3 class="fragment">Ejecutan tareas generalizadas...</h3>
                         <aside class="notes">Pero en el extremo
-                            superior están los task runners</aside>
+                            superior están los task runners.</aside>
                     </section>
-
-                    <section><h1>✓ TODO <em>retro</em></h1>
-		        <h2 class="fragment">¿Se ha comprobado el
-		            formato del fichero YAML?</h2>
-		    </section>
 
                     <section><h1>Diferencias en configuración,
                         estandarización, forma (imperativa o
@@ -58,6 +59,10 @@
                     <section><h1>Muchos incluyen un DSL</h1>
                         <h2 class="fragment"><code>sbt</code>,
                             <code>make</code></h2>
+
+                        <aside class="notes">Domain specific language, un
+                    lenguaje específico y a veces diferente del lenguaje con el
+                            que trabajan. Por ejemplo, gradle usa Groovy.</aside>
                     </section>
 
                     <section><h1>Las tareas tienen nombres
@@ -65,6 +70,10 @@
                         <h2 class="fragment"><code>install</code>,<code>build</code>,
                             <code>test</code>, <code>check</code>,
                             <code>docs</code>...</h2>
+
+                        <aside class="notes">Y en lo posible, uno debe limitarse
+                    a usar estos nombre estándar, entre otras cosas porque son
+                            los que van a invocar sistemas de integración continua, por ejemplo</aside>
                     </section>
 
                     <section> <!-- ejemplos -->
@@ -88,7 +97,7 @@ podman build -f Dockerfile -t jjmerelo/hitos/hugitos
 	go $@</code></pre>
                         </section>
 
-                        <section><h1>Ake en Raku</h1>
+                        <section><h1><code>Ake</code> en Raku</h1>
                             <pre><code data-line-numbers="1|5-9|6|7"> task "installdeps", {
     shell "zef install --deps-only ."
 }
@@ -121,7 +130,10 @@ for &lt;test install> -> $task {
 
                             <aside class="notes">En realidad sólo
                         puede ejecutar tareas que estén en un programa
-                                en python. Necesitas un gestor de tareas por encima</aside>
+                                en python. Necesitas un gestor de tareas por
+                        encima. Pero se pueden llamar directamente funciones en
+                        módulos de Python, así que se pueden definir diferentes
+                        entrypoints para ellos</aside>
                         </section>
                     </section>
 
@@ -132,9 +144,8 @@ for &lt;test install> -> $task {
                     </section>
 
                     <section><h1>✓ TODO hito 9</h1>
-                        <h2 class="fragment">Elegir un gestor de
-                            tareas</h2>
-                        <h3 class="fragment">Comprobar el fichero de tareas/lenguaje</h3>
+                        <h2 class="fragment">Elegir un gestor de  tareas</h2>
+                        <h3 class="fragment">En <code>agil.yml</code></h3>
                         <pre class="fragment"><code>    lenguaje : "Nombre del lenguaje",
     taskfile : "Makefile"</code></pre>
                     </section>
