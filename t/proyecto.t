@@ -35611,6 +35611,10 @@ sub check {
   return BOLD.GREEN ."✔ ".RESET.join(" ",@_);
 }
 
+sub working {
+  return BOLD.BLUE ."⚙ ".RESET.join(" ",@_);
+}
+
 sub file_present {
   my ($file, $ls_files_ref, $name ) = @_;
   my @files = (ref($file) eq 'ARRAY')?@$file:($file);
@@ -35623,7 +35627,7 @@ sub file_present {
 sub call_for_test {
   my ($test_number, $function) = @_;
   if ($this_version >= $test_number ) {
-    diag( check( "⚙ Tests para hito $test_number") );
+    diag( working( " Tests para hito $test_number") );
     $function->();
   }
 }
