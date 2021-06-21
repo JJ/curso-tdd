@@ -33,17 +33,18 @@ sub milestone_1 {
   }
 }
 
-call_for_test( 1, \&milestone_1 );
-
-if ($this_version >= 2 ) {
-  diag( check( "Tests para hito 2") );
+sub milestone_2 {
   like( $README, qr/[Ss]oluci.n/, "Se menciona una solución en el README");
 }
 
-if ($this_version >= 3 ) {
-  diag( check( "Tests para hito 3") );
+sub milestone_3 {
   like( $README, qr/[lL]og/, "Se menciona un logger en el README");
 }
+
+call_for_test( 1, \&milestone_1 );
+call_for_test( 2, \&milestone_2 );
+call_for_test( 3, \&milestone_3 );
+
 
 if ( $this_version >= 6 ) {
   diag( check( "Tests para hito 6") );
