@@ -388,13 +388,13 @@ sistema de integración continua se incorpore de forma inmediata un linter.
 nos acabemos encontrando test asíncronos. Por eso se hace esta pequeña
 introducción aquí.
 
-La programación asíncrona es todo un mundo, pero un mundo que tenemos
-que tenemos que atravesar sin más remadio a la hora de programar, sobre todo si lo hacemos
-con las últimas versiones de Python (desde 3.4, creo), TypeScript u
-otros lenguajes como Kotlin o Swift. Mientras que las funciones
-"síncronas" o regulares te devuelven un resultado, una función
-síncrona te devuelve una *promesa*. Hay que *esperar* (con `await` o
-similar) a que esa promesa se cumpla para obtener el valor.
+La programación asíncrona es todo un mundo, pero un mundo que tenemos que
+tenemos que atravesar sin más remedio a la hora de programar, sobre todo si lo
+hacemos con las últimas versiones de Python (desde 3.4, creo), TypeScript u
+otros lenguajes como Kotlin o Swift. Mientras que las funciones "síncronas" o
+regulares te devuelven un resultado, una función síncrona te devuelve una
+*promesa*. Hay que *esperar* (con `await` o similar) a que esa promesa se cumpla
+para obtener el valor.
 
 Las funciones asíncronas permiten mucha flexibilidad, porque implican
 a nivel bajo un bucle de eventos que va a introducir un *callback* en el
