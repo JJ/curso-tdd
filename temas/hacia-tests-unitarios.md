@@ -188,6 +188,29 @@ pero en todo caso siempre será mejor elegir algún lenguaje en el que
 el compilador o intérprete haga ese trabajo por ti. O código adicional
 que se asegure de que las restricciones se cumplen en todo caso.
 
+Por eso es mejor usar las nuevas características, las `dataclasses` que, con
+menos código (siempre menos es más) tiene el mismo API:
+
+```python
+from enum import Enum
+from dataclasses import dataclass
+
+IssueState = Enum('IssueState', 'Open Closed')
+
+@dataclass
+class Issue:
+
+    projectName: str
+    issueId: str
+    state: IssueState = IssueState.Open
+
+    def close(self):
+        self.state = IssueState.Closed
+
+    def reopen(self):
+        self.state = IssueState.Open
+```
+
 ## DRY, números mágicos y otras reglas de programación básicas
 
 "No te repitas a ti mismo" es posiblemente una de las afirmaciones más
