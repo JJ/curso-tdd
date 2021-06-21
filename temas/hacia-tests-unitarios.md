@@ -47,25 +47,23 @@ el que no se ha escrito.
 > [el progreso en un programa en las líneas de código
 > eliminadas](https://www.folklore.org/StoryView.py?story=Negative_2000_Lines_Of_Code.txt).
 
-En general, esto se traduce en usar todo tipo
-de restricciones a nivel de compilación (tales como la estructura de
-tipos, o el protocolo de meta-objetos) para forzar que las cosas ocurran tal
-como deben ocurrir sin tener que preocuparte con escribir código que,
-en tiempo de ejecución, se encargue de que se respete esa
-restricción. Código declarativo
-que funciona correctamente según el compilador, y es así por su
-estructura y no por el código adicional que se ha escrito, es más
-correcto que cualquier otro. Esto también es un ejemplo de
+En general, esto se traduce en usar todo tipo de restricciones a nivel de
+compilación (tales como la estructura de tipos, o el protocolo de meta-objetos)
+para forzar que las cosas ocurran tal como deben ocurrir sin tener que
+preocuparte con escribir código que, en tiempo de ejecución, se encargue de que
+se respete esa restricción. Código declarativo que funciona correctamente según
+el compilador, y es así por su estructura y no por el código adicional que se ha
+escrito, es más correcto que cualquier otro. Esto también es un ejemplo de
 programación defensiva, como ya [hemos visto](a-programar.md).
 
 ### Ejemplo en Raku
 
-Generalmente, lenguajes que ofrecen tipos graduales o tipos estáticos
-son más estrictos, en este sentido, que otros que no lo exigen. Si
-además el protocolo de meta-objetos (es decir, el que permite diseñar
-el sistema de clases, roles y módulos) añade restricciones
-adicionales, tenemos todo lo que deseamos. Por ejemplo, la clase
-`Issue` en Raku:
+Generalmente, lenguajes que ofrecen tipos graduales o tipos en tiempo de
+compilación son más
+estrictos, en este sentido, que otros que no. Si además el protocolo
+de meta-objetos (es decir, el que permite diseñar el sistema de clases, roles y
+módulos) añade restricciones adicionales, tenemos todo lo que deseamos. Por
+ejemplo, la clase `Issue` en Raku:
 
 ```Raku
 enum IssueState <Open Closed>;
@@ -89,12 +87,11 @@ method state( --> IssueState ) { return $!state }
 ```
 
 Esta clase tiene que respetar todas las historias de usuario
-correspondientes. Por ejemplo, el constructor (`BUILD`) se asegura de
-que el estado del issue esté abierto; hay funciones para cambiar el
-estado. Pero lo importante es que todas las variables de instancia son
-privadas (con `$!`), con lo que el propio compilador se va a asegurar
-de que la única forma de cambiarlas sea a través de los métodos que
-cambian su valor.
+correspondientes. Por ejemplo, el constructor (`BUILD`) se asegura de que el
+estado del issue esté abierto; hay funciones para cambiar el estado. Pero lo
+importante es que todas las variables de instancia son privadas (con `$!`), con
+lo que el propio compilador se va a asegurar de que la única forma de cambiarlas
+sea a través de los métodos que cambian su valor.
 
 Adicionalmente, podríamos añadir una historia de usuario adicional,
 HU7
@@ -120,8 +117,8 @@ Una vez más, de esto nos aseguramos mediante la definición de las
 variables de instancia, y mediante el constructor que se asegura de
 que le pasen ese tipo y no otro.
 
-Por esta razón es por la que lenguajes con un sistema de tipos estricto como Raku resultan más
-apropiados para aplicaciones de cierta entidad que otros.
+Por esta razón es por la que lenguajes con un sistema de tipos estricto como
+Raku resultan más apropiados para aplicaciones de cierta entidad que otros.
 
 ### Python y sus restricciones: no todo el monte es orégano.
 
