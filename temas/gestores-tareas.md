@@ -232,7 +232,7 @@ las dependencias y usar versiones específicas del software.
 
 ## Actividad
 
-> Este hito corresponderá a la versión 7 `v7.x.x` del proyecto.
+> Este hito corresponderá a la versión 9 `v9.x.x` del proyecto.
 
 A partir del diseño creado en la anterior actividad, y siguiendo las
 prácticas de uso de los issues (y su cierre desde un *commit*), crear

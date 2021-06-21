@@ -225,7 +225,7 @@ pasar por la creación de funciones o la creación de tipos completos
 que permitan, por ejemplo, hacer comprobaciones que si no habría que
 repetir en diferentes partes de nuestra aplicación.
 
-> En las revisiones de código de estudiantes, este es uno de los
+> En las revisiones de código de estudiantes (y en las de no tan estudiantes), este es uno de los
 > errores que se encuentra con más frecuencia. Se debe también a la
 > práctica de código "write-only", código que se escribe para una
 > práctica o, mucho peor, un examen y que realmente no sirve para nada
@@ -295,7 +295,8 @@ mismo. Llevaremos a cabo un ejemplo (en otro lenguaje) que haga esto.
 > Por otro lado, también te muestra que se puede escribir código
 > perfectamente válido y que siga las HUs, pero en un entorno de
 > programación ágil, se debe estar abierto a modificaciones continuas
-> con el objetivo de resolver el problema de la mejor forma posible.
+> con el objetivo de resolver el problema de la mejor forma posible. Es el
+> Open/Closed principle.
 
 ## Pelusilla en el código
 
@@ -383,8 +384,12 @@ sistema de integración continua se incorpore de forma inmediata un linter.
 
 ## Funciones asíncronas
 
+> Cuando empezamos a programar tests en un lenguaje moderno, es muy probable que
+nos acabemos encontrando test asíncronos. Por eso se hace esta pequeña
+introducción aquí.
+
 La programación asíncrona es todo un mundo, pero un mundo que tenemos
-que tener en cuenta a la hora de programar, sobre todo si lo hacemos
+que tenemos que atravesar sin más remadio a la hora de programar, sobre todo si lo hacemos
 con las últimas versiones de Python (desde 3.4, creo), TypeScript u
 otros lenguajes como Kotlin o Swift. Mientras que las funciones
 "síncronas" o regulares te devuelven un resultado, una función
@@ -392,7 +397,7 @@ síncrona te devuelve una *promesa*. Hay que *esperar* (con `await` o
 similar) a que esa promesa se cumpla para obtener el valor.
 
 Las funciones asíncronas permiten mucha flexibilidad, porque implican
-a nivel bajo un bucle de eventos que va a introducir un evento en el
+a nivel bajo un bucle de eventos que va a introducir un *callback* en el
 mismo cuando la función se cumpla; pero también, incluir `await` son
 puntos de control en los que el bucle de eventos se detiene y espera a
 que la promesa que se está esperando se resuelva. Sin embargo, el
@@ -426,7 +431,7 @@ tratamiento especial a la hora de testearlo.
 
 ## Actividad
 
-> Este hito corresponderá a la versión 8 `v8.x.x` del proyecto.
+> Este hito corresponderá a la versión 10 `v10.x.x` del proyecto.
 
 Esencialmente, se trata de continuar con el desarrollo de las clases
 anteriores, usando todas las técnicas posibles para asegurarse de que

@@ -248,6 +248,8 @@ con graciosos robots.
 
 ## Actividad
 
+> Este hito corresponderá a la versión 8 `v8.x.x` del proyecto.
+
 Este es el primer hito en el que vamos a escribir algo de código,
 aunque sea sólo el API, es decir, las funciones o métodos, y las
 clases, y como llamarlas. Se crearán, por tanto, los esqueletos de las
