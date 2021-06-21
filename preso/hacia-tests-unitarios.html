@@ -30,6 +30,7 @@
                             package.json, y me lo he cargado al actualizarlo dle
                             main.</aside>
                     </section>
+
                     <section><h1>✓ TODO</h1>
                         <h2 class="fragment">□ ¿Hemos comenzado a
                             organizar el desarrollo en milestones? </h2>
@@ -39,15 +40,12 @@
                             <em>task runner</em> y se ha empezado a configurar?</h2>
                     </section>
 
-                    <section><h1>✓ TODO <em>retro</em></h1>
-                        <h2 class="fragment">¿Se han cerrado los
-                            issues desde un commit (o PR)?</h2>
-		    </section>
-
                     <section><h1>El mejor código es el que no se
                         escribe</h1>
                         <h2 class="fragment">Código declarativo
                             FTW</h2>
+
+                        <aside class="notes">Y el más seguro también</aside>
                     </section>
 
                     <section><pre><code data-line-numbers="1,3,8,13,16|7">from enum import Enum
@@ -73,6 +71,25 @@ class Issue:
                             declarando todos los atributos como
                             privados (con el _ delante)</aside>
                     </section>
+
+                    <section><h1><em>Refinement</em></h1>
+                        <pre><code data-line-numbers="1,6|9-11">from enum import Enum
+from dataclasses import dataclass
+
+IssueState = Enum('IssueState', 'Open Closed')
+
+@dataclass
+class Issue:
+
+    projectName: str
+    issueId: str
+    state: IssueState = IssueState.Open
+
+    def close(self):
+        self.state = IssueState.Closed
+
+    def reopen(self):
+        self.state = IssueState.Open</code></pre>
                     </section>
 
                     <section><!-- Buenas prácticas -->
@@ -168,7 +185,7 @@ Your code has been rated at 0.00/10
                         </section>
                     </section>
 
-                    <section><h1>✓ TODO hito 8</h1>
+                    <section><h1>✓ TODO hito 10</h1>
                        <h2 class="fragment">Elegir un linter y empezar
                        a usarlo</h2>
                        <h2 class="fragment"><code>agil.yaml</code> ⇒</h2>
