@@ -23,8 +23,8 @@ my ($this_version) = ( $ENV{'version'} =~ /^(\d+)/ );
 
 my $config;
 
-if ( $this_version >= 1 ) {
-  diag( check ("Tests para hito 1") );
+
+sub milestone_1 {
   my $agil_name = -e "$repo_dir/agil.yaml" ? "agil.yaml" : "agil.yml";
   if ( ok( -e "$repo_dir/$agil_name", check("Está el fichero de configuración «$agil_name»")) ) {
     $config = LoadFile("$repo_dir/$agil_name");
@@ -32,6 +32,8 @@ if ( $this_version >= 1 ) {
     ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
   }
 }
+
+call_for_test( 1, \&milestone_1 );
 
 if ($this_version >= 2 ) {
   diag( check( "Tests para hito 2") );
@@ -101,6 +103,14 @@ sub file_present {
     ok( grep( /$file/, @$ls_files_ref ), "Fichero $name → $file presente" );
   }
 
+}
+
+sub call_for_test {
+  my ($test_number, $function) = @_;
+  if ($this_version >= $test_number ) {
+    diag( check( "⚙ Tests para hito $test_number") );
+    $function->();
+  }
 }
 
 sub config_file {

@@ -35538,8 +35538,8 @@ my ($this_version) = ( $ENV{'version'} =~ /^(\d+)/ );
 
 my $config;
 
-if ( $this_version >= 1 ) {
-  diag( check ("Tests para hito 1") );
+
+sub milestone_1 {
   my $agil_name = -e "$repo_dir/agil.yaml" ? "agil.yaml" : "agil.yml";
   if ( ok( -e "$repo_dir/$agil_name", check("Está el fichero de configuración «$agil_name»")) ) {
     $config = LoadFile("$repo_dir/$agil_name");
@@ -35547,6 +35547,8 @@ if ( $this_version >= 1 ) {
     ok( $config->{'personas'}, "Lista de personas presente en el fichero" );
   }
 }
+
+call_for_test( 1, \&milestone_1 );
 
 if ($this_version >= 2 ) {
   diag( check( "Tests para hito 2") );
@@ -35563,18 +35565,18 @@ if ( $this_version >= 6 ) {
   file_present( $config->{'excepciones'}, \@repo_files, "con excepciones" );
 }
 
-if ( $this_version >= 7 ) {
+if ( $this_version > 7 ) {
   diag( check( "Tests para hito 7") );
   file_present( $config->{'taskfile'}, \@repo_files, "con gestor de tareas" );
   ok( $config->{'lenguaje'}, check("Se ha declarado el lenguaje de programación") );
 }
 
-if ( $this_version >= 8 ) {
+if ( $this_version > 8 ) {
   diag( check( "Tests para hito 8") );
   ok( $config->{'linter'}, check("Linter declarado") );
 }
 
-if ( $this_version >= 9 ) {
+if ( $this_version > 9 ) {
   diag( check( "Tests para hito 9") );
   ok( $config->{'aserciones'}, check( "Se ha declarado la biblioteca de aserciones" ) );
   file_present( $config->{'test'}, \@repo_files, "con tests" );
@@ -35582,7 +35584,7 @@ if ( $this_version >= 9 ) {
 
 my $testing = $config->{'testing'};
 my $runner;
-if ( $this_version >= 10) {
+if ( $this_version > 10) {
   diag( check( "Tests para hito 10") );
   ok( $testing, check( "La clave testing en el fichero de configuración en este tag" ) );
   $runner = $testing->{'runner'};
@@ -35591,12 +35593,12 @@ if ( $this_version >= 10) {
   ok( $testing->{'framework'}, check( "«testing->{'framework'}» declarado como framework" ));
 }
 
-if ( $this_version >= 12 ) {
+if ( $this_version > 12 ) {
   diag( check( "Tests para hito 12") );
   file_present( $config->{'dateador'}, \@repo_files, "con fichero declarando dependencia a inyectar" );
 }
 
-if ( $this_version >= 13) {
+if ( $this_version > 13) {
   diag( check( "Tests para hito 13") );
   like( $README, qr/$runner\s+coverage/, check("«$runner coverage» en el README"));
 }
@@ -35616,6 +35618,14 @@ sub file_present {
     ok( grep( /$file/, @$ls_files_ref ), "Fichero $name → $file presente" );
   }
 
+}
+
+sub call_for_test {
+  my ($test_number, $function) = @_;
+  if ($this_version >= $test_number ) {
+    diag( check( "⚙ Tests para hito $test_number") );
+    $function->();
+  }
 }
 
 sub config_file {
