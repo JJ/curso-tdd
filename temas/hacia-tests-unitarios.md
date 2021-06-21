@@ -27,7 +27,9 @@ de su lenguaje para tratar de evitar los posibles errores en la
 configuración de los objetos de las diferentes clases que se vayan a
 usar. Las clases definidas habrán estado guiadas por las historias de
 usuario, habiendo escrito sólo lo que se ha solicitado y precisamente
-lo que se ha solicitado.
+lo que se ha solicitado. Y se recuerda que se debe trabajar mirando siempre al
+próximo producto mínimamente viable, no trabajar por fases, así que basta con
+hacer lo suficiente para llegar al mismo en este hito.
 
 ## Historias de usuario, las maravillas del código inexistente y tests
 
@@ -251,7 +253,7 @@ seguros de que el ID del proyecto va a ser siempre el mismo.
 
 ### Ejemplos
 
-En el [ejemplo en Raku](ejemplos/raku) tampoco hay tanto código como
+En el [ejemplo en Raku](../ejemplos/raku) tampoco hay tanto código como
 para que se encuentren repeticiones *en el mismo módulo*. Sin embargo,
 nos encontramos con esto:
 
