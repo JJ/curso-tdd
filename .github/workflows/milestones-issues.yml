@@ -103,5 +103,5 @@ jobs:
           fetch-depth: 0
       - name: Ejecuta tests en el repo
         run: |
-          wget https://raw.githubusercontent.com/JJ/curso-tdd/master/t/proyecto.t
+          wget -q https://raw.githubusercontent.com/JJ/curso-tdd/master/t/proyecto.t
           prove -c proyecto.t
