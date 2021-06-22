@@ -23,13 +23,8 @@
                     </section>
 
                     <section><h2>✓ TODO</h2>
-                        <h2 class="fragment">□ ¿Hemos comenzado a
-                            organizar el desarrollo en milestones? </h2>
                         <h2 class="fragment">□ ¿Se han diseñado las
-                            excepciones?</h2>
-                        <h2 class="fragment">□ ¿Se han elegido un
-                            <em>task runner</em> y se ha empezado a
-                            configurar?</h2>
+                            excepciones y definido claramente clases?</h2>
                         <h2 class="fragment">□ ¿Se ha elegido y
                             comenzado a usar un linter?</h2>
                     </section>
@@ -38,10 +33,15 @@
                         <strong>comportamientos</strong></h1>
                         <h2 class="fragment">Reflejados en las
                             historias de usuario</h2>
+
+                        <aside class="notes">Es muy importante que sólo se
+                    comprueben comportamientos, y no interpretaciones
+                    específicas del comportamiento o el estado actual de la
+                            implementación. Sin las HU, los tests no tienenn ningún sentido.</aside>
                     </section>
 
                     <section><h1>Los tests <strong>unitarios</strong>
-                        se refieren a las capas más
+                        se refieren a las capas (de abstracción) más
                         bajas</h1></section>
 
                     <section><h1>Y se implementan en bibliotecas de
@@ -51,7 +51,9 @@
                             principio de los tests. Casi siempre hay
                         una biblioteca de tests unitarios estándar,
                         pero suele haber otras posibilidades, o un
-                        montón en JavaScript.</aside>
+                        montón en JavaScript. Hay que tener cuidado de reflejar
+                        bien esta elección, o nos podemos encontrar con varias
+                        bibliotecas, una en cada submódulo</aside>
                     </section>
 
                     <section><!-- plan, setup, test, teardown -->
@@ -67,6 +69,7 @@
 unless ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
   plan skip_all => "Check relevant only for PRs";
 }                            </code></pre>
+                            <aside class="notes">Ya no usamos Travis, pero es un ejemplo.</aside>
                         </section>
 
                         <section><h1><em>Setup</em>: crear objetos que
@@ -75,7 +78,7 @@ unless ( $ENV{'TRAVIS_PULL_REQUEST'} =~ /\d/ ) {
                                 del test</em></h2>
                         </section>
 
-                        <section>                            <h2><em>Fixtures</em> en
+                        <section><h2><em>Fixtures</em> en
                             Python</h2>
                             <pre><code data-line-numbers="1|7-11|13">import pytest
 from Project.Issue import Issue, IssueState
