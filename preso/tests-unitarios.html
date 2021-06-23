@@ -33,6 +33,11 @@
                         <strong>comportamientos</strong></h1>
                         <h2 class="fragment">Reflejados en las
                             historias de usuario</h2>
+
+                        <aside class="notes">Sin las HUs es un caos. Si es "no
+                    sé quién me dijo" que, acaban apareciendo las costuras por
+                    algún lado". No se hacen productos coherentes, ni productos
+                            que el equipo pueda sacar adelante</aside>
                     </section>
 
                     <section><h1>Los tests se ejecutan desde
@@ -44,9 +49,16 @@
                     </section>
 
                     <section><h1>Principios F.I.R.S.T</h1>
+                        <h2 class="fragment">Fast, independent, repeatable,
+                            self-validating, timely</h2>
                         <h2 class="fragment">Red/green/refactor</h2>
                         <h1 class="fragment">Lo importante son los
                             tests</h1>
+
+                        <aside class="notes">Es decir, lo de hacerlos primero no
+                    hace falta que se lleve a cabo. Y lo de "timely" y "fast"
+                    muchas veces no depende del marco o de los tests en sí, sino
+                            del framework</aside>
                     </section>
 
                     <section><h1>Tests en Elixir (con
@@ -69,6 +81,8 @@ end</code></pre>
 
                     <section><h1><em>Arrange</em>, <em>act</em>,
                         <em>assert</em></h1>
+                        <aside class="notes">Corresponde a cada uno de los
+                            tests, a lo que se va a hacer en cada paso.</aside>
                     </section>
 
                     <section><h1>TypeScript con <code>jest</code></h1>
@@ -85,7 +99,8 @@ test("all", () => {
     expect(  data.show_state() ).toBe( State.Closed );
 }); </code></pre>
                         <aside class="notes">Arrange sería el
-    beforeAll; es similar al setup del que hemos hablado antes, lo que
+    beforeAll; es similar al setup del que hemos hablado antes (y desde luego
+    parecidísimo a una fixture), lo que
     ocurre es que jest permite que se hagan precondiciones antes de
     cualquier test, y también antes y después de cada una de las
                             instrucciones de test que se
@@ -144,7 +159,7 @@ for my $f (@changes) {
                     base de los sistemas de CI/CD que se verán a continuación.</aside>
                     </section>
 
-                    <section><h1>✓ TODO hito 10</h1>
+                    <section><h1>✓ TODO hito 12</h1>
                         <h2 class="fragment">Elegir marco de test +
                             añadir <code>test</code> a tareas</h2>
                         <h3 class="fragment"> En

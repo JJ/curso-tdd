@@ -457,11 +457,11 @@ si se han pasado todos los tests o no, en cuyo caso se indicará alguna
 información adicional como qué scripts de tests no se ha pasado o el
 mensaje de la misma. Algunos programas usados en otros lenguajes son:
 
-* Ruby usa [RSpec](http://rspec.info/), que además está basado en el
+* Ruby usa [RSpec](https://rspec.info/), que además está basado en el
   comportamiento deseado, lo que permite tener descripciones mucho más
   informativas del test y el resultado del fallo.
 
-* Perl usa [prove](https://perldoc.perl.org/prove.html), con múltiples
+* Perl usa [prove](https://perldoc.perl.org/prove), con múltiples
   opciones de configuración. De hecho, es el que se usa en el test de
   la asignatura.
 
@@ -605,15 +605,15 @@ test("all", () => {
 });
 ```
 
-`jest` usa una serie de aserciones basadas en el comportamiento, y
-[fases de setup](https://jestjs.io/docs/en/setup-teardown) generales (con `beforeAll`), con otras adicionales
-antes y después de cada uno de los tests. Esas funciones devolverán
-promesas; hasta que no se cumplan no se procederá a llevar a cabo el
-resto de los tests (en este caso) o los tests correspondientes. En
-este caso, sin embargo, es una simple inicialización de un dato, que
-se va a ejecutar siempre. Como los tests se llevan a cabo de forma
-asíncrona, sin embargo, de esta forma nos aseguramos que cuando se
-ejecute el código de los mismos esté presente. 
+`jest` usa una serie de aserciones basadas en el comportamiento, y [fases de
+setup](https://jestjs.io/docs/setup-teardown) generales (con `beforeAll`), con
+otras adicionales antes y después de cada uno de los tests. Esas funciones
+devolverán promesas; hasta que no se cumplan no se procederá a llevar a cabo el
+resto de los tests (en este caso) o los tests correspondientes. En este caso,
+sin embargo, es una simple inicialización de un dato, que se va a ejecutar
+siempre. Como los tests se llevan a cabo de forma asíncrona, sin embargo, de
+esta forma nos aseguramos que cuando se ejecute el código de los mismos esté
+presente.
 
 
 ### Ejemplo en Elixir
