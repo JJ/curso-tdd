@@ -86,14 +86,13 @@ programa en sí con las librerías del lenguaje de programación en el
 que está desarrollado.
 
 Un sistema bastante popular de integración continua es
-[Jenkins](https://jenkins.io/). Jenkins lo puedes usar en la nube o
-instalarte tu propio ordenador para hacerlo. Sin embargo, está
-enfocado sobre todo a Java (y no hay un servicio gratuito que se pueda
-ejecutar) por lo que recomendamos, al menos para empezar, otros
-sistemas como [Travis](https://travis-ci.org) o
-[Shippable](https://www.shippable.com/) que podemos usar también desde
-la nube y, además, están preparados para más lenguajes de
-programación.
+[Jenkins](https://www.jenkins.io/). Jenkins lo puedes usar en la nube o
+instalarte tu propio ordenador para hacerlo. Sin embargo, está enfocado sobre
+todo a Java (y no hay un servicio gratuito que se pueda ejecutar) por lo que
+recomendamos, al menos para empezar, otros sistemas como
+[Travis](https://travis-ci.com) o [JFrog Pipelines (antiguamente
+Shippable)](https://jfrog.com/pipelines/) que podemos usar también desde la nube
+y, además, están preparados para más lenguajes de programación.
 
 Para trabajar con un sistema de CI hay que hacerlo en varios
 pasos
@@ -235,18 +234,17 @@ jobs:
 
 ```
 
-Esta GHA pasa los tests a los [ejemplos en Nim](../ejemplos/nim) de
-este repositorio. Por eso filtra sólo los ficheros de esos directorios
-(con `**` se indica que es cualquier fichero a cualquier
-profundidad). Está declarada sólo cuando se hace push o pull request
-(es decir, no cuando se crea un issue, por ejemplo), usa como *runner*
-la última versión de Ubuntu (por lo pronto la 18.04, pronto la
-20.04). Usa una action externa para instalar nim (que esencialmente
-usa `choosenim` para instalar una versión en espacio de usuario) y
-finalmente, con `run` pasa los tests. Cada paso tiene esas claves
-estándar, aparte de `name`, que aquí no hemos usado. Hay más ejemplos
-en [el directorio de workflows](../.github/workflows), que ejercen
-tanto como tests, como creando otros workflows para diferentes labores
+Esta GHA pasa los tests a los [ejemplos en Nim](../ejemplos/nim) de este
+repositorio. Por eso filtra sólo los ficheros de esos directorios (con `**` se
+indica que es cualquier fichero a cualquier profundidad). Está declarada sólo
+cuando se hace push o pull request (es decir, no cuando se crea un issue, por
+ejemplo), usa como *runner* la última versión de Ubuntu (por lo pronto la 18.04,
+pronto la 20.04). Usa una action externa para instalar nim (que esencialmente
+usa `choosenim` para instalar una versión en espacio de usuario) y finalmente,
+con `run` pasa los tests. Cada paso tiene esas claves estándar, aparte de
+`name`, que aquí no hemos usado. Hay más ejemplos en [el directorio de
+workflows](https://github.com/JJ/curso-tdd/tree/master/.github/workflows), que
+ejercen tanto como tests, como creando otros workflows para diferentes labores
 administrativas.
 
 ## Acelerando los tests
