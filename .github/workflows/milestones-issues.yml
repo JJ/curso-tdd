@@ -61,7 +61,7 @@ jobs:
             }
       - name: Comprueba que haya una historia de usuario
         uses: actions/github-script@v3
-        if: env.version >= '4'
+        if: env.version >= '6'
         with:
           github-token: ${{github.token}}
           script: |
@@ -77,7 +77,7 @@ jobs:
             }
       - name: Comprueba que haya un sistema de integración continua
         uses: actions/github-script@v3
-        if: env.version >= '11'
+        if: env.version >= '13'
         with:
           github-token: ${{github.token}}
           script: |
