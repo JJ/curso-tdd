@@ -23,22 +23,23 @@
                     </section>
 
                     <section><h2>✓ TODO</h2>
-                        <h2 class="fragment">□ ¿Los milestones
-                        internos son productos mínimamente viables? </h2>
                         <h2 class="fragment">□ ¿Se han integrado
-                            tests en el gestor?</h2>
+                            tests en el gestor de tareas?</h2>
                         <h2 class="fragment">□ ¿Se ha configurado un
                             sistema de CI?</h2>
                     </section>
 
-                    <section><h2>📕 Retro</h2>
-                        <h2 class="fragment">□ ¿Hay espacios en blanco
-                            en la última línea de un YAML?</h2>
-                        <img src="../img/whitespace.png" alt="usa el editor">
                     </section>
 
                     <section><h1> Roles ⇒ inversión de dependencias ⇒
-                        mocks</h1></section>
+                        mocks</h1>
+
+                        <aside class="notes">Es importante aprender el concepto
+                    de roles, porque se usan tanto en general en el diseño de
+                    una aplicación, como en particular para hacer inyección de
+                    dependencias, que es uno de los mecanismos que se van a usar
+                            para hacer mocks.</aside>
+                    </section>
 
                     <section><!-- roles -->
 
@@ -73,10 +74,15 @@ end</code></pre>
                             roles</h1>
                             <h2 class="fragment">Desacoplando
                                 diferentes funciones</h2>
+
+                            <aside class="notes">Esto sigue el principio de
+                        responsabilidad única, porque una clase no tiene la
+                        lógica de negocio y los logs, la lógica de negocio y el
+                                acceso a datos... cada clase se encarga de un tema determinado.</aside>
                         </section>
 
                         <section><h1>Las dependencias son
-                            atributos</h1>
+                            atributos en un objeto</h1>
                             <pre><code>unit class Project::Stored does Project;
 
 has Project::Dator $!dator;
@@ -91,8 +97,8 @@ my $stored = Project::Stored.new($dator);</code></pre>
                     </section>
 
                     <section><!-- test doubles -->
-                        <section><h1>Dobles de test: sustituyen a
-                            objetos originales</h1>
+                        <section><h1>Usándolo en dobles de test</h1>
+                            <h2 class="fragment">→ Sustituyen a los objetos originales</h1>
                         </section>
 
                         <section><h1><em>Dummies</em></h1>
@@ -111,9 +117,15 @@ describe Project do
 # continúa
 end</code></pre>
                         </section>
-                        
+
                             <section><h1><em>Stubs</em>: también con
                                 interface</h1>
+
+                                <aside class="notes">Los dummies son objetos que
+                            se pueden usar donde se use cualquier objeto, en
+                            lenguajes sin tipos. Los stubs también tienen el
+                            mismo tipo o interfaz original, de forma que al
+                                    menos pueden ser llamados</aside>
                             </section>
 
                             <section><h1><em>Fakes</em>: clases
@@ -148,10 +160,12 @@ $stored = Project::Stored.new($dator);</code></pre>
                                 <h2 class="fragment">Los frameworks
                                     pueden ayudar, pero no son
                                     exclusivos.</h2>
+                                <aside class="notes">Pueden ir desde una función
+                                    a un API completo.</aside>
                             </section>
                         </section>
 
-                    <section><h1>✓ TODO hito 12</h1>
+                    <section><h1>✓ TODO hito 14</h1>
                         <h2 class="fragment">Comenzar a integrar los
                             servicios por inyección de dependencias</h2>
                         <h3 class="fragment">E integrar los tests correspondientes</h3>
