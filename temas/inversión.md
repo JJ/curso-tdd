@@ -100,7 +100,7 @@ que implemente ese rol, por lo que podemos declarar argumentos como
 En Ruby se definen como `modules` los mixins o roles; un módulo en
 Ruby puede incluir tanto atributos como implementación, pero no se
 puede instanciar como en el caso de Raku. Por ejemplo,
-[aquí](../ejemplos/ruby):
+[aquí](https://github.com/JJ/curso-tdd/tree/master/ejemplos/ruby):
 
 ```
 module IssueStatus
@@ -276,7 +276,7 @@ de objetos que no tienen por qué estar presentes en el momento del
 test. Los mocks pueden incluir también una implementación completa,
 sólo que una que no esté lista para producción.
 
-> Por ejemplo, [este artículo](https://medium.com/@yeraydiazdiaz/what-the-mock-cheatsheet-mocking-in-python-6a71db997832)
+> Por ejemplo, [este artículo](https://yeraydiazdiaz.medium.com/what-the-mock-cheatsheet-mocking-in-python-6a71db997832)
 muestra de forma extensa cómo usar mocks en Python. Algunos frameworks como Jest
  permiten también hacer [mocks de forma
  sencilla](https://jestjs.io/docs/es-ES/manual-mocks).
