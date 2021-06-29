@@ -94,7 +94,7 @@ clase [`HitosIV` que ya hemos usado
 anteriormente](https://github.com/JJ/HitosIV), estos serían los
 resultados.
 
-![Cobertura de los tests en la clase HitosIV](img/gocover.png)
+![Cobertura de los tests en la clase HitosIV](../img/gocover.png)
 
 En este caso, las líneas no cubiertas eran las que lanzaban errores en
 caso de que se encuentren algún problema; efectivamente, como se ha
@@ -108,7 +108,7 @@ código](https://stackoverflow.com/a/46841524/891440) para asegurar que
 sigue las mejores prácticas del lenguaje:
 
 
-![Nueva cobertura de los tests en la clase HitosIV](img/gocover-2.png)
+![Nueva cobertura de los tests en la clase HitosIV](../img/gocover-2.png)
 
 Siempre es mejor en Go devolver un error que enviar a registro un
 error fatal (sin hacer nada más) o lanzar un *panic*, así que este
