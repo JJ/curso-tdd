@@ -12,4 +12,4 @@ Cambiad la versión si no es esa la que tenéis en vuestro tag.
 | [RuteaMe](https://github.com/skladores/RuteaMe)                         | v0.0.1 |
 | [ElTiempoYA](https://github.com/Kotlin-Boom-gang/TDD-Kotlin-Team)       | v3.0.0  |
 | [Ortograpy](https://github.com/Python-Group-VII/Orthograpy)             | v4.0.0  |
-| [NetWorth](https://github.com/team-mhered/NetWorth)                     | v4.0.2  |
+| [NetWorth](https://github.com/team-mhered/NetWorth)                     | v9.0.1  |
