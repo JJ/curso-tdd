@@ -61,24 +61,52 @@ forma individual. En este proceso es cuando se empiezan a elaborar las
 En nuestro programa que tratará con un proyecto y sus diferentes
 partes, hitos, issues y demás, por ejemplo para examinar el estado de
 un proyecto externo en una clase, las acciones comenzarán
-siempre con una petición que llegue desde GitHub. Por lo tanto,
-podremos tener las siguientes historias de usuario.
+siempre con una petición que llegue desde GitHub.
 
-* **HU0**: (Configuración) Como usuario, necesito que cada proyecto deberá tener una cadena única
-  que lo identifique.
-* **HU1**: Como usuario, necesito que cuando se cree un hito en un proyecto, ese hito se incluirá en
-  la estructura de datos del proyecto correspondiente.
-* **HU2**: Como usuario, necesito que cuando se cree un issue, se añadirá al hito
+Hay varias condiciones principales para que algo se considere una historia de
+usuario:
+
+1. Tiene que identificarse claramente qué usuario/tipo es protagonista de esa
+   historia.
+2. La historia siempre está en el dominio del problema, siempre narrada desde el
+   punto de vista del usuario, y siempre tiene que expresar qué *beneficio* va a
+   obtener el usuario una vez que se haya implementado.
+3. En la mayoría de los casos, estas historias de usuario tendrán relación con
+   la lógica de negocio, o tendrán que provocar eventualmente la codificación
+   de la lógica de negocio.
+
+Volvamos al proyecto del *dashboard* para controlar proyectos entregados por
+    estudiantes, que es con el que estamos trabajando. El único usuario va a ser
+    un profesor, que además es informático y conoce un poco el percal. El
+    beneficio que piensa obtener es poder controlar mejor y de forma individual
+    el progreso de los estudiantes. Con ello, se podría hacer la siguiente
+    historia de usuario:
+
+* **HU0**: Como profesor, quiero poder mejorar el seguimiento individual de cada
+  uno de los proyectos hechos por estudiantes o diferentes unidades.
+
+De esta historia de usuario se pueden deducir una serie de issues, que serán
+siempre *problemas* a resolver. Una vez más, la implementación o las decisiones
+técnicas necesarias para la misma se harán directamente en el código o con
+comentarios al issue. De la HU, y enlazándolos al mismo (con el mecanismo que
+permita el sistema que se use, por ejemplo simplemente poniendo el número del
+issue en GitHub), se sacarán una serie de issues
+
+* **HU0-0**: (Configuración) Cada proyecto se tiene que identificar de forma única.
+* **HU0-1**: Como usuario, necesito que cuando se cree un hito en un proyecto,
+  ese hito se incluirá en la estructura de datos del proyecto correspondiente.
+* **HU0-2**: Como usuario, necesito que cuando se cree un issue, se añadirá al hito
   correspondiente con estado "abierto". Si no está asignado a ningún hito, se emitirá un
   mensaje de error.
-* **HU3**: Como usuario, necesito que cuando se cierre un issue, se cambie el estado del
+* **HU0-3**: Como usuario, necesito que cuando se cierre un issue, se cambie el estado del
   mismo.
-* **HU4**: Como usuario, necesito que si se borra un issue, dejará de
+* **HU0-4**: Como usuario, necesito que si se borra un issue, dejará de
   estar accesible.
-* **HU5**: Si se solicita el porcentaje de terminación del hito, se
+* **HU0-5**: Si se solicita el porcentaje de terminación del hito, se
   responderá con una cantidad entre 0 y 100.
 
-Estas historias de usuario se crearán como issues, y agruparse, a su
+Estas issues siempre plantean un problema y estarán linkados a las historias de
+usuarios correspondientes de forma clara. Todos los *issues* se agruparán, a su
 vez, en un hito, siempre que se identifique cuál es el producto
 mínimamente viable. Por ejemplo, en este caso
 todas las relativas a issues se pueden incluir en el mismo hito (salvo
