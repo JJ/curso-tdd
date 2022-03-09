@@ -105,7 +105,7 @@ issue en GitHub), se sacarán una serie de issues
 * **HU0-5**: Si se solicita el porcentaje de terminación del hito, se
   responderá con una cantidad entre 0 y 100.
 
-Estas issues siempre plantean un problema y estarán linkados a las historias de
+Estas issues siempre plantean un problema y estarán enlazados a las historias de
 usuarios correspondientes de forma clara. Todos los *issues* se agruparán, a su
 vez, en un hito, siempre que se identifique cuál es el producto
 mínimamente viable. Por ejemplo, en este caso
