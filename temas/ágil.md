@@ -210,7 +210,19 @@ implementando, o simplemente dejarse fuera de los milestones; los issues
 *siempre* tendrán que estar en un milestone. Evidentemente, como se va avanzando
 por una carretera, en general sólo se estará trabajando en un PMV.
 
+Por la misma razón, no es necesario planificar desde el principio todos los
+milestones que se vayan a desarrollar, sólo una cantidad suficiente para tener
+claro el horizonte al que se avanza; según se vaya desarrollando, se verá la
+necesidad de crear nuevos milestones, con releases que pueden ser internas (para
+el propio equipo) o externas (para el cliente).
 
+Los PMVs pueden ser internos o externos. En general, son un punto de control
+para pararse y decir "¿Es esto lo que queremos/quiere el cliente?". También es
+una forma tangible del desarrollo, puesto que es algo que se puede liberar o
+publicar. Por eso también se suele establecer un *tag* para el repositorio con
+cada uno de los PMVs, que establezcan claramente cuál era el punto en el
+desarrollo. A ese punto se puede volver, por ejemplo, para corregir errores o
+simplemente volver a él si algún PMV posterior no es viable.
 
 
 ## Ver también

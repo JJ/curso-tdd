@@ -58,7 +58,8 @@ arquitectura general que se va a usar.
 Como el desarrollo de una aplicación también se basa en crear una
 serie de productos mínimamente viables (MVP) de complejidad
 creciente, en realidad esto son tanto aplicaciones finales como
-posibles etapas de una aplicación.
+posibles etapas de una aplicación. Esto se verá con más detenimiento en [el
+capítulo sobre desarrollo ágil](ágil.md).
 
 En este capítulo vamos a tratar de hacer una pequeña panorámica de la
 arquitectura de una aplicación informática, con "aplicación" siendo un

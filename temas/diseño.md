@@ -108,11 +108,14 @@ issue en GitHub), se sacarán una serie de issues
 Estas issues siempre plantean un problema y estarán enlazados a las historias de
 usuarios correspondientes de forma clara. Todos los *issues* se agruparán, a su
 vez, en un hito, siempre que se identifique cuál es el producto
-mínimamente viable. Por ejemplo, en este caso
-todas las relativas a issues se pueden incluir en el mismo hito (salvo
-quizás la última). El
-MVP será una serie de clases que serán capaces de gestionar todo lo
-relacionado con los hitos de forma independiente.
+mínimamente viable.
+
+> Esto lo explicaremos con más detenimiento en el capítulo de desarrollo
+[ágil](ágil.md).
+
+Por ejemplo, en este caso todas las relativas a issues se pueden incluir en el
+mismo hito (salvo quizás la última). El MVP será una serie de clases que serán
+capaces de gestionar todo lo relacionado con los hitos de forma independiente.
 
 A partir de estas historias de usuario, y de la metodología de diseño,
 habrá que empezar a escribir el código. Como código no testeado es
