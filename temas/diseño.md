@@ -5,7 +5,7 @@
 
 En nuestro contexto, se define [la calidad del
 software](https://en.wikipedia.org/wiki/Software_quality) como la
-capacidad del mismo de seguir para cumplir (o exceder) las
+capacidad del mismo de cumplir (o exceder) las
 especificaciones y las expectativas de los clientes del mismo.
 
 En general, la calidad es un proceso, y no simplemente una
@@ -213,7 +213,9 @@ Vamos a ver qué historias de usuario saldrán de aquí; esta sería la
 "historia de usuario" principal, aunque a partir de ella tendremos que
 añadir alguna adicional (más adelante).
 
-* El usuario querrá estar informado en todo momento del estado de cada uno de los proyectos.
+* El usuario querrá estar informado en todo momento del estado de cada uno de
+  los proyectos para poder mejorar los resultados de aprendizaje (o simplemente
+  resultados) de los mismos.
 
 Realmente el resto son temas de presentación. Lo importante es que
 tenemos una entidad, el *proyecto*. Cada proyecto tiene identidad
@@ -277,14 +279,14 @@ method get( UInt $issue-id --> Project::Issue ) { … }
 
 ```
 
-Estamos hablando de TDD (que era el tema inicial del curso) y estamos poniendo código antes de
- especificar los tests. Si seguimos una metodología TDD estricta,
- deberíamos especificar los tests antes del mismo. Este código, de
-hecho, debería fallar antes de que se escriban los tests. Así que
-vamos a aprovecharlo para introducir código de otro lenguaje, Python
-(en el subdirectorio [`ejemplos/python`](../ejemplos/python) escrito
-con este tipo de ideas en mente. El código muestra solamente las
-funciones que deseamos que esta entidad siga:
+Estamos hablando de TDD (que era el tema inicial del curso) y estamos poniendo
+ código antes de especificar los tests. Si seguimos una metodología TDD
+ estricta, deberíamos especificar los tests antes del mismo. Este código, de
+ hecho, debería fallar antes de que se escriban los tests. Así que vamos a
+ aprovecharlo para introducir código de otro lenguaje, Python (en el
+ subdirectorio [`ejemplos/python`](../ejemplos/python) escrito con este tipo de
+ ideas en mente. El código muestra solamente las funciones que deseamos que esta
+ entidad siga:
 
 ```
 class Project:

@@ -11,12 +11,11 @@ dar esos pasos, viendo también ejemplos.
 
 ## Al final de esta sesión
 
-Previamente se habrán creado una serie de casos de uso/historias de
-usuario, y quizás se ha avanzado un poco en el diseño de los paquetes
-o módulos
-que lo van a implementar. Ahora se tratará de aclarar cuales
-con los principios de implementación, y especificar en una serie de hitos
-cómo va a organizarse el trabajo de programación.
+Previamente se habrán creado una serie de casos de uso/historias de usuario, y
+quizás se ha avanzado un poco en el diseño de los paquetes o módulos que lo van
+a implementar. Ahora se tratará de aclarar cuales con los principios de
+implementación, y especificar en una serie de hitos cómo va a organizarse el
+trabajo de programación.
 
 Además, se organizará en el repositorio, según el lenguaje elegido,
 las dependencias que vayan a necesitarse.
