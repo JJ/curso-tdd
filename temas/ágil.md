@@ -167,6 +167,52 @@ para elaborar colaborativamente una épica. De esa épica,
 posteriormente, surgirán las diferentes historias de usuario. Pero eso
 lo veremos a continuación.
 
+## Respetando los deseos de los clientes de forma incremental: milestones
+
+Como la metodología ágil aboga por presentar frecuentemente los resultados al
+cliente para ver si corresponde a sus expectativas, y cambiar o adaptar los
+requerimientos como resultados de las mismas, por lo que el desarrollo de un
+producto se debe hacer de forma incremental como una serie de entregables, cada
+uno de ellos apoyado en el anterior, con complejidad creciente y también un
+acercamiento creciente al cumplimiento de las historias de usuario (que, en
+muchos casos, no se podrán cumplir hasta el producto final).
+
+**Todo** el desarrollo tiene que organizarse alrededor de estos entregables,
+como si fueran *mojones* en una carretera (o *milestones*). La metáfora es que
+uno va avanzando por la carretera, hasta llegar al destino final, que es un
+producto que satisface una cantidad aceptable de historias de usuario (y puede,
+por tanto, ser desplegado o subido a un app store o simplemente una versión
+nueva en una biblioteca).
+
+Los milestones, por tanto, tienen que cumplir estas características
+* Tiene que estar ordenados en una progresión lógica, que incluya todas las
+  etapas del desarrollo, o al menos todas las que terminen en código en el
+  repositorio.
+* Cada milestone tiene que describir un producto mínimamente viable. El producto
+  mínimamente viable tiene que ser más complejo que el anterior, incluirlo y
+  agrupar todo el desarrollo hecho desde el entregable anterior.
+* Que sea mínimamente significa que sólo va a incluir lo estrictamente necesario
+  para que funcione; y que sea viable indica que tiene que ser un producto
+  *real*, con un criterio de aceptación, y no una simple agrupación de tareas no
+  relacionadas entre sí. Estos tests, casi siempre, estarán automatizados,
+  aunque en la realidad la viabilidad tendría que decidirla el equipo de
+  producto en contacto con los clientes.
+* También tiene que ser un producto en el sentido que sea algo con entidad
+  propia, desde el diseño de una clase con código que compile hasta una
+  aplicación cliente-servidor completa publicada en un *store* para las mismas.
+
+Como *siempre* se va a desarrollar para el siguiente PMV, todo desarrollo que se
+haga tendrá que fluir desde las historias de usuario, pasando por issues que lo
+desarrollen, hasta los productos mínimamente viables, que también incluirán a
+los pull requests que agrupen una serie de issues. Las historias de usuario, en
+general, podrán irse moviendo de un milestone al siguiente, según se vayan
+implementando, o simplemente dejarse fuera de los milestones; los issues
+*siempre* tendrán que estar en un milestone. Evidentemente, como se va avanzando
+por una carretera, en general sólo se estará trabajando en un PMV.
+
+
+
+
 ## Ver también
 
 Este [*whitepaper* gratuito describe en general la metodología
