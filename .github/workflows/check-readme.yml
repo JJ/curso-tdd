@@ -22,7 +22,7 @@ jobs:
       - name: Prerrequisites
         run: sudo apt-get update && sudo apt-get install -y libtext-hunspell-perl autopoint
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
       - name: Instala módulos
         run: sudo cpan Test::Text Tap::Harness
       - name: Ejecuta los tests
