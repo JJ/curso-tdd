@@ -54,18 +54,21 @@ para ejecutar todo tipo de tests y desplegarlo.
 Los task runners se diferencian entre si a lo largo de varios ejes
 
 * Explícitos o implícitos, es decir, si hay un programa que se llame
-explícitamente así y sea diferente al intérprete o compilador o no;
-también se podían denominar internos o externos (aunque dejaremos este
-eje para el siguiente). Go es un
-ejemplo de lenguaje que usa task runner implícito: como subcomandos de go se compila, se pasan
-tests o se instala un paquete. Rust usa un task runner explícito: se
-llama `cargo` y desde él se pueden llevar a cabo todas las tareas
-necesarias.
-* Configuración externa o implícita. [Deno](https://deno.land/manual), un fork de Node, evita el
-  fichero de configuración externo para usar directamente las
-  declaraciones de uso de bibliotecas externas como parte de la
-  definición. Go es capaz de hacerlo también. En la mayoría de los
-  casos hace falta un fichero que describa este tipo de cosas.
+explícitamente así y sea diferente al intérprete o compilador o no; también se
+podían denominar internos o externos (aunque dejaremos este eje para el
+siguiente). Por ejemplo `deno`, un intérprete de JS/TS, permite ejecutar tareas
+almacenadas en un fichero con `deno task`, un subcomando del propio CLI del
+lenguage; sería, por tanto, implícito.  Go *no* es un ejemplo de lenguaje con
+gestor de tareas implícitas, ya que solo ejecuta algunas tareas desde el propio
+intérprete/compilador del lenguaje: como subcomandos de go se compila, se pasan
+tests o se instala un paquete. Rust usa un task runner explícito: se llama
+`cargo` y desde él se pueden llevar a cabo todas las tareas necesarias.
+* Configuración externa de las dependencias o
+  implícita. [Deno](https://deno.land/manual), un intérprete de JS, evita el
+  fichero de configuración externo para usar directamente las declaraciones de
+  uso de bibliotecas externas como parte de la definición. Go es capaz de
+  hacerlo también. En la mayoría de los casos hace falta un fichero que describa
+  este tipo de cosas.
 * Estándar u opcionales: hay lenguajes que vienen con su propia herramienta de
 construcción, estándar o simplemente la que más se usa, aunque puede tener
 limitaciones: `npm` en JavaScript (que últimamente está siendo
