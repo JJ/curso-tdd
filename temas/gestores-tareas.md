@@ -58,7 +58,7 @@ explícitamente así y sea diferente al intérprete o compilador o no; también 
 podían denominar internos o externos (aunque dejaremos este eje para el
 siguiente). Por ejemplo `deno`, un intérprete de JS/TS, permite ejecutar tareas
 almacenadas en un fichero con `deno task`, un subcomando del propio CLI del
-lenguage; sería, por tanto, implícito.  Go *no* es un ejemplo de lenguaje con
+lenguaje; sería, por tanto, implícito.  Go *no* es un ejemplo de lenguaje con
 gestor de tareas implícitas, ya que solo ejecuta algunas tareas desde el propio
 intérprete/compilador del lenguaje: como subcomandos de go se compila, se pasan
 tests o se instala un paquete. Rust usa un task runner explícito: se llama
